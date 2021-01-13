@@ -6,7 +6,7 @@ body
 .h1 {
     text-align: center;
     font-family: "Î¢ÈíÑÅºÚ";
-    font-size: 55px;
+    font-size: 45px;
     font-variant-position: inherit;
     line-height: 150px;
 }
@@ -151,5 +151,48 @@ ul li {
 .moreques {
   height: 100px;
   background-color: rgba(102, 185, 241, 0.219);
-  
+  line-height: 90px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+}
+.moreanser {
+  background-image: url(https://s3.ax1x.com/2021/01/05/sFtspj.png);
+  background-size:contain ;
+  background-repeat:no-repeat;
+  background-position:right;
+  width: 100%;
+  height: 40%;
+}
+.question {
+  background-color: rgba(137, 43, 226, 0.123);
+  width: 450px;
+  height: 40px;
+  margin: 40px;
+  position: relative;
+  left: 100px;
+  top: 50px;
+  line-height: 40px;
+  font-size: 30px;
+  text-align: left;
+}
+
+.litteback1 {
+  background-image:url(https://s3.ax1x.com/2021/01/05/sFNVUS.png);
+  background-size:contain ;
+  background-repeat:no-repeat;
+  background-position:left;
+  width: 100%;
+  height: 65%;
+}
+.litteback2 {
+  background-image:url(https://s3.ax1x.com/2021/01/05/sFNn3j.png);
+  background-size:contain ;
+  background-repeat:no-repeat;
+  background-position:left;
+  width: 100%;
+  height: 65%;
+}
+.anwser {
+
 }
