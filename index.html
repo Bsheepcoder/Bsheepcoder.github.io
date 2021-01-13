@@ -1,217 +1,97 @@
-﻿<!DOCTYPE html> 
-<html> 
-<head>  
-<meta charset="utf-8">  
-<title>New thread</title> 
+<!DOCTYPE html>
+<html>
 
-<style>
-    .h1 {
-          text-align: center;
-          
-    }
-    h2{
-        text-align: left;
-        
-    }
-    p1{ }
-    p2{ }
-    p3{ }
-  body
-    {
-        background-color:rgb(228, 241, 238);
-    }
-  .box1 /*  整个页面的盒子 */
-       {  
-          background-color: rgb(255, 255, 255);
-          width: 930px;
-          height: 6600px;
-          margin:auto; 
-          background-origin:border-box;
-          border: 3px solid rgba(186, 187, 186, 0.507);
-           /* border: 3px solid rgba(1, 14, 12, 0.103);  */
-         
-       }   
-  .box2 /* 大标题文字盒子  */
-        {
-                /* background-color: rgba(189, 99, 99, 0.116); */
-                /* text-align: center; */
-                width: 40%;
-                height: 40%;
-                background-image: url(https://s3.ax1x.com/2021/01/05/sFtHj1.png);
-                background-size:contain ;
-                background-position:center 0;
-                margin:auto; 
-                background-repeat:no-repeat;
-                position: relative;
-                top: 40px;
-        } 
-   .box3
-   {
-        background-color: rgba(166, 211, 115, 0.534);
-        text-align: center;
-        width: 930px;
-        height: 30px;
-        background-image: url(https://s3.ax1x.com/2021/01/05/sFtHj1.png);
-   } 
-   .box4  /* 标题背景盒子*/
-   {
-          
-          width: 100%;
-          height: 24%;
-          background-image: url(https://s3.ax1x.com/2021/01/05/sFtRBV.png);
-          background-size:contain ;
-          background-repeat:no-repeat;
-          background-position: center 0;
-          background-color: rgba(255, 246, 246, 0);
-          text-align: center;
-          background-origin:padding-box;
-   } 
-   .box5  /* 过度花纹*/
-    { 
-          
-          width: 100%;
-          height: 100%;
-          background-image: url(https://s3.ax1x.com/2021/01/05/sFNiut.png);
-          background-size:contain ;
-          background-repeat:no-repeat;
-          position: relative;
-          top: 0px;
-          /* background-position:; */
-       
-   } 
-   .box6 /*  导航盒子 */
-       {  
-          background-color: rgba(240, 222, 222, 0.507);
-          width: 100%;
-          height: 2%;
-          margin:auto; 
-          background-origin:border-box;
-          border: 3px solid rgba(1, 14, 12, 0.103);
-          
-       }   
-       .box7 /*  栏目图片盒子 */
-       {  
-        width: 100%;
-          height: 30%;
-          background-image: url(https://s3.ax1x.com/2021/01/05/sFNp3d.png);
-          background-size:contain ;
-          background-repeat:no-repeat;
-          background-position:right;
-          background-color: rgba(255, 246, 246, 0);
-          text-align: center;
-          background-origin:padding-box;
-          
-       }   
-       .box8 /*  栏目图片盒子 */
-       {  
-          
-          width:100%;
-          height: 30%;
-          background-image: url(https://s3.ax1x.com/2021/01/05/sFtT39.png);
-          background-size:contain ;
-          background-repeat:no-repeat;
-          background-position:left;
-          background-color: rgba(255, 246, 246, 0);
-          text-align: center;
-          background-origin:padding-box;
-          
-       }  
-       .box9 /*  栏目图片盒子 */
-       {  
-        width: 100%;
-          height: 30%;
-          background-image: url(https://s3.ax1x.com/2021/01/05/sFto9J.png);
-          background-size:contain ;
-          background-repeat:no-repeat;
-          background-position:right;
-          background-color: rgba(255, 246, 246, 0);
-          text-align: center;
-          background-origin:padding-box;
-          
-       }
-       .box10 /*  栏目图片盒子 */
-       {  
-        width: 100%;
-          height: 30%;
-          background-image: url(https://s3.ax1x.com/2021/01/05/sFt7cR.png);
-          background-size:contain ;
-          background-repeat:no-repeat;
-          background-position:left;
-          background-color: rgba(255, 246, 246, 0);
-          text-align: center;
-          background-origin:padding-box;
-          
-       }  
-   
-   .topnav {
-     background-color: rgba(20, 11, 11, 0.192);
-   }
-   /* 导航链接 */
-    .topnav a {
-      
-        display: block;
-        color: #c54949;
-        text-align: center;
-        text-decoration: none;
-    }
-    
-    /* 链接 - 修改颜色 */
-    .topnav a:hover {
-        background-color: rgb(221, 59, 59);
-        color: black;
-    }
-</style>
-<script>
-    function myFunction(){contact
-        document.getElementById("demo").innerHTML="我的第一个 JavaScript 函数";
-    }
-</script>
+<head>
+    <meta charset="utf-8">
+    <title>New thread</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>
-<body>  
 
- <div class="box1">
-    <div class="box4">
-        <div class="box6">
-           <h2> New Thread about us   contact</h2>
-        </div>
-        <div class="box2"></div>
-        <div class="box5">
-            <h1 class="h1">  方向介绍 </h1>     /* 链接 - 修改颜色 */
-        <div class="box7">  
-            <p1>  "开发程序猿" </p1>
-            <p2> “Stay Hungry，Stay Foolish”   </p2>
-            <p3>  前端：前端开发是创建Web或app视觉界面呈现给用户的过程通过HTML，CSS及JavaScript以及衍生出来的各种技术、框架、解决方案，实现互联网产品的用户界面交互。
-                后端：通常也称服务器端开发。不对用户显示,负责处理前端的请求，进行逻辑处理和数据交互。
-                客户端:  移动应用开发是为了小型、无线计算设备编写软件的流程和程序的集合，例如智能手机或平板电脑。 </p3>
-        </div>
-        <div class="box8">  
-            <p1>  产品经理/UI设计(PM/UI) </p1>
-            <p2>  "好的软件的特征是,明明没用过，但总觉得用过似的。" </p2>
-            <p3>   PM是针对某一项或是某一类的产品进行规划和管理的人员。
-                PM需要拥有缜密的产品逻辑思维，研究用户心理，负责产品的整个生命周期。
-                PM参与产品的UI和交互设计，为设计和开发确定产品原型，能够将产品变得有个性,操作变得舒适简单、自由。
-                PM需要一定的文档能力和沟通能力，能够在团队合作的过程中跟各个角色进行有效沟通。 </p3>
-        </div>
-        <div class="box9">  
-            <p1> AI/算法(AI/AIGO)  </p1>
-            <p2> "路漫漫其修远兮，非大毅力者不能"  </p2>
-            <p3>  人工智能站在了风口，机器学习和深度学习是它的分支，是团队仍在探索的方向。
-                当下AI技术的应用涉及到图像处理、自然语言处理、推荐系统和无人驾驶等领域。
-                AI的核心就是算法和性能。充满科技感的背后，是大量的数学统计理论和计算机知识。 </p3>
-        </div>
-        <div class="box10">  
-            <p1>  安全攻城狮(Sacurity) </p1>
-            <p2>  "我们需要的不是脚本小子，而是对底层原理了如指掌。" </p2>
-            <p3> 主要涉及网络攻防、漏洞挖掘，能够代表团队参加CTF安全赛事。
-                互联网安全从其本质上来讲其实就是互联网上的信息安全。
-                网络安全攻城狮是拥有扎实基础的SuperHacker,同时具有强大的自学能力。
-                网络安全攻城狮能够识别IT系统的优缺点。并且了解黑客以及网络犯罪手段,且精通网络安全技术:包括服务漏洞扫描、程序漏洞分析检测、病毒木马防范等。  </p3>
-        </div>
+<body>
+    <!-- 整个页面的盒子 -->
+    <div class="page">
+        <!-- 标题背景盒子 -->
+        <div class="titebackground">
 
-        </div>
+            <div class="lefttitle"><a href="#">New Thread</a></div>
+            <div class="righttitle"><a href="#">about us contact</a></div>
+
+
+            <!-- 大标题盒子 -->
+            <div class="bigtitle"></div>
+            <!-- 花纹 -->
+            <div class="bigline">
+                <div>
+                    <h1 class="h1"> 方向介绍 </h1>
+                </div>
+            </div>
+            <!-- 栏目标 1-->
+            <div class="wordbox1">
+                <div class="listboxleft">
+                    <p1> "开发程序猿" </p1><br>
+                    <p2 class="shortline"> “Stay Hungry，Stay Foolish” </p2><br>
+                    <table>
+                        <tr>
+                            <ul>
+                                <li>前端：前端开发是创建Web或app视觉界面呈现给用户的过程通过HTML，CSS及JavaScript以及衍生出来的各种技术、框架、解决方案，实现互联网产品的用户界面交互。
+                                </li>
+                                <li>后端：通常也称服务器端开发。不对用户显示,负责处理前端的请求，进行逻辑处理和数据交互。</li>
+                                <li>客户端: 移动应用开发是为了小型、无线计算设备编写软件的流程和程序的集合，例如智能手机或平板电脑。</li>
+                            </ul>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+            <!-- 栏目标 2-->
+            <div class="wordbox2">
+                <div class="listboxright">
+                    <p1> 产品经理/UI设计(PM/UI) </p1> <br>
+                    <p2 class="shortline"> "好的软件的特征是,明明没用过，但总觉得用过似的。" </p2><br>
+                    <ul>
+                        <li> PM是针对某一项或是某一类的产品进行规划和管理的人员。</li>
+                        <li>PM需要拥有缜密的产品逻辑思维，研究用户心理，负责产品的整个生命周期。</li>
+                        <li>PM参与产品的UI和交互设计，为设计和开发确定产品原型，能够将产品变得有个性,操作变得舒适简单、自由。</li>
+                        <li>PM需要一定的文档能力和沟通能力，能够在团队合作的过程中跟各个角色进行有效沟通。</li>
+                    </ul>
+                </div>
+
+            </div>
+            <!-- 栏目标 3-->
+            <div class="wordbox3">
+                <div class="listboxleft">
+                    <p1> AI/算法(AI/AIGO) </p1><br>
+                    <p2 class="shortline"> "路漫漫其修远兮，非大毅力者不能" </p2><br>
+                    <ul>
+                        <li>人工智能站在了风口，机器学习和深度学习是它的分支，是团队仍在探索的方向。</li>
+                        <li> 当下AI技术的应用涉及到图像处理、自然语言处理、推荐系统和无人驾驶等领域。</li>
+                        <li>AI的核心就是算法和性能。充满科技感的背后，是大量的数学统计理论和计算机知识。</li>
+                    </ul>
+
+                </div>
+
+            </div>
+            <!-- 栏目标 4-->
+            <div class="wordbox4">
+                <div class="listboxright">
+                    <p1> 安全攻城狮(Sacurity) </p1><br>
+                    <p2 class="shortline"> "我们需要的不是脚本小子，而是对底层原理了如指掌。" </p2><br>
+                    <ul>
+                        <li>主要涉及网络攻防、漏洞挖掘，能够代表团队参加CTF安全赛事。</li>
+                        <li>互联网安全从其本质上来讲其实就是互联网上的信息安全。</li>
+                        <li>网络安全攻城狮是拥有扎实基础的SuperHacker,同时具有强大的自学能力。</li>
+                        <li> 网络安全攻城狮能够识别IT系统的优缺点。并且了解黑客以及网络犯罪手段,且精通网络安全技术:包括服务漏洞扫描、程序漏洞分析检测、病毒木马防范等。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="moreques">
+                  更多问题
+            </div>
+
         </div>
     </div>
-    
-</div>
+
+    </div>
 </body>
+
 </html>

@@ -1,0 +1,155 @@
+body
+{
+  background-color:rgb(228, 241, 238);
+}
+
+.h1 {
+    text-align: center;
+    font-family: "微软雅黑";
+    font-size: 55px;
+    font-variant-position: inherit;
+    line-height: 150px;
+}
+.lefttitle {
+  position: absolute;
+  left: 20px;
+  top: 5px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.righttitle {
+  position: absolute;
+  right: 20px;
+  top: 5px;
+  font-weight: 700;
+}
+.titletr {
+  text-align: center;
+}
+p1 {
+     font-family: "微软雅黑" ，"Helvetica Neue", Helvetica, sans-serif;
+     text-align: left;
+}
+p2 {
+     font-family: "微软雅黑";
+     font-size: 10px;
+     text-align: left;
+}
+
+.page /*  整个页面的盒子 */
+ {  
+    background-color: rgb(255, 255, 255);
+    width: 930px;
+    height: 6600px;
+    margin:auto; 
+    background-origin:border-box;
+    box-shadow: 0px 0px 15px #656B79 ;
+    position: relative;
+     /* border: 3px solid rgba(1, 14, 12, 0.103);  */
+   
+ }   
+.bigtitle /* 大标题文字盒子  */
+  {
+          /* background-color: rgba(189, 99, 99, 0.116); */
+          /* text-align: center; */
+          width: 40%;
+          height: 40%;
+          background-image: url(https://s3.ax1x.com/2021/01/05/sFtHj1.png);
+          background-size:contain ;
+          background-position:center 0;
+          margin:auto; 
+          background-repeat:no-repeat;
+          position: relative;
+          top: 80px;
+  } 
+.titebackground  /* 标题背景盒子*/
+{
+    
+    width: 100%;
+    height: 24%;
+    background-image: url(https://s3.ax1x.com/2021/01/05/sFtRBV.png);
+    background-size:contain ;
+    background-repeat:no-repeat;
+    background-position: center 0;
+    background-color: rgba(255, 246, 246, 0);
+    text-align: center;
+    background-origin:padding-box;
+} 
+.bigline  /* 过度花纹*/
+{ 
+    width: 100%;
+    background-image: url(https://s3.ax1x.com/2021/01/05/sFNiut.png);
+    background-size:contain ;
+    background-repeat:no-repeat;
+    position: relative;
+    /* background-position:; */
+ 
+} 
+ .wordbox1 /*  栏目图片盒子 */
+ {  
+    width: 100%;
+    height: 30%;
+    background-image: url(https://s3.ax1x.com/2021/01/05/sFNp3d.png);
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:right;
+    background-color: rgba(255, 246, 246, 0);
+ }   
+ .wordbox2 /*  栏目图片盒子 */
+ {  
+    width:100%;
+    height: 30%;
+    background-image: url(https://s3.ax1x.com/2021/01/05/sFtT39.png);
+    background-size:contain ;
+    background-repeat:no-repeat;
+    background-position:left;
+    background-color: rgba(255, 246, 246, 0);
+ }  
+ .wordbox3 /*  栏目图片盒子 */
+ {  
+    width: 100%;
+    height: 30%;
+    background-image: url(https://s3.ax1x.com/2021/01/05/sFto9J.png);
+    background-size:contain ;
+    background-repeat:no-repeat;
+    background-position:right;
+    background-color: rgba(255, 246, 246, 0);   
+ }
+ .wordbox4 /*  栏目图片盒子 */
+ {  
+    width: 100%;
+    height: 30%;
+    background-image: url(https://s3.ax1x.com/2021/01/05/sFt7cR.png);
+    background-size:contain ;
+    background-repeat:no-repeat;
+    background-position:left;
+    background-color: rgba(255, 246, 246, 0); 
+ }  
+.listboxleft {
+    position: relative;
+    width: 580px;
+    top: 60px;
+    font-size: 30px;
+}
+.listboxright {
+  position: relative;
+  width: 580px;
+  left: 350px;
+  top: 60px;
+  font-size: 30px;
+}
+ul li {
+  font-size: 20px;
+  text-align: left;
+}
+.shortline {
+  font-size: 18px;
+  font-weight: 700;
+  font-style: italic;
+  color: blueviolet;
+}
+.moreques {
+  height: 100px;
+  background-color: rgba(102, 185, 241, 0.219);
+  
+}
