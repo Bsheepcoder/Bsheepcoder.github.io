@@ -1,0 +1,630 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://z3.ax1x.com/2021/09/30/4Tnzaq.png">
+  <link rel="icon" href="https://z3.ax1x.com/2021/09/30/4Tnzaq.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="主要学习了mooc中蒿天老师的视频的笔记，仅供参考。">
+  <meta name="author" content="Tony">
+  <meta name="keywords" content="">
+  <meta name="description" content="主要学习了mooc中蒿天老师的视频的笔记，仅供参考。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="（二）Python基本语法">
+<meta property="og:url" content="https://bsheepcoder.github.io/2021/10/02/Python%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
+<meta property="og:site_name" content="Q&#39;s blog">
+<meta property="og:description" content="主要学习了mooc中蒿天老师的视频的笔记，仅供参考。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/06/sVtm7t.png">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/06/sVUaSU.png">
+<meta property="article:published_time" content="2021-10-02T11:31:57.965Z">
+<meta property="article:modified_time" content="2021-10-02T12:12:54.804Z">
+<meta property="article:author" content="Tony">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s3.ax1x.com/2021/01/06/sVtm7t.png">
+  
+  <title>（二）Python基本语法 - Q&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"bsheepcoder.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz","app_key":"8y2ItNdFctdKBPMHS31S2jbm","server_url":"https://0wpy18ji.lc-cn-n1-shared.com","path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Q&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://z3.ax1x.com/2021/09/30/4TCZVg.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="（二）Python基本语法">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-02 19:31" pubdate>
+        2021年10月2日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.9k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">（二）Python基本语法</h1>
+            
+            <div class="markdown-body">
+              <h2 id="python基本语法"><a href="#python基本语法" class="headerlink" title="python基本语法"></a>python基本语法</h2><ul>
+<li><p>实例1温度转换</p>
+<ul>
+<li><p>理解1  直接将温度值进行转换</p>
+</li>
+<li><p>理解2 将温度信息发布的声音或图像形式进行理解和转换</p>
+</li>
+<li><p>理解3 监控温度信息发布渠道，实时获取并转换温度值</p>
+</li>
+</ul>
+</li>
+<li><p>华氏摄氏温度定义，转换公式：</p>
+<ul>
+<li><p>摄氏度  以1标准大气压下睡的结冰点为0度，沸点为100度</p>
+</li>
+<li><p>华氏度 以1标准大气压下的水的结冰点为32度，沸点为212度，将温度进行等分刻画</p>
+</li>
+<li><p>C = （F - 32）/1.8</p>
+</li>
+<li><p>F = C*1.8 +32</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#TempConvert.py   </span><br>TempStr = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入带有符号的温度值：&quot;</span>)<br><span class="hljs-keyword">if</span> TempStr[-<span class="hljs-number">1</span>] <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;F&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>]:   <br>    C = (<span class="hljs-built_in">eval</span>(TempStr[<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]) - <span class="hljs-number">32</span>)/<span class="hljs-number">1.8</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;转换后的温度是&#123;：.2f&#125;C&quot;</span>.<span class="hljs-built_in">format</span>(C))<br><span class="hljs-keyword">elif</span> TempStr[-<span class="hljs-number">1</span>] <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;C&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>]:<br>    F = <span class="hljs-number">1.8</span> *<span class="hljs-built_in">eval</span>(TempStr[<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]) + <span class="hljs-number">32</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;转换后的温度是&#123;:.2f&#125;F&quot;</span>.<span class="hljs-built_in">format</span>(F))<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;输入格式错误&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="实列：温度转换包含的语法："><a href="#实列：温度转换包含的语法：" class="headerlink" title="实列：温度转换包含的语法："></a>实列：温度转换包含的语法：</h3><h3 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h3><p>缩进表达程序的格式框架</p>
+<p>严格明确 ：缩进是语法的一部分，缩进不正确程序会运行错误</p>
+<p>所属关系：  表达大门键保护和层次关系的唯一手段</p>
+<p>长度一致 一般4个空格或一个TAB</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>不被程序执行的说明</p>
+<p>单行注释 以#开头，其后为注释</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#TempConvert.py   单行注释</span><br></code></pre></td></tr></table></figure>
+
+<pre><code>    多行注释 以‘“ 开头和结尾
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;&quot; 这里是多行注释的第一行</span><br><span class="hljs-string">   这里是多行注释的第二行 &quot;&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="变量命名与保留字"><a href="#变量命名与保留字" class="headerlink" title="变量命名与保留字"></a>变量命名与保留字</h3><p>TempStr 、C、F 为变量</p>
+<p>命名规则：大小写字母、数字、下划线和汉字等字符及组合</p>
+<p>注意事项：首字符不能是数字、不能与保留字相同</p>
+<p>保留字（关键字）</p>
+<p>被编程语言内部定义并保留使用的标识符</p>
+<p><img src="https://s3.ax1x.com/2021/01/06/sVtm7t.png" srcset="/img/loading.gif" lazyload alt="image-20210106181500451"></p>
+<h3 id="数据的表现形式"><a href="#数据的表现形式" class="headerlink" title="数据的表现形式"></a>数据的表现形式</h3><p>供计算机理解数据的形式</p>
+<ul>
+<li><p>整数类型   10011101</p>
+</li>
+<li><p>字符串类型 “10,011,101”  单引号和双引号相同</p>
+</li>
+<li><p>列表类型  [10,011,101]   表达的是三个数字</p>
+</li>
+</ul>
+<p> “请输入”的“请”是第0个字符</p>
+<p><img src="https://s3.ax1x.com/2021/01/06/sVUaSU.png" srcset="/img/loading.gif" lazyload alt="image-20210106182910519"></p>
+<h3 id="字符串的使用"><a href="#字符串的使用" class="headerlink" title="字符串的使用"></a>字符串的使用</h3><p>使用[]获取字符串中的一个或多个字符</p>
+<ul>
+<li><p>索引：返回字符串中单个字符  &lt;字符串&gt;[M] </p>
+<pre><code> “请输入带有符号的温度值：”[0] 或者 TemStr[-1]
+</code></pre>
+</li>
+<li><p>切片：返回字符串中一段字符子串  &lt;字符串&gt;[M:N]</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">TempStr = <span class="hljs-string">&quot;请输入带有符号的温度值：&quot;</span><br>TempStr[-<span class="hljs-number">1</span>]<br><span class="hljs-string">&#x27;：&#x27;</span><br><span class="hljs-string">&quot;请输入带有符号的温度值：&quot;</span>[<span class="hljs-number">0</span>]<br><span class="hljs-string">&#x27;请&#x27;</span><br><span class="hljs-string">&quot;请输入带有符号的温度值：&quot;</span>[<span class="hljs-number">0</span>:<span class="hljs-number">4</span>]     <span class="hljs-comment">#不到第四个字符“ 0 1 2 3</span><br><span class="hljs-string">&#x27;请输入带&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>列表类型  [10,011,101]</li>
+</ul>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>整数、浮点数、列表类型</p>
+<p>[‘F’,’f’]  表示两个元素’F‘和’f‘</p>
+   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> TempStr[-<span class="hljs-number">1</span>] <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;F&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>]:    <span class="hljs-comment">#in 判断一个元素是否在列表中</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#TempConvert.py   </span><br>TempStr = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入带有符号的温度值：&quot;</span>)<br><span class="hljs-keyword">if</span> TempStr[-<span class="hljs-number">1</span>] <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;F&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>]:   <br>    <br>分析：   <br><span class="hljs-meta">&gt;&gt;&gt; </span>TempStr = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入带有符号的温度值：&quot;</span>)<br>请输入带有符号的温度值：20F<br><span class="hljs-meta">&gt;&gt;&gt; </span>TempStr[-<span class="hljs-number">1</span>]<br><span class="hljs-string">&#x27;F&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>TempStr[-<span class="hljs-number">2</span>]<br><span class="hljs-string">&#x27;0&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>TempStr[-<span class="hljs-number">3</span>]<br><span class="hljs-string">&#x27;2&#x27;</span><br><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="语句与函数"><a href="#语句与函数" class="headerlink" title="语句与函数"></a>语句与函数</h3><ul>
+<li><p>赋值语句（右边的数据类型影响左边，相当于用数据来定义变量）</p>
+</li>
+<li><p>分支语句   如条件判断语句</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">语法结构：<br><br><span class="hljs-keyword">if</span> 条件判断内容 ：      <span class="hljs-comment">#如果条件为True则执行冒号后的语句</span><br>   执行语句            <span class="hljs-comment">#如果条件为false则跳过冒号后的语句</span><br>    <br>示例：<br><span class="hljs-keyword">if</span> TempStr[-<span class="hljs-number">1</span>] <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;F&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>]:   <br>    C = (<span class="hljs-built_in">eval</span>(TempStr[<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]) - <span class="hljs-number">32</span>)/<span class="hljs-number">1.8</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;转换后的温度是&#123;：.2f&#125;C&quot;</span>.<span class="hljs-built_in">format</span>(C))<br>  <br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>冒号及后续缩进用来表示后续语句与条件的所属关系，千万不能少</p>
+</li>
+<li><p>函数 </p>
+<p>python类似数学中的函数，y=f（x）</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;输入格式错误&quot;</span>)  <br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;输入格式错误&quot;</span><br></code></pre></td></tr></table></figure>
+
+<pre><code>    函数采用  &lt;函数名&gt;(&lt;参数&gt;)  方式使用
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">eval</span>(TempStr[<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>])  <span class="hljs-comment">#TempStr[0:-1]是参数</span><br></code></pre></td></tr></table></figure>
+
+<p>回顾</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#TempConvert.py   </span><br>TempStr = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入带有符号的温度值：&quot;</span>)<br><span class="hljs-keyword">if</span> TempStr[-<span class="hljs-number">1</span>] <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;F&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>]:   <br>    C = (<span class="hljs-built_in">eval</span>(TempStr[<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]) - <span class="hljs-number">32</span>)/<span class="hljs-number">1.8</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;转换后的温度是&#123;：.2f&#125;C&quot;</span>.<span class="hljs-built_in">format</span>(C))<br><span class="hljs-keyword">elif</span> TempStr[-<span class="hljs-number">1</span>] <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;C&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>]:<br>    F = <span class="hljs-number">1.8</span> *<span class="hljs-built_in">eval</span>(TempStr[<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]) + <span class="hljs-number">32</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;转换后的温度是&#123;:.2f&#125;F&quot;</span>.<span class="hljs-built_in">format</span>(F))<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;输入格式错误&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h3><ul>
+<li>input（）函数的使用格式：</li>
+</ul>
+<p>&lt;变量&gt; = input（&lt;提示信息字符串&gt;）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">TempStr = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入带有符号的温度值：&quot;</span>)   <br><span class="hljs-comment">#TempStr保存用户输入的信息，以 字符串 的形式保存到变量中</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>print函数的格式化使用方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;转换后的温度是&#123;：.2f&#125;C&quot;</span>.<span class="hljs-built_in">format</span>(C))  <span class="hljs-comment">#暂且记忆</span><br><br>&#123;&#125; 表示槽，后续遍历填充到槽中<br>&#123;:<span class="hljs-number">.2</span>f&#125;表示将变量C填充到这个位置时取小数点后<span class="hljs-number">2</span>位<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>eval()  去掉参数最外侧引号并执行余下语句的函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">eval</span>(<span class="hljs-string">&quot;1&quot;</span>)<br><span class="hljs-number">1</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">eval</span>(<span class="hljs-string">&quot;1 + 2&quot;</span>)  <span class="hljs-comment">#去掉双引号，变成python了可理解的语句，固结果为3</span><br><span class="hljs-number">3</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">eval</span>(<span class="hljs-string">&#x27;&quot;1 + 2&quot;&#x27;</span>)  <span class="hljs-comment">#去掉双引号，输出一个单引号的字符串</span><br><span class="hljs-string">&#x27;1 + 2&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">eval</span>(<span class="hljs-string">&#x27;print(&quot;Hello&quot;)&#x27;</span>)<br>Hello<br><br><span class="hljs-meta">&gt;&gt;&gt; </span>TempStr = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入带有符号的温度值：&quot;</span>)<br>请输入带有符号的温度值：<span class="hljs-number">200</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">eval</span>(TempStr[<span class="hljs-number">0</span>:<span class="hljs-number">4</span>])<br><span class="hljs-number">200</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(TempStr[<span class="hljs-number">0</span>:<span class="hljs-number">4</span>])<br><span class="hljs-number">200</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">eval</span>(<span class="hljs-string">&quot;12.3&quot;</span>)<br><span class="hljs-number">12.3</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="温度转换代码分析"><a href="#温度转换代码分析" class="headerlink" title="温度转换代码分析"></a>温度转换代码分析</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#TempConvert.py                         #注释，此行不运行</span><br>TempStr = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入带有符号的温度值：&quot;</span>) <span class="hljs-comment">#用户输入的字符串将保存在TempStr中，input内为提示信息</span><br><span class="hljs-keyword">if</span> TempStr[-<span class="hljs-number">1</span>] <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;F&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>]:            <span class="hljs-comment">#判断TempStr的最后一个字符是否为列表类型F和f中的一个，为true则执行4、5行语句</span><br>    C = (<span class="hljs-built_in">eval</span>(TempStr[<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]) - <span class="hljs-number">32</span>)/<span class="hljs-number">1.8</span>        <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;转换后的温度是&#123;：.2f&#125;C&quot;</span>.<span class="hljs-built_in">format</span>(C))<br><span class="hljs-keyword">elif</span> TempStr[-<span class="hljs-number">1</span>] <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;C&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>]:          <span class="hljs-comment">#判断TempStr的最后以一个字符是否为C和c中的一个，为true则执行7、8行语句</span><br>    F = <span class="hljs-number">1.8</span> *<span class="hljs-built_in">eval</span>(TempStr[<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]) + <span class="hljs-number">32</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;转换后的温度是&#123;:.2f&#125;F&quot;</span>.<span class="hljs-built_in">format</span>(F))<br><span class="hljs-keyword">else</span>:                                   <span class="hljs-comment">#默认执行：后的语句</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;输入格式错误&quot;</span>)<br><br>===============================================================================    <br>    <br><span class="hljs-comment">#如果输入82F，则为什么eval(TempStr[0:-1])的结果是不包含F，为82？</span><br><br>   因为TempStr[<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]表示从<span class="hljs-number">0</span>号元素开始，且不到-<span class="hljs-number">1</span>号元素的字符串，这里-<span class="hljs-number">1</span>号元素就是F<br>    <br>=================================================================================  <br><br><span class="hljs-meta">&gt;&gt;&gt; </span>TempStr[<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]<br><span class="hljs-string">&#x27;300&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">eval</span>(TempStr[<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>])<br><span class="hljs-number">300</span><br><br><br>template = <span class="hljs-string">&quot;零一二三四五六七八九&quot;</span><br><br>s = <span class="hljs-built_in">input</span>()<br><span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> s:<br>    <span class="hljs-built_in">print</span>(template[<span class="hljs-built_in">eval</span>(c)], end=<span class="hljs-string">&quot;&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#获得用户输入的一个正整数输入，输出该数字对应的中文字符表示。‪‬‪‬‪‬‪‬‪‬‮‬‫‬‫‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‪‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‪‬‪‬‪‬‪‬‪‬‪‬‮‬‪‬‭‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‫‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‫‬</span><br><br><span class="hljs-comment">#0到9对应的中文字符分别是：零一二三四五六七八九‪‬‪‬‪‬‪‬‪‬‮‬‫‬‫‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‪‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‪‬‪‬‪‬‪‬‪‬‪‬‮‬‪‬‭‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‫‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‫‬</span><br><br>输入示例<span class="hljs-number">1</span>‪‬‪‬‪‬‪‬‪‬‮‬‫‬‫‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‪‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‪‬‪‬‪‬‪‬‪‬‪‬‮‬‪‬‭‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‫‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‫‬<br><br><span class="hljs-number">123</span><br><br>输出示例<span class="hljs-number">1</span>‪‬‪‬‪‬‪‬‪‬‮‬‫‬‫‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‪‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‪‬‪‬‪‬‪‬‪‬‪‬‮‬‪‬‭‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‫‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‫‬<br><br>一二三<br>输入示例<span class="hljs-number">2</span>‪‬‪‬‪‬‪‬‪‬‮‬‫‬‫‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‪‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‪‬‪‬‪‬‪‬‪‬‪‬‮‬‪‬‭‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‫‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‫‬<br><br><span class="hljs-number">9876543210</span><br><br>输出示例<span class="hljs-number">2</span>‪‬‪‬‪‬‪‬‪‬‮‬‫‬‫‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‪‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‪‬‪‬‪‬‪‬‪‬‪‬‮‬‪‬‭‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‫‬‪‬‪‬‪‬‪‬‪‬‮‬‭‬‫‬<br><br>九八七六五四三二一零<br><br><span class="hljs-comment">#代码：</span><br>template = <span class="hljs-string">&quot;零一二三四五六七八九&quot;</span><br><br>s = <span class="hljs-built_in">input</span>()<br><span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> s:<br>    <span class="hljs-built_in">print</span>(template[<span class="hljs-built_in">eval</span>(c)], end=<span class="hljs-string">&quot;&quot;</span>)<br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Python/">Python</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/02/Python%E5%87%BD%E6%95%B0%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E4%B8%89%EF%BC%89/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">（三）Python函数库与数据类型</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/02/Python%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%89%E8%A3%85(%E4%B8%80)/">
+                        <span class="hidden-mobile">（一）Python简单介绍与安装</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"UrMBdkpVtSriHxFtNjQRvPqm-gzGzoHsz","appKey":"rLGXsY7AM0Ym431NbB2fCRpX","path":"window.location.pathname","placeholder":"发一条友善的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

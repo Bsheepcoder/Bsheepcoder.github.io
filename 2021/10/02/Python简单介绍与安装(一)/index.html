@@ -13,22 +13,23 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  <meta name="description" content="主要学习了mooc中蒿天老师的视频的笔记，仅供参考。">
   <meta name="author" content="Tony">
   <meta name="keywords" content="">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="主要学习了mooc中蒿天老师的视频的笔记，仅供参考。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://bsheepcoder.github.io/2021/09/30/hello-world/index.html">
+<meta property="og:title" content="（一）Python简单介绍与安装">
+<meta property="og:url" content="https://bsheepcoder.github.io/2021/10/02/Python%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%89%E8%A3%85(%E4%B8%80)/index.html">
 <meta property="og:site_name" content="Q&#39;s blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="主要学习了mooc中蒿天老师的视频的笔记，仅供参考。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-30T00:25:29.533Z">
-<meta property="article:modified_time" content="2021-09-30T07:52:57.119Z">
+<meta property="article:published_time" content="2021-10-02T11:26:09.004Z">
+<meta property="article:modified_time" content="2021-10-02T11:45:35.519Z">
 <meta property="article:author" content="Tony">
+<meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary_large_image">
   
-  <title>Hello World - Q&#39;s blog</title>
+  <title>（一）Python简单介绍与安装 - Q&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -174,7 +175,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Hello World">
+            <span class="h2" id="subtitle" title="（一）Python简单介绍与安装">
               
             </span>
 
@@ -184,8 +185,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-09-30 08:25" pubdate>
-        2021年9月30日 早上
+      <time datetime="2021-10-02 19:26" pubdate>
+        2021年10月2日 晚上
       </time>
     </span>
   
@@ -195,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      367 字
+      1.2k 字
     </span>
   
 
@@ -204,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      4 分钟
     </span>
   
 
@@ -233,28 +234,68 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">（一）Python简单介绍与安装</h1>
             
             <div class="markdown-body">
-              <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+              <h2 id="Python语言程序设计"><a href="#Python语言程序设计" class="headerlink" title="Python语言程序设计"></a>Python语言程序设计</h2><ul>
+<li>源代码人类可理解</li>
+<li>目标代码 计算机直接执行</li>
+</ul>
+<h2 id="1-编译与解释"><a href="#1-编译与解释" class="headerlink" title="1.编译与解释"></a>1.编译与解释</h2><p>编译  将源代码在转换为目标代码，转换完知乎不需要源代码参与</p>
+<p>解释 每次都需要源代码参与</p>
+<h2 id="2-编程语言分类"><a href="#2-编程语言分类" class="headerlink" title="2.编程语言分类"></a>2.编程语言分类</h2><ul>
+<li><p>根据执行方式不同，编程语言分为两类</p>
+<p>静态语言  使用编译执行的语言 如C、java</p>
+<p>脚本语言  使用解释执行的编程语言 如python、JavaScript、php</p>
+</li>
+<li><p>优势</p>
+<p>静态语言   编译器一次性生成慕白哦迪阿敏，优化更充分  程序运行速度更快</p>
+<p>脚本语言   执行程序时需要源代码，维护更灵活，易跨多个操作系统平台</p>
+</li>
+</ul>
+<h2 id="3-python语言简介"><a href="#3-python语言简介" class="headerlink" title="3.python语言简介"></a>3.python语言简介</h2><ul>
+<li><p>input  process  output</p>
+<p>输入是程序的开始</p>
+</li>
+<li><p>python  蟒蛇  PSF拥有 非盈利组织  保护python开放、开源和发展</p>
+<p>创始人 guido van rossum </p>
+</li>
+</ul>
+<h2 id="4-下载配置python"><a href="#4-下载配置python" class="headerlink" title="4. 下载配置python"></a>4. 下载配置python</h2><p>​    下载配置python  <a target="_blank" rel="noopener" href="https://www.python.org/">https://www.python.org/</a></p>
+<p>​    pycharm环境：<a target="_blank" rel="noopener" href="https://www.jetbrains.com/pycharm/">https://www.jetbrains.com/pycharm/</a></p>
+<p>​    pycharm配置使用：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ling_mochen/article/details/79314118">https://blog.csdn.net/ling_mochen/article/details/79314118</a></p>
+<h2 id="5-编程两种方式"><a href="#5-编程两种方式" class="headerlink" title="5.编程两种方式"></a>5.编程两种方式</h2><ul>
+<li>交互式  对每个输入语句即时运行结果 ，适合语法练习</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#示例一：计算圆面积	</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>r = <span class="hljs-number">25</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>area = <span class="hljs-number">3.1415</span> * r * r<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(area)<br><span class="hljs-number">1963.4375000000002</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&#123;:.2f&#125;&quot;</span>.<span class="hljs-built_in">format</span>(area))<br><span class="hljs-number">1963.44</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#示例二：画同心圆</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> turtle<br><span class="hljs-meta">&gt;&gt;&gt; </span>turtle.pensize(<span class="hljs-number">2</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>turtle.circle(<span class="hljs-number">10</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>turtle.circle(<span class="hljs-number">40</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>turtle.circle(<span class="hljs-number">80</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>turtle.circle(<span class="hljs-number">160</span>)<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<ul>
+<li>文件式 批量执行一组语句并运行结果，编程的主要方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#示例一：计算圆面积</span><br>r = <span class="hljs-number">25</span><br>area = <span class="hljs-number">3.1415</span> * r * r<br><span class="hljs-built_in">print</span>(area)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&#123;:.2f&#125;&quot;</span>.<span class="hljs-built_in">format</span>(area))<br><br>==输出===<br><span class="hljs-number">1963.4375000000002</span><br><span class="hljs-number">1963.44</span><br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#示例二：画同心圆</span><br><span class="hljs-keyword">import</span> turtle<br>turtle.pensize(<span class="hljs-number">2</span>)<br>turtle.circle(<span class="hljs-number">10</span>)<br>turtle.circle(<span class="hljs-number">40</span>)<br>turtle.circle(<span class="hljs-number">80</span>)<br>turtle.circle(<span class="hljs-number">160</span>)<br>===输出===<br>同心圆<br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Python/">Python</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
+                    
+                  </div>
                 
               </div>
               
@@ -269,15 +310,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/10/01/Hexo%E6%8A%80%E5%B7%A7%E4%B8%8E%E5%86%99%E4%BD%9C/">
+                      <a href="/2021/10/02/Python%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hexo写作格式与技巧</span>
+                        <span class="hidden-mobile">（二）Python基本语法</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2021/10/02/ROS%E5%85%A5%E9%97%A8/">
+                        <span class="hidden-mobile">ROS入门笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
