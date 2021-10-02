@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1141259048,554497535&fm=26&gp=0.jpg">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190103111754961.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RpZXRpbWUxOTQz,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2021-09-30T16:04:00.443Z">
-<meta property="article:modified_time" content="2021-10-02T08:23:32.475Z">
+<meta property="article:modified_time" content="2021-10-02T08:41:48.171Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary_large_image">
@@ -205,7 +205,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.8k 字
+      3.2k 字
     </span>
   
 
@@ -214,7 +214,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9 分钟
+      10 分钟
     </span>
   
 
@@ -247,12 +247,33 @@
             
             <div class="markdown-body">
               <p>更多详请查看<a target="_blank" rel="noopener" href="https://hexo.io/docs/">Hexo文档</a>、<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/start/">Fluid主题文档</a>、<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/">Fluid主题展示和功能介绍</a></p>
-<h1 id="Hexo代码操作"><a href="#Hexo代码操作" class="headerlink" title="Hexo代码操作"></a>Hexo代码操作</h1><h2 id="创建新帖"><a href="#创建新帖" class="headerlink" title="创建新帖"></a>创建新帖</h2><p>要创建新帖子或新页面，您可以运行以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new [layout] &lt;title&gt;<br></code></pre></td></tr></table></figure>
+<h1 id="Hexo写作流程"><a href="#Hexo写作流程" class="headerlink" title="Hexo写作流程"></a>Hexo写作流程</h1><h2 id="创建新帖"><a href="#创建新帖" class="headerlink" title="创建新帖"></a>创建新帖</h2><ul>
+<li><p>方法一</p>
+<p>要创建新帖子或新页面，您可以运行以下命令：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new [layout] &lt;title&gt;<br></code></pre></td></tr></table></figure>
 <p><code>post</code>是默认值<code>layout</code>，但您可以提供自己的。您可以通过编辑 中的<code>default_layout</code>设置来更改默认布局<code>_config.yml</code>。</p>
-<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>Hexo 中有 3 种默认布局：<code>post</code>,<code>page</code>和<code>draft</code>. 他们每个人创建的文件都保存到不同的路径。新创建的帖子将保存到该<code>source/_posts</code>文件夹中。</p>
+<p>Hexo 中有 3 种默认布局：<code>post</code>,<code>page</code>和<code>draft</code>. 他们每个人创建的文件都保存到不同的路径。新创建的帖子将保存到该<code>source/_posts</code>文件夹中。</p>
 <p><img src="https://i.loli.net/2021/10/02/h2Bjabc7RuN1UXS.png" srcset="/img/loading.gif" lazyload alt="image-20211002101903911"></p>
 <p>如果您不希望使用主题处理文章（帖子/页面），请将<code>layout: false</code>其设置为头版。有关更多详细信息，请参阅<a target="_blank" rel="noopener" href="https://hexo.io/docs/front-matter#Layout">本节</a>。</p>
+</li>
+<li><p>方法二</p>
+<p>直接在目录下找 \source_posts,并在文件夹中添加写好的.md文件</p>
+</li>
+</ul>
+<h2 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br>也可简写为：<br>$ hexo g<br></code></pre></td></tr></table></figure>
+
+<h2 id="启动服务器"><a href="#启动服务器" class="headerlink" title="启动服务器"></a>启动服务器</h2><p>这一步也可以跳过，用于查看在本地查看生成的静态网页的效果，因为部署到服务器需要一定的时间，所以一般在本地先查看。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+
+<p>启动服务器。默认情况下，访问网址为： <code>http://localhost:4000/</code>。</p>
+<h2 id="部署网站"><a href="#部署网站" class="headerlink" title="部署网站"></a>部署网站</h2><p>这一步通常需要一定的时间，具体时间不等，需要多次刷新查看。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br>可简写为：<br>$ hexo d<br></code></pre></td></tr></table></figure>
+
+<h2 id="清楚缓存"><a href="#清楚缓存" class="headerlink" title="清楚缓存"></a>清楚缓存</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo clean<br></code></pre></td></tr></table></figure>
+
+<p>清除缓存文件 (<code>db.json</code>) 和已生成的静态文件 (<code>public</code>)。</p>
+<p>在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</p>
+<p>更多命令查看<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/commands.html">Hexo指令</a></p>
 <h1 id="Hexo写作"><a href="#Hexo写作" class="headerlink" title="Hexo写作"></a>Hexo写作</h1><h2 id="文档名称"><a href="#文档名称" class="headerlink" title="文档名称"></a>文档名称</h2><ul>
 <li>通常情况下Hexo 使用帖子标题作为其文件名。您可以编辑<code>new_post_name</code>设置<code>_config.yml</code>以更改默认文件名。例如，<code>:year-:month-:day-:title.md</code>将使用帖子创建日期作为文件名的前缀。您可以使用以下占位符：<img src="https://i.loli.net/2021/10/02/SxLoZitAIg1dfXH.png" srcset="/img/loading.gif" lazyload alt="image-20211002100532390"></li>
 </ul>
@@ -283,7 +304,7 @@
 <p><img src="https://i.loli.net/2021/10/02/2TnRSVeqIvltUFb.png" srcset="/img/loading.gif" lazyload alt="image-20211002101243201"></p>
 <p>更多格式如下：</p>
 <p><img src="https://i.loli.net/2021/10/02/GE95OrNfeWax3hI.png" srcset="/img/loading.gif" lazyload alt="image-20211002104846366"></p>
-<h2 id="布局-1"><a href="#布局-1" class="headerlink" title="布局"></a>布局</h2><p>默认布局为<code>post</code>，根据 中<a target="_blank" rel="noopener" href="https://hexo.io/docs/configuration#Writing"><code>default_layout</code></a>设置的值<code>_config.yml</code>。当文章中的布局被禁用 ( <code>layout: false</code>) 时，它将不会使用主题进行处理。但是，它仍然会被任何可用的渲染器渲染：如果一篇文章是用 Markdown 编写的，并且安装了 Markdown 渲染器（如默认的<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-renderer-marked">hexo-renderer-marked</a>），它将被渲染为 HTML。</p>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>默认布局为<code>post</code>，根据 中<a target="_blank" rel="noopener" href="https://hexo.io/docs/configuration#Writing"><code>default_layout</code></a>设置的值<code>_config.yml</code>。当文章中的布局被禁用 ( <code>layout: false</code>) 时，它将不会使用主题进行处理。但是，它仍然会被任何可用的渲染器渲染：如果一篇文章是用 Markdown 编写的，并且安装了 Markdown 渲染器（如默认的<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-renderer-marked">hexo-renderer-marked</a>），它将被渲染为 HTML。</p>
 <p>无论布局如何，<a target="_blank" rel="noopener" href="https://hexo.io/docs/tag-plugins">标签插件</a>总是被处理，除非被<code>disableNunjucks</code>设置或<a target="_blank" rel="noopener" href="https://hexo.io/api/renderer#Disable-Nunjucks-tags">渲染器</a>禁用。</p>
 <h2 id="类别和标签"><a href="#类别和标签" class="headerlink" title="类别和标签"></a>类别和标签</h2><p>只有帖子支持使用类别和标签。类别按顺序应用于帖子，从而形成分类和子分类的层次结构。标签都定义在同一层级上，因此它们出现的顺序并不重要。</p>
 <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">类别：<br><span class="hljs-bullet">- </span>运动<br><span class="hljs-bullet">- </span>棒球<br>标签：<br><span class="hljs-bullet">- </span>受伤<br><span class="hljs-bullet">- </span>格斗<br><span class="hljs-bullet">- </span>令人震惊<br></code></pre></td></tr></table></figure>
