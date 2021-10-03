@@ -43,7 +43,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-dark.min.css" />
     
   
 
@@ -267,13 +267,13 @@
 <h2 id="hexo-s时提示4000端口被占用"><a href="#hexo-s时提示4000端口被占用" class="headerlink" title="hexo s时提示4000端口被占用"></a>hexo s时提示4000端口被占用</h2><ul>
 <li><p>问题</p>
 <p>有的时候在执行‘hexo sever’的命令时,提示以下内容：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">FATAL Port 4000 has been used. Try other port instead.<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">FATAL Port 4000 has been used. Try other port instead.<br></code></pre></div></td></tr></table></figure></li>
 <li><p>方法：</p>
 <p>出现问题的原因是4000端口被占用，这个端口是可以随意设置的不是固定的，可以输入以指定端口开启服务：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo server -p 4001<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">hexo server -p 4001<br></code></pre></div></td></tr></table></figure>
 
 <p>或者在可以在站点下的文件_config.yml内加上如下代码更改hexo-server运行时的端口号：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">4001</span> <span class="hljs-comment">#端口号随意，默认是4000,可以更改为其他</span><br>  <span class="hljs-attr">compress:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">header:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">4001</span> <span class="hljs-comment">#端口号随意，默认是4000,可以更改为其他</span><br>  <span class="hljs-attr">compress:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">header:</span> <span class="hljs-literal">true</span><br></code></pre></div></td></tr></table></figure></li>
 </ul>
 
             </div>
