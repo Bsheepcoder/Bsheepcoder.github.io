@@ -1,0 +1,613 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://z3.ax1x.com/2021/09/30/4Tnzaq.png">
+  <link rel="icon" href="https://z3.ax1x.com/2021/09/30/4Tnzaq.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="主要结合自己的经验和网络上的一些成功的解决方法，希望对你有帮助，仅供参考。">
+  <meta name="author" content="Tony">
+  <meta name="keywords" content="">
+  <meta name="description" content="主要结合自己的经验和网络上的一些成功的解决方法，希望对你有帮助，仅供参考。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于VS code如何下载并配置C语言（windows）">
+<meta property="og:url" content="https://bsheepcoder.github.io/2021/10/03/%E5%85%B3%E4%BA%8EVS%20code%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BD%E5%B9%B6%E9%85%8D%E7%BD%AEC%E8%AF%AD%E8%A8%80%EF%BC%88windows%EF%BC%89/index.html">
+<meta property="og:site_name" content="Q&#39;s blog">
+<meta property="og:description" content="主要结合自己的经验和网络上的一些成功的解决方法，希望对你有帮助，仅供参考。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rq9RVe.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rq9WUH.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rq9f5d.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rq94PA.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rq958I.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rq9oxP.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rq96KK.jpg">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rq97Kf.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rq9LVg.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rq9X5j.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rq9vPs.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rbloOe.jpg">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rbl7eH.jpg">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rq97Kf.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rq9xGn.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rq9z2q.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rqC9MV.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rqCCrT.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rqC1de.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rqCGid.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rqCJJA.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rqCUQP.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rqCdL8.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rqCBdg.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rqCDoQ.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rqCsij.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rqCyJs.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rqCczq.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rqC2Q0.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rqCWLT.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rqC4wF.png">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/29/rqC7WR.jpg">
+<meta property="article:published_time" content="2021-10-03T01:27:27.891Z">
+<meta property="article:modified_time" content="2021-10-03T01:32:40.509Z">
+<meta property="article:author" content="Tony">
+<meta property="article:tag" content="C">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s3.ax1x.com/2020/12/29/rq9RVe.png">
+  
+  <title>关于VS code如何下载并配置C语言（windows） - Q&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"bsheepcoder.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz","app_key":"8y2ItNdFctdKBPMHS31S2jbm","server_url":"https://0wpy18ji.lc-cn-n1-shared.com","path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Q&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://z3.ax1x.com/2021/09/30/4TCZVg.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="关于VS code如何下载并配置C语言（windows）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-03 09:27" pubdate>
+        2021年10月3日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">关于VS code如何下载并配置C语言（windows）</h1>
+            
+            <div class="markdown-body">
+              <h3 id="关于VS-code如何下载并配置C语言（windows）"><a href="#关于VS-code如何下载并配置C语言（windows）" class="headerlink" title="关于VS code如何下载并配置C语言（windows）"></a>关于VS code如何下载并配置C语言（windows）</h3><h3 id="0x01-下载VS-code"><a href="#0x01-下载VS-code" class="headerlink" title="0x01  下载VS code"></a>0x01  下载VS code</h3><p><strong>1.</strong><a target="_blank" rel="noopener" href="https://code.visualstudio.com/"><strong>VS code官网</strong></a> </p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rq9RVe"><img src="https://s3.ax1x.com/2020/12/29/rq9RVe.png" srcset="/img/loading.gif" lazyload alt="rq9RVe.png"></a></p>
+<p><strong>2</strong>.点击后无需操作，等待下载弹窗</p>
+<p><strong>3</strong>.下载后找到安装包，打开</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rq9WUH"><img src="https://s3.ax1x.com/2020/12/29/rq9WUH.png" srcset="/img/loading.gif" lazyload alt="rq9WUH.png"></a></p>
+<h3 id="0x02-安装VS-code"><a href="#0x02-安装VS-code" class="headerlink" title="0x02  安装VS code"></a>0x02  安装VS code</h3><p>**1.**按照下图流程操作</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rq9f5d"><img src="https://s3.ax1x.com/2020/12/29/rq9f5d.png" srcset="/img/loading.gif" lazyload alt="rq9f5d.png" style="zoom:150%;" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rq94PA"><img src="https://s3.ax1x.com/2020/12/29/rq94PA.png" srcset="/img/loading.gif" lazyload alt="rq94PA.png" style="zoom: 150%;" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rq958I"><img src="https://s3.ax1x.com/2020/12/29/rq958I.png" srcset="/img/loading.gif" lazyload alt="rq958I.png" style="zoom:150%;" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rq9oxP"><img src="https://s3.ax1x.com/2020/12/29/rq9oxP.png" srcset="/img/loading.gif" lazyload alt="rq9oxP.png" style="zoom:150%;" /></a></p>
+<p><strong>2</strong>.本人已经装过了，所以没有<strong>自定义安装地址</strong></p>
+<h3 id="0x03-下载及安装MinGW"><a href="#0x03-下载及安装MinGW" class="headerlink" title="0x03  下载及安装MinGW"></a>0x03  下载及安装MinGW</h3><p>​    <a href="%5B**https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/**%5D(https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/)"><strong>MinGW官网</strong></a>   进入后一直翻，找到下图的位置</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rq96KK"><img src="https://s3.ax1x.com/2020/12/29/rq96KK.jpg" srcset="/img/loading.gif" lazyload alt="rq96KK.jpg"></a></p>
+<p>​    <a href="%5B**https://pan.baidu.com/s/1g3BEDOh65r58OhwM7eMgeQ**%5D(https://pan.baidu.com/s/1g3BEDOh65r58OhwM7eMgeQ)"><strong>百度网盘</strong></a>    <strong>提取码：e42m</strong></p>
+<p>​    下载解压即可，并找到并进入<strong>bin文件夹</strong>，记住路径</p>
+<h3 id="0x04-配置环境变量"><a href="#0x04-配置环境变量" class="headerlink" title="0x04  配置环境变量"></a>0x04  配置环境变量</h3><p><strong>1.</strong> 设置中找到 <strong>编辑系统环境变量</strong> ，或者如下图找到并单击</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rq97Kf"><img src="https://s3.ax1x.com/2020/12/29/rq97Kf.png" srcset="/img/loading.gif" lazyload alt="rq97Kf.png" style="zoom:150%;" /></a></p>
+<p><strong>2</strong>.如下图提示依次操作</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rq9LVg"><img src="https://s3.ax1x.com/2020/12/29/rq9LVg.png" srcset="/img/loading.gif" lazyload alt="rq9LVg.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rq9X5j"><img src="https://s3.ax1x.com/2020/12/29/rq9X5j.png" srcset="/img/loading.gif" lazyload alt="rq9X5j.png" style="zoom:150%;" /></a></p>
+<p><strong>3</strong>.找到Path变量并点击，再点击编辑</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rq9vPs"><img src="https://s3.ax1x.com/2020/12/29/rq9vPs.png" srcset="/img/loading.gif" lazyload alt="rq9vPs.png" style="zoom:150%;" /></a></p>
+<p><strong>4</strong>.复制之前解压的mingw到bin的链接</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rbloOe"><img src="https://s3.ax1x.com/2020/12/29/rbloOe.jpg" srcset="/img/loading.gif" lazyload alt="rbloOe.jpg"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rbl7eH"><img src="https://s3.ax1x.com/2020/12/29/rbl7eH.jpg" srcset="/img/loading.gif" lazyload alt="rbl7eH.jpg"></a></p>
+<p><strong>5</strong>.接下来一直点确定，直到窗口关闭</p>
+<p><strong>6</strong>.<strong>点击 输入cmd 点击打开cmd，也可用快捷键win + R 输入cmd 打开</strong></p>
+<img src="https://s3.ax1x.com/2020/12/29/rq97Kf.png" srcset="/img/loading.gif" lazyload alt="rq97Kf.png" style="zoom:150%;" />
+
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rq9xGn"><img src="https://s3.ax1x.com/2020/12/29/rq9xGn.png" srcset="/img/loading.gif" lazyload alt="rq9xGn.png" style="zoom:150%;" /></a></p>
+<p><strong>5</strong>.测试计算机能否找到 gcc，有下方的输出表明配置正确，如果没有说明之前的配置有误，再去查看一下变量的地址、mingw的地址等。测试正确关闭即可。</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rq9z2q"><img src="https://s3.ax1x.com/2020/12/29/rq9z2q.png" srcset="/img/loading.gif" lazyload alt="rq9z2q.png" style="zoom:150%;" /></a></p>
+<h3 id="0x05-设置VS-Code"><a href="#0x05-设置VS-Code" class="headerlink" title="0x05  设置VS Code"></a>0x05  设置VS Code</h3><p><strong>1.</strong> 打开vs code</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rqC9MV"><img src="https://s3.ax1x.com/2020/12/29/rqC9MV.png" srcset="/img/loading.gif" lazyload alt="rqC9MV.png"></a></p>
+<p><strong>2</strong>.<strong>输入chin，点击后，点安装。之后重启 vscode 你会发现界面变为中文</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rqCCrT"><img src="https://s3.ax1x.com/2020/12/29/rqCCrT.png" srcset="/img/loading.gif" lazyload alt="rqCCrT.png"></a></p>
+<p> <strong>再次搜索C/C++，安装</strong> </p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rqC1de"><img src="https://s3.ax1x.com/2020/12/29/rqC1de.png" srcset="/img/loading.gif" lazyload alt="rqC1de.png"></a></p>
+<p> <strong>再次搜索code runner，安装</strong> </p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rqCGid"><img src="https://s3.ax1x.com/2020/12/29/rqCGid.png" srcset="/img/loading.gif" lazyload alt="rqCGid.png"></a></p>
+<p><strong>3</strong>.<strong>新建一个文件夹，并新建文件</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rqCJJA"><img src="https://s3.ax1x.com/2020/12/29/rqCJJA.png" srcset="/img/loading.gif" lazyload alt="rqCJJA.png" style="zoom:150%;" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rqCUQP"><img src="https://s3.ax1x.com/2020/12/29/rqCUQP.png" srcset="/img/loading.gif" lazyload alt="rqCUQP.png" style="zoom:150%;" /></a></p>
+<p><strong>4</strong>.<strong>写一段测试代码，(复制下方即可)</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;hello world&quot;</span>);<br>      <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>5</strong>.<strong>运行在下方输出，输出正确即无误</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rqCdL8"><img src="https://s3.ax1x.com/2020/12/29/rqCdL8.png" srcset="/img/loading.gif" lazyload alt="rqCdL8.png"></a></p>
+<h3 id="0x06-重要问题解决"><a href="#0x06-重要问题解决" class="headerlink" title="0x06  重要问题解决"></a>0x06  重要问题解决</h3><p><strong>1.Vscode一开始只能在输出看结果，我们要调整到终端看结果这样就可以输入了</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rqCBdg"><img src="https://s3.ax1x.com/2020/12/29/rqCBdg.png" srcset="/img/loading.gif" lazyload alt="rqCBdg.png"></a></p>
+<p><strong>点击，然后下滑，直到找到下图这一项并点击</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rqCDoQ"><img src="https://s3.ax1x.com/2020/12/29/rqCDoQ.png" srcset="/img/loading.gif" lazyload alt="rqCDoQ.png"></a></p>
+<p><strong>2.先复制下方代码，然后粘贴到{ }内的合适位置</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-string">&quot;code-runner.runInTerminal&quot;</span>: <span class="hljs-literal">true</span>,<br></code></pre></td></tr></table></figure>
+
+<p><strong>（这里容易出错，因为可能你设置过的话内容会和下图不同，多试几次不同位置。）</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rqCsij"><img src="https://s3.ax1x.com/2020/12/29/rqCsij.png" srcset="/img/loading.gif" lazyload alt="rqCsij.png"></a></p>
+<p><strong>粘贴后关闭即可，下面运行刚才的代码，会发现程序在终端输出。</strong></p>
+<p><strong>3.再写一个可以输入输出的代码如上法，测试一下</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> d, h, m;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %d %d&quot;</span>, &amp;d, &amp;h, &amp;m);<br>    m = d * <span class="hljs-number">24</span> * <span class="hljs-number">60</span> + h * <span class="hljs-number">60</span> + m;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;这是中文%d&quot;</span>,m);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>你会发现中文部分输出的是乱码</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rqCyJs"><img src="https://s3.ax1x.com/2020/12/29/rqCyJs.png" srcset="/img/loading.gif" lazyload alt="rqCyJs.png" style="zoom:150%;" /></a></p>
+<p><strong>点击UTF-8</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rqCczq"><img src="https://s3.ax1x.com/2020/12/29/rqCczq.png" srcset="/img/loading.gif" lazyload alt="rqCczq.png"></a></p>
+<p>找到GBK （中文编码）</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rqC2Q0"><img src="https://s3.ax1x.com/2020/12/29/rqC2Q0.png" srcset="/img/loading.gif" lazyload alt="rqC2Q0.png"></a></p>
+<p><strong>下滑找到点击</strong></p>
+<p><strong>再次运行</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rqCWLT"><img src="https://s3.ax1x.com/2020/12/29/rqCWLT.png" srcset="/img/loading.gif" lazyload alt="rqCWLT.png"></a></p>
+<p><strong>4.设置完毕，但是你下次打开此文件，代码中的中文还是会显示乱码。</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rqC4wF"><img src="https://s3.ax1x.com/2020/12/29/rqC4wF.png" srcset="/img/loading.gif" lazyload alt="rqC4wF.png" style="zoom:150%;" /></a></p>
+<p><strong>将默认设置为GBK ，这样下次打开就是默认中文编码。</strong></p>
+<p><strong>5.另外按 ctrl + shift + p 后，输入tasks，找到tasks.json文件</strong></p>
+<p><strong>在下图位置，加划线那行代码，并且上一行尾要加逗号！！</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/rqC7WR"><img src="https://s3.ax1x.com/2020/12/29/rqC7WR.jpg" srcset="/img/loading.gif" lazyload alt="rqC7WR.jpg"></a></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-string">&quot;-fexec-charset=GBK&quot;</span> <span class="hljs-comment">//解决中文乱码 </span><br></code></pre></td></tr></table></figure>
+
+<p><strong>修改代码后记得ctrl + S 保存后，重启即可。</strong></p>
+<h2 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h2><p>1.在调用函数库的时候可能会出现编辑器找不到的情况，需要尽可能多的定义</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;time.h&gt;</span> </span><br></code></pre></td></tr></table></figure>
+
+<p>例如在使用 <strong>time.h</strong> 时，需先写出<strong>stdlib.h</strong></p>
+<p>2.另外对编译的语法也有不同的要求，修改语法可以排除一些编译报错。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/C/">C</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/C/">C</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/03/C%E5%B0%8F%E6%B8%B8%E6%88%8F/">
+                        <span class="hidden-mobile">关于VS code如何下载并配置C语言（windows）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"UrMBdkpVtSriHxFtNjQRvPqm-gzGzoHsz","appKey":"rLGXsY7AM0Ym431NbB2fCRpX","path":"window.location.pathname","placeholder":"发一条友善的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
