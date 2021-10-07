@@ -1,0 +1,610 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://z3.ax1x.com/2021/09/30/4Tnzaq.png">
+  <link rel="icon" href="https://z3.ax1x.com/2021/09/30/4Tnzaq.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="主要学习了mooc中的北京大学的C++课程，关于C++11的新特性也有相关介绍。">
+  <meta name="author" content="Tony">
+  <meta name="keywords" content="">
+  <meta name="description" content="主要学习了mooc中的北京大学的C++课程，关于C++11的新特性也有相关介绍。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++系列：C++与C的区别（一）">
+<meta property="og:url" content="https://bsheepcoder.github.io/2021/10/07/1.C++%E7%B3%BB%E5%88%97%EF%BC%9AC++%E4%B8%8EC%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:site_name" content="Q&#39;s blog">
+<meta property="og:description" content="主要学习了mooc中的北京大学的C++课程，关于C++11的新特性也有相关介绍。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20210317200434446.png">
+<meta property="og:image" content="https://i.loli.net/2021/10/07/Uian6rR9XdgL37e.png">
+<meta property="og:image" content="https://i.loli.net/2021/10/07/pUJan3rvNIqWflw.png">
+<meta property="og:image" content="https://i.loli.net/2021/10/07/Dqz9KYI3ThBl56F.png">
+<meta property="og:image" content="https://i.loli.net/2021/10/07/EckALI4KopUwVmi.png">
+<meta property="article:published_time" content="2021-10-07T04:36:08.780Z">
+<meta property="article:modified_time" content="2021-10-07T05:04:21.025Z">
+<meta property="article:author" content="Tony">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20210317200434446.png">
+  
+  <title>C++系列：C++与C的区别（一） - Q&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"bsheepcoder.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz","app_key":"8y2ItNdFctdKBPMHS31S2jbm","server_url":"https://0wpy18ji.lc-cn-n1-shared.com","path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Q&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://z3.ax1x.com/2021/09/30/4TCZVg.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="C++系列：C++与C的区别（一）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-07 12:36" pubdate>
+        2021年10月7日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      7k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">C++系列：C++与C的区别（一）</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年10月7日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>更多参考其他文档<a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/cpp-tutorial.html">菜鸟文档</a>、<a target="_blank" rel="noopener" href="https://www.w3cschool.cn/cpp/">W3C</a>、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/?view=msvc-160">微软C++文档</a></p>
+<h2 id="从C到C"><a href="#从C到C" class="headerlink" title="从C到C++"></a>从C到C++</h2><h3 id="C和C-的区别"><a href="#C和C-的区别" class="headerlink" title="C和C++的区别"></a>C和C++的区别</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">/*程序文件名：test.cpp</span><br><span class="hljs-comment">  本程序功能：输入2个整数求和</span><br><span class="hljs-comment">  设计者：              */</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span>  <span class="hljs-comment">//输入输出流对象</span></span><br><br><span class="hljs-comment">//using namespace std; 没有此语句就要写成下面的输出形式</span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Enter two numbers&quot;</span> &lt;&lt; std::endl;  <span class="hljs-comment">//通过输出流符 &lt;&lt; 将字符输出到标准输出流对象cout，std是命名空间。</span><br>    <span class="hljs-keyword">int</span> v1, v2;<br>    std::cin &gt;&gt; v1 &gt;&gt; v2;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;the sum of&quot;</span> &lt;&lt; v1 &lt;&lt; <span class="hljs-string">&quot;and&quot;</span> &lt;&lt; v2 &lt;&lt; <span class="hljs-string">&quot;is&quot;</span> &lt;&lt; v1 + v2 &lt;&lt; std::endl;  <span class="hljs-comment">//可以输出不同类型的数据</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>c++输入输出时不需要制定格式字符</p>
+<p>通过标准输出流对象输出输入</p>
+<p>std是命名空间，如果定义的实例名相同也不影响，因为是在命名空间中的实例</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">/*程序文件名：test.cpp</span><br><span class="hljs-comment">  本程序功能：输入2个整数求和</span><br><span class="hljs-comment">  设计者：              */</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span>  <span class="hljs-comment">//输入输出流对象</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std; <span class="hljs-comment">//有此语句就可以std：：，但是不能变量名不能相同，相同则函数内变量名将命名空间内示例覆盖</span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cout &lt;&lt; <span class="hljs-string">&quot;Enter two numbers&quot;</span> &lt;&lt; endl;  <br>    <span class="hljs-keyword">int</span> v1, v2;<br>    cin &gt;&gt; v1 &gt;&gt; v2;<br>    cout &lt;&lt; <span class="hljs-string">&quot;the sum of&quot;</span> &lt;&lt; v1 &lt;&lt; <span class="hljs-string">&quot;and&quot;</span> &lt;&lt; v2 &lt;&lt; <span class="hljs-string">&quot;is&quot;</span> &lt;&lt; v1 + v2 &lt;&lt; endl; <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>iostream ： istream,ostream</p>
+<h4 id="标准输入输出对象"><a href="#标准输入输出对象" class="headerlink" title="标准输入输出对象"></a>标准输入输出对象</h4><p>标准库定义了4个IO对象：</p>
+<p>cin：istream对象，标准输入</p>
+<p>cout：ostream对象，标准输出</p>
+<p>cerr：标准错误。用来输出警告和错误信息给程序的使用者</p>
+<p>clog：用于产生程序执行的一般信息</p>
+<p>“ &lt;&lt; ” 操作符</p>
+<p>cout &lt;&lt; 表达式&lt;&lt; 表达式&lt;&lt; endl</p>
+<p>“ &gt;&gt;” 操作符</p>
+<p>cin &gt;&gt; 表达式&gt;&gt; 表达式&lt;&lt; endl</p>
+<p>==表达式只能是变量或内存区，否则就不能将读入的数据放到表达式当中了== </p>
+<h4 id="输入数据的几种方式"><a href="#输入数据的几种方式" class="headerlink" title="输入数据的几种方式"></a>输入数据的几种方式</h4><p><img src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20210317200434446.png" srcset="/img/loading.gif" lazyload alt="image-20210317200434446"></p>
+<h4 id="数据类型和表达式的区别"><a href="#数据类型和表达式的区别" class="headerlink" title="数据类型和表达式的区别"></a>数据类型和表达式的区别</h4><p><img src="https://i.loli.net/2021/10/07/Uian6rR9XdgL37e.png" srcset="/img/loading.gif" lazyload alt="image-20210318081153281"></p>
+<p>逻辑类型、引用类型、类 类型</p>
+<ul>
+<li><p>基本类型转换</p>
+<p><img src="https://i.loli.net/2021/10/07/pUJan3rvNIqWflw.png" srcset="/img/loading.gif" lazyload alt="image-20210318081330842"></p>
+</li>
+</ul>
+<ul>
+<li><p>构造书类型</p>
+<p><img src="https://i.loli.net/2021/10/07/Dqz9KYI3ThBl56F.png" srcset="/img/loading.gif" lazyload alt="image-20210318081523918"></p>
+</li>
+<li><p>类类型</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">abc</span>&#123;</span><br>    privte:<br>    <br>    <span class="hljs-keyword">public</span>:<br>    <br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">//类型名 &amp; 引用名 = 其变量名</span><br><br><span class="hljs-keyword">int</span> n = <span class="hljs-number">4</span>;<br><span class="hljs-keyword">int</span> &amp; r = n;  <span class="hljs-comment">//表示使 r 引用 n，也是初始化，r和n等价，即改变r就改变了n</span><br><br><span class="hljs-comment">//r的类型就是 int &amp;</span><br><br><span class="hljs-comment">//例子1：</span><br><br><span class="hljs-keyword">int</span> n = <span class="hljs-number">7</span>;<br><span class="hljs-keyword">int</span> &amp; r = n;  <span class="hljs-comment">//定义引用一定要初始化为某个变量,初始化后就一直引用该变量，不会引用别的变量了</span><br>r = <span class="hljs-number">4</span>;<br>cout&lt;&lt;r;<br>cout&lt;&lt;n;<br>n=<span class="hljs-number">5</span>;<br>cout&lt;&lt;r<br>    <br><span class="hljs-comment">//例子2：</span><br><span class="hljs-keyword">double</span> a = <span class="hljs-number">4</span>,b =<span class="hljs-number">5</span>;<br><span class="hljs-keyword">double</span> &amp; r1 = a;<br><span class="hljs-keyword">double</span> &amp; r2 = r1;  <span class="hljs-comment">//相当于传递引用了a，</span><br>r2 = <span class="hljs-number">10</span>;  <span class="hljs-comment">//相当于对指针指向的那个地方赋值，不过是，有多个指针指向这个地方</span><br>cout&lt;&lt;a&lt;&lt;endl;  <span class="hljs-comment">//  输出10</span><br>r1 = b;    <span class="hljs-comment">//这里不表示r1 引用b， 而是表示 a = b；，不能对引用进行修改</span><br><br><span class="hljs-comment">//不可以引用数组！！  但可以这样 int &amp; B = A[0]; </span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<p>交换函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">//C</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-keyword">int</span> *a,<span class="hljs-keyword">int</span> *b)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> tmp;<br>    tmp  = *a;<br>    *a = *b;<br>    *b = tmp;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> a,b;<br>    <span class="hljs-built_in">swap</span>(&amp;a,&amp;b);<br>&#125;<br><br><br><br><span class="hljs-comment">//C++  用引用</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;a,<span class="hljs-keyword">int</span> &amp;b)</span>  <span class="hljs-comment">//这里用了引用  </span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> tmp;<br>    tmp  = a;<br>    a = b;<br>    b = tmp;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> a,b;<br>    <span class="hljs-built_in">swap</span>(a,b);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>引用可以作为函数的返回值</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-keyword">int</span> n = <span class="hljs-number">4</span>;<br><span class="hljs-function"><span class="hljs-keyword">int</span> &amp; <span class="hljs-title">SetValue</span><span class="hljs-params">()</span></span>&#123; <span class="hljs-keyword">return</span> n;&#125;  <span class="hljs-comment">//此处引用的是返回值 n</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">mian</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">SetValue</span>()=<span class="hljs-number">40</span>;  <span class="hljs-comment">// 这里就达到了修改返回值的目的</span><br>    cout&lt;&lt;n;  <span class="hljs-comment">//输出为 40</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="常引用"><a href="#常引用" class="headerlink" title="常引用"></a>常引用</h3><p>常引用 不能通过引用修改值</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-keyword">int</span> n = <span class="hljs-number">400</span>;<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> &amp;  r = n; <span class="hljs-comment">//这个r是常引用， r 的类型是 const int &amp; </span><br><span class="hljs-comment">//相当于这个变量的别名，另一个该变量的名字，不能再改名</span><br><br>r = <span class="hljs-number">200</span>;  错误<br>n = <span class="hljs-number">300</span>;  <span class="hljs-comment">//正确</span><br><br><span class="hljs-comment">//T == 普通数据类型 如int</span><br>    <br><span class="hljs-comment">//const T &amp; 和 T &amp; 是不同类型</span><br><span class="hljs-comment">//T &amp; 类型的引用 或 T类型变量可以初始化const T&amp; 类型和引用</span><br><span class="hljs-comment">//const T 类型的常变量  和  const T &amp; 类型的引用  则不能用来初始化  T&amp;类型的引用</span><br>除非进行强制转换<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="const关键字"><a href="#const关键字" class="headerlink" title="const关键字"></a>const关键字</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">//定义常量</span><br>        建议少用 define 因为 用<span class="hljs-keyword">const</span>定义有数据类型的检验<br>        <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX_VAL = <span class="hljs-number">23</span>；<br>        <span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> Pi = <span class="hljs-number">3.14</span> ;<br>        <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *SCHOOL_NAME = <span class="hljs-string">&quot;Peking University&quot;</span>;  <span class="hljs-comment">//字符指针</span><br><br><span class="hljs-comment">//指向常量的指针</span><br>        <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> * p = &amp; n;  <span class="hljs-comment">//不能通过指针修改 n的值，但可以指向其他变量(易错)</span><br><br>        <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> *name =<span class="hljs-string">&quot;chen&quot;</span>;<br>        name[<span class="hljs-number">3</span>] =<span class="hljs-string">&quot;a&quot;</span>;  <span class="hljs-comment">//错误 不能修改name的值</span><br>        name =<span class="hljs-string">&quot;zhang&quot;</span>;  <span class="hljs-comment">//正确  可以改变name指向</span><br><br>        <span class="hljs-comment">//在函数定义时，用指向常量的指针</span><br>        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">MyPrintf</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * p)</span>  <span class="hljs-comment">// 使得指针指向的值进入函数后不会被改变</span></span><br><span class="hljs-function">        </span>&#123;                                                                            <br>            <span class="hljs-built_in">strcpy</span>(p,<span class="hljs-string">&quot;this&quot;</span>);<span class="hljs-comment">//此时会编译出错</span><br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s&quot;</span>,p);<br>        &#125;<br><br><span class="hljs-comment">//常指针</span><br>		<span class="hljs-keyword">int</span> * <span class="hljs-keyword">const</span> name=<span class="hljs-string">&quot;chen&quot;</span> ;  <span class="hljs-comment">//不能改变地址，即指针所指的指向</span><br><br><span class="hljs-comment">//指向常量的常指针</span><br>		<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-keyword">const</span> name=<span class="hljs-string">&quot;chen&quot;</span>;  <span class="hljs-comment">//不能改变指向，也不能改变值</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="动态内存分配"><a href="#动态内存分配" class="headerlink" title="动态内存分配"></a>动态内存分配</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">C 使用malloc ， c++ 使用<span class="hljs-keyword">new</span><br>    <br>    <br><span class="hljs-comment">//分配整形空间</span><br>P = <span class="hljs-keyword">new</span> T ;  <br><span class="hljs-comment">//P是指针，T是数据类型，T是任意类型名，P是类型为T*的指针，动态分配出一片大小为sizeof(T)的空间，并且将该内存空间的起始地址赋值给P。</span><br>例：<br><span class="hljs-keyword">int</span> *pn;<br>pn = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>;<br>*pn = <span class="hljs-number">5</span>;<br><br><br><span class="hljs-comment">//分配数组</span><br>P = <span class="hljs-keyword">new</span> T[N];<br><span class="hljs-comment">//T:任意类型名 P： 类型为T*的指针  N：要分配的数组元素的个数，可以是整型表达式</span><br><span class="hljs-comment">//动态分配出一片大小为N * sizeof（T）字节的内存空间，并且将该空间的其实地址赋值给P</span><br>例：<br><span class="hljs-keyword">int</span> * pn;<br><span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>;<br>pn = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[i * <span class="hljs-number">20</span>];<br>pn[<span class="hljs-number">0</span>] = <span class="hljs-number">20</span>;<br>pn[<span class="hljs-number">100</span>] = <span class="hljs-number">30</span>; <span class="hljs-comment">//这里数组越界了</span><br><br><br><span class="hljs-comment">//注意：int * p = new int;  //返回类型，都为int * 即 指针</span><br><br><br>使用delet运算符进行释放 <br><br><span class="hljs-keyword">delete</span> 指针 ; <span class="hljs-comment">//释放的指针必须是new出来的，只能做一次</span><br><span class="hljs-comment">//例：</span><br><span class="hljs-keyword">int</span> *p = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>;<br>*p = <span class="hljs-number">5</span>;<br><span class="hljs-keyword">delete</span> p;<br><span class="hljs-keyword">delete</span> p; <span class="hljs-comment">//释放两次</span><br><br><br><span class="hljs-comment">//释放数组</span><br><span class="hljs-keyword">delete</span> [] 指针;  <span class="hljs-comment">//该指针必须指向new出的数组</span><br>例：<br><span class="hljs-keyword">int</span>*p = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">20</span>];<br>p[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">delete</span> [] p ; <span class="hljs-comment">//没有[] 会导致空间没有被完全释放</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">//由来：调用函数时的额外开销</span><br><span class="hljs-comment">//调用函数过程：  把参数和返回地址放到栈里面去，函数执行完返回后，还要从栈里取回返回地址，然后跳转到返回地址去执行</span><br><span class="hljs-comment">//为了减少开销</span><br><br><br><span class="hljs-comment">//将整个函数体的代码插入到调用语句处，而不会产生调用函数的语句，不会进行参数传递</span><br><br><span class="hljs-comment">//定义</span><br><br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">Max</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>(a&gt;b) <span class="hljs-keyword">return</span> a;<br>    <span class="hljs-keyword">return</span> b;<br>&#125;<br><br><span class="hljs-comment">//缺点</span><br>会增大空间，因为调用时相当于将函数的内部语句插入直接使用，根据程序的体积会有体良上的影响<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">//一个或多个函数，名字相同，然而参数或参数类型不相同，这叫做函数的重载</span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Max</span><span class="hljs-params">(<span class="hljs-keyword">double</span> f1, <span class="hljs-keyword">double</span> f2)</span></span>&#123;&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Max</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f1, <span class="hljs-keyword">int</span> f2)</span></span>&#123;&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Max</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f1, <span class="hljs-keyword">int</span> f2 , <span class="hljs-keyword">int</span> f3)</span></span>&#123;&#125;<br><br><span class="hljs-comment">//编译器根据调用参数的形式来匹配函数的声明，从而找到对应的函数</span><br><br><span class="hljs-built_in">Max</span>(<span class="hljs-number">3</span>,<span class="hljs-number">2.4</span>);   <span class="hljs-comment">//有二义性 错误 ，编译器找不到该函数</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="函数缺省参数"><a href="#函数缺省参数" class="headerlink" title="函数缺省参数"></a>函数缺省参数</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">//定义参数的时候可以给函数参数一个预先的值，如果在调用参数的时候没有写该参数，则可以使用预定义的值,但是注意只能最右边缺省，不能中间缺省</span><br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x1, <span class="hljs-keyword">int</span> x2 = <span class="hljs-number">2</span>,,<span class="hljs-keyword">int</span> x3 = <span class="hljs-number">3</span>)</span></span>&#123;&#125;<br><br><span class="hljs-built_in">fun</span>(<span class="hljs-number">10</span>);<span class="hljs-comment">//相当于func(10,2,3)</span><br><span class="hljs-built_in">fun</span>(<span class="hljs-number">10</span>，<span class="hljs-number">8</span>;<span class="hljs-comment">//相当于func(10,2,8)</span><br>    <br><span class="hljs-built_in">fun</span>(<span class="hljs-number">10</span>，，<span class="hljs-number">8</span>);<span class="hljs-comment">//函数调用错误</span><br>    <br><span class="hljs-comment">//提高程序的可扩充性</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="作用域运算符"><a href="#作用域运算符" class="headerlink" title="作用域运算符"></a>作用域运算符</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">::  变量名相同时，：：可使全局变量在局部变量的作用域内使用<br>    <br><span class="hljs-keyword">int</span>  a;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">int</span> a;<br>    ::a ;<span class="hljs-comment">//此时的a为全局变量a </span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="结构化程序设计"><a href="#结构化程序设计" class="headerlink" title="结构化程序设计"></a>结构化程序设计</h3><figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-comment">//程序 = 数据结构 + 算法</span><br><span class="hljs-comment">//程序由全局变量以及众多相互调用的函数组成</span><br><span class="hljs-comment">//算法以函数的形式实现，用于对数据结构进行操作</span><br><br><span class="hljs-comment">//不足</span><br>数据结构和函数操作关系不清、<br>函数和函数的关系不清<br>不方便重用函数<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="面向对象程序设计"><a href="#面向对象程序设计" class="headerlink" title="面向对象程序设计"></a>面向对象程序设计</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">面向对象程序 = 类 + 类 + 类<br>    <br><span class="hljs-comment">//方法</span><br><span class="hljs-comment">//归纳事物共同属性、形成数据结构</span><br>    <br><span class="hljs-comment">//抽象 </span><br><span class="hljs-comment">//这类函数能进行的行为也归纳出来，形成函数，这些函数也可以操作数据结构</span><br>    <br><span class="hljs-comment">//封装     </span><br><span class="hljs-comment">//将数据结构和操作该数据结构的函数捆绑在一起，形成了类，通过类可以看出数据结构和函数的关系</span><br><br>抽象、封装、继承、多态<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/10/07/EckALI4KopUwVmi.png" srcset="/img/loading.gif" lazyload alt="image-20210313200955552"></p>
+<h3 id="类和对象基本概念"><a href="#类和对象基本概念" class="headerlink" title="类和对象基本概念"></a>类和对象基本概念</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">写一个程序，输入矩形的长和宽，输出面积和周长<br><span class="hljs-comment">//属性： 长 和 宽</span><br><span class="hljs-comment">//行为： 面积 和 周长</span><br>    <br><span class="hljs-comment">//从客观事物的特性出发，设计定义变量和函数，封装为类</span><br>    <br><span class="hljs-comment">//封装为类</span><br> 矩形类<br>&#123;<br>    长 、 宽 变量    <span class="hljs-comment">//成员变量</span><br>    计算矩形周长函数; <span class="hljs-comment">//成员函数</span><br>    计算矩形面积函数; <span class="hljs-comment">//成员函数 和 成员变量 统称为 类的成员</span><br>    输出矩形长宽函数; <span class="hljs-comment">//成员函数</span><br>&#125;<br><br>例：<br>    <br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CRectangle</span>  //类型的名字，用户自定义</span><br><span class="hljs-class">&#123;</span><br>    <span class="hljs-keyword">public</span>:<br>    		<span class="hljs-keyword">int</span> w,h;    <span class="hljs-comment">//成员变量</span><br>    		<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Area</span><span class="hljs-params">()</span></span>&#123;   <br>                <span class="hljs-keyword">return</span> w * h;<br>            &#125;<br>    		<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Perimeter</span><span class="hljs-params">()</span></span>&#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>* (w + h);<br>            &#125;<br>    		<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Init</span><span class="hljs-params">( <span class="hljs-keyword">int</span> w_,<span class="hljs-keyword">int</span> h_)</span></span>&#123;<br>                w = w_; h = h_;<br>            &#125;<br>&#125;;  <span class="hljs-comment">//必须有分号！！！！！</span><br>    <span class="hljs-comment">//必须有分号！！！！！</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> w,h;<br>    CRectangle r;    <span class="hljs-comment">//r 是一个对象，类型的名字可以定义变量，通过类定义的变量即为对象</span><br>    cin &gt;&gt; w &gt;&gt; h;<br>    r.<span class="hljs-built_in">Init</span>(w,h);   <span class="hljs-comment">//调用了r的成员函数，作用到了r的成员变量中</span><br>    cout&lt;&lt; r.<span class="hljs-built_in">Area</span>() &lt;&lt; endl &lt;&lt; r.<span class="hljs-built_in">Perimeter</span>();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="对象的内存分配"><a href="#对象的内存分配" class="headerlink" title="对象的内存分配"></a>对象的内存分配</h3><p>类似C中的结构体</p>
+<p>和结构变量相同，对象所占用的内存空间的大小，等于所有成员变量的大小之和</p>
+<p>对象，只包含了成员变量，不包含成员函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">//因此，sizeof（上述类CRectangle) = 8;</span><br><span class="hljs-comment">//每个用类定义的对象，都有自己的存储空间，不共用，因此改变相同类的对象的成员变量的值，不会影响另一个对象。对象中的函数是共用的，成员变量不共用。</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="对象之间的运算"><a href="#对象之间的运算" class="headerlink" title="对象之间的运算"></a>对象之间的运算</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">//类似C语言的结构体，可以整体赋值</span><br>如果使用了“重载”，则可以进行其他类型操作、判断、算数运算等<br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">//使用类的成员变量和成员函数</span><br><br><span class="hljs-comment">//用法1： 对象名.成员名</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CRectangle</span>  </span><br><span class="hljs-class">&#123;</span><br>    <span class="hljs-keyword">public</span>:<br>    		<span class="hljs-keyword">int</span> w,h;    <br>    		<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Area</span><span class="hljs-params">()</span></span>&#123;   <br>                <span class="hljs-keyword">return</span> w * h;<br>            &#125;<br>    		<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Perimeter</span><span class="hljs-params">()</span></span>&#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>* (w + h);<br>            &#125;<br>    		<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Init</span><span class="hljs-params">( <span class="hljs-keyword">int</span> w_,<span class="hljs-keyword">int</span> h_)</span></span>&#123;<br>                w = w_; h = h_;<br>            &#125;<br>&#125;;  <br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    Crectangle r1,r2;<br>    r1.w = <span class="hljs-number">5</span>;    <span class="hljs-comment">// 将对象r1中的 w 变量 赋值为5</span><br>    r2.<span class="hljs-built_in">Init</span>(<span class="hljs-number">5</span>,<span class="hljs-number">4</span>);  <span class="hljs-comment">// 调用对象r2中的函数.Init传入5和4两个参数</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-comment">//用法2  指针-&gt;成员名</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    Crectangle r1,r2;<br>    Crectangle * p1 = &amp; r1;<br>    Crectangle * p2 = &amp; r2;<br>    p1-&gt;w = <span class="hljs-number">5</span>;   <span class="hljs-comment">//p1 指针指向的对象的成员变量赋值</span><br>    p2-&gt;<span class="hljs-built_in">Init</span>(<span class="hljs-number">5</span>,<span class="hljs-number">4</span>);  <span class="hljs-comment">//Init作用在p2指针的对象上</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">//用法3  引用名.成员名</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    Crectangle r2;<br>    Crectangle  &amp; rr = r2; <span class="hljs-comment">//rr 引用了 对象r2</span><br>    rr.w = <span class="hljs-number">5</span>;<br>    rr.<span class="hljs-built_in">Init</span>(<span class="hljs-number">5</span>,<span class="hljs-number">4</span>);  <span class="hljs-comment">//和引用概念相同，rr引用的r2一同变</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-comment">//另</span><br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">PrintRectangle</span><span class="hljs-params">(CRectangle &amp; r)</span></span><br><span class="hljs-function"></span>&#123;<br>    cout&lt;&lt;r.<span class="hljs-built_in">Area</span>()&lt;&lt;<span class="hljs-string">&quot;,&quot;</span>&lt;&lt;r.<span class="hljs-built_in">perimeter</span>();<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    Crectangle r3;<br>    r3.<span class="hljs-built_in">Init</span>(<span class="hljs-number">5</span>,<span class="hljs-number">4</span>);  <span class="hljs-comment">//和引用概念相同，rr引用的r2一同变</span><br>    <span class="hljs-built_in">PrintRectangle</span>(r3);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">//1  输出一个水平中轴为n的菱形</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">PrintStar</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> i, j;<br>    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">1</span>; i &lt;= n;++i)<br>    &#123;<br>        <span class="hljs-keyword">for</span> ( j = <span class="hljs-number">0</span>; j &lt; n - i;++j)<br>        &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span> ( j = <span class="hljs-number">0</span>; j &lt; i;++j)<br>        &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;*&quot;</span><br>                 &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>        &#125;<br>        cout &lt;&lt; endl;<br>    &#125;<br>     <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">1</span>; i &lt;=<span class="hljs-number">5</span>;++i)<br>    &#123;<br>        <span class="hljs-keyword">for</span> ( j = <span class="hljs-number">0</span>; j &lt; i; ++j)<br>        &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span> ( j = n-i; j &gt; <span class="hljs-number">0</span>;--j)<br>        &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;*&quot;</span><br>                 &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>        &#125;<br>        cout &lt;&lt; endl;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">PrintStar</span>(<span class="hljs-number">5</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><br><span class="hljs-comment">//2  </span><br></code></pre></div></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/C/">C++</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/C/">C++</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/07/2.C++%E7%B3%BB%E5%88%97%EF%BC%9A%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80.md/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">C++系列：类和对象基础（二）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/03/%E5%85%B3%E4%BA%8EVS%20code%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BD%E5%B9%B6%E9%85%8D%E7%BD%AEC%E8%AF%AD%E8%A8%80%EF%BC%88windows%EF%BC%89/">
+                        <span class="hidden-mobile">关于VS code如何下载并配置C语言（windows）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"UrMBdkpVtSriHxFtNjQRvPqm-gzGzoHsz","appKey":"rLGXsY7AM0Ym431NbB2fCRpX","path":"window.location.pathname","placeholder":"发一条友善的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
