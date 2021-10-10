@@ -5,8 +5,8 @@
   
   <entry>
     <title>win10提示无Internet、无法开热点(能上网)</title>
-    <link href="/2021/10/10/win10%E6%8F%90%E7%A4%BA%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E7%BD%91%E7%BB%9C(%E8%83%BD%E4%B8%8A%E7%BD%91)/"/>
-    <url>/2021/10/10/win10%E6%8F%90%E7%A4%BA%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E7%BD%91%E7%BB%9C(%E8%83%BD%E4%B8%8A%E7%BD%91)/</url>
+    <link href="/2021/10/10/win10bug1/"/>
+    <url>/2021/10/10/win10bug1/</url>
     
     <content type="html"><![CDATA[<p>折腾了很久，但是最后找到了一个可用的办法，仅作记录</p><p>出处：<a href="https://www.bilibili.com/read/cv5292887/">https://www.bilibili.com/read/cv5292887/</a></p><h2 id="问题再现"><a href="#问题再现" class="headerlink" title="问题再现"></a>问题再现</h2><p>win10右下角的网络连接打开显示：<img src="https://i.loli.net/2021/10/10/QRweaG2rOYlHt6T.png" alt="提示无网络"  /></p><p>但是实际上是可以正常上网的，打开适配器的状态：<img src="https://i.loli.net/2021/10/10/lsxHV52yToZIWFr.png"></p><p>也是提示无访问权限，还没有找到解决的办法。</p><h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><ul><li><p>试过网上的几乎所有方法，例如禁用复用网卡、网络重置、禁用复用服务，也用了用修改注册表下\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet下的EnableActiveProbing项的办法，均不见效，这种情况下可以试试此方法。如果大家也出现以上状况，尤其是win10 18362（即1903）版以后的新版本，则取消上网验证通常不能解决问题。</p></li><li><p>原因分析：经注册表选项比对，发现问题出在连网返回值功能有了变化。原理是每当连网后，系统会自动向微软的dns.msftncsi.com发出请求，然后返回一个NCSI.txt的值，这一值如果正确时，则确认为已连网。而Win10最近的版本中，这个返回服务器和值有了新变化并反映为6个注册表项中。这些变化因国内部分运行商的网络重定向，不能得到正确的反馈，因此出现实际能上网却显示为无internet的问题。下图中第一张图是出错的注册表项：</p><p><img src="https://i.loli.net/2021/10/10/lJ1hrDm7CYKuPM5.png"></p><p>下图中第二张是18362版之前正确的注册表项：</p><p><img src="https://i.loli.net/2021/10/10/pD9tUR2cvTr4xhX.png"></p><p>其中被选中标成蓝色的项，改回为图中所显示的值，EnableActiveProbing仍恢复为1，重启系统后，网络即能恢复正常。</p><ul><li><p>另外没有WiFi通常是服务莫名其妙的自动关闭了</p><p>如果无法解决，在键盘上按下【Win+R】组合键打开运行，输入：services.msc 点击确定打开服务；<br>确保wired aotoconfig 和 Wlan Autoconfig 服务在启动状态为【已启动】。</p><p>或者在服务管理中找到WLAN，重启一下即可。</p></li></ul></li></ul><p><img src="https://i.loli.net/2021/10/10/pgN1sOYyMuPck5n.png"></p>]]></content>
     
