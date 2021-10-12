@@ -1,0 +1,1141 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://z3.ax1x.com/2021/09/30/4Tnzaq.png">
+  <link rel="icon" href="https://z3.ax1x.com/2021/09/30/4Tnzaq.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="主要学习了mooc中蒿天老师的视频的笔记，仅供参考。">
+  <meta name="author" content="Tony">
+  <meta name="keywords" content="">
+  <meta name="description" content="主要学习了mooc中蒿天老师的视频的笔记，仅供参考。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="（三）Python函数库与数据类型">
+<meta property="og:url" content="https://bsheepcoder.github.io/2021/10/13/Python3/index.html">
+<meta property="og:site_name" content="Q&#39;s blog">
+<meta property="og:description" content="主要学习了mooc中蒿天老师的视频的笔记，仅供参考。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/07/smQs6s.png">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/07/smaGee.png">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/09/sM0kwV.png">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/06/sVUaSU.png">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/10/slD9at.png">
+<meta property="article:published_time" content="2021-10-12T23:17:31.992Z">
+<meta property="article:modified_time" content="2021-10-11T01:31:11.000Z">
+<meta property="article:author" content="Tony">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s3.ax1x.com/2021/01/07/smQs6s.png">
+  
+  <title>（三）Python函数库与数据类型 - Q&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"bsheepcoder.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz","app_key":"8y2ItNdFctdKBPMHS31S2jbm","server_url":"https://0wpy18ji.lc-cn-n1-shared.com","path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 30vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Q&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/python2.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="（三）Python函数库与数据类型">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-13 07:17" pubdate>
+        2021年10月13日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      16k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      48 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">（三）Python函数库与数据类型</h1>
+            
+              <p class="note note-info">
+                
+                  更新于：2021年10月11日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="Python基本图形绘制"><a href="#Python基本图形绘制" class="headerlink" title="Python基本图形绘制"></a>Python基本图形绘制</h2><h3 id="0x1-深入理解Python语言"><a href="#0x1-深入理解Python语言" class="headerlink" title="0x1 深入理解Python语言"></a>0x1 深入理解Python语言</h3><ul>
+<li><p>计算机技术演进</p>
+<p>1946 - 1981 计算机系统结构时代    计算能力</p>
+<p>1981 - 2008 个人pc计算机时代        交互问题  视窗、网络</p>
+<p>2008 - 2016 复杂信息系统时代         数据问题</p>
+<p>2017 -              人工智能时代             人类的问题</p>
+<p>新计算时代</p>
+</li>
+<li><p>不同编程语言的初心和适用对象</p>
+<p>C   理解计算机系统结构   关注性能   底层</p>
+<p>JAVA  理解主客体关系    跨平台    软件类</p>
+<p>C++   理解主客体关系   大规模程序     核心软件</p>
+<p>VB   理解交互逻辑    桌面应用   </p>
+<p>Python     理解问题求解    各类问题</p>
+<p>python  是一个通用语言</p>
+</li>
+</ul>
+<h3 id="0x2-python特点与优势"><a href="#0x2-python特点与优势" class="headerlink" title="0x2 python特点与优势"></a>0x2 python特点与优势</h3><ul>
+<li><p>C的10%的代码量</p>
+<p>强制可读性</p>
+<p>较少的底层语法元素</p>
+<p>多种编程方式</p>
+<p>支持中文字符</p>
+</li>
+<li><p>强大的第三方库</p>
+<p>快速增长的计算生态</p>
+<p>避免重复造轮子</p>
+<p>开放共享</p>
+<p>跨操作系统平台</p>
+</li>
+<li><p>各语言的面向对象</p>
+<p>C/C++： Python归Python ，C归C</p>
+<p>Java ： 针对待定开发和岗位需求</p>
+<p>HTML/CSS/JS：不可替代的前端技术，全栈能力</p>
+</li>
+<li><p>超级语言的诞生</p>
+<p>粘性整合已有程序，形成庞大的生态</p>
+<p>具有庞大的计算生态，可以很容易利用已有代码功能</p>
+<p>编程思维是集成开发</p>
+<p>完成2+3功能的高级语言</p>
+<p>Python是唯一的超级语言</p>
+</li>
+</ul>
+<h3 id="0x3-【实例】python绘制蟒蛇"><a href="#0x3-【实例】python绘制蟒蛇" class="headerlink" title="0x3 【实例】python绘制蟒蛇"></a>0x3 【实例】python绘制蟒蛇</h3><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#PythonDraw.py</span><br><span class="hljs-keyword">import</span> turtle            <span class="hljs-comment">#引入了一个turtle绘图库</span><br>turtle.setup(<span class="hljs-number">650</span>,<span class="hljs-number">350</span>,<span class="hljs-number">200</span>,<span class="hljs-number">200</span>)<br>turtle.penup()<br>turtle.fd(-<span class="hljs-number">250</span>)<br>turtle.pendown()<br>turtle.pensize(<span class="hljs-number">25</span>)<br>turtle.pencolor(<span class="hljs-string">&quot;purple&quot;</span>)<br>turtle.seth(-<span class="hljs-number">40</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">4</span>):<br>    turtle.circle(<span class="hljs-number">40</span>,<span class="hljs-number">80</span>)<br>    turtle.circle(-<span class="hljs-number">40</span>,<span class="hljs-number">80</span>)<br>turrle.circle(<span class="hljs-number">40</span>,<span class="hljs-number">80</span>/<span class="hljs-number">2</span>)<br>turtle.fd(<span class="hljs-number">40</span>)<br>turtle.circle(<span class="hljs-number">16</span>,<span class="hljs-number">180</span>)<br>turtle.fd(<span class="hljs-number">40</span>*<span class="hljs-number">2</span>/<span class="hljs-number">3</span>)<br>turtle.done()<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li><p>举一反三</p>
+<p>Python语法元素理解</p>
+<p>程序参数的改变  颜色  长度 方向</p>
+</li>
+</ul>
+<h3 id="0x4-模块一-turtle"><a href="#0x4-模块一-turtle" class="headerlink" title="0x4 模块一 turtle"></a>0x4 模块一 turtle</h3><ul>
+<li><p>Python函数库之一</p>
+<p>turtle库是入门级图形绘制函数库</p>
+</li>
+</ul>
+<ul>
+<li><p>python计算生态  = 标准库 + 第三方库</p>
+<p>标准库 ：随解释器直接安装到操作系统中的功能模块</p>
+<p>第三方库：需要经过安装才能使用的功能模块</p>
+<p>库Library、包Package、模块Module ，统称模块</p>
+</li>
+</ul>
+<ul>
+<li><p>turtle的原理</p>
+<p>有一直海龟，其实在窗体的正中心</p>
+<p>在画布上游走，走过的轨迹形成了绘制的图形</p>
+<p>海龟由程序控制，可以变换颜色、改变宽度等</p>
+</li>
+</ul>
+<ul>
+<li><p>模块1 turtle库的使用</p>
+<p>turtle的绘图窗体</p>
+<p>最小单位是像素</p>
+<p><img src="https://s3.ax1x.com/2021/01/07/smQs6s.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2021-01-07 183749"></p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#设置启动窗体的位置和大小</span><br>turtle.setup(width,height,startx,starty)<br>示例：<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> turtle<br><span class="hljs-meta">&gt;&gt;&gt; </span>turtle.setup(<span class="hljs-number">800</span>,<span class="hljs-number">400</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)  <span class="hljs-comment">#在左上角显示</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> turtle<br><span class="hljs-meta">&gt;&gt;&gt; </span>turtle.setup(<span class="hljs-number">800</span>,<span class="hljs-number">400</span>)   <span class="hljs-comment">#默认在屏幕中央显示</span><br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li><p>turtle空间坐标体系</p>
+<p>绝对坐标  以海龟在中心为原点，做平面坐标系</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#示例1：</span><br><span class="hljs-keyword">import</span> turtle<br>turtle.goto(<span class="hljs-number">100</span>,<span class="hljs-number">100</span>)<br>turtle.goto(<span class="hljs-number">100</span>,-<span class="hljs-number">100</span>)<br>turtle.goto(-<span class="hljs-number">100</span>,-<span class="hljs-number">100</span>)<br>turtle.goto(-<span class="hljs-number">100</span>,<span class="hljs-number">100</span>)<br>turtle.goto(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)<br></code></pre></div></td></tr></table></figure>
+
+<div class="hljs code-wrapper"><pre><code>    海龟坐标  
+</code></pre></div>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">turtle.fd(d) <span class="hljs-comment">#向海龟的正前方向运行</span><br>turtle.bk(d) <span class="hljs-comment">#向海龟的反方向运行</span><br>turtle.circle(r,angle)  <span class="hljs-comment">#以海龟左侧某一点为圆心，做曲线运行</span><br>r 半径  angle 角度<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://s3.ax1x.com/2021/01/07/smaGee.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2021-01-07 183749"></p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> turtle<br>turtle.circle(<span class="hljs-number">100</span>,<span class="hljs-number">1</span>)<br>turtle.circle(<span class="hljs-number">250</span>,<span class="hljs-number">80</span>)<br>turtle.circle(<span class="hljs-number">150</span>,<span class="hljs-number">45</span>)<br>turtle.circle(<span class="hljs-number">120</span>,<span class="hljs-number">45</span>)<br>turtle.circle(<span class="hljs-number">150</span>,<span class="hljs-number">30</span>)<br>turtle.circle(<span class="hljs-number">150</span>,<span class="hljs-number">30</span>)<br>turtle.circle(<span class="hljs-number">130</span>,<span class="hljs-number">10</span>)<br>turtle.circle(<span class="hljs-number">130</span>,<span class="hljs-number">5</span>)<br>turtle.circle(<span class="hljs-number">130</span>,<span class="hljs-number">5</span>)<br>turtle.circle(<span class="hljs-number">15</span>,<span class="hljs-number">50</span>)<br>turtle.circle(<span class="hljs-number">15</span>,<span class="hljs-number">170</span>)<br>turtle.circle(<span class="hljs-number">130</span>,<span class="hljs-number">5</span>)<br>turtle.circle(<span class="hljs-number">130</span>,<span class="hljs-number">5</span>)<br>turtle.circle(<span class="hljs-number">130</span>,<span class="hljs-number">10</span>)<br>turtle.circle(<span class="hljs-number">150</span>,<span class="hljs-number">30</span>)<br>turtle.circle(<span class="hljs-number">150</span>,<span class="hljs-number">30</span>)<br>turtle.circle(<span class="hljs-number">120</span>,<span class="hljs-number">45</span>)<br>turtle.circle(<span class="hljs-number">150</span>,<span class="hljs-number">45</span>)<br>turtle.circle(<span class="hljs-number">250</span>,<span class="hljs-number">80</span>)<br>turtle.circle(<span class="hljs-number">100</span>,<span class="hljs-number">10</span>)<br>turtle.circle(<span class="hljs-number">100</span>,<span class="hljs-number">1</span>)<br><span class="hljs-comment">#心形</span><br></code></pre></div></td></tr></table></figure>
+
+<div class="hljs code-wrapper"><pre><code>    绝对角度坐标体系，x轴为0度
+</code></pre></div>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">turtle.seth(angle)   <span class="hljs-comment">#-seth()改变海龟行进方向，但不行进,angle为绝对度数</span><br>turtle.left(angle)   <span class="hljs-comment">#改变运行方向</span><br>turtle.right(angle)  <span class="hljs-comment">#改变运行方向</span><br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li><p>RGB色彩体系</p>
+<p>红黄蓝三通道</p>
+<p>RGB小数值、整数值</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">turtle.colormode(mode) <span class="hljs-comment">#确定是用小数值还是整数值</span><br><span class="hljs-number">1.0</span>  表示小数值模式<br><span class="hljs-number">255</span>  表示整数值模式<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="0x5-turtle-程序语法元素分析"><a href="#0x5-turtle-程序语法元素分析" class="headerlink" title="0x5 turtle 程序语法元素分析"></a>0x5 turtle 程序语法元素分析</h3><h4 id="库引用与impot"><a href="#库引用与impot" class="headerlink" title="库引用与impot"></a>库引用与impot</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#PythonDraw.py</span><br><span class="hljs-keyword">import</span> turtle            <span class="hljs-comment">#引入了一个turtle绘图库</span><br>turtle.setup(<span class="hljs-number">650</span>,<span class="hljs-number">350</span>,<span class="hljs-number">200</span>,<span class="hljs-number">200</span>)<br>turtle.penup()<br>turtle.fd(-<span class="hljs-number">250</span>)<br>turtle.pendown()<br>turtle.pensize(<span class="hljs-number">25</span>)<br>turtle.pencolor(<span class="hljs-string">&quot;purple&quot;</span>)<br>turtle.seth(-<span class="hljs-number">40</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">4</span>):<br>    turtle.circle(<span class="hljs-number">40</span>,<span class="hljs-number">80</span>)<br>    turtle.circle(-<span class="hljs-number">40</span>,<span class="hljs-number">80</span>)<br>turrle.circle(<span class="hljs-number">40</span>,<span class="hljs-number">80</span>/<span class="hljs-number">2</span>)<br>turtle.fd(<span class="hljs-number">40</span>)<br>turtle.circle(<span class="hljs-number">16</span>,<span class="hljs-number">180</span>)<br>turtle.fd(<span class="hljs-number">40</span>*<span class="hljs-number">2</span>/<span class="hljs-number">3</span>)<br>turtle.done()<br></code></pre></div></td></tr></table></figure>
+
+<p>turtle.的编程风格</p>
+<h4 id="库引用"><a href="#库引用" class="headerlink" title="库引用"></a>库引用</h4><p>扩充Python程序功能的方式</p>
+<p>使用import保留字完成，采用.()编码风格   </p>
+<p>import &lt;库名&gt;</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#PythonDraw.py</span><br><span class="hljs-keyword">import</span>&lt;库名&gt; <br>&lt;库名&gt; . &lt;函数名&gt;(&lt;函数参数&gt;)<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="import用法"><a href="#import用法" class="headerlink" title="import用法"></a>import用法</h4><p>使用from和import保留字共同完成</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#PythonDraw.py</span><br><span class="hljs-keyword">from</span> &lt;库名&gt; <span class="hljs-keyword">import</span> &lt;函数名&gt;<br><span class="hljs-keyword">from</span> &lt;库名&gt; <span class="hljs-keyword">import</span>*<br>&lt;函数名&gt;（函数参数）<br></code></pre></div></td></tr></table></figure>
+
+<p>使用上述方式可以不用turtle. 直接函数名加函数参数，如下</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#PythonDraw.py</span><br><span class="hljs-keyword">from</span> turtle <span class="hljs-keyword">import</span>*           <span class="hljs-comment">#引入了一个turtle绘图库</span><br>setup(<span class="hljs-number">650</span>,<span class="hljs-number">350</span>,<span class="hljs-number">200</span>,<span class="hljs-number">200</span>)<br>penup()<br>fd(-<span class="hljs-number">250</span>)<br>pendown()<br>pensize(<span class="hljs-number">25</span>)<br>pencolor(<span class="hljs-string">&quot;purple&quot;</span>)<br>seth(-<span class="hljs-number">40</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">4</span>):<br>    circle(<span class="hljs-number">40</span>,<span class="hljs-number">80</span>)<br>    circle(-<span class="hljs-number">40</span>,<span class="hljs-number">80</span>)    <span class="hljs-comment">#注意缩进，缩进不统一也会报错</span><br>circle(<span class="hljs-number">40</span>,<span class="hljs-number">80</span>/<span class="hljs-number">2</span>)<br>fd(<span class="hljs-number">40</span>)<br>circle(<span class="hljs-number">16</span>,<span class="hljs-number">180</span>)<br>fd(<span class="hljs-number">40</span>*<span class="hljs-number">2</span>/<span class="hljs-number">3</span>)<br>done()<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>两种方法比较</li>
+</ul>
+<p>&lt;库名&gt; . &lt;函数名&gt;(&lt;函数参数&gt;) </p>
+<p>&lt;函数名&gt;（函数参数）</p>
+<p> 第一种方法不会出现函数重名问题</p>
+<p> 第二种方法会出现</p>
+<h4 id="import更多用法"><a href="#import更多用法" class="headerlink" title="import更多用法"></a>import更多用法</h4><p>使用import和as保留字共同完成</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#PythonDraw.py</span><br><span class="hljs-keyword">import</span> &lt;库名&gt; <span class="hljs-keyword">as</span> &lt;库别名&gt;   <span class="hljs-comment"># 相当于自定义了一个简便的名字</span><br>&lt;库别名&gt; . &lt;函数名&gt;(&lt;函数参数&gt;) <br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>turtle画笔控制函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">turtle.penup()      <span class="hljs-comment">#抬起画笔，海龟在飞行</span><br>turtle.pendown()    <span class="hljs-comment">#落下画笔，海龟在爬行</span><br>turtle.pensize(<span class="hljs-number">25</span>)  <span class="hljs-comment"># 设置画笔宽度 别名  turtle.width(width)</span><br>turtle.pencolor(<span class="hljs-string">&quot;purple&quot;</span>)  <span class="hljs-comment">#修改画笔颜色，参数字符串小写</span><br><br><span class="hljs-comment">#pencolor(color)的参数可以有三种形式</span><br>颜色字符串   turtle.pencolor(<span class="hljs-string">&quot;purple&quot;</span>)<br>RGB的小数值  turtle.pencolor(<span class="hljs-number">0.62</span>,<span class="hljs-number">0.42</span>,<span class="hljs-number">0.13</span>)<br>RGB的元组值  turtle.pencolor((<span class="hljs-number">0.62</span>,<span class="hljs-number">0.42</span>,<span class="hljs-number">0.13</span>))<br></code></pre></div></td></tr></table></figure>
+
+<p>将海龟想象为画笔</p>
+<p>画笔操作后一直有效，一般成对出现</p>
+<p>turtle运动控制函数</p>
+<p>控制海龟行进方向：走直线或者曲线</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#向前进，走直线</span><br>turtle.forward(d)  别名  turtle.fd(d)<br>d ：行进距离，可以为负数，倒退行进<br><br><span class="hljs-comment">#根据半径r绘制extent角度的弧形</span><br>turtle.circle(r,extent=<span class="hljs-literal">None</span>)  <br>r：默认圆心在海龟左侧r距离的位置<br>extent ：绘制角度，默认是<span class="hljs-number">360</span>度整圆<br></code></pre></div></td></tr></table></figure>
+
+<p>turtle方向控制函数</p>
+<p>控制海龟面对方向：绝对角度和海龟角度</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#当前海龟方向，改变为某一角度方向</span><br>turtle.setheading(angle)   别名  turtle.seth(angle)<br>angle：改变行进绝对方向，海龟走角度<br><br><span class="hljs-comment">#控制海龟向左转或向右转</span><br>turtle.left(angle)<br>turtle.right(angle)<br>angle： 在海归当前行进方向上旋转的角度<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="基本循环语句与range函数"><a href="#基本循环语句与range函数" class="headerlink" title="基本循环语句与range函数"></a>基本循环语句与range函数</h4><p>循环语句</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span>&lt;执行次数&gt; <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(&lt;要执行多少次&gt;):<br>   &lt;被循环执行的语句&gt;<br>    <br><span class="hljs-comment">#range的参数是循环的次数</span><br><span class="hljs-comment">#for in  之间的变量是每次执行的计数，0到&lt;执行次数&gt; - 1</span><br><br>示例：<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):<br>    <span class="hljs-built_in">print</span>(i)<br>输出：<br><span class="hljs-number">0</span><br><span class="hljs-number">1</span><br><span class="hljs-number">2</span><br><span class="hljs-number">3</span><br><span class="hljs-number">4</span><br><span class="hljs-comment">#输出print(&quot;Hello:&quot;,i) 中的逗号在输出时显示为空格</span><br></code></pre></div></td></tr></table></figure>
+
+<p>range函数</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#产生循环计数序列</span><br><span class="hljs-built_in">range</span>(N)  即产生<span class="hljs-number">0</span>到N-<span class="hljs-number">1</span>的整数序列，共N个<br>如：<span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>),则产生<span class="hljs-number">0</span>，<span class="hljs-number">1</span>，<span class="hljs-number">2</span>，<span class="hljs-number">3</span>，<span class="hljs-number">4</span><br><br><span class="hljs-built_in">range</span>(M,N) 即产生M到N-<span class="hljs-number">1</span>的整数序列，共N-M个<br>如：<span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>，<span class="hljs-number">5</span>),则产生<span class="hljs-number">2</span>，<span class="hljs-number">3</span>，<span class="hljs-number">4</span><br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>python蟒蛇绘制代码分析</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#PythonDraw.py</span><br><span class="hljs-keyword">import</span> turtle                   <span class="hljs-comment">#引入了一个turtle绘图库</span><br>turtle.setup(<span class="hljs-number">650</span>,<span class="hljs-number">350</span>,<span class="hljs-number">200</span>,<span class="hljs-number">200</span>)   <span class="hljs-comment">#设立了一个窗体</span><br>turtle.penup()       			<span class="hljs-comment">#将画笔抬起</span><br>turtle.fd(-<span class="hljs-number">250</span>)					<span class="hljs-comment">#海龟倒退250</span><br>turtle.pendown()				<span class="hljs-comment">#放下画笔</span><br>turtle.pensize(<span class="hljs-number">25</span>)				<span class="hljs-comment">#设置画笔宽度</span><br>turtle.pencolor(<span class="hljs-string">&quot;purple&quot;</span>)       <span class="hljs-comment">#设置画笔颜色</span><br>turtle.seth(-<span class="hljs-number">40</span>)                <span class="hljs-comment">#设置画笔起始角度为-40度</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">4</span>):              <span class="hljs-comment">#利用循环绘制路径，循环4次</span><br>    turtle.circle(<span class="hljs-number">40</span>,<span class="hljs-number">80</span>)        <span class="hljs-comment">#先以半径为40像素，绘制80度</span><br>    turtle.circle(-<span class="hljs-number">40</span>,<span class="hljs-number">80</span>)       <span class="hljs-comment">#再以反向40像素为半径，绘制80度</span><br>turrle.circle(<span class="hljs-number">40</span>,<span class="hljs-number">80</span>/<span class="hljs-number">2</span>)          <span class="hljs-comment">#最后以40像素为半径，绘制40度</span><br>turtle.fd(<span class="hljs-number">40</span>)                   <span class="hljs-comment">#再向前走40像素</span><br>turtle.circle(<span class="hljs-number">16</span>,<span class="hljs-number">180</span>)           <span class="hljs-comment">#以16像素为半径，画180度</span><br>turtle.fd(<span class="hljs-number">40</span>*<span class="hljs-number">2</span>/<span class="hljs-number">3</span>)               <span class="hljs-comment">#当前方向向前走80/3像素</span><br>turtle.done()                   <span class="hljs-comment">#手动退出，删掉即自动退出</span><br></code></pre></div></td></tr></table></figure>
+
+<h2 id="python基本数据类型"><a href="#python基本数据类型" class="headerlink" title="python基本数据类型"></a>python基本数据类型</h2><h3 id="0x1数字类型及操作"><a href="#0x1数字类型及操作" class="headerlink" title="0x1数字类型及操作"></a>0x1数字类型及操作</h3><h4 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h4><p>与数学整数概念一致</p>
+<p>pow(x,y)  计算x的y次方，==想算多大算多大==</p>
+<p>四种进制表示：</p>
+<p>十进制：1010、99、-217</p>
+<p>二进制：0b或0B开头  ：  0b0101，-0B1010</p>
+<p>八进制：以0o或0O开头： 0o123，0O456</p>
+<p>十六进制：以0x或0X开头：0x9a，- 0X89</p>
+<h4 id="浮点数类型"><a href="#浮点数类型" class="headerlink" title="浮点数类型"></a>浮点数类型</h4><p>与数学实数概念一致</p>
+<p>浮点数取值范围和小鼠精度都存在限制</p>
+<p>取值范围数量级约±10的308次方，精度数量约10的-16</p>
+<p>浮点数之间的运算存在不确定尾数，不是bug</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">0.1</span> +<span class="hljs-number">0.2</span><br><span class="hljs-number">0.30000000000000004</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>存在不确定尾数的原因</p>
+<p>计算机中是二进制存储的，二进制表示小数可以无限接近0.1，但永远不完全相同</p>
+<p>所以十进制表示的0.1加0.2结果无限接近0.3，但可能存在尾数</p>
+</li>
+</ul>
+<h4 id="round函数"><a href="#round函数" class="headerlink" title="round函数"></a>round函数</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-built_in">round</span>(x,d): 对x四舍五入，d是小数截取位数<br>    <br>示例：<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">round</span>(<span class="hljs-number">0.1</span> + <span class="hljs-number">0.2</span>,<span class="hljs-number">1</span>) == <span class="hljs-number">0.3</span><br><span class="hljs-literal">True</span><br><span class="hljs-comment">#浮点数间运算及比较用round()函数辅助</span><br><span class="hljs-comment">#不确定位数一般在10的-16次方左右，固该函数有效</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h4 id="科学计数法表示浮点数"><a href="#科学计数法表示浮点数" class="headerlink" title="科学计数法表示浮点数"></a>科学计数法表示浮点数</h4><p>格式e表示 a*10的b次方</p>
+<p>例如：4.3e-3  值为0.0043</p>
+<h4 id="复数类型"><a href="#复数类型" class="headerlink" title="==复数类型=="></a>==复数类型==</h4><p>x的平方 = -1 ，那么x的值是？</p>
+<p>定义 ：$j=\sqrt{(-1)}$  </p>
+<p>a + bj 被称为复数，其中a为实部，b是虚部</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>z = <span class="hljs-number">10</span> + <span class="hljs-number">10j</span>   <span class="hljs-comment">#复数类型</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(z)<br>(<span class="hljs-number">10</span>+<span class="hljs-number">10j</span>)<br><br><span class="hljs-meta">&gt;&gt;&gt; </span>a = <span class="hljs-number">10</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(a)<br><span class="hljs-number">10</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h4 id="数值运算操作符"><a href="#数值运算操作符" class="headerlink" title="数值运算操作符"></a>数值运算操作符</h4><ul>
+<li>加减乘除与C相同</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#特别注意</span><br>x / y      <span class="hljs-comment">#结果是浮点数除法</span><br>x // y     <span class="hljs-comment">#结果是整数无小数除法，直接约去小数，不四舍五入</span><br>示例：<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">3</span> // <span class="hljs-number">4</span><br><span class="hljs-number">0</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">7</span>/<span class="hljs-number">2</span><br><span class="hljs-number">3.5</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">7</span>//<span class="hljs-number">2</span><br><span class="hljs-number">3</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">19</span> / <span class="hljs-number">5</span><br><span class="hljs-number">3.8</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">19</span>//<span class="hljs-number">5</span><br><span class="hljs-number">3</span><br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>模运算(取余运算)与C相同</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">x % y  <br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>幂运算</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">x ** y  <span class="hljs-comment">#表示x的y次幂，当y是小数时，做开方运算</span><br>示例：<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">2</span> ** <span class="hljs-number">10</span><br><span class="hljs-number">1024</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">49</span> ** <span class="hljs-number">0.5</span><br><span class="hljs-number">7.0</span><br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>二元操作符对应的增强赋值操作</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">x op=y  相当于  x = x op y<br><span class="hljs-comment">#op 表示二元操作符，如 +、 -、 *、 /、 //、%、**</span><br><span class="hljs-comment">#与C中的  += 意思相同</span><br></code></pre></div></td></tr></table></figure>
+
+<p>不同数据类型间可以混合运算，生成结果为“最宽”类型</p>
+<p>注意可能会产生不确定的尾数</p>
+<h4 id="数值运算函数"><a href="#数值运算函数" class="headerlink" title="数值运算函数"></a>数值运算函数</h4><table>
+<thead>
+<tr>
+<th>函数及使用</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abs(x)</td>
+<td>绝对值，x的绝对值</td>
+</tr>
+<tr>
+<td>divmod(x,y)</td>
+<td>商余,(x//y,x%y),同时输出商和余数</td>
+</tr>
+<tr>
+<td>pow(x,y,z)</td>
+<td>幂余运算，(x**y)%z，参数z可省略</td>
+</tr>
+<tr>
+<td>round(x,d)</td>
+<td>四舍五入，d是保留小数位数，默认为零</td>
+</tr>
+<tr>
+<td>max(a,b,c,…)</td>
+<td>返回数字序列中最大值</td>
+</tr>
+<tr>
+<td>min(a,b,c,…)</td>
+<td>返回数字序列最小值</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">abs</span>(-<span class="hljs-number">1</span>)<br><span class="hljs-number">1</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">divmod</span>(<span class="hljs-number">10</span>,<span class="hljs-number">3</span>)<br>(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">pow</span>(<span class="hljs-number">2</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>)<br><span class="hljs-number">4</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">pow</span>(<span class="hljs-number">2</span>,<span class="hljs-number">10</span>)<br><span class="hljs-number">1024</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">round</span>(<span class="hljs-number">10.12345</span>,<span class="hljs-number">4</span>)<br><span class="hljs-number">10.1235</span> <br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">max</span>(<span class="hljs-number">1</span>,<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">2</span>,<span class="hljs-number">6</span>)<br><span class="hljs-number">9</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">min</span>(<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">23</span>)<br><span class="hljs-number">1</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="数字类型转换函数"><a href="#数字类型转换函数" class="headerlink" title="数字类型转换函数"></a>数字类型转换函数</h4><table>
+<thead>
+<tr>
+<th>函数及使用</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int(x)</td>
+<td>转变为整型，取整数部分</td>
+</tr>
+<tr>
+<td>float(x)</td>
+<td>转变为浮点数，增加小数部分</td>
+</tr>
+<tr>
+<td>complex(x)</td>
+<td>将x变成复数，增加虚数部分</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">int</span>(<span class="hljs-number">4.35</span>)<br><span class="hljs-number">4</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">float</span>(<span class="hljs-number">1.23</span>)<br><span class="hljs-number">1.23</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">float</span>(<span class="hljs-number">1</span>)<br><span class="hljs-number">1.0</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">complex</span>(<span class="hljs-number">5</span>)<br>(<span class="hljs-number">5</span>+<span class="hljs-number">0j</span>)<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="0x2-【实例】-天天向上的力量"><a href="#0x2-【实例】-天天向上的力量" class="headerlink" title="0x2 【实例】 天天向上的力量"></a>0x2 【实例】 天天向上的力量</h3><p>基本问题，持续价值</p>
+<p>1.01的365次方</p>
+<p>0.99的365次方</p>
+<h4 id="问题1-千分之一的力量"><a href="#问题1-千分之一的力量" class="headerlink" title="问题1  千分之一的力量"></a>问题1  千分之一的力量</h4><p>1.001的365次方</p>
+<p>0.999的365次方</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#DaydayupQ1.py</span><br>x = <span class="hljs-built_in">pow</span>(<span class="hljs-number">1.001</span>,<span class="hljs-number">365</span>)<br>y = <span class="hljs-built_in">pow</span>(<span class="hljs-number">0.999</span>,<span class="hljs-number">365</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;向上：&#123;:.2f&#125;,向下：&#123;:.2f&#125;&quot;</span>.<span class="hljs-built_in">format</span>(x,y))<br><br>输出：<br>向上：<span class="hljs-number">1.44</span>,向下：<span class="hljs-number">0.69</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="问题2-千分之五和1"><a href="#问题2-千分之五和1" class="headerlink" title="问题2 千分之五和1%"></a>问题2 千分之五和1%</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#DaydayupQ1.py</span><br>dayfactor = <span class="hljs-number">0.005</span>  <br>dayup = <span class="hljs-built_in">pow</span>(<span class="hljs-number">1</span> + dayfactor,<span class="hljs-number">365</span>)<br>daydown = <span class="hljs-built_in">pow</span>(<span class="hljs-number">1</span> - dayfactor,<span class="hljs-number">365</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;向上：&#123;:.2f&#125;,向下：&#123;:.2f&#125;&quot;</span>.<span class="hljs-built_in">format</span>(dayup,daydown))<br><br>输出：<br>向上：<span class="hljs-number">6.17</span>,向下：<span class="hljs-number">0.16</span><br><br><span class="hljs-comment">#DaydayupQ1.py</span><br>dayfactor = <span class="hljs-number">0.01</span><br>dayup = <span class="hljs-built_in">pow</span>(<span class="hljs-number">1</span> + dayfactor,<span class="hljs-number">365</span>)<br>daydown = <span class="hljs-built_in">pow</span>(<span class="hljs-number">1</span> - dayfactor,<span class="hljs-number">365</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;向上：&#123;:.2f&#125;,向下：&#123;:.2f&#125;&quot;</span>.<span class="hljs-built_in">format</span>(dayup,daydown))<br><br>输出：<br>向上：<span class="hljs-number">37.78</span>,向下：<span class="hljs-number">0.03</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="问题3-工作日力量"><a href="#问题3-工作日力量" class="headerlink" title="问题3 工作日力量"></a>问题3 工作日力量</h4><p>一周  5天工作日每天提升1%，休息日2天每天退步1%</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#DaydayupQ3.py</span><br>dayup = <span class="hljs-number">1.0</span><br>dayfactor = <span class="hljs-number">0.01</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">365</span>):<br>    <span class="hljs-keyword">if</span> i % <span class="hljs-number">7</span> <span class="hljs-keyword">in</span> [<span class="hljs-number">6</span>,<span class="hljs-number">0</span>]:<br>        dayup = dayup *(<span class="hljs-number">1</span>-dayfactor)<br>    <span class="hljs-keyword">else</span>:<br>        dayup = dayup *(<span class="hljs-number">1</span>+dayfactor)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;一年后的成长：&#123;:.2f&#125;倍&quot;</span>.<span class="hljs-built_in">format</span>(dayup))<br>输出：<br>一年后的成长：<span class="hljs-number">4.63</span>倍<br></code></pre></div></td></tr></table></figure>
+
+<p>结论：问题3的结果4.63倍介于，问题1的365天每天千分之一的1.44倍和问题2的365每天千分之五6.17倍之间。</p>
+<h4 id="问题4-工作日的努力"><a href="#问题4-工作日的努力" class="headerlink" title="问题4 工作日的努力"></a>问题4 工作日的努力</h4><p>A  每天1% </p>
+<p>B  工作日提升x，休息日下降1%</p>
+<p>问当x为多少时，A与B的提升相等？</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/sM0kwV"><img src="https://s3.ax1x.com/2021/01/09/sM0kwV.png" srcset="/img/loading.gif" lazyload alt="sM0kwV.png"></a></p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#DaydayupQ4.py</span><br><span class="hljs-comment">#def用来定义函数，占位符df是dayfactor的简写。</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dayUP</span>(<span class="hljs-params">df</span>):</span>      <span class="hljs-comment">#函数dayUP</span><br>    dayup = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">365</span>):<br>        <span class="hljs-keyword">if</span> i % <span class="hljs-number">7</span> <span class="hljs-keyword">in</span>[<span class="hljs-number">6</span>,<span class="hljs-number">0</span>]:<br>            dayup = dayup*(<span class="hljs-number">1</span> - <span class="hljs-number">0.01</span>)<br>        <span class="hljs-keyword">else</span>:<br>            dayup = dayup * (<span class="hljs-number">1</span> + df)<br>    <span class="hljs-keyword">return</span> dayup<br><span class="hljs-comment">#根据df参数不同，函数内部会返回对应的结果，返回dayup</span><br><br>dayfactor = <span class="hljs-number">0.01</span><br><span class="hljs-keyword">while</span> dayUP(dayfactor) &lt; <span class="hljs-number">37.78</span>:  <span class="hljs-comment">#调用了上述函数</span><br>    dayfactor += <span class="hljs-number">0.001</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;工作日的努力参数是：&#123;:.3f&#125;&quot;</span>.<span class="hljs-built_in">format</span>(dayfactor)) <span class="hljs-comment">#输出比上的结果</span><br><br>输出：<br>工作日的努力参数是：<span class="hljs-number">0.019</span><br></code></pre></div></td></tr></table></figure>
+
+<p>结论：工作日要努力约2%，才能跟不休息每天学1%的人相同</p>
+<h3 id="0x3-字符串类型及操作"><a href="#0x3-字符串类型及操作" class="headerlink" title="0x3 字符串类型及操作"></a>0x3 字符串类型及操作</h3><h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>由一对 ‘  ’ 或 ” “ 包含的一连串字符</p>
+<p>可以索引”  “[ ]</p>
+<h4 id="字符串有四种表示方法"><a href="#字符串有四种表示方法" class="headerlink" title="字符串有四种表示方法"></a>字符串有四种表示方法</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">前两种<br><span class="hljs-string">&quot;请输如带有符号的温度值&quot;</span>  或者   <span class="hljs-string">&#x27;C&#x27;</span><br><br>后两种<br><span class="hljs-string">&#x27;&#x27;&#x27; Python</span><br><span class="hljs-string">             语言 &#x27;&#x27;&#x27;</span>  <br>或者<br><span class="hljs-string">&quot;&quot;&quot; Python</span><br><span class="hljs-string">             语言  &quot;&quot;&quot;</span><br><br><span class="hljs-comment">#注释也是&#x27;&#x27;&#x27; &#x27;&#x27;&#x27;，是因为没有被作用的字符串则被认为是注释</span><br></code></pre></div></td></tr></table></figure>
+
+<p>如果要在字符串内部表示 “ 则用 ‘ 构成字符串</p>
+<p>如果要在字符串内部表示 ’ 则用 “ 构成字符串</p>
+<p>如果 ‘ 和 ” 都要在字符串内部表示，则用  ’‘’  构成字符串  </p>
+<p><img src="https://s3.ax1x.com/2021/01/06/sVUaSU.png" srcset="/img/loading.gif" lazyload alt="image-20210106182910519"></p>
+<h4 id="索引-、-切片"><a href="#索引-、-切片" class="headerlink" title="索引 、 切片"></a>索引 、 切片</h4><p>切片高级用法</p>
+<p>&lt;字符串&gt;[M:N] ，M缺失变送至开头，缺失表示至结尾</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;这是一个字符串&quot;</span>[:<span class="hljs-number">3</span>]<br><span class="hljs-string">&#x27;这是一&#x27;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>&lt;字符串&gt;[M:N:K]，使用[M:N:K]根据步长对字符串切片，k表示每移几位进行切片</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;123456789&quot;</span>[<span class="hljs-number">1</span>:<span class="hljs-number">7</span>:<span class="hljs-number">2</span>]   <br><span class="hljs-string">&#x27;246&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;123456789&quot;</span>[::-<span class="hljs-number">1</span>]  <span class="hljs-comment">#可实现逆序的效果</span><br><span class="hljs-string">&#x27;987654321&#x27;</span><br><br>更多测试<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;123456789&quot;</span>[<span class="hljs-number">2</span>::-<span class="hljs-number">1</span>]<br><span class="hljs-string">&#x27;321&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;123456789&quot;</span>[<span class="hljs-number">0</span>::-<span class="hljs-number">1</span>]<br><span class="hljs-string">&#x27;1&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;123456789&quot;</span>[:<span class="hljs-number">5</span>:-<span class="hljs-number">1</span>]<br><span class="hljs-string">&#x27;987&#x27;</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="转义符"><a href="#转义符" class="headerlink" title="转义符 \"></a>转义符 \</h4><p>转义符表达特定字符的本意</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">&gt;&gt;&gt;<span class="hljs-string">&quot;这里有个双引号\&quot;  &quot;</span><br><span class="hljs-string">&#x27;这里有个双引号&quot;  &#x27;</span><br><br>\b 回退  \n换行  \r回车<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h4 id="字符串操作符"><a href="#字符串操作符" class="headerlink" title="字符串操作符"></a>字符串操作符</h4><table>
+<thead>
+<tr>
+<th>操作符及使用</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x + y</td>
+<td align="left">连接两个字符串x和y</td>
+</tr>
+<tr>
+<td>n *x</td>
+<td align="left">复制n次字符串x</td>
+</tr>
+<tr>
+<td>x in s</td>
+<td align="left">如果x是s的子串，返回true，否则返回False</td>
+</tr>
+</tbody></table>
+<h4 id="获取星期字符串"><a href="#获取星期字符串" class="headerlink" title="获取星期字符串"></a>获取星期字符串</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#WeekNamePrintV1.py</span><br>weekStr = <span class="hljs-string">&quot;星期一星期二星期三星期四星期五星期六星期日&quot;</span><br>weekID = <span class="hljs-built_in">eval</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入星期数字(1-7):&quot;</span>))<br>pos = (weekId - <span class="hljs-number">1</span>) * <span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(weekStr[pos:pos+<span class="hljs-number">3</span>])<br><br>改进版<br><span class="hljs-comment">#WeekNamePrintV1.py</span><br>weekStr = <span class="hljs-string">&quot;一二三四五六日&quot;</span><br>weekID = <span class="hljs-built_in">eval</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入星期数字(1-7):&quot;</span>))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;星期&quot;</span>+weekStr[weekID])<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h4 id="字符串处理函数"><a href="#字符串处理函数" class="headerlink" title="字符串处理函数"></a>字符串处理函数</h4><table>
+<thead>
+<tr>
+<th>函数及使用</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>len(x)</td>
+<td>返回字符串的长度</td>
+</tr>
+<tr>
+<td>str(x)</td>
+<td>返回任意类型x对应的字符串形式,与eval()相对应</td>
+</tr>
+<tr>
+<td>hen(x) 或oct(x)</td>
+<td>整数x的十六进制或八进制小写形式字符串</td>
+</tr>
+<tr>
+<td>chr(u)</td>
+<td>u为Unicode编码，返回其对应的字符</td>
+</tr>
+<tr>
+<td>ord(x)</td>
+<td>x为字符，返回其对应的Unicode编码</td>
+</tr>
+</tbody></table>
+<h4 id="Unicode编码"><a href="#Unicode编码" class="headerlink" title="Unicode编码"></a>Unicode编码</h4><p>python字符串的编码方式，适用于各国语言</p>
+<p>从0到1114111(0x10FFFF)空间，每个编码对应一个字符</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#示例1</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;1 + 1 = 2 &quot;</span> + <span class="hljs-built_in">chr</span>(<span class="hljs-number">10004</span>)<br><span class="hljs-string">&#x27;1 + 1 = 2 ✔&#x27;</span><br><br><span class="hljs-comment">#示例2</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">chr</span>(<span class="hljs-number">9801</span>)<br><span class="hljs-string">&#x27;♉&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">str</span>(<span class="hljs-built_in">ord</span>(<span class="hljs-string">&quot;♉&quot;</span>))<br><span class="hljs-string">&#x27;9801&#x27;</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h4 id="十二星座"><a href="#十二星座" class="headerlink" title="十二星座"></a>十二星座</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">12</span>):<br>	<span class="hljs-built_in">print</span>(<span class="hljs-built_in">chr</span>(<span class="hljs-number">9800</span> +i))   <span class="hljs-comment">#无end参数时换行</span><br><br>	<br>♈<br>♉<br>♊<br>♋<br>♌<br>♍<br>♎<br>♏<br>♐<br>♑<br>♒<br>♓<br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">12</span>):<br>	<span class="hljs-built_in">print</span>(<span class="hljs-built_in">chr</span>(<span class="hljs-number">9800</span> +i), end = <span class="hljs-string">&quot;&quot;</span>)  <span class="hljs-comment">#end参数 = 空时，不换行</span><br><br>	<br>♈♉♊♋♌♍♎♏♐♑♒♓<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h4 id="字符串处理方法"><a href="#字符串处理方法" class="headerlink" title="字符串处理方法"></a>字符串处理方法</h4><h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><p>“方法”在编程中是专有名词</p>
+<p>方法特指  a . b( ) 风格中的函数b( )</p>
+<p>方法本身也是函数，但与a有关，b是a提供的函数</p>
+<ul>
+<li><p>面向对象中</p>
+<p>a为对象，b为对象能够提供的功能</p>
+<p>方法必用 . 的方式执行</p>
+</li>
+</ul>
+<h5 id="一些以方法形式提供的字符串处理功能"><a href="#一些以方法形式提供的字符串处理功能" class="headerlink" title="一些以方法形式提供的字符串处理功能"></a>一些以方法形式提供的字符串处理功能</h5><table>
+<thead>
+<tr>
+<th>方法及使用</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>str . lower()或str.upper()</td>
+<td>返回字符串的副本，全部字符小写/大写</td>
+</tr>
+<tr>
+<td>str . split(sep）</td>
+<td>返回一个列表，由str根据sep被分隔的部分组成</td>
+</tr>
+<tr>
+<td>str . count(sub)</td>
+<td>返回子串sub在str中出现的次数</td>
+</tr>
+<tr>
+<td>str.replace(old,new)</td>
+<td>返回字符串str副本，所有old子串被替换为new</td>
+</tr>
+<tr>
+<td>str.center(width[,fillchar])</td>
+<td>字符串str根据宽度with居中，fillchar可选,宽度是新的整个字符串的宽度</td>
+</tr>
+<tr>
+<td>str.strip(chars)</td>
+<td>从str中去掉在其左侧和右侧chars中列出的字符</td>
+</tr>
+<tr>
+<td>str.join(iter)</td>
+<td>在iter变量除最后元素外每个元素后增加一个str</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;abcdefg&quot;</span>.upper()<br><span class="hljs-string">&#x27;ABCDEFG&#x27;</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;a,b,c,d,e,f,g&quot;</span>.split(<span class="hljs-string">&quot;,&quot;</span>)     <span class="hljs-comment">#默认是空格</span><br>[<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-string">&#x27;f&#x27;</span>, <span class="hljs-string">&#x27;g&#x27;</span>]<br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;an apple is bad&quot;</span>.count(<span class="hljs-string">&quot;a&quot;</span>)<br><span class="hljs-number">3</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;abcdefg&quot;</span>.split(<span class="hljs-string">&quot;c&quot;</span>)  <br>[<span class="hljs-string">&#x27;ab&#x27;</span>, <span class="hljs-string">&#x27;defg&#x27;</span>]<br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;python&quot;</span>.replace(<span class="hljs-string">&quot;n&quot;</span>,<span class="hljs-string">&quot;n123.io&quot;</span>)<br><span class="hljs-string">&#x27;python123.io&#x27;</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;an&quot;</span>.center(<span class="hljs-number">10</span>,<span class="hljs-string">&quot;=&quot;</span>)<br><span class="hljs-string">&#x27;====an====&#x27;</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;=python =&quot;</span>.strip(<span class="hljs-string">&quot; =np&quot;</span>)<br><span class="hljs-string">&#x27;ytho&#x27;</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;,&quot;</span>.join(<span class="hljs-string">&quot;12345&quot;</span>)<br><span class="hljs-string">&#x27;1,2,3,4,5&#x27;</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h5 id="字符串类型的格式化"><a href="#字符串类型的格式化" class="headerlink" title="字符串类型的格式化"></a>字符串类型的格式化</h5><p>格式化是对字符串进行格式表达的方式</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">&lt;模板字符串&gt;.<span class="hljs-built_in">format</span>(&lt;逗号分隔的参数&gt;)<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="槽"><a href="#槽" class="headerlink" title="槽"></a>槽</h5><p>一对 { } 表示槽</p>
+<p>不同的对应位置有不同的输出</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">示例：<br>“&#123;&#125;:计算机&#123;&#125;的CPU占用率为&#123;&#125;%”.<span class="hljs-built_in">format</span>(<span class="hljs-string">&quot;2018-10-10&quot;</span>,<span class="hljs-string">&quot;C&quot;</span>,<span class="hljs-number">10</span>)  <span class="hljs-comment">#其中有三个槽，与C中输出的位置对应相同，默认按顺序一一对应</span><br><br>“&#123;<span class="hljs-number">0</span>&#125;:计算机&#123;<span class="hljs-number">1</span>&#125;的CPU占用率为&#123;<span class="hljs-number">2</span>&#125;%”.<span class="hljs-built_in">format</span>(<span class="hljs-string">&quot;2018-10-10&quot;</span>,<span class="hljs-string">&quot;C&quot;</span>,<span class="hljs-number">10</span>)  <span class="hljs-comment">#对应位置</span><br>    <br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&#123;0&#125;:计算机&#123;1&#125;的CPU占用率为&#123;2&#125;%&quot;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-string">&quot;2018-10-10&quot;</span>,<span class="hljs-string">&quot;C&quot;</span>,<span class="hljs-number">10</span>))<br><span class="hljs-number">2018</span>-<span class="hljs-number">10</span>-<span class="hljs-number">10</span>:计算机C的CPU占用率为<span class="hljs-number">10</span>%<br>    <br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&#123;1&#125;:计算机&#123;0&#125;的CPU占用率为&#123;2&#125;%&quot;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-string">&quot;2018-10-10&quot;</span>,<span class="hljs-string">&quot;C&quot;</span>,<span class="hljs-number">10</span>)) <span class="hljs-comment">#交换后，输出也交换</span><br>C:计算机<span class="hljs-number">2018</span>-<span class="hljs-number">10</span>-<span class="hljs-number">10</span>的CPU占用率为<span class="hljs-number">10</span>%<br>    <br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&#123;&#125;:计算机&#123;&#125;的CPU占用率为&#123;&#125;%&quot;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-string">&quot;2018-10-10&quot;</span>,<span class="hljs-string">&quot;C&quot;</span>,<span class="hljs-number">10</span>))  <span class="hljs-comment">#默认按顺序对应</span><br><span class="hljs-number">2018</span>-<span class="hljs-number">10</span>-<span class="hljs-number">10</span>:计算机C的CPU占用率为<span class="hljs-number">10</span>%<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h5 id="format-方法的格式控制"><a href="#format-方法的格式控制" class="headerlink" title="format()方法的格式控制"></a>format()方法的格式控制</h5><p>类似于C输出的格式控制</p>
+<table>
+<thead>
+<tr>
+<th align="center">：</th>
+<th align="center">&lt;填充&gt;</th>
+<th align="center">&lt;对齐&gt;</th>
+<th align="center">&lt;宽度&gt;</th>
+<th align="center">&lt;,&gt;</th>
+<th>&lt; . 精度&gt;</th>
+<th>&lt;类型&gt;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">引导符号</td>
+<td align="center">用于填充的单个字符</td>
+<td align="center">&lt; 左对齐 ，&gt; 右对齐，^ 居中对齐</td>
+<td align="center">槽设定的输出宽度</td>
+<td align="center">数字的千位分隔符</td>
+<td>浮点数小数精度或字符串最大输出长度</td>
+<td>整数类型b,c,d,o,x,X浮点数类型e，E，f，%</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">示例：<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;&#123;0:=^20&#125;&quot;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-string">&quot;PYTHON&quot;</span>)<br><span class="hljs-string">&#x27;=======PYTHON=======&#x27;</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;&#123;1:=^20&#125;&quot;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-string">&quot;PYTHON&quot;</span>,<span class="hljs-string">&quot;ABC&quot;</span>)<br><span class="hljs-string">&#x27;========ABC=========&#x27;</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;&#123;1:=&lt;20&#125;&quot;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-string">&quot;PYTHON&quot;</span>,<span class="hljs-string">&quot;ABC&quot;</span>)<br><span class="hljs-string">&#x27;ABC=================&#x27;</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;&#123;1:20&#125;&quot;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-string">&quot;PYTHON&quot;</span>,<span class="hljs-string">&quot;ABC&quot;</span>)<br><span class="hljs-string">&#x27;ABC                 &#x27;</span>             <span class="hljs-comment">#默认填充空格</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;&#123;0:,.2f&#125;&quot;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-number">1234567.8910</span>)<br><span class="hljs-string">&#x27;1,234,567.89&#x27;</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;&#123;0:b&#125;,&#123;0:c&#125;,&#123;0:d&#125;,&#123;0:o&#125;,&#123;0:x&#125;,&#123;0:X&#125;&quot;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-number">425</span>)   <span class="hljs-comment">#不同进制表示</span><br><span class="hljs-string">&#x27;110101001,Ʃ,425,651,1a9,1A9&#x27;</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&quot;&#123;0:e&#125;,&#123;0:E&#125;,&#123;0:f&#125;,&#123;0:%&#125;&quot;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-number">3.14</span>)<br><span class="hljs-string">&#x27;3.140000e+00,3.140000E+00,3.140000,314.000000%&#x27;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>==中文可以放到字符串中，不能在语法中出现==</p>
+<h3 id="0x4-time库的使用"><a href="#0x4-time库的使用" class="headerlink" title="0x4 time库的使用"></a>0x4 time库的使用</h3><h4 id="time库基本介绍"><a href="#time库基本介绍" class="headerlink" title="time库基本介绍"></a>time库基本介绍</h4><p>python中的标准库</p>
+<p>计算机时间的表达</p>
+<p>提供获取系统时间并格式化输出功能</p>
+<p>提供系统级精确计时功能没用于程序性能分析</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br>time.&lt;b&gt;()<br><span class="hljs-comment">#包括三类函数</span><br><span class="hljs-comment">#时间获取： time()  ctime()  gmtime()</span><br><span class="hljs-comment">#时间格式化：  strftime()  strtime()</span><br><span class="hljs-comment">#程序计时：  sleep(), perf_counter()</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="时间获取"><a href="#时间获取" class="headerlink" title="时间获取"></a>时间获取</h4><table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">time()</td>
+<td align="center">获取当前时间戳，即计算机内部时间值</td>
+</tr>
+<tr>
+<td align="center">ctime()</td>
+<td align="center">获取当前时间，格式是，星期、‘月、日、时间、年份’</td>
+</tr>
+<tr>
+<td align="center">gmtime()</td>
+<td align="center">获取当前时间，表示为计算机程序可编程利用的时间格式</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>time.time()<br><span class="hljs-number">1610244498.6032174</span>   <span class="hljs-comment">#表示从1970年1月1日0：00 开始至现在时刻的以秒为单位的数值</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span>time.ctime()<br><span class="hljs-string">&#x27;Sun Jan 10 10:11:36 2021&#x27;</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span>time.gmtime()<br>time.struct_time(tm_year=<span class="hljs-number">2021</span>, tm_mon=<span class="hljs-number">1</span>, tm_mday=<span class="hljs-number">10</span>, tm_hour=<span class="hljs-number">2</span>, tm_min=<span class="hljs-number">29</span>, tm_sec=<span class="hljs-number">12</span>, tm_wday=<span class="hljs-number">6</span>, tm_yday=<span class="hljs-number">10</span>, tm_isdst=<span class="hljs-number">0</span>)<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h4 id="时间格式化"><a href="#时间格式化" class="headerlink" title="时间格式化"></a>时间格式化</h4><p>类似字符串格式化，需要展示模板</p>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">strftime(tpl,ts)</td>
+<td align="center">tpl是格式化模板字符串，用来定义输出效果，ts是计算机内部时间类型变量</td>
+</tr>
+<tr>
+<td align="center">%Y</td>
+<td align="center">年份 0000~9999</td>
+</tr>
+<tr>
+<td align="center">%m</td>
+<td align="center">月份 01~12</td>
+</tr>
+<tr>
+<td align="center">%B</td>
+<td align="center">月份名称 January ~December</td>
+</tr>
+<tr>
+<td align="center">%b</td>
+<td align="center">月份名称缩写 Jan ~ Dec</td>
+</tr>
+<tr>
+<td align="center">%d</td>
+<td align="center">日期 01~31</td>
+</tr>
+<tr>
+<td align="center">%A</td>
+<td align="center">星期 Monday ~ Sunday</td>
+</tr>
+<tr>
+<td align="center">%a</td>
+<td align="center">星期缩写 Mon ~ Sun</td>
+</tr>
+<tr>
+<td align="center">%H</td>
+<td align="center">小时  00 ~ 23</td>
+</tr>
+<tr>
+<td align="center">%I</td>
+<td align="center">小时  01 ~ 12</td>
+</tr>
+<tr>
+<td align="center">%p</td>
+<td align="center">上下午  AM，PM</td>
+</tr>
+<tr>
+<td align="center">%M</td>
+<td align="center">分钟  00 ~ 59</td>
+</tr>
+<tr>
+<td align="center">%S</td>
+<td align="center">秒钟  00 ~ 59</td>
+</tr>
+<tr>
+<td align="center">strptime(str,tpl)</td>
+<td align="center">str是字符串形式的时间值，tpl是格式化模板字符串，用来定义输入效果</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>time.strftime(<span class="hljs-string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>,t)<br><span class="hljs-string">&#x27;2021-01-10 02:37:19&#x27;</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span>time.strptime(<span class="hljs-string">&#x27;2021-01-10 02:37:19&#x27;</span>,<span class="hljs-string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)<br>time.struct_time(tm_year=<span class="hljs-number">2021</span>, tm_mon=<span class="hljs-number">1</span>, tm_mday=<span class="hljs-number">10</span>, tm_hour=<span class="hljs-number">2</span>, tm_min=<span class="hljs-number">37</span>, tm_sec=<span class="hljs-number">19</span>, tm_wday=<span class="hljs-number">6</span>, tm_yday=<span class="hljs-number">10</span>, tm_isdst=-<span class="hljs-number">1</span>)<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h4 id="程序计时运用"><a href="#程序计时运用" class="headerlink" title="程序计时运用"></a>程序计时运用</h4><p>测量起止动作所经历的时间</p>
+<p>测量时间函数：perf_counter()</p>
+<p>产生时间函数：sleep()</p>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">perf_counter()</td>
+<td align="center">返回一个CPU级别的精确时间计数值，单位为秒。由于这个计数值起点不确定，连续调用差值才有意义</td>
+</tr>
+<tr>
+<td align="center">sleep(s)</td>
+<td align="center">s 拟休眠时间，单位是秒，可以是浮点数</td>
+</tr>
+</tbody></table>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><span class="hljs-meta">&gt;&gt;&gt; </span>start = time.perf_counter()<br><span class="hljs-meta">&gt;&gt;&gt; </span>end = time.perf_counter()<br><span class="hljs-meta">&gt;&gt;&gt; </span>end - start<br><span class="hljs-number">21.654742400000032</span><br><br><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wait</span>():</span><br>    time.sleep(<span class="hljs-number">3.3</span>)<br><br>    <br><span class="hljs-meta">&gt;&gt;&gt; </span>wait()   <span class="hljs-comment"># 这里则表示调用函数wait，使程序等待3.3秒再结束</span><br>    <br>    <br></code></pre></div></td></tr></table></figure>
+
+<h3 id="0x5-【实列】-文本进度条"><a href="#0x5-【实列】-文本进度条" class="headerlink" title="0x5 【实列】 文本进度条"></a>0x5 【实列】 文本进度条</h3><h4 id="文本进度条问题要求："><a href="#文本进度条问题要求：" class="headerlink" title="文本进度条问题要求："></a>文本进度条问题要求：</h4><p>采用字符串方式打印可以动态变化的文本进度条</p>
+<p>进度条需要能在一行中逐渐变化</p>
+<p>采用sleep()模拟一个持续进度</p>
+<p>####初步结构</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#TExtPorBarV1.py</span><br><span class="hljs-keyword">import</span> time<br>scale = <span class="hljs-number">10</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;------执行开始------&quot;</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(scale +<span class="hljs-number">1</span>):<br>    a = <span class="hljs-string">&#x27;*&#x27;</span> * i<br>    b = <span class="hljs-string">&#x27;.&#x27;</span> * (scale - i)<br>    c = (i/scale)*<span class="hljs-number">100</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&quot;</span>.<span class="hljs-built_in">format</span>(c,a,b))<br>    time.sleep(<span class="hljs-number">0.1</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;------执行结束------&quot;</span>)    <br><br>输出<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h4 id="文本进度条的单行动态刷新"><a href="#文本进度条的单行动态刷新" class="headerlink" title="文本进度条的单行动态刷新"></a>文本进度条的单行动态刷新</h4><p>刷新的本质是：用后打印的字符覆盖之前的字符</p>
+<p>不能换行：print()需要被控制</p>
+<p>要能回退：打印后光标退回到之前的位置\r</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#TextProBarV1.py</span><br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">101</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\r&#123;:3&#125;%&quot;</span>.<span class="hljs-built_in">format</span>(i),end=<span class="hljs-string">&quot;&quot;</span>)<br>    time.sleep(<span class="hljs-number">0.1</span>)<br>    <br>输出：<br>IDLE输出会将每一个结果输出，用cmd命令提示符运行即可看到效果<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h4 id="完整文本进度代码"><a href="#完整文本进度代码" class="headerlink" title="完整文本进度代码"></a>完整文本进度代码</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#TExtPorBarV1.py</span><br><span class="hljs-keyword">import</span> time<br>scale = <span class="hljs-number">50</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;执行开始&quot;</span>.center(scale//<span class="hljs-number">2</span>))<br>start = time.perf_counter()<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(scale +<span class="hljs-number">1</span>):<br>    a = <span class="hljs-string">&#x27;*&#x27;</span> * i<br>    b = <span class="hljs-string">&#x27;.&#x27;</span> * (scale - i)<br>    c = (i/scale)*<span class="hljs-number">100</span><br>    dur = time.perf_counter() - start<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\r&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&#123;:.2f&#125;s&quot;</span>.<span class="hljs-built_in">format</span>(c,a,b,dur),end=<span class="hljs-string">&quot;&quot;</span>)<br>    time.sleep(<span class="hljs-number">0.1</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\n&quot;</span>+<span class="hljs-string">&quot;执行结束&quot;</span>.center(scale//<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;-&#x27;</span>))    <br>time.sleep(<span class="hljs-number">1</span>)<br><br>输出：<br>cmd输出<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h4 id="举一反三"><a href="#举一反三" class="headerlink" title="举一反三"></a>举一反三</h4><p>比较不同排序方法的时间</p>
+<p>进图条扩展</p>
+<p>在任何运行时间需要较长的程序中增加进度条</p>
+<p>在任何希望提高用户体验的应用中增加进度条</p>
+<p>进度条是人机交互的纽带之一</p>
+<h4 id="文本进度条的不同设计函数"><a href="#文本进度条的不同设计函数" class="headerlink" title="文本进度条的不同设计函数"></a>文本进度条的不同设计函数</h4><p><a target="_blank" rel="noopener" href="https://imgchr.com/i/slD9at"><img src="https://s3.ax1x.com/2021/01/10/slD9at.png" srcset="/img/loading.gif" lazyload alt="slD9at.png"></a></p>
+<p>结论：开始慢，后来速度随着进度增加的函数更符合人的心理期望</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Python/">Python</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/13/Python2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">（二）Python基本语法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/13/Python5/">
+                        <span class="hidden-mobile">（五）Python程序设计方法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"UrMBdkpVtSriHxFtNjQRvPqm-gzGzoHsz","appKey":"rLGXsY7AM0Ym431NbB2fCRpX","path":"window.location.pathname","placeholder":"发一条友善的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
