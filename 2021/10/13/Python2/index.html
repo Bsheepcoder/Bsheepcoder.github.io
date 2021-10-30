@@ -23,14 +23,14 @@
 <meta property="og:site_name" content="Q&#39;s blog">
 <meta property="og:description" content="主要学习了mooc中蒿天老师的视频的笔记，仅供参考。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/06/sVtm7t.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/06/sVUaSU.png">
+<meta property="og:image" content="https://i.loli.net/2021/10/28/dt7sW4R9ParCmGc.png">
+<meta property="og:image" content="https://i.loli.net/2021/10/28/SRUsnxKwqJWeYgX.png">
 <meta property="article:published_time" content="2021-10-12T23:17:32.001Z">
-<meta property="article:modified_time" content="2021-10-11T01:31:08.000Z">
+<meta property="article:modified_time" content="2021-10-28T06:33:25.073Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s3.ax1x.com/2021/01/06/sVtm7t.png">
+<meta name="twitter:image" content="https://i.loli.net/2021/10/28/dt7sW4R9ParCmGc.png">
   
   <title>（二）Python基本语法 - Q&#39;s blog</title>
 
@@ -249,7 +249,7 @@
             
               <p class="note note-info">
                 
-                  更新于：2021年10月11日 上午
+                  更新于：2021年10月28日 下午
                 
               </p>
             
@@ -278,7 +278,7 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#TempConvert.py   </span><br>TempStr = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入带有符号的温度值：&quot;</span>)<br><span class="hljs-keyword">if</span> TempStr[-<span class="hljs-number">1</span>] <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;F&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>]:   <br>    C = (<span class="hljs-built_in">eval</span>(TempStr[<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]) - <span class="hljs-number">32</span>)/<span class="hljs-number">1.8</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;转换后的温度是&#123;：.2f&#125;C&quot;</span>.<span class="hljs-built_in">format</span>(C))<br><span class="hljs-keyword">elif</span> TempStr[-<span class="hljs-number">1</span>] <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;C&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>]:<br>    F = <span class="hljs-number">1.8</span> *<span class="hljs-built_in">eval</span>(TempStr[<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]) + <span class="hljs-number">32</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;转换后的温度是&#123;:.2f&#125;F&quot;</span>.<span class="hljs-built_in">format</span>(F))<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;输入格式错误&quot;</span>)<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#TempConvert.py   </span><br>TempStr = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入带有符号的温度值：&quot;</span>)<br><span class="hljs-keyword">if</span> TempStr[-<span class="hljs-number">1</span>] <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;F&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>]:   <br>    C = (<span class="hljs-built_in">eval</span>(TempStr[<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]) - <span class="hljs-number">32</span>)/<span class="hljs-number">1.8</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;转换后的温度是&#123;:.2f&#125;C&quot;</span>.<span class="hljs-built_in">format</span>(C))<br><span class="hljs-keyword">elif</span> TempStr[-<span class="hljs-number">1</span>] <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;C&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>]:<br>    F = <span class="hljs-number">1.8</span> *<span class="hljs-built_in">eval</span>(TempStr[<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]) + <span class="hljs-number">32</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;转换后的温度是&#123;:.2f&#125;F&quot;</span>.<span class="hljs-built_in">format</span>(F))<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;输入格式错误&quot;</span>)<br></code></pre></div></td></tr></table></figure>
 
 <h3 id="实列：温度转换包含的语法："><a href="#实列：温度转换包含的语法：" class="headerlink" title="实列：温度转换包含的语法："></a>实列：温度转换包含的语法：</h3><h3 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h3><p>缩进表达程序的格式框架</p>
 <p>严格明确 ：缩进是语法的一部分，缩进不正确程序会运行错误</p>
@@ -288,8 +288,7 @@
 <p>单行注释 以#开头，其后为注释</p>
 <figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#TempConvert.py   单行注释</span><br></code></pre></div></td></tr></table></figure>
 
-<div class="hljs code-wrapper"><pre><code>    多行注释 以‘“ 开头和结尾
-</code></pre></div>
+<p>多行注释 以‘ “ 开头和结尾</p>
 <figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-string">&#x27;&quot; 这里是多行注释的第一行</span><br><span class="hljs-string">   这里是多行注释的第二行 &quot;&#x27;</span><br></code></pre></div></td></tr></table></figure>
 
 <h3 id="变量命名与保留字"><a href="#变量命名与保留字" class="headerlink" title="变量命名与保留字"></a>变量命名与保留字</h3><p>TempStr 、C、F 为变量</p>
@@ -297,7 +296,7 @@
 <p>注意事项：首字符不能是数字、不能与保留字相同</p>
 <p>保留字（关键字）</p>
 <p>被编程语言内部定义并保留使用的标识符</p>
-<p><img src="https://s3.ax1x.com/2021/01/06/sVtm7t.png" srcset="/img/loading.gif" lazyload alt="image-20210106181500451"></p>
+<p><img src="https://i.loli.net/2021/10/28/dt7sW4R9ParCmGc.png" srcset="/img/loading.gif" lazyload alt="image-20211028142532207"></p>
 <h3 id="数据的表现形式"><a href="#数据的表现形式" class="headerlink" title="数据的表现形式"></a>数据的表现形式</h3><p>供计算机理解数据的形式</p>
 <ul>
 <li><p>整数类型   10011101</p>
@@ -308,7 +307,7 @@
 </li>
 </ul>
 <p> “请输入”的“请”是第0个字符</p>
-<p><img src="https://s3.ax1x.com/2021/01/06/sVUaSU.png" srcset="/img/loading.gif" lazyload alt="image-20210106182910519"></p>
+<p><img src="https://i.loli.net/2021/10/28/SRUsnxKwqJWeYgX.png" srcset="/img/loading.gif" lazyload alt="image-20211028142555697"></p>
 <h3 id="字符串的使用"><a href="#字符串的使用" class="headerlink" title="字符串的使用"></a>字符串的使用</h3><p>使用[]获取字符串中的一个或多个字符</p>
 <ul>
 <li><p>索引：返回字符串中单个字符  &lt;字符串&gt;[M] </p>
