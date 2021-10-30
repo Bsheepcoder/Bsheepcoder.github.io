@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://i.loli.net/2021/10/30/zDHWlpbIZ6Vk4mt.png">
 <meta property="og:image" content="https://i.loli.net/2021/10/30/DqAhuKYNworFbvn.png">
 <meta property="article:published_time" content="2021-10-29T19:58:43.099Z">
-<meta property="article:modified_time" content="2021-10-30T00:36:55.164Z">
+<meta property="article:modified_time" content="2021-10-30T00:53:45.614Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="ROS">
 <meta name="twitter:card" content="summary_large_image">
@@ -270,10 +270,10 @@
 <p>选一个复制好源文件内容后，先将/etc/apt/source.list文件备份</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shel">sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup<br></code></pre></div></td></tr></table></figure>
 
-<p>然后将/etc文件清空</p>
+<p>然后将/etc/apt/sources.list文件清空</p>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">第一次用root一般先设置密码:</span><br>sudo passwd<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">切换到root</span><br>su root  <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">将sources.list清空</span><br>echo &#x27; &#x27; &gt; /etc/apt/sources.list<br></code></pre></div></td></tr></table></figure>
 
-<p>最后用vim打开source.list，将软件源的内容粘贴进去，然后更新软件源（没有vim安装即可）</p>
+<p>最后用vim打开sources.list，将软件源的内容粘贴进去，然后更新软件源（没有vim安装即可）</p>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">su 用户名<br><br>sudo apt update<br></code></pre></div></td></tr></table></figure>
 
 <p>接下来就按wiki的步骤,安装桌面版完整版（说是完整版，但是之后有些东西还需要自己下载）</p>
