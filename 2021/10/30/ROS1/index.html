@@ -13,25 +13,50 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="11月7日  Geek例会前建议温习的知识">
+  <meta name="description" content="考虑到想从实践的角度去实现SLAM，比较有效的路径就是通过ROS这样一个富集工具与资源的社区的帮助，这里讲的是ROS1实现的一些基本过程，如有不足之处，批评指正。">
   <meta name="author" content="Tony">
   <meta name="keywords" content="">
-  <meta name="description" content="11月7日  Geek例会前建议温习的知识">
+  <meta name="description" content="考虑到想从实践的角度去实现SLAM，比较有效的路径就是通过ROS这样一个富集工具与资源的社区的帮助，这里讲的是ROS1实现的一些基本过程，如有不足之处，批评指正。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ROS核心之消息通信">
+<meta property="og:title" content="ROS之消息通信">
 <meta property="og:url" content="https://bsheepcoder.github.io/2021/10/30/ROS1/index.html">
 <meta property="og:site_name" content="Q&#39;s blog">
-<meta property="og:description" content="11月7日  Geek例会前建议温习的知识">
+<meta property="og:description" content="考虑到想从实践的角度去实现SLAM，比较有效的路径就是通过ROS这样一个富集工具与资源的社区的帮助，这里讲的是ROS1实现的一些基本过程，如有不足之处，批评指正。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2021/10/30/bfTS1FgjW6cU7L5.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/14/3ndGIc2FuHemQEC.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/07/X5M1wqKfTdA3Epr.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/07/SQYt6N1mFJRi5lr.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/07/jXsipyFoNI54DOH.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/07/wmcYSdsyVQpn3iE.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/07/tah7cjGw4x23EFO.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/14/Xomp2ixzlL7vD1C.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/14/AurGsniBg2Q4YO7.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/07/76tmGjvPOpyaUQX.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/07/KnaZIFmLWpRUJri.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/07/YfshmNTq6Iut4dE.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/14/I6C2Zt.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/14/I6CIzQ.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/14/I6COoV.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/14/I6PQeI.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/14/I6PaOs.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/14/I6P0wq.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/14/I6PBT0.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/14/I6PLXd.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/14/I6PXnA.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/14/I6iC9S.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/14/I6iP1g.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/14/I6ifgg.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/14/I6irDA.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/14/I6ig4f.png">
 <meta property="article:published_time" content="2021-10-30T11:11:24.654Z">
-<meta property="article:modified_time" content="2021-10-31T00:34:46.076Z">
+<meta property="article:modified_time" content="2021-11-14T12:17:04.546Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="ROS">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://i.loli.net/2021/10/30/bfTS1FgjW6cU7L5.png">
   
-  <title>ROS核心之消息通信 - Q&#39;s blog</title>
+  <title>ROS之消息通信 - Q&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -177,7 +202,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="ROS核心之消息通信">
+            <span class="h2" id="subtitle" title="ROS之消息通信">
               
             </span>
 
@@ -198,7 +223,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      663 字
+      3.5k 字
     </span>
   
 
@@ -207,7 +232,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2 分钟
+      11 分钟
     </span>
   
 
@@ -244,32 +269,158 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">ROS核心之消息通信</h1>
+            <h1 style="display: none">ROS之消息通信</h1>
             
               <p class="note note-info">
                 
-                  更新于：2021年10月31日 早上
+                  更新于：2021年11月14日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><h3 id="计算图"><a href="#计算图" class="headerlink" title="计算图"></a>计算图</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/tugouxp/article/details/109329140">什么是计算图？</a></p>
-<h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangzhenhu/article/details/5828899">进程和线程</a></p>
-<h3 id="松耦合"><a href="#松耦合" class="headerlink" title="松耦合"></a>松耦合</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/z-x-y/p/9230856.html">耦合，松耦合，紧耦合</a></p>
-<h3 id="同步异步"><a href="#同步异步" class="headerlink" title="同步异步"></a>同步异步</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/loveer/p/11479249.html">彻底理解同步 异步 阻塞 非阻塞</a></p>
-<h3 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ef892323e68f">TCP协议详解</a></p>
-<h3 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wang3680/p/193f39bbbfb071a730b9bcf09dc960c5.html">RPC（Remote Procedure Call Protocol）——远程过程调用协议</a></p>
-<h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1198984">什么是中间件？</a></p>
-<h3 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xybaby/p/7787034.html">什么是分布式系统？</a></p>
+              <p>侵删</p>
+<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><ul>
+<li>计算图   <a target="_blank" rel="noopener" href="https://blog.csdn.net/tugouxp/article/details/109329140">什么是计算图？</a></li>
+<li>进程   <a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangzhenhu/article/details/5828899">进程和线程</a>、<a target="_blank" rel="noopener" href="https://blog.csdn.net/u014454538/article/details/99330919">操作系统之进程和线程（二者的区别，进程的状态切换、创建、终止、上下文切换）</a>、<a target="_blank" rel="noopener" href="http://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html#Threads_and_processes">进程和线程</a></li>
+<li>松耦合  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/z-x-y/p/9230856.html">耦合，松耦合，紧耦合</a>、<a target="_blank" rel="noopener" href="https://yanhaijing.com/program/2016/09/01/about-coupling/">图解7种耦合关系</a></li>
+<li>同步异步  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/loveer/p/11479249.html">彻底理解同步 异步 阻塞 非阻塞</a></li>
+<li>TCP协议  <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ef892323e68f">TCP协议详解</a></li>
+<li>RPC与XML-RPC  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/wang3680/p/193f39bbbfb071a730b9bcf09dc960c5.html">RPC（Remote Procedure Call Protocol）——远程过程调用协议</a>  <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/45700301">HTTP服务和RPC服务，如何选择？</a>、<a target="_blank" rel="noopener" href="http://www.netpc.com.cn/2889.html">IP、TCP、UDP、HTTP、WebSocket、SOCKET之间的关系和区别</a>、<a target="_blank" rel="noopener" href="http://xmlrpc.com/">What is XML-RPC</a>、新手的 XML-RPC](<a target="_blank" rel="noopener" href="http://scripting.com/davenet/1998/07/14/xmlRpcForNewbies.html">http://scripting.com/davenet/1998/07/14/xmlRpcForNewbies.html</a>) </li>
+<li>中间件  <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1198984">什么是中间件？</a></li>
+<li>分布式系统  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/xybaby/p/7787034.html">什么是分布式系统？</a></li>
+</ul>
 <h3 id="机器人开发的麻烦"><a href="#机器人开发的麻烦" class="headerlink" title="机器人开发的麻烦"></a>机器人开发的麻烦</h3><p>机器人开发中一个很常见的故事是这样的：有一天，一名学生/工程师开始了一个新的很酷的机器人项目。她开始计划并从事该项目。很快，她就发现事情没那么简单。<strong>机器人学很难学，为机器人开发一个好的软件需要时间</strong>。因此，她开始花时间研究如何在所有程序之间进行通信，如何实现机器人的 3D 模拟等。</p>
 <p>该项目即将结束。没有取得真正的进展，开发人员开始失去信心。她将所有时间都花在编写机器人框架上，但在实际项目中只做了一点工作。很快这个项目就被放弃了，或者她可能设法用一些被黑的代码完成了一些事情。几周后，另一个人开始了另一个很酷的机器人项目。</p>
 <p>他想：如果我找到一些可以直接使用的框架怎么办？他在互联网上找到了她的代码，但该代码似乎真的不能重用于他自己的应用程序。于是，他<strong>从头开始写一切</strong>。等等等等。许多从事机器人软件开发的人实际上并没有开发机器人应用程序。他们开发的机器人框架最终是不可重用的、不受支持的、不为人知的，并且很快就会被遗忘。这种情况经常发生在攻读博士学位的人身上，项目的时间框架为 2-3 年。</p>
 <p>这是拖慢机器人研发的主要因素之一，ROS 正试图解决这个问题。</p>
 <p><img src="https://i.loli.net/2021/10/30/bfTS1FgjW6cU7L5.png" srcset="/img/loading.gif" lazyload></p>
 <p>ROS 允许您<strong>停止重新发明轮子</strong>。重新发明轮子是新的创新应用的主要杀手之一。</p>
-<p>待更新。。。。</p>
+<h2 id="ROS核心–消息通信"><a href="#ROS核心–消息通信" class="headerlink" title="ROS核心–消息通信"></a>ROS核心–消息通信</h2><p>我们从上面机器人开发的例子中就可以看出ROS的主要优势就是开源、共享，这让我想到了GitHub的模式与之类似。</p>
+<p>具体到我的自身就是，我常常思考一个问题，在电脑中的人工智能算法的参数调整，以及类似均方差的这样的指标表现极好是不是真的代表这个算法找到了接近最优的解呢？</p>
+<p>源于这个问题，我想尝试着通过学习ROS，来达到用实际的一些项目比如SLAM来检验人工智能算法的优越性。</p>
+<p>恰好遇到Geek组的例会，我就顺便将ROS的核心的消息通信机制拿出来讲一讲，也帮助自己理解。</p>
+<h3 id="我的麻烦"><a href="#我的麻烦" class="headerlink" title="我的麻烦"></a>我的麻烦</h3><p>上面说到，我想实现一个SLAM（即时建图同步定位与地图构建），我就需要一个机器人小车，但是我没有任何机器人的相关知识，我就首先需要考虑下面的问题：</p>
+<ul>
+<li>找哪些硬件设备，找到对应的驱动</li>
+<li>考虑怎样将这些设备连接起来，并可以相互通信</li>
+<li>考虑如何进行仿真测试</li>
+</ul>
+<p><img src="https://i.loli.net/2021/11/14/3ndGIc2FuHemQEC.png" srcset="/img/loading.gif" lazyload></p>
+<p>这个过程是极其耗时间与拖慢的我进度的，需要学习大量的硬件知识，还需要有一些工程经验。</p>
+<p>那有没有快速的方法呢？</p>
+<p>答案就是ROS</p>
+<h3 id="什么是ROS？"><a href="#什么是ROS？" class="headerlink" title="什么是ROS？"></a>什么是ROS？</h3><p><img src="https://i.loli.net/2021/11/07/X5M1wqKfTdA3Epr.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="video"><a href="#video" class="headerlink" title="video"></a>video</h4><p>这里有一个官方的视频</p>
+<p><a target="_blank" rel="noopener" href="https://vimeo.com/639236696">ROS介绍</a></p>
+<h4 id="ROS发展"><a href="#ROS发展" class="headerlink" title="ROS发展"></a>ROS发展</h4><p><img src="https://i.loli.net/2021/11/07/SQYt6N1mFJRi5lr.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里不详述,自行搜索，建议阅读</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://stair.stanford.edu/">斯坦福大学的人工智能机器人项目</a></p>
+<p>自 1956 年诞生以来，人工智能的梦想一直是构建具有广谱能力和智能的系统。在 STAIR（斯坦福人工智能机器人）项目中，我们正在构建一个机器人，它可以在家庭和办公环境中导航，拾取物体和工具并与之交互，并在这些环境中与人们进行智能对话和帮助。</p>
+<p>我们的单一机器人平台将整合来自人工智能所有领域的方法，包括机器学习、视觉、导航、操纵、规划、推理和语音/自然语言处理。这与 30 年来在分散的人工智能子领域工作的趋势形成鲜明对比，并将成为推动真正集成人工智能研究的工具。</p>
+<p>从长远来看，我们设想单个机器人可以执行以下任务：</p>
+<ul>
+<li>在家里或办公室取货或送货。</li>
+<li>整理房间，包括捡起和扔掉垃圾，以及使用洗碗机。</li>
+<li>使用普通厨房准备饭菜。</li>
+<li>使用工具组装书架。</li>
+</ul>
+<p>能够完成这些任务的机器人将<em>彻底改变</em>家庭和办公自动化，并具有从家庭助理到老人护理的重要应用。然而，执行这些任务需要在整合学习、操作、感知、口语对话和推理方面取得重大进展。</p>
+</blockquote>
+<p>更多：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/61289506">百度无人车-Apollo ROS原理和实践-背景介绍之ROS史话</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/55482281">斯坦福机器人制造者吴恩达：生活中的机器人，将是专用机器人</a></p>
+<h4 id="ROS定义"><a href="#ROS定义" class="headerlink" title="ROS定义"></a>ROS定义</h4><p>直接来看ROSwiki的定义</p>
+<p>The Robot Operating System (ROS) is  a set of software libraries and tools that help you build robot applications. </p>
+<p>可以理解为ROS是用来搭建机器人的软件工具平台</p>
+<p>和所有的定义一样，我们抱着弄懂它的心里去看，但是还是不够清楚。</p>
+<p>所以又我通过一些搜索看了不同的文章，一些人把ROS称做系统、一些人把ROS称做中间件，可他们说的是同一个东西。</p>
+<p><img src="https://i.loli.net/2021/11/07/jXsipyFoNI54DOH.png" srcset="/img/loading.gif" lazyload></p>
+<p>在我的理解里，他们确实都说的是一样的东西，只不过看到层面不同。这就像是一个箱子的不同面，看到的角度就不相同。</p>
+<p><img src="https://i.loli.net/2021/11/07/wmcYSdsyVQpn3iE.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们把箱子打开，就可以看到ROS的不同层次的内容：</p>
+<ul>
+<li>消息通信</li>
+<li>工具包</li>
+<li>支持实现机器人各种功能</li>
+<li>社区资源</li>
+</ul>
+<p>当然这并不是全部。</p>
+<h4 id="ROS现状"><a href="#ROS现状" class="headerlink" title="ROS现状"></a>ROS现状</h4><p>这张图以及有点老了，但是也可以看到ROS正在快速的发展。</p>
+<p><img src="https://i.loli.net/2021/11/07/tah7cjGw4x23EFO.png" srcset="/img/loading.gif" lazyload></p>
+<p>分为三个层次</p>
+<ul>
+<li>开发者和用户发展表现在功能包的快速增多、还有地理上的分布逐渐变广</li>
+<li>ROS框架层表现在ROS的各个功能更加的全面，各种工具增多、支持的语言也增多</li>
+<li>企业层表现在基于ROS的机器人应用遍布各种类、各场景</li>
+</ul>
+<h3 id="ROS的架构与层级"><a href="#ROS的架构与层级" class="headerlink" title="ROS的架构与层级"></a>ROS的架构与层级</h3><p><img src="https://i.loli.net/2021/11/14/Xomp2ixzlL7vD1C.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="单机器人架构"><a href="#单机器人架构" class="headerlink" title="单机器人架构"></a>单机器人架构</h4><p><img src="https://i.loli.net/2021/11/14/AurGsniBg2Q4YO7.png" srcset="/img/loading.gif" lazyload alt="ROS1和ROS2框架对比图"></p>
+<p>单个机器人，我们只考虑机器人内部各个节点之间的关系。</p>
+<p>ROS1是最初的版本，但是由于其开发时并没有考虑工业的实用性，有很多地方需要优化，这就促进了ROS2的诞生。从这张图就表现为，由分布式松耦合的节点消息通讯到ROS2的DDS消息通信。</p>
+<h4 id="多机器人架构"><a href="#多机器人架构" class="headerlink" title="多机器人架构"></a>多机器人架构</h4><p><img src="https://i.loli.net/2021/11/07/76tmGjvPOpyaUQX.png" srcset="/img/loading.gif" lazyload></p>
+<p>这个情况就更复杂，比如说无人机表演，如果要达到那样的承度，框架分析起来更困难。但是我们依然可以看到这张图中他们的关系，最为明显的就是不同机器人之间使用WIFI通讯的。</p>
+<h4 id="ROS的层级"><a href="#ROS的层级" class="headerlink" title="ROS的层级"></a>ROS的层级</h4><p><img src="https://i.loli.net/2021/11/07/KnaZIFmLWpRUJri.png" srcset="/img/loading.gif" lazyload></p>
+<p>本讲我主要关注的是ROS的计算图层</p>
+<h4 id="耦合、进程概念辨析"><a href="#耦合、进程概念辨析" class="headerlink" title="耦合、进程概念辨析"></a>耦合、进程概念辨析</h4><ul>
+<li><p>耦合</p>
+<p>耦合是一个通用的概念，分别在通信工程、软件工程、机械工程等都有涉及。</p>
+<p><img src="https://i.loli.net/2021/11/07/YfshmNTq6Iut4dE.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里对应的就是软件工程中的耦合，也就是一种程序思想，甚至你编程时的代码就能体现耦合承度，我通常认为，对于一个函数如果调用了过多的全局变量或者对其他函数的依赖较多，那么就是一个紧耦合，反之就是松耦合。</p>
+</li>
+<li><p>进程</p>
+<p>进程通常指的就是一个正在利用计算和内存资源等的程序，我看到有人把进程比做房子，线程就是住在房子里的人，线程运用进程中的资源运行。当然这个比喻可能不那么恰当，但是可以有大概的了解。详细的可以查看我链接的别人的文章。</p>
+<p><img src="https://z3.ax1x.com/2021/11/14/I6C2Zt.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h4 id="重点介绍计算图层"><a href="#重点介绍计算图层" class="headerlink" title="重点介绍计算图层"></a>重点介绍计算图层</h4><p>​    这里主要介绍在ROS的层级结构中，处于核心地位的这一层，就是计算图层。计算图对于看了前置的知识的同学就会有大概的了解，我们这里的计算图跟多的应该表示的是体系中节点与节点之间的联系。</p>
+<p><img src="https://z3.ax1x.com/2021/11/14/I6CIzQ.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们把每一个方格可以看作一个进程或者节点，那么节点当中就有对应执行的程序，他们之间这种传递消息的联系就形成了这样计算图，后面讲到节点之间的通信就会有更深刻的认识。</p>
+<h3 id="ROS消息通信机制"><a href="#ROS消息通信机制" class="headerlink" title="ROS消息通信机制"></a>ROS消息通信机制</h3><ul>
+<li><p>Node和Master</p>
+<p>在将具体的消息通信机制之前，需要了解一些最基本的知识。下面的图有些复杂是我做的ppt，这里说的是我先抽象的看什么是master和node以及他们的关系，然后我在Ubuntu系统中运行他们再阐述他们的关系，详细我就不赘述。执行roscore相当于运行了master，然后在top中可以看到进程的情况，根据pid对比。</p>
+<p><img src="https://z3.ax1x.com/2021/11/14/I6COoV.png" srcset="/img/loading.gif" lazyload></p>
+<p>Node 节点是执行计算的进程</p>
+<p>master  完成节点的名称注册和查找 </p>
+</li>
+<li><p>消息 message</p>
+<p><img src="https://z3.ax1x.com/2021/11/14/I6PQeI.png" srcset="/img/loading.gif" lazyload></p>
+<p>一句话总结就是，消息就是一个有数据结构的数据文件，对应不同的语言有不同的写法。</p>
+</li>
+</ul>
+<h4 id="话题消息（topic）"><a href="#话题消息（topic）" class="headerlink" title="话题消息（topic）"></a>话题消息（topic）</h4><p><img src="https://z3.ax1x.com/2021/11/14/I6PaOs.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="服务消息（service）"><a href="#服务消息（service）" class="headerlink" title="服务消息（service）"></a>服务消息（service）</h4><p><img src="https://z3.ax1x.com/2021/11/14/I6P0wq.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="动作消息（action）"><a href="#动作消息（action）" class="headerlink" title="动作消息（action）"></a>动作消息（action）</h4><p><img src="https://z3.ax1x.com/2021/11/14/I6PBT0.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="话题消息详细过程"><a href="#话题消息详细过程" class="headerlink" title="话题消息详细过程"></a>话题消息详细过程</h4><p>由于过程较复杂，我只探究了话题消息的从建立连接到实现话题消息这样一个通信的全过程。通信过程包含了大量的基础知识，所以建议慢慢的细细的领会，如有不对的地方欢迎留言批评。</p>
+<p><img src="https://z3.ax1x.com/2021/11/14/I6PLXd.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://z3.ax1x.com/2021/11/14/I6PXnA.png" srcset="/img/loading.gif" lazyload></p>
+<p>具体的实现过程</p>
+<p><img src="https://z3.ax1x.com/2021/11/14/I6iC9S.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://z3.ax1x.com/2021/11/14/I6iP1g.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="通信过程综合"><a href="#通信过程综合" class="headerlink" title="通信过程综合"></a>通信过程综合</h3><p><img src="https://z3.ax1x.com/2021/11/14/I6ifgg.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="回顾与反思"><a href="#回顾与反思" class="headerlink" title="回顾与反思"></a>回顾与反思</h3><ul>
+<li><p>回顾</p>
+<p><img src="https://z3.ax1x.com/2021/11/14/I6irDA.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>思考</p>
+<p><img src="https://z3.ax1x.com/2021/11/14/I6ig4f.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://roboticsbackend.com/what-is-ros/#What_is_ROS_-_Continue_the_series">What is ROS</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/79452037">ROS：发展中的机器人操作系统</a></li>
+<li><a target="_blank" rel="noopener" href="https://roboticsbackend.com/category/ros/">The Robotics Back-End</a></li>
+<li><a target="_blank" rel="noopener" href="http://wiki.ros.org/cn">ROS Wiki</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.guyuehome.com/blog/index">古月居博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1zt411G7Vn">古月居ROS入门21讲（B站）</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/38240894">一次完整的HTTP请求过程</a></li>
+<li><a href="https://bsheepcoder.github.io/2021/10/30/ROSinstall/">基于VMware的Ubuntu18.04系统安装ROS</a></li>
+<li><a target="_blank" rel="noopener" href="http://xmlrpc.com/">What is XML-RPC</a></li>
+<li><a target="_blank" rel="noopener" href="http://scripting.com/davenet/1998/07/14/xmlRpcForNewbies.html">新手的 XML-RPC</a></li>
+<li>《ROS机器人编程》作者：表允哲、赵汉哲、郑黎蜴、林泰勋</li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=2NbUkpmHDDY">NASA基于ROS的机器人</a></li>
+<li><a target="_blank" rel="noopener" href="https://robots.ieee.org/robots/">机器人指南</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31981912">我为什么不用ROS </a></li>
 </ul>
 
             </div>
