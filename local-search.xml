@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>树莓派4B入门</title>
+    <link href="/2022/02/11/Raspberrypi1/"/>
+    <url>/2022/02/11/Raspberrypi1/</url>
+    
+    <content type="html"><![CDATA[<h2 id="树莓派问题总结"><a href="#树莓派问题总结" class="headerlink" title="树莓派问题总结"></a>树莓派问题总结</h2><p><img src="https://s2.loli.net/2022/02/08/TIXqzWDCwYN5EgH.png" alt="树莓派4B"></p><ul><li>先连接显示器，再开电源,还有可能参考<a href="https://www.jianshu.com/p/c022c6f28c3a">树莓派连接显示器无信号</a>、换了一个minihdmi转vga的接口就正常了</li><li>电源不能低于5V/3A</li><li>电源不稳定问题</li><li>树莓派开机密码  Pi  raspberrypi</li></ul><h2 id="Pi编译介绍"><a href="#Pi编译介绍" class="headerlink" title="Pi编译介绍"></a>Pi编译介绍</h2><ul><li><p>pip 是给python2 安装</p></li><li><p>pip3 是给python3 安装</p></li><li><p>WiringPi</p></li></ul><h2 id="GPIO引脚"><a href="#GPIO引脚" class="headerlink" title="GPIO引脚"></a>GPIO引脚</h2><p><img src="https://s2.loli.net/2022/02/11/XSKzbgF8wnGeuRl.png"></p><p><img src="https://s2.loli.net/2022/02/11/K48Fz326DOrtaTU.png"></p><h3 id="引脚编码类型"><a href="#引脚编码类型" class="headerlink" title="引脚编码类型"></a>引脚编码类型</h3><ul><li><p>板载编码</p><p><img src="https://s2.loli.net/2022/02/11/NrmLPAvwSqZEVnp.png"></p></li><li><p>BCM编码</p><p><img src="https://s2.loli.net/2022/02/11/UVkMDe6pAnPQJWt.png"></p></li><li><p>WiringPi编码</p><p><img src="https://s2.loli.net/2022/02/11/4oCEhp1cDHgIfP5.png"></p></li><li><p>查看编码方式</p><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> pinout</span><br><span class="hljs-meta">$</span><span class="bash">gpio readall</span><br></code></pre></div></td></tr></table></figure></li></ul><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul><li><p><a href="https://pan.baidu.com/s/1rGqWg-9P1qOtaR-LJanbZg?pwd=egyk">（新）树莓派4B系统烧入及WIFI配置方法说明资料</a>    提取码：egyk</p></li><li><p><a href="https://blog.csdn.net/LlHilo/article/details/106577069">树莓派入门操作及VNC显示 cannot currently show the desktop 解决方法</a></p></li><li><p><a href="https://mc.dfrobot.com.cn/thread-274692-1-1.html">树莓派资源汇总</a></p></li><li><p><a href="https://www.raspberrypi.com/documentation/computers/getting-started.html">树莓派文档</a></p></li><li><p><a href="https://www.bilibili.com/video/BV16U4y1879Q?from=search&seid=8887111111474385521&spm_id_from=333.337.0.0">十分钟玩转系列入门篇</a></p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Raspberry-Pi</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Raspberry-Pi</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2022/02/09/Computer1/"/>
+    <url>/2022/02/09/Computer1/</url>
+    
+    <content type="html"><![CDATA[<h2 id="课程概貌"><a href="#课程概貌" class="headerlink" title="课程概貌"></a>课程概貌</h2><ul><li>基本不见的结构和组织方式</li><li>基本运算的操作原理</li><li>基本部件和单元的设计思想</li></ul><p><img src="https://s2.loli.net/2022/02/09/2eToDdvcrahMAl5.png" alt="课程体系"></p><p><img src="https://s2.loli.net/2022/02/09/vwlrbItOqNBdGHT.png"></p><h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><p><img src="https://s2.loli.net/2022/02/09/syi6cbJYuQdI7SO.png" alt="课程结构"></p><h2 id="计算机系统概论"><a href="#计算机系统概论" class="headerlink" title="计算机系统概论"></a>计算机系统概论</h2><ul><li><p>现代计算机系统由哪两部分构成</p><p><img src="https://s2.loli.net/2022/02/09/GoSkKYOWaLmIDec.png"></p><p><img src="https://s2.loli.net/2022/02/09/K2HOW75oiZANrYd.png"></p><p>1个TF是一千万次</p><p><img src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220209135450931.png"></p></li></ul><pre><code class=" mermaid">graph LRKaTex--&gt; A(标记 Accents)A--&gt;撇,估计,均值,向量等写于符号上下的标记KaTex--&gt; 分隔符_Delimiters分隔符_Delimiters--&gt;小中大括号,竖杠,绝对值等分隔符的反斜杠写法KaTex--&gt; 公式组_Enviroments公式组_Enviroments--&gt;B(.....)KaTex--&gt;C(...)</code></pre>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>C++系列：C++11新特性（十）</title>
     <link href="/2022/02/08/10C++/"/>
     <url>/2022/02/08/10C++/</url>
