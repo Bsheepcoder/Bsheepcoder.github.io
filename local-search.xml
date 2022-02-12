@@ -29,13 +29,25 @@
   
   
   <entry>
-    <title></title>
+    <title>计算机组成原理</title>
     <link href="/2022/02/09/Computer1/"/>
     <url>/2022/02/09/Computer1/</url>
     
     <content type="html"><![CDATA[<h2 id="课程概貌"><a href="#课程概貌" class="headerlink" title="课程概貌"></a>课程概貌</h2><ul><li>基本不见的结构和组织方式</li><li>基本运算的操作原理</li><li>基本部件和单元的设计思想</li></ul><p><img src="https://s2.loli.net/2022/02/09/2eToDdvcrahMAl5.png" alt="课程体系"></p><p><img src="https://s2.loli.net/2022/02/09/vwlrbItOqNBdGHT.png"></p><h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><p><img src="https://s2.loli.net/2022/02/09/syi6cbJYuQdI7SO.png" alt="课程结构"></p><h2 id="计算机系统概论"><a href="#计算机系统概论" class="headerlink" title="计算机系统概论"></a>计算机系统概论</h2><ul><li><p>现代计算机系统由哪两部分构成</p><p><img src="https://s2.loli.net/2022/02/09/GoSkKYOWaLmIDec.png"></p><p><img src="https://s2.loli.net/2022/02/09/K2HOW75oiZANrYd.png"></p><p>1个TF是一千万次</p><p><img src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220209135450931.png"></p></li></ul><pre><code class=" mermaid">graph LRKaTex--&gt; A(标记 Accents)A--&gt;撇,估计,均值,向量等写于符号上下的标记KaTex--&gt; 分隔符_Delimiters分隔符_Delimiters--&gt;小中大括号,竖杠,绝对值等分隔符的反斜杠写法KaTex--&gt; 公式组_Enviroments公式组_Enviroments--&gt;B(.....)KaTex--&gt;C(...)</code></pre>]]></content>
     
     
+    <categories>
+      
+      <category>计算机基础</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>计算机基础</tag>
+      
+    </tags>
     
   </entry>
   
