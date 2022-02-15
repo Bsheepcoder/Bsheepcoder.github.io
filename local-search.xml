@@ -4,11 +4,36 @@
   
   
   <entry>
+    <title>Hexo静态网页同时部署GitPage和GiteePage</title>
+    <link href="/2022/02/15/GitPage&amp;GiteePage/"/>
+    <url>/2022/02/15/GitPage&amp;GiteePage/</url>
+    
+    <content type="html"><![CDATA[<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><p><a href="https://www.jianshu.com/p/59e8d170346d">使用hexo+github搭建个人博客遇到过哪些坑</a></p></li><li><p><a href="https://blog.csdn.net/Shen___/article/details/102660305">部署hexo时出错：fatal: Could not read from remote repository.Error: Spawn failed</a></p></li><li><p><a href="https://haee.gitee.io/2021/02/18/hexo32/">hexo | 同时提交到 github 和 gitee</a></p></li></ul><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>因为我已经先在gitpage部署完成，只需添加gitee部署的路径即可。<a href="https://www.jianshu.com/p/d9dff0bf5da5">如何部署在gitpage</a></p><ul><li><p>准备好gitee的账号</p></li><li><p>在git中创建ssh密钥</p><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 注意：该命令是在本地PC上执行</span><br>ssh-keygen -t rsa -C &quot;xxxxx@xxxxx.com&quot;  <br><span class="hljs-meta">#</span><span class="bash"> Generating public/private rsa key pair...</span><br></code></pre></div></td></tr></table></figure></li><li><p>在提示的路径中找到ssh生成的.pub文件，打开，将公钥保存到仓库，<a href="https://gitee.com/help/articles/4181#article-header0">详细参考</a></p></li><li><p>在Hexo的根目录下找到_config.yml文件，修改deply项为如下：</p><p><img src="https://s2.loli.net/2022/02/15/ITrYSsnL2zxEVey.png"></p></li><li><p>此时执行如下，即可实现同时部署</p><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">hexo g<br>hexo d<br></code></pre></div></td></tr></table></figure></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hexo</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Hexo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hexo网站自动生成站点地图提交Google</title>
     <link href="/2022/02/15/Google_sitemap1/"/>
     <url>/2022/02/15/Google_sitemap1/</url>
     
-    <content type="html"><![CDATA[<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/150999914">Hexo进阶-生成站点地图（Sitemap）</a></li><li><a href="https://developers.google.com/search/docs/advanced/sitemaps/overview?visit_id=637805161892393310-3077664830&rd=1">Google站点地图官方文档</a></li></ul><p><strong>在以下情况下，您可能需要站点地图</strong>：</p><ul><li><strong>网站规模很大。</strong>在这种情况下，Google 网页抓取工具更有可能在抓取时漏掉部分新网页或最近更新的网页。</li><li><strong>网站有大量内容页归档，这些内容页之间互不关联或缺少有效链接。</strong>如果您的网站网页没有自然地相互引用，那么您可以在站点地图中列出这些网页，确保 Google 不会漏掉其中某些网页。</li><li><strong>网站为新网站且指向该网站的外部链接不多。</strong>Googlebot 及其他网页抓取工具是通过跟踪网页之间的链接来抓取网页的。因此，如果没有其他网站链接到您的网页，Google 可能不会发现您的网页。</li><li><strong>您的网站包含大量富媒体内容（视频、图片）或显示在 Google 新闻中。</strong>如果提供了站点地图，在适当情况下，Google 能将站点地图中的其他信息纳入搜索范围。</li></ul><p><strong>在以下情况下，您可能不需要站点地图</strong>：</p><ul><li><strong>您的网站规模“较小”。</strong>规模较小是指网站上的网页数不超过 500 个。（只有您认为需要纳入搜索结果中的网页才会计入此总数。）</li><li><strong>您的网站已在内部全面建立链接。</strong>这意味着，Google 可以沿着首页的链接找到您网站上的所有重要网页。</li><li>您想在搜索结果中显示的<strong>媒体文件</strong>（视频、图片）<strong>或新闻网页</strong>不多。站点地图可帮助 Google 找到并了解您网站上的视频和图片文件或新闻报道。但如果您不希望这些内容出现在图片、视频或新闻搜索结果中，则可能不需要站点地图。</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/150999914">Hexo进阶-生成站点地图（Sitemap）</a></li><li><a href="https://developers.google.com/search/docs/advanced/sitemaps/overview?visit_id=637805161892393310-3077664830&rd=1">Google站点地图官方文档</a></li><li><a href="https://saowu.top/blog/4tCVcic30/">让Google搜索到GitHub Pages</a></li><li>下文取自google官方文档</li></ul><p><strong>在以下情况下，您可能需要站点地图</strong>：</p><ul><li><strong>网站规模很大。</strong>在这种情况下，Google 网页抓取工具更有可能在抓取时漏掉部分新网页或最近更新的网页。</li><li><strong>网站有大量内容页归档，这些内容页之间互不关联或缺少有效链接。</strong>如果您的网站网页没有自然地相互引用，那么您可以在站点地图中列出这些网页，确保 Google 不会漏掉其中某些网页。</li><li><strong>网站为新网站且指向该网站的外部链接不多。</strong>Googlebot 及其他网页抓取工具是通过跟踪网页之间的链接来抓取网页的。因此，如果没有其他网站链接到您的网页，Google 可能不会发现您的网页。</li><li><strong>您的网站包含大量富媒体内容（视频、图片）或显示在 Google 新闻中。</strong>如果提供了站点地图，在适当情况下，Google 能将站点地图中的其他信息纳入搜索范围。</li></ul><p><strong>在以下情况下，您可能不需要站点地图</strong>：</p><ul><li><strong>您的网站规模“较小”。</strong>规模较小是指网站上的网页数不超过 500 个。（只有您认为需要纳入搜索结果中的网页才会计入此总数。）</li><li><strong>您的网站已在内部全面建立链接。</strong>这意味着，Google 可以沿着首页的链接找到您网站上的所有重要网页。</li><li>您想在搜索结果中显示的<strong>媒体文件</strong>（视频、图片）<strong>或新闻网页</strong>不多。站点地图可帮助 Google 找到并了解您网站上的视频和图片文件或新闻报道。但如果您不希望这些内容出现在图片、视频或新闻搜索结果中，则可能不需要站点地图。</li></ul>]]></content>
     
     
     <categories>
