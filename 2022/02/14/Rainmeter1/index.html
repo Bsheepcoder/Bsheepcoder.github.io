@@ -37,7 +37,7 @@
 
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+  <link  rel="stylesheet" href="./lib/hint/hint.min.css" />
 
   
     
@@ -61,17 +61,17 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+<link  rel="stylesheet" href="./css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"bsheepcoder.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading2.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz","app_key":"8y2ItNdFctdKBPMHS31S2jbm","server_url":"https://0wpy18ji.lc-cn-n1-shared.com","path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"bsheepcoder.github.io","root":"./","version":"1.8.12","typing":{"enable":true,"typeSpeed":30,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading2.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz","app_key":"8y2ItNdFctdKBPMHS31S2jbm","server_url":"https://0wpy18ji.lc-cn-n1-shared.com","path":"window.location.pathname"}},"search_path":"./local-search.xml"};
   </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
+  <script  src="./js/utils.js" ></script>
+  <script  src="./js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 
@@ -79,7 +79,7 @@
   <header style="height: 30vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="./">
       <strong>Q&#39;s blog</strong>
     </a>
 
@@ -98,7 +98,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="./">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -110,7 +110,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="./archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -122,7 +122,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="./categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -134,7 +134,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="./tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -146,7 +146,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="./about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -269,7 +269,7 @@
 <p>优化一下如下</p>
 <figure class="highlight ini"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ini"><span class="hljs-section">[Rainmeter]</span><br><span class="hljs-attr">Update</span>=<span class="hljs-number">1000</span><br><br><span class="hljs-section">[MyMeter]</span><br><span class="hljs-attr">Meter</span>=String<br><span class="hljs-attr">Text</span>=Hello, world!<br><span class="hljs-attr">AntiAlias</span>=<span class="hljs-number">1</span><br><span class="hljs-attr">FontColor</span>=<span class="hljs-number">255</span>,<span class="hljs-number">255</span>,<span class="hljs-number">255</span><br><span class="hljs-attr">FontFace</span>=Segoe UI<br><span class="hljs-attr">FontSize</span>=<span class="hljs-number">20</span><br></code></pre></div></td></tr></table></figure>
 
-<p><img src="https://s2.loli.net/2022/02/14/l8qDprM4zmbHaKG.png" srcset="/img/loading2.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/14/l8qDprM4zmbHaKG.png" srcset="./img/loading2.gif" lazyload></p>
 <p>详细请阅读文档，说的很清楚</p>
 
             </div>
@@ -280,7 +280,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Rainmeter/">Rainmeter</a>
+                      <a class="hover-with-bg" href="./categories/Rainmeter/">Rainmeter</a>
                     
                   </div>
                 
@@ -288,7 +288,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Rainmeter/">Rainmeter</a>
+                      <a class="hover-with-bg" href="./tags/Rainmeter/">Rainmeter</a>
                     
                   </div>
                 
@@ -305,7 +305,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/15/Google_sitemap1/">
+                      <a href="./2022/02/15/Google_sitemap1/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Hexo网站自动生成站点地图提交Google</span>
                         <span class="visible-mobile">上一篇</span>
@@ -315,7 +315,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/12/git1/">
+                      <a href="./2022/02/12/git1/">
                         <span class="hidden-mobile">git</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -376,7 +376,7 @@
 
   <div class="col-lg-7 mx-auto nopadding-x-md">
     <div class="container custom post-custom mx-auto">
-      <p style="text-align:center;">如果博文对你有帮助，可以给博主充充电噢~ <br> 非常感谢！！</p><img src="/img/qxd.jpg" srcset="/img/loading2.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+      <p style="text-align:center;">如果博文对你有帮助，可以给博主充充电噢~ <br> 非常感谢！！</p><img src="/img/qxd.jpg" srcset="./img/loading2.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
     </div>
   </div>
 
@@ -469,18 +469,18 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script  src="./js/events.js" ></script>
+<script  src="./js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  <script  src="/js/local-search.js" ></script>
+  <script  src="./js/local-search.js" ></script>
 
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    <script  src="./js/img-lazyload.js" ></script>
   
 
 
@@ -505,7 +505,7 @@
 
 
 
-  <script defer src="/js/leancloud.js" ></script>
+  <script defer src="./js/leancloud.js" ></script>
 
 
 
@@ -548,7 +548,7 @@
 
 
 <!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
+<script  src="./js/boot.js" ></script>
 
 
 </body>
