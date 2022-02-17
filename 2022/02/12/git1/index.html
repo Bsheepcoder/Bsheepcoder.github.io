@@ -24,7 +24,7 @@
 <meta property="og:description" content="原本的git学习是仓促的没有好好消化，这里整理一下">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-02-12T03:47:16.608Z">
-<meta property="article:modified_time" content="2022-02-17T05:30:15.956Z">
+<meta property="article:modified_time" content="2022-02-17T06:46:08.161Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary_large_image">
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.4k 字
+      4.5k 字
     </span>
   
 
@@ -288,14 +288,9 @@
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> git <span class="hljs-built_in">log</span> --pretty=oneline</span><br>0b0e509ff4af739ebacf8812e252fd2819a2a785 (HEAD -&gt; master) greatly<br>f182c5620f80f607a6c86ec94384b0c5ec4acaa6 add distributed<br>3a535dd533058eb737bb8c0047147b9b0e546997 it is a test<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">当前版本回退到上一个版本</span><br><span class="hljs-meta">$</span><span class="bash"> git reset --hard HEAD^</span><br>HEAD is now at f182c56 add distributed<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">返回最新的版本，实际上根据commit的id号可以找到任意已记录的版本</span><br><span class="hljs-meta">$</span><span class="bash"> git reset --hard 0b0e50</span><br>HEAD is now at 0b0e509 greatly<br><br></code></pre></div></td></tr></table></figure>
 
-
-
-
-
-
-
-
-
+<ul>
+<li>Git的版本回退速度非常快，因为Git在内部有个指向当前版本的<code>HEAD</code>指针，当你回退版本的时候，Git仅仅是把HEAD从指向另一个版本：</li>
+</ul>
 <h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p>Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。</p>
 <h2 id="git的常用命令"><a href="#git的常用命令" class="headerlink" title="git的常用命令"></a>git的常用命令</h2><figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><br>--设置用户名和邮箱【每次进入都要设置】<br><span class="hljs-comment">//git config --global user.name &quot;yourname&quot;</span><br><span class="hljs-comment">//git config --global user.email &quot;邮箱&quot;</span><br>--生成密钥(SSH key)（生成的key通常在C:\Users\Husile\.ssh）<br><span class="hljs-comment">//ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot;</span><br>--检查密钥添加是否成功<br><span class="hljs-comment">//ssh -T git@github.com</span><br>--创建本地仓库 <br><span class="hljs-comment">//cd d:   进入D盘</span><br><span class="hljs-comment">//mkdir folder  创建一个folder文件夹</span><br><span class="hljs-comment">//cd folder   进入folder文件夹</span><br><span class="hljs-comment">//git init  将该文件夹设置为版本库</span><br>--连接到远程仓库 (两种有无https都可)<br><span class="hljs-comment">//git remote add origin git@github.com:yourName/repositoryname.git</span><br><span class="hljs-comment">//git remote add origin https://github.com/yourName/repositoryname.git</span><br>--如果要移除远程仓库<br><span class="hljs-comment">//git remote rm origin</span><br>--从远程仓库pull文件<br><span class="hljs-comment">//git pull origin master</span><br>--从本地仓库push文件<br><span class="hljs-comment">//git push origin master</span><br>--将本地文件同步到远程仓库的步骤<br><span class="hljs-comment">//git add . (记得加空格和点)</span><br>    <span class="hljs-comment">//git commit -m &quot;loading first time&quot;</span><br>    <span class="hljs-comment">//git remote add origin https://github.com/yourName/repositoryname.git</span><br>    <span class="hljs-comment">//git push -u origin master</span><br>    另，在修改远程仓库时用得上<span class="hljs-comment">//git config --global --unset http.proxy</span><br>    ...<br></code></pre></div></td></tr></table></figure>
 
