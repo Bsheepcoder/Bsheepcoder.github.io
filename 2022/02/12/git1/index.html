@@ -23,11 +23,14 @@
 <meta property="og:site_name" content="Q&#39;s blog">
 <meta property="og:description" content="原本的git学习是仓促的没有好好消化，这里整理一下">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/02/17/5Q4fbIYqg31a7eE.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/17/pMJSQhBIrm4T7wP.jpg">
 <meta property="article:published_time" content="2022-02-12T03:47:16.608Z">
-<meta property="article:modified_time" content="2022-02-17T06:46:08.161Z">
+<meta property="article:modified_time" content="2022-02-17T10:19:02.169Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2022/02/17/5Q4fbIYqg31a7eE.png">
   
   <title>git - Q&#39;s blog</title>
 
@@ -196,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.5k 字
+      6.5k 字
     </span>
   
 
@@ -205,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14 分钟
+      20 分钟
     </span>
   
 
@@ -246,7 +249,7 @@
             
               <p class="note note-info">
                 
-                  更新于：2022年2月17日 下午
+                  更新于：2022年2月17日 晚上
                 
               </p>
             
@@ -288,23 +291,64 @@
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> git <span class="hljs-built_in">log</span> --pretty=oneline</span><br>0b0e509ff4af739ebacf8812e252fd2819a2a785 (HEAD -&gt; master) greatly<br>f182c5620f80f607a6c86ec94384b0c5ec4acaa6 add distributed<br>3a535dd533058eb737bb8c0047147b9b0e546997 it is a test<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">当前版本回退到上一个版本</span><br><span class="hljs-meta">$</span><span class="bash"> git reset --hard HEAD^</span><br>HEAD is now at f182c56 add distributed<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">返回最新的版本，实际上根据commit的id号可以找到任意已记录的版本</span><br><span class="hljs-meta">$</span><span class="bash"> git reset --hard 0b0e50</span><br>HEAD is now at 0b0e509 greatly<br><br></code></pre></div></td></tr></table></figure>
 
-<ul>
-<li>Git的版本回退速度非常快，因为Git在内部有个指向当前版本的<code>HEAD</code>指针，当你回退版本的时候，Git仅仅是把HEAD从指向另一个版本：</li>
-</ul>
+<blockquote>
+<p>Git的版本回退速度非常快，因为Git在内部有个指向当前版本的<code>HEAD</code>指针，当你回退版本的时候，Git仅仅是把HEAD从指向另一个版本：<img src="https://s2.loli.net/2022/02/17/5Q4fbIYqg31a7eE.png" srcset="/img/loading2.gif" lazyload></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">用来记录你的每一次命令</span><br><span class="hljs-meta">$</span><span class="bash"> git reflog</span><br>0b0e509 (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to 0b0e50<br>f182c56 HEAD@&#123;1&#125;: reset: moving to HEAD^<br>0b0e509 (HEAD -&gt; master) HEAD@&#123;2&#125;: commit: greatly<br>f182c56 HEAD@&#123;3&#125;: commit: add distributed<br>3a535dd HEAD@&#123;4&#125;: commit (initial): it is a test<br></code></pre></div></td></tr></table></figure>
+
+
+
 <h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p>Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。</p>
-<h2 id="git的常用命令"><a href="#git的常用命令" class="headerlink" title="git的常用命令"></a>git的常用命令</h2><figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><br>--设置用户名和邮箱【每次进入都要设置】<br><span class="hljs-comment">//git config --global user.name &quot;yourname&quot;</span><br><span class="hljs-comment">//git config --global user.email &quot;邮箱&quot;</span><br>--生成密钥(SSH key)（生成的key通常在C:\Users\Husile\.ssh）<br><span class="hljs-comment">//ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot;</span><br>--检查密钥添加是否成功<br><span class="hljs-comment">//ssh -T git@github.com</span><br>--创建本地仓库 <br><span class="hljs-comment">//cd d:   进入D盘</span><br><span class="hljs-comment">//mkdir folder  创建一个folder文件夹</span><br><span class="hljs-comment">//cd folder   进入folder文件夹</span><br><span class="hljs-comment">//git init  将该文件夹设置为版本库</span><br>--连接到远程仓库 (两种有无https都可)<br><span class="hljs-comment">//git remote add origin git@github.com:yourName/repositoryname.git</span><br><span class="hljs-comment">//git remote add origin https://github.com/yourName/repositoryname.git</span><br>--如果要移除远程仓库<br><span class="hljs-comment">//git remote rm origin</span><br>--从远程仓库pull文件<br><span class="hljs-comment">//git pull origin master</span><br>--从本地仓库push文件<br><span class="hljs-comment">//git push origin master</span><br>--将本地文件同步到远程仓库的步骤<br><span class="hljs-comment">//git add . (记得加空格和点)</span><br>    <span class="hljs-comment">//git commit -m &quot;loading first time&quot;</span><br>    <span class="hljs-comment">//git remote add origin https://github.com/yourName/repositoryname.git</span><br>    <span class="hljs-comment">//git push -u origin master</span><br>    另，在修改远程仓库时用得上<span class="hljs-comment">//git config --global --unset http.proxy</span><br>    ...<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>工作区就是git init的文件夹</li>
+<li>暂存区实际上就是git add后，将修改的内容添加到.git的文件夹的待提交区域中</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/02/17/pMJSQhBIrm4T7wP.jpg" srcset="/img/loading2.gif" lazyload alt="git-repo"></p>
+<ul>
+<li><p>多次修改就要多次add，最后一起commit.没有add就只能提交stage区域的修改</p>
+</li>
+<li><p>当没有及时提交时就会报错</p>
+  <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> git status</span><br>On branch master<br>Changes not staged for commit:<br>  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)<br>  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)<br><br>	modified:   readme.txt<br><br>no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">把readme.txt文件在工作区的修改全部撤销</span><br>git checkout -- readme.txt<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>一种是<code>readme.txt</code>自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态</li>
+<li>一种是<code>readme.txt</code>已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。</li>
+</ul>
+<blockquote>
+<p><code>git checkout -- file</code>命令中的<code>--</code>很重要，没有<code>--</code>，就变成了“切换到另一个分支”的命令，我们在后面的分支管理中会再次遇到<code>git checkout</code>命令。</p>
+</blockquote>
+</li>
+<li><p>当需要退回暂存区的修改时</p>
+  <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> git status</span><br>On branch master<br>Changes to be committed:<br>  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)<br><br>	modified:   readme.txt<br><span class="hljs-meta">	</span><br><span class="hljs-meta">#</span><span class="bash">可以把stage暂存区的修改撤销掉</span><br><span class="hljs-meta">$</span><span class="bash"> git reset HEAD readme.txt</span><br>Unstaged changes after reset:<br>M	readme.txt<br></code></pre></div></td></tr></table></figure>
 
-<p>==以上命令行用于解决    git和github本地仓库连接远程仓库的问题== </p>
-<h2 id="Readme索引学习心得"><a href="#Readme索引学习心得" class="headerlink" title="Readme索引学习心得"></a>Readme索引学习心得</h2><p><em>超链接语法的妙用</em></p>
-<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-comment">//目录</span><br><span class="hljs-comment">//[阶段一markdownu学习笔记](链接对应github文件的网址)</span><br><span class="hljs-comment">//[阶段二git/github学习笔记](链接对应github文件的网址)</span><br><span class="hljs-comment">//...</span><br></code></pre></div></td></tr></table></figure>
+<blockquote>
+<p><code>git reset</code>命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用<code>HEAD</code>时，表示最新的版本。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><ul>
+<li><p>当版本库和工作区一致时，删除某一个文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> git status</span><br>On branch master<br>Changes not staged for commit:<br>  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)<br>  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)<br><br>	deleted:    test.txt<br><br>no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)<br><span class="hljs-meta"></span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">如果确实要删除，</span><br><span class="hljs-meta">$</span><span class="bash"> git rm test.txt</span><br><span class="hljs-meta">$</span><span class="bash"> git commit -m <span class="hljs-string">&quot;remove test.txt&quot;</span></span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">撤销删除</span><br><span class="hljs-meta">$</span><span class="bash"> git checkout -- test.txt</span><br></code></pre></div></td></tr></table></figure>
 
-<p>任何文本都可做成上面的链接，最后达到一个目录的效果</p>
-<h2 id="git本地更新"><a href="#git本地更新" class="headerlink" title="git本地更新"></a>git本地更新</h2><figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><br><span class="hljs-comment">//使用如下命令可以查看远程仓库（我这里有一个origin仓库）</span><br>$ git remote -v  <br><span class="hljs-comment">//使用如下命令可以在本地新建一个temp分支，并将远程origin仓库的master分支代码下载到本地temp分支</span><br>$ git fetch origin master:temp  <br><span class="hljs-comment">//使用如下命令来比较本地代码与刚刚从远程下载下来的代码的区别：</span><br>$ git diff temp<br><span class="hljs-comment">//对比区别之后，如果觉得没有问题，可以使用如下命令进行代码合并：</span><br>$ git merge temp    <br><span class="hljs-comment">//如果temp分支不想要保留，可以使用如下命令删除该分支：</span><br>$ git branch -d temp<br></code></pre></div></td></tr></table></figure>
+<blockquote>
+<p><code>git checkout</code>其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Git-amp-Github的常用命令"><a href="#Git-amp-Github的常用命令" class="headerlink" title="Git&amp;Github的常用命令"></a>Git&amp;Github的常用命令</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">设置用户名和邮箱【每次进入都要设置】</span><br>git config --global user.name &quot;yourname&quot;<br>git config --global user.email &quot;邮箱&quot;<br><span class="hljs-meta">#</span><span class="bash">生成密钥(SSH key)（生成的key通常在C:\Users\Husile\.ssh）</span><br>ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot;<br><span class="hljs-meta">#</span><span class="bash">检查密钥添加是否成功</span><br>ssh -T git@github.com<br><span class="hljs-meta">#</span><span class="bash">创建本地仓库</span> <br>cd d:   进入D盘<br>mkdir folder  创建一个folder文件夹<br>cd folder   进入folder文件夹<br>git init  将该文件夹设置为版本库<br><span class="hljs-meta">#</span><span class="bash">连接到远程仓库 (两种有无https都可)</span><br>git remote add origin git@github.com:yourName/repositoryname.git<br>git remote add origin https://github.com/yourName/repositoryname.git<br><span class="hljs-meta">#</span><span class="bash">如果要移除远程仓库</span><br>git remote rm origin<br><span class="hljs-meta">#</span><span class="bash">从远程仓库pull文件</span><br>git pull origin master<br><span class="hljs-meta">#</span><span class="bash">从本地仓库push文件</span><br>git push origin master<br><span class="hljs-meta">#</span><span class="bash">将本地文件同步到远程仓库的步骤</span><br>git add . (记得加空格和点)<br>git commit -m &quot;loading first time&quot;<br>git remote add origin https://github.com/yourName/repositoryname.git<br>git push -u origin master<br><span class="hljs-meta">#</span><span class="bash">另，在修改远程仓库时用得上</span><br>git config --global --unset http.proxy<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">克隆一个本地库</span><br><span class="hljs-meta">$</span><span class="bash"> git <span class="hljs-built_in">clone</span> git@github.com:michaelliao/gitskills.git</span><br><br></code></pre></div></td></tr></table></figure>
 
+<blockquote>
+<p>如果有多个人协作开发，那么每个人各自从远程克隆一份就可以了。</p>
+<p>你也许还注意到，GitHub给出的地址不止一个，还可以用<code>https://github.com/michaelliao/gitskills.git</code>这样的地址。实际上，Git支持多种协议，默认的<code>git://</code>使用ssh，但也可以使用<code>https</code>等其他协议。</p>
+<p>使用<code>https</code>除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放http端口的公司内部就无法使用<code>ssh</code>协议而只能用<code>https</code>。</p>
+</blockquote>
+<h2 id="Git本地更新"><a href="#Git本地更新" class="headerlink" title="Git本地更新"></a>Git本地更新</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">使用如下命令可以查看远程仓库（我这里有一个origin仓库）</span><br><span class="hljs-meta">$</span><span class="bash"> git remote -v</span>  <br><span class="hljs-meta">#</span><span class="bash">使用如下命令可以在本地新建一个temp分支，并将远程origin仓库的master分支代码下载到本地temp分支</span><br><span class="hljs-meta">$</span><span class="bash"> git fetch origin master:temp</span>  <br><span class="hljs-meta">#</span><span class="bash">使用如下命令来比较本地代码与刚刚从远程下载下来的代码的区别：</span><br><span class="hljs-meta">$</span><span class="bash"> git diff temp</span><br><span class="hljs-meta">#</span><span class="bash">对比区别之后，如果觉得没有问题，可以使用如下命令进行代码合并：</span><br><span class="hljs-meta">$</span><span class="bash"> git merge temp</span>    <br><span class="hljs-meta">#</span><span class="bash">如果temp分支不想要保留，可以使用如下命令删除该分支：</span><br><span class="hljs-meta">$</span><span class="bash"> git branch -d temp</span><br></code></pre></div></td></tr></table></figure>
 
-
-
-
+<h2 id="Git分支管理"><a href="#Git分支管理" class="headerlink" title="Git分支管理"></a>Git分支管理</h2><p>查看分支：<code>git branch</code></p>
+<p>创建分支：<code>git branch &lt;name&gt;</code></p>
+<p>切换分支：<code>git checkout &lt;name&gt;</code>或者<code>git switch &lt;name&gt;</code></p>
+<p>创建+切换分支：<code>git checkout -b &lt;name&gt;</code>或者<code>git switch -c &lt;name&gt;</code></p>
+<p>合并某分支到当前分支：<code>git merge &lt;name&gt;</code></p>
+<p>删除分支：<code>git branch -d &lt;name&gt;</code></p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600">廖雪峰的Git教程</a></li>
 </ul>
