@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bsheepcoder.github.io/2022/02/18/CSS1/</loc>
+    
+    <lastmod>2022-02-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bsheepcoder.github.io/2022/02/18/HTML1/</loc>
+    
+    <lastmod>2022-02-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://bsheepcoder.github.io/2022/02/12/English1/</loc>
     
     <lastmod>2022-02-18</lastmod>
@@ -513,6 +531,20 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://bsheepcoder.github.io/tags/HTML/</loc>
+    <lastmod>2022-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bsheepcoder.github.io/tags/CSS/</loc>
+    <lastmod>2022-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -608,6 +640,20 @@
   
   <url>
     <loc>https://bsheepcoder.github.io/categories/AI/</loc>
+    <lastmod>2022-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bsheepcoder.github.io/categories/HTML/</loc>
+    <lastmod>2022-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bsheepcoder.github.io/categories/CSS/</loc>
     <lastmod>2022-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
