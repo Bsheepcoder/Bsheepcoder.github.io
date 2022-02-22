@@ -18,23 +18,22 @@
   <meta name="keywords" content="">
   <meta name="description" content="走遍天下都不怕">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机组成原理">
-<meta property="og:url" content="https://bsheepcoder.github.io/2022/02/09/Computer1/index.html">
+<meta property="og:title" content="计算机组成原理(principles of computer organization)">
+<meta property="og:url" content="https://bsheepcoder.github.io/2022/02/09/principles%20of%20computer%20organization1/index.html">
 <meta property="og:site_name" content="Q&#39;s blog">
 <meta property="og:description" content="走遍天下都不怕">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2022/02/09/2eToDdvcrahMAl5.png">
-<meta property="og:image" content="https://s2.loli.net/2022/02/09/syi6cbJYuQdI7SO.png">
-<meta property="og:image" content="https://s2.loli.net/2022/02/09/K2HOW75oiZANrYd.png">
-<meta property="og:image" content="https://s2.loli.net/2022/02/12/NjgfVT94d3LoBJO.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/22/pSiBI23CWqyOhj9.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/22/BxOHRiqCPFfnUJT.png">
+<meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220222132142131.png">
 <meta property="article:published_time" content="2022-02-09T06:00:42.523Z">
-<meta property="article:modified_time" content="2022-02-12T01:08:07.136Z">
+<meta property="article:modified_time" content="2022-02-22T05:52:58.035Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="计算机基础">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2022/02/09/2eToDdvcrahMAl5.png">
+<meta name="twitter:image" content="https://s2.loli.net/2022/02/22/pSiBI23CWqyOhj9.png">
   
-  <title>计算机组成原理 - Q&#39;s blog</title>
+  <title>计算机组成原理(principles of computer organization) - Q&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -180,7 +179,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="计算机组成原理">
+            <span class="h2" id="subtitle" title="计算机组成原理(principles of computer organization)">
               
             </span>
 
@@ -201,7 +200,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      148 字
+      1.1k 字
     </span>
   
 
@@ -210,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      4 分钟
     </span>
   
 
@@ -247,39 +246,130 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">计算机组成原理</h1>
+            <h1 style="display: none">计算机组成原理(principles of computer organization)</h1>
             
               <p class="note note-info">
                 
-                  更新于：2022年2月12日 上午
+                  更新于：2022年2月22日 下午
                 
               </p>
             
             <div class="markdown-body">
               <h2 id="课程概貌"><a href="#课程概貌" class="headerlink" title="课程概貌"></a>课程概貌</h2><ul>
-<li>基本不见的结构和组织方式</li>
+<li>基本部件的结构和组织方式</li>
 <li>基本运算的操作原理</li>
 <li>基本部件和单元的设计思想</li>
 </ul>
-<p><img src="https://s2.loli.net/2022/02/09/2eToDdvcrahMAl5.png" srcset="/img/loading2.gif" lazyload alt="课程体系"></p>
-<h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><p><img src="https://s2.loli.net/2022/02/09/syi6cbJYuQdI7SO.png" srcset="/img/loading2.gif" lazyload alt="课程结构"></p>
-<h2 id="计算机系统概论"><a href="#计算机系统概论" class="headerlink" title="计算机系统概论"></a>计算机系统概论</h2><ul>
-<li><p>现代计算机系统由哪两部分构成</p>
-<p><img src="https://s2.loli.net/2022/02/09/K2HOW75oiZANrYd.png" srcset="/img/loading2.gif" lazyload></p>
-<p>1个TF是一千万次</p>
-<p><img src="https://s2.loli.net/2022/02/12/NjgfVT94d3LoBJO.png" srcset="/img/loading2.gif" lazyload></p>
+<h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><h3 id="1-1-冯诺依曼结构计算机工作原理及层次结构分析"><a href="#1-1-冯诺依曼结构计算机工作原理及层次结构分析" class="headerlink" title="1.1 冯诺依曼结构计算机工作原理及层次结构分析"></a>1.1 冯诺依曼结构计算机工作原理及层次结构分析</h3><h4 id="1-冯诺依曼"><a href="#1-冯诺依曼" class="headerlink" title="1.冯诺依曼"></a>1.冯诺依曼</h4><h4 id="2-冯诺依曼计算机的工作原理"><a href="#2-冯诺依曼计算机的工作原理" class="headerlink" title="2.冯诺依曼计算机的工作原理"></a>2.冯诺依曼计算机的工作原理</h4><p><img src="https://s2.loli.net/2022/02/22/pSiBI23CWqyOhj9.png" srcset="/img/loading2.gif" lazyload></p>
+<h4 id="3-冯诺依曼计算机的组成"><a href="#3-冯诺依曼计算机的组成" class="headerlink" title="3.冯诺依曼计算机的组成"></a>3.冯诺依曼计算机的组成</h4><h5 id="硬件系统"><a href="#硬件系统" class="headerlink" title="硬件系统"></a>硬件系统</h5><p><img src="https://s2.loli.net/2022/02/22/BxOHRiqCPFfnUJT.png" srcset="/img/loading2.gif" lazyload></p>
+<ul>
+<li><p>运算器</p>
+<p>运算器的具体结构与具体的功能相匹配</p>
+<ul>
+<li>算术运算</li>
+<li>逻辑运算</li>
+<li>基本结构 ： ALU、寄存器、通路</li>
+</ul>
+</li>
+<li><p>控制器</p>
+<ul>
+<li>基本功能：产生指令执行过程所需要的所有控制信号，控制相关功能部件执行相应操作。</li>
+<li>控制信号的形式：电平信号、脉冲信号</li>
+<li>产生控制信号的依据：指令、状态、时序</li>
+<li>控制信号的产生方式：微程序、硬布线</li>
+</ul>
+<p>信号的产生来源于指令</p>
+</li>
+<li><p>存储器</p>
+<ul>
+<li><p>功能：存储原程序、原数据、运算中间结果</p>
+</li>
+<li><p>工作模式：读、写</p>
+</li>
+<li><p>工作原理：按地址访问，读写数据</p>
+</li>
+<li><p><strong>容量与地址线数量的关系</strong></p>
+<p>1K = 10，1M = 20，1G = 30</p>
+<blockquote>
+<p>以其位宽为单位，也就是说每个存储器地址下的数据位数为位宽。如</p>
+<p>8K*12bit的存储器中的12就是存储器的位宽，指每个存储器地址下数据的位数。</p>
+<p>这个12与地址线的多少无关，8K就是指有8K个不同的地址8K=8<em>1024=2^?  2的多少次方等于8</em>1024就有多少根地址线，8=2^3, 1024=2^10, 那么8K=2^13 ，存储器地址线就为13根。</p>
+</blockquote>
 </li>
 </ul>
-<pre><code class=" mermaid">pie
-    title 为什么总是宅在家里？
-    &quot;喜欢宅&quot; : 15
-    &quot;天气太热或太冷&quot; : 20
-    &quot;穷&quot; : 50
-</code></pre>
-
-
-
-
+</li>
+<li><p>输入输出设备</p>
+<ul>
+<li>输入信息、输出信息</li>
+</ul>
+</li>
+</ul>
+<h5 id="软件系统"><a href="#软件系统" class="headerlink" title="软件系统"></a>软件系统</h5><p>核心是算法</p>
+<ul>
+<li>系统软件：操作系统、网络系统和编译系统</li>
+<li>支持软件：开发工具、界面工具</li>
+<li>应用软件：字处理软件、游戏软件</li>
+</ul>
+<h5 id="硬件与软件系统间的关系"><a href="#硬件与软件系统间的关系" class="headerlink" title="硬件与软件系统间的关系"></a>硬件与软件系统间的关系</h5><ul>
+<li>两者相互依存</li>
+<li>逻辑等效性，硬件软件都可实现某功能</li>
+<li>协同发展</li>
+</ul>
+<h4 id="4-计算机的层次结构"><a href="#4-计算机的层次结构" class="headerlink" title="4.计算机的层次结构"></a>4.计算机的层次结构</h4><p><img src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220222132142131.png" srcset="/img/loading2.gif" lazyload></p>
+<ul>
+<li><p>不同层次的差异</p>
+<ul>
+<li><p>不同用户处在不同层次</p>
+</li>
+<li><p>不同层次具有不同属性</p>
+</li>
+<li><p>使用工具不同</p>
+</li>
+<li><p>代码效率不同</p>
+</li>
+</ul>
+</li>
+<li><p>理解概念</p>
+<ul>
+<li>透明性</li>
+<li>系统观  <ul>
+<li>硬件结构发生变换，影响软件</li>
+<li>不同类型的软件对硬件有不同的要求</li>
+<li>编程的CPU硬件相关性，编程应查阅对应CPU的编程手册</li>
+</ul>
+</li>
+<li>软硬件分界线<ul>
+<li>指令集架构层</li>
+<li>指令格式、指令设计</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###1.2计算机系统性能评价</p>
+<h4 id="1-非时间指标"><a href="#1-非时间指标" class="headerlink" title="1.非时间指标"></a>1.非时间指标</h4><h5 id="机器字长"><a href="#机器字长" class="headerlink" title="机器字长"></a>机器字长</h5><p>指机器一次能处理的二进制位数</p>
+<ul>
+<li>由加法器、寄存器的位数决定</li>
+<li>一般与内部寄存器的位数相等(字长)</li>
+<li>字长越长，表示数据的范围就越大，精度越高</li>
+<li>目前常见的有32位和64位字长</li>
+</ul>
+<blockquote>
+<p>这个字长从编程语言的角度理解就没意义了。字长要从汇编语言的角度理解，就是指令集里面的运算和内存操作时操作数的长度。比如你写一条load a, reg1，那么a这个操作数的长度就是字长。32位机的字长<strong>最大</strong>是32bit，64位机的字长<strong>最大</strong>是64bit。</p>
+</blockquote>
+<h5 id="总线宽度"><a href="#总线宽度" class="headerlink" title="总线宽度"></a>总线宽度</h5><p>数据总线一次能并行传送的最大信息位数</p>
+<ul>
+<li>一般指运算器与存储器之间的数据总线位数</li>
+<li>内部胃不数据总线宽度可能不一致，根据具体的设计不同。</li>
+</ul>
+<h5 id="主存容量"><a href="#主存容量" class="headerlink" title="主存容量"></a>主存容量</h5><p>是指一台计算机主存所包含的存储单元总数</p>
+<h5 id="存储带宽"><a href="#存储带宽" class="headerlink" title="存储带宽"></a>存储带宽</h5><p>指单位时间内与主存交换的二进制信息量，常用单位B/s</p>
+<p>存储带宽影响因素：</p>
+<ul>
+<li>数据位宽</li>
+<li>数据传输速率</li>
+</ul>
+<h4 id="2-时间指标"><a href="#2-时间指标" class="headerlink" title="2.时间指标"></a>2.时间指标</h4><h5 id="1-主频f-时钟周期T，外频、倍频"><a href="#1-主频f-时钟周期T，外频、倍频" class="headerlink" title="1.主频f/时钟周期T，外频、倍频"></a>1.主频f/时钟周期T，外频、倍频</h5>
             </div>
             <hr>
             <div>
@@ -535,13 +625,6 @@
 
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({"theme":"default"});
-    }
-  </script>
 
 
 
