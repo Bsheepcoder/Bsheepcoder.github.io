@@ -18,7 +18,7 @@
   <meta name="keywords" content="">
   <meta name="description" content="学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java程序设计">
+<meta property="og:title" content="JavaSE程序设计">
 <meta property="og:url" content="https://bsheepcoder.github.io/2022/02/21/java1/index.html">
 <meta property="og:site_name" content="Q&#39;s blog">
 <meta property="og:description" content="学习笔记">
@@ -27,13 +27,13 @@
 <meta property="og:image" content="https://s2.loli.net/2022/02/16/MjtlIUyu4oghCq5.png">
 <meta property="og:image" content="https://s2.loli.net/2022/02/16/pmnbeaFvArY23E5.png">
 <meta property="article:published_time" content="2022-02-21T09:17:57.038Z">
-<meta property="article:modified_time" content="2022-02-22T12:57:15.559Z">
+<meta property="article:modified_time" content="2022-02-23T10:21:30.863Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://s2.loli.net/2022/02/16/Q6Jvn18eBG9foPE.png">
   
-  <title>Java程序设计 - Q&#39;s blog</title>
+  <title>JavaSE程序设计 - Q&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -179,7 +179,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Java程序设计">
+            <span class="h2" id="subtitle" title="JavaSE程序设计">
               
             </span>
 
@@ -200,7 +200,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      7.2k 字
+      7.3k 字
     </span>
   
 
@@ -246,11 +246,11 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Java程序设计</h1>
+            <h1 style="display: none">JavaSE程序设计</h1>
             
               <p class="note note-info">
                 
-                  更新于：2022年2月22日 晚上
+                  更新于：2022年2月23日 晚上
                 
               </p>
             
@@ -286,10 +286,8 @@
 <li>JRE = Jvm(java虚拟机) + Java类库(Java SE)</li>
 </ul>
 <h2 id="Java-JDK安装"><a href="#Java-JDK安装" class="headerlink" title="Java_JDK安装"></a>Java_JDK安装</h2><ul>
-<li><p><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/java-se-glance.html">Oracle官网</a></p>
-</li>
-<li><p>安装完成后配置环境变量,尽量在系统变量中添加绝对路径</p>
-</li>
+<li><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/java-se-glance.html">Oracle官网</a></li>
+<li>安装完成后配置环境变量,尽量在系统变量中添加绝对路径，或者可以在系统变量中添加JAVA_HOME(地址是Jdk的安装目录)，其他的环境变量用的时候就引用%JAVA_HOME%。</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">C:\Users\71041&gt;java -version<br>java version &quot;1.8.0_321&quot;<br>Java(TM) SE Runtime Environment (build 1.8.0_321-b07)<br>Java HotSpot(TM) 64-Bit Server VM (build 25.321-b07, mixed mode)<br></code></pre></div></td></tr></table></figure>
 
@@ -301,7 +299,7 @@
 <ul>
 <li><p>如果用windows的dos，只认GBK</p>
 </li>
-<li><p>java 执行时用类名，不加.class后缀</p>
+<li><p><strong>java 执行时用类名，不加.class后缀</strong></p>
 <p><img src="https://s2.loli.net/2022/02/16/MjtlIUyu4oghCq5.png" srcset="/img/loading2.gif" lazyload></p>
 </li>
 </ul>
@@ -400,8 +398,7 @@
 <li><p>向上转型</p>
 </li>
 <li><p>向下转型</p>
-</li>
-<li><p>Java提供了<code>instanceof</code>操作符，可以先判断一个实例究竟是不是某种类型</p>
+<p>Java提供了<code>instanceof</code>操作符，可以先判断一个实例究竟是不是某种类型</p>
 <figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">Person p = <span class="hljs-keyword">new</span> Person();<br>System.out.println(p <span class="hljs-keyword">instanceof</span> Person); <span class="hljs-comment">// true</span><br></code></pre></div></td></tr></table></figure></li>
 </ul>
 
@@ -437,6 +434,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/02/23/COS1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">操作系统原理(principles of computer system)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
