@@ -258,7 +258,7 @@
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
 <li>什么是Mermaid？<ul>
 <li>Mermaid是一种基于Javascript的绘图工具，使用类似于Markdown的语法，使用户可以方便快捷地通过代码创建图表。</li>
-<li>项目地址：<a target="_blank" rel="noopener" href="https://github.com/mermaid-js/mermaid%EF%BC%88%E9%9C%80%E8%A6%81%E5%B0%86%E6%A2%AF%E5%AD%90%E8%AE%BE%E7%BD%AE%E6%88%90%E5%85%A8%E5%B1%80%E6%A8%A1%E5%BC%8F%E6%89%8D%E8%83%BD%E8%AE%BF%E9%97%AE%EF%BC%89">https://github.com/mermaid-js/mermaid（需要将梯子设置成全局模式才能访问）</a></li>
+<li>项目地址：<a target="_blank" rel="noopener" href="https://github.com/mermaid-js/mermaid（需要将梯子设置成全局模式才能访问）">https://github.com/mermaid-js/mermaid（需要将梯子设置成全局模式才能访问）</a></li>
 </ul>
 </li>
 </ul>
@@ -295,7 +295,6 @@ emperor2((朱允炆))--次子--&gt;朱标
 emperor3((朱棣))--四子--&gt;emperor
 emperor4((朱高炽))--长子--&gt;emperor3
 </code></pre>
-
 <p>以上是概述，下面详细介绍饼状图和流程图的语法。其他图的语法可访问上文给出的项目地址，自行学习。（记得挂梯子）</p>
 <h1 id="饼状图"><a href="#饼状图" class="headerlink" title="饼状图"></a>饼状图</h1><ul>
 <li><p>在线渲染器：<a target="_blank" rel="noopener" href="https://mermaidjs.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoicGllXG5cIkRvZ3NcIiA6IDQyLjk2XG5cIkNhdHNcIiA6IDUwLjA1XG5cIlJhdHNcIiA6IDEwLjAxIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifX0">Online FlowChart &amp; Diagrams Editor</a>（需要梯子）</p>
@@ -322,7 +321,6 @@ emperor4((朱高炽))--长子--&gt;emperor3
     &quot;天气太热或太冷&quot; : 20
     &quot;穷&quot; : 500
 </code></pre>
-
 <h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><ul>
 <li>在线渲染器：<a target="_blank" rel="noopener" href="https://mermaidjs.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBBW0hhcmRdIC0tPnxUZXh0fCBCKFJvdW5kKVxuICAgIEIgLS0-IEN7RGVjaXNpb259XG4gICAgQyAtLT58T25lfCBEW1Jlc3VsdCAxXVxuICAgIEMgLS0-fFR3b3wgRVtSZXN1bHQgMl0iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9fQ">Online FlowChart &amp; Diagrams Editor</a>（需要挂梯子）</li>
 </ul>
@@ -333,7 +331,6 @@ emperor4((朱高炽))--长子--&gt;emperor3
     D --&gt; B;
     B -- No ----&gt; E[End];
 </code></pre>
-
 <h2 id="方向"><a href="#方向" class="headerlink" title="方向"></a>方向</h2><p>用于开头，声明流程图的方向。</p>
 <ul>
 <li><code>graph</code>或<code>graph TB</code>或<code>graph TD</code>：从上往下</li>
@@ -357,7 +354,6 @@ emperor4((朱高炽))--长子--&gt;emperor3
     id5[(圆柱形)]
     id6((圆形))
 </code></pre>
-
 <pre><code class=" mermaid">graph
 	id1&#123;菱形&#125;
 	id2&#123;&#123;六角形&#125;&#125;
@@ -366,28 +362,24 @@ emperor4((朱高炽))--长子--&gt;emperor3
 	id5[/梯形\]
 	id6[\反向梯形/]
 </code></pre>
-
 <h2 id="连线样式"><a href="#连线样式" class="headerlink" title="连线样式"></a>连线样式</h2><ul>
 <li>实线箭头：分为无文本箭头和有文本箭头，有文本箭头有2种书写格式</li>
 </ul>
 <pre><code class=" mermaid">graph LR
 a--&gt;b--文本1--&gt;c--&gt;|文本2|d
 </code></pre>
-
 <ul>
 <li>粗实线箭头：分为无文本箭头和有文本箭头</li>
 </ul>
 <pre><code class=" mermaid">graph LR
 a==&gt;b==文本==&gt;c
 </code></pre>
-
 <ul>
 <li>虚线箭头：分为无文本箭头和有文本箭头</li>
 </ul>
 <pre><code class=" mermaid">graph LR
 a-.-&gt;b-.文本.-&gt;c
 </code></pre>
-
 <ul>
 <li>无箭头线：即以上三种连线去掉箭头后的形式</li>
 </ul>
@@ -400,7 +392,6 @@ e==文本3===f
 f-.-g
 g-.文本.-h
 </code></pre>
-
 <ul>
 <li>其他连线：需要将<code>graph</code>关键字改为<code>flowchart</code>，除了新增加的连线形式外，上面三种线的渲染效果也会不同</li>
 </ul>
@@ -411,7 +402,6 @@ g-.文本.-h
     
     旧连线 --文本--&gt; 也会不同
 </code></pre>
-
 <ul>
 <li>延长连线：增加相应字符即可，如下图中的B到E，连线中增加了一个<code>-</code>。字符可多次添加。</li>
 </ul>
@@ -422,16 +412,12 @@ g-.文本.-h
     D --&gt; B;
     B ---&gt;|No| E[End];
 </code></pre>
-
-
-
 <h2 id="连线形式"><a href="#连线形式" class="headerlink" title="连线形式"></a>连线形式</h2><ul>
 <li>直链</li>
 </ul>
 <pre><code class=" mermaid">graph LR
    A -- text --&gt; B -- text2 --&gt; C
 </code></pre>
-
 <ul>
 <li>多重链：可以使用<code>&amp;</code>字符，或单个描述</li>
 </ul>
@@ -445,7 +431,6 @@ g-.文本.-h
     Y --&gt; M
     Y --&gt; N
 </code></pre>
-
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
 <li>子图：需要将<code>graph</code>关键字改为<code>flowchart</code>，在代码段的开始加入<code>subgraph</code>，尾部加入<code>end</code></li>
 </ul>
@@ -464,7 +449,6 @@ g-.文本.-h
     three --&gt; two
     two --&gt; c2
 </code></pre>
-
 <ul>
 <li>注释：在行首加入<code>%%</code>即可。</li>
 </ul>

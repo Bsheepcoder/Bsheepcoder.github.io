@@ -254,8 +254,7 @@
             
             <div class="markdown-body">
               <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/59e8d170346d">使用hexo+github搭建个人博客遇到过哪些坑</a></p>
-</li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/59e8d170346d">使用hexo+github搭建个人博客遇到过哪些坑</a></li>
 <li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Shen___/article/details/102660305">部署hexo时出错：fatal: Could not read from remote repository.Error: Spawn failed</a></p>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://haee.gitee.io/2021/02/18/hexo32/">hexo | 同时提交到 github 和 gitee</a></p>
@@ -266,14 +265,16 @@
 <li><p>准备好gitee的账号</p>
 </li>
 <li><p>在git中创建ssh密钥</p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 注意：该命令是在本地PC上执行</span><br>ssh-keygen -t rsa -C &quot;xxxxx@xxxxx.com&quot;  <br><span class="hljs-meta">#</span><span class="bash"> Generating public/private rsa key pair...</span><br></code></pre></div></td></tr></table></figure></li>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 注意：该命令是在本地PC上执行</span><br>ssh-keygen -t rsa -C &quot;xxxxx@xxxxx.com&quot;  <br><span class="hljs-meta">#</span><span class="bash"> Generating public/private rsa key pair...</span><br></code></pre></div></td></tr></table></figure>
+</li>
 <li><p>在提示的路径中找到ssh生成的.pub文件，打开，将公钥保存到仓库，<a target="_blank" rel="noopener" href="https://gitee.com/help/articles/4181#article-header0">详细参考</a></p>
 </li>
 <li><p>在Hexo的根目录下找到_config.yml文件，修改deploy项为如下：</p>
-<p><img src="https://s2.loli.net/2022/02/15/ITrYSsnL2zxEVey.png" srcset="/img/loading2.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/15/ITrYSsnL2zxEVey.png" srcset="/img/loading2.gif" lazyload alt=""></p>
 </li>
 <li><p>此时执行如下，即可实现同时部署</p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">hexo g<br>hexo d<br></code></pre></div></td></tr></table></figure></li>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">hexo g<br>hexo d<br></code></pre></div></td></tr></table></figure>
+</li>
 </ul>
 <h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><ul>
 <li><a target="_blank" rel="noopener" href="http://bsheepcoder.gitee.io/blog/">http://bsheepcoder.gitee.io/blog/</a>   可能我的config文件配置还有问题，页面切换之后只有内容，hexo的页面就显示不了，之后解决了再更新</li>

@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2021/10/02/ItQT6e43dmnNHgv.png">
 <meta property="article:published_time" content="2021-10-12T23:17:31.910Z">
-<meta property="article:modified_time" content="2021-10-03T01:52:19.000Z">
+<meta property="article:modified_time" content="2022-02-25T06:35:25.152Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary_large_image">
@@ -198,7 +198,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      444 字
+      540 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      2 分钟
     </span>
   
 
@@ -248,7 +248,7 @@
             
               <p class="note note-info">
                 
-                  更新于：2021年10月3日 上午
+                  更新于：2022年2月25日 下午
                 
               </p>
             
@@ -267,13 +267,22 @@
 <h2 id="hexo-s时提示4000端口被占用"><a href="#hexo-s时提示4000端口被占用" class="headerlink" title="hexo s时提示4000端口被占用"></a>hexo s时提示4000端口被占用</h2><ul>
 <li><p>问题</p>
 <p>有的时候在执行‘hexo sever’的命令时,提示以下内容：</p>
-<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">FATAL Port 4000 has been used. Try other port instead.<br></code></pre></div></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">FATAL Port 4000 has been used. Try other port instead.<br></code></pre></div></td></tr></table></figure>
+</li>
 <li><p>方法：</p>
 <p>出现问题的原因是4000端口被占用，这个端口是可以随意设置的不是固定的，可以输入以指定端口开启服务：</p>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">hexo server -p 4001<br></code></pre></div></td></tr></table></figure>
-
 <p>或者在可以在站点下的文件_config.yml内加上如下代码更改hexo-server运行时的端口号：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">4001</span> <span class="hljs-comment">#端口号随意，默认是4000,可以更改为其他</span><br>  <span class="hljs-attr">compress:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">header:</span> <span class="hljs-literal">true</span><br></code></pre></div></td></tr></table></figure></li>
+<figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">4001</span> <span class="hljs-comment">#端口号随意，默认是4000,可以更改为其他</span><br>  <span class="hljs-attr">compress:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">header:</span> <span class="hljs-literal">true</span><br></code></pre></div></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="hexo-s打开网页出现Cannot-GET"><a href="#hexo-s打开网页出现Cannot-GET" class="headerlink" title="hexo s打开网页出现Cannot GET /"></a>hexo s打开网页出现Cannot GET /</h2><ul>
+<li><p>问题</p>
+<p>我卸载了数学公式的渲染组建，因此出现本错误。</p>
+</li>
+<li><p>解决办法</p>
+<p>将卸载的软件重新装好即可，通常出现这个问题就是有部分组建缺失，网页无法正确的渲染而出现的错误。</p>
+</li>
 </ul>
 
             </div>

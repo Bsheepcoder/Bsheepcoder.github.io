@@ -301,7 +301,7 @@
 <p>Python数据分析及科学设计的基础库，支撑pandas等</p>
 <p>提供直接的矩阵运算、广播函数、线性代数等功能</p>
 <p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCyuFg"><img src="https://s3.ax1x.com/2021/01/29/yCyuFg.png" srcset="/img/loading2.gif" lazyload alt="yCyuFg.png" border="0" /></a></p>
-<p><a target="_blank" rel="noopener" href="http://www.numpy.org/">www.numpy.org</a></p>
+<p>www.numpy.org</p>
 <h5 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h5><p>Pandas:Python数据分析高层次应用库</p>
 <p>提供了简单易用的数据结构和数据分析工具</p>
 <p>理解数据类型与索引的关系。操作索引即操作数据</p>
@@ -309,7 +309,7 @@
 <p>核心</p>
 <p>Series = 索引 + 一维数据</p>
 <p> DataFrame = 行列索引 + 二维数据</p>
-<p><a target="_blank" rel="noopener" href="http://pandas.pydata.org/">http://pandas.pydata.org</a></p>
+<p><a target="_blank" rel="noopener" href="http://pandas.pydata.org">http://pandas.pydata.org</a></p>
 <h5 id="SciPy"><a href="#SciPy" class="headerlink" title="SciPy"></a>SciPy</h5><p>SciPy数学科学和工程计算功能库</p>
 <p>提供了一批数学算法及工程数据运算功能</p>
 <p>类似Matlab，可用于傅里叶变换、信号处理等应用</p>
@@ -319,7 +319,7 @@
 <p>提供了超过100种数据可视化展示效果</p>
 <p>通过matplotlib.pyplot子库调用各可视化效果</p>
 <p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCg1ld"><img src="https://s3.ax1x.com/2021/01/29/yCg1ld.png" srcset="/img/loading2.gif" lazyload alt="yCg1ld.png" border="0" /></a></p>
-<p><a target="_blank" rel="noopener" href="http://matplotlib.org/">http://matplotlib.org</a></p>
+<p><a target="_blank" rel="noopener" href="http://matplotlib.org">http://matplotlib.org</a></p>
 <h5 id="Seaborn"><a href="#Seaborn" class="headerlink" title="Seaborn"></a>Seaborn</h5><p>统计类数据可视化功能库</p>
 <p>提供了一批高层次的统计类数据可视化展示效果</p>
 <p>主要展示数据间分布、分类和线性关系等内容</p>
@@ -374,9 +374,6 @@
 <p>实例展示</p>
 <p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yC4v38"><img src="https://s3.ax1x.com/2021/01/29/yC4v38.png" srcset="/img/loading2.gif" lazyload alt="yC4v38.png" border="0" /></a></p>
 <figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#HollandRadarDraw</span><br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> matplotlib<br>matplotlib.rcParams[<span class="hljs-string">&#x27;font.family&#x27;</span>]=<span class="hljs-string">&#x27;SimHei&#x27;</span><br>radar_labels = np.array([<span class="hljs-string">&#x27;研究型(I)&#x27;</span>,<span class="hljs-string">&#x27;艺术型(A)&#x27;</span>,<span class="hljs-string">&#x27;社会型(S)&#x27;</span>,\<br>                         <span class="hljs-string">&#x27;企业型(E)&#x27;</span>,<span class="hljs-string">&#x27;常规型(C)&#x27;</span>,<span class="hljs-string">&#x27;现实型(R)&#x27;</span>]) <span class="hljs-comment">#雷达标签</span><br>nAttr = <span class="hljs-number">6</span><br>data = np.array([[<span class="hljs-number">0.40</span>, <span class="hljs-number">0.32</span>, <span class="hljs-number">0.35</span>, <span class="hljs-number">0.30</span>, <span class="hljs-number">0.30</span>, <span class="hljs-number">0.88</span>],<br>                 [<span class="hljs-number">0.85</span>, <span class="hljs-number">0.35</span>, <span class="hljs-number">0.30</span>, <span class="hljs-number">0.40</span>, <span class="hljs-number">0.40</span>, <span class="hljs-number">0.30</span>],<br>                 [<span class="hljs-number">0.43</span>, <span class="hljs-number">0.89</span>, <span class="hljs-number">0.30</span>, <span class="hljs-number">0.28</span>, <span class="hljs-number">0.22</span>, <span class="hljs-number">0.30</span>],<br>                 [<span class="hljs-number">0.30</span>, <span class="hljs-number">0.25</span>, <span class="hljs-number">0.48</span>, <span class="hljs-number">0.85</span>, <span class="hljs-number">0.45</span>, <span class="hljs-number">0.40</span>],<br>                 [<span class="hljs-number">0.20</span>, <span class="hljs-number">0.38</span>, <span class="hljs-number">0.87</span>, <span class="hljs-number">0.45</span>, <span class="hljs-number">0.32</span>, <span class="hljs-number">0.28</span>],<br>                 [<span class="hljs-number">0.34</span>, <span class="hljs-number">0.31</span>, <span class="hljs-number">0.38</span>, <span class="hljs-number">0.40</span>, <span class="hljs-number">0.92</span>, <span class="hljs-number">0.28</span>]]) <span class="hljs-comment">#数据值</span><br>data_labels = (<span class="hljs-string">&#x27;艺术家&#x27;</span>, <span class="hljs-string">&#x27;实验员&#x27;</span>, <span class="hljs-string">&#x27;工程师&#x27;</span>, <span class="hljs-string">&#x27;推销员&#x27;</span>, <span class="hljs-string">&#x27;社会工作者&#x27;</span>,<span class="hljs-string">&#x27;记事员&#x27;</span>)<br>angles = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>*np.pi, nAttr, endpoint=<span class="hljs-literal">False</span>)<br>data = np.concatenate((data, [data[<span class="hljs-number">0</span>]]))<br>angles = np.concatenate((angles, [angles[<span class="hljs-number">0</span>]]))<br>fig = plt.figure(facecolor=<span class="hljs-string">&quot;white&quot;</span>)<br>plt.subplot(<span class="hljs-number">111</span>, polar=<span class="hljs-literal">True</span>)<br>plt.plot(angles,data,<span class="hljs-string">&#x27;o-&#x27;</span>, linewidth=<span class="hljs-number">1</span>, alpha=<span class="hljs-number">0.2</span>)<br>plt.fill(angles,data, alpha=<span class="hljs-number">0.25</span>)<br>plt.thetagrids(angles*<span class="hljs-number">180</span>/np.pi, radar_labels,frac = <span class="hljs-number">1.2</span>)<br>plt.figtext(<span class="hljs-number">0.52</span>, <span class="hljs-number">0.95</span>, <span class="hljs-string">&#x27;霍兰德人格分析&#x27;</span>, ha=<span class="hljs-string">&#x27;center&#x27;</span>, size=<span class="hljs-number">20</span>)<br>legend = plt.legend(data_labels, loc=(<span class="hljs-number">0.94</span>, <span class="hljs-number">0.80</span>), labelspacing=<span class="hljs-number">0.1</span>)<br>plt.setp(legend.get_texts(), fontsize=<span class="hljs-string">&#x27;large&#x27;</span>)<br>plt.grid(<span class="hljs-literal">True</span>)<br>plt.savefig(<span class="hljs-string">&#x27;holland_radar.jpg&#x27;</span>)<br>plt.show()<br></code></pre></div></td></tr></table></figure>
-
-
-
 <p>举一反三</p>
 <p>目标 沉浸 熟练</p>
 <p>找到合适的目标</p>
@@ -388,7 +385,6 @@
 <p>支持连接池、SSL、Cookies、HTTP(S)代理等</p>
 <p>页面级网络爬虫功能库</p>
 <figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br>r = requests.get(<span class="hljs-string">&#x27;https://api.github.com/user&#x27;</span>,\<br>                auth=(<span class="hljs-string">&#x27;user&#x27;</span>,<span class="hljs-string">&#x27;pass&#x27;</span>))  <span class="hljs-comment">#访问连接，获取信息</span><br>r.status_code  <span class="hljs-comment">#获得访问网络的状态效果</span><br>r.headers[<span class="hljs-string">&#x27;content-type&#x27;</span>]<br>r.encoding<br>r.text <span class="hljs-comment">#获得文本信息</span><br></code></pre></div></td></tr></table></figure>
-
 <p><a target="_blank" rel="noopener" href="http://www.python-requests.org/">http://www.python-requests.org/</a></p>
 <p>Scrapy</p>
 <p>优秀的网络爬虫框架</p>
@@ -420,7 +416,6 @@
 <p>针对特定Web页面，应用覆盖面较广</p>
 <p>Python最主要的Web信息提取库</p>
 <figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> goose <span class="hljs-keyword">import</span> Goose<br>url = <span class="hljs-string">&#x27;http://www.elmundo.es/elmundo/2012/10/28/espana/1351388909.html&#x27;</span><br>g = Goose(&#123;<span class="hljs-string">&#x27;use_meta_language&#x27;</span>:<span class="hljs-literal">False</span>,<span class="hljs-string">&#x27;target_language&#x27;</span>:<span class="hljs-string">&#x27;es&#x27;</span>&#125;)<br>article = g.extract(url=url)<br>article.cleaned_text[:<span class="hljs-number">150</span>]<br></code></pre></div></td></tr></table></figure>
-
 <p><a target="_blank" rel="noopener" href="https://github.com/grangier/python-goose">https://github.com/grangier/python-goose</a></p>
 <h4 id="python库之web网站开发"><a href="#python库之web网站开发" class="headerlink" title="python库之web网站开发"></a>python库之web网站开发</h4><p>Django</p>
 <p>提供了构建Web系统的基本应用框架</p>
@@ -521,15 +516,11 @@
 <p>输出：玫瑰花</p>
 <p>实例</p>
 <figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><br></code></pre></div></td></tr></table></figure>
-
-
-
 <p>艺术之余编程</p>
 <p>创新、思想</p>
 <p>思想最重要</p>
 <p>编程只是手段</p>
-<p>#全课程总结</p>
-<p>总结</p>
+<h1 id="全课程总结"><a href="#全课程总结" class="headerlink" title="全课程总结"></a>全课程总结</h1><p>总结</p>
 <p>感性认识、理性学习、展望未来</p>
 <p>主要是面向过程的讲解</p>
 <p>第三方库</p>
