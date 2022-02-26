@@ -1,0 +1,635 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/page1.png">
+  <link rel="icon" href="/img/page1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="SLAM算法">
+  <meta name="author" content="Tony">
+  <meta name="keywords" content="">
+  <meta name="description" content="SLAM算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SLAM-2D实时闭环检测(Real-Time Loop Closure in 2D LIDAR SLAM)论文笔记">
+<meta property="og:url" content="https://bsheepcoder.github.io/2022/02/26/SLAM1/index.html">
+<meta property="og:site_name" content="Q&#39;s blog">
+<meta property="og:description" content="SLAM算法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/02/26/6UclHB7dQeRAgZP.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/26/SebpOWvRKr7ZVni.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/26/jMKufwAIkdYZmLb.png">
+<meta property="article:published_time" content="2022-02-26T10:14:09.258Z">
+<meta property="article:modified_time" content="2022-02-26T10:20:52.012Z">
+<meta property="article:author" content="Tony">
+<meta property="article:tag" content="SLAM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2022/02/26/6UclHB7dQeRAgZP.png">
+  
+  <title>SLAM-2D实时闭环检测(Real-Time Loop Closure in 2D LIDAR SLAM)论文笔记 - Q&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"bsheepcoder.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":5,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#efec02","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading2.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz","app_key":"8y2ItNdFctdKBPMHS31S2jbm","server_url":"https://0wpy18ji.lc-cn-n1-shared.com","path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 30vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Q&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/w/w1.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="SLAM-2D实时闭环检测(Real-Time Loop Closure in 2D LIDAR SLAM)论文笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-26 18:14" pubdate>
+        2022年2月26日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.9k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">SLAM-2D实时闭环检测(Real-Time Loop Closure in 2D LIDAR SLAM)论文笔记</h1>
+            
+              <p class="note note-info">
+                
+                  更新于：2022年2月26日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p><img src="https://s2.loli.net/2022/02/26/6UclHB7dQeRAgZP.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<h2 id="SLAM-2D实时闭环检测-Real-Time-Loop-Closure-in-2D-LIDAR-SLAM-论文笔记"><a href="#SLAM-2D实时闭环检测-Real-Time-Loop-Closure-in-2D-LIDAR-SLAM-论文笔记" class="headerlink" title="SLAM-2D实时闭环检测(Real-Time Loop Closure in 2D LIDAR SLAM)论文笔记"></a>SLAM-2D实时闭环检测(Real-Time Loop Closure in 2D LIDAR SLAM)论文笔记</h2><ul>
+<li>SLAM目前是一种实时建立地图的有效方式，实时生成和可视化平面图有助于操作者评估捕获数据的质量和覆盖范围。构建便携式捕获平台需要在有限的计算资源下操作。我们介绍了在我们的<strong>背包地图平台</strong>中使用的方法，它实现了实时地图绘制和5厘米分辨率的环路闭合。为了实现实时闭环检测，我们使用了一种<strong>分支定界</strong>方法来计算scan-to-submap匹配作为约束，实验证明这个算法比较有竞争。</li>
+</ul>
+<h2 id="I-INTRODUCTION介绍"><a href="#I-INTRODUCTION介绍" class="headerlink" title="I. INTRODUCTION介绍"></a>I. INTRODUCTION介绍</h2><ul>
+<li><p>传统的建图方式是通过CAD(计算机辅助设计)，通过激光卷尺来测量，但是这种方式很慢并且测量人员会先入为主的认为建筑物都是直的，不能很好的描述空间的真实情况。使用SLAM可以迅速而准确地测量大小和复杂程度的建筑物，而手动测量则需要更长数量级的时间。</p>
+</li>
+<li><p>SLAM在这一领域的应用并不是一个新的想法，也不是本文的重点。相反，本文的贡献是一种新的方法，以减少计算回环检测要求的激光距离数据。这种技术使我们能够绘制非常大的楼层，数万平方米，同时为运营商提供充分优化的实时结果。</p>
+</li>
+</ul>
+<h2 id="II-RELATED-WORK相关工作"><a href="#II-RELATED-WORK相关工作" class="headerlink" title="II. RELATED WORK相关工作"></a>II. RELATED WORK相关工作</h2><h3 id="Scan-to-scan"><a href="#Scan-to-scan" class="headerlink" title="Scan-to-scan"></a>Scan-to-scan</h3><ul>
+<li>在基于激光的SLAM方法中，扫描-扫描匹配是计算相对位姿变化的常用方法，但是扫描对扫描匹配本身就会快速累积误差。</li>
+</ul>
+<h3 id="Scan-to-map"><a href="#Scan-to-map" class="headerlink" title="Scan-to-map"></a>Scan-to-map</h3><ul>
+<li>Scan-to-map的匹配有助于限制这种错误的积累，一个这样的方法，使用<strong>高斯-牛顿</strong>来寻找线性插值映射上的局部最优值。(Hecktor SLAM) 在对姿态进行良好的初始估计的情况下，通过使用足够高的数据速率的激光雷达，局部优化的扫描到地图匹配是高效和鲁棒的。在不稳定的平台上，利用惯性测量单元(IMU)将激光扇区投影到水平面上，以估计重力方向。</li>
+</ul>
+<h3 id="Pixel-accurate-scan"><a href="#Pixel-accurate-scan" class="headerlink" title="Pixel-accurate scan"></a>Pixel-accurate scan</h3><ul>
+<li>像素精确的扫描匹配方法，进一步减少了局部误差积累。尽管计算成本较高，但这种方法也适用于闭环检测。</li>
+</ul>
+<p>一些方法通过对激光扫描图像中提取的特征点进行匹配来提高计算成本，其他环路闭合检测方法包括基于直方图的匹配，扫描数据的特征检测，以及使用机器学习。解决剩余局部误差累积的两种常见方法是<strong>粒子滤波</strong>(Gmaping)和<strong>图优化</strong>的方法。</p>
+<ul>
+<li>粒子滤波器必须在每个粒子中保持完整系统状态的表示。对于基于栅格的SLAM，随着地图变得越来越大，这很快就会占用大量资源。例如：我们的一个测试案例是在3公里的轨道上收集22000平方米的数据。可以用较小维度的特征表示，如不需要每个粒子都有网格地图，可以用来减少资源需求。当需要最新的网格地图时，建议计算子地图，只在必要时更新，以便最终的地图是所有子地图的栅格化。图中的边是由观察产生的约束，可以使用各种优化方法来最小化由所有约束条件引入的误差。例如：这种系统适用于户外基于图的SLAM方法、局部scan-to-scan匹配、基于子地图特征直方图的重叠局部地图匹配等在章节中进行了描述。</li>
+</ul>
+<h2 id="III-SYSTEM-OVERVIEW"><a href="#III-SYSTEM-OVERVIEW" class="headerlink" title="III. SYSTEM OVERVIEW"></a>III. SYSTEM OVERVIEW</h2><ul>
+<li><p>谷歌的SLAM框架Cartographer为室内地图绘制提供了一个实时解决方案，它配备了传感器，可以生成r = 5厘米分辨率的2D网格地图。该系统的操作员可以在穿过建筑物时看到正在创建的地图。激光扫描插入到子图的最佳估计位置，该位置被认为在短时间内足够精确。扫描匹配是针对最近的子映射进行的，所以它只依赖于最近的扫描，并且在世界框架中姿态估计的误差会累积，这使得误差会控制在一定范围之内。</p>
+</li>
+<li><p>为了在适当的硬件要求下获得良好的性能，我们的SLAM方法不使用粒子滤波器(耗费CPU。为了应对误差的积累，我们定期进行位姿优化。当一个子映射完成时，即不再有新的扫描被插入到它里面，它会参与到回环检测中。所有完成的子映射和扫描都被自动考虑为循环闭合。如果基于当前姿态估计，它们足够接近，扫描匹配器就会尝试在子图中找到扫描结果。如果在当前估计姿态周围的搜索窗口中找到足够好的匹配，则将其作为回环约束添加到图的最佳化问题。通过每隔几秒钟完成一次优化，操作人员的经验是，当重新访问某个位置时，循环会立即关闭。这导致了软实时约束，即闭环扫描匹配必须比添加新的扫描发生得更快，否则它会明显落后。我们通过使用<strong>分支定界的方法</strong>和<strong>每个完成的子映射几个预先计算的网格</strong>来实现这一点。</p>
+</li>
+</ul>
+<h2 id="IV-LOCAL-2D-SLAM"><a href="#IV-LOCAL-2D-SLAM" class="headerlink" title="IV. LOCAL 2D SLAM"></a>IV. LOCAL 2D SLAM</h2><ul>
+<li><p>前端(local slam)和后端优化(global slam)</p>
+</li>
+<li><p>我们的系统结合了独立的<strong>局部</strong>和<strong>全局</strong>方法来实现2D SLAM(对应前后端)。这两种方法都优化了位姿，$ξ = (ξx, ξy, ξθ)$由一个$(x, y)$平移和一个旋转$ξθ$组成，结合激光雷达观测，这进一步被称为扫描。在不稳定的平台上，例如我们的背包，IMU用于估计重力方向，以便将水平安装的LIDAR扫描投影到2D世界中。在我们的局部方法中，<strong>每次连续的扫描都与世界的一小块相匹配</strong>，这一小块被称为<strong>子地图M(submap)</strong>，使用非线性优化将扫描scan与子图submap匹配，这个过程进一步称为<strong>扫描匹配</strong>。</p>
+<blockquote>
+<p><strong>惯性测量单元</strong>（<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/英文">英文</a>：<strong>Inertial measurement unit</strong>，简称 <strong>IMU</strong>）是测量物体三轴<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/欧拉角">姿态角</a>（或<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/角速率">角速率</a>）以及<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/加速度">加速度</a>的装置。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="A-Scans"><a href="#A-Scans" class="headerlink" title="A. Scans"></a>A. Scans</h3><ul>
+<li><p>子地图构建是扫描坐标系与子地图坐标系反复对齐的迭代过程，进一步称为框架。扫描原点为$0∈R^2$，我们现在将扫描点的信息写成$H ={h<em>k}</em>{k= 1,…,K}, h<em>k∈R^2$。扫描帧在子地图中的位姿$ξ$表示为变换$T</em>ξ$，该变换将扫描点刚性地从扫描帧转换为子映射帧，定义为:</p>
+<script type="math/tex; mode=display">\begin{align}T_ξp = \begin{pmatrix}cosξ_\theta & -sinξ_\theta \\ sinξ_\theta & cosξ_\theta\\ \end{pmatrix}  p\times \begin{pmatrix} ξ_x \\ ξ_y\\ \end{pmatrix} & \tag{1}\end{align}</script></li>
+</ul>
+<h3 id="B-Submaps"><a href="#B-Submaps" class="headerlink" title="B. Submaps"></a>B. Submaps</h3><ul>
+<li>使用几个连续的扫描来构建一个子图，这些子图采用概率网格M的形式：$M:rZ\times rZ\rightarrow [p<em>{min},p</em>{max}] $（每个格子的边长就是地图分辨率），子图中离散网格的点之间的距离构成了分辨率r，例如5厘米，成为实际值。这些值可以被认为是一个网格点被阻塞的概率，对于每个网格点，我们定义相应的 <em>pixel</em> 像素，以包含最接近该网格点的所有点。</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/02/26/SebpOWvRKr7ZVni.png" srcset="/img/loading2.gif" lazyload alt="Fig. 1. Grid points and associated pixels."></p>
+<ul>
+<li><p>无论何时将扫描插入概率网格中，都会计算出命中的网格点集和未命中的网格点集。对于每一次命中，我们将最近的网格点插入命中集合中。对于每一次未命中，我们插入与扫描原点和每个扫描点之间的一条射线相交的每个像素相关联的网格点，不包括已经在命中集合中的网格点。每一个以前没有观察到的网格点在未命中或命中的集合中，则分配一个概率$p<em>{hit}$或$p</em>{miss}$。如果网格点x已经被观察到，我们更新命中和未命中的概率为:</p>
+<script type="math/tex; mode=display">\begin{align}  odds(p) = \frac{p}{1-p},     \tag{2}\end{align}</script><script type="math/tex; mode=display">\begin{align} M_{new}(x)=clamp(odds^{-1}(odds(M_{old}(x))\cdot odds(p_{hit}))) && \tag{3}\end{align}</script><p>未观察到也是一样的。(在代码中用log来相加表示相乘)</p>
+<p><img src="https://s2.loli.net/2022/02/26/jMKufwAIkdYZmLb.png" srcset="/img/loading2.gif" lazyload alt="Fig. 2. A scan and pixels associated with hits (shaded and crossed out) and misses (shaded only)."></p>
+</li>
+</ul>
+<h3 id="C-Ceres-scan-matching-目标匹配器"><a href="#C-Ceres-scan-matching-目标匹配器" class="headerlink" title="C. Ceres scan matching 目标匹配器"></a>C. Ceres scan matching 目标匹配器</h3><ul>
+<li><p>在将扫描插入子图之前，使用基于Ceresbased[14]扫描匹配器对扫描位姿$ξ$值相对于当前的局部子图进行优化。扫描匹配器负责找到一个扫描位姿，使子图中扫描点的概率最大化。我们把它看成一个非线性最小二乘问题：</p>
+<script type="math/tex; mode=display">\begin{align} argmin \sum_{k=1}^K(1-M_{smooth}(T_ξh_k))^2  &&\tag{CS}\end{align}</script><p>其中  $T_ξ$ 根据扫描位姿将 $h_k$ 从扫描帧转换为子图。</p>
+<p>函数： $M_{smooth}:R^2 \rightarrow R$ 是局部子图中概率值的平滑版本。我们使用<strong>双三次插值</strong>。因此，间隔[0, 1]之外的值可以出现，但被认为是无害的。</p>
+<blockquote>
+<p>在<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Mathematics">数学</a>中，<strong>双三次插值</strong>是<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cubic_interpolation#Interpolation_on_a_single_interval">三次插值</a>（不要与<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cubic_interpolation#Interpolating_a_data_set">三次样条插值</a>混淆，一种将三次插值应用于数据集的方法）的扩展，用于在<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Two-dimensional">二维</a><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Regular_grid">规则网格上</a><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Interpolation">插值</a>数据点。插值曲面比通过<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bilinear_interpolation">双线性插值</a>或<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Nearest-neighbor_interpolation">最近邻插值获得的对应曲面</a><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Smooth_function">更平滑</a>。双三次插值可以使用<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lagrange_polynomial">拉格朗日多项式</a>、<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cubic_spline">三次样条</a>或<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bicubic_interpolation#Bicubic_convolution_algorithm">三次卷积</a>算法来完成。</p>
+<p>在<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Image_processing">图像处理</a>中，当速度不是问题时，通常在<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Resampling_(bitmap">图像重采样</a>)中选择双三次插值而不是双线性或最近邻插值。与仅考虑 4 个<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Pixel">像素</a>(2×2) 的双线性插值相比，双三次插值考虑 16 个像素 (4×4)。使用双三次插值重采样的图像更平滑，插值<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Spatial_anti-aliasing">伪影</a>更少。</p>
+</blockquote>
+</li>
+<li><p>这种光滑函数的数学优化通常比网格的分辨率给出更好的精度。因为这是一个局部优化，所以需要良好的初始估计。可以使用能够测量角速度的IMU来估计各点之间扫描匹配的旋转分量θ。可以在没有IMU的情况下使用更高频率的扫描匹配或像素精确的扫描匹配方法，尽管计算量更大。</p>
+</li>
+</ul>
+<h2 id="V-CLOSING-LOOPS"><a href="#V-CLOSING-LOOPS" class="headerlink" title="V. CLOSING LOOPS"></a>V. CLOSING LOOPS</h2><ul>
+<li>因为扫描只匹配包含几个最近扫描的子图，所以上面描述的方法会慢慢累积错误。对于仅仅几十个连续的扫描，累积的误差是很小的。</li>
+<li>更大的空间可以通过创建许多小的子图来处理，我们的方法，优化所有扫描和子地图的位姿，遵循稀疏姿态调整。扫描插入的相对位姿存储在内存中，用于循环闭合优化。除了这些相对位姿，由扫描和子映射组成的所有其他都被认为是一次环路闭合，子图不再改变。扫描匹配器在后台运行，如果出现了匹配良好的结果，则将相应的相对位姿添加到优化问题中。</li>
+</ul>
+<h3 id="A-Optimization-problem最优化问题"><a href="#A-Optimization-problem最优化问题" class="headerlink" title="A. Optimization problem最优化问题"></a>A. Optimization problem最优化问题</h3>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/SLAM/">SLAM</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/SLAM/">SLAM</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/02/23/COS1/">
+                        <span class="hidden-mobile">操作系统原理(principles of computer system)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"UrMBdkpVtSriHxFtNjQRvPqm-gzGzoHsz","appKey":"rLGXsY7AM0Ym431NbB2fCRpX","path":"window.location.pathname","placeholder":"发一条友善的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <p style="text-align:center;">如果博文对你有帮助，可以给博主充充电噢~ <br> 非常感谢！！</p><img src="/img/qxd.jpg" srcset="/img/loading2.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
