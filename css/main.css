@@ -345,7 +345,7 @@ img[lazyload] {
 }
 :root {
   --color-mode: 'light';
-  --body-bg-color: #ffffff;
+  --body-bg-color: #fcedca;
   --board-bg-color: #f4e7d7;
   --text-color: #000000;
   --sec-text-color: #202125;
