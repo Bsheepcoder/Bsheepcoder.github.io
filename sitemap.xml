@@ -4,7 +4,7 @@
   <url>
     <loc>https://bsheepcoder.github.io/2022/02/26/SLAM1/</loc>
     
-    <lastmod>2022-02-26</lastmod>
+    <lastmod>2022-02-27</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -510,13 +510,6 @@
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/tags/Qt/</loc>
-    <lastmod>2022-02-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://bsheepcoder.github.io/tags/ROS/</loc>
     <lastmod>2022-02-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -524,14 +517,14 @@
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/tags/Rainmeter/</loc>
+    <loc>https://bsheepcoder.github.io/tags/Qt/</loc>
     <lastmod>2022-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/tags/SLAM/</loc>
+    <loc>https://bsheepcoder.github.io/tags/Rainmeter/</loc>
     <lastmod>2022-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -560,6 +553,13 @@
   
   <url>
     <loc>https://bsheepcoder.github.io/tags/CSS/</loc>
+    <lastmod>2022-02-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bsheepcoder.github.io/tags/Algorithm/</loc>
     <lastmod>2022-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -638,13 +638,6 @@
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/categories/Qt/</loc>
-    <lastmod>2022-02-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://bsheepcoder.github.io/categories/ROS/</loc>
     <lastmod>2022-02-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -652,14 +645,14 @@
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/categories/Rainmeter/</loc>
+    <loc>https://bsheepcoder.github.io/categories/Qt/</loc>
     <lastmod>2022-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/categories/SLAM/</loc>
+    <loc>https://bsheepcoder.github.io/categories/Rainmeter/</loc>
     <lastmod>2022-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -688,6 +681,13 @@
   
   <url>
     <loc>https://bsheepcoder.github.io/categories/CSS/</loc>
+    <lastmod>2022-02-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bsheepcoder.github.io/categories/Algorithm/</loc>
     <lastmod>2022-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
