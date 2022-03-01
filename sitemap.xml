@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bsheepcoder.github.io/2022/03/01/Words1/</loc>
+    
+    <lastmod>2022-03-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://bsheepcoder.github.io/2022/02/09/POCO1/</loc>
     
     <lastmod>2022-03-01</lastmod>
@@ -538,6 +547,13 @@
   </url>
   
   <url>
+    <loc>https://bsheepcoder.github.io/tags/English/</loc>
+    <lastmod>2022-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://bsheepcoder.github.io/tags/Git/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -567,13 +583,6 @@
   
   <url>
     <loc>https://bsheepcoder.github.io/tags/Java/</loc>
-    <lastmod>2022-03-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bsheepcoder.github.io/tags/English/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -666,6 +675,13 @@
   </url>
   
   <url>
+    <loc>https://bsheepcoder.github.io/categories/English/</loc>
+    <lastmod>2022-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://bsheepcoder.github.io/categories/Git/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -695,13 +711,6 @@
   
   <url>
     <loc>https://bsheepcoder.github.io/categories/Java/</loc>
-    <lastmod>2022-03-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bsheepcoder.github.io/categories/English/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
