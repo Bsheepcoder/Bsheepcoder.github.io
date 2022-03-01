@@ -23,7 +23,6 @@
 <meta property="og:site_name" content="Q&#39;s blog">
 <meta property="og:description" content="SLAM算法">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2022/02/26/6UclHB7dQeRAgZP.png">
 <meta property="og:image" content="https://s2.loli.net/2022/02/26/SebpOWvRKr7ZVni.png">
 <meta property="og:image" content="https://s2.loli.net/2022/02/26/jMKufwAIkdYZmLb.png">
 <meta property="og:image" content="https://s2.loli.net/2022/02/27/ceXYKQj5qwuiTl1.png">
@@ -38,11 +37,11 @@
 <meta property="og:image" content="https://s2.loli.net/2022/02/27/DL4qUeaOIz8X6du.png">
 <meta property="og:image" content="https://s2.loli.net/2022/02/27/3MeUoiycxjkmN6J.png">
 <meta property="article:published_time" content="2022-02-26T10:14:09.258Z">
-<meta property="article:modified_time" content="2022-02-27T10:52:54.906Z">
+<meta property="article:modified_time" content="2022-02-28T00:05:41.107Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2022/02/26/6UclHB7dQeRAgZP.png">
+<meta name="twitter:image" content="https://s2.loli.net/2022/02/26/SebpOWvRKr7ZVni.png">
   
   <title>SLAM-2D实时闭环检测论文笔记（Google） - Q&#39;s blog</title>
 
@@ -259,13 +258,12 @@
             
               <p class="note note-info">
                 
-                  更新于：2022年2月27日 晚上
+                  更新于：2022年2月28日 早上
                 
               </p>
             
             <div class="markdown-body">
-              <p><img src="https://s2.loli.net/2022/02/26/6UclHB7dQeRAgZP.png" srcset="/img/loading2.gif" lazyload alt=""></p>
-<h2 id="SLAM-2D实时闭环检测-Real-Time-Loop-Closure-in-2D-LIDAR-SLAM"><a href="#SLAM-2D实时闭环检测-Real-Time-Loop-Closure-in-2D-LIDAR-SLAM" class="headerlink" title="SLAM-2D实时闭环检测(Real-Time Loop Closure in 2D LIDAR SLAM)"></a>SLAM-2D实时闭环检测(Real-Time Loop Closure in 2D LIDAR SLAM)</h2><ul>
+              <h2 id="SLAM-2D实时闭环检测-Real-Time-Loop-Closure-in-2D-LIDAR-SLAM"><a href="#SLAM-2D实时闭环检测-Real-Time-Loop-Closure-in-2D-LIDAR-SLAM" class="headerlink" title="SLAM-2D实时闭环检测(Real-Time Loop Closure in 2D LIDAR SLAM)"></a>SLAM-2D实时闭环检测(Real-Time Loop Closure in 2D LIDAR SLAM)</h2><ul>
 <li>SLAM目前是一种实时建立地图的有效方式，实时生成和可视化平面图有助于操作者评估捕获数据的质量和覆盖范围。构建便携式捕获平台需要在有限的计算资源下操作。我们介绍了在我们的<strong>背包地图平台</strong>中使用的方法，它实现了实时地图绘制和5厘米分辨率的环路闭合。为了实现实时闭环检测，我们使用了一种<strong>分支定界</strong>方法来计算scan-to-submap匹配作为约束，实验证明这个算法比较有竞争。</li>
 </ul>
 <h2 id="I-INTRODUCTION介绍"><a href="#I-INTRODUCTION介绍" class="headerlink" title="I. INTRODUCTION介绍"></a>I. INTRODUCTION介绍</h2><ul>
