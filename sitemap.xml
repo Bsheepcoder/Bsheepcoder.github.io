@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://bsheepcoder.github.io/2022/03/01/Words1/</loc>
+    <loc>https://bsheepcoder.github.io/2022/03/01/English_Words1/</loc>
     
     <lastmod>2022-03-01</lastmod>
     
@@ -484,7 +484,7 @@
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/tags/C/</loc>
+    <loc>https://bsheepcoder.github.io/tags/English/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -519,6 +519,13 @@
   </url>
   
   <url>
+    <loc>https://bsheepcoder.github.io/tags/C/</loc>
+    <lastmod>2022-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://bsheepcoder.github.io/tags/Qt/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -541,13 +548,6 @@
   
   <url>
     <loc>https://bsheepcoder.github.io/tags/Raspberry-Pi/</loc>
-    <lastmod>2022-03-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bsheepcoder.github.io/tags/English/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -612,7 +612,7 @@
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/categories/C/</loc>
+    <loc>https://bsheepcoder.github.io/categories/English/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -647,6 +647,13 @@
   </url>
   
   <url>
+    <loc>https://bsheepcoder.github.io/categories/C/</loc>
+    <lastmod>2022-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://bsheepcoder.github.io/categories/Qt/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -669,13 +676,6 @@
   
   <url>
     <loc>https://bsheepcoder.github.io/categories/Raspberry-Pi/</loc>
-    <lastmod>2022-03-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bsheepcoder.github.io/categories/English/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
