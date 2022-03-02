@@ -13,23 +13,23 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#000000">
-  <meta name="description" content="谁来救救我的英语，背一下英语单词">
+  <meta name="description" content="先开始买了树莓派，但是树莓派的算力不足以跑slam导航的算法，因此无奈购买了冰达的设备，本以为是需要自己组装的，没想到是整机，不过节省了我的许多时间。">
   <meta name="author" content="Tony">
   <meta name="keywords" content="">
-  <meta name="description" content="谁来救救我的英语，背一下英语单词">
+  <meta name="description" content="先开始买了树莓派，但是树莓派的算力不足以跑slam导航的算法，因此无奈购买了冰达的设备，本以为是需要自己组装的，没想到是整机，不过节省了我的许多时间。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="背单词本">
-<meta property="og:url" content="https://bsheepcoder.github.io/2022/03/01/English_Words1/index.html">
+<meta property="og:title" content="Jetson_nano-SLAM小车入门">
+<meta property="og:url" content="https://bsheepcoder.github.io/2022/03/02/ROS_Jetson_nano/index.html">
 <meta property="og:site_name" content="Q&#39;s blog">
-<meta property="og:description" content="谁来救救我的英语，背一下英语单词">
+<meta property="og:description" content="先开始买了树莓派，但是树莓派的算力不足以跑slam导航的算法，因此无奈购买了冰达的设备，本以为是需要自己组装的，没想到是整机，不过节省了我的许多时间。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-01T11:54:05.080Z">
-<meta property="article:modified_time" content="2022-03-02T02:01:43.515Z">
+<meta property="article:published_time" content="2022-03-02T05:12:53.904Z">
+<meta property="article:modified_time" content="2022-03-02T09:12:58.165Z">
 <meta property="article:author" content="Tony">
-<meta property="article:tag" content="English">
+<meta property="article:tag" content="ROS">
 <meta name="twitter:card" content="summary_large_image">
   
-  <title>背单词本 - Q&#39;s blog</title>
+  <title>Jetson_nano-SLAM小车入门 - Q&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -181,7 +181,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="背单词本">
+            <span class="h2" id="subtitle" title="Jetson_nano-SLAM小车入门">
               
             </span>
 
@@ -191,8 +191,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-03-01 19:54" pubdate>
-        2022年3月1日 晚上
+      <time datetime="2022-03-02 13:12" pubdate>
+        2022年3月2日 下午
       </time>
     </span>
   
@@ -202,7 +202,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      803 字
+      904 字
     </span>
   
 
@@ -240,18 +240,49 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">背单词本</h1>
+            <h1 style="display: none">Jetson_nano-SLAM小车入门</h1>
             
               <p class="note note-info">
                 
-                  更新于：2022年3月2日 上午
+                  更新于：2022年3月2日 下午
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="day-1"><a href="#day-1" class="headerlink" title="day 1"></a>day 1</h2><p>sincere、mood、statistic、senator、lad、equip、frown、fasten、stir、stir up、distribution、solution、panel、ministry、supreme、limb、circumstance、core、minus、sector、detection、statue、cycle、saucer、civilization、overhead、clash</p>
-<h2 id="day-2"><a href="#day-2" class="headerlink" title="day 2"></a>day 2</h2><p>grant、bond、staff、guitar、intermediate、comprehensive、persence、appliance、cushion、emergency、status、steady、resistance、prime、ambassador、derive、sponsor、proportion、mental、punch、client、option、domitory、steep、agency、steer、scandal、steamer</p>
-<h2 id="day-3"><a href="#day-3" class="headerlink" title="day 3"></a>day 3</h2><p>fallacy、pact、shrewd、well-off、dye、makeup、elite、radiant、counterpart、pearl、banner、situated、expressway、venue、luminous、stereo、pedal、gum、staple、distort、stump、obesity、explanatory、underway、inference、analytical、conversion、premature、surpass、premise、tactic、flatter、flattery、discern、crumble、flare、proposition、petitioner、axe、ingenious、muscular、retort、drip、sarcasm、disclosure</p>
+              <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1GLuPXU4miFmQ_nppmjc-3g?pwd=7j9a">Jetson_nano小车资料(仅用于学习切勿商用,后果自负)</a>  提取码：7j9a</li>
+</ul>
+<h2 id="自建AP热点和ssh登录"><a href="#自建AP热点和ssh登录" class="headerlink" title="自建AP热点和ssh登录"></a>自建AP热点和ssh登录</h2><ul>
+<li>视频使用的是putty软件，个人推荐使用xshell</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">无线配置文件</span><br><span class="hljs-meta">$</span><span class="bash"> vim /etc/create_ap.conf</span>  <br></code></pre></div></td></tr></table></figure>
+<h2 id="无线连接wifi"><a href="#无线连接wifi" class="headerlink" title="无线连接wifi"></a>无线连接wifi</h2><ul>
+<li>目的是让小车启动后直接连接覆盖的WiFi，然后通过路由器实现本机和机器人的桥接</li>
+<li>需要首先用网线连接小车、然后在路由器中查看小车的地址，电脑连接路由器，然后用路由器中给小车分配的网址用Xshell登录小车，然后将AP模式改为连接WiFi登。。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">这个是别人写好的shell命令</span><br><span class="hljs-meta">#</span><span class="bash">开启wifi</span><br><span class="hljs-meta">$</span><span class="bash"> sudo ./netconfig/wifi.sh</span><br><span class="hljs-meta">#</span><span class="bash">切换到AP模式</span><br><span class="hljs-meta">$</span><span class="bash"> sudo ./netconfig/open_ap.sh</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="时间校准"><a href="#时间校准" class="headerlink" title="时间校准"></a>时间校准</h2><ul>
+<li><p>在没有网络的情况下机器人会与主机的时间不同步</p>
+<p>在主机安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">安装ntp服务器</span><br>sudo apt install ntp<br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>在机器人端执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo ntpdate 主机IP<br></code></pre></div></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="ubuntu下ssh免密登录"><a href="#ubuntu下ssh免密登录" class="headerlink" title="ubuntu下ssh免密登录"></a>ubuntu下ssh免密登录</h2><ul>
+<li><p>先在主机端ssh登录，然后获取主机的ssh</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">ssh-keygen<br>ssh-copy-id -i .ssh/id_rsa.pub bingda@192.168.31.86<br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>exit，再次ssh连接就不需要输入密码了</p>
+</li>
+</ul>
+<h2 id="ros机器人的启动项"><a href="#ros机器人的启动项" class="headerlink" title="ros机器人的启动项"></a>ros机器人的启动项</h2><ul>
+<li>确保在机器人端运行</li>
+</ul>
+<h3 id="视觉启动项"><a href="#视觉启动项" class="headerlink" title="视觉启动项"></a>视觉启动项</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">roslaunch robot_vision robot_camera.launch<br><span class="hljs-meta">#</span><span class="bash">可以在主机端使用rqt工具登录查看相应图像</span><br></code></pre></div></td></tr></table></figure>
+<h3 id="启动激光雷达"><a href="#启动激光雷达" class="headerlink" title="启动激光雷达"></a>启动激光雷达</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">roslaunch robot_navigation laser.launch <br>roslaunch robot_navigation laser_rviz.launch<br></code></pre></div></td></tr></table></figure>
+<h3 id="启动SLAM"><a href="#启动SLAM" class="headerlink" title="启动SLAM"></a>启动SLAM</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">默认是Gmaping</span><br>roslaunch robot_navigation robot_slam_laser.launch <br><span class="hljs-meta">#</span><span class="bash">终端启动rviz查看</span><br>roslaunch robot_navigation slam_rviz.launch <br><span class="hljs-meta">#</span><span class="bash">保存地图,注意保存的目录</span><br><span class="hljs-meta"> ~/catkin_ws/src/robot_navigation/maps$</span><span class="bash"> rosrun map_server map_saver -f map</span><br></code></pre></div></td></tr></table></figure>
 
             </div>
             <hr>
@@ -261,7 +292,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/English/">English</a>
+                      <a class="hover-with-bg" href="/categories/ROS/">ROS</a>
                     
                   </div>
                 
@@ -269,7 +300,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/English/">English</a>
+                      <a class="hover-with-bg" href="/tags/ROS/">ROS</a>
                     
                   </div>
                 
@@ -286,18 +317,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/02/ROS_Jetson_nano/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Jetson_nano-SLAM小车入门</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/26/SLAM1/">
-                        <span class="hidden-mobile">SLAM-2D实时闭环检测论文笔记（Google）</span>
+                      <a href="/2022/03/01/English_Words1/">
+                        <span class="hidden-mobile">背单词本</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -508,13 +533,6 @@
 
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({"theme":"default"});
-    }
-  </script>
 
 
 

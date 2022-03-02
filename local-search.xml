@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Jetson_nano-SLAM小车入门</title>
+    <link href="/2022/03/02/ROS_Jetson_nano/"/>
+    <url>/2022/03/02/ROS_Jetson_nano/</url>
+    
+    <content type="html"><![CDATA[<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul><li><a href="https://pan.baidu.com/s/1GLuPXU4miFmQ_nppmjc-3g?pwd=7j9a">Jetson_nano小车资料(仅用于学习切勿商用,后果自负)</a>  提取码：7j9a</li></ul><h2 id="自建AP热点和ssh登录"><a href="#自建AP热点和ssh登录" class="headerlink" title="自建AP热点和ssh登录"></a>自建AP热点和ssh登录</h2><ul><li>视频使用的是putty软件，个人推荐使用xshell</li></ul><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">无线配置文件</span><br><span class="hljs-meta">$</span><span class="bash"> vim /etc/create_ap.conf</span>  <br></code></pre></div></td></tr></table></figure><h2 id="无线连接wifi"><a href="#无线连接wifi" class="headerlink" title="无线连接wifi"></a>无线连接wifi</h2><ul><li>目的是让小车启动后直接连接覆盖的WiFi，然后通过路由器实现本机和机器人的桥接</li><li>需要首先用网线连接小车、然后在路由器中查看小车的地址，电脑连接路由器，然后用路由器中给小车分配的网址用Xshell登录小车，然后将AP模式改为连接WiFi登。。</li></ul><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">这个是别人写好的shell命令</span><br><span class="hljs-meta">#</span><span class="bash">开启wifi</span><br><span class="hljs-meta">$</span><span class="bash"> sudo ./netconfig/wifi.sh</span><br><span class="hljs-meta">#</span><span class="bash">切换到AP模式</span><br><span class="hljs-meta">$</span><span class="bash"> sudo ./netconfig/open_ap.sh</span><br></code></pre></div></td></tr></table></figure><h2 id="时间校准"><a href="#时间校准" class="headerlink" title="时间校准"></a>时间校准</h2><ul><li><p>在没有网络的情况下机器人会与主机的时间不同步</p><p>在主机安装</p><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">安装ntp服务器</span><br>sudo apt install ntp<br></code></pre></div></td></tr></table></figure></li><li><p>在机器人端执行</p><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo ntpdate 主机IP<br></code></pre></div></td></tr></table></figure></li></ul><h2 id="ubuntu下ssh免密登录"><a href="#ubuntu下ssh免密登录" class="headerlink" title="ubuntu下ssh免密登录"></a>ubuntu下ssh免密登录</h2><ul><li><p>先在主机端ssh登录，然后获取主机的ssh</p><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">ssh-keygen<br>ssh-copy-id -i .ssh/id_rsa.pub bingda@192.168.31.86<br></code></pre></div></td></tr></table></figure></li><li><p>exit，再次ssh连接就不需要输入密码了</p></li></ul><h2 id="ros机器人的启动项"><a href="#ros机器人的启动项" class="headerlink" title="ros机器人的启动项"></a>ros机器人的启动项</h2><ul><li>确保在机器人端运行</li></ul><h3 id="视觉启动项"><a href="#视觉启动项" class="headerlink" title="视觉启动项"></a>视觉启动项</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">roslaunch robot_vision robot_camera.launch<br><span class="hljs-meta">#</span><span class="bash">可以在主机端使用rqt工具登录查看相应图像</span><br></code></pre></div></td></tr></table></figure><h3 id="启动激光雷达"><a href="#启动激光雷达" class="headerlink" title="启动激光雷达"></a>启动激光雷达</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">roslaunch robot_navigation laser.launch <br>roslaunch robot_navigation laser_rviz.launch<br></code></pre></div></td></tr></table></figure><h3 id="启动SLAM"><a href="#启动SLAM" class="headerlink" title="启动SLAM"></a>启动SLAM</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">默认是Gmaping</span><br>roslaunch robot_navigation robot_slam_laser.launch <br><span class="hljs-meta">#</span><span class="bash">终端启动rviz查看</span><br>roslaunch robot_navigation slam_rviz.launch <br><span class="hljs-meta">#</span><span class="bash">保存地图,注意保存的目录</span><br><span class="hljs-meta"> ~/catkin_ws/src/robot_navigation/maps$</span><span class="bash"> rosrun map_server map_saver -f map</span><br></code></pre></div></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>ROS</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>ROS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>背单词本</title>
     <link href="/2022/03/01/English_Words1/"/>
     <url>/2022/03/01/English_Words1/</url>
