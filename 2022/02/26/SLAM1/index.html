@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://s2.loli.net/2022/02/27/DL4qUeaOIz8X6du.png">
 <meta property="og:image" content="https://s2.loli.net/2022/02/27/3MeUoiycxjkmN6J.png">
 <meta property="article:published_time" content="2022-02-26T10:14:09.258Z">
-<meta property="article:modified_time" content="2022-03-03T05:36:44.151Z">
+<meta property="article:modified_time" content="2022-03-03T05:44:10.361Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary_large_image">
@@ -280,10 +280,10 @@
 </ul>
 <h3 id="Pixel-accurate-scan"><a href="#Pixel-accurate-scan" class="headerlink" title="Pixel-accurate scan"></a>Pixel-accurate scan</h3><ul>
 <li>像素精确的扫描匹配方法，进一步减少了局部误差积累。尽管计算成本较高，但这种方法也适用于闭环检测。</li>
-</ul>
-<p>一些方法通过对激光扫描图像中提取的特征点进行匹配来提高计算成本，其他环路闭合检测方法包括基于直方图的匹配，扫描数据的特征检测，以及使用机器学习。解决剩余局部误差累积的两种常见方法是<strong>粒子滤波</strong>(Gmaping)和<strong>图优化</strong>的方法。</p>
-<ul>
-<li>粒子滤波器必须在每个粒子中保持完整系统状态的表示。对于基于栅格的SLAM，随着地图变得越来越大，这很快就会占用大量资源。例如：我们的一个测试案例是在3公里的轨道上收集22000平方米的数据。可以用较小维度的特征表示，如不需要每个粒子都有网格地图，可以用来减少资源需求。当需要最新的网格地图时，建议计算子地图，只在必要时更新，以便最终的地图是所有子地图的栅格化。图中的边是由观察产生的约束，可以使用各种优化方法来最小化由所有约束条件引入的误差。例如：这种系统适用于户外基于图的SLAM方法、局部scan-to-scan匹配、基于子地图特征直方图的重叠局部地图匹配等在章节中进行了描述。</li>
+<li><p>一些方法通过对激光扫描图像中提取的特征点进行匹配来提高计算成本，其他环路闭合检测方法包括基于直方图的匹配，扫描数据的特征检测，以及使用机器学习。解决剩余局部误差累积的两种常见方法是<strong>粒子滤波</strong>(Gmaping)和<strong>图优化</strong>的方法。</p>
+</li>
+<li><p>粒子滤波器必须在每个粒子中保持完整系统状态的表示。对于基于栅格的SLAM，随着地图变得越来越大，这很快就会占用大量资源。例如：我们的一个测试案例是在3公里的轨道上收集22000平方米的数据。可以用较小维度的特征表示，如不需要每个粒子都有网格地图，可以用来减少资源需求。当需要最新的网格地图时，建议计算子地图，只在必要时更新，以便最终的地图是所有子地图的栅格化。图中的边是由观察产生的约束，可以使用各种优化方法来最小化由所有约束条件引入的误差。例如：这种系统适用于户外基于图的SLAM方法、局部scan-to-scan匹配、基于子地图特征直方图的重叠局部地图匹配等在章节中进行了描述。</p>
+</li>
 </ul>
 <h2 id="III-SYSTEM-OVERVIEW"><a href="#III-SYSTEM-OVERVIEW" class="headerlink" title="III. SYSTEM OVERVIEW"></a>III. SYSTEM OVERVIEW</h2><ul>
 <li><p>谷歌的SLAM框架Cartographer为室内地图绘制提供了一个实时解决方案，它配备了传感器，可以生成r = 5厘米分辨率的2D网格地图。该系统的操作员可以在穿过建筑物时看到正在创建的地图。激光扫描插入到子图的最佳估计位置，该位置被认为在短时间内足够精确。扫描匹配是针对最近的子映射进行的，所以它只依赖于最近的扫描，并且在世界框架中姿态估计的误差会累积，这使得误差会控制在一定范围之内。</p>
@@ -305,11 +305,11 @@
 <script type="math/tex; mode=display">\begin{align}T_ξp = \underbrace{\begin{pmatrix}cosξ_\theta & -sinξ_\theta \\ sinξ_\theta & cosξ_\theta\\ \end{pmatrix}}_{R_ξ}  p\times\underbrace{ \begin{pmatrix} ξ_x \\ ξ_y\\ \end{pmatrix} }_{t_ξ}& \tag{1}\end{align}</script></li>
 </ul>
 <h3 id="B-Submaps"><a href="#B-Submaps" class="headerlink" title="B. Submaps"></a>B. Submaps</h3><ul>
-<li>使用几个连续的扫描来构建一个子图，这些子图采用概率网格M的形式：$M:rZ\times rZ\rightarrow [p<em>{min},p</em>{max}] $（每个格子的边长就是地图分辨率），子图中离散网格的点之间的距离构成了分辨率r，例如5厘米，成为实际值。这些值可以被认为是一个网格点被阻塞的概率，对于每个网格点，我们定义相应的 <em>pixel</em> 像素，以包含最接近该网格点的所有点。</li>
+<li>使用几个连续的扫描来构建一个子图，这些子图采用概率网格M的形式：<script type="math/tex">M:rZ\times rZ\rightarrow [p_{min},p_{max}]</script>（每个格子的边长就是地图分辨率），子图中离散网格的点之间的距离构成了分辨率r，例如5厘米，成为实际值。这些值可以被认为是一个网格点被阻塞的概率，对于每个网格点，我们定义相应的 <em>pixel</em> 像素，以包含最接近该网格点的所有点。</li>
 </ul>
 <p><img src="https://s2.loli.net/2022/02/26/SebpOWvRKr7ZVni.png" srcset="/img/loading2.gif" lazyload alt="Fig. 1. Grid points and associated pixels."></p>
 <ul>
-<li><p>无论何时将扫描插入概率网格中，都会计算出命中的网格点集和未命中的网格点集。对于每一次命中，我们将最近的网格点插入命中集合中。对于每一次未命中，我们插入与扫描原点和每个扫描点之间的一条射线相交的每个像素相关联的网格点，不包括已经在命中集合中的网格点。每一个以前没有观察到的网格点在未命中或命中的集合中，则分配一个概率$p<em>{hit}$或$p</em>{miss}$。如果网格点x已经被观察到，我们更新命中和未命中的概率为:</p>
+<li><p>无论何时将扫描插入概率网格中，都会计算出命中的网格点集和未命中的网格点集。对于每一次命中，我们将最近的网格点插入命中集合中。对于每一次未命中，我们插入与扫描原点和每个扫描点之间的一条射线相交的每个像素相关联的网格点，不包括已经在命中集合中的网格点。每一个以前没有观察到的网格点在未命中或命中的集合中，则分配一个概率<script type="math/tex">p_{hit}</script>或<script type="math/tex">p_{miss}</script>。如果网格点x已经被观察到，我们更新命中和未命中的概率为:</p>
 <script type="math/tex; mode=display">\begin{align}  odds(p) = \frac{p}{1-p},     \tag{2}\end{align}</script><script type="math/tex; mode=display">\begin{align} M_{new}(x)=clamp(odds^{-1}(odds(M_{old}(x))\cdot odds(p_{hit}))) && \tag{3}\end{align}</script><p>未观察到也是一样的。(在代码中用log来相加表示相乘)</p>
 <p><img src="https://s2.loli.net/2022/02/26/jMKufwAIkdYZmLb.png" srcset="/img/loading2.gif" lazyload alt="Fig. 2. A scan and pixels associated with hits (shaded and crossed out) and misses (shaded only)."></p>
 </li>
@@ -332,7 +332,7 @@
 </ul>
 <h3 id="A-Optimization-problem最优化问题"><a href="#A-Optimization-problem最优化问题" class="headerlink" title="A. Optimization problem最优化问题"></a>A. Optimization problem最优化问题</h3><ul>
 <li><p>闭环优化，就像扫描匹配一样，也被表述为一个非线性最小二乘问题，可以很容易地添加残差来考虑额外的数据。每隔几秒钟，我们就用Ceres[14]来计算一个解：</p>
-<script type="math/tex; mode=display">\begin{align} argmin_{ Ξm,Ξs}\quad  \frac{1}{2} \sum_{ij}\rho(E^2(\xi_i^m,\xi_j^s;\sum_{ij},\xi_{ij})) \tag{SPA}\end{align}</script><p>子图位姿为$ Ξ^m = \begin{Bmatrix}ξ<em>i^m\end{Bmatrix}</em>{i=1,…,m}$和扫描位姿为$ Ξ^s = \begin{Bmatrix}ξ<em>j^s\end{Bmatrix}</em>{j=1,…,n}$ 在给定约束条件的情况下(坐标变换)进行优化。这些约束以相对姿态$ξ<em>{ij}$和相关协方差矩阵$Σ</em>{ij}$的形式出现。对于一对子图 i 和扫描 j ，位姿$ξ<em>{ij}$描述了扫描在子映射坐标系中的哪里被匹配。协方差矩阵$Σ</em>{ij}$可以被评估，例如，遵循[15]中的方法，或局部使用Ceres[14]的协方差估计特征(CS)。该约束的剩余E计算为:</p>
+<script type="math/tex; mode=display">\begin{align} argmin_{ Ξm,Ξs}\quad  \frac{1}{2} \sum_{ij}\rho(E^2(\xi_i^m,\xi_j^s;\sum_{ij},\xi_{ij})) \tag{SPA}\end{align}</script><p>子图位姿为<script type="math/tex">Ξ^m = \begin{Bmatrix}ξ_i^m\end{Bmatrix}_{i=1,...,m}</script>和扫描位姿为<script type="math/tex">Ξ^s = \begin{Bmatrix}ξ_j^s\end{Bmatrix}_{j=1,...,n}</script>在给定约束条件的情况下(坐标变换)进行优化。这些约束以相对姿态<script type="math/tex">ξ_{ij}</script>和相关协方差矩阵<script type="math/tex">Σ_{ij}</script>的形式出现。对于一对子图 i 和扫描 j ，位姿<script type="math/tex">ξ_{ij}</script>描述了扫描在子映射坐标系中的哪里被匹配。协方差矩阵<script type="math/tex">Σ_{ij}</script>可以被评估，例如，遵循[15]中的方法，或局部使用Ceres[14]的协方差估计特征(CS)。该约束的剩余E计算为:</p>
 <script type="math/tex; mode=display">\begin{align} E^2 (ξ^m_i,ξ^s_j;Σ_{ij},ξ_{ij} ) = e(ξ^m_i,ξ^s_j;ξ_{ij})^T Σ^{−1}_{ij}e(ξ^m_i,ξ^s_j;ξ_{ij}), (4) \end{align}</script><script type="math/tex; mode=display">\begin{align}e(ξ_i^m,ξ_j^s,ξ_{ij})= ξ_{ij}- \begin{pmatrix}  R^{-1}_{ξ_i^m}(t_{ξ_i^m}-t_{ξ_j^s})\\ξ^m_{i;\theta}-ξ^s_{j;\theta}\end{pmatrix}.\tag{5}\end{align}</script></li>
 <li><p>使用损失函数ρ(降低阈值带来的影响)，例如Huber损失，来减少扫描匹配优化问题中可能出现的（SPA）异常值的影响。例如，这可能发生在局部对称的环境中，如办公室隔间。处理异常值的其他方法包括[16]。</p>
 </li>
@@ -340,9 +340,9 @@
 <h3 id="B-Branch-and-bound-scan-matching-分支定界算法"><a href="#B-Branch-and-bound-scan-matching-分支定界算法" class="headerlink" title="B.  Branch-and-bound scan matching 分支定界算法"></a>B.  Branch-and-bound scan matching 分支定界算法</h3><ul>
 <li><p>我们对最佳的像素级别的匹配是感性趣的，W是搜索窗口，$M_{nearest}$是将M扩展到$R^2$的所有部分它的参数首先到最近的网格点，即将网格点的值扩展到相应的像素。使用CS可以进一步提高匹配的质量。</p>
 <script type="math/tex; mode=display">\begin{align}ξ^* = argmax_{ξ\in W} \quad \sum_{k=1}^KM_{nearest}(T_ξh_k),\tag{BBS}\end{align}</script></li>
-<li><p>通过仔细选择步长来提高效率。我们选择角步长$δ<em>θ$，使最大扫描距离$d</em>{max}$处的扫描点不超过r，一个像素的宽度。利用余弦定理，我们推导：</p>
+<li><p>通过仔细选择步长来提高效率。我们选择角步长<script type="math/tex">δ_θ</script>，使最大扫描距离<script type="math/tex">d_{max}</script>处的扫描点不超过r，一个像素的宽度。利用余弦定理，我们推导：</p>
 <script type="math/tex; mode=display">\begin{align}d_{max} = max_{k=1,...,K} ||h_k||,\tag{6}\end{align}</script><script type="math/tex; mode=display">\begin{align}δ_θ = arccos(1 − \frac{r^2}{2d^2_{max}} ).\tag{7}\end{align}</script></li>
-<li><p>我们计算一个整数步数覆盖给定的有线性和角度大小的搜索窗口。例如：$W<em>x = W_y = 7m ,W</em>\theta=30^。$ </p>
+<li><p>我们计算一个整数步数覆盖给定的有线性和角度大小的搜索窗口。例如：<script type="math/tex">W_x = W_y = 7m ,W_\theta=30^。</script> </p>
 <script type="math/tex; mode=display">\begin{align}w_x = \lceil\frac{W_x}{r}\rceil,w_y = \lceil\frac{W_y}{r}\rceil ,w_x = \lceil\frac{W_\theta}{\delta_\theta}\rceil \tag{8}\end{align}</script><p>这导出了一个有限集W，W组成了一个搜索窗口(search window)，它围绕着位于其中心的估计$ξ_0$。</p>
 <script type="math/tex; mode=display">\begin{align}\overline{W} = \begin{Bmatrix}  -w_x,...,w_x\end{Bmatrix}\times\begin{Bmatrix}  -w_y,...,w_y\end{Bmatrix}\times\begin{Bmatrix} -w_{\theta},...,w_\theta \end{Bmatrix} ,\tag{9}\end{align}</script><script type="math/tex; mode=display">\begin{align} W = \begin{Bmatrix} ξ_0+(rj_x,rj_y,\delta_\theta j_\theta):(j_x,j_y,j_\theta)\in\overline{W} \end{Bmatrix}. \tag{10}\end{align}</script><p>求$ξ^*$值的朴素算法，可以很容易地表述出来，如算法1描述，但是对于我们想的搜索窗口的大小来说，它将会很慢。</p>
 <p><img src="https://s2.loli.net/2022/02/27/ceXYKQj5qwuiTl1.png" srcset="/img/loading2.gif" lazyload alt="Algorithm 1 Naive algorithm for (BBS)"></p>
@@ -356,13 +356,13 @@
 <li>我们的算法使用深度优先搜索(DFS)作为默认选择，在没有更好的选择时: 该算法的效率很大一部分取决于被树的剪支。这取决于两件事:一个好的上界和一个好的当前解决方案。后一部分由DFS帮助，它可以快速地计算许多叶子节点。由于我们不想添加糟糕的匹配作为循环关闭约束，我们还引入了一个分数阈值，低于这个值我们对最优解决方案不感兴趣。由于在实践中通常不会超过阈值，这降低了节点选择或寻找初始 启发式解(initial heuristic solution)的重要性。对于在DFS中访问子节点的顺序，我们计算每个子节点的得分上界，首先访问具有最大边界的最有希望的子节点。该方法为算法3。</li>
 </ul>
 <h4 id="2-Node-selection"><a href="#2-Node-selection" class="headerlink" title="2) Node selection"></a>2) Node selection</h4><ul>
-<li><p>树中的每个节点都由一个整数元组描述$c = (c<em>x, c_y, c</em>θ, c_h) ∈ Z^4.$高度为$C_h$的节点组合最多2个$2^{C_h}\times2^{C_h}$可能的转换，但表示一个特定的旋转： </p>
+<li><p>树中的每个节点都由一个整数元组描述<script type="math/tex">c = (c_x, c_y, c_θ, c_h) ∈ Z^4.</script>高度为$C_h$的节点组合最多2个<script type="math/tex">2^{C_h}\times2^{C_h}</script>可能的转换，但表示一个特定的旋转： </p>
 <script type="math/tex; mode=display">\begin{align}\overline{\overline{W_c}} = \begin{pmatrix} \begin{Bmatrix}  (j_x,j_y)\in Z^2: \begin{cases} c_x \le j_x <  c_x + 2^{Ch} \\  c_y \le j_y <  c_y + 2^{Ch}\end{cases} \end{Bmatrix} \times  \begin{Bmatrix}  c_\theta\end{Bmatrix}\end{pmatrix} , \tag{11}\end{align}</script><script type="math/tex; mode=display">\begin{align}  \overline{W_c} = \overline{\overline{W_c}} \cap \overline{W_c}. \tag{12}\end{align}</script><p><img src="https://s2.loli.net/2022/02/27/5puXlekRjGntQo2.png" srcset="/img/loading2.gif" lazyload alt="Algorithm 2 Generic branch and bound" style="zoom: 67%;" /></p>
 <p><img src="https://s2.loli.net/2022/02/27/xJOeIgdnUyqlXCt.png" srcset="/img/loading2.gif" lazyload alt="Algorithm 3 DFS branch and bound scan matcher for (BBS)" style="zoom: 67%;" /></p>
 <blockquote>
 <p>树是根据不同分辨率的地图来建立的，高分辨率的地图为上界</p>
 </blockquote>
-<p>叶节点高度$C<em>h = 0$，对应可行解$ξc \in W ,ξc = ξ_0 + (rc_x, rc_y， δ</em>θc_θ).$。</p>
+<p>叶节点高度<script type="math/tex">C_h = 0</script>，对应可行解<script type="math/tex">ξc \in W ,ξc = ξ_0 + (rc_x, rc_y， δ_θc_θ).</script>。</p>
 </li>
 <li><p>在我们的算法3中，包含所有可行解的根节点不明确出现，分支为覆盖搜索窗口的固定高度$h_0$的初始节点集$C_0$</p>
 <script type="math/tex; mode=display">\begin{align} \overline{W}_{0,x}&=  \begin{Bmatrix}-w_x + 2^{h_0}j_x:j_x \in Z,0 \le 2^{h_0}j_x\le 2w_x\end{Bmatrix},\\ \overline{W}_{0,y}&=  \begin{Bmatrix}-w_y + 2^{h_0}j_y:j_y \in Z,0 \le 2^{h_0}j_y \le 2w_y\end{Bmatrix},\tag{13}\\ \overline{W}_{0,y} &=  \begin{Bmatrix}j_\theta \in Z: -w_\theta \le j_\theta \le w_\theta\end{Bmatrix}, \\C_0 &= \overline{W}_{0,x}\times \overline{W}_{0,y} \times \overline{W}_{0,\theta} \times \begin{Bmatrix} h_0 \end{Bmatrix}.\end{align}</script><p>在具有$c_h&gt; 1$的给定节点$c$上，我们将其分支为高度$c_h−1$的四个子节点</p>
@@ -372,7 +372,7 @@
 <li><p>分支定界法的其余部分是计算内部节点上界的一种有效方法，无论在计算量上还是在定界质量上都是如此。我们使用</p>
 <script type="math/tex; mode=display">\begin{align} score(c) &= \sum_{k=1}^K max_{j \in \overline{\overline{W}}_c } M_{nearest} (T_{ξj}h_k)\\ \tag{15}&\geq  \sum_{k=1}^K max_{j \in \overline{W}_c } M_{nearest} (T_{ξj}h_k) \\ &\ge max_{j \in\overline{W}_c }\sum_{k=1}^K  M_{nearest} (T_{ξj}h_k)\end{align}</script><p>为了能够有效地计算出最大值，我们使用了预先计算的网格 $M^{Ch}_{precomp}.$ 对于每个可能的高度$c_h$预先计算一个网格，这样我们就可以努力地在扫描点的个数中计算分数。注意，为了能够做到这一点，我们还计算了在搜索空间边界附近大于$\overline{W}_c$的最大值$\overline{\overline{W}}_c $。</p>
 <script type="math/tex; mode=display">\begin{align} score(c) &= \sum_{k=1}^K  M_{precomp}^{c_h} (T_{ξc}h_k) \tag{16}  \\   \end{align}</script><p><img src="https://s2.loli.net/2022/02/27/wTAkm1U6I5eWs3N.png" srcset="/img/loading2.gif" lazyload style="zoom: 67%;" /></p>
-<p>和前面一样，对叶子节点使用$ξ<em>c$。请注意，$M</em>{precomp}^{h}$预压缩与$M_{nearest}$具有相同的像素结构，但在每个像素中，存储的是从<strong>那里</strong>开始的$2^h\times2^h$的像素盒的最大值（使格子变粗）。图3给出了这种预先计算网格的一个例子。</p>
+<p>和前面一样，对叶子节点使用$ξ<em>c$。请注意，$$M</em>{precomp}^{h}<script type="math/tex">预压缩与</script>M_{nearest}$$具有相同的像素结构，但在每个像素中，存储的是从<strong>那里</strong>开始的$2^h\times2^h$的像素盒的最大值（使格子变粗）。图3给出了这种预先计算网格的一个例子。</p>
 <p><img src="https://s2.loli.net/2022/02/27/DHyje6Xz9NxQq8P.png" srcset="/img/loading2.gif" lazyload alt="Fig. 3. Precomputed grids of size 1, 4, 16 and 64."></p>
 <blockquote>
 <p>将64个的栅格值都设置为相同，所以会很占内存</p>
