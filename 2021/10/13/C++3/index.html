@@ -1,0 +1,610 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/page1.png">
+  <link rel="icon" href="/img/page1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="主要学习了mooc中的北京大学的C++课程，关于C++11的新特性也有相关介绍。">
+  <meta name="author" content="Tony">
+  <meta name="keywords" content="">
+  <meta name="description" content="主要学习了mooc中的北京大学的C++课程，关于C++11的新特性也有相关介绍。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++系列：运算符重载（三）">
+<meta property="og:url" content="https://bsheepcoder.github.io/2021/10/13/C++3/index.html">
+<meta property="og:site_name" content="Q&#39;s blog">
+<meta property="og:description" content="主要学习了mooc中的北京大学的C++课程，关于C++11的新特性也有相关介绍。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-12T23:17:31.839Z">
+<meta property="article:modified_time" content="2022-03-04T02:46:00.656Z">
+<meta property="article:author" content="Tony">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>C++系列：运算符重载（三） - Q&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/diy/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"bsheepcoder.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":5,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#efec02","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading2.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz","app_key":"8y2ItNdFctdKBPMHS31S2jbm","server_url":"https://0wpy18ji.lc-cn-n1-shared.com","path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 30vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Q&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/w/w1.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="C++系列：运算符重载（三）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-13 07:17" pubdate>
+        2021年10月13日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      9.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      31 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">C++系列：运算符重载（三）</h1>
+            
+              <p class="note note-info">
+                
+                  更新于：2022年3月4日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>更多参考其他文档<a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/cpp-tutorial.html">菜鸟文档</a>、<a target="_blank" rel="noopener" href="https://www.w3cschool.cn/cpp/">W3C</a>、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/cpp/?view=msvc-160">微软C++文档</a></p>
+<h2 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h2><ul>
+<li>c++预定义的运算符不能满足全部的运算需求，比如：复数的加减运算</li>
+<li>希望能有一种特殊的运算，可以使类、等复杂的数据也可以进行运算，易于理解</li>
+<li>运算符重载，就是对已有的运算符赋予更多含义的运算，可以使不同类型或者复杂的数据也可以进行运算。（比如类之间的运算）</li>
+<li>即，对于自定义的这个运算符，具有唯一性，表达的含义只能作用于对应的运算数据 。 类a + 类 b</li>
+<li>实质  函数重载</li>
+<li>可以重载为普通函数，也可以重载为成员函数</li>
+<li>实现  把含运算符的表达式转换成对运算符函数的调用</li>
+<li>重载运算符，多个重载运算符时，根据参数选择</li>
+</ul>
+<p>==目数：运算所需变量个数== </p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">//运算符重载形式</span><br><br>返回值类型 <span class="hljs-keyword">operator</span> 运算符（形参表）<br>&#123;<br>    ....<br>&#125;<br><br><br><span class="hljs-comment">//实例</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Complex</span></span><br><span class="hljs-class">&#123;</span><br>    <span class="hljs-keyword">public</span>:<br>    <span class="hljs-keyword">double</span> real,imag;  <span class="hljs-comment">//实部，虚部</span><br>    <span class="hljs-built_in">Complex</span>(<span class="hljs-keyword">double</span> r = <span class="hljs-number">0.0</span>,<span class="hljs-keyword">double</span> i=<span class="hljs-number">0.0</span>):<span class="hljs-built_in">real</span>(r),<span class="hljs-built_in">imag</span>(i)&#123;&#125;<br>    Complex <span class="hljs-keyword">operator</span>-(<span class="hljs-keyword">const</span> Complex &amp; c); <span class="hljs-comment">//声明，被重载的 “ - ”</span><br>&#125;;<br><br>Complex <span class="hljs-keyword">operator</span> +(<span class="hljs-keyword">const</span> Complex &amp;a,<span class="hljs-keyword">const</span> Complex &amp; b)  <span class="hljs-comment">//作普通函数时，参数个数为运算符目数</span><br>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Complex</span>(a.real + b.real,a.imag + b.imag);<span class="hljs-comment">//返回一个临时对象</span><br>&#125;<br>Complex Complex::<span class="hljs-keyword">operator</span>-(<span class="hljs-keyword">const</span> Complex &amp; c) <span class="hljs-comment">//做成员函数时，参数个数为运算符目数减一</span><br>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Complex</span>(real - c.real, imag - c.imag);<span class="hljs-comment">//返回一个临时对象</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-function">Complex <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-number">4</span>,<span class="hljs-number">4</span>)</span>,<span class="hljs-title">b</span><span class="hljs-params">(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)</span>,c</span>;<br>    c = a + b;   <span class="hljs-comment">//等价于 c = operator +(a,b);</span><br>    cout &lt;&lt; c.real &lt;&lt; <span class="hljs-string">&quot;,&quot;</span>&lt;&lt;c.imag &lt;&lt;endl;<br>    cout &lt;&lt; (a-b).real &lt;&lt;<span class="hljs-string">&quot;,&quot;</span>&lt;&lt;(a-b).imag &lt;&lt; endl;  <span class="hljs-comment">//a-b 等价于a.operator -(b)</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h4 id="赋值运算符的重载"><a href="#赋值运算符的重载" class="headerlink" title="赋值运算符的重载"></a>赋值运算符的重载</h4><ul>
+<li><p>用于类型不匹配数据之间的赋值</p>
+</li>
+<li><p>赋值运算符“ = ” 只能重载为成员函数</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">String</span> </span><br><span class="hljs-class">&#123;</span><br>    <span class="hljs-keyword">private</span> :<br>    	<span class="hljs-keyword">char</span> * str;  <span class="hljs-comment">//将指向动态分配空间</span><br>    <span class="hljs-keyword">public</span>:<br>    	<span class="hljs-built_in">String</span>():<span class="hljs-built_in">str</span>(<span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-number">1</span>])&#123;str[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;&#125;  <span class="hljs-comment">//构造</span><br>    	<span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-title">c_str</span><span class="hljs-params">()</span></span>&#123;<span class="hljs-keyword">return</span> str;&#125;; <span class="hljs-comment">//访问str</span><br>    	String &amp; <span class="hljs-keyword">operator</span> = (<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s);<span class="hljs-comment">//赋值运算符重载</span><br>    	~<span class="hljs-built_in">String</span>()&#123;<span class="hljs-keyword">delete</span>[] str;&#125;<br>&#125;;<br><span class="hljs-comment">//下面重载“ = ” 以使得 obj = &quot;hello&quot; 能够成立</span><br>String &amp; String::<span class="hljs-keyword">operator</span> = (<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * s)<br>&#123;<br>    <span class="hljs-keyword">delete</span> [] str;<br>    str = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-built_in">strlen</span>(s)+ <span class="hljs-number">1</span>];<br>    <span class="hljs-built_in">strcpy</span>(str , s);<br>    <span class="hljs-keyword">return</span> * <span class="hljs-keyword">this</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    String s;<br>    s = <span class="hljs-string">&quot;Good Luck,&quot;</span>; <span class="hljs-comment">//等价于s.operator(&quot;Good Luck,&quot;);</span><br>    cout &lt;&lt; s.<span class="hljs-built_in">c_str</span>() &lt;&lt; endl;<br>    <span class="hljs-comment">//String s2 = &quot;hello!&quot;;  //这里是初始化，并不是赋值，所以不能这样写，初始化用的是构造函数</span><br>    s = <span class="hljs-string">&quot;Shenzhou 8!&quot;</span>; <span class="hljs-comment">//等价于s.opeartor = (&quot;Shenzhou 8!&quot;);</span><br>    cout &lt;&lt; s.<span class="hljs-built_in">c_str</span>() &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h4 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a>浅拷贝和深拷贝</h4><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">String</span></span><br><span class="hljs-class">&#123;</span><br>    <span class="hljs-keyword">private</span>:<br>    	<span class="hljs-keyword">char</span> * str;<br>    <span class="hljs-keyword">public</span>:<br>    	<span class="hljs-built_in">String</span>(): <span class="hljs-built_in">str</span>(<span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-number">1</span>])&#123;str[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;&#125;<br>    	<span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-title">c_str</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> str;&#125;; <span class="hljs-comment">//返回str</span><br>    	String &amp; <span class="hljs-keyword">operator</span> = (<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * s)&#123;  <span class="hljs-comment">//赋值重载</span><br>            <span class="hljs-keyword">delete</span> [] str ;  <span class="hljs-comment">//原先的就被删除</span><br>            str = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-built_in">strlen</span>(s)+<span class="hljs-number">1</span>];<br>            <span class="hljs-built_in">strcpy</span>(str,s);<br>            <span class="hljs-keyword">return</span> * <span class="hljs-keyword">this</span>;<br>        &#125;;<br>    ~<span class="hljs-built_in">String</span>()&#123;<span class="hljs-keyword">delete</span>[] str;&#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    String S1,S2;<br>    S1 = <span class="hljs-string">&quot;this&quot;</span>;<br>    S2 = <span class="hljs-string">&quot;that&quot;</span>;<br>    S1 = S2;   <span class="hljs-comment">//注意  这里存在问题！！有隐患</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br> <span class="hljs-comment">// S1 = S2; </span><br><span class="hljs-comment">// 上面直接用 “ = ” 没有重载的话，就是指针指向S2的首地址，使得S1原先指向的内存被丢弃，内存被浪费。</span><br><span class="hljs-comment">//S2、S1消亡时 ，该空间会析构两次，导致程序出错</span><br><span class="hljs-comment">// 如果再用于其他的如： S1 = “...” 时，就会delete原先的内存，导致S2指向的空间消失。依据第9行</span><br><br><span class="hljs-comment">//所以对于同类型的赋值，也需要在class 中添加成员函数：</span><br><br>String &amp; <span class="hljs-keyword">operator</span> = (<span class="hljs-keyword">const</span> String &amp; s)&#123;<br>    <span class="hljs-keyword">delete</span> [] str;<br>    str = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-built_in">strlen</span>(s.str) + <span class="hljs-number">1</span>];<br>    <span class="hljs-built_in">strcpy</span>(str,s.str);<br>    <span class="hljs-keyword">return</span> * <span class="hljs-keyword">this</span>;<br>&#125;<br><br><span class="hljs-comment">//但是还会有问题,如果 s = s 是，就会先delete导致地址被提前释放从而报错，所以改成下面</span><br><br>String &amp; <span class="hljs-keyword">operator</span> = (<span class="hljs-keyword">const</span> String &amp; s)&#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span> == &amp; <span class="hljs-keyword">this</span>)<br>        <span class="hljs-keyword">return</span> * <span class="hljs-keyword">this</span>;<br>    <span class="hljs-keyword">delete</span> [] str;<br>    str = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-built_in">strlen</span>(s.str) + <span class="hljs-number">1</span>];<br>    <span class="hljs-built_in">strcpy</span>(str,s.str);<br>    <span class="hljs-keyword">return</span> * <span class="hljs-keyword">this</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h4 id="对-operator-返回值类型的讨论"><a href="#对-operator-返回值类型的讨论" class="headerlink" title="对 operator = 返回值类型的讨论"></a>对 operator = 返回值类型的讨论</h4><p>对运算符进行重载的时候，好的风格是应该尽量保留运算符原本的特性</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">//返回void </span><br>a = b = c ，导致“ = ” 不能连等<br><span class="hljs-comment">//返回String </span><br>(a = b) = c 时，a = b 返回的是a的引用<br><span class="hljs-comment">//为什么返回 String &amp;</span><br>a.<span class="hljs-built_in"><span class="hljs-keyword">operator</span></span>(b.<span class="hljs-keyword">operator</span>=(c));<br>(a.<span class="hljs-keyword">operator</span>=(b)).<span class="hljs-keyword">operator</span>=(c);<br><br><span class="hljs-comment">//特别的，为String类编写复制构造函数的时候，会面临和=同样的问题，用同样的方法处理,避免两个字符串指向同一空间</span><br><br><span class="hljs-built_in">String</span> (String &amp; s)<br>&#123;<br>    str = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span> [<span class="hljs-built_in">strlen</span>(s.str) + <span class="hljs-number">1</span>];<br>    <span class="hljs-built_in">strcpy</span>(str,s.str);<br>&#125;<br>    <br></code></pre></div></td></tr></table></figure>
+<h4 id="运算符重载为友元函数"><a href="#运算符重载为友元函数" class="headerlink" title="运算符重载为友元函数"></a>运算符重载为友元函数</h4><ul>
+<li>一般情况下，运算符重载为类的成员函数已经够用，但是有特殊的情况，还需使之==重载为普通函数，还可以访问该类的私有成员== ，所以需要重载为友元函数</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Complex</span></span><br><span class="hljs-class">&#123;</span><br>    <span class="hljs-keyword">double</span> real,imag;<br>    <span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Complex</span>(<span class="hljs-keyword">double</span> r,<span class="hljs-keyword">double</span> i):<span class="hljs-built_in">real</span>(r),<span class="hljs-built_in">imag</span>(i)&#123;&#125;;<br>    <span class="hljs-function">Complex <span class="hljs-title">operator</span><span class="hljs-params">(<span class="hljs-keyword">double</span> r)</span></span>;<br>    <span class="hljs-keyword">friend</span> Complex <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">double</span> r,<span class="hljs-keyword">const</span> Complex &amp; c); <span class="hljs-comment">//声明为友元</span><br>&#125;;<br><br>Complex Complex::<span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">double</span> r) <span class="hljs-comment">//成员函数</span><br>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Complex</span>(real + r, imag);<br>&#125;<br><br><span class="hljs-comment">//到这里  c = c + 5； 有定义，相当于c = c.operator + (5)</span><br><span class="hljs-comment">//但如果写成  c = 5 + c  就会报错，所以要写一个下面的全局函数</span><br>Complex <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">double</span> r,<span class="hljs-keyword">const</span> Complex &amp; c)<span class="hljs-comment">//全局函数</span><br>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Complex</span>(c.real + r,c.imag);  <span class="hljs-comment">//这里访问了私有成员，故需要在类中，声明该函数为友元</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h3 id="数组和结构"><a href="#数组和结构" class="headerlink" title="数组和结构"></a>数组和结构</h3><h3 id="可变长数据类的实现"><a href="#可变长数据类的实现" class="headerlink" title="可变长数据类的实现"></a>可变长数据类的实现</h3><h4 id="需要实现的功能"><a href="#需要实现的功能" class="headerlink" title="需要实现的功能"></a>需要实现的功能</h4><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">//可变长整型数组类，应该满足下面的需求</span><br><span class="hljs-keyword">int</span> main<br>&#123;<br>    CArray a;  <span class="hljs-comment">//定义空数组</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">5</span>;++i)<br>        a.<span class="hljs-built_in">push_back</span>(i);  <span class="hljs-comment">//放置元素</span><br>    CArray a2,a3;<br>    a2 = a;  <span class="hljs-comment">//将a的元素复制给a</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i&lt;a.<span class="hljs-built_in">length</span>();++i)<br>        cout&lt;&lt;a2[i]&lt;&lt;<span class="hljs-string">&quot;&quot;</span>;  <span class="hljs-comment">//输出a2的元素</span><br>    a2 = a3; <span class="hljs-comment">//a2是空的，原来的空间被释放掉</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i&lt;a2.<span class="hljs-built_in">length</span>();++i)<span class="hljs-comment">//a2.length()返回()</span><br>        cout &lt;&lt;a2[i]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;  <span class="hljs-comment">//所以这里循环没有输出</span><br>    cout&lt;&lt;endl;<br>    a[<span class="hljs-number">3</span>] = <span class="hljs-number">100</span>;  <span class="hljs-comment">//更改了a 的3的数</span><br>    <span class="hljs-function">CArray <span class="hljs-title">a4</span><span class="hljs-params">(a)</span></span>;<span class="hljs-comment">//复制构造函数初始化</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i&lt;a4.<span class="hljs-built_in">length</span>();++i)<br>        cout&lt;&lt;a4[i]&lt;&lt;<span class="hljs-string">&quot;&quot;</span>;  <span class="hljs-comment">//</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-comment">//要用动态分配的内存来存放元素，需要一个指针成员变量</span><br><span class="hljs-comment">//在析构函数中，释放内存</span><br><span class="hljs-comment">//重载 []  ,</span><br><span class="hljs-comment">//写复制构造函数</span><br></code></pre></div></td></tr></table></figure>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">//实现</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CArray</span></span><br><span class="hljs-class">&#123;</span><br>    <span class="hljs-keyword">int</span> size;<br>    <span class="hljs-keyword">int</span> *ptr;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">CArray</span>(<span class="hljs-keyword">int</span> s = <span class="hljs-number">0</span>);                  <span class="hljs-comment">//构造函数</span><br>    <span class="hljs-built_in">CArray</span>(CArray &amp;a);                  <span class="hljs-comment">//复制构造函数</span><br>    ~<span class="hljs-built_in">CArray</span>();                          <span class="hljs-comment">//析构函数</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push_back</span><span class="hljs-params">(<span class="hljs-keyword">int</span> v)</span></span>;              <span class="hljs-comment">//成员函数，在已有数组的尾部添加一个元素v</span><br>    CArray &amp;<span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> CArray &amp;a); <span class="hljs-comment">//运算符的重载，用于数组对象间的赋值</span><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">length</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> size; &#125;       <span class="hljs-comment">//成员函数，返回数组元素个数</span><br>    <span class="hljs-keyword">int</span> &amp;CArray::<span class="hljs-keyword">operator</span>[](<span class="hljs-keyword">int</span> i)      <span class="hljs-comment">//函数调用的返回值不能左值，所以返回类型应该是 int&amp; 。</span><br>    &#123;                                   <span class="hljs-comment">//为了使对象数组可以和普通数组一样进行左右值，所以这里将[] 符重载，满足对象的属性</span><br>        <span class="hljs-keyword">return</span> ptr[i];                  <span class="hljs-comment">//这里返回的是指针对应下标的数，不是对象</span><br>    &#125;<br>&#125;;<br><br>CArray::<span class="hljs-built_in">CArray</span>(<span class="hljs-keyword">int</span> s) : <span class="hljs-built_in">size</span>(s) <span class="hljs-comment">//构造函数</span><br>&#123;<br>    <span class="hljs-keyword">if</span> (s == <span class="hljs-number">0</span>)<br>    &#123;<br>        ptr = <span class="hljs-literal">NULL</span>;<br>    &#125;<br>    <span class="hljs-keyword">else</span><br>    &#123;<br>        ptr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[s];<br>    &#125;<br>&#125;<br><br>CArray::<span class="hljs-built_in">CArray</span>(CArray &amp;a) <span class="hljs-comment">//复制构造函数</span><br>&#123;<br>    <span class="hljs-keyword">if</span> (!a.ptr) <span class="hljs-comment">//判断被复制的对象里的指针是不是NULL，如果为NULL则让新的数组也指向空</span><br>    &#123;<br>        ptr = <span class="hljs-literal">NULL</span>;<br>        size = <span class="hljs-number">0</span>;<br>    &#125;<br>    ptr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[a.size];                  <span class="hljs-comment">//动态分配a的元素个数</span><br>    <span class="hljs-built_in">memcpy</span>(ptr, a.ptr, <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(<span class="hljs-keyword">int</span>) * size); <span class="hljs-comment">//String 的库函数，将后面元素的值赋给前面，最后是赋值的个数</span><br>    size = a.size;                          <span class="hljs-comment">// 成员size 赋值</span><br>&#125;<br><br>CArray ::~<span class="hljs-built_in">CArray</span>()<br>&#123;<br>    <span class="hljs-keyword">if</span> (ptr)<br>    &#123;<br>        <span class="hljs-keyword">delete</span>[] ptr;<br>    &#125;<br>&#125;<br>CArray &amp;CArray::<span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> CArray &amp;a) <span class="hljs-comment">//返回值 一般是该类型的引用</span><br>&#123;<br>    <span class="hljs-keyword">if</span> (ptr == a.ptr) <span class="hljs-comment">//防止自己赋值给自己出错</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (a.ptr == <span class="hljs-literal">NULL</span>)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (ptr) <span class="hljs-comment">//判断被赋值的对象数组是不是空</span><br>        &#123;<br>            <span class="hljs-keyword">delete</span>[] ptr; <span class="hljs-comment">//不是空 就删除该对象数组的存储空间</span><br>        &#125;<br>        ptr = <span class="hljs-literal">NULL</span>;<br>        size = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (size &lt; a.size) <span class="hljs-comment">//判断原有的内存空间够不够用，如果够用就不需要再分配新的空间</span><br>    &#123;<br>        <span class="hljs-keyword">if</span> (ptr)<br>            <span class="hljs-keyword">delete</span>[] ptr;<br>        ptr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[a.size];<br>    &#125;<br>    <span class="hljs-built_in">memcpy</span>(ptr, a.ptr, <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(<span class="hljs-keyword">int</span>) * size); <span class="hljs-comment">//复制元素</span><br>    size = a.size;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br><span class="hljs-keyword">void</span> CArray ::<span class="hljs-built_in">push_back</span>(<span class="hljs-keyword">int</span> v)<br>&#123;<br>    <span class="hljs-keyword">if</span> (ptr)<br>    &#123;<br>        <span class="hljs-keyword">int</span> *tmpPtr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[size + <span class="hljs-number">1</span>];         <span class="hljs-comment">//重新分配空间</span><br>        <span class="hljs-built_in">memcpy</span>(tmpPtr, ptr, <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(<span class="hljs-keyword">int</span>) * size); <span class="hljs-comment">//拷贝原函数组内容</span><br>        <span class="hljs-keyword">delete</span>[] ptr;                            <span class="hljs-comment">//参见释放数组</span><br>        ptr = tmpPtr;<br>    &#125;<br>    <span class="hljs-keyword">else</span><br>    &#123;<br>        ptr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">1</span>]; <span class="hljs-comment">//如果数组本来是空的，则要先new一个空间</span><br>    &#125;<br>    ptr[size++] = v; <span class="hljs-comment">//加入新的数组元素</span><br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="流插入选算符和流提取运算符的重载"><a href="#流插入选算符和流提取运算符的重载" class="headerlink" title="流插入选算符和流提取运算符的重载"></a>流插入选算符和流提取运算符的重载</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">cout &lt;&lt;  <span class="hljs-comment">//什么含义</span><br>cout 是 ostream类的对象<br>&lt;&lt;  <span class="hljs-comment">//在iostream里 使用了重载</span><br><span class="hljs-comment">//如何才能 “this” 和 5 都可以输出</span><br></code></pre></div></td></tr></table></figure>
+<p>有可能的做法</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-keyword">void</span> ostream::<span class="hljs-keyword">operator</span> &lt;&lt; (<span class="hljs-keyword">int</span> n) <span class="hljs-comment">//重载ostream类的成员函数</span><br>&#123;<br>    <span class="hljs-comment">//输出n的代码</span><br>    <span class="hljs-keyword">return</span>;<br>&#125;<br><span class="hljs-keyword">void</span>  ...仿照上面写<span class="hljs-keyword">char</span>的<br>    <br>    <br><span class="hljs-comment">//为了可以连续输出 cout &lt;&lt; a &lt;&lt; b  修改如下</span><br><br>ostream &amp; ostream::<span class="hljs-keyword">operator</span>&lt;&lt;(<span class="hljs-keyword">int</span> n)<br>&#123;<br>    <span class="hljs-comment">//输出n的代码</span><br>    <span class="hljs-keyword">return</span> * <span class="hljs-keyword">this</span>;<br>&#125;<br>ostream &amp; ostream::<span class="hljs-keyword">operator</span>&lt;&lt;(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s)<br>&#123;<br>    <span class="hljs-comment">//输出s的代码</span><br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br><span class="hljs-comment">//修改后的对应的函数调用形式为 </span><br>cout.<span class="hljs-keyword">operator</span>&lt;&lt;(<span class="hljs-number">5</span>).<span class="hljs-keyword">operator</span>&lt;&lt;(<span class="hljs-string">&quot;this&quot;</span>);<br><br><span class="hljs-comment">//例题</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CStudent</span></span><br><span class="hljs-class">&#123;</span><br>    <span class="hljs-keyword">public</span> : <span class="hljs-keyword">int</span> nAge;<br>&#125;;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    CStudent s;<br>    s.nAge = <span class="hljs-number">5</span>;<br>    cout &lt;&lt; s&lt;&lt; <span class="hljs-string">&quot;hello&quot;</span>;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br>ostream &amp; <span class="hljs-keyword">operator</span> &lt;&lt;( ostream &amp; o,<span class="hljs-keyword">const</span> CStudent &amp; s)<br>&#123;<br>     o &lt;&lt;s.nAge;<br>    <span class="hljs-keyword">return</span> o;<span class="hljs-comment">//使返回值还是cout</span><br>&#125;<br><br><span class="hljs-comment">//例题</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstdlib&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Complex</span> &#123;</span><br>    <span class="hljs-keyword">double</span> real ,imag;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-built_in">Complex</span>(<span class="hljs-keyword">double</span> r = <span class="hljs-number">0</span>, <span class="hljs-keyword">double</span> i = <span class="hljs-number">0</span>) : <span class="hljs-built_in">real</span>(r), <span class="hljs-built_in">imag</span>(i)&#123;&#125;;<br>        <span class="hljs-keyword">friend</span> ostream &amp;<span class="hljs-keyword">operator</span>&lt;&lt;(ostream &amp;os, <span class="hljs-keyword">const</span> Complex &amp;c);<br>        <span class="hljs-keyword">friend</span> istream &amp;<span class="hljs-keyword">operator</span>&gt;&gt;(istream &amp;is, Complex &amp;c);<br>&#125;;<br><br>ostream &amp;<span class="hljs-keyword">operator</span>&lt;&lt;(ostream &amp;os, <span class="hljs-keyword">const</span> Complex &amp;c)<br>&#123;<br>    os &lt;&lt; c.real &lt;&lt; <span class="hljs-string">&quot;+&quot;</span> &lt;&lt; c.imag &lt;&lt; <span class="hljs-string">&quot;i&quot;</span>;<span class="hljs-comment">//以&quot;a + bi&quot; 的形式输出</span><br>    <span class="hljs-keyword">return</span> os;<br>&#125;<br><br>istream &amp;<span class="hljs-keyword">operator</span>&gt;&gt;(istream &amp; is,Complex &amp; c)<br>&#123;<br>    string s;<br>    is &gt;&gt; s;<br>    <span class="hljs-keyword">int</span> pos = s.<span class="hljs-built_in">find</span>(<span class="hljs-string">&quot;+&quot;</span>, <span class="hljs-number">0</span>);<br>    string sTmp = s.<span class="hljs-built_in">substr</span>(<span class="hljs-number">0</span>, pos);<br>    c.real = <span class="hljs-built_in">atof</span>(sTmp.<span class="hljs-built_in">c_str</span>());<br>    sTmp = s.<span class="hljs-built_in">substr</span>(pos + <span class="hljs-number">1</span>, s.<span class="hljs-built_in">length</span>() - pos - <span class="hljs-number">2</span>);<br>    c.imag = atof（sTmp.<span class="hljs-built_in">c_str</span>());<br>    <span class="hljs-keyword">return</span> is;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h3 id="类型转换运算符的重载"><a href="#类型转换运算符的重载" class="headerlink" title="类型转换运算符的重载"></a>类型转换运算符的重载</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Complex</span></span><br><span class="hljs-class">&#123;</span><br>    <span class="hljs-keyword">double</span> real, imag;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-built_in">Complex</span>(<span class="hljs-keyword">double</span> r = <span class="hljs-number">0</span>, <span class="hljs-keyword">double</span> i = <span class="hljs-number">0</span>) : <span class="hljs-built_in">real</span>(r), <span class="hljs-built_in">imag</span>(i)&#123;&#125;;<br>        <span class="hljs-function"><span class="hljs-keyword">operator</span> <span class="hljs-title">double</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> real; &#125;<br>        <span class="hljs-comment">//重载强制类型转换运算符 double</span><br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-function">Complex <span class="hljs-title">c</span><span class="hljs-params">(<span class="hljs-number">1.2</span>, <span class="hljs-number">3.4</span>)</span></span>;<br>    cout &lt;&lt; (<span class="hljs-keyword">double</span>)c &lt;&lt; endl;<span class="hljs-comment">//输出1.2</span><br>    <span class="hljs-keyword">double</span> n = <span class="hljs-number">2</span> + c;  <span class="hljs-comment">//等价于double n = 2+c.operator  double()</span><br>    cout &lt;&lt; n; <span class="hljs-comment">//输出3.2</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h3 id="自增自减运算符的重载"><a href="#自增自减运算符的重载" class="headerlink" title="自增自减运算符的重载"></a>自增自减运算符的重载</h3><ul>
+<li>自增运算符++、自减运算符—有前置\后置之分，为了区分所重载的是前置运算符还是后置运算符</li>
+<li><p>==前置运算== 符当作一元运算符重载</p>
+<ul>
+<li>重载为成员函数：</li>
+<li>T &amp; operator++();</li>
+<li>T &amp; operator–();</li>
+<li>重载为全局函数：</li>
+<li>T1 &amp; operator ++(T2);</li>
+<li>T1 &amp; operator–(T2);</li>
+</ul>
+</li>
+<li><p>==后置运算== 符当作二元运算符重载，多写一个没用的参数：</p>
+<ul>
+<li>重载为成员函数：</li>
+<li>T &amp; operator++(int );</li>
+<li>T &amp; operator–( int );</li>
+<li>重载为全局函数：</li>
+<li>T1 &amp; operator ++(T2，int);</li>
+<li>T1 &amp; operator–(T2，int);</li>
+</ul>
+<p>在没有后置运算符重载而有牵制重载的情况下，在VS中，obj++也调用前置重载，而dev则令obj++编译出错</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-function">CDemo <span class="hljs-title">d</span><span class="hljs-params">(<span class="hljs-number">5</span>)</span></span>;<br>    cout &lt;&lt; (d++)&lt;&lt;<span class="hljs-string">&quot;,&quot;</span>;  <span class="hljs-comment">//等价于d.operator++(0);</span><br>    cout &lt;&lt; d &lt;&lt; <span class="hljs-string">&quot;,&quot;</span>;<br>    cout &lt;&lt; (++d)&lt;&lt; <span class="hljs-string">&quot;,&quot;</span>;  <span class="hljs-comment">//等价于d.operator++();</span><br>    cout &lt;&lt; d &lt;&lt;endl;<br>    cout &lt;&lt; (d--) &lt;&lt; <span class="hljs-string">&quot;,&quot;</span>; <span class="hljs-comment">//等价于operator--（d,0);</span><br>    cout &lt;&lt; d &lt;&lt; <span class="hljs-string">&quot;,&quot;</span>;<br>    cout &lt;&lt; (--d) &lt;&lt; <span class="hljs-string">&quot;,&quot;</span>;  <span class="hljs-comment">//等价于 operator(d);</span><br>    cout &lt;&lt; d &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-comment">//实现</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CDemo</span>&#123;</span><br>    <span class="hljs-keyword">private</span>:<br>    	<span class="hljs-keyword">int</span> n;<br>    <span class="hljs-keyword">public</span>:<br>    	<span class="hljs-built_in">CDemo</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>):<span class="hljs-built_in">n</span>(i)&#123;&#125;<br>    	CDemo &amp; <span class="hljs-keyword">operator</span>++();  <span class="hljs-comment">//用于前置形式</span><br>    	CDemo <span class="hljs-keyword">operator</span>++(<span class="hljs-keyword">int</span>);<br>    	<span class="hljs-function"><span class="hljs-keyword">operator</span> <span class="hljs-title">int</span> <span class="hljs-params">()</span> </span>&#123;<span class="hljs-keyword">return</span> n;&#125;<br>    <span class="hljs-keyword">friend</span> CDemo &amp; <span class="hljs-keyword">operator</span>--(CDemo &amp;);<br>    <span class="hljs-keyword">friend</span> CDemo <span class="hljs-keyword">operator</span>--(CDemo &amp;,<span class="hljs-keyword">int</span>);<br>&#125;;<br><br>CDemo &amp; CDemo ::<span class="hljs-keyword">operator</span>++()<br>&#123;<br>    <span class="hljs-comment">//前置++</span><br>     ++ n;<br>    <span class="hljs-keyword">return</span> * <span class="hljs-keyword">this</span>;<br>    <span class="hljs-comment">//++s 即为：s.operator();</span><br>&#125;<br><span class="hljs-comment">//++a 在原生c++中是引用</span><br><br>CDemo &amp; CDemo ::<span class="hljs-keyword">operator</span>++( <span class="hljs-keyword">int</span> k) <br>&#123;<br>    <span class="hljs-comment">//后置++</span><br>    <span class="hljs-function">CDemo <span class="hljs-title">tmp</span><span class="hljs-params">(*<span class="hljs-keyword">this</span>)</span></span>; <span class="hljs-comment">//记录修改前的对象</span><br>     n++;<br>    <span class="hljs-keyword">return</span> tmp;  <span class="hljs-comment">//返回修改前的对象</span><br>    <span class="hljs-comment">//s++ 即为：s.operator++(0);</span><br>&#125;<br>CDemo &amp; <span class="hljs-keyword">operator</span>--(CDemo &amp; d)<br>&#123;<br>    <span class="hljs-comment">//前置--</span><br>     d.n --;<br>    <span class="hljs-keyword">return</span> d;<br>    <span class="hljs-comment">//--s 即为：s.operator--(s);</span><br>&#125;<br>CDemo <span class="hljs-keyword">operator</span>--(CDemo &amp; d,<span class="hljs-keyword">int</span>)<br>&#123;<br>    <span class="hljs-comment">//后置--</span><br>    <span class="hljs-function">CDemo <span class="hljs-title">tmp</span><span class="hljs-params">(d)</span></span>; <span class="hljs-comment">//记录修改前的对象</span><br>     d.n--;<br>    <span class="hljs-keyword">return</span> tmp;  <span class="hljs-comment">//返回修改前的对象</span><br>    <span class="hljs-comment">//s-- 即为：s.operator();</span><br>&#125;<br><br><span class="hljs-comment">//通常情况下推荐适用  ++ i</span><br></code></pre></div></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="运算符重载的注意事项"><a href="#运算符重载的注意事项" class="headerlink" title="运算符重载的注意事项"></a>运算符重载的注意事项</h3><ul>
+<li>c++不允许定义新的运算符</li>
+<li>重载后运算符的含义应该符合日常习惯<ul>
+<li>complex_a + complex_b</li>
+<li>word_a &gt; word_b</li>
+<li>date_b =date_a +n</li>
+</ul>
+</li>
+<li>运算符重载不改变运算符的优先级；</li>
+<li>以下运算符不能被重载：“.”  “.* ”  “ :: ”  “ ? : ”   sizeof;</li>
+<li>重载运算符()、[]、-&gt; 或者赋值运算符 = 时，运算符重载函数必须声明为类的成员函数。</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/C/">C++</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/C/">C++</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/13/C++4/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">C++系列：继承和派生（四）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/13/C++2/">
+                        <span class="hidden-mobile">C++系列：类和对象基础（二）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"UrMBdkpVtSriHxFtNjQRvPqm-gzGzoHsz","appKey":"rLGXsY7AM0Ym431NbB2fCRpX","path":"window.location.pathname","placeholder":"发一条友善的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <p style="text-align:center;">如果博文对你有帮助，可以给博主充充电噢~ <br> 非常感谢！！</p><img src="/img/qxd.jpg" srcset="/img/loading2.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/diy/timeDate.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"}});</script></body>
+</html>
