@@ -2,7 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://bsheepcoder.github.io/2022/02/09/JJ_POCO1/</loc>
+    <loc>https://bsheepcoder.github.io/2022/02/23/BJ_OS1/</loc>
+    
+    <lastmod>2022-03-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bsheepcoder.github.io/2022/02/09/BJ_JSJZC1/</loc>
     
     <lastmod>2022-03-04</lastmod>
     
@@ -201,15 +210,6 @@
   
   <url>
     <loc>https://bsheepcoder.github.io/2022/02/21/Java1/</loc>
-    
-    <lastmod>2022-03-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://bsheepcoder.github.io/2022/02/23/JJ_COS1/</loc>
     
     <lastmod>2022-03-04</lastmod>
     
