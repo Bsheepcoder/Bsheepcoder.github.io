@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bsheepcoder.github.io/2022/02/09/JJ_POCO1/</loc>
+    
+    <lastmod>2022-03-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://bsheepcoder.github.io/2021/10/10/AI_History/</loc>
     
     <lastmod>2022-03-04</lastmod>
@@ -230,15 +239,6 @@
     <loc>https://bsheepcoder.github.io/2022/03/01/English_Words1/</loc>
     
     <lastmod>2022-03-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://bsheepcoder.github.io/2022/02/09/POCO1/</loc>
-    
-    <lastmod>2022-03-03</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
