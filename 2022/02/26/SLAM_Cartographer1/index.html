@@ -13,15 +13,15 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#000000">
-  <meta name="description" content="SLAM算法">
+  <meta name="description" content="Google开源的SLAM-2d算法论文">
   <meta name="author" content="Tony">
   <meta name="keywords" content="">
-  <meta name="description" content="SLAM算法">
+  <meta name="description" content="Google开源的SLAM-2d算法论文">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SLAM-2D实时闭环检测论文笔记（Google）">
-<meta property="og:url" content="https://bsheepcoder.github.io/2022/02/26/SLAM1/index.html">
+<meta property="og:url" content="https://bsheepcoder.github.io/2022/02/26/SLAM_Cartographer1/index.html">
 <meta property="og:site_name" content="Q&#39;s blog">
-<meta property="og:description" content="SLAM算法">
+<meta property="og:description" content="Google开源的SLAM-2d算法论文">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2022/02/26/SebpOWvRKr7ZVni.png">
 <meta property="og:image" content="https://s2.loli.net/2022/02/26/jMKufwAIkdYZmLb.png">
@@ -37,9 +37,9 @@
 <meta property="og:image" content="https://s2.loli.net/2022/02/27/DL4qUeaOIz8X6du.png">
 <meta property="og:image" content="https://s2.loli.net/2022/02/27/3MeUoiycxjkmN6J.png">
 <meta property="article:published_time" content="2022-02-26T10:14:09.258Z">
-<meta property="article:modified_time" content="2022-03-03T05:44:10.361Z">
+<meta property="article:modified_time" content="2022-03-05T10:37:48.190Z">
 <meta property="article:author" content="Tony">
-<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="SLAM">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://s2.loli.net/2022/02/26/SebpOWvRKr7ZVni.png">
   
@@ -216,7 +216,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      14k 字
+      15k 字
     </span>
   
 
@@ -225,7 +225,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      45 分钟
+      46 分钟
     </span>
   
 
@@ -258,13 +258,18 @@
             
               <p class="note note-info">
                 
-                  更新于：2022年3月3日 下午
+                  更新于：2022年3月5日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="SLAM-2D实时闭环检测-Real-Time-Loop-Closure-in-2D-LIDAR-SLAM"><a href="#SLAM-2D实时闭环检测-Real-Time-Loop-Closure-in-2D-LIDAR-SLAM" class="headerlink" title="SLAM-2D实时闭环检测(Real-Time Loop Closure in 2D LIDAR SLAM)"></a>SLAM-2D实时闭环检测(Real-Time Loop Closure in 2D LIDAR SLAM)</h2><ul>
-<li>SLAM目前是一种实时建立地图的有效方式，实时生成和可视化平面图有助于操作者评估捕获数据的质量和覆盖范围。构建便携式捕获平台需要在有限的计算资源下操作。我们介绍了在我们的<strong>背包地图平台</strong>中使用的方法，它实现了实时地图绘制和5厘米分辨率的环路闭合。为了实现实时闭环检测，我们使用了一种<strong>分支定界</strong>方法来计算scan-to-submap匹配作为约束，实验证明这个算法比较有竞争。</li>
+              <ul>
+<li><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/7487258">Real-Time Loop Closure in 2D LIDAR SLAM</a> 原文</li>
+<li>其他翻译参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/luohuiwu/article/details/88890307">Google Cartographer 《Real-Time Loop Closure in 2D LIDAR SLAM》翻译 (中英对照）</a></li>
+<li>自己翻译的可能不准确，以原文为准。</li>
+</ul>
+<h2 id="SLAM-2D实时闭环检测-Real-Time-Loop-Closure-in-2D-LIDAR-SLAM"><a href="#SLAM-2D实时闭环检测-Real-Time-Loop-Closure-in-2D-LIDAR-SLAM" class="headerlink" title="SLAM-2D实时闭环检测(Real-Time Loop Closure in 2D LIDAR SLAM)"></a>SLAM-2D实时闭环检测(Real-Time Loop Closure in 2D LIDAR SLAM)</h2><ul>
+<li>SLAM目前是一种实时建立地图的有效方式，实时生成可视化平面图有助于操作者评估捕获数据的质量和覆盖范围。构建便携式捕获平台需要在有限的计算资源下操作。我们介绍了在我们的<strong>背包地图平台</strong>中使用的方法，它实现了实时地图绘制和5厘米分辨率的环路闭合。为了实现实时闭环检测，我们使用了一种<strong>分支定界</strong>方法来计算scan-to-submap匹配作为约束，实验证明这个算法比较有竞争力。</li>
 </ul>
 <h2 id="I-INTRODUCTION介绍"><a href="#I-INTRODUCTION介绍" class="headerlink" title="I. INTRODUCTION介绍"></a>I. INTRODUCTION介绍</h2><ul>
 <li><p>传统的建图方式是通过CAD(计算机辅助设计)，通过激光卷尺来测量，但是这种方式很慢并且测量人员会先入为主的认为建筑物都是直的，不能很好的描述空间的真实情况。使用SLAM可以迅速而准确地测量大小和复杂程度的建筑物，而手动测量则需要更长数量级的时间。</p>
@@ -273,7 +278,11 @@
 </li>
 </ul>
 <h2 id="II-RELATED-WORK相关工作"><a href="#II-RELATED-WORK相关工作" class="headerlink" title="II. RELATED WORK相关工作"></a>II. RELATED WORK相关工作</h2><h3 id="Scan-to-scan"><a href="#Scan-to-scan" class="headerlink" title="Scan-to-scan"></a>Scan-to-scan</h3><ul>
-<li>在基于激光的SLAM方法中，扫描-扫描匹配是计算相对位姿变化的常用方法，但是扫描对扫描匹配本身就会快速累积误差。</li>
+<li><p>在基于激光的SLAM方法中，扫描-扫描匹配是计算相对位姿变化的常用方法，但是扫描对扫描匹配本身就会快速累积误差。</p>
+<blockquote>
+<p>scan-to-scan即为两帧激光扫描之间的匹配</p>
+</blockquote>
+</li>
 </ul>
 <h3 id="Scan-to-map"><a href="#Scan-to-map" class="headerlink" title="Scan-to-map"></a>Scan-to-map</h3><ul>
 <li>Scan-to-map的匹配有助于限制这种错误的积累，一个这样的方法，使用<strong>高斯-牛顿</strong>来寻找线性插值映射上的局部最优值。(Hecktor SLAM) 在对姿态进行良好的初始估计的情况下，通过使用足够高的数据速率的激光雷达，局部优化的扫描到地图匹配是高效和鲁棒的。在不稳定的平台上，利用惯性测量单元(IMU)将激光扇区投影到水平面上，以估计重力方向。</li>
@@ -301,7 +310,7 @@
 </li>
 </ul>
 <h3 id="A-Scans"><a href="#A-Scans" class="headerlink" title="A. Scans"></a>A. Scans</h3><ul>
-<li><p>子地图构建是扫描坐标系与子地图坐标系反复对齐的迭代过程，进一步称为框架。扫描原点为$0∈R^2$，我们现在将扫描点的信息写成<script type="math/tex">H =\{h_k\}_{k= 1,...,K}, h_k∈R^2</script>。扫描帧在子地图中的位姿$ξ$表示为变换$T_ξ$，该变换将扫描点刚性地从扫描帧转换为子映射帧，定义为:</p>
+<li><p>子地图构建是扫描坐标系与子地图坐标系反复对齐的迭代过程，进一步称为帧。扫描原点为$0∈R^2$，我们现在将扫描点的信息写成<script type="math/tex">H =\{h_k\}_{k= 1,...,K}, h_k∈R^2</script>。扫描帧在子地图中的位姿$ξ$表示为变换$T_ξ$，该变换将扫描点刚性地从扫描帧转换为子图帧，定义为:</p>
 <script type="math/tex; mode=display">\begin{align}T_ξp = \underbrace{\begin{pmatrix}cosξ_\theta & -sinξ_\theta \\ sinξ_\theta & cosξ_\theta\\ \end{pmatrix}}_{R_ξ}  p\times\underbrace{ \begin{pmatrix} ξ_x \\ ξ_y\\ \end{pmatrix} }_{t_ξ}& \tag{1}\end{align}</script></li>
 </ul>
 <h3 id="B-Submaps"><a href="#B-Submaps" class="headerlink" title="B. Submaps"></a>B. Submaps</h3><ul>
@@ -466,7 +475,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Algorithm/">Algorithm</a>
+                      <a class="hover-with-bg" href="/categories/SLAM/">SLAM</a>
                     
                   </div>
                 
@@ -474,7 +483,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Algorithm/">Algorithm</a>
+                      <a class="hover-with-bg" href="/tags/SLAM/">SLAM</a>
                     
                   </div>
                 

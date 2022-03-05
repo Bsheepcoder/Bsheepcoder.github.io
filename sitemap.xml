@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bsheepcoder.github.io/2022/03/05/SLAM_share1/</loc>
+    
+    <lastmod>2022-03-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bsheepcoder.github.io/2022/02/26/SLAM_Cartographer1/</loc>
+    
+    <lastmod>2022-03-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bsheepcoder.github.io/2022/03/02/ROS_Jetson_nano/</loc>
+    
+    <lastmod>2022-03-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://bsheepcoder.github.io/2022/03/01/English_Words1/</loc>
     
     <lastmod>2022-03-05</lastmod>
@@ -248,24 +275,6 @@
     <loc>https://bsheepcoder.github.io/2021/10/13/Win10_bug1/</loc>
     
     <lastmod>2022-03-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://bsheepcoder.github.io/2022/02/26/SLAM1/</loc>
-    
-    <lastmod>2022-03-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://bsheepcoder.github.io/2022/03/02/ROS_Jetson_nano/</loc>
-    
-    <lastmod>2022-03-02</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -570,6 +579,13 @@
   </url>
   
   <url>
+    <loc>https://bsheepcoder.github.io/tags/SLAM/</loc>
+    <lastmod>2022-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://bsheepcoder.github.io/tags/win10/</loc>
     <lastmod>2022-03-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -578,13 +594,6 @@
   
   <url>
     <loc>https://bsheepcoder.github.io/tags/Java/</loc>
-    <lastmod>2022-03-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bsheepcoder.github.io/tags/Algorithm/</loc>
     <lastmod>2022-03-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -691,6 +700,13 @@
   </url>
   
   <url>
+    <loc>https://bsheepcoder.github.io/categories/SLAM/</loc>
+    <lastmod>2022-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://bsheepcoder.github.io/categories/win10/</loc>
     <lastmod>2022-03-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -699,13 +715,6 @@
   
   <url>
     <loc>https://bsheepcoder.github.io/categories/Java/</loc>
-    <lastmod>2022-03-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bsheepcoder.github.io/categories/Algorithm/</loc>
     <lastmod>2022-03-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
