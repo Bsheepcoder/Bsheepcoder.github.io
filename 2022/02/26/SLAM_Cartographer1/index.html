@@ -368,8 +368,8 @@
 </ul>
 <h4 id="2-Node-selection"><a href="#2-Node-selection" class="headerlink" title="2) Node selection"></a>2) Node selection</h4><ul>
 <li><p>树中的每个节点都由一个整数元组描述<script type="math/tex">c = (c_x, c_y, c_θ, c_h) ∈ Z^4.</script>高度为$C_h$的节点组合最多2个<script type="math/tex">2^{C_h}\times2^{C_h}</script>可能的转换，但表示一个特定的旋转： </p>
-<script type="math/tex; mode=display">\begin{align}\overline{\overline{W_c}} = \begin{pmatrix} \begin{Bmatrix}  (j_x,j_y)\in Z^2: \begin{cases} c_x \le j_x <  c_x + 2^{Ch} \\  c_y \le j_y <  c_y + 2^{Ch}\end{cases} \end{Bmatrix} \times  \begin{Bmatrix}  c_\theta\end{Bmatrix}\end{pmatrix} , \tag{11}\end{align}</script><script type="math/tex; mode=display">\begin{align}  \overline{W_c} = \overline{\overline{W_c}} \cap \overline{W_c}. \tag{12}\end{align}</script><p><img src="https://s2.loli.net/2022/02/27/5puXlekRjGntQo2.png" srcset="/img/loading2.gif" lazyload alt="Algorithm 2 Generic branch and bound" style="zoom: 67%;" /></p>
-<p><img src="https://s2.loli.net/2022/02/27/xJOeIgdnUyqlXCt.png" srcset="/img/loading2.gif" lazyload alt="Algorithm 3 DFS branch and bound scan matcher for (BBS)" style="zoom: 67%;" /></p>
+<script type="math/tex; mode=display">\begin{align}\overline{\overline{W_c}} = \begin{pmatrix} \begin{Bmatrix}  (j_x,j_y)\in Z^2: \begin{cases} c_x \le j_x <  c_x + 2^{Ch} \\  c_y \le j_y <  c_y + 2^{Ch}\end{cases} \end{Bmatrix} \times  \begin{Bmatrix}  c_\theta\end{Bmatrix}\end{pmatrix} , \tag{11}\end{align}</script><script type="math/tex; mode=display">\begin{align}  \overline{W_c} = \overline{\overline{W_c}} \cap \overline{W_c}. \tag{12}\end{align}</script><p><img src="https://s2.loli.net/2022/02/27/5puXlekRjGntQo2.png" srcset="/img/loading2.gif" lazyload alt="Algorithm 2 Generic branch and bound" style="zoom: 67%;"></p>
+<p><img src="https://s2.loli.net/2022/02/27/xJOeIgdnUyqlXCt.png" srcset="/img/loading2.gif" lazyload alt="Algorithm 3 DFS branch and bound scan matcher for (BBS)" style="zoom: 67%;"></p>
 <blockquote>
 <p>树是根据不同分辨率的地图来建立的，高分辨率的地图为上界</p>
 </blockquote>
@@ -382,7 +382,7 @@
 <h4 id="3-Computing-upper-bounds"><a href="#3-Computing-upper-bounds" class="headerlink" title="3) Computing upper bounds"></a>3) Computing upper bounds</h4><ul>
 <li><p>分支定界法的其余部分是计算内部节点上界的一种有效方法，无论在计算量上还是在定界质量上都是如此。我们使用</p>
 <script type="math/tex; mode=display">\begin{align} score(c) &= \sum_{k=1}^K max_{j \in \overline{\overline{W}}_c } M_{nearest} (T_{ξj}h_k)\\ \tag{15}&\geq  \sum_{k=1}^K max_{j \in \overline{W}_c } M_{nearest} (T_{ξj}h_k) \\ &\ge max_{j \in\overline{W}_c }\sum_{k=1}^K  M_{nearest} (T_{ξj}h_k)\end{align}</script><p>为了能够有效地计算出最大值，我们使用了预先计算的网格 $M^{Ch}_{precomp}.$ 对于每个可能的高度$c_h$预先计算一个网格，这样我们就可以努力地在扫描点的个数中计算分数。注意，为了能够做到这一点，我们还计算了在搜索空间边界附近大于$\overline{W}_c$的最大值$\overline{\overline{W}}_c $。</p>
-<script type="math/tex; mode=display">\begin{align} score(c) &= \sum_{k=1}^K  M_{precomp}^{c_h} (T_{ξc}h_k) \tag{16}  \\   \end{align}</script><p><img src="https://s2.loli.net/2022/02/27/wTAkm1U6I5eWs3N.png" srcset="/img/loading2.gif" lazyload style="zoom: 67%;" /></p>
+<script type="math/tex; mode=display">\begin{align} score(c) &= \sum_{k=1}^K  M_{precomp}^{c_h} (T_{ξc}h_k) \tag{16}  \\   \end{align}</script><p><img src="https://s2.loli.net/2022/02/27/wTAkm1U6I5eWs3N.png" srcset="/img/loading2.gif" lazyload style="zoom: 67%;"></p>
 <p>和前面一样，对叶子节点使用$ξ<em>c$。请注意，$$M</em>{precomp}^{h}<script type="math/tex">预压缩与</script>M_{nearest}$$具有相同的像素结构，但在每个像素中，存储的是从<strong>那里</strong>开始的$2^h\times2^h$的像素盒的最大值（使格子变粗）。图3给出了这种预先计算网格的一个例子。</p>
 <p><img src="https://s2.loli.net/2022/02/27/DHyje6Xz9NxQq8P.png" srcset="/img/loading2.gif" lazyload alt="Fig. 3. Precomputed grids of size 1, 4, 16 and 64."></p>
 <blockquote>

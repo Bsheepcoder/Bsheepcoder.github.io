@@ -265,7 +265,7 @@
 <li><p>准备好gitee的账号</p>
 </li>
 <li><p>在git中创建ssh密钥</p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 注意：该命令是在本地PC上执行</span><br>ssh-keygen -t rsa -C &quot;xxxxx@xxxxx.com&quot;  <br><span class="hljs-meta">#</span><span class="bash"> Generating public/private rsa key pair...</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 注意：该命令是在本地PC上执行</span><br>ssh-keygen -t rsa -C "xxxxx@xxxxx.com"  <br><span class="hljs-meta">#</span><span class="bash"> Generating public/private rsa key pair...</span><br></code></pre></div></td></tr></tbody></table></figure>
 </li>
 <li><p>在提示的路径中找到ssh生成的.pub文件，打开，将公钥保存到仓库，<a target="_blank" rel="noopener" href="https://gitee.com/help/articles/4181#article-header0">详细参考</a></p>
 </li>
@@ -273,7 +273,7 @@
 <p><img src="https://s2.loli.net/2022/02/15/ITrYSsnL2zxEVey.png" srcset="/img/loading2.gif" lazyload alt=""></p>
 </li>
 <li><p>此时执行如下，即可实现同时部署</p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">hexo g<br>hexo d<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">hexo g<br>hexo d<br></code></pre></div></td></tr></tbody></table></figure>
 </li>
 </ul>
 <h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><ul>

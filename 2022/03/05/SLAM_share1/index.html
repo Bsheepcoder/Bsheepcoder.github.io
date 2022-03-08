@@ -23,19 +23,30 @@
 <meta property="og:site_name" content="Q&#39;s blog">
 <meta property="og:description" content="例会介绍激光SLAM算法">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305180035343.png">
-<meta property="og:image" content="https://s2.loli.net/2022/03/05/9VO3zRAHSYvB4xP.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/07/ni2YXDAhoHtkKMc.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/07/I8XwpAfWizZcdFY.png">
 <meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305151242279.png">
-<meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305151552162.png">
-<meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305171913757.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/07/CtjpFaTVdmryibR.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/07/1jxaPoi2Qg3En8Z.png">
+<meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220307131321697.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/07/TNoeMDdGYkbag6t.png">
+<meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220307134216060.png">
+<meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305180035343.png">
+<meta property="og:image" content="c:/Users/71041/Desktop/slam%E4%BB%8B%E7%BB%8D/c2acd1b8-4f82-4a8d-8061-eebb09a10b9e.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/07/EafzdgVpnJeITUZ.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/03/07/PAhESxRI8iWOZdr.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/07/TmQOY8fxM5Jq3HE.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/07/fz5SoXTnkcZNWjM.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/03/07/JcZsu3xakD9e6gd.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/07/VJadnhXRGHNPlgO.png">
 <meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305185851942.png">
 <meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305190446763.png">
 <meta property="article:published_time" content="2022-03-05T06:36:24.868Z">
-<meta property="article:modified_time" content="2022-03-05T11:20:41.428Z">
+<meta property="article:modified_time" content="2022-03-07T09:21:21.736Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="SLAM">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305180035343.png">
+<meta name="twitter:image" content="https://s2.loli.net/2022/03/07/ni2YXDAhoHtkKMc.png">
   
   <title>激光SLAM—Cartographer算法简析 - Q&#39;s blog</title>
 
@@ -212,7 +223,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.4k 字
+      4.2k 字
     </span>
   
 
@@ -221,7 +232,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8 分钟
+      13 分钟
     </span>
   
 
@@ -254,12 +265,23 @@
             
               <p class="note note-info">
                 
-                  更新于：2022年3月5日 晚上
+                  更新于：2022年3月7日 下午
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="内容概要"><a href="#内容概要" class="headerlink" title="内容概要"></a>内容概要</h2><ul>
+              <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/abunwpu/article/details/104743801">SLAM主要步骤</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ailitao/p/11047271.html">[概览]自动驾驶与AR增强现实中的关键技术：SLAM</a></li>
+<li><p><a target="_blank" rel="noopener" href="https://www.slamtec.com/cn/News/Detail/313">浅谈国内SLAM技术发展现状</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.slamtec.com/cn/News/Detail/379">SLAM技术的具体实现步骤</a></p>
+</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/sadamoo/article/details/86307841">非常难得的 CMOS sensor 工作原理的深入技术科普</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.sensorexpert.com.cn/article/6021.html">三步读懂CMOS图像传感器的工作原理</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b12b4a4a64a3">三角测距激光雷达原理</a></li>
+</ul>
+<h2 id="内容概要"><a href="#内容概要" class="headerlink" title="内容概要"></a>内容概要</h2><ul>
 <li>SLAM介绍</li>
 <li>Cartographer介绍</li>
 <li>分支定界算法讲解</li>
@@ -267,7 +289,7 @@
 <li>反思总结</li>
 </ul>
 <h2 id="SLAM介绍"><a href="#SLAM介绍" class="headerlink" title="SLAM介绍"></a>SLAM介绍</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.slamtec.com/cn/News/Detail/313">https://www.slamtec.com/cn/News/Detail/313</a></li>
+<li>经历了近30余年的发展，<a target="_blank" rel="noopener" href="http://www.slamtec.com/">SLAM</a>技术已日益成熟，从最早在军事中应用，如勇气号火星探测车，为了执行任务，借助SLAM技术在无法实时遥控的未知行星上来进行导航与避障。到如今，SLAM技术已广泛应用于民用场所，小到家庭中的扫地机，大到无人驾驶的汽车都应用了SLAM技术，以及在AR及VR领域均有SLAM技术的身影。</li>
 </ul>
 <h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ul>
 <li><p>视觉slam简称为Vslam</p>
@@ -283,22 +305,9 @@
 <p>激光雷达测距比较准确，误差模型简单，在强光直射以外的环境中运行稳定，点云的处理也比较容易。同时，点云信息本身包含直接的几何关系，使得机器人的路径规划和导航变得直观。激光SLAM理论研究也相对成熟，落地产品更丰富。</p>
 </blockquote>
 </li>
-<li></li>
 </ul>
-<h3 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h3><p><img src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305180035343.png" srcset="/img/loading2.gif" lazyload alt=""></p>
-<ul>
-<li>传感器数据：图像、深度、距离等</li>
-<li>前端扫描匹配：通过读取相邻两帧激光传感器扫描信息之间的关系来估计自身的位姿。</li>
-<li>后端优化：用来减少扫描匹配后产生的累积误差，并利用地图构建模块生成环境地图信息。</li>
-<li>回环检测：通过检测当前位置的估计值和历史位置的 估计值是否相同，来消除累积误差，从而减少地图漂移的现象。</li>
-<li>地图构建：形成栅格地图、点云图</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ailitao/p/11047271.html">https://www.cnblogs.com/ailitao/p/11047271.html</a></p>
-<p>传感器读取数据后，视觉里程计估计两个时刻的相对运动（Ego-motion），</p>
-<p>后端处理视觉里程计估计结果的累积误差，</p>
-<p>建图则根据前端与后端得到的运动轨迹来建立地图，</p>
-<p>回环检测考虑了同一场景不同时刻的图像，提供了空间上约束来消除累积误差。</p>
-<h3 id="激光雷达传感器"><a href="#激光雷达传感器" class="headerlink" title="激光雷达传感器"></a>激光雷达传感器</h3><p><img src="https://s2.loli.net/2022/03/05/9VO3zRAHSYvB4xP.png" srcset="/img/loading2.gif" lazyload alt="思岚A1"></p>
+<h3 id="传感器介绍"><a href="#传感器介绍" class="headerlink" title="传感器介绍"></a>传感器介绍</h3><h4 id="激光雷达传感器"><a href="#激光雷达传感器" class="headerlink" title="激光雷达传感器"></a>激光雷达传感器</h4><p><img src="https://s2.loli.net/2022/03/07/ni2YXDAhoHtkKMc.png" srcset="/img/loading2.gif" lazyload alt="思岚A1"></p>
+<p><img src="https://s2.loli.net/2022/03/07/I8XwpAfWizZcdFY.png" srcset="/img/loading2.gif" lazyload alt="image-20220307094133666"></p>
 <ul>
 <li><p>采用了激光三角测距技术</p>
 <blockquote>
@@ -311,22 +320,96 @@
 </li>
 </ul>
 <p>​    得到的数据是当前<strong>目标物体与雷达的距离值、夹角信息</strong>。</p>
-<p><img src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305151552162.png" srcset="/img/loading2.gif" lazyload alt=""></p>
-<h3 id="SLAM的应用"><a href="#SLAM的应用" class="headerlink" title="SLAM的应用"></a>SLAM的应用</h3><ul>
-<li><p>激光建图</p>
 <ul>
-<li></li>
+<li><p>除配备激光雷达外，还需要机器人具有IMU（惯性测量单元）、里程计来为激光雷达提供辅助数据，否则SLAM系统也难以得到运行。总的来说，SLAM技术本身是一个对于外部系统有着多种依赖的算法，这是一个切实的工程问题。我们知道很多机器人，比如扫地机是不可能装一个PC进去的。为了让SLAM能在这类设备里运行，除了解决激光雷达成本外，还要对SLAM技术做出很好的优化。</p>
+</li>
+<li><p>三角测距原理介绍</p>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/03/07/CtjpFaTVdmryibR.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src="https://s2.loli.net/2022/03/07/1jxaPoi2Qg3En8Z.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<ul>
+<li>发光部件：激光</li>
+<li><p>感光部件：CMOSCMOS(Complementary Metal Oxide Semiconductor，互补金属氧化物场效应管)，光信号转电信号的传感器。</p>
+</li>
+<li><p>焦距是<script type="math/tex">f</script>，物体<script type="math/tex">Object</script>离平面的垂直距离是<script type="math/tex">q</script>，激光器和焦点间的距离是<script type="math/tex">s</script>，过焦点平行于激光方向的虚线，它跟<script type="math/tex">Imager</script>的交点位置一般是预先知道的（确定好<script type="math/tex">\beta</script>就知道了），物体激光反射后成像在<script type="math/tex">Imager</script>上的点位置离该处的距离为<script type="math/tex">X</script>。从图中很容易看出来，<script type="math/tex">s,d,\beta</script>组成的三角形跟<script type="math/tex">X,f</script>组成的三角形是相似三角形，于是有：</p>
+<script type="math/tex; mode=display">\begin{align} \frac{f}{X} = \frac{q}{s},则 q = \frac{f\times s}{x}\end{align}</script><p>又由于：</p>
+<script type="math/tex; mode=display">\begin{align} sin{\beta} = \frac{q}{d},则 d = \frac{q}{sin{\beta}}\end{align}</script><p>最后得：</p>
+<script type="math/tex; mode=display">\begin{align} d = \frac{f\times s}{X\times sin{\beta}}\end{align}</script></li>
+<li><p>因为f,s,beta都是预先可以已知的量，唯一需要测量的就是X，因此，测出X就测出了d，即得到物体离激光器的距离了。从图中可以轻易的看出，如果d的距离变短了，则X就会变大，d变大了，X就变小。从Imager测出X只要计算出得到的光斑的中心即可获得距离X。</p>
+</li>
+<li><p>如何做成激光雷达</p>
+<p>将激光器和成像器固定在一起，做成一个固定的装置，然后旋转，即可获得周围360°的扫描结果了。</p>
+<p><img src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220307131321697.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+</li>
+<li><p>参数说明</p>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/03/07/TNoeMDdGYkbag6t.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<h4 id="里程计"><a href="#里程计" class="headerlink" title="里程计"></a>里程计</h4><p><img src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220307134216060.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<h3 id="激光SLAM框架"><a href="#激光SLAM框架" class="headerlink" title="激光SLAM框架"></a>激光SLAM框架</h3><p><img src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305180035343.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<ul>
+<li><p>传感器数据：图像、深度、距离等</p>
+<ul>
+<li>在视觉SLAM中主要为相机图像信息的读取和<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=预处理&amp;spm=1001.2101.3001.7020">预处理</a>。如果是在机器人中，还可能有码盘、惯性传感器等信息的读取和同步。</li>
+<li>上图就是我们所说的点云，它只能反映机器人所在环境中的一个部分。而预处理主要是对激光雷达原始数据进行优化，并将一些有问题的数据进行剔除，或进行滤波。</li>
 </ul>
 </li>
-<li><p>导航避障</p>
+<li><p>前端扫描匹配：通过读取相邻两帧激光传感器扫描信息之间的关系来估计自身的位姿。</p>
+<ul>
+<li><p>匹配是很关键的一步，它的好坏将会直接影响SLAM构建的地图精度，其主要是把当前在局部环境上的一个点云数据，在已经建立地图上寻找到对应的位置。与我们玩的拼图游戏有点相似，就是在已经拼好的画面中找到相似之处，确定新的拼图该放的位置。而在SLAM过程中，需要将激光雷达当前采集的点云（红色部分）匹配拼接到原有地图中</p>
+<p><img src="C:/Users/71041/Desktop/slam%E4%BB%8B%E7%BB%8D/c2acd1b8-4f82-4a8d-8061-eebb09a10b9e.png" srcset="/img/loading2.gif" lazyload alt="c2acd1b8-4f82-4a8d-8061-eebb09a10b9e"></p>
 </li>
-<li><p>建图与导航避障</p>
+</ul>
 </li>
+<li><p>后端优化：用来减少扫描匹配后产生的累积误差，并利用地图构建模块生成环境地图信息。</p>
+<ul>
+<li><p>后端优化（Optimization）。后端接受不同时刻视觉里程计测量的相机位姿，以及回环检测的信息，对它们进行优化，得到全局一致的轨迹和地图。由于接在VO之后，又称为后端（Back End）</p>
+</li>
+<li><p>数据融合与简单的贴图是有很大差异的，因为外部环境不仅有静态的，还有动态的，此时，如果在机器人旁边闯入了一只小狗，实际在进程数据融合的过程会更为复杂，需要用到很多概率算法，且处理难度很大。</p>
+<p><img src="https://s2.loli.net/2022/03/07/EafzdgVpnJeITUZ.jpg" srcset="/img/loading2.gif" lazyload alt="地图融合"></p>
+</li>
+</ul>
+</li>
+<li><p>回环检测：通过检测当前位置的估计值和历史位置的 估计值是否相同，来消除累积误差，从而减少地图漂移的现象。</p>
+<ul>
+<li><p>回环检测（Loop Closing）。回环检测判断机器人是否到达过先前的位置。如果检测到回环，它会把信息提供给后端进行处理。</p>
+</li>
+<li><p>举例来说，如果遇到回环问题，匹配算法不够优秀，或者在环境中存在很不巧的干扰，当机器人绕着环境走一圈后，便有可能出现原本应该闭合的一个环形走廊断开了。</p>
+<p><img src="https://s2.loli.net/2022/03/07/PAhESxRI8iWOZdr.png" srcset="/img/loading2.gif" lazyload alt="image-20220307124426587"></p>
+<p>比如正常地图应该这样：</p>
+<p><img src="https://s2.loli.net/2022/03/07/TmQOY8fxM5Jq3HE.png" srcset="/img/loading2.gif" lazyload alt="image-20220307124408740"></p>
+</li>
+<li><p>在环境较大场景，回环问题是不得不面对的，但现实总是不理想，即使拥有了高精度的激光雷达传感器，也难免存在一定误差，而回环的难点在于，在一开始的少许误差并不会被发觉，直到机器人走完一圈后，随着误差的不断累积，导致了环路无法闭合，出现这种情况一般很难回天。</p>
+</li>
+<li><p>以下是思岚科技员工在他们办公室进行的测试，当机器人已经绕场一周后，ROS构建的地图出现了中断，而利用SLAMWARE模块构建的地图是一个完美的闭环，它与思岚科技办公室的设计图完美重合。</p>
+<p><img src="https://s2.loli.net/2022/03/07/fz5SoXTnkcZNWjM.jpg" srcset="/img/loading2.gif" lazyload alt="slam思岚地图对比"></p>
+</li>
+</ul>
+</li>
+<li><p>地图构建：形成栅格地图、点云图</p>
+<ul>
+<li>它根据估计的轨迹，建立与任务要求对应的地图。</li>
+</ul>
+</li>
+</ul>
+<h3 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h3><ul>
+<li>激光建图</li>
+<li>导航避障</li>
+<li>建图与导航避障</li>
 </ul>
 <h3 id="落地项目"><a href="#落地项目" class="headerlink" title="落地项目"></a>落地项目</h3><ul>
-<li>机器人<br><img src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305171913757.png" srcset="/img/loading2.gif" lazyload alt="小米扫地机器人官网"><br><a target="_blank" rel="noopener" href="https://player.youku.com/embed/XMTcwNzI1OTI1Ng?client_id=91a0d45b32079123&amp;password=&amp;autoplay=false#cdn.cnbj1.fds.api.mi-img.com">https://player.youku.com/embed/XMTcwNzI1OTI1Ng?client_id=91a0d45b32079123&amp;password=&amp;autoplay=false#cdn.cnbj1.fds.api.mi-img.com</a> </li>
-<li>自动驾驶</li>
-<li>VR、AR</li>
+<li><p>机器人(扫地机器人、市面上大部分能移动的机器人)</p>
+<div class="hljs code-wrapper"><pre><code>![小米扫地机器人官网](C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305171913757.png)
+</code></pre></div><p><img src="https://s2.loli.net/2022/03/07/JcZsu3xakD9e6gd.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+</li>
+<li><p>自动驾驶</p>
+<p>达摩院的快递车</p>
+<p><img src="https://s2.loli.net/2022/03/07/VJadnhXRGHNPlgO.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+</li>
+<li><p>VR、AR</p>
+<p>定位、虚拟与现实的匹配</p>
+</li>
 </ul>
 <h2 id="Cartographer介绍"><a href="#Cartographer介绍" class="headerlink" title="Cartographer介绍"></a>Cartographer介绍</h2><ul>
 <li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Jinxiaoyu886/article/details/88826520#:~:text=%E6%89%80%E8%B0%93%E7%9A%84%E5%9B%BE%E4%BC%98%E5%8C%96%EF%BC%8C%E5%B0%B1%E6%98%AF%E6%8A%8A%E4%B8%80%E4%B8%AA%E5%B8%B8%E8%A7%84%E7%9A%84%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%EF%BC%8C%E4%BB%A5%E5%9B%BE%EF%BC%88Graph%EF%BC%89%E7%9A%84%E5%BD%A2%E5%BC%8F%E6%9D%A5%E8%A1%A8%E8%BF%B0%E3%80%82%20%E5%9B%BE%E6%98%AF%E7%94%B1%20%E9%A1%B6%E7%82%B9%EF%BC%88Vertex%EF%BC%89%20%E5%92%8C%20%E8%BE%B9%EF%BC%88Edge%EF%BC%89,%E7%BB%84%E6%88%90%E7%9A%84%E7%BB%93%E6%9E%84%EF%BC%8C%E8%80%8C%E5%9B%BE%E8%AE%BA%E5%88%99%E6%98%AF%E7%A0%94%E7%A9%B6%E5%9B%BE%E7%9A%84%E7%90%86%E8%AE%BA%E3%80%82%20%E6%88%91%E4%BB%AC%E8%AE%B0%E4%B8%80%E4%B8%AA%E5%9B%BE%E4%B8%BAG%3D%20%7B%20V%2CE%20%7D%EF%BC%8C%E5%85%B6%E4%B8%ADV%E4%B8%BA%E9%A1%B6%E7%82%B9%E9%9B%86%EF%BC%8CE%E4%B8%BA%E8%BE%B9%E9%9B%86%E3%80%82">图优化</a></p>
@@ -340,7 +423,10 @@
 </ul>
 <p><img src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305185851942.png" srcset="/img/loading2.gif" lazyload alt=""></p>
 <h2 id="分支定界算法讲解"><a href="#分支定界算法讲解" class="headerlink" title="分支定界算法讲解"></a>分支定界算法讲解</h2><h3 id="算法伪代码"><a href="#算法伪代码" class="headerlink" title="算法伪代码"></a>算法伪代码</h3><p><img src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305190446763.png" srcset="/img/loading2.gif" lazyload alt=""></p>
-<h3 id="分析讲解"><a href="#分析讲解" class="headerlink" title="分析讲解"></a>分析讲解</h3><h2 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h2><h3 id="室内建图"><a href="#室内建图" class="headerlink" title="室内建图"></a>室内建图</h3><h3 id="室内导航避障"><a href="#室内导航避障" class="headerlink" title="室内导航避障"></a>室内导航避障</h3><h2 id="反思总结"><a href="#反思总结" class="headerlink" title="反思总结"></a>反思总结</h2>
+<h3 id="分析讲解"><a href="#分析讲解" class="headerlink" title="分析讲解"></a>分析讲解</h3><h2 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h2><h3 id="室内建图"><a href="#室内建图" class="headerlink" title="室内建图"></a>室内建图</h3><h3 id="室内导航避障"><a href="#室内导航避障" class="headerlink" title="室内导航避障"></a>室内导航避障</h3><h2 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>mark map</li>
+</ul>
+
             </div>
             <hr>
             <div>

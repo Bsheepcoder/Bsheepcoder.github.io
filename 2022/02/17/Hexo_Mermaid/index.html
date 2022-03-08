@@ -304,7 +304,7 @@ emperor4((朱高炽))--长子--&gt;emperor3
 <li>从<code>pie</code>关键字开始图表</li>
 <li>然后使用<code>title</code>关键字及其在字符串中的值，为饼图赋予标题。（这是<strong>可选的</strong>）</li>
 <li>数据部分<ul>
-<li>在<code>&quot; &quot;</code>内写上分区名。</li>
+<li>在<code>" "</code>内写上分区名。</li>
 <li>分区名后使用<code>:</code>作为分隔符</li>
 <li>分隔符后写上数值，最多支持2位小数——数据会以百分比的形式展示</li>
 </ul>
@@ -317,15 +317,15 @@ emperor4((朱高炽))--长子--&gt;emperor3
 </ul>
 <pre><code class=" mermaid">pie
     title 为什么总是宅在家里？
-    &quot;喜欢宅&quot; : 15
-    &quot;天气太热或太冷&quot; : 20
-    &quot;穷&quot; : 500
+    "喜欢宅" : 15
+    "天气太热或太冷" : 20
+    "穷" : 500
 </code></pre>
 <h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><ul>
 <li>在线渲染器：<a target="_blank" rel="noopener" href="https://mermaidjs.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBBW0hhcmRdIC0tPnxUZXh0fCBCKFJvdW5kKVxuICAgIEIgLS0-IEN7RGVjaXNpb259XG4gICAgQyAtLT58T25lfCBEW1Jlc3VsdCAxXVxuICAgIEMgLS0-fFR3b3wgRVtSZXN1bHQgMl0iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9fQ">Online FlowChart &amp; Diagrams Editor</a>（需要挂梯子）</li>
 </ul>
 <h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><pre><code class=" mermaid">graph LR
-    A[Start] --&gt; B&#123;Is it?&#125;;
+    A[Start] --&gt; B{Is it?};
     B -- Yes --&gt; C[OK];
     C --&gt; D[Rethink];
     D --&gt; B;
@@ -355,8 +355,8 @@ emperor4((朱高炽))--长子--&gt;emperor3
     id6((圆形))
 </code></pre>
 <pre><code class=" mermaid">graph
-	id1&#123;菱形&#125;
-	id2&#123;&#123;六角形&#125;&#125;
+	id1{菱形}
+	id2{{六角形}}
 	id3[/平行四边形/]
 	id4[\反向平行四边形\]
 	id5[/梯形\]
@@ -406,7 +406,7 @@ g-.文本.-h
 <li>延长连线：增加相应字符即可，如下图中的B到E，连线中增加了一个<code>-</code>。字符可多次添加。</li>
 </ul>
 <pre><code class=" mermaid">graph LR
-    A[Start] --&gt; B&#123;Is it?&#125;;
+    A[Start] --&gt; B{Is it?};
     B --&gt;|Yes| C[OK];
     C --&gt; D[Rethink];
     D --&gt; B;
@@ -455,7 +455,7 @@ g-.文本.-h
 <pre><code class=" mermaid">graph LR
 %%这是一条注释，在渲染图中不可见
     A[Hard edge] --&gt;|Link text| B(Round edge)
-    B --&gt; C&#123;Decision&#125;
+    B --&gt; C{Decision}
     C --&gt;|One| D[Result one]
     C --&gt;|Two| E[Result two]
 </code></pre>
