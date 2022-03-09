@@ -24,7 +24,7 @@
 <meta property="og:description" content="先开始买了树莓派，但是树莓派的算力不足以跑slam导航的算法，因此无奈购买了冰达的设备，本以为是需要自己组装的，没想到是整机，不过节省了我的许多时间。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-02T05:12:53.904Z">
-<meta property="article:modified_time" content="2022-03-06T23:58:07.278Z">
+<meta property="article:modified_time" content="2022-03-09T11:39:33.043Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="ROS">
 <meta name="twitter:card" content="summary_large_image">
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  更新于：2022年3月7日 早上
+                  更新于：2022年3月9日 晚上
                 
               </p>
             
@@ -284,7 +284,7 @@
 </ul>
 <h3 id="视觉启动项"><a href="#视觉启动项" class="headerlink" title="视觉启动项"></a>视觉启动项</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">roslaunch robot_vision robot_camera.launch<br><span class="hljs-meta">#</span><span class="bash">可以在主机端使用rqt工具登录查看相应图像</span><br></code></pre></div></td></tr></tbody></table></figure>
 <h3 id="启动激光雷达"><a href="#启动激光雷达" class="headerlink" title="启动激光雷达"></a>启动激光雷达</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">roslaunch robot_navigation laser.launch <br>roslaunch robot_navigation laser_rviz.launch<br></code></pre></div></td></tr></tbody></table></figure>
-<h3 id="启动SLAM建图"><a href="#启动SLAM建图" class="headerlink" title="启动SLAM建图"></a>启动SLAM建图</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">默认是Gmaping</span><br>roslaunch robot_navigation robot_slam_laser.launch <br><span class="hljs-meta">#</span><span class="bash">测试终端启动rviz查看</span><br>roslaunch robot_navigation slam_rviz.launch <br><span class="hljs-meta">#</span><span class="bash">测试终端保存地图,注意保存的目录</span><br><span class="hljs-meta"> ~/catkin_ws/src/robot_navigation/maps$</span><span class="bash"> rosrun map_server map_saver -f map</span><br><span class="hljs-meta">#</span><span class="bash">slam算法切换</span><br>roslaunch robot_navigation robot_slam_laser.launch slam_methods:=cartographe<br><span class="hljs-meta">#</span><span class="bash">机器人端启动键盘节点</span><br>rosrun teleop_twist_keyboard teleop_twist_keyboard.py <br></code></pre></div></td></tr></tbody></table></figure>
+<h3 id="启动SLAM建图"><a href="#启动SLAM建图" class="headerlink" title="启动SLAM建图"></a>启动SLAM建图</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">默认是Gmaping</span><br>roslaunch robot_navigation robot_slam_laser.launch <br><span class="hljs-meta">#</span><span class="bash">测试终端启动rviz查看</span><br>roslaunch robot_navigation slam_rviz.launch <br><span class="hljs-meta">#</span><span class="bash">测试终端保存地图,注意保存的目录</span><br><span class="hljs-meta"> ~/catkin_ws/src/robot_navigation/maps$</span><span class="bash"> rosrun map_server map_saver -f map</span><br><span class="hljs-meta">#</span><span class="bash">slam算法切换</span><br>roslaunch robot_navigation robot_slam_laser.launch slam_methods:=cartographer<br><span class="hljs-meta">#</span><span class="bash">机器人端启动键盘节点</span><br>rosrun teleop_twist_keyboard teleop_twist_keyboard.py <br></code></pre></div></td></tr></tbody></table></figure>
 <h3 id="SLAM导航和避障"><a href="#SLAM导航和避障" class="headerlink" title="SLAM导航和避障"></a>SLAM导航和避障</h3><ul>
 <li>有地图</li>
 </ul>
@@ -292,7 +292,7 @@
 <ul>
 <li>无地图</li>
 </ul>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">roslaunch robot_navigation robot_slam_laser.launch planner:=teb slam_methods:=karto<br>roslaunch robot_naviagtion slam_rviz.launch<br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">roslaunch robot_navigation robot_slam_laser.launch planner:=teb slam_methods:=cartographer<br>roslaunch robot_navigation slam_rviz.launch<br></code></pre></div></td></tr></tbody></table></figure>
 
             </div>
             <hr>
