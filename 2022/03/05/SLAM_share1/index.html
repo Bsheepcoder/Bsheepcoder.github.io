@@ -42,7 +42,7 @@
 <meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305185851942.png">
 <meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305190446763.png">
 <meta property="article:published_time" content="2022-03-05T06:36:24.868Z">
-<meta property="article:modified_time" content="2022-03-07T09:21:21.736Z">
+<meta property="article:modified_time" content="2022-03-08T11:37:31.696Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="SLAM">
 <meta name="twitter:card" content="summary_large_image">
@@ -265,7 +265,7 @@
             
               <p class="note note-info">
                 
-                  更新于：2022年3月7日 下午
+                  更新于：2022年3月8日 晚上
                 
               </p>
             
@@ -273,13 +273,12 @@
               <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/abunwpu/article/details/104743801">SLAM主要步骤</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ailitao/p/11047271.html">[概览]自动驾驶与AR增强现实中的关键技术：SLAM</a></li>
-<li><p><a target="_blank" rel="noopener" href="https://www.slamtec.com/cn/News/Detail/313">浅谈国内SLAM技术发展现状</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.slamtec.com/cn/News/Detail/379">SLAM技术的具体实现步骤</a></p>
-</li>
+<li><a target="_blank" rel="noopener" href="https://www.slamtec.com/cn/News/Detail/313">浅谈国内SLAM技术发展现状</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.slamtec.com/cn/News/Detail/379">SLAM技术的具体实现步骤</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/sadamoo/article/details/86307841">非常难得的 CMOS sensor 工作原理的深入技术科普</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.sensorexpert.com.cn/article/6021.html">三步读懂CMOS图像传感器的工作原理</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b12b4a4a64a3">三角测距激光雷达原理</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/37071486">SLAM在VR/AR领域重要吗？</a></li>
 </ul>
 <h2 id="内容概要"><a href="#内容概要" class="headerlink" title="内容概要"></a>内容概要</h2><ul>
 <li>SLAM介绍</li>
@@ -291,19 +290,15 @@
 <h2 id="SLAM介绍"><a href="#SLAM介绍" class="headerlink" title="SLAM介绍"></a>SLAM介绍</h2><ul>
 <li>经历了近30余年的发展，<a target="_blank" rel="noopener" href="http://www.slamtec.com/">SLAM</a>技术已日益成熟，从最早在军事中应用，如勇气号火星探测车，为了执行任务，借助SLAM技术在无法实时遥控的未知行星上来进行导航与避障。到如今，SLAM技术已广泛应用于民用场所，小到家庭中的扫地机，大到无人驾驶的汽车都应用了SLAM技术，以及在AR及VR领域均有SLAM技术的身影。</li>
 </ul>
-<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ul>
+<h3 id="主要分类"><a href="#主要分类" class="headerlink" title="主要分类"></a>主要分类</h3><ul>
 <li><p>视觉slam简称为Vslam</p>
-<blockquote>
-<p>眼睛是人类获取外界信息的主要来源。视觉SLAM也具有类似特点，它可以从环境中获取海量的、富于冗余的纹理信息，拥有超强的场景辨识能力。早期的视觉SLAM基于滤波理论，其非线性的误差模型和巨大的计算量成为了它实用落地的障碍。近年来，随着具有稀疏性的非线性优化理论(Bundle Adjustment)以及相机技术、计算性能的进步，实时运行的视觉SLAM已经不再是梦想。</p>
-<p>视觉SLAM的优点是它所利用的丰富纹理信息。例如两块尺寸相同内容却不同的广告牌，基于点云的激光SLAM算法无法区别他们，而视觉则可以轻易分辨。这带来了重定位、场景分类上无可比拟的巨大优势。同时，视觉信息可以较为容易的被用来跟踪和预测场景中的动态目标，如行人、车辆等，对于在复杂动态场景中的应用这是至关重要的。</p>
-<p>通过对比我们发现，激光SLAM和视觉SLAM各擅胜场，单独使用都有其局限性，而融合使用则可能具有巨大的取长补短的潜力。例如，视觉在纹理丰富的动态环境中稳定工作，并能为激光SLAM提供非常准确的点云匹配，而激光雷达提供的精确方向和距离信息在正确匹配的点云上会发挥更大的威力。而在光照严重不足或纹理缺失的环境中，激光SLAM的定位工作使得视觉可以借助不多的信息进行场景记录。</p>
-</blockquote>
+<p>眼睛是人类获取外界信息的主要来源。视觉SLAM也具有类似特点，它可以从环境中获取海量的、富于冗余的纹理信息，拥有超强的场景辨识能力。早期的视觉SLAM基于滤波理论，其非线性的误差模型和巨大的计算量成为了它实用落地的障碍。</p>
+<p>近年来，随着具有稀疏性的非线性优化理论(Bundle Adjustment)以及相机技术、计算性能的进步，实时运行的视觉SLAM已经不再是梦想。视觉SLAM的优点是它所利用的丰富纹理信息。例如两块尺寸相同内容却不同的广告牌，基于点云的激光SLAM算法无法区别他们，而视觉则可以轻易分辨。这带来了重定位、场景分类上无可比拟的巨大优势。</p>
+<p>同时，视觉信息可以较为容易的被用来跟踪和预测场景中的动态目标，如行人、车辆等，对于在复杂动态场景中的应用这是至关重要的。通过对比我们发现，激光SLAM和视觉SLAM各擅胜场，单独使用都有其局限性，而融合使用则可能具有巨大的取长补短的潜力。例如，视觉在纹理丰富的动态环境中稳定工作，并能为激光SLAM提供非常准确的点云匹配，而激光雷达提供的精确方向和距离信息在正确匹配的点云上会发挥更大的威力。而在光照严重不足或纹理缺失的环境中，激光SLAM的定位工作使得视觉可以借助不多的信息进行场景记录。</p>
 </li>
 <li><p>激光slam</p>
-<blockquote>
-<p>激光SLAM采用2D或3D激光雷达（也叫单线或多线激光雷达），2D激光雷达一般用于室内机器人上（如扫地机器人），而3D激光雷达一般使用于无人驾驶领域。激光雷达的出现和普及使得测量更快更准，信息更丰富。激光雷达采集到的物体信息呈现出一系列分散的、具有准确角度和距离信息的点，被称为点云。通常，激光SLAM系统通过对不同时刻两片点云的匹配与比对，计算激光雷达相对运动的距离和姿态的改变，也就完成了对机器人自身的定位。</p>
-<p>激光雷达测距比较准确，误差模型简单，在强光直射以外的环境中运行稳定，点云的处理也比较容易。同时，点云信息本身包含直接的几何关系，使得机器人的路径规划和导航变得直观。激光SLAM理论研究也相对成熟，落地产品更丰富。</p>
-</blockquote>
+<p>激光SLAM采用2D或3D激光雷达（也叫单线或多线激光雷达），2D激光雷达一般用于室内机器人上（如扫地机器人），而3D激光雷达一般使用于无人驾驶领域。激光雷达的出现和普及使得测量更快更准，信息更丰富。激光雷达采集到的物体信息呈现出一系列分散的、具有准确角度和距离信息的点，被称为点云。</p>
+<p>通常，激光SLAM系统通过对不同时刻两片点云的匹配与比对，计算激光雷达相对运动的距离和姿态的改变，也就完成了对机器人自身的定位。激光雷达测距比较准确，误差模型简单，在强光直射以外的环境中运行稳定，点云的处理也比较容易。同时，点云信息本身包含直接的几何关系，使得机器人的路径规划和导航变得直观。激光SLAM理论研究也相对成熟，落地产品更丰富。</p>
 </li>
 </ul>
 <h3 id="传感器介绍"><a href="#传感器介绍" class="headerlink" title="传感器介绍"></a>传感器介绍</h3><h4 id="激光雷达传感器"><a href="#激光雷达传感器" class="headerlink" title="激光雷达传感器"></a>激光雷达传感器</h4><p><img src="https://s2.loli.net/2022/03/07/ni2YXDAhoHtkKMc.png" srcset="/img/loading2.gif" lazyload alt="思岚A1"></p>
@@ -351,7 +346,7 @@
 <ul>
 <li><p>传感器数据：图像、深度、距离等</p>
 <ul>
-<li>在视觉SLAM中主要为相机图像信息的读取和<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=预处理&amp;spm=1001.2101.3001.7020">预处理</a>。如果是在机器人中，还可能有码盘、惯性传感器等信息的读取和同步。</li>
+<li>在视觉SLAM中主要为相机图像信息的读取和<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=预处理&amp;spm=1001.2101.3001.7020">预处理</a>。如果是在机器人中，还可能有码盘、惯性传感器(IMU)等信息的读取和同步。</li>
 <li>上图就是我们所说的点云，它只能反映机器人所在环境中的一个部分。而预处理主要是对激光雷达原始数据进行优化，并将一些有问题的数据进行剔除，或进行滤波。</li>
 </ul>
 </li>
@@ -459,6 +454,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/03/09/SLAM_LinearProgramming/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">认识整数规划问题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

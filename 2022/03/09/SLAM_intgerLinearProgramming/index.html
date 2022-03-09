@@ -13,21 +13,41 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#000000">
-  <meta name="description" content="">
+  <meta name="description" content="例会介绍激光SLAM算法，需要学习分支定界算法，而分支定界算法是整数规划问题当中的一个算法，主要介绍分支定界法的详细内容。">
   <meta name="author" content="Tony">
   <meta name="keywords" content="">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="https://bsheepcoder.github.io/archives/page/4/index.html">
+  <meta name="description" content="例会介绍激光SLAM算法，需要学习分支定界算法，而分支定界算法是整数规划问题当中的一个算法，主要介绍分支定界法的详细内容。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分支定界法如何求解整数规划问题">
+<meta property="og:url" content="https://bsheepcoder.github.io/2022/03/09/SLAM_intgerLinearProgramming/index.html">
 <meta property="og:site_name" content="Q&#39;s blog">
+<meta property="og:description" content="例会介绍激光SLAM算法，需要学习分支定界算法，而分支定界算法是整数规划问题当中的一个算法，主要介绍分支定界法的详细内容。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-09T02:55:37.851Z">
+<meta property="article:modified_time" content="2022-03-09T02:58:41.297Z">
 <meta property="article:author" content="Tony">
+<meta property="article:tag" content="SLAM">
 <meta name="twitter:card" content="summary_large_image">
   
-  <title>归档 - Q&#39;s blog</title>
+  <title>分支定界法如何求解整数规划问题 - Q&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -62,7 +82,7 @@
 
 
 <body>
-  <header style="height: 20vh;">
+  <header style="height: 30vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -158,14 +178,48 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/g/g1.png') no-repeat center center;
+         style="background: url('/img/w/w1.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="分支定界法如何求解整数规划问题">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-09 10:55" pubdate>
+        2022年3月9日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      18 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1 分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -178,100 +232,132 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 54 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/2021/10/13/C_Vscode/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">关于VS code如何下载并配置C语言（windows）</span>
-      <time style="float: right;">10-13</time>
-    </a>
-  
-    
-    <a href="/2021/10/13/Python1/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">（一）Python简单介绍与安装</span>
-      <time style="float: right;">10-13</time>
-    </a>
-  
-    
-    <a href="/2021/10/13/Python6/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">(六)Python计算生态概览</span>
-      <time style="float: right;">10-13</time>
-    </a>
-  
-    
-    <a href="/2021/10/13/Python2/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">（二）Python基本语法</span>
-      <time style="float: right;">10-13</time>
-    </a>
-  
-    
-    <a href="/2021/10/13/Python3/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">（三）Python函数库与数据类型</span>
-      <time style="float: right;">10-13</time>
-    </a>
-  
-    
-    <a href="/2021/10/13/Python5/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">（五）Python程序设计方法</span>
-      <time style="float: right;">10-13</time>
-    </a>
-  
-    
-    <a href="/2021/10/13/Python4/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">（四）Python程序控制结构</span>
-      <time style="float: right;">10-13</time>
-    </a>
-  
-    
-    <a href="/2021/10/13/Linux_2/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Linux笔记(从基础到高级):中篇</span>
-      <time style="float: right;">10-13</time>
-    </a>
-  
-    
-    <a href="/2021/10/13/Linux_1/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Linux笔记(从基础到高级):前篇</span>
-      <time style="float: right;">10-13</time>
-    </a>
-  
-    
-    <a href="/2021/10/13/Linux_3/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Linux笔记(从基础到高级):后篇</span>
-      <time style="float: right;">10-13</time>
-    </a>
-  
-</div>
 
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/#board">2</a><a class="page-number" href="/archives/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/#board">5</a><a class="page-number" href="/archives/page/6/#board">6</a><a class="extend next" rel="next" href="/archives/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-
-
-
-
-              </div>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">分支定界法如何求解整数规划问题</h1>
+            
+              <p class="note note-info">
+                
+                  更新于：2022年3月9日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29831163/article/details/89575446">整数规划</a></li>
+</ul>
+<h2 id="分支定界法的主要思路"><a href="#分支定界法的主要思路" class="headerlink" title="分支定界法的主要思路"></a>分支定界法的主要思路</h2>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/SLAM/">SLAM</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/SLAM/">SLAM</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/09/SLAM_LinearProgramming/">
+                        <span class="hidden-mobile">认识整数规划问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"UrMBdkpVtSriHxFtNjQRvPqm-gzGzoHsz","appKey":"rLGXsY7AM0Ym431NbB2fCRpX","path":"window.location.pathname","placeholder":"发一条友善的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <p style="text-align:center;">如果博文对你有帮助，可以给博主充充电噢~ <br> 非常感谢！！</p><img src="/img/qxd.jpg" srcset="/img/loading2.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
     
 
     
@@ -379,6 +465,19 @@
   
 
 
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
 
 
 

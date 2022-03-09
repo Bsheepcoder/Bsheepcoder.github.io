@@ -1,0 +1,608 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/page1.png">
+  <link rel="icon" href="/img/page1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="例会介绍激光SLAM算法，需要学习分支定界算法，而分支定界算法是整数规划问题当中的一个算法，虽补补课。">
+  <meta name="author" content="Tony">
+  <meta name="keywords" content="">
+  <meta name="description" content="例会介绍激光SLAM算法，需要学习分支定界算法，而分支定界算法是整数规划问题当中的一个算法，虽补补课。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="认识整数规划问题">
+<meta property="og:url" content="https://bsheepcoder.github.io/2022/03/09/SLAM_LinearProgramming/index.html">
+<meta property="og:site_name" content="Q&#39;s blog">
+<meta property="og:description" content="例会介绍激光SLAM算法，需要学习分支定界算法，而分支定界算法是整数规划问题当中的一个算法，虽补补课。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220309100300335.png">
+<meta property="article:published_time" content="2022-03-09T00:33:55.370Z">
+<meta property="article:modified_time" content="2022-03-09T02:56:29.011Z">
+<meta property="article:author" content="Tony">
+<meta property="article:tag" content="SLAM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220309100300335.png">
+  
+  <title>认识整数规划问题 - Q&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/diy/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"bsheepcoder.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":5,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#efec02","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading2.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz","app_key":"8y2ItNdFctdKBPMHS31S2jbm","server_url":"https://0wpy18ji.lc-cn-n1-shared.com","path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  <header style="height: 30vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Q&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/w/w1.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="认识整数规划问题">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-09 08:33" pubdate>
+        2022年3月9日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      6 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">认识整数规划问题</h1>
+            
+              <p class="note note-info">
+                
+                  更新于：2022年3月9日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29831163/article/details/89575446">整数规划CSDN</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29831163/article/details/88893234">线性规划</a></li>
+</ul>
+<h2 id="什么是线性规划"><a href="#什么是线性规划" class="headerlink" title="什么是线性规划"></a>什么是线性规划</h2><h3 id="线性规划概念"><a href="#线性规划概念" class="headerlink" title="线性规划概念"></a>线性规划概念</h3><ul>
+<li><p>线性规划(Linear Programming 简记 LP)是了运筹学中数学规划的一个重要分支。自从 1947 年 G. B. Dantzig 提出 求解线性规划的单纯形法以来，线性规划在理论上趋向成熟，在实用中由于计算机能处理成千上万个约束条件和决策变量的线性规划问题之后，线性规划现代管理中经常采用的基本方法之一。 在解决实际问题时，需要把问题归结成一个线性规划数学模型，关键及难点在于选适当的决策变量建立恰当的模型，这直接影响到问题的求解。</p>
+</li>
+<li><p>线性规划问题的<strong>目标函数及约束条件均为线性函数</strong>；<strong>约束条件记为 s.t.(即 subject to)</strong>。目标函数可以是求最大值，也可以是求最小值，约束条件的不等号可以 是小于号也可以是大于号。</p>
+</li>
+<li><p>一般线性规划问题的数学标准型为</p>
+<script type="math/tex; mode=display">\begin{align} max \quad z = \sum^n_{j = 1} c_j x_j  \tag{3} \end{align}</script><script type="math/tex; mode=display">\begin{align} s.t.\quad \begin{cases} \sum^n_{j = 1}a_{ij}x_{j}  = b_i \quad i = 1,2,...,m \\ x_j  \ge 0 \quad j=1,2,...,n \tag{4}\end{cases}  \end{align}</script></li>
+<li><p>例题</p>
+<p>某机床厂生产甲、乙两种机床，每台销售后的利润分别为4000元与3000元。生产甲机床需用A、B机器加工，加工时间分别为每台2小时和1小时；生产乙机床需用A、B、C三种机器加工，加工时间为每台各一小时。若每天可用于加工的机器时数分别为A机器10小时、B机器8小时和C机器7小时，问该厂应生产甲、乙机床各几台，才能使总利润最大？</p>
+<p>上述问题的数学模型：</p>
+<p>设该厂生产<script type="math/tex">x_1</script>台甲机床和<script type="math/tex">x_2</script>乙机床时总利润最大，则<script type="math/tex">x_1</script>,<script type="math/tex">x_2</script>应满足</p>
+<script type="math/tex; mode=display">\begin{align}(目标函数) max \quad z = 4x_1 +3x_2 \tag{1}\end{align}</script><script type="math/tex; mode=display">\begin{align}s.t.(约束条件) \begin{cases} 2x_1 + x_2 \le 10\\x_1 + x_2 \le 8 \\x_2 \le 7\\ x_1,x_2 \ge 0 \end{cases} \tag{2}\end{align}</script></li>
+<li><p>上述例题中变量<script type="math/tex">x_1,x_2</script>称之为决策变量，(1)式被称为问题的目标函数，(2)中的几个不等式是问题的约束条件，记为<strong>s.t.</strong>(即subject to)。由于上面的目标函数及约束条件为线性函数，故被称为线性规划问题。</p>
+</li>
+</ul>
+<h3 id="线性规划问题的解的概念"><a href="#线性规划问题的解的概念" class="headerlink" title="线性规划问题的解的概念"></a>线性规划问题的解的概念</h3><ul>
+<li><p>可行解：满足4个约束条件的解，称为可行解。 而使目标函数达到最大值的可行解叫最优解。</p>
+</li>
+<li><p>可行域：所有可行解构成的集合称为问题的可行域，记为R 。</p>
+</li>
+<li><p>图解法：简单直观，适用于二维决策变量，它有助于了解线性规划问题求解的基本原理。。对于每一固定的值z，使目标函数值等于z的点构成的直线称为目标函数等位线，当z变动时，我们得到一族平行直线。</p>
+<p><img src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220309100300335.png" srcset="/img/loading2.gif" lazyload alt="线性规划示意图"></p>
+<p>图解法简单直观,对于每一固定的值z，使目标函数值等于z的点构成的直线称为目标函数等位线，当z变动时，我们得到一族平行直线。等位线向上平移即可找到事目标函数有最大值的点。不难看出最优解为(2,6)，带入目标函数即可。</p>
+</li>
+</ul>
+<h2 id="整数规划是什么"><a href="#整数规划是什么" class="headerlink" title="整数规划是什么"></a>整数规划是什么</h2><h3 id="整数规划的分类"><a href="#整数规划的分类" class="headerlink" title="整数规划的分类"></a>整数规划的分类</h3><ul>
+<li><p>如不加特殊说明，一般指<strong>整数线性规划</strong>。对于整数线性规划模型大致可分为两类： </p>
+<ul>
+<li>变量全限制为整数时，称纯（完全）整数规划。</li>
+<li>变量部分限制为整数的，称混合整数规划。</li>
+</ul>
+</li>
+</ul>
+<h3 id="整数规划特点"><a href="#整数规划特点" class="headerlink" title="整数规划特点"></a>整数规划特点</h3><ul>
+<li>原线性规划有优解，当自变量限制为整数后，其整数规划解出现下述情况：<ul>
+<li>原线性规划优解全是整数，则整数规划优解与线性规划优解一致。</li>
+<li>整数规划无可行解。</li>
+<li>有可行解（当然就存在优解），但优解值变差。</li>
+</ul>
+</li>
+<li><p>整数规划优解不能按照实数优解简单取整而获得。</p>
+</li>
+<li><p>例题1</p>
+<p>原线性规划为：</p>
+<script type="math/tex; mode=display">\begin{align} &min \quad z = x_1 + x_2 \\ &2x_1+4x_2 = 5 ,\quad x_1 \ge 0,x_2\ge0 \end{align}</script><script type="math/tex; mode=display">\begin{align}其最优实数解为: x_1 = 0,x_2 = \frac{5}{4}, minz = \frac{5}{4}\end{align}</script></li>
+<li><p>例题2</p>
+<p>原线性规划为：</p>
+<script type="math/tex; mode=display">\begin{align} &min \quad z = x_1 + x_2 \\ &2x_1+4x_2 = 6 ,\quad x_1 \ge 0,x_2\ge0 \end{align}</script><script type="math/tex; mode=display">\begin{align}其最优实数解为: x_1 = 0,x_2 = \frac{3}{2}, minz = \frac{3}{2}\end{align}</script><script type="math/tex; mode=display">\begin{align}若限制整数得: x_1 = 1,x_2 = 1, minz = 2\end{align}</script></li>
+</ul>
+<h2 id="整数规划如何求解"><a href="#整数规划如何求解" class="headerlink" title="整数规划如何求解"></a>整数规划如何求解</h2><ul>
+<li><strong>分枝定界法</strong>—可求纯或混合整数线性规划。</li>
+<li><strong>割平面法</strong>—可求纯或混合整数线性规划。</li>
+<li><strong>隐枚举法</strong>—求解“0-1”整数规划：<ul>
+<li>过滤隐枚举法</li>
+<li>分枝隐枚举法</li>
+</ul>
+</li>
+<li><strong>匈牙利法</strong>—解决<strong>指派</strong>问题（“0-1”规划特殊情形）</li>
+<li><strong>蒙特卡洛法</strong>—求解各种类型规划。</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/SLAM/">SLAM</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/SLAM/">SLAM</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/09/SLAM_intgerLinearProgramming/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">分支定界法如何求解整数规划问题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/05/SLAM_share1/">
+                        <span class="hidden-mobile">激光SLAM—Cartographer算法简析</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"UrMBdkpVtSriHxFtNjQRvPqm-gzGzoHsz","appKey":"rLGXsY7AM0Ym431NbB2fCRpX","path":"window.location.pathname","placeholder":"发一条友善的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <p style="text-align:center;">如果博文对你有帮助，可以给博主充充电噢~ <br> 非常感谢！！</p><img src="/img/qxd.jpg" srcset="/img/loading2.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/diy/timeDate.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"}});</script></body>
+</html>
