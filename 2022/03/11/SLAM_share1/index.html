@@ -13,15 +13,15 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#000000">
-  <meta name="description" content="例会介绍激光SLAM算法">
+  <meta name="description" content="例会介绍激光SLAM中的一个算法">
   <meta name="author" content="Tony">
   <meta name="keywords" content="">
-  <meta name="description" content="例会介绍激光SLAM算法">
+  <meta name="description" content="例会介绍激光SLAM中的一个算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="激光SLAM—Cartographer算法简析">
-<meta property="og:url" content="https://bsheepcoder.github.io/2022/03/05/SLAM_share1/index.html">
+<meta property="og:title" content="浅析分支定界法在SLAM技术中的应用">
+<meta property="og:url" content="https://bsheepcoder.github.io/2022/03/11/SLAM_share1/index.html">
 <meta property="og:site_name" content="Q&#39;s blog">
-<meta property="og:description" content="例会介绍激光SLAM算法">
+<meta property="og:description" content="例会介绍激光SLAM中的一个算法">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2022/03/07/ni2YXDAhoHtkKMc.png">
 <meta property="og:image" content="https://s2.loli.net/2022/03/07/I8XwpAfWizZcdFY.png">
@@ -31,24 +31,27 @@
 <meta property="og:image" content="https://s2.loli.net/2022/03/09/iS6dWzMIKQ8bYv5.png">
 <meta property="og:image" content="https://s2.loli.net/2022/03/07/TNoeMDdGYkbag6t.png">
 <meta property="og:image" content="https://s2.loli.net/2022/03/09/4VLotzTP6n9alem.png">
-<meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305180035343.png">
-<meta property="og:image" content="c:/Users/71041/Desktop/slam%E4%BB%8B%E7%BB%8D/c2acd1b8-4f82-4a8d-8061-eebb09a10b9e.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/11/OHa9QFu5y7qCMbK.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/11/UL3iA2lvVQYZhk6.jpg">
 <meta property="og:image" content="https://s2.loli.net/2022/03/07/EafzdgVpnJeITUZ.jpg">
 <meta property="og:image" content="https://s2.loli.net/2022/03/07/PAhESxRI8iWOZdr.png">
 <meta property="og:image" content="https://s2.loli.net/2022/03/07/TmQOY8fxM5Jq3HE.png">
 <meta property="og:image" content="https://s2.loli.net/2022/03/07/fz5SoXTnkcZNWjM.jpg">
 <meta property="og:image" content="https://s2.loli.net/2022/03/07/JcZsu3xakD9e6gd.png">
 <meta property="og:image" content="https://s2.loli.net/2022/03/07/VJadnhXRGHNPlgO.png">
-<meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305185851942.png">
-<meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305190446763.png">
-<meta property="article:published_time" content="2022-03-05T06:36:24.868Z">
-<meta property="article:modified_time" content="2022-03-09T12:18:11.200Z">
+<meta property="og:image" content="https://s2.loli.net/2022/03/12/THakPl1sDb9hAQx.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/11/kM3BaPLe2RsgHK8.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/11/g3ybaIxYeNlLqSA.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/11/fd5eIMHwnNj6GuD.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/11/Qy9SKVl2PaGE4vk.png">
+<meta property="article:published_time" content="2022-03-11T07:08:15.942Z">
+<meta property="article:modified_time" content="2022-03-14T11:07:00.925Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="SLAM">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://s2.loli.net/2022/03/07/ni2YXDAhoHtkKMc.png">
   
-  <title>激光SLAM—Cartographer算法简析 - Q&#39;s blog</title>
+  <title>浅析分支定界法在SLAM技术中的应用 - Q&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -202,7 +205,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="激光SLAM—Cartographer算法简析">
+            <span class="h2" id="subtitle" title="浅析分支定界法在SLAM技术中的应用">
               
             </span>
 
@@ -212,8 +215,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-03-05 14:36" pubdate>
-        2022年3月5日 下午
+      <time datetime="2022-03-11 15:08" pubdate>
+        2022年3月11日 下午
       </time>
     </span>
   
@@ -223,7 +226,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.2k 字
+      8.8k 字
     </span>
   
 
@@ -232,7 +235,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13 分钟
+      28 分钟
     </span>
   
 
@@ -261,29 +264,43 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">激光SLAM—Cartographer算法简析</h1>
+            <h1 style="display: none">浅析分支定界法在SLAM技术中的应用</h1>
             
               <p class="note note-info">
                 
-                  更新于：2022年3月9日 晚上
+                  更新于：2022年3月14日 晚上
                 
               </p>
             
             <div class="markdown-body">
               <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/abunwpu/article/details/104743801">SLAM主要步骤</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ailitao/p/11047271.html">[概览]自动驾驶与AR增强现实中的关键技术：SLAM</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.slamtec.com/cn/News/Detail/313">浅谈国内SLAM技术发展现状</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.slamtec.com/cn/News/Detail/379">SLAM技术的具体实现步骤</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/sadamoo/article/details/86307841">非常难得的 CMOS sensor 工作原理的深入技术科普</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.sensorexpert.com.cn/article/6021.html">三步读懂CMOS图像传感器的工作原理</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b12b4a4a64a3">三角测距激光雷达原理</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/37071486">SLAM在VR/AR领域重要吗？</a></li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/abunwpu/article/details/104743801">SLAM主要步骤</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ailitao/p/11047271.html">[概览]自动驾驶与AR增强现实中的关键技术：SLAM</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.slamtec.com/cn/News/Detail/313">浅谈国内SLAM技术发展现状</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.slamtec.com/cn/News/Detail/379">SLAM技术的具体实现步骤</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sadamoo/article/details/86307841">非常难得的 CMOS sensor 工作原理的深入技术科普</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.sensorexpert.com.cn/article/6021.html">三步读懂CMOS图像传感器的工作原理</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b12b4a4a64a3">三角测距激光雷达原理</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/37071486">SLAM在VR/AR领域重要吗？</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/158671778">*深度优先搜索介绍</a></p>
+</li>
+<li><p><a href="https://bsheepcoder.github.io/2022/03/09/SLAM_LinearProgramming/">*什么是整数规划？</a></p>
+</li>
+<li><p><a href="https://bsheepcoder.github.io/2022/03/09/SLAM_intgerLinearProgramming/">*分支定界法求整数规划</a></p>
+</li>
 </ul>
 <h2 id="内容概要"><a href="#内容概要" class="headerlink" title="内容概要"></a>内容概要</h2><ul>
 <li>SLAM介绍</li>
 <li>Cartographer介绍</li>
-<li>分支定界算法讲解</li>
+<li>分支定界法讲解</li>
 <li>应用演示</li>
 <li>反思总结</li>
 </ul>
@@ -292,17 +309,26 @@
 </ul>
 <h3 id="主要分类"><a href="#主要分类" class="headerlink" title="主要分类"></a>主要分类</h3><ul>
 <li><p>视觉slam简称为Vslam</p>
-<p>眼睛是人类获取外界信息的主要来源。视觉SLAM也具有类似特点，它可以从环境中获取海量的、富于冗余的纹理信息，拥有超强的场景辨识能力。早期的视觉SLAM基于滤波理论，其非线性的误差模型和巨大的计算量成为了它实用落地的障碍。</p>
-<p>近年来，随着具有稀疏性的非线性优化理论(Bundle Adjustment)以及相机技术、计算性能的进步，实时运行的视觉SLAM已经不再是梦想。视觉SLAM的优点是它所利用的丰富纹理信息。例如两块尺寸相同内容却不同的广告牌，基于点云的激光SLAM算法无法区别他们，而视觉则可以轻易分辨。这带来了重定位、场景分类上无可比拟的巨大优势。</p>
-<p>同时，视觉信息可以较为容易的被用来跟踪和预测场景中的动态目标，如行人、车辆等，对于在复杂动态场景中的应用这是至关重要的。通过对比我们发现，激光SLAM和视觉SLAM各擅胜场，单独使用都有其局限性，而融合使用则可能具有巨大的取长补短的潜力。例如，视觉在纹理丰富的动态环境中稳定工作，并能为激光SLAM提供非常准确的点云匹配，而激光雷达提供的精确方向和距离信息在正确匹配的点云上会发挥更大的威力。而在光照严重不足或纹理缺失的环境中，激光SLAM的定位工作使得视觉可以借助不多的信息进行场景记录。</p>
+<ul>
+<li><p>眼睛是人类获取外界信息的主要来源。视觉SLAM也具有类似特点，它可以从环境中获取海量的、富于冗余的纹理信息，拥有超强的场景辨识能力。早期的视觉SLAM基于滤波理论，其非线性的误差模型和巨大的计算量成为了它实用落地的障碍。</p>
+</li>
+<li><p>近年来，随着具有稀疏性的非线性优化理论(Bundle Adjustment)以及相机技术、计算性能的进步，实时运行的视觉SLAM已经不再是梦想。视觉SLAM的优点是它所利用的丰富纹理信息。例如两块尺寸相同内容却不同的广告牌，基于点云的激光SLAM算法无法区别他们，而视觉则可以轻易分辨。这带来了重定位、场景分类上无可比拟的巨大优势。</p>
+</li>
+<li><p>同时，视觉信息可以较为容易的被用来跟踪和预测场景中的动态目标，如行人、车辆等，对于在复杂动态场景中的应用这是至关重要的。通过对比我们发现，激光SLAM和视觉SLAM各擅胜场，单独使用都有其局限性，而融合使用则可能具有巨大的取长补短的潜力。例如，视觉在纹理丰富的动态环境中稳定工作，并能为激光SLAM提供非常准确的点云匹配，而激光雷达提供的精确方向和距离信息在正确匹配的点云上会发挥更大的威力。而在光照严重不足或纹理缺失的环境中，激光SLAM的定位工作使得视觉可以借助不多的信息进行场景记录。</p>
+</li>
+</ul>
 </li>
 <li><p>激光slam</p>
-<p>激光SLAM采用2D或3D激光雷达（也叫单线或多线激光雷达），2D激光雷达一般用于室内机器人上（如扫地机器人），而3D激光雷达一般使用于无人驾驶领域。激光雷达的出现和普及使得测量更快更准，信息更丰富。激光雷达采集到的物体信息呈现出一系列分散的、具有准确角度和距离信息的点，被称为点云。</p>
-<p>通常，激光SLAM系统通过对不同时刻两片点云的匹配与比对，计算激光雷达相对运动的距离和姿态的改变，也就完成了对机器人自身的定位。激光雷达测距比较准确，误差模型简单，在强光直射以外的环境中运行稳定，点云的处理也比较容易。同时，点云信息本身包含直接的几何关系，使得机器人的路径规划和导航变得直观。激光SLAM理论研究也相对成熟，落地产品更丰富。</p>
+<ul>
+<li><p>激光SLAM采用2D或3D激光雷达（也叫单线或多线激光雷达），2D激光雷达一般用于室内机器人上（如扫地机器人），而3D激光雷达一般使用于无人驾驶领域。激光雷达的出现和普及使得测量更快更准，信息更丰富。激光雷达采集到的物体信息呈现出一系列分散的、具有准确角度和距离信息的点，被称为点云。</p>
+</li>
+<li><p>通常，激光SLAM系统通过对不同时刻两片点云的匹配与比对，计算激光雷达相对运动的距离和姿态的改变，也就完成了对机器人自身的定位。激光雷达测距比较准确，误差模型简单，在强光直射以外的环境中运行稳定，点云的处理也比较容易。同时，点云信息本身包含直接的几何关系，使得机器人的路径规划和导航变得直观。激光SLAM理论研究也相对成熟，落地产品更丰富。</p>
+</li>
+</ul>
 </li>
 </ul>
 <h3 id="传感器介绍"><a href="#传感器介绍" class="headerlink" title="传感器介绍"></a>传感器介绍</h3><h4 id="激光雷达传感器"><a href="#激光雷达传感器" class="headerlink" title="激光雷达传感器"></a>激光雷达传感器</h4><p><img src="https://s2.loli.net/2022/03/07/ni2YXDAhoHtkKMc.png" srcset="/img/loading2.gif" lazyload alt="思岚A1"></p>
-<p><img src="https://s2.loli.net/2022/03/07/I8XwpAfWizZcdFY.png" srcset="/img/loading2.gif" lazyload alt="image-20220307094133666"></p>
+<p><img src="https://s2.loli.net/2022/03/07/I8XwpAfWizZcdFY.png" srcset="/img/loading2.gif" lazyload alt=""></p>
 <ul>
 <li><p>采用了激光三角测距技术</p>
 <blockquote>
@@ -324,7 +350,8 @@
 <p><img src="https://s2.loli.net/2022/03/07/CtjpFaTVdmryibR.png" srcset="/img/loading2.gif" lazyload alt=""></p>
 <p><img src="https://s2.loli.net/2022/03/07/1jxaPoi2Qg3En8Z.png" srcset="/img/loading2.gif" lazyload alt=""></p>
 <ul>
-<li>发光部件：激光</li>
+<li><p>发光部件：激光</p>
+</li>
 <li><p>感光部件：CMOS (Complementary Metal Oxide Semiconductor，互补金属氧化物场效应管)，光信号转电信号的传感器。</p>
 </li>
 <li><p>焦距是<script type="math/tex">f</script>，物体<script type="math/tex">Object</script>离平面的垂直距离是<script type="math/tex">q</script>，激光器和焦点间的距离是<script type="math/tex">s</script>，过焦点平行于激光方向的虚线，它跟<script type="math/tex">Imager</script>的交点位置一般是预先知道的（确定好<script type="math/tex">\beta</script>就知道了），物体激光反射后成像在<script type="math/tex">Imager</script>上的点位置离该处的距离为<script type="math/tex">X</script>。从图中很容易看出来，<script type="math/tex">s,d,\beta</script>组成的三角形跟<script type="math/tex">X,f</script>组成的三角形是相似三角形，于是有：</p>
@@ -338,11 +365,12 @@
 <p><img src="https://s2.loli.net/2022/03/09/iS6dWzMIKQ8bYv5.png" srcset="/img/loading2.gif" lazyload alt=""></p>
 </li>
 <li><p>参数说明</p>
+<p>TOF(<strong>time-of-flight</strong>)</p>
 </li>
 </ul>
 <p><img src="https://s2.loli.net/2022/03/07/TNoeMDdGYkbag6t.png" srcset="/img/loading2.gif" lazyload alt=""></p>
 <h4 id="里程计"><a href="#里程计" class="headerlink" title="里程计"></a>里程计</h4><p><img src="https://s2.loli.net/2022/03/09/4VLotzTP6n9alem.png" srcset="/img/loading2.gif" lazyload alt=""></p>
-<h3 id="激光SLAM框架"><a href="#激光SLAM框架" class="headerlink" title="激光SLAM框架"></a>激光SLAM框架</h3><p><img src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305180035343.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<h3 id="激光SLAM框架"><a href="#激光SLAM框架" class="headerlink" title="激光SLAM框架"></a>激光SLAM框架</h3><p><img src="https://s2.loli.net/2022/03/11/OHa9QFu5y7qCMbK.png" srcset="/img/loading2.gif" lazyload alt=""></p>
 <ul>
 <li><p>传感器数据：图像、深度、距离等</p>
 <ul>
@@ -353,7 +381,7 @@
 <li><p>前端扫描匹配：通过读取相邻两帧激光传感器扫描信息之间的关系来估计自身的位姿。</p>
 <ul>
 <li><p>匹配是很关键的一步，它的好坏将会直接影响SLAM构建的地图精度，其主要是把当前在局部环境上的一个点云数据，在已经建立地图上寻找到对应的位置。与我们玩的拼图游戏有点相似，就是在已经拼好的画面中找到相似之处，确定新的拼图该放的位置。而在SLAM过程中，需要将激光雷达当前采集的点云（红色部分）匹配拼接到原有地图中</p>
-<p><img src="C:/Users/71041/Desktop/slam%E4%BB%8B%E7%BB%8D/c2acd1b8-4f82-4a8d-8061-eebb09a10b9e.png" srcset="/img/loading2.gif" lazyload alt="c2acd1b8-4f82-4a8d-8061-eebb09a10b9e"></p>
+<p><img src="https://s2.loli.net/2022/03/11/UL3iA2lvVQYZhk6.jpg" srcset="/img/loading2.gif" lazyload alt=""></p>
 </li>
 </ul>
 </li>
@@ -371,9 +399,9 @@
 <li><p>回环检测（Loop Closing）。回环检测判断机器人是否到达过先前的位置。如果检测到回环，它会把信息提供给后端进行处理。</p>
 </li>
 <li><p>举例来说，如果遇到回环问题，匹配算法不够优秀，或者在环境中存在很不巧的干扰，当机器人绕着环境走一圈后，便有可能出现原本应该闭合的一个环形走廊断开了。</p>
-<p><img src="https://s2.loli.net/2022/03/07/PAhESxRI8iWOZdr.png" srcset="/img/loading2.gif" lazyload alt="image-20220307124426587"></p>
+<p><img src="https://s2.loli.net/2022/03/07/PAhESxRI8iWOZdr.png" srcset="/img/loading2.gif" lazyload alt=""></p>
 <p>比如正常地图应该这样：</p>
-<p><img src="https://s2.loli.net/2022/03/07/TmQOY8fxM5Jq3HE.png" srcset="/img/loading2.gif" lazyload alt="image-20220307124408740"></p>
+<p><img src="https://s2.loli.net/2022/03/07/TmQOY8fxM5Jq3HE.png" srcset="/img/loading2.gif" lazyload alt=""></p>
 </li>
 <li><p>在环境较大场景，回环问题是不得不面对的，但现实总是不理想，即使拥有了高精度的激光雷达传感器，也难免存在一定误差，而回环的难点在于，在一开始的少许误差并不会被发觉，直到机器人走完一圈后，随着误差的不断累积，导致了环路无法闭合，出现这种情况一般很难回天。</p>
 </li>
@@ -395,8 +423,7 @@
 </ul>
 <h3 id="落地项目"><a href="#落地项目" class="headerlink" title="落地项目"></a>落地项目</h3><ul>
 <li><p>机器人(扫地机器人、市面上大部分能移动的机器人)</p>
-<div class="hljs code-wrapper"><pre><code>![小米扫地机器人官网](C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305171913757.png)
-</code></pre></div><p><img src="https://s2.loli.net/2022/03/07/JcZsu3xakD9e6gd.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src="https://s2.loli.net/2022/03/07/JcZsu3xakD9e6gd.png" srcset="/img/loading2.gif" lazyload alt=""></p>
 </li>
 <li><p>自动驾驶</p>
 <p>达摩院的快递车</p>
@@ -406,20 +433,157 @@
 <p>定位、虚拟与现实的匹配</p>
 </li>
 </ul>
-<h2 id="Cartographer介绍"><a href="#Cartographer介绍" class="headerlink" title="Cartographer介绍"></a>Cartographer介绍</h2><ul>
-<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Jinxiaoyu886/article/details/88826520#:~:text=%E6%89%80%E8%B0%93%E7%9A%84%E5%9B%BE%E4%BC%98%E5%8C%96%EF%BC%8C%E5%B0%B1%E6%98%AF%E6%8A%8A%E4%B8%80%E4%B8%AA%E5%B8%B8%E8%A7%84%E7%9A%84%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%EF%BC%8C%E4%BB%A5%E5%9B%BE%EF%BC%88Graph%EF%BC%89%E7%9A%84%E5%BD%A2%E5%BC%8F%E6%9D%A5%E8%A1%A8%E8%BF%B0%E3%80%82%20%E5%9B%BE%E6%98%AF%E7%94%B1%20%E9%A1%B6%E7%82%B9%EF%BC%88Vertex%EF%BC%89%20%E5%92%8C%20%E8%BE%B9%EF%BC%88Edge%EF%BC%89,%E7%BB%84%E6%88%90%E7%9A%84%E7%BB%93%E6%9E%84%EF%BC%8C%E8%80%8C%E5%9B%BE%E8%AE%BA%E5%88%99%E6%98%AF%E7%A0%94%E7%A9%B6%E5%9B%BE%E7%9A%84%E7%90%86%E8%AE%BA%E3%80%82%20%E6%88%91%E4%BB%AC%E8%AE%B0%E4%B8%80%E4%B8%AA%E5%9B%BE%E4%B8%BAG%3D%20%7B%20V%2CE%20%7D%EF%BC%8C%E5%85%B6%E4%B8%ADV%E4%B8%BA%E9%A1%B6%E7%82%B9%E9%9B%86%EF%BC%8CE%E4%B8%BA%E8%BE%B9%E9%9B%86%E3%80%82">图优化</a></p>
-</li>
-<li><p><a href="https://bsheepcoder.github.io/2022/02/26/SLAM1/#VI-EXPERIMENTAL-RESULTS">Google的论文</a></p>
-</li>
-<li><p>SLAM目前是一种实时建立地图的有效方式，实时生成可视化平面图有助于操作者评估捕获数据的质量和覆盖范围。构建便携式捕获平台需要在有限的计算资源下操作。我们介绍了在我们的<strong>背包地图平台</strong>中使用的方法，它实现了实时地图绘制和5厘米分辨率的环路闭合。为了实现实时闭环检测，我们使用了一种<strong>分支定界</strong>方法来计算scan-to-submap匹配作为约束，实验证明这个算法比较有竞争力。</p>
-</li>
+<h2 id="Cartographer介绍"><a href="#Cartographer介绍" class="headerlink" title="Cartographer介绍"></a>Cartographer介绍</h2><p><a href="https://bsheepcoder.github.io/2022/02/26/SLAM_Cartographer1/">Cartographer_Google的论文</a></p>
+<ul>
+<li>SLAM目前是一种实时建立地图的有效方式，实时生成可视化平面图有助于操作者评估捕获数据的质量和覆盖范围。构建便携式捕获平台需要在有限的计算资源下操作。我们介绍了在我们的<strong>背包地图平台</strong>中使用的方法，它实现了实时地图绘制和5厘米分辨率的环路闭合。为了实现实时闭环检测，我们使用了一种<strong>分支定界</strong>方法来计算scan-to-submap匹配作为约束，实验证明这个算法比较有竞争力。</li>
 <li>传统的建图方式是通过CAD(计算机辅助设计)，通过激光卷尺来测量，但是这种方式很慢并且测量人员会先入为主的认为建筑物都是直的，不能很好的描述空间的真实情况。使用SLAM可以迅速而准确地测量大小和复杂程度的建筑物，而手动测量则需要更长数量级的时间。</li>
 <li>SLAM在这一领域的应用并不是一个新的想法，也不是本文的重点。相反，本文的贡献是一种新的方法，以减少计算回环检测要求的激光距离数据。这种技术使我们能够绘制非常大的楼层，数万平方米，同时为运营商提供充分优化的实时结果。</li>
 </ul>
-<p><img src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305185851942.png" srcset="/img/loading2.gif" lazyload alt=""></p>
-<h2 id="分支定界算法讲解"><a href="#分支定界算法讲解" class="headerlink" title="分支定界算法讲解"></a>分支定界算法讲解</h2><h3 id="算法伪代码"><a href="#算法伪代码" class="headerlink" title="算法伪代码"></a>算法伪代码</h3><p><img src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220305190446763.png" srcset="/img/loading2.gif" lazyload alt=""></p>
-<h3 id="分析讲解"><a href="#分析讲解" class="headerlink" title="分析讲解"></a>分析讲解</h3><h2 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h2><h3 id="室内建图"><a href="#室内建图" class="headerlink" title="室内建图"></a>室内建图</h3><h3 id="室内导航避障"><a href="#室内导航避障" class="headerlink" title="室内导航避障"></a>室内导航避障</h3><h2 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>mark map</li>
+<blockquote>
+<p>其主要思想是将可能的子集表示为树中的节点，其中根节点表示所有可能的解，在我们的例子中是W。每个节点的子节点构成其父节点的一个分区，因此它们一起表示相同的可能性集。叶子节点是单例 （singletons）;每一个代表一个可行的解决方案。注意，该算法是精确的。它提供了与单纯方法相同的解决方案，只要内部节点c的得分(c)是其元素得分的上界。在这种情况下，无论什么时候一个节点是有界的，这个子树中都不存在一个比目前已知的最好的解更好的解。                                                                                                                                                                                                   <em>—-Cartographer_Google的论文</em></p>
+</blockquote>
+<h2 id="分支定界法讲解"><a href="#分支定界法讲解" class="headerlink" title="分支定界法讲解"></a>分支定界法讲解</h2><h3 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h3><ul>
+<li><p>对于一颗二叉树来说，形似如下图形式的顺序依次访问每个节点的搜索方式叫做<strong>DFS，深度优先搜索</strong>。</p>
+</li>
+<li><p><img src="https://s2.loli.net/2022/03/12/THakPl1sDb9hAQx.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+</li>
+</ul>
+<h3 id="认识整数规划"><a href="#认识整数规划" class="headerlink" title="认识整数规划"></a>认识整数规划</h3><h4 id="先了解线性规划"><a href="#先了解线性规划" class="headerlink" title="先了解线性规划"></a>先了解线性规划</h4><ul>
+<li><p>线性规划(Linear Programming 简记 LP)是了运筹学中数学规划的一个重要分支。自从 1947 年 G. B. Dantzig 提出 求解线性规划的单纯形法以来，线性规划在理论上趋向成熟，在实用中由于计算机能处理成千上万个约束条件和决策变量的线性规划问题之后，线性规划现代管理中经常采用的基本方法之一。 在解决实际问题时，需要把问题归结成一个线性规划数学模型，关键及难点在于选适当的决策变量建立恰当的模型，这直接影响到问题的求解。</p>
+</li>
+<li><p>线性规划问题的<strong>目标函数及约束条件均为线性函数</strong>；<strong>约束条件记为 s.t.(即 subject to)</strong>。目标函数可以是求最大值，也可以是求最小值，约束条件的不等号可以 是小于号也可以是大于号。</p>
+</li>
+<li><p>一般线性规划问题的数学标准型为</p>
+<script type="math/tex; mode=display">\begin{align} max \quad z = \sum^n_{j = 1} c_j x_j  \tag{3} \end{align}</script><script type="math/tex; mode=display">\begin{align} s.t.\quad \begin{cases} \sum^n_{j = 1}a_{ij}x_{j}  = b_i \quad i = 1,2,...,m \\ x_j  \ge 0 \quad j=1,2,...,n \tag{4}\end{cases}  \end{align}</script></li>
+<li><p>例题</p>
+<p>某机床厂生产甲、乙两种机床，每台销售后的利润分别为4000元与3000元。生产甲机床需用A、B机器加工，加工时间分别为每台2小时和1小时；生产乙机床需用A、B、C三种机器加工，加工时间为每台各一小时。若每天可用于加工的机器时数分别为A机器10小时、B机器8小时和C机器7小时，问该厂应生产甲、乙机床各几台，才能使总利润最大？</p>
+<p>| 机床 |  利润  |   加工机器&amp;工时(\h)   |<br>| :—: | :——: | :—————————-: |<br>|  甲  | 4000元 |     A (2)、B (1)      |<br>|  乙  | 3000元 | [A (1)、B (1)、C (1)] |</p>
+</li>
+</ul>
+<p>  上述问题的数学模型：</p>
+<p>  设该厂生产<script type="math/tex">x_1</script>台甲机床和<script type="math/tex">x_2</script>乙机床时总利润最大，则<script type="math/tex">x_1</script>,<script type="math/tex">x_2</script>应满足</p>
+<script type="math/tex; mode=display">\begin{align}(目标函数) max \quad z = 4x_1 +3x_2 \tag{1}\end{align}</script><script type="math/tex; mode=display">\begin{align}s.t.(约束条件) \begin{cases} 2x_1 + x_2 \le 10\\x_1 + x_2 \le 8 \\x_2 \le 7\\ x_1,x_2 \ge 0 \end{cases} \tag{2}\end{align}</script><ul>
+<li>上述例题中变量<script type="math/tex">x_1,x_2</script>称之为决策变量，(1)式被称为问题的目标函数，(2)中的几个不等式是问题的约束条件，记为<strong>s.t.</strong>(即subject to)。由于上面的目标函数及约束条件为线性函数，故被称为线性规划问题。</li>
+</ul>
+<h4 id="线性规划问题的解的概念"><a href="#线性规划问题的解的概念" class="headerlink" title="线性规划问题的解的概念"></a>线性规划问题的解的概念</h4><ul>
+<li>可行解：满足4个约束条件的解，称为可行解。 而使目标函数达到最大值的可行解叫最优解。</li>
+<li>可行域：所有可行解构成的集合称为问题的可行域，记为R 。</li>
+</ul>
+<h4 id="求线性规划解的方法"><a href="#求线性规划解的方法" class="headerlink" title="求线性规划解的方法"></a>求线性规划解的方法</h4><ul>
+<li><p><strong>图解法</strong>（高中常用方法）</p>
+<p>简单直观，适用于二维决策变量，它有助于了解线性规划问题求解的基本原理。。对于每一固定的值z，使目标函数值等于z的点构成的直线称为目标函数等位线，当z变动时，我们得到一族平行直线。</p>
+<p><img src="https://s2.loli.net/2022/03/11/kM3BaPLe2RsgHK8.png" srcset="/img/loading2.gif" lazyload alt="线性规划示意图"></p>
+<p>图解法简单直观,对于每一固定的值z，使目标函数值等于z的点构成的直线称为目标函数等位线，当z变动时，我们得到一族平行直线。等位线向上平移即可找到事目标函数有最大值的点。不难看出最优解为(2,6)，带入目标函数即可。</p>
+</li>
+<li><p><strong>单纯形法</strong>（计算机常用方法）</p>
+<p>当变量变多时，我们不能简单的画出图像，并且为了能够让计算机计算，我们需要借助单纯形法。单纯形法是求解线性规划问题最常用、最有效的算法之一。</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/dd0761a2fdfd">线性规划之单纯形法描述</a></p>
+<blockquote>
+<p>这个算法的思想可以用几何术语描述如下：</p>
+<p>先在可行域中找到一个极点，然后检查一下是不是在邻接极点除可以让目标函数取值更佳。如果不是，当前顶点就是最优点，然后算法停止；如果是，转而处理那个能让目标函数取值更佳的邻接顶点。有限步以后，该算法要么发现了一个取到最优解的极点，要么证明了最优解不存在。</p>
+<p><em>参考《算法设计与分析基础》潘彦译 P267</em></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="整数规划的分类"><a href="#整数规划的分类" class="headerlink" title="整数规划的分类"></a>整数规划的分类</h4><ul>
+<li><p>如不加特殊说明，一般指<strong>整数线性规划</strong>。对于整数线性规划模型大致可分为两类： </p>
+<ul>
+<li>变量全限制为整数时，称纯（完全）整数规划。</li>
+<li>变量部分限制为整数的，称混合整数规划。</li>
+</ul>
+</li>
+</ul>
+<h4 id="整数规划特点"><a href="#整数规划特点" class="headerlink" title="整数规划特点"></a>整数规划特点</h4><ul>
+<li><p>原线性规划有优解，当自变量限制为整数后，其整数规划解出现下述情况：</p>
+<ul>
+<li>原线性规划优解全是整数，则整数规划优解与线性规划优解一致。</li>
+<li>整数规划无可行解。</li>
+<li>有可行解（当然就存在优解），但优解值变差。</li>
+</ul>
+</li>
+<li><p>整数规划优解不能按照实数优解简单取整而获得。</p>
+</li>
+<li><p>例题1</p>
+<p>原线性规划为：</p>
+<script type="math/tex; mode=display">\begin{align} &min \quad z = x_1 + x_2 \\ &2x_1+4x_2 = 5 ,\quad x_1 \ge 0,x_2\ge0 \end{align}</script><script type="math/tex; mode=display">\begin{align}其最优实数解为: x_1 = 0,x_2 = \frac{5}{4}, minz = \frac{5}{4}\end{align}</script></li>
+<li><p>例题2</p>
+<p>原线性规划为：</p>
+<script type="math/tex; mode=display">\begin{align} &min \quad z = x_1 + x_2 \\ &2x_1+4x_2 = 6 ,\quad x_1 \ge 0,x_2\ge0 \end{align}</script><script type="math/tex; mode=display">\begin{align}其最优实数解为: x_1 = 0,x_2 = \frac{3}{2}, minz = \frac{3}{2}\end{align}</script><script type="math/tex; mode=display">\begin{align}若限制整数得: x_1 = 1,x_2 = 1, minz = 2\end{align}</script></li>
+</ul>
+<h4 id="整数规划如何求解"><a href="#整数规划如何求解" class="headerlink" title="整数规划如何求解"></a>整数规划如何求解</h4><ul>
+<li><strong>分枝定界法</strong>—可求纯或混合整数线性规划。</li>
+<li><strong>割平面法</strong>—可求纯或混合整数线性规划。</li>
+<li><strong>隐枚举法</strong>—求解“0-1”整数规划：<ul>
+<li>过滤隐枚举法</li>
+<li>分枝隐枚举法</li>
+</ul>
+</li>
+<li><strong>匈牙利法</strong>—解决<strong>指派</strong>问题（“0-1”规划特殊情形）</li>
+<li><strong>蒙特卡洛法</strong>—求解各种类型规划</li>
+</ul>
+<h3 id="分枝定界法"><a href="#分枝定界法" class="headerlink" title="分枝定界法"></a>分枝定界法</h3><p>分枝定界是一种<strong>深度优先的树搜索算法</strong>。通过对树进行<strong>剪枝</strong>，可以缩小了搜索范围，大大减小计算量。但同时又不会遗漏最优解。请现在就记住，分枝定界思想，就是<strong>不断缩小搜索范围的过程</strong>。</p>
+<h4 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h4><ul>
+<li><p>对有约束条件的优化问题（其可行解为有限数）的所有可行解空间恰当地进行系统搜索，这就是分枝与定界内容。</p>
+</li>
+<li><p>通常，<strong>把全部可行解空间反复地分割为越来越小的子集</strong>，称为<strong>分枝</strong>；并且<strong>对每个子集内的解集计算一个目标下界（对于最小值问题）</strong>，这称为<strong>定界</strong>。在每次分枝后，凡是界限超出已知可行解集目标值的那些子集不再进一步分枝，这样，许多子集可不予考虑，这称<strong>剪枝</strong>。这就是分枝定界法的主要思路。</p>
+</li>
+<li><p>分枝定界法可用于解<strong>纯整数或混合的整数规划问题</strong>。在本世纪六十年代初由 Land Doig 和 Dakin 等人提出的。由于这方法灵活且便于用计算机求解，所以现在它已是解整数规划的重要方法。目前已成功地应用于求解生产进度问题、旅行推销员问题、工厂选址问题、背包问题及分配问题等。</p>
+</li>
+</ul>
+<h4 id="举例分析"><a href="#举例分析" class="headerlink" title="举例分析"></a>举例分析</h4><p>​    设有最大化的<strong>整数规划问题<script type="math/tex">A</script></strong>，与它相应的<strong>线性规划为问题<script type="math/tex">B</script></strong>，从解问题<script type="math/tex">B</script>开始，若其最优解不符合<script type="math/tex">A</script>的整数条件，那么<script type="math/tex">B</script>的最优目标函数必是<script type="math/tex">A</script>的最优目标函数<script type="math/tex">z^*</script>的上界,记作<script type="math/tex">\overline{z}</script>；</p>
+<p>而<script type="math/tex">A</script>的任意可行解的目标函数值将是<script type="math/tex">z^*</script>的一个下界<script type="math/tex">\underline{z}</script>。   </p>
+<p>分支定界法就是将<script type="math/tex">B</script>的可行域分成子区域的方法。逐步减小<script type="math/tex">\overline{z}</script>和增大<script type="math/tex">\underline{z}</script>，最终求到<script type="math/tex">z^*</script>。</p>
+<ul>
+<li><p><strong>例</strong></p>
+<script type="math/tex; mode=display">Max \quad z = 40 x_1 +90x_2</script><script type="math/tex; mode=display">\begin{align} s.t. \quad \begin{cases} 9x_1 +7x_2 \le 56\\ 7x_1 + 20x_2 \le 70\\ x_1,x_2 \ge 0,且为整数 \end{cases} \end{align}</script><p><strong>解：</strong></p>
+<ul>
+<li><p><strong>先不考虑整数限制，即解相应的线性规划<script type="math/tex">B</script>，得最优解为：</strong></p>
+<script type="math/tex; mode=display">x_1 = 4.8092,x_2 = 1.8168,z =355.8779</script><p>可见她不符合整数条件。这时<script type="math/tex">z</script>是问题<script type="math/tex">A</script> 的最优目标函数值<script type="math/tex">z^*</script>的上界，记作<script type="math/tex">\overline{z}</script>。而<script type="math/tex">x_1= 0，x_2= 0</script>显然是问题A的一个整数可行解，这时<script type="math/tex">z=0</script>,是<script type="math/tex">z^*</script>的一个下界，记作<script type="math/tex">\underline{z}</script>,即<script type="math/tex">0\le z^* \le 355</script>。</p>
+</li>
+<li><p><strong>因为<script type="math/tex">x_1,x_2</script>当前均为非整数，故不满足整数要求，任选一个进行分枝。设选<script type="math/tex">x_1</script>进行分枝，把可行集分成2个子集(以下为增加的约束)：</strong></p>
+<script type="math/tex; mode=display">x_1 \le [4.8092]=4, \quad x_1 \ge [4.8092] +1 =5</script><p>因为4与5之间无整数，故这两个子集的整数解必与原可行集合整数解一致。这一步称为分枝。这两个子集的规划及求解如下：</p>
+<ul>
+<li><p>问题<script type="math/tex">B_1:</script></p>
+<script type="math/tex; mode=display">Max \quad z = 40x_1 + 90x_2</script><script type="math/tex; mode=display">\begin{align}  \begin{cases} 9x_1 + 7x_2 \le 56\\7x_1+20x_2 \le70 \\0\le x_1 \le4,x_2\ge0 \end{cases} \end{align}</script><script type="math/tex; mode=display">最优解为: x_1 = 4.0,x_2 =2.1,z_1 =349</script></li>
+<li><p>问题<script type="math/tex">B_2:</script></p>
+<script type="math/tex; mode=display">Max \quad z = 40x_1 + 90x_2</script><script type="math/tex; mode=display">\begin{align}  \begin{cases} 9x_1 + 7x_2 \le 56\\7x_1+20x_2 \le70 \\x_1\ge5,x_2\ge0 \end{cases} \end{align}</script><script type="math/tex; mode=display">最优解为: x_1 = 5.0,x_2 =1.57,z_1 =341.4</script></li>
+<li><p>再定界：<script type="math/tex">0 \le z^* \le 349</script></p>
+</li>
+</ul>
+</li>
+<li><p><strong>对问题<script type="math/tex">B_1:</script>再对不是整数的<script type="math/tex">x_2</script>进行分枝得问题<script type="math/tex">B_{11}</script>和<script type="math/tex">B_{12}</script>，它们的最优解为：</strong></p>
+<ul>
+<li><script type="math/tex; mode=display">B_{11}:x_1 = 4,x_2 = 2,z_{11} = 340</script></li>
+<li><script type="math/tex; mode=display">B_{12}:x_1=1.43,x_2=3.00,z_{12}=327.14</script></li>
+<li>由开头所说，线性规划<script type="math/tex">B</script>的最优目标函数值必是<script type="math/tex">A</script>的最优目标函数<script type="math/tex">z^*</script>的上界,记作<script type="math/tex">\overline{z}</script>，整数规划<script type="math/tex">A</script>的任意可行解的目标函数值将是<script type="math/tex">z^*</script>的一个下界<script type="math/tex">\underline{z}</script>。</li>
+<li>再定界有：<script type="math/tex">340 \le z^*\le341</script>，并将不在这个范围内的<script type="math/tex">B_{12}</script>剪枝。</li>
+</ul>
+</li>
+<li><p><strong>对问题<script type="math/tex">B_2</script>再进行分枝得问题<script type="math/tex">B_{21}</script>和<script type="math/tex">B_{22}</script>，它们的最优解为：</strong></p>
+<ul>
+<li><script type="math/tex; mode=display">B_{21}:x_1 = 5.44,x_2 = 1.00,z_{22} = 308</script></li>
+<li><script type="math/tex; mode=display">B_{22}无可行解</script></li>
+<li>将<script type="math/tex">B_{21},B_{22}</script> 剪枝。</li>
+</ul>
+</li>
+<li><p><strong>于是可以断定原问题的最优解为：</strong></p>
+<script type="math/tex; mode=display">x_1 = 4,x_2 = 2,z^{*} = 340</script></li>
+<li><p><strong>但是我认为现在还不能断定这个解就是原问题的最优解，刚开始是选择的是x1,我认为可能还需要对x2进行这样的分枝定界才能最终确定最优解是什么，可能理解的不准确仅作参考。</strong></p>
+</li>
+</ul>
+</li>
+<li><p>图解如下</p>
+<p><img src="https://s2.loli.net/2022/03/11/g3ybaIxYeNlLqSA.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+</li>
+<li><p>这部分只能把抽象的方法讲清楚，具体的代码实现和数学计算细节请参考论文<a href="https://bsheepcoder.github.io/2022/02/26/SLAM1/#VI-EXPERIMENTAL-RESULTS">Cartographer_Google的论文</a>，我全文翻译的看过一遍，但是还有很多细节概念不理解，为了不误人子弟就暂不深究。</p>
+</li>
+</ul>
+<h2 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h2><h3 id="室内建图"><a href="#室内建图" class="headerlink" title="室内建图"></a>室内建图</h3><p><img src="https://s2.loli.net/2022/03/11/fd5eIMHwnNj6GuD.png" srcset="/img/loading2.gif" lazyload alt="507地图建立"></p>
+<h3 id="室内导航避障"><a href="#室内导航避障" class="headerlink" title="室内导航避障"></a>室内导航避障</h3><p>上传到b站视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1U3411W7AK/">https://www.bilibili.com/video/BV1U3411W7AK/</a></p>
+<p><img src="https://s2.loli.net/2022/03/11/Qy9SKVl2PaGE4vk.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<h2 id="错误修订"><a href="#错误修订" class="headerlink" title="错误修订"></a>错误修订</h2><ul>
+<li>将原来B2的子问题B11改为B21</li>
+<li>二叉树部分，原来写的头节点改为根节点</li>
 </ul>
 
             </div>
@@ -455,9 +619,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/09/SLAM_LinearProgramming/">
+                      <a href="/2022/03/13/UML1/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">认识整数规划问题</span>
+                        <span class="hidden-mobile">画UML类图常用知识</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -465,8 +629,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/02/ROS_Jetson_nano/">
-                        <span class="hidden-mobile">Jetson_nano-SLAM小车入门</span>
+                      <a href="/2022/03/09/SLAM_LinearPro_Sample/">
+                        <span class="hidden-mobile">单纯形法求解线性规划问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
