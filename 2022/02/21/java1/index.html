@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://s2.loli.net/2022/02/16/MjtlIUyu4oghCq5.png">
 <meta property="og:image" content="https://s2.loli.net/2022/02/16/pmnbeaFvArY23E5.png">
 <meta property="article:published_time" content="2022-02-21T09:17:57.038Z">
-<meta property="article:modified_time" content="2022-03-15T09:24:55.000Z">
+<meta property="article:modified_time" content="2022-03-17T03:32:17.000Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
@@ -217,7 +217,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      43 分钟
+      44 分钟
     </span>
   
 
@@ -250,7 +250,7 @@
             
               <p class="note note-info">
                 
-                  更新于：2022年3月15日 下午
+                  更新于：2022年3月17日 中午
                 
               </p>
             
@@ -360,9 +360,16 @@
 <h2 id="Java面向对象与C-的区别"><a href="#Java面向对象与C-的区别" class="headerlink" title="Java面向对象与C++的区别"></a>Java面向对象与C++的区别</h2><h3 id="Java类定义的规则"><a href="#Java类定义的规则" class="headerlink" title="Java类定义的规则"></a>Java类定义的规则</h3><ul>
 <li>一个Java源文件可以包含多个类的定义，但只能定义一个public类，且public类名必须与文件名一致。如果要定义多个public类，必须拆到多个Java源文件中。</li>
 </ul>
-<h3 id="this指针访问规则"><a href="#this指针访问规则" class="headerlink" title="this指针访问规则"></a>this指针访问规则</h3><figure class="highlight java"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{<br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setName</span><span class="hljs-params">(String name)</span> </span>{<br>        <span class="hljs-keyword">this</span>.name = name; <span class="hljs-comment">// 前面的this不可少，少了就变成局部变量name了</span><br>    }<br>}<br></code></pre></div></td></tr></tbody></table></figure>
+<h3 id="this指针访问规则"><a href="#this指针访问规则" class="headerlink" title="this指针访问规则"></a>this指针访问规则</h3><figure class="highlight java"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setName</span><span class="hljs-params">(String name)</span> </span>{<br>        <span class="hljs-keyword">this</span>.name = name; <span class="hljs-comment">// 前面的this不可少，少了就变成局部变量name了</span><br>    }<br>}<br></code></pre></div></td></tr></tbody></table></figure>
+<ul>
+<li>每个实例方法都有this，总是指向调用对象。</li>
+<li>构造方法和实例方法都可以用。</li>
+</ul>
 <h3 id="对象实例定义"><a href="#对象实例定义" class="headerlink" title="对象实例定义"></a>对象实例定义</h3><figure class="highlight java"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">Person ming = <span class="hljs-keyword">new</span> Person();<br></code></pre></div></td></tr></tbody></table></figure>
 <h3 id="可变参数的定义"><a href="#可变参数的定义" class="headerlink" title="可变参数的定义"></a>可变参数的定义</h3><figure class="highlight java"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Group</span> </span>{<br>    <span class="hljs-keyword">private</span> String[] names;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setNames</span><span class="hljs-params">(String... names)</span> </span>{<br>        <span class="hljs-keyword">this</span>.names = names;<br>    }<br>}<br></code></pre></div></td></tr></tbody></table></figure>
+<ul>
+<li>可以传大于等于零的参数，要放到形参表的最后面</li>
+</ul>
 <h3 id="方法参数绑定"><a href="#方法参数绑定" class="headerlink" title="方法参数绑定"></a>方法参数绑定</h3><ul>
 <li><p>基本类型参数的传递，是调用方值的复制。双方各自的后续修改，互不影响。</p>
 </li>
@@ -489,7 +496,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="包package"><a href="#包package" class="headerlink" title="包package"></a>包package</h2><ul>
+<h3 id="包package"><a href="#包package" class="headerlink" title="包package"></a>包package</h3><ul>
 <li><p>解决命名冲突</p>
 </li>
 <li><p>包没有父子关系。java.util和java.util.zip是不同的包，两者没有任何继承关系。</p>
@@ -539,17 +546,14 @@
 </li>
 </ul>
 <h3 id="访问权限"><a href="#访问权限" class="headerlink" title="访问权限"></a>访问权限</h3><ul>
-<li><p>成员的访问权限</p>
-<ul>
+<li>成员的访问权限<ul>
 <li>由成员自身决定</li>
 <li>private —&gt;   protected —&gt;public —&gt;包访问权限</li>
 <li>缺省的访问权限就是包访问权限</li>
 </ul>
 </li>
-<li><p>访问私有变量调用公有方法</p>
-</li>
-<li><p>受保护的，不在一个包的子类可以访问，同一个包内的其他类也可以访问。</p>
-</li>
+<li>访问私有变量调用公有方法</li>
+<li>受保护的，不在一个包的子类可以访问，同一个包内的其他类也可以访问。</li>
 </ul>
 <div class="table-container">
 <table>
@@ -597,7 +601,32 @@
 <h3 id="public类和友好类"><a href="#public类和友好类" class="headerlink" title="public类和友好类"></a>public类和友好类</h3><ul>
 <li>同一个包的类中，能够用友好类创建对象</li>
 </ul>
-<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3>  <figure class="highlight java"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span></span>{<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> x,y;<br>    <span class="hljs-comment">//通常是私有</span><br>    <span class="hljs-comment">//需要构造器、访问器、修改器</span><br>    <br>    <span class="hljs-comment">//访问器</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getX</span><span class="hljs-params">()</span></span>{<br>        <span class="hljs-keyword">return</span> x;<br>    }<br>    <span class="hljs-comment">//修改器</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setX</span><span class="hljs-params">(x)</span></span>{<br>        <span class="hljs-keyword">this</span>.x = x<br>    }<br>    <span class="hljs-meta">@Override</span>  注释<br>    <span class="hljs-comment">/** Return */</span><br>        <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span></span>{<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">"Point = [...]"</span><br>    }<br>    <span class="hljs-meta">@Override</span><br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object that)</span></span>{<br>        <span class="hljs-comment">//判读两个对象是不是相等</span><br>        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span> == that)<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>        <span class="hljs-keyword">if</span>(that == <span class="hljs-keyword">null</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>        <span class="hljs-keyword">if</span>(getClass() != that.getClass())<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>        Point thatPoint = (Point)that;<br>        	<span class="hljs-keyword">return</span> x == thatPoint.x &amp;&amp; y ==thatPoint.y;<br>    }<br>}<br></code></pre></div></td></tr></tbody></table></figure>
+<h3 id="对象的组合"><a href="#对象的组合" class="headerlink" title="对象的组合"></a>对象的组合</h3><ul>
+<li><p>组合对象，子对象</p>
+</li>
+<li><p>大的对象可以包含另外一个或多个对象作为成员变量。</p>
+</li>
+<li><p>string是对象</p>
+</li>
+</ul>
+<h3 id="实例成员与类成员"><a href="#实例成员与类成员" class="headerlink" title="实例成员与类成员"></a>实例成员与类成员</h3><ul>
+<li><p>用关键字static修饰声明的变量称为类变量，否则称为实例变量。</p>
+</li>
+<li><p>类变量，是某一类的常用变量，是必须的，如圆类中的PI</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Math</span></span>{<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> PI = <span class="hljs-number">3.1415926</span>;<br>}<br><span class="hljs-comment">//访问: 类名.PI;</span><br>Math.PI<br></code></pre></div></td></tr></tbody></table></figure>
+</li>
+<li><p>所有成员共享类变量，不同对象的成员变量不同。</p>
+</li>
+</ul>
+<h3 id="实验1"><a href="#实验1" class="headerlink" title="实验1"></a>实验1</h3>  <figure class="highlight java"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span></span>{<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> x,y;<br>    <span class="hljs-comment">//通常是私有</span><br>    <span class="hljs-comment">//需要构造器、访问器、修改器</span><br>    <br>    <span class="hljs-comment">//访问器</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getX</span><span class="hljs-params">()</span></span>{<br>        <span class="hljs-keyword">return</span> x;<br>    }<br>    <span class="hljs-comment">//修改器</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setX</span><span class="hljs-params">(x)</span></span>{<br>        <span class="hljs-keyword">this</span>.x = x<br>    }<br>    <span class="hljs-meta">@Override</span>  注释<br>    <span class="hljs-comment">/** Return */</span><br>        <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span></span>{<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">"Point = [...]"</span><br>    }<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object that)</span></span>{<br>        <span class="hljs-comment">//判读两个对象是不是相等</span><br>        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span> == that)<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>        <span class="hljs-keyword">if</span>(that == <span class="hljs-keyword">null</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>        <span class="hljs-keyword">if</span>(getClass() != that.getClass())<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>        Point thatPoint = (Point)that;<br>        	<span class="hljs-keyword">return</span> x == thatPoint.x &amp;&amp; y ==thatPoint.y;<br>    }<br>}<br></code></pre></div></td></tr></tbody></table></figure>
+<ul>
+<li>引用类型不能用 == 来判断相等，因为 java中== 判断的是引用的是否是同一对象，而不是值是否相等。应该使用equals()方法。参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/nxj_climb/article/details/113175127">https://blog.csdn.net/nxj_climb/article/details/113175127</a></li>
+</ul>
+<h3 id="方法重载与多态"><a href="#方法重载与多态" class="headerlink" title="方法重载与多态"></a>方法重载与多态</h3><p>类中可以有多个方法有相同名字</p>
+<ul>
+<li>参数个数相同，类型不同</li>
+<li></li>
+</ul>
 
             </div>
             <hr>
