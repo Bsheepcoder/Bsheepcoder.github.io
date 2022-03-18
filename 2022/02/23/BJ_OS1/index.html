@@ -27,9 +27,9 @@
 <meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220313140548493.png">
 <meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220313141440580.png">
 <meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220313141927774.png">
-<meta property="og:image" content="c:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220313143022773.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/17/xL9tqUgrlDbRQ17.png">
 <meta property="article:published_time" content="2022-02-23T12:05:43.199Z">
-<meta property="article:modified_time" content="2022-03-13T06:30:25.496Z">
+<meta property="article:modified_time" content="2022-03-17T07:04:11.000Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="计算机基础">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.1k 字
+      4.2k 字
     </span>
   
 
@@ -219,7 +219,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10 分钟
+      13 分钟
     </span>
   
 
@@ -252,7 +252,7 @@
             
               <p class="note note-info">
                 
-                  更新于：2022年3月13日 下午
+                  更新于：2022年3月17日 下午
                 
               </p>
             
@@ -446,7 +446,86 @@
 </ul>
 <p>平均速度减为1/N</p>
 <h3 id="1-3-4-异步-Asynchronism"><a href="#1-3-4-异步-Asynchronism" class="headerlink" title="1.3.4 异步(Asynchronism)"></a>1.3.4 异步(Asynchronism)</h3><ul>
-<li>程序执行的异步性：不能预测开始和结束的时间，不同程序执行的优先级也不同。</li>
+<li><p>程序执行的异步性：不能预测开始和结束的时间，不同程序执行的优先级也不同。</p>
+<blockquote>
+<p>很可能是先进入内存的作业后完成，进程是以不可预知的速度推进。</p>
+<p>打印机属于临界资源</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="1-4-操作系统的主要功能"><a href="#1-4-操作系统的主要功能" class="headerlink" title="1.4 操作系统的主要功能"></a>1.4 操作系统的主要功能</h2><h3 id="1-4-1处理机管理功能"><a href="#1-4-1处理机管理功能" class="headerlink" title="1.4.1处理机管理功能"></a>1.4.1处理机管理功能</h3><h4 id="1-进程控制"><a href="#1-进程控制" class="headerlink" title="1.进程控制"></a>1.进程控制</h4><p>为作业创建进程、撤销已结束的进程，以及控制进程再运行过程中的状态转换。</p>
+<h4 id="2-进程同步"><a href="#2-进程同步" class="headerlink" title="2.进程同步"></a>2.进程同步</h4><p>处理多个进程的情况</p>
+<ul>
+<li>进程互斥方式，指对临界资源访问时采用互斥的方式，你用我不能用。</li>
+<li>进程同步方式，指在相互合作中去完成共同任务的诸进程间相互协调</li>
+</ul>
+<blockquote>
+<p>互斥：为每一个临界资源配置一把锁W，锁开进程可以访问临界资源。</p>
+<p>同步：信号量机制</p>
+</blockquote>
+<h4 id="3-进程通信"><a href="#3-进程通信" class="headerlink" title="3.进程通信"></a>3.进程通信</h4><p>message消息队列</p>
+<h4 id="4-调度"><a href="#4-调度" class="headerlink" title="4.调度"></a>4.调度</h4><ul>
+<li><p>作业调度  分配资源</p>
+<blockquote>
+<p>作业：用户一次计算过程中，或者一次事务处理过程中，要求计算机系统所做的工作。</p>
+</blockquote>
+</li>
+<li><p>进程调度 分配算力</p>
+</li>
+</ul>
+<h3 id="1-4-2-存储器管理功能"><a href="#1-4-2-存储器管理功能" class="headerlink" title="1.4.2 存储器管理功能"></a>1.4.2 存储器管理功能</h3><h4 id="1-内存分配"><a href="#1-内存分配" class="headerlink" title="1.内存分配"></a>1.内存分配</h4><ul>
+<li>主要任务<ul>
+<li>为每道程序分配内存空间，使它们“各得其所“。</li>
+<li>提高存储器的利用率，尽量减少不可用的内存空间(碎片)。</li>
+<li>允许正在运行的程序申请附加的内存空间，以适应程序和数据动态增长的需要。</li>
+</ul>
+</li>
+<li>分配方式<ul>
+<li>静态分配  不允许申请空间，不允许在内存中移动</li>
+<li>动态分配  允许申请空间，可以移动</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-内存保护"><a href="#2-内存保护" class="headerlink" title="2.内存保护"></a>2.内存保护</h4><ul>
+<li>主要任务<ul>
+<li>确保每道程序都在自己的内存空间</li>
+<li>不允许用户程序访问操作系统的程序和数据，也不允许程序转移道非共享的其他用户程序中去执行。</li>
+</ul>
+</li>
+<li>内存保护机制<ul>
+<li>界限寄存器，确定程序运行的上界和下界，超出就发出中断，结束程序。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-地址映射"><a href="#3-地址映射" class="headerlink" title="3.地址映射"></a>3.地址映射</h4><ul>
+<li>将地址空间中逻辑地址转换为内存空间中与之应的物理地址。该功能在硬件支持下实现。</li>
+</ul>
+<h4 id="4-内存扩充"><a href="#4-内存扩充" class="headerlink" title="4.内存扩充"></a>4.内存扩充</h4><ul>
+<li>借助虚拟存储，从逻辑上扩充内存<ul>
+<li>请求调入功能   用的时候再调入内存</li>
+<li>置换功能   把不用的放回硬盘</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-4-3-设备管理功能"><a href="#1-4-3-设备管理功能" class="headerlink" title="1.4.3 设备管理功能"></a>1.4.3 设备管理功能</h3><ul>
+<li>主要任务<ul>
+<li>完成用户进程的I/O请求，为用户进程分配所需的设备，完成I/O操作</li>
+<li>提高CPU、I/O设备利用率、速度。</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-缓冲管理"><a href="#1-缓冲管理" class="headerlink" title="1.缓冲管理"></a>1.缓冲管理</h4><p>缓解CPU、I/O速度不匹配，设置缓冲区</p>
+<ul>
+<li>单缓冲机制</li>
+<li>双缓冲机制</li>
+<li>公用缓冲池机制</li>
+</ul>
+<h4 id="2-设备分配"><a href="#2-设备分配" class="headerlink" title="2.设备分配"></a>2.设备分配</h4><h4 id="3-设备处理"><a href="#3-设备处理" class="headerlink" title="3.设备处理"></a>3.设备处理</h4><h3 id="1-4-4-文件管理功能"><a href="#1-4-4-文件管理功能" class="headerlink" title="1.4.4 文件管理功能"></a>1.4.4 文件管理功能</h3><h4 id="1-文件存储空间的管理"><a href="#1-文件存储空间的管理" class="headerlink" title="1.文件存储空间的管理"></a>1.文件存储空间的管理</h4><h4 id="2-目录的管理"><a href="#2-目录的管理" class="headerlink" title="2.目录的管理"></a>2.目录的管理</h4><h4 id="3-文件的读-写管理和保护"><a href="#3-文件的读-写管理和保护" class="headerlink" title="3. 文件的读/写管理和保护"></a>3. 文件的读/写管理和保护</h4><h3 id="1-4-5-操作系统与用户之间的接口"><a href="#1-4-5-操作系统与用户之间的接口" class="headerlink" title="1.4.5 操作系统与用户之间的接口"></a>1.4.5 操作系统与用户之间的接口</h3><h4 id="1-用户接口"><a href="#1-用户接口" class="headerlink" title="1.用户接口"></a>1.用户接口</h4><h4 id="2-程序接口"><a href="#2-程序接口" class="headerlink" title="2.程序接口"></a>2.程序接口</h4><h3 id="1-4-6-现代操作系统的新功能"><a href="#1-4-6-现代操作系统的新功能" class="headerlink" title="1.4.6 现代操作系统的新功能"></a>1.4.6 现代操作系统的新功能</h3><h4 id="1-系统安全"><a href="#1-系统安全" class="headerlink" title="1.系统安全"></a>1.系统安全</h4><h4 id="2-网络的功能和服务"><a href="#2-网络的功能和服务" class="headerlink" title="2.网络的功能和服务"></a>2.网络的功能和服务</h4><h4 id="3-支持多媒体"><a href="#3-支持多媒体" class="headerlink" title="3.支持多媒体"></a>3.支持多媒体</h4><h2 id="1-5-OS结构设计"><a href="#1-5-OS结构设计" class="headerlink" title="1.5 OS结构设计"></a>1.5 OS结构设计</h2><h3 id="1-5-1-传统的操作系统结构"><a href="#1-5-1-传统的操作系统结构" class="headerlink" title="1.5.1 传统的操作系统结构"></a>1.5.1 传统的操作系统结构</h3><h4 id="1-无结构操作系统"><a href="#1-无结构操作系统" class="headerlink" title="1. 无结构操作系统"></a>1. 无结构操作系统</h4><h4 id="2-模块化结构OS"><a href="#2-模块化结构OS" class="headerlink" title="2. 模块化结构OS"></a>2. 模块化结构OS</h4><h4 id="3-分层式结构OS"><a href="#3-分层式结构OS" class="headerlink" title="3. 分层式结构OS"></a>3. 分层式结构OS</h4><h3 id="1-5-2-客户服务器模式"><a href="#1-5-2-客户服务器模式" class="headerlink" title="1.5.2 客户服务器模式"></a>1.5.2 客户服务器模式</h3><h4 id="1-由来、组成、类型"><a href="#1-由来、组成、类型" class="headerlink" title="1. 由来、组成、类型"></a>1. 由来、组成、类型</h4><h4 id="2-交互"><a href="#2-交互" class="headerlink" title="2. 交互"></a>2. 交互</h4><h4 id="3-优点"><a href="#3-优点" class="headerlink" title="3. 优点"></a>3. 优点</h4><h3 id="1-5-3-面向对象的程序设计"><a href="#1-5-3-面向对象的程序设计" class="headerlink" title="1.5.3 面向对象的程序设计"></a>1.5.3 面向对象的程序设计</h3><h3 id="1-5-4-微内核OS结构"><a href="#1-5-4-微内核OS结构" class="headerlink" title="1.5.4 微内核OS结构"></a>1.5.4 微内核OS结构</h3><h1 id="第二章-进程的描述与控制"><a href="#第二章-进程的描述与控制" class="headerlink" title="第二章 进程的描述与控制"></a>第二章 进程的描述与控制</h1><h2 id="2-1-前趋图和程序执行"><a href="#2-1-前趋图和程序执行" class="headerlink" title="2.1 前趋图和程序执行"></a>2.1 前趋图和程序执行</h2><h3 id="2-1-1-前趋图"><a href="#2-1-1-前趋图" class="headerlink" title="2.1.1 前趋图"></a>2.1.1 前趋图</h3><ul>
+<li><p>指有向无循环图，DAG(Directed Acyclic Graph)</p>
+</li>
+<li><p>描述进程之间执行的先后顺序</p>
+</li>
+<li>节点表述一个程序或程序段</li>
 </ul>
 <h1 id="第三章-用户接口与作业管理"><a href="#第三章-用户接口与作业管理" class="headerlink" title="第三章 用户接口与作业管理"></a>第三章 用户接口与作业管理</h1><h2 id="3-3作业的基本概念"><a href="#3-3作业的基本概念" class="headerlink" title="3.3作业的基本概念"></a>3.3作业的基本概念</h2><h3 id="1-作业"><a href="#1-作业" class="headerlink" title="1.作业"></a>1.作业</h3><p>用户一次计算过程中，或者一次事务处理过程中，要求计算机系统所做的工作。</p>
 <h3 id="2-作业步"><a href="#2-作业步" class="headerlink" title="2. 作业步"></a>2. 作业步</h3><p><strong>一个作业可划分成若干部分，称为一个作业步</strong></p>
@@ -534,7 +613,7 @@
 <p>只有在获得<strong>JCB表项</strong>和<strong>足够输入井空间</strong>后才可能创建成功</p>
 </li>
 </ul>
-<h2 id="3-5-作业的状态及转换"><a href="#3-5-作业的状态及转换" class="headerlink" title="3.5 作业的状态及转换"></a>3.5 作业的状态及转换</h2><p><img src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220313143022773.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<h2 id="3-5-作业的状态及转换"><a href="#3-5-作业的状态及转换" class="headerlink" title="3.5 作业的状态及转换"></a>3.5 作业的状态及转换</h2><p><img src="https://s2.loli.net/2022/03/17/xL9tqUgrlDbRQ17.png" srcset="/img/loading2.gif" lazyload alt=""></p>
 
             </div>
             <hr>
