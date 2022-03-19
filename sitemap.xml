@@ -2,7 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bsheepcoder.github.io/2022/03/09/SLAM_LinearProgramming/</loc>
+    
+    <lastmod>2022-03-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://bsheepcoder.github.io/2022/03/09/SLAM_intgerLinearProgramming/</loc>
+    
+    <lastmod>2022-03-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bsheepcoder.github.io/2022/03/09/SLAM_LinearPro_Sample/</loc>
+    
+    <lastmod>2022-03-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bsheepcoder.github.io/2022/03/11/SLAM_share1/</loc>
     
     <lastmod>2022-03-19</lastmod>
     
@@ -137,36 +164,9 @@
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/2022/03/11/SLAM_share1/</loc>
-    
-    <lastmod>2022-03-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://bsheepcoder.github.io/2021/10/13/win10_bug1/</loc>
     
     <lastmod>2022-03-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://bsheepcoder.github.io/2022/03/09/SLAM_LinearPro_Sample/</loc>
-    
-    <lastmod>2022-03-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://bsheepcoder.github.io/2022/03/09/SLAM_LinearProgramming/</loc>
-    
-    <lastmod>2022-03-09</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
