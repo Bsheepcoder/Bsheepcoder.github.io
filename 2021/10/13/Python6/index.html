@@ -1,295 +1,150 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/page1.png">
-  <link rel="icon" href="/img/page1.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#000000">
-  <meta name="description" content="主要学习了mooc中蒿天老师的视频的笔记，仅供参考。">
-  <meta name="author" content="Tony">
-  <meta name="keywords" content="">
-  <meta name="description" content="主要学习了mooc中蒿天老师的视频的笔记，仅供参考。">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>(六)Python计算生态概览 | Q's blog</title><meta name="keywords" content="Python"><meta name="author" content="Tony"><meta name="copyright" content="Tony"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="主要学习了mooc中蒿天老师的视频的笔记，仅供参考。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(六)Python计算生态概览">
 <meta property="og:url" content="https://bsheepcoder.github.io/2021/10/13/Python6/index.html">
 <meta property="og:site_name" content="Q&#39;s blog">
 <meta property="og:description" content="主要学习了mooc中蒿天老师的视频的笔记，仅供参考。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/29/yCyuFg.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/29/yCcmGQ.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/29/yCg1ld.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/29/yCglSH.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/29/yCgD6s.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/29/yC2Rbt.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/29/yCRirR.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/29/yCWdfO.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/29/yCWv3F.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/29/yCf8C8.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/29/yCfgKJ.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/29/yC4v38.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/29/yCHqEQ.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/29/yCbrPs.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFEReO.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFVYhd.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFZ8K0.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFZBx1.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFZyqK.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFZosP.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFeEW9.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFeVzR.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFeJSA.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFedw8.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFecyq.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFeWwT.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFe4kF.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFe7lR.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFm5Hf.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFmhut.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFmWjI.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFmLgs.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFO81J.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFOJXR.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFjfSg.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFjlQJ.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/01/30/yFjqYT.png">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 <meta property="article:published_time" content="2021-10-12T23:17:32.010Z">
 <meta property="article:modified_time" content="2022-02-16T12:26:17.838Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="Python">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s3.ax1x.com/2021/01/29/yCyuFg.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/page1.png"><link rel="canonical" href="https://bsheepcoder.github.io/2021/10/13/Python6/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '(六)Python计算生态概览',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-16 20:26:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
   
-  <title>(六)Python计算生态概览 - Q&#39;s blog</title>
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
   
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-  
-<link rel="stylesheet" href="/css/diy/shubiao.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"bsheepcoder.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":5,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#efec02","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading2.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz","app_key":"8y2ItNdFctdKBPMHS31S2jbm","server_url":"https://0wpy18ji.lc-cn-n1-shared.com","path":"window.location.pathname"}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0">
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
-
-
-<body>
-  <header style="height: 30vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Q&#39;s blog</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/w/w1.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="(六)Python计算生态概览">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-10-13 07:17" pubdate>
-        2021年10月13日 早上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      5.3k 字
-    </span>
-  
-
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      17 分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
-          
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">(六)Python计算生态概览</h1>
-            
-              <p class="note note-info">
-                
-                  更新于：2022年2月16日 晚上
-                
-              </p>
-            
-            <div class="markdown-body">
-              <h2 id="Python计算生态概览"><a href="#Python计算生态概览" class="headerlink" title="Python计算生态概览"></a>Python计算生态概览</h2><h3 id="0x1-从数据处理到人工智能"><a href="#0x1-从数据处理到人工智能" class="headerlink" title="0x1 从数据处理到人工智能"></a>0x1 从数据处理到人工智能</h3><p>数据表示、数据清洗、数据统计、数据可视化、数据挖掘、人工智能</p>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">61</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Q's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">(六)Python计算生态概览</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-10-12T23:17:32.010Z" title="发表于 2021-10-13 07:17:32">2021-10-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-16T12:26:17.838Z" title="更新于 2022-02-16 20:26:17">2022-02-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python/">Python</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="(六)Python计算生态概览"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="Python计算生态概览"><a href="#Python计算生态概览" class="headerlink" title="Python计算生态概览"></a>Python计算生态概览</h2><h3 id="0x1-从数据处理到人工智能"><a href="#0x1-从数据处理到人工智能" class="headerlink" title="0x1 从数据处理到人工智能"></a>0x1 从数据处理到人工智能</h3><p>数据表示、数据清洗、数据统计、数据可视化、数据挖掘、人工智能</p>
 <p>数据表示  采用合适方式用程序表达数据</p>
 <p>数据清洗  数据归一化、数据转换、异常值处理</p>
 <p>数据统计  数据的概要理解、数量、分布、中位数等</p>
@@ -300,7 +155,7 @@
 <p>Python接口使用、C语言实现，计算速度优异</p>
 <p>Python数据分析及科学设计的基础库，支撑pandas等</p>
 <p>提供直接的矩阵运算、广播函数、线性代数等功能</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCyuFg"><img src="https://s3.ax1x.com/2021/01/29/yCyuFg.png" srcset="/img/loading2.gif" lazyload alt="yCyuFg.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCyuFg"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/29/yCyuFg.png" alt="yCyuFg.png" border="0"></a></p>
 <p>www.numpy.org</p>
 <h5 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h5><p>Pandas:Python数据分析高层次应用库</p>
 <p>提供了简单易用的数据结构和数据分析工具</p>
@@ -314,51 +169,51 @@
 <p>提供了一批数学算法及工程数据运算功能</p>
 <p>类似Matlab，可用于傅里叶变换、信号处理等应用</p>
 <p>Python最主要用于科学计算的功能库，基于Numpy开发</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCcmGQ"><img src="https://s3.ax1x.com/2021/01/29/yCcmGQ.png" srcset="/img/loading2.gif" lazyload alt="yCcmGQ.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCcmGQ"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/29/yCcmGQ.png" alt="yCcmGQ.png" border="0"></a></p>
 <h4 id="Python库之数据可视化"><a href="#Python库之数据可视化" class="headerlink" title="Python库之数据可视化"></a>Python库之数据可视化</h4><h5 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h5><p>高质量的二维数据可视化功能库</p>
 <p>提供了超过100种数据可视化展示效果</p>
 <p>通过matplotlib.pyplot子库调用各可视化效果</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCg1ld"><img src="https://s3.ax1x.com/2021/01/29/yCg1ld.png" srcset="/img/loading2.gif" lazyload alt="yCg1ld.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCg1ld"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/29/yCg1ld.png" alt="yCg1ld.png" border="0"></a></p>
 <p><a target="_blank" rel="noopener" href="http://matplotlib.org">http://matplotlib.org</a></p>
 <h5 id="Seaborn"><a href="#Seaborn" class="headerlink" title="Seaborn"></a>Seaborn</h5><p>统计类数据可视化功能库</p>
 <p>提供了一批高层次的统计类数据可视化展示效果</p>
 <p>主要展示数据间分布、分类和线性关系等内容</p>
 <p>基于Matplotlib开发，支持Numpy和Pandas</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCglSH"><img src="https://s3.ax1x.com/2021/01/29/yCglSH.png" srcset="/img/loading2.gif" lazyload alt="yCglSH.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCglSH"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/29/yCglSH.png" alt="yCglSH.png" border="0"></a></p>
 <p><a target="_blank" rel="noopener" href="http://seaborn.pydata.org/">http://seaborn.pydata.org/</a></p>
 <h5 id="Mayavi"><a href="#Mayavi" class="headerlink" title="Mayavi"></a>Mayavi</h5><p>三维科学数据可视化功能库</p>
 <p>提供了一批简单易用的3D科学计算数据可视化展示效果</p>
 <p>三维可视化最主要的第三方库 </p>
 <p>支持Numpy、TVTK、Traits、Envisage等第三方库</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCgD6s"><img src="https://s3.ax1x.com/2021/01/29/yCgD6s.png" srcset="/img/loading2.gif" lazyload alt="yCgD6s.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCgD6s"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/29/yCgD6s.png" alt="yCgD6s.png"></a></p>
 <p><a target="_blank" rel="noopener" href="http://docs.enthought.com/mayavi/mayavi/">http://docs.enthought.com/mayavi/mayavi/</a></p>
 <h4 id="Python库之文本处理"><a href="#Python库之文本处理" class="headerlink" title="Python库之文本处理"></a>Python库之文本处理</h4><h5 id="PyPDF2"><a href="#PyPDF2" class="headerlink" title="PyPDF2"></a>PyPDF2</h5><p>提供了一批处理PDF文件的计算功能</p>
 <p>支持获取信息、分隔/整合文件、加密解密等</p>
 <p>完全Python语言实现，不需要额外依赖，功能稳定</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yC2Rbt"><img src="https://s3.ax1x.com/2021/01/29/yC2Rbt.png" srcset="/img/loading2.gif" lazyload alt="yC2Rbt.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yC2Rbt"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/29/yC2Rbt.png" alt="yC2Rbt.png" border="0"></a></p>
 <h5 id="NLTK"><a href="#NLTK" class="headerlink" title="NLTK"></a>NLTK</h5><p>自然语言文本处理第三方库</p>
 <p>支持语言文本分类、标记、语法句法、语义分析等</p>
 <p>最优秀的自然语言处理库</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCRirR"><img src="https://s3.ax1x.com/2021/01/29/yCRirR.png" srcset="/img/loading2.gif" lazyload alt="yCRirR.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCRirR"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/29/yCRirR.png" alt="yCRirR.png" border="0"></a></p>
 <h5 id="Python-docx"><a href="#Python-docx" class="headerlink" title="Python-docx"></a>Python-docx</h5><p>创建或更新Microsoft Word文件的第三方库</p>
 <p>提供创建或更新.doc.docx等文件的计算功能</p>
 <p>增加并配置段落、图片、表格、文字等，功能全面</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCWdfO"><img src="https://s3.ax1x.com/2021/01/29/yCWdfO.png" srcset="/img/loading2.gif" lazyload alt="yCWdfO.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCWdfO"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/29/yCWdfO.png" alt="yCWdfO.png" border="0"></a></p>
 <h4 id="Python库之机器学习"><a href="#Python库之机器学习" class="headerlink" title="Python库之机器学习"></a>Python库之机器学习</h4><h5 id="Scikit-learn"><a href="#Scikit-learn" class="headerlink" title="Scikit-learn"></a>Scikit-learn</h5><p>机器学习方法工具集</p>
 <p>提供一批统一化的机器学习方法功能接口</p>
 <p>提供聚类、分类、回归、强化学习等计算功能</p>
 <p>机器学习基本和优秀的第三方库</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCWv3F"><img src="https://s3.ax1x.com/2021/01/29/yCWv3F.png" srcset="/img/loading2.gif" lazyload alt="yCWv3F.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCWv3F"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/29/yCWv3F.png" alt="yCWv3F.png" border="0"></a></p>
 <h5 id="TensorFlow"><a href="#TensorFlow" class="headerlink" title="TensorFlow"></a>TensorFlow</h5><p>AlphaGo背后机器学习计算框架</p>
 <p>谷歌公司推动的开源机器学习框架</p>
 <p>将数据流图作为基础，图节点代表运算，边代表张量</p>
 <p>应用机器学习方法的方式之一，支撑谷歌人工智能应用</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCf8C8"><img src="https://s3.ax1x.com/2021/01/29/yCf8C8.png" srcset="/img/loading2.gif" lazyload alt="yCf8C8.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCf8C8"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/29/yCf8C8.png" alt="yCf8C8.png" border="0"></a></p>
 <h5 id="MXNet"><a href="#MXNet" class="headerlink" title="MXNet"></a>MXNet</h5><p>基于神经网络的深度学习计算框架</p>
 <p>提供可扩展的神经网络及深度学习计算功能</p>
 <p>可用于自动驾驶、机器翻译、语音识别等众多领域</p>
 <p>Python最重要的深度学习框架</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCfgKJ"><img src="https://s3.ax1x.com/2021/01/29/yCfgKJ.png" srcset="/img/loading2.gif" lazyload alt="yCfgKJ.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCfgKJ"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/29/yCfgKJ.png" alt="yCfgKJ.png" border="0"></a></p>
 <h3 id="0x2-实例-霍兰德人格分析雷达图"><a href="#0x2-实例-霍兰德人格分析雷达图" class="headerlink" title="0x2 实例 霍兰德人格分析雷达图"></a>0x2 实例 霍兰德人格分析雷达图</h3><p>雷达图</p>
 <p>Radar Chart</p>
 <p>多特性直观展示的重要方式</p>
@@ -372,8 +227,8 @@
 <p>通用雷达图绘制：matplotlib库</p>
 <p>专业的多维数据表示：numpy库</p>
 <p>实例展示</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yC4v38"><img src="https://s3.ax1x.com/2021/01/29/yC4v38.png" srcset="/img/loading2.gif" lazyload alt="yC4v38.png" border="0"></a></p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#HollandRadarDraw</span><br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> matplotlib<br>matplotlib.rcParams[<span class="hljs-string">'font.family'</span>]=<span class="hljs-string">'SimHei'</span><br>radar_labels = np.array([<span class="hljs-string">'研究型(I)'</span>,<span class="hljs-string">'艺术型(A)'</span>,<span class="hljs-string">'社会型(S)'</span>,\<br>                         <span class="hljs-string">'企业型(E)'</span>,<span class="hljs-string">'常规型(C)'</span>,<span class="hljs-string">'现实型(R)'</span>]) <span class="hljs-comment">#雷达标签</span><br>nAttr = <span class="hljs-number">6</span><br>data = np.array([[<span class="hljs-number">0.40</span>, <span class="hljs-number">0.32</span>, <span class="hljs-number">0.35</span>, <span class="hljs-number">0.30</span>, <span class="hljs-number">0.30</span>, <span class="hljs-number">0.88</span>],<br>                 [<span class="hljs-number">0.85</span>, <span class="hljs-number">0.35</span>, <span class="hljs-number">0.30</span>, <span class="hljs-number">0.40</span>, <span class="hljs-number">0.40</span>, <span class="hljs-number">0.30</span>],<br>                 [<span class="hljs-number">0.43</span>, <span class="hljs-number">0.89</span>, <span class="hljs-number">0.30</span>, <span class="hljs-number">0.28</span>, <span class="hljs-number">0.22</span>, <span class="hljs-number">0.30</span>],<br>                 [<span class="hljs-number">0.30</span>, <span class="hljs-number">0.25</span>, <span class="hljs-number">0.48</span>, <span class="hljs-number">0.85</span>, <span class="hljs-number">0.45</span>, <span class="hljs-number">0.40</span>],<br>                 [<span class="hljs-number">0.20</span>, <span class="hljs-number">0.38</span>, <span class="hljs-number">0.87</span>, <span class="hljs-number">0.45</span>, <span class="hljs-number">0.32</span>, <span class="hljs-number">0.28</span>],<br>                 [<span class="hljs-number">0.34</span>, <span class="hljs-number">0.31</span>, <span class="hljs-number">0.38</span>, <span class="hljs-number">0.40</span>, <span class="hljs-number">0.92</span>, <span class="hljs-number">0.28</span>]]) <span class="hljs-comment">#数据值</span><br>data_labels = (<span class="hljs-string">'艺术家'</span>, <span class="hljs-string">'实验员'</span>, <span class="hljs-string">'工程师'</span>, <span class="hljs-string">'推销员'</span>, <span class="hljs-string">'社会工作者'</span>,<span class="hljs-string">'记事员'</span>)<br>angles = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>*np.pi, nAttr, endpoint=<span class="hljs-literal">False</span>)<br>data = np.concatenate((data, [data[<span class="hljs-number">0</span>]]))<br>angles = np.concatenate((angles, [angles[<span class="hljs-number">0</span>]]))<br>fig = plt.figure(facecolor=<span class="hljs-string">"white"</span>)<br>plt.subplot(<span class="hljs-number">111</span>, polar=<span class="hljs-literal">True</span>)<br>plt.plot(angles,data,<span class="hljs-string">'o-'</span>, linewidth=<span class="hljs-number">1</span>, alpha=<span class="hljs-number">0.2</span>)<br>plt.fill(angles,data, alpha=<span class="hljs-number">0.25</span>)<br>plt.thetagrids(angles*<span class="hljs-number">180</span>/np.pi, radar_labels,frac = <span class="hljs-number">1.2</span>)<br>plt.figtext(<span class="hljs-number">0.52</span>, <span class="hljs-number">0.95</span>, <span class="hljs-string">'霍兰德人格分析'</span>, ha=<span class="hljs-string">'center'</span>, size=<span class="hljs-number">20</span>)<br>legend = plt.legend(data_labels, loc=(<span class="hljs-number">0.94</span>, <span class="hljs-number">0.80</span>), labelspacing=<span class="hljs-number">0.1</span>)<br>plt.setp(legend.get_texts(), fontsize=<span class="hljs-string">'large'</span>)<br>plt.grid(<span class="hljs-literal">True</span>)<br>plt.savefig(<span class="hljs-string">'holland_radar.jpg'</span>)<br>plt.show()<br></code></pre></div></td></tr></tbody></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yC4v38"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/29/yC4v38.png" alt="yC4v38.png" border="0"></a></p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">#HollandRadarDraw</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line">matplotlib.rcParams[<span class="string">'font.family'</span>]=<span class="string">'SimHei'</span></span><br><span class="line">radar_labels = np.array([<span class="string">'研究型(I)'</span>,<span class="string">'艺术型(A)'</span>,<span class="string">'社会型(S)'</span>,\</span><br><span class="line">                         <span class="string">'企业型(E)'</span>,<span class="string">'常规型(C)'</span>,<span class="string">'现实型(R)'</span>]) <span class="comment">#雷达标签</span></span><br><span class="line">nAttr = <span class="number">6</span></span><br><span class="line">data = np.array([[<span class="number">0.40</span>, <span class="number">0.32</span>, <span class="number">0.35</span>, <span class="number">0.30</span>, <span class="number">0.30</span>, <span class="number">0.88</span>],</span><br><span class="line">                 [<span class="number">0.85</span>, <span class="number">0.35</span>, <span class="number">0.30</span>, <span class="number">0.40</span>, <span class="number">0.40</span>, <span class="number">0.30</span>],</span><br><span class="line">                 [<span class="number">0.43</span>, <span class="number">0.89</span>, <span class="number">0.30</span>, <span class="number">0.28</span>, <span class="number">0.22</span>, <span class="number">0.30</span>],</span><br><span class="line">                 [<span class="number">0.30</span>, <span class="number">0.25</span>, <span class="number">0.48</span>, <span class="number">0.85</span>, <span class="number">0.45</span>, <span class="number">0.40</span>],</span><br><span class="line">                 [<span class="number">0.20</span>, <span class="number">0.38</span>, <span class="number">0.87</span>, <span class="number">0.45</span>, <span class="number">0.32</span>, <span class="number">0.28</span>],</span><br><span class="line">                 [<span class="number">0.34</span>, <span class="number">0.31</span>, <span class="number">0.38</span>, <span class="number">0.40</span>, <span class="number">0.92</span>, <span class="number">0.28</span>]]) <span class="comment">#数据值</span></span><br><span class="line">data_labels = (<span class="string">'艺术家'</span>, <span class="string">'实验员'</span>, <span class="string">'工程师'</span>, <span class="string">'推销员'</span>, <span class="string">'社会工作者'</span>,<span class="string">'记事员'</span>)</span><br><span class="line">angles = np.linspace(<span class="number">0</span>, <span class="number">2</span>*np.pi, nAttr, endpoint=<span class="literal">False</span>)</span><br><span class="line">data = np.concatenate((data, [data[<span class="number">0</span>]]))</span><br><span class="line">angles = np.concatenate((angles, [angles[<span class="number">0</span>]]))</span><br><span class="line">fig = plt.figure(facecolor=<span class="string">"white"</span>)</span><br><span class="line">plt.subplot(<span class="number">111</span>, polar=<span class="literal">True</span>)</span><br><span class="line">plt.plot(angles,data,<span class="string">'o-'</span>, linewidth=<span class="number">1</span>, alpha=<span class="number">0.2</span>)</span><br><span class="line">plt.fill(angles,data, alpha=<span class="number">0.25</span>)</span><br><span class="line">plt.thetagrids(angles*<span class="number">180</span>/np.pi, radar_labels,frac = <span class="number">1.2</span>)</span><br><span class="line">plt.figtext(<span class="number">0.52</span>, <span class="number">0.95</span>, <span class="string">'霍兰德人格分析'</span>, ha=<span class="string">'center'</span>, size=<span class="number">20</span>)</span><br><span class="line">legend = plt.legend(data_labels, loc=(<span class="number">0.94</span>, <span class="number">0.80</span>), labelspacing=<span class="number">0.1</span>)</span><br><span class="line">plt.setp(legend.get_texts(), fontsize=<span class="string">'large'</span>)</span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line">plt.savefig(<span class="string">'holland_radar.jpg'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
 <p>举一反三</p>
 <p>目标 沉浸 熟练</p>
 <p>找到合适的目标</p>
@@ -384,138 +239,138 @@
 <p>提供了简单易用的类HTTP协议网络爬虫功能</p>
 <p>支持连接池、SSL、Cookies、HTTP(S)代理等</p>
 <p>页面级网络爬虫功能库</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br>r = requests.get(<span class="hljs-string">'https://api.github.com/user'</span>,\<br>                auth=(<span class="hljs-string">'user'</span>,<span class="hljs-string">'pass'</span>))  <span class="hljs-comment">#访问连接，获取信息</span><br>r.status_code  <span class="hljs-comment">#获得访问网络的状态效果</span><br>r.headers[<span class="hljs-string">'content-type'</span>]<br>r.encoding<br>r.text <span class="hljs-comment">#获得文本信息</span><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">r = requests.get(<span class="string">'https://api.github.com/user'</span>,\</span><br><span class="line">                auth=(<span class="string">'user'</span>,<span class="string">'pass'</span>))  <span class="comment">#访问连接，获取信息</span></span><br><span class="line">r.status_code  <span class="comment">#获得访问网络的状态效果</span></span><br><span class="line">r.headers[<span class="string">'content-type'</span>]</span><br><span class="line">r.encoding</span><br><span class="line">r.text <span class="comment">#获得文本信息</span></span><br></pre></td></tr></tbody></table></figure>
 <p><a target="_blank" rel="noopener" href="http://www.python-requests.org/">http://www.python-requests.org/</a></p>
 <p>Scrapy</p>
 <p>优秀的网络爬虫框架</p>
 <p>框架是已经拥有了基础功能，只需开发者在基础之上进行扩展开发或者额外配置</p>
 <p>支持批量和定时的网页爬取、提供数据处理流程等</p>
 <p>主要和优秀的基础库</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCHqEQ"><img src="https://s3.ax1x.com/2021/01/29/yCHqEQ.png" srcset="/img/loading2.gif" lazyload alt="yCHqEQ.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCHqEQ"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/29/yCHqEQ.png" alt="yCHqEQ.png" border="0"></a></p>
 <p>pyspider</p>
 <p>强大的web网页爬取系统</p>
 <p>提供了完整的网页爬取系统构建功能</p>
 <p>支持数据库后端、消息队列、优先级、分布式架构</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCbrPs"><img src="https://s3.ax1x.com/2021/01/29/yCbrPs.png" srcset="/img/loading2.gif" lazyload alt="yCbrPs.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCbrPs"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/29/yCbrPs.png" alt="yCbrPs.png" border="0"></a></p>
 <h4 id="python库之web信息提取"><a href="#python库之web信息提取" class="headerlink" title="python库之web信息提取"></a>python库之web信息提取</h4><p>如何解析HTML和XML的内容</p>
 <p>Beautiful Soup</p>
 <p>HTML和XML的解析库</p>
 <p>提供解析HTML和XML等Web信息的功能</p>
 <p>又名 beautifulsoup4 或 bs4，可以加载多种解析引擎</p>
 <p>常与网络爬虫库搭配使用，如Scrapy、requests等</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFEReO"><img src="https://s3.ax1x.com/2021/01/30/yFEReO.png" srcset="/img/loading2.gif" lazyload alt="yFEReO.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFEReO"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFEReO.png" alt="yFEReO.png" border="0"></a></p>
 <p>Re </p>
 <p>正则表达式解析和处理功能库</p>
 <p>提供了定义和解析正则表达式的一批通用功能</p>
 <p>可用于各类场景，包括定点的Web信息提取</p>
 <p>Python最主要的标准库之一，无需安装</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFVYhd"><img src="https://s3.ax1x.com/2021/01/30/yFVYhd.png" srcset="/img/loading2.gif" lazyload alt="yFVYhd.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFVYhd"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFVYhd.png" alt="yFVYhd.png" border="0"></a></p>
 <p>Python-Goose</p>
 <p>提取文章类型Web页面的功能库</p>
 <p>提供了对Web也米娜中文章信息/视频等元数据的提取功能</p>
 <p>针对特定Web页面，应用覆盖面较广</p>
 <p>Python最主要的Web信息提取库</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> goose <span class="hljs-keyword">import</span> Goose<br>url = <span class="hljs-string">'http://www.elmundo.es/elmundo/2012/10/28/espana/1351388909.html'</span><br>g = Goose({<span class="hljs-string">'use_meta_language'</span>:<span class="hljs-literal">False</span>,<span class="hljs-string">'target_language'</span>:<span class="hljs-string">'es'</span>})<br>article = g.extract(url=url)<br>article.cleaned_text[:<span class="hljs-number">150</span>]<br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> goose <span class="keyword">import</span> Goose</span><br><span class="line">url = <span class="string">'http://www.elmundo.es/elmundo/2012/10/28/espana/1351388909.html'</span></span><br><span class="line">g = Goose({<span class="string">'use_meta_language'</span>:<span class="literal">False</span>,<span class="string">'target_language'</span>:<span class="string">'es'</span>})</span><br><span class="line">article = g.extract(url=url)</span><br><span class="line">article.cleaned_text[:<span class="number">150</span>]</span><br></pre></td></tr></tbody></table></figure>
 <p><a target="_blank" rel="noopener" href="https://github.com/grangier/python-goose">https://github.com/grangier/python-goose</a></p>
 <h4 id="python库之web网站开发"><a href="#python库之web网站开发" class="headerlink" title="python库之web网站开发"></a>python库之web网站开发</h4><p>Django</p>
 <p>提供了构建Web系统的基本应用框架</p>
 <p>MTV：模型(model)、模板(Template)、视图(Views)</p>
 <p>Python最重要的Web应用框架，略微复杂的应用框架</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFZ8K0"><img src="https://s3.ax1x.com/2021/01/30/yFZ8K0.png" srcset="/img/loading2.gif" lazyload alt="yFZ8K0.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFZ8K0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFZ8K0.png" alt="yFZ8K0.png" border="0"></a></p>
 <p>Pyramid</p>
 <p>规模适中的Web应用框架</p>
 <p>提供了简单方便构建Web系统的应用框架</p>
 <p>不大不小，规模适中，适合快速构建并熟读扩展类应用</p>
 <p>Python产品级Web应用框架，起步简单可扩展性好</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFZBx1"><img src="https://s3.ax1x.com/2021/01/30/yFZBx1.png" srcset="/img/loading2.gif" lazyload alt="yFZBx1.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFZBx1"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFZBx1.png" alt="yFZBx1.png" border="0"></a></p>
 <p>Flask</p>
 <p>提供了最简单构建Web系统的应用框架</p>
 <p>特点是：简单、规模小、快速</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFZyqK"><img src="https://s3.ax1x.com/2021/01/30/yFZyqK.png" srcset="/img/loading2.gif" lazyload alt="yFZyqK.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFZyqK"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFZyqK.png" alt="yFZyqK.png" border="0"></a></p>
 <h4 id="python库之网络应用开发"><a href="#python库之网络应用开发" class="headerlink" title="python库之网络应用开发"></a>python库之网络应用开发</h4><p>WeRoBot</p>
 <p>微信公众号开发框架</p>
 <p>提供了解析微信服务器消息及反馈消息的功能</p>
 <p>建立微信机器人的重要技术手段</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFZosP"><img src="https://s3.ax1x.com/2021/01/30/yFZosP.png" srcset="/img/loading2.gif" lazyload alt="yFZosP.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFZosP"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFZosP.png" alt="yFZosP.png" border="0"></a></p>
 <p>百度AI的开发平台接口aip</p>
 <p>提供了访问百度Ai服务的Python功能接口</p>
 <p>语言、人脸、OCR、NLP、知识图谱、图像搜索等领域</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFeEW9"><img src="https://s3.ax1x.com/2021/01/30/yFeEW9.png" srcset="/img/loading2.gif" lazyload alt="yFeEW9.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFeEW9"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFeEW9.png" alt="yFeEW9.png" border="0"></a></p>
 <p>MyQR</p>
 <p>二维码生成第三方库</p>
 <p>提供了生成二维码的系列功能</p>
 <p>基本二维码、艺术二维码、动态二维码</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFeVzR"><img src="https://s3.ax1x.com/2021/01/30/yFeVzR.png" srcset="/img/loading2.gif" lazyload alt="yFeVzR.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFeVzR"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFeVzR.png" alt="yFeVzR.png" border="0"></a></p>
 <h3 id="0x4-从人机交互到艺术设计"><a href="#0x4-从人机交互到艺术设计" class="headerlink" title="0x4 从人机交互到艺术设计"></a>0x4 从人机交互到艺术设计</h3><h4 id="Python库之图形用户界面"><a href="#Python库之图形用户界面" class="headerlink" title="Python库之图形用户界面"></a>Python库之图形用户界面</h4><p>PyQt5</p>
 <p>Qt 框架 由诺基亚公司创建</p>
 <p>提供了创建Qt5程序的Python API接口</p>
 <p>Qt是非常成熟的跨平台桌面应用开发系统，完备GUI</p>
 <p>推荐Python GUI开发第三方库</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFeJSA"><img src="https://s3.ax1x.com/2021/01/30/yFeJSA.png" srcset="/img/loading2.gif" lazyload alt="yFeJSA.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFeJSA"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFeJSA.png" alt="yFeJSA.png" border="0"></a></p>
 <p>wxpython</p>
 <p>跨平台GUI开发框架</p>
 <p>提供了赚用于Python的跨平台GUI开发框架</p>
 <p>理解数据类型与索引的关系，操作索引即操作数据</p>
 <p>Python最主要的数据分析功能库，基于Numpy开发</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFedw8"><img src="https://s3.ax1x.com/2021/01/30/yFedw8.png" srcset="/img/loading2.gif" lazyload alt="yFedw8.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFedw8"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFedw8.png" alt="yFedw8.png" border="0"></a></p>
 <p>PyGObject</p>
 <p>使用GTK+开发GUI的功能库</p>
 <p>提供了整合GTK+、WebKitGTK+等库的功能</p>
 <p>GTK+：跨平台的一种用户图形界面GUI框架</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFecyq"><img src="https://s3.ax1x.com/2021/01/30/yFecyq.png" srcset="/img/loading2.gif" lazyload alt="yFecyq.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFecyq"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFecyq.png" alt="yFecyq.png" border="0"></a></p>
 <h4 id="Python库之游戏开发"><a href="#Python库之游戏开发" class="headerlink" title="Python库之游戏开发"></a>Python库之游戏开发</h4><p>PyGame：</p>
 <p>提供了基于SDL的简单游戏开发功能及实现引擎</p>
 <p>理解游戏对外部输入的相应计值及角色构建和交互机制</p>
 <p>Python游戏入门最主要的第三方库</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFeWwT"><img src="https://s3.ax1x.com/2021/01/30/yFeWwT.png" srcset="/img/loading2.gif" lazyload alt="yFeWwT.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFeWwT"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFeWwT.png" alt="yFeWwT.png" border="0"></a></p>
 <p>Panda3D</p>
 <p>开源、跨平台的3D渲染和游戏开发库</p>
 <p>一个3D游戏引擎，提供Python和C++两种接口</p>
 <p>支持很多先进特性：法线贴图、光泽贴图、卡通渲染等</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFe4kF"><img src="https://s3.ax1x.com/2021/01/30/yFe4kF.png" srcset="/img/loading2.gif" lazyload alt="yFe4kF.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFe4kF"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFe4kF.png" alt="yFe4kF.png" border="0"></a></p>
 <p>cocos2d</p>
 <p>构建2D游戏和图形界面交互式应用的框架</p>
 <p>提供了基于OpenGL的游戏开发图形渲染功能</p>
 <p>支持GPU加速，采用树形结构分层管理游戏对象类型</p>
 <p>适用于2D专业级游戏开发</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFe7lR"><img src="https://s3.ax1x.com/2021/01/30/yFe7lR.png" srcset="/img/loading2.gif" lazyload alt="yFe7lR.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFe7lR"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFe7lR.png" alt="yFe7lR.png" border="0"></a></p>
 <h4 id="Python库之虚拟现实"><a href="#Python库之虚拟现实" class="headerlink" title="Python库之虚拟现实"></a>Python库之虚拟现实</h4><p>VR Zero</p>
 <p>在树莓派上开发VR应用的Python库</p>
 <p>提供大量与VR开发相关的功能</p>
 <p>针对树莓派的VR开发库，支持设备小型化，配置简单化</p>
 <p>适合初学者</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFm5Hf"><img src="https://s3.ax1x.com/2021/01/30/yFm5Hf.png" srcset="/img/loading2.gif" lazyload alt="yFm5Hf.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFm5Hf"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFm5Hf.png" alt="yFm5Hf.png" border="0"></a></p>
 <p>pyovr</p>
 <p>针对Oculus VR设备的Python开发库</p>
 <p>基于成熟的VR设备，提供全套问答，工业级应用设备</p>
 <p>Python + 虚拟现实领域探索的一种思路</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFmhut"><img src="https://s3.ax1x.com/2021/01/30/yFmhut.png" srcset="/img/loading2.gif" lazyload alt="yFmhut.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFmhut"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFmhut.png" alt="yFmhut.png" border="0"></a></p>
 <p>Vizard</p>
 <p>基于Python的通用VR开发引擎</p>
 <p>专业企业家开发引擎</p>
 <p>提供详细的官方文档</p>
 <p>支持多种主流的VR硬件设备，具有一定通用性</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFmWjI"><img src="https://s3.ax1x.com/2021/01/30/yFmWjI.png" srcset="/img/loading2.gif" lazyload alt="yFmWjI.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFmWjI"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFmWjI.png" alt="yFmWjI.png" border="0"></a></p>
 <h4 id="Python库之图形艺术"><a href="#Python库之图形艺术" class="headerlink" title="Python库之图形艺术"></a>Python库之图形艺术</h4><p>Quads </p>
 <p>迭代的艺术</p>
 <p>对图片进行四分迭代，形成像素风</p>
 <p>可以生成动图或静图图像</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFmLgs"><img src="https://s3.ax1x.com/2021/01/30/yFmLgs.png" srcset="/img/loading2.gif" lazyload alt="yFmLgs.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFmLgs"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFmLgs.png" alt="yFmLgs.png" border="0"></a></p>
 <p>ascii_art</p>
 <p>将图片转为ASCII艺术风格</p>
 <p>输出可以是纯文本或彩色文本</p>
 <p>以图片格式输出</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFO81J"><img src="https://s3.ax1x.com/2021/01/30/yFO81J.png" srcset="/img/loading2.gif" lazyload alt="yFO81J.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFO81J"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFO81J.png" alt="yFO81J.png" border="0"></a></p>
 <p>turtle</p>
 <p>海龟绘图体系</p>
 <p>random Art</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFOJXR"><img src="https://s3.ax1x.com/2021/01/30/yFOJXR.png" srcset="/img/loading2.gif" lazyload alt="yFOJXR.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFOJXR"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFOJXR.png" alt="yFOJXR.png" border="0"></a></p>
 <h3 id="0x5-实例-玫瑰花绘制"><a href="#0x5-实例-玫瑰花绘制" class="headerlink" title="0x5 实例 玫瑰花绘制"></a>0x5 实例 玫瑰花绘制</h3><p>玫瑰花绘制</p>
 <p>需求：Python绘制一朵玫瑰花，献给所思所念</p>
 <p>输入：你的想象力</p>
 <p>输出：玫瑰花</p>
 <p>实例</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <p>艺术之余编程</p>
 <p>创新、思想</p>
 <p>思想最重要</p>
@@ -527,298 +382,35 @@
 <p>实例</p>
 <p>python语法的三个阶段</p>
 <p>函数式编程、面向对象编程、Pythonic编程</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFjfSg"><img src="https://s3.ax1x.com/2021/01/30/yFjfSg.png" srcset="/img/loading2.gif" lazyload alt="yFjfSg.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFjfSg"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFjfSg.png" alt="yFjfSg.png" border="0"></a></p>
 <p>Python的未来之路</p>
 <p>无处不在</p>
 <p>C、JS</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFjlQJ"><img src="https://s3.ax1x.com/2021/01/30/yFjlQJ.png" srcset="/img/loading2.gif" lazyload alt="yFjlQJ.png" border="0"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFjqYT"><img src="https://s3.ax1x.com/2021/01/30/yFjqYT.png" srcset="/img/loading2.gif" lazyload alt="yFjqYT.png" border="0"></a></p>
-
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/Python/">Python</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2021/10/13/Python1/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">（一）Python简单介绍与安装</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2021/10/13/Python2/">
-                        <span class="hidden-mobile">（二）Python基本语法</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"UrMBdkpVtSriHxFtNjQRvPqm-gzGzoHsz","appKey":"rLGXsY7AM0Ym431NbB2fCRpX","path":"window.location.pathname","placeholder":"发一条友善的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
-          </article>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-  <div class="col-lg-7 mx-auto nopadding-x-md">
-    <div class="container custom post-custom mx-auto">
-      <p style="text-align:center;">如果博文对你有帮助，可以给博主充充电噢~ <br> 非常感谢！！</p><img src="/img/qxd.jpg" srcset="/img/loading2.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
-    </div>
-  </div>
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-
-    
-  </main>
-
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
-  </div>
-  
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- LeanCloud 统计PV -->
-        <span id="leancloud-site-pv-container" style="display: none">
-            总访问量 
-            <span id="leancloud-site-pv"></span>
-             次
-          </span>
-      
-      
-        <!-- LeanCloud 统计UV -->
-        <span id="leancloud-site-uv-container" style="display: none">
-            总访客数 
-            <span id="leancloud-site-uv"></span>
-             人
-          </span>
-      
-
-    
-  </div>
-
-
-  
-
-  
-</footer>
-
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
-  
-  
-    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
-  
-
-
-
-
-  <script defer src="/js/leancloud.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-      typing(title)
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-  
-<script src="/js/diy/timeDate.js"></script>
-<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-<script src="//cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js"></script>
-<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"}});</script></body>
-</html>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFjlQJ"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFjlQJ.png" alt="yFjlQJ.png" border="0"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yFjqYT"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.ax1x.com/2021/01/30/yFjqYT.png" alt="yFjqYT.png" border="0"></a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Tony</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://bsheepcoder.github.io/2021/10/13/Python6/">https://bsheepcoder.github.io/2021/10/13/Python6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://bsheepcoder.github.io" target="_blank">Q's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/10/13/Python1/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">（一）Python简单介绍与安装</div></div></a></div><div class="next-post pull-right"><a href="/2021/10/13/Python2/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">（二）Python基本语法</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/10/13/Python1/" title="（一）Python简单介绍与安装"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-13</div><div class="title">（一）Python简单介绍与安装</div></div></a></div><div><a href="/2021/10/13/Python5/" title="（五）Python程序设计方法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-13</div><div class="title">（五）Python程序设计方法</div></div></a></div><div><a href="/2021/10/13/Python2/" title="（二）Python基本语法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-13</div><div class="title">（二）Python基本语法</div></div></a></div><div><a href="/2022/02/16/Python_Numpy1/" title="NumPy笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-16</div><div class="title">NumPy笔记</div></div></a></div><div><a href="/2021/10/13/Python3/" title="（三）Python函数库与数据类型"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-13</div><div class="title">（三）Python函数库与数据类型</div></div></a></div><div><a href="/2021/10/13/Python4/" title="（四）Python程序控制结构"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-13</div><div class="title">（四）Python程序控制结构</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Tony</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">61</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Bsheepcoder.io" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python%E8%AE%A1%E7%AE%97%E7%94%9F%E6%80%81%E6%A6%82%E8%A7%88"><span class="toc-number">1.</span> <span class="toc-text">Python计算生态概览</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x1-%E4%BB%8E%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%88%B0%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD"><span class="toc-number">1.1.</span> <span class="toc-text">0x1 从数据处理到人工智能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Python%E5%BA%93%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="toc-number">1.1.1.</span> <span class="toc-text">Python库之数据分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Numpy"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">Numpy</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Pandas"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">Pandas</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SciPy"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">SciPy</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python%E5%BA%93%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">1.1.2.</span> <span class="toc-text">Python库之数据可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Matplotlib"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">Matplotlib</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Seaborn"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">Seaborn</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Mayavi"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">Mayavi</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python%E5%BA%93%E4%B9%8B%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86"><span class="toc-number">1.1.3.</span> <span class="toc-text">Python库之文本处理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#PyPDF2"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">PyPDF2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#NLTK"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">NLTK</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Python-docx"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">Python-docx</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python%E5%BA%93%E4%B9%8B%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.1.4.</span> <span class="toc-text">Python库之机器学习</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Scikit-learn"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">Scikit-learn</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#TensorFlow"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">TensorFlow</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#MXNet"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">MXNet</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x2-%E5%AE%9E%E4%BE%8B-%E9%9C%8D%E5%85%B0%E5%BE%B7%E4%BA%BA%E6%A0%BC%E5%88%86%E6%9E%90%E9%9B%B7%E8%BE%BE%E5%9B%BE"><span class="toc-number">1.2.</span> <span class="toc-text">0x2 实例 霍兰德人格分析雷达图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x3-%E4%BB%8Eweb%E8%A7%A3%E6%9E%90%E5%88%B0%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4"><span class="toc-number">1.3.</span> <span class="toc-text">0x3 从web解析到网络空间</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#python%E5%BA%93%E4%B9%8B%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB"><span class="toc-number">1.3.1.</span> <span class="toc-text">python库之网络爬虫</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python%E5%BA%93%E4%B9%8Bweb%E4%BF%A1%E6%81%AF%E6%8F%90%E5%8F%96"><span class="toc-number">1.3.2.</span> <span class="toc-text">python库之web信息提取</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python%E5%BA%93%E4%B9%8Bweb%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91"><span class="toc-number">1.3.3.</span> <span class="toc-text">python库之web网站开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python%E5%BA%93%E4%B9%8B%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91"><span class="toc-number">1.3.4.</span> <span class="toc-text">python库之网络应用开发</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x4-%E4%BB%8E%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92%E5%88%B0%E8%89%BA%E6%9C%AF%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.4.</span> <span class="toc-text">0x4 从人机交互到艺术设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Python%E5%BA%93%E4%B9%8B%E5%9B%BE%E5%BD%A2%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2"><span class="toc-number">1.4.1.</span> <span class="toc-text">Python库之图形用户界面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python%E5%BA%93%E4%B9%8B%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91"><span class="toc-number">1.4.2.</span> <span class="toc-text">Python库之游戏开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python%E5%BA%93%E4%B9%8B%E8%99%9A%E6%8B%9F%E7%8E%B0%E5%AE%9E"><span class="toc-number">1.4.3.</span> <span class="toc-text">Python库之虚拟现实</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python%E5%BA%93%E4%B9%8B%E5%9B%BE%E5%BD%A2%E8%89%BA%E6%9C%AF"><span class="toc-number">1.4.4.</span> <span class="toc-text">Python库之图形艺术</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x5-%E5%AE%9E%E4%BE%8B-%E7%8E%AB%E7%91%B0%E8%8A%B1%E7%BB%98%E5%88%B6"><span class="toc-number">1.5.</span> <span class="toc-text">0x5 实例 玫瑰花绘制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A8%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93"><span class="toc-number"></span> <span class="toc-text">全课程总结</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/18/Hexo_butterfly/" title="Hexo主题换为butterfly"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo主题换为butterfly"/></a><div class="content"><a class="title" href="/2022/03/18/Hexo_butterfly/" title="Hexo主题换为butterfly">Hexo主题换为butterfly</a><time datetime="2022-03-18T07:15:58.551Z" title="发表于 2022-03-18 15:15:58">2022-03-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/15/C++_letcode1/" title="力扣刷题记录"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="力扣刷题记录"/></a><div class="content"><a class="title" href="/2022/03/15/C++_letcode1/" title="力扣刷题记录">力扣刷题记录</a><time datetime="2022-03-15T12:06:03.845Z" title="发表于 2022-03-15 20:06:03">2022-03-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/14/Road1/" title="每日规划日志"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每日规划日志"/></a><div class="content"><a class="title" href="/2022/03/14/Road1/" title="每日规划日志">每日规划日志</a><time datetime="2022-03-14T10:09:11.147Z" title="发表于 2022-03-14 18:09:11">2022-03-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/14/C++_STL1/" title="C++STL复习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++STL复习"/></a><div class="content"><a class="title" href="/2022/03/14/C++_STL1/" title="C++STL复习">C++STL复习</a><time datetime="2022-03-14T01:41:33.906Z" title="发表于 2022-03-14 09:41:33">2022-03-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/13/Web_Raspberrypi1/" title="【项目】在树莓派上部署个人博客"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【项目】在树莓派上部署个人博客"/></a><div class="content"><a class="title" href="/2022/03/13/Web_Raspberrypi1/" title="【项目】在树莓派上部署个人博客">【项目】在树莓派上部署个人博客</a><time datetime="2022-03-13T10:23:16.750Z" title="发表于 2022-03-13 18:23:16">2022-03-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Tony</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz',
+      appKey: '8y2ItNdFctdKBPMHS31S2jbm',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"}});</script></body></html>

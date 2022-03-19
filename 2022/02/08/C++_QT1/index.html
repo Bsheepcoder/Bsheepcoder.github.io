@@ -1,271 +1,164 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/page1.png">
-  <link rel="icon" href="/img/page1.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#000000">
-  <meta name="description" content="寒假软件实习">
-  <meta name="author" content="Tony">
-  <meta name="keywords" content="">
-  <meta name="description" content="寒假软件实习">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Qt入门 | Q's blog</title><meta name="keywords" content="Qt"><meta name="author" content="Tony"><meta name="copyright" content="Tony"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="寒假软件实习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Qt入门">
 <meta property="og:url" content="https://bsheepcoder.github.io/2022/02/08/C++_QT1/index.html">
 <meta property="og:site_name" content="Q&#39;s blog">
 <meta property="og:description" content="寒假软件实习">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 <meta property="article:published_time" content="2022-02-08T00:33:03.035Z">
 <meta property="article:modified_time" content="2022-03-04T02:47:39.329Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="Qt">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/page1.png"><link rel="canonical" href="https://bsheepcoder.github.io/2022/02/08/C++_QT1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Qt入门',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-04 10:47:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
   
-  <title>Qt入门 - Q&#39;s blog</title>
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
   
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-  
-<link rel="stylesheet" href="/css/diy/shubiao.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"bsheepcoder.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":5,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#efec02","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading2.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz","app_key":"8y2ItNdFctdKBPMHS31S2jbm","server_url":"https://0wpy18ji.lc-cn-n1-shared.com","path":"window.location.pathname"}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0">
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
-
-
-<body>
-  <header style="height: 30vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Q&#39;s blog</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/w/w1.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Qt入门">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-02-08 08:33" pubdate>
-        2022年2月8日 早上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      9.2k 字
-    </span>
-  
-
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      29 分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
-          
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">Qt入门</h1>
-            
-              <p class="note note-info">
-                
-                  更新于：2022年3月4日 上午
-                
-              </p>
-            
-            <div class="markdown-body">
-              <h2 id="QT-for-linux"><a href="#QT-for-linux" class="headerlink" title="QT_for_linux"></a>QT_for_linux</h2><h2 id="第一个QT应用程序"><a href="#第一个QT应用程序" class="headerlink" title="第一个QT应用程序"></a>第一个QT应用程序</h2><ul>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">61</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Q's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Qt入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-02-08T00:33:03.035Z" title="发表于 2022-02-08 08:33:03">2022-02-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-04T02:47:39.329Z" title="更新于 2022-03-04 10:47:39">2022-03-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Qt/">Qt</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Qt入门"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="QT-for-linux"><a href="#QT-for-linux" class="headerlink" title="QT_for_linux"></a>QT_for_linux</h2><h2 id="第一个QT应用程序"><a href="#第一个QT应用程序" class="headerlink" title="第一个QT应用程序"></a>第一个QT应用程序</h2><ul>
 <li><p>重点掌握开发流程</p>
 <p>(1)创建工程目录</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">mkdir Hello #每个QT程序都要放在一个独立的工程目录下<br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">mkdir Hello #每个QT程序都要放在一个独立的工程目录下</span><br></pre></td></tr></tbody></table></figure>
 <p>(2)进入工程目录编写源代码</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">vi main.cpp  #语法和C++保持基本一致，但使用QT的类库不再是标准C++的库<br></code></pre></div></td></tr></tbody></table></figure>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QApplication&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QLabel&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc,<span class="hljs-keyword">char</span>** argv)</span></span><br><span class="hljs-function"></span>{<br>    <span class="hljs-comment">//创建QT应用程序对象</span><br>    <span class="hljs-function">QApplication <span class="hljs-title">app</span><span class="hljs-params">(argc,argv)</span></span>;<br>    <br>    <span class="hljs-comment">//创建标签控件</span><br>    <span class="hljs-function">QLabel <span class="hljs-title">label</span><span class="hljs-params">(<span class="hljs-string">"Hello Qt!"</span>)</span></span>;<br>    <br>    <span class="hljs-comment">//显示标签控件</span><br>    label.<span class="hljs-built_in">show</span>();<br>    <br>    <span class="hljs-comment">//让应用程序进入事件</span><br>    <span class="hljs-keyword">return</span> app.<span class="hljs-built_in">exec</span>();<br>   <br>}<br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">vi main.cpp  #语法和C++保持基本一致，但使用QT的类库不再是标准C++的库</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>** argv)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="comment">//创建QT应用程序对象</span></span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc,argv)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//创建标签控件</span></span><br><span class="line">    <span class="function">QLabel <span class="title">label</span><span class="params">(<span class="string">"Hello Qt!"</span>)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//显示标签控件</span></span><br><span class="line">    label.<span class="built_in">show</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//让应用程序进入事件</span></span><br><span class="line">    <span class="keyword">return</span> app.<span class="built_in">exec</span>();</span><br><span class="line">   </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>(3)构建工程</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">qmake -prohect #生成工程文件Hello.pro,并在文件中添加构建选项，QT += widgets<br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">qmake -prohect #生成工程文件Hello.pro,并在文件中添加构建选项，QT += widgets</span><br></pre></td></tr></tbody></table></figure>
 <p>(4)创建Makefile</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">qmake  #可以根据上一步的工程文件自动生成Makefile<br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">qmake  #可以根据上一步的工程文件自动生成Makefile</span><br></pre></td></tr></tbody></table></figure>
 <p>(5)编译连接</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">make  #执行即可完成编译与链接<br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">make  #执行即可完成编译与链接</span><br></pre></td></tr></tbody></table></figure>
 <p>(6)测试</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">./Hello  #运行，默认名字与工程名字一致<br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">./Hello  #运行，默认名字与工程名字一致</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 <h2 id="QT中文编码"><a href="#QT中文编码" class="headerlink" title="QT中文编码"></a>QT中文编码</h2><ul>
@@ -274,8 +167,8 @@
 <li><p>QT的优化UTF-8转换为UTF-16</p>
 </li>
 <li><p>通过QTextCodec编码转换</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp">QTextCodec *coder = QTextCodec::<span class="hljs-built_in">codeForName</span>(<span class="hljs-string">"GBK"</span>);<br>QString string = codec-&gt;<span class="hljs-built_in">toUnicode</span>(<span class="hljs-string">"GBK编码的中文字符串"</span>);<br></code></pre></div></td></tr></tbody></table></figure>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;QApplication&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;QLabel&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QTextCodec&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QPushButton&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> *argv[])</span></span><br><span class="hljs-function"></span>{<br>    <span class="hljs-function">QApplication <span class="hljs-title">a</span><span class="hljs-params">(argc, argv)</span></span>;<br><br>    QTextCodec *coder = QTextCodec::<span class="hljs-built_in">codecForName</span>(<span class="hljs-string">"GBK"</span>);<br><br>    <span class="hljs-function">QLabel <span class="hljs-title">label</span><span class="hljs-params">(coder-&gt;toUnicode(<span class="hljs-string">"我是标签"</span>))</span></span>;<br><br>    label.<span class="hljs-built_in">show</span>();<br><br>    <span class="hljs-function">QPushButton <span class="hljs-title">button</span><span class="hljs-params">(coder-&gt;toUnicode(<span class="hljs-string">"我是按钮"</span>))</span></span>;<br><br>    button.<span class="hljs-built_in">show</span>();<br><br>    <span class="hljs-keyword">return</span> a.<span class="hljs-built_in">exec</span>();<br>}<br><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line">QTextCodec *coder = QTextCodec::<span class="built_in">codeForName</span>(<span class="string">"GBK"</span>);</span><br><span class="line">QString string = codec-&gt;<span class="built_in">toUnicode</span>(<span class="string">"GBK编码的中文字符串"</span>);</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QTextCodec&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    QTextCodec *coder = QTextCodec::<span class="built_in">codecForName</span>(<span class="string">"GBK"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function">QLabel <span class="title">label</span><span class="params">(coder-&gt;toUnicode(<span class="string">"我是标签"</span>))</span></span>;</span><br><span class="line"></span><br><span class="line">    label.<span class="built_in">show</span>();</span><br><span class="line"></span><br><span class="line">    <span class="function">QPushButton <span class="title">button</span><span class="params">(coder-&gt;toUnicode(<span class="string">"我是按钮"</span>))</span></span>;</span><br><span class="line"></span><br><span class="line">    button.<span class="built_in">show</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> a.<span class="built_in">exec</span>();</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 <h2 id="父窗口"><a href="#父窗口" class="headerlink" title="父窗口"></a>父窗口</h2><ul>
@@ -294,11 +187,11 @@
 <li><p>父窗口的析构函数回自动销毁其所有的子窗口对象，因此即使子窗口对象时通过new操作符动态创建的，可以不显示的执行delete，而且不用担心内存泄漏问题，只要保证父窗口对象被正确销毁，其子窗口也将随之被销毁。</p>
 </li>
 <li><p>设置窗口的位置和大小</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">move</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">resize</span><span class="hljs-params">(<span class="hljs-keyword">int</span> w,<span class="hljs-keyword">int</span> h)</span></span>;<br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">resize</span><span class="params">(<span class="keyword">int</span> w,<span class="keyword">int</span> h)</span></span>;</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 <p>例子</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QWidget&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QDialog&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QMainWindow&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QLabel&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QPushButton&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QTextCodec&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QApplication&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc,<span class="hljs-keyword">char</span>** argv)</span></span>{<br>    <span class="hljs-function">QApplication <span class="hljs-title">app</span><span class="hljs-params">(argc,argv)</span></span>;<br>    QTextCodec *codec = QTextCodec::<span class="hljs-built_in">codecForName</span>(<span class="hljs-string">"UTF-8"</span>);<br>    <span class="hljs-comment">//父窗口定义</span><br>    QDialog parent;<br>    parent.<span class="hljs-built_in">move</span>(<span class="hljs-number">50</span>,<span class="hljs-number">50</span>);<br>    parent.<span class="hljs-built_in">resize</span>(<span class="hljs-number">320</span>,<span class="hljs-number">240</span>);<br><br>    <span class="hljs-comment">//创建标签控件，停靠再父窗口上面</span><br>    <span class="hljs-function">QLabel <span class="hljs-title">label</span><span class="hljs-params">((codec-&gt;toUnicode(<span class="hljs-string">"我是标签"</span>)),&amp;parent)</span></span>;<br>    label.<span class="hljs-built_in">move</span>(<span class="hljs-number">20</span>,<span class="hljs-number">40</span>);<br><br>    <span class="hljs-comment">//创建按钮控件，停靠在父窗口上边</span><br>    <span class="hljs-function">QPushButton <span class="hljs-title">button</span><span class="hljs-params">((codec-&gt;toUnicode(<span class="hljs-string">"我是标签"</span>)),&amp;parent)</span></span>;<br>    button.<span class="hljs-built_in">move</span>(<span class="hljs-number">20</span>,<span class="hljs-number">100</span>);<br>    button.<span class="hljs-built_in">resize</span>(<span class="hljs-number">80</span>,<span class="hljs-number">80</span>);<br><br>    parent.<span class="hljs-built_in">show</span>();<br>    <span class="hljs-keyword">return</span> app.<span class="hljs-built_in">exec</span>();<br>}<br>-------------------------------<br>    <br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QWidget&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QDialog&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QMainWindow&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QLabel&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QPushButton&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QTextCodec&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QApplication&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc,<span class="hljs-keyword">char</span>** argv)</span></span>{<br>    <span class="hljs-function">QApplication <span class="hljs-title">app</span><span class="hljs-params">(argc,argv)</span></span>;<br>    QTextCodec *codec = QTextCodec::<span class="hljs-built_in">codecForName</span>(<span class="hljs-string">"UTF-8"</span>);<br>    <span class="hljs-comment">//父窗口定义</span><br>    QDialog parent;<br>    parent.<span class="hljs-built_in">move</span>(<span class="hljs-number">50</span>,<span class="hljs-number">50</span>);<br>    parent.<span class="hljs-built_in">resize</span>(<span class="hljs-number">320</span>,<span class="hljs-number">240</span>);<br><br>    <span class="hljs-comment">//创建标签控件，停靠再父窗口上面</span><br>    <span class="hljs-function">QLabel <span class="hljs-title">label</span><span class="hljs-params">((codec-&gt;toUnicode(<span class="hljs-string">"我是标签"</span>)),&amp;parent)</span></span>;<br>    label.<span class="hljs-built_in">move</span>(<span class="hljs-number">20</span>,<span class="hljs-number">40</span>);<br><br>    <span class="hljs-comment">//创建按钮控件，停靠在父窗口上边</span><br>    <span class="hljs-function">QPushButton <span class="hljs-title">button</span><span class="hljs-params">((codec-&gt;toUnicode(<span class="hljs-string">"我是按钮"</span>)),&amp;parent)</span></span>;<br>    button.<span class="hljs-built_in">move</span>(<span class="hljs-number">20</span>,<span class="hljs-number">100</span>);<br>    button.<span class="hljs-built_in">resize</span>(<span class="hljs-number">80</span>,<span class="hljs-number">80</span>);<br><br>    <span class="hljs-comment">//使用对象指针的形式</span><br>    <span class="hljs-comment">//new对象如果指定了父窗口指针，可以不写delete，在父窗口对象销毁时，它会自动被销毁。</span><br>    QPushButton* button2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">QPushButton</span>((codec-&gt;<span class="hljs-built_in">toUnicode</span>(<span class="hljs-string">"我也是按钮"</span>)),&amp;parent);<br>    button2-&gt;<span class="hljs-built_in">move</span>(<span class="hljs-number">170</span>,<span class="hljs-number">100</span>);<br>    button2-&gt;<span class="hljs-built_in">resize</span>(<span class="hljs-number">80</span>,<span class="hljs-number">80</span>);<br><br>    parent.<span class="hljs-built_in">show</span>();<span class="hljs-comment">//父窗口显示，上面停靠的控件也将一起显示</span><br><br><br>    <span class="hljs-keyword">return</span> app.<span class="hljs-built_in">exec</span>();<br>}<br><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QWidget&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDialog&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QMainWindow&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QTextCodec&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>** argv)</span></span>{</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc,argv)</span></span>;</span><br><span class="line">    QTextCodec *codec = QTextCodec::<span class="built_in">codecForName</span>(<span class="string">"UTF-8"</span>);</span><br><span class="line">    <span class="comment">//父窗口定义</span></span><br><span class="line">    QDialog parent;</span><br><span class="line">    parent.<span class="built_in">move</span>(<span class="number">50</span>,<span class="number">50</span>);</span><br><span class="line">    parent.<span class="built_in">resize</span>(<span class="number">320</span>,<span class="number">240</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建标签控件，停靠再父窗口上面</span></span><br><span class="line">    <span class="function">QLabel <span class="title">label</span><span class="params">((codec-&gt;toUnicode(<span class="string">"我是标签"</span>)),&amp;parent)</span></span>;</span><br><span class="line">    label.<span class="built_in">move</span>(<span class="number">20</span>,<span class="number">40</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建按钮控件，停靠在父窗口上边</span></span><br><span class="line">    <span class="function">QPushButton <span class="title">button</span><span class="params">((codec-&gt;toUnicode(<span class="string">"我是标签"</span>)),&amp;parent)</span></span>;</span><br><span class="line">    button.<span class="built_in">move</span>(<span class="number">20</span>,<span class="number">100</span>);</span><br><span class="line">    button.<span class="built_in">resize</span>(<span class="number">80</span>,<span class="number">80</span>);</span><br><span class="line"></span><br><span class="line">    parent.<span class="built_in">show</span>();</span><br><span class="line">    <span class="keyword">return</span> app.<span class="built_in">exec</span>();</span><br><span class="line">}</span><br><span class="line">-------------------------------</span><br><span class="line">    </span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QWidget&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDialog&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QMainWindow&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QTextCodec&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>** argv)</span></span>{</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc,argv)</span></span>;</span><br><span class="line">    QTextCodec *codec = QTextCodec::<span class="built_in">codecForName</span>(<span class="string">"UTF-8"</span>);</span><br><span class="line">    <span class="comment">//父窗口定义</span></span><br><span class="line">    QDialog parent;</span><br><span class="line">    parent.<span class="built_in">move</span>(<span class="number">50</span>,<span class="number">50</span>);</span><br><span class="line">    parent.<span class="built_in">resize</span>(<span class="number">320</span>,<span class="number">240</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建标签控件，停靠再父窗口上面</span></span><br><span class="line">    <span class="function">QLabel <span class="title">label</span><span class="params">((codec-&gt;toUnicode(<span class="string">"我是标签"</span>)),&amp;parent)</span></span>;</span><br><span class="line">    label.<span class="built_in">move</span>(<span class="number">20</span>,<span class="number">40</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建按钮控件，停靠在父窗口上边</span></span><br><span class="line">    <span class="function">QPushButton <span class="title">button</span><span class="params">((codec-&gt;toUnicode(<span class="string">"我是按钮"</span>)),&amp;parent)</span></span>;</span><br><span class="line">    button.<span class="built_in">move</span>(<span class="number">20</span>,<span class="number">100</span>);</span><br><span class="line">    button.<span class="built_in">resize</span>(<span class="number">80</span>,<span class="number">80</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用对象指针的形式</span></span><br><span class="line">    <span class="comment">//new对象如果指定了父窗口指针，可以不写delete，在父窗口对象销毁时，它会自动被销毁。</span></span><br><span class="line">    QPushButton* button2 = <span class="keyword">new</span> <span class="built_in">QPushButton</span>((codec-&gt;<span class="built_in">toUnicode</span>(<span class="string">"我也是按钮"</span>)),&amp;parent);</span><br><span class="line">    button2-&gt;<span class="built_in">move</span>(<span class="number">170</span>,<span class="number">100</span>);</span><br><span class="line">    button2-&gt;<span class="built_in">resize</span>(<span class="number">80</span>,<span class="number">80</span>);</span><br><span class="line"></span><br><span class="line">    parent.<span class="built_in">show</span>();<span class="comment">//父窗口显示，上面停靠的控件也将一起显示</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app.<span class="built_in">exec</span>();</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <h2 id="信号和槽"><a href="#信号和槽" class="headerlink" title="信号和槽"></a>信号和槽</h2><ul>
 <li><p>信号和槽是QT自行定义的一种通信机制，实现对象之间的数据交互。</p>
 </li>
@@ -309,13 +202,13 @@
 <li><p>槽函数与普通成员函数的差别并不在于其语法特性，而在于其功能。槽函数更多体现为对某种特定信号的处理，可以将槽和其他对象信号建立连接，这样当发射信号时，槽函数将被触发和执行，进而来完成具体功能。</p>
 </li>
 <li><p>型号函数</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XX</span>:</span><span class="hljs-keyword">public</span> QObject{<br>    Q_OBJECT<span class="hljs-comment">//宏，moc</span><br> signals:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">signal_func</span><span class="hljs-params">(..)</span></span>;  <span class="hljs-comment">//信号函数</span><br>};<br><span class="hljs-comment">//信号函数只需声明，不能写定义</span><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">XX</span>:</span><span class="keyword">public</span> QObject{</span><br><span class="line">    Q_OBJECT<span class="comment">//宏，moc</span></span><br><span class="line"> signals:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">signal_func</span><span class="params">(..)</span></span>;  <span class="comment">//信号函数</span></span><br><span class="line">};</span><br><span class="line"><span class="comment">//信号函数只需声明，不能写定义</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>槽函数</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XX</span>:</span><span class="hljs-keyword">public</span> QObject{<br>    Q_OBJECT<span class="hljs-comment">//moc原对象编译器</span><br> <span class="hljs-keyword">public</span> slots:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">slot_func</span><span class="hljs-params">(..)</span></span>{..}<span class="hljs-comment">//槽函数</span><br>};<br><span class="hljs-comment">//槽函数可以连接到某个信号上，当信号被发射时，槽函数将被触发和执行，另外槽函数也可以当作普通的成员函数直接调用。</span><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">XX</span>:</span><span class="keyword">public</span> QObject{</span><br><span class="line">    Q_OBJECT<span class="comment">//moc原对象编译器</span></span><br><span class="line"> <span class="keyword">public</span> slots:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">slot_func</span><span class="params">(..)</span></span>{..}<span class="comment">//槽函数</span></span><br><span class="line">};</span><br><span class="line"><span class="comment">//槽函数可以连接到某个信号上，当信号被发射时，槽函数将被触发和执行，另外槽函数也可以当作普通的成员函数直接调用。</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>信号和槽的连接</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp">QObject::<span class="hljs-built_in">connect</span>(<span class="hljs-keyword">const</span> QOject *sender,<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * signal,<span class="hljs-keyword">const</span> QObject * receiver,<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * method);<br><span class="hljs-comment">//参数</span><br>sender：信号发送对象指针<br>signal：要发送的信号函数，可以使用<span class="hljs-string">"SIGNAL(..)"</span>宏进行类型转换<br>receiver：信号的接收对象指针<br>method:接收信号要执行的槽函数，可以使用<span class="hljs-string">"SLOT(..)"</span>宏进行类型转换<br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line">QObject::<span class="built_in">connect</span>(<span class="keyword">const</span> QOject *sender,<span class="keyword">const</span> <span class="keyword">char</span> * signal,<span class="keyword">const</span> QObject * receiver,<span class="keyword">const</span> <span class="keyword">char</span> * method);</span><br><span class="line"><span class="comment">//参数</span></span><br><span class="line">sender：信号发送对象指针</span><br><span class="line">signal：要发送的信号函数，可以使用<span class="string">"SIGNAL(..)"</span>宏进行类型转换</span><br><span class="line">receiver：信号的接收对象指针</span><br><span class="line">method:接收信号要执行的槽函数，可以使用<span class="string">"SLOT(..)"</span>宏进行类型转换</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>创建Qt应用程序，包含标签和按钮两个控件，实现点击按钮关闭标签</p>
@@ -323,29 +216,29 @@
 <li>按钮点击时发送信号：clicked()</li>
 <li>实现标签关闭功能的槽：close()</li>
 </ul>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QApplication&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QLabel&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QPushButton&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QDialog&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QTextCodec&gt;</span></span><br><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc,<span class="hljs-keyword">char</span> **argv)</span></span><br><span class="hljs-function"></span>{<br>    <span class="hljs-function">QApplication <span class="hljs-title">app</span><span class="hljs-params">(argc,argv)</span></span>;<br>    QTextCodec *codec = QTextCodec::<span class="hljs-built_in">codecForName</span>(<span class="hljs-string">"UTF-8"</span>);<br><br>    QDialog parent;<br>    parent.<span class="hljs-built_in">resize</span>(<span class="hljs-number">320</span>,<span class="hljs-number">240</span>);<br><br>    <span class="hljs-function">QLabel <span class="hljs-title">label</span><span class="hljs-params">(codec-&gt;toUnicode(<span class="hljs-string">"我是标签"</span>),&amp;parent)</span></span>;<br>    label.<span class="hljs-built_in">move</span>(<span class="hljs-number">50</span>,<span class="hljs-number">40</span>);<br><br>    <span class="hljs-function">QPushButton <span class="hljs-title">button</span><span class="hljs-params">(codec-&gt;toUnicode(<span class="hljs-string">"我是按钮"</span>),&amp;parent)</span></span>;<br>    button.<span class="hljs-built_in">move</span>(<span class="hljs-number">50</span>,<span class="hljs-number">140</span>);<br>    <span class="hljs-function">QPushButton <span class="hljs-title">button1</span><span class="hljs-params">(codec-&gt;toUnicode(<span class="hljs-string">"结束"</span>),&amp;parent)</span></span>;<br>    button1.<span class="hljs-built_in">move</span>(<span class="hljs-number">200</span>,<span class="hljs-number">140</span>);<br><br>    <span class="hljs-comment">//点击按钮关闭标签</span><br>    QObject::<span class="hljs-built_in">connect</span>(&amp;button,<span class="hljs-built_in">SIGNAL</span>(<span class="hljs-built_in">clicked</span>(<span class="hljs-keyword">void</span>)),&amp;label,<span class="hljs-built_in">SLOT</span>(<span class="hljs-built_in">close</span>(<span class="hljs-keyword">void</span>)));<br><br><br>    <span class="hljs-comment">//点击按钮关闭程序</span><br>    <span class="hljs-comment">//1. QObject::connect(&amp;button1,SIGNAL(clicked(void)),&amp;app,SLOT(closeAllWindows(void)));</span><br>    <span class="hljs-comment">//2. QObject::connect(&amp;button1,SIGNAL(clicked(void)),&amp;app,SLOT(quit(void)));</span><br>    <span class="hljs-comment">//3. QObject::connect(&amp;button1,SIGNAL(clicked(void)),&amp;parent,SLOT(close(void)));</span><br><br>    parent.<span class="hljs-built_in">show</span>();<br>    <span class="hljs-keyword">return</span> app.<span class="hljs-built_in">exec</span>();<br>}<br><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDialog&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QTextCodec&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc,argv)</span></span>;</span><br><span class="line">    QTextCodec *codec = QTextCodec::<span class="built_in">codecForName</span>(<span class="string">"UTF-8"</span>);</span><br><span class="line"></span><br><span class="line">    QDialog parent;</span><br><span class="line">    parent.<span class="built_in">resize</span>(<span class="number">320</span>,<span class="number">240</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function">QLabel <span class="title">label</span><span class="params">(codec-&gt;toUnicode(<span class="string">"我是标签"</span>),&amp;parent)</span></span>;</span><br><span class="line">    label.<span class="built_in">move</span>(<span class="number">50</span>,<span class="number">40</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function">QPushButton <span class="title">button</span><span class="params">(codec-&gt;toUnicode(<span class="string">"我是按钮"</span>),&amp;parent)</span></span>;</span><br><span class="line">    button.<span class="built_in">move</span>(<span class="number">50</span>,<span class="number">140</span>);</span><br><span class="line">    <span class="function">QPushButton <span class="title">button1</span><span class="params">(codec-&gt;toUnicode(<span class="string">"结束"</span>),&amp;parent)</span></span>;</span><br><span class="line">    button1.<span class="built_in">move</span>(<span class="number">200</span>,<span class="number">140</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//点击按钮关闭标签</span></span><br><span class="line">    QObject::<span class="built_in">connect</span>(&amp;button,<span class="built_in">SIGNAL</span>(<span class="built_in">clicked</span>(<span class="keyword">void</span>)),&amp;label,<span class="built_in">SLOT</span>(<span class="built_in">close</span>(<span class="keyword">void</span>)));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//点击按钮关闭程序</span></span><br><span class="line">    <span class="comment">//1. QObject::connect(&amp;button1,SIGNAL(clicked(void)),&amp;app,SLOT(closeAllWindows(void)));</span></span><br><span class="line">    <span class="comment">//2. QObject::connect(&amp;button1,SIGNAL(clicked(void)),&amp;app,SLOT(quit(void)));</span></span><br><span class="line">    <span class="comment">//3. QObject::connect(&amp;button1,SIGNAL(clicked(void)),&amp;parent,SLOT(close(void)));</span></span><br><span class="line"></span><br><span class="line">    parent.<span class="built_in">show</span>();</span><br><span class="line">    <span class="keyword">return</span> app.<span class="built_in">exec</span>();</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <h2 id="信号和槽连接的语法要求"><a href="#信号和槽连接的语法要求" class="headerlink" title="信号和槽连接的语法要求"></a>信号和槽连接的语法要求</h2><ul>
 <li><p>信号和槽参数要一致</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp">QObject::<span class="hljs-built_in">connect</span>(A,<span class="hljs-built_in">SIGNAL</span>(<span class="hljs-built_in">sigfun</span>(<span class="hljs-keyword">int</span>)),B,<span class="hljs-built_in">SLOT</span>(<span class="hljs-built_in">slotfun</span>(<span class="hljs-keyword">int</span>)));  <span class="hljs-comment">//OK</span><br>QObject::<span class="hljs-built_in">connect</span>(A,<span class="hljs-built_in">SIGNAL</span>(<span class="hljs-built_in">sigfun</span>(<span class="hljs-keyword">int</span>)),B,<span class="hljs-built_in">SLOT</span>(<span class="hljs-built_in">slotfun</span>(<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>)));  <span class="hljs-comment">//error</span><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line">QObject::<span class="built_in">connect</span>(A,<span class="built_in">SIGNAL</span>(<span class="built_in">sigfun</span>(<span class="keyword">int</span>)),B,<span class="built_in">SLOT</span>(<span class="built_in">slotfun</span>(<span class="keyword">int</span>)));  <span class="comment">//OK</span></span><br><span class="line">QObject::<span class="built_in">connect</span>(A,<span class="built_in">SIGNAL</span>(<span class="built_in">sigfun</span>(<span class="keyword">int</span>)),B,<span class="built_in">SLOT</span>(<span class="built_in">slotfun</span>(<span class="keyword">int</span>,<span class="keyword">int</span>)));  <span class="comment">//error</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>可以带有缺省参数</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp">QObject::<span class="hljs-built_in">connect</span>(A,<span class="hljs-built_in">SIGNAL</span>(<span class="hljs-built_in">sigfun</span>(<span class="hljs-keyword">int</span>)),B,<span class="hljs-built_in">SLOT</span>(<span class="hljs-built_in">slotfun</span>(<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>=<span class="hljs-number">0</span>)));  <span class="hljs-comment">//OK</span><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line">QObject::<span class="built_in">connect</span>(A,<span class="built_in">SIGNAL</span>(<span class="built_in">sigfun</span>(<span class="keyword">int</span>)),B,<span class="built_in">SLOT</span>(<span class="built_in">slotfun</span>(<span class="keyword">int</span>,<span class="keyword">int</span>=<span class="number">0</span>)));  <span class="comment">//OK</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>信号函数的参数可以多于槽函数</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp">QObject::<span class="hljs-built_in">connect</span>(A,<span class="hljs-built_in">SIGNAL</span>(<span class="hljs-built_in">sigfun</span>(<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>)),B,<span class="hljs-built_in">SLOT</span>(<span class="hljs-built_in">slotfun</span>(<span class="hljs-keyword">int</span>))));  <span class="hljs-comment">//OK</span><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line">QObject::<span class="built_in">connect</span>(A,<span class="built_in">SIGNAL</span>(<span class="built_in">sigfun</span>(<span class="keyword">int</span>,<span class="keyword">int</span>)),B,<span class="built_in">SLOT</span>(<span class="built_in">slotfun</span>(<span class="keyword">int</span>))));  <span class="comment">//OK</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>一个信号可以被连接到多个槽</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp">QObject::<span class="hljs-built_in">connect</span>(A,<span class="hljs-built_in">SIGNAL</span>(<span class="hljs-built_in">sigfun</span>(<span class="hljs-keyword">int</span>)),B1,<span class="hljs-built_in">SLOT</span>(<span class="hljs-built_in">slotfun</span>(<span class="hljs-keyword">int</span>))));  <span class="hljs-comment">//OK</span><br>QObject::<span class="hljs-built_in">connect</span>(A,<span class="hljs-built_in">SIGNAL</span>(<span class="hljs-built_in">sigfun</span>(<span class="hljs-keyword">int</span>)),B2,<span class="hljs-built_in">SLOT</span>(<span class="hljs-built_in">slotfun</span>(<span class="hljs-keyword">int</span>))));  <span class="hljs-comment">//OK</span><br><span class="hljs-comment">//触发的顺序不确定</span><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line">QObject::<span class="built_in">connect</span>(A,<span class="built_in">SIGNAL</span>(<span class="built_in">sigfun</span>(<span class="keyword">int</span>)),B1,<span class="built_in">SLOT</span>(<span class="built_in">slotfun</span>(<span class="keyword">int</span>))));  <span class="comment">//OK</span></span><br><span class="line">QObject::<span class="built_in">connect</span>(A,<span class="built_in">SIGNAL</span>(<span class="built_in">sigfun</span>(<span class="keyword">int</span>)),B2,<span class="built_in">SLOT</span>(<span class="built_in">slotfun</span>(<span class="keyword">int</span>))));  <span class="comment">//OK</span></span><br><span class="line"><span class="comment">//触发的顺序不确定</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>多个信号也可以连接到同一个槽</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp">QObject::<span class="hljs-built_in">connect</span>(A1,<span class="hljs-built_in">SIGNAL</span>(<span class="hljs-built_in">sigfun1</span>(<span class="hljs-keyword">int</span>)),B,<span class="hljs-built_in">SLOT</span>(<span class="hljs-built_in">slotfun</span>(<span class="hljs-keyword">int</span>))));  <span class="hljs-comment">//OK</span><br>QObject::<span class="hljs-built_in">connect</span>(A2,<span class="hljs-built_in">SIGNAL</span>(<span class="hljs-built_in">sigfun2</span>(<span class="hljs-keyword">int</span>)),B,<span class="hljs-built_in">SLOT</span>(<span class="hljs-built_in">slotfun</span>(<span class="hljs-keyword">int</span>))));  <span class="hljs-comment">//OK</span><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line">QObject::<span class="built_in">connect</span>(A1,<span class="built_in">SIGNAL</span>(<span class="built_in">sigfun1</span>(<span class="keyword">int</span>)),B,<span class="built_in">SLOT</span>(<span class="built_in">slotfun</span>(<span class="keyword">int</span>))));  <span class="comment">//OK</span></span><br><span class="line">QObject::<span class="built_in">connect</span>(A2,<span class="built_in">SIGNAL</span>(<span class="built_in">sigfun2</span>(<span class="keyword">int</span>)),B,<span class="built_in">SLOT</span>(<span class="built_in">slotfun</span>(<span class="keyword">int</span>))));  <span class="comment">//OK</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>两个信号可以直接连接(信号级联)</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp">QObject::<span class="hljs-built_in">connect</span>(A1,<span class="hljs-built_in">SIGNAL</span>(<span class="hljs-built_in">sigfun2</span>(<span class="hljs-keyword">int</span>)),A2,<span class="hljs-built_in">SLOT</span>(<span class="hljs-built_in">sigfun2</span>(<span class="hljs-keyword">int</span>))));  <span class="hljs-comment">//OK</span><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line">QObject::<span class="built_in">connect</span>(A1,<span class="built_in">SIGNAL</span>(<span class="built_in">sigfun2</span>(<span class="keyword">int</span>)),A2,<span class="built_in">SLOT</span>(<span class="built_in">sigfun2</span>(<span class="keyword">int</span>))));  <span class="comment">//OK</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>案例</p>
 <p>创建QT应用程序，包含滑块(QSlider)和选值框(QSpinBox),通过信号和槽的机制，保持同步运行</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QApplication&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QLabel&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QPushButton&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QDialog&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QTextCodec&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QSlider&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QSpinBox&gt;</span></span><br><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc,<span class="hljs-keyword">char</span> **argv)</span></span><br><span class="hljs-function"></span>{<br>    <span class="hljs-function">QApplication <span class="hljs-title">app</span><span class="hljs-params">(argc,argv)</span></span>;<br>    QDialog parent;<br>    parent.<span class="hljs-built_in">resize</span>(<span class="hljs-number">320</span>,<span class="hljs-number">240</span>);<br><br>    <span class="hljs-comment">//创建水平滑块</span><br>    <span class="hljs-function">QSlider <span class="hljs-title">slider</span><span class="hljs-params">(Qt::Horizontal,&amp;parent)</span></span>;<br>    slider.<span class="hljs-built_in">move</span>(<span class="hljs-number">20</span>,<span class="hljs-number">100</span>);<br>    slider.<span class="hljs-built_in">setRange</span>(<span class="hljs-number">0</span>,<span class="hljs-number">200</span>);<br><br>    <span class="hljs-comment">//创建选值框</span><br>    <span class="hljs-function">QSpinBox <span class="hljs-title">spin</span><span class="hljs-params">(&amp;parent)</span></span>;<br>    spin.<span class="hljs-built_in">move</span>(<span class="hljs-number">220</span>,<span class="hljs-number">100</span>);<br>    spin.<span class="hljs-built_in">setRange</span>(<span class="hljs-number">0</span>,<span class="hljs-number">200</span>);<br><br>    <span class="hljs-comment">//滑块滑动，选值框随之改变</span><br>    QObject ::<span class="hljs-built_in">connect</span>(&amp;slider,<span class="hljs-built_in">SIGNAL</span>(<span class="hljs-built_in">valueChanged</span>(<span class="hljs-keyword">int</span>)),&amp;spin,<span class="hljs-built_in">SLOT</span>(<span class="hljs-built_in">setValue</span>(<span class="hljs-keyword">int</span>)));<br><br>    <span class="hljs-comment">//改变选值，滑块改变</span><br>     QObject ::<span class="hljs-built_in">connect</span>(&amp;spin,<span class="hljs-built_in">SIGNAL</span>(<span class="hljs-built_in">valueChanged</span>(<span class="hljs-keyword">int</span>)),&amp;slider,<span class="hljs-built_in">SLOT</span>(<span class="hljs-built_in">setValue</span>(<span class="hljs-keyword">int</span>)));<br><br>    parent.<span class="hljs-built_in">show</span>();<br>    <span class="hljs-keyword">return</span> app.<span class="hljs-built_in">exec</span>();<br>}<br><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDialog&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QTextCodec&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QSlider&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QSpinBox&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc,argv)</span></span>;</span><br><span class="line">    QDialog parent;</span><br><span class="line">    parent.<span class="built_in">resize</span>(<span class="number">320</span>,<span class="number">240</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建水平滑块</span></span><br><span class="line">    <span class="function">QSlider <span class="title">slider</span><span class="params">(Qt::Horizontal,&amp;parent)</span></span>;</span><br><span class="line">    slider.<span class="built_in">move</span>(<span class="number">20</span>,<span class="number">100</span>);</span><br><span class="line">    slider.<span class="built_in">setRange</span>(<span class="number">0</span>,<span class="number">200</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建选值框</span></span><br><span class="line">    <span class="function">QSpinBox <span class="title">spin</span><span class="params">(&amp;parent)</span></span>;</span><br><span class="line">    spin.<span class="built_in">move</span>(<span class="number">220</span>,<span class="number">100</span>);</span><br><span class="line">    spin.<span class="built_in">setRange</span>(<span class="number">0</span>,<span class="number">200</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//滑块滑动，选值框随之改变</span></span><br><span class="line">    QObject ::<span class="built_in">connect</span>(&amp;slider,<span class="built_in">SIGNAL</span>(<span class="built_in">valueChanged</span>(<span class="keyword">int</span>)),&amp;spin,<span class="built_in">SLOT</span>(<span class="built_in">setValue</span>(<span class="keyword">int</span>)));</span><br><span class="line"></span><br><span class="line">    <span class="comment">//改变选值，滑块改变</span></span><br><span class="line">     QObject ::<span class="built_in">connect</span>(&amp;spin,<span class="built_in">SIGNAL</span>(<span class="built_in">valueChanged</span>(<span class="keyword">int</span>)),&amp;slider,<span class="built_in">SLOT</span>(<span class="built_in">setValue</span>(<span class="keyword">int</span>)));</span><br><span class="line"></span><br><span class="line">    parent.<span class="built_in">show</span>();</span><br><span class="line">    <span class="keyword">return</span> app.<span class="built_in">exec</span>();</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 <h2 id="面向对象的Qt编程"><a href="#面向对象的Qt编程" class="headerlink" title="面向对象的Qt编程"></a>面向对象的Qt编程</h2><ul>
@@ -356,300 +249,37 @@
 <li><p>案例</p>
 <p>计算器实现</p>
 <p>calcuator.h</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> CALCULATOR_H</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CALCULATOR_H</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;QDialog&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;QLabel&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QPushButton&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QLineEdit&gt;</span>     <span class="hljs-comment">//行编辑控件</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QHBoxLayout&gt;</span>     <span class="hljs-comment">//水平布局器</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;QDoubleValidator&gt;</span>  <span class="hljs-comment">//验证器</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Calculator</span> :</span> <span class="hljs-keyword">public</span> QDialog<br>{<br>    Q_OBJECT <span class="hljs-comment">//mocQt语法扩展</span><br><span class="hljs-keyword">private</span>:<br>    QLineEdit* m_editX;<br>    QLineEdit* m_editY;<br>    QLineEdit* m_editZ;<br>    QLabel* m_label;<br>    QPushButton* m_button;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Calculator</span>(<span class="hljs-keyword">void</span>);<br>    ~<span class="hljs-built_in">Calculator</span>();<br><span class="hljs-keyword">public</span> slots:<br>    <span class="hljs-comment">//使能的能耗按钮的槽操作数</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">enableButton</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">calcClicked</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>;<br>};<br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> <span class="hljs-comment">// CALCULATOR_H</span></span><br><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> CALCULATOR_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CALCULATOR_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDialog&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QLineEdit&gt;</span>     <span class="comment">//行编辑控件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QHBoxLayout&gt;</span>     <span class="comment">//水平布局器</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDoubleValidator&gt;</span>  <span class="comment">//验证器</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calculator</span> :</span> <span class="keyword">public</span> QDialog</span><br><span class="line">{</span><br><span class="line">    Q_OBJECT <span class="comment">//mocQt语法扩展</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    QLineEdit* m_editX;</span><br><span class="line">    QLineEdit* m_editY;</span><br><span class="line">    QLineEdit* m_editZ;</span><br><span class="line">    QLabel* m_label;</span><br><span class="line">    QPushButton* m_button;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Calculator</span>(<span class="keyword">void</span>);</span><br><span class="line">    ~<span class="built_in">Calculator</span>();</span><br><span class="line"><span class="keyword">public</span> slots:</span><br><span class="line">    <span class="comment">//使能的能耗按钮的槽操作数</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">enableButton</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">calcClicked</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// CALCULATOR_H</span></span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <p>calculator.cpp</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"calculator.h"</span></span><br><br>Calculator::<span class="hljs-built_in">Calculator</span>(<span class="hljs-keyword">void</span>)<br>{<br><br>    <span class="hljs-comment">//界面初始化</span><br>    <span class="hljs-built_in">setWindowTitle</span>(<span class="hljs-string">"计算器"</span>);<br>    <span class="hljs-comment">//左操作数,this即为当前父窗口指针</span><br>    m_editX = <span class="hljs-keyword">new</span> <span class="hljs-built_in">QLineEdit</span>(<span class="hljs-keyword">this</span>);<br>    <span class="hljs-comment">//设置文本对齐:右对齐</span><br>    m_editX-&gt;<span class="hljs-built_in">setAlignment</span>(Qt::AlignRight);<br>    <span class="hljs-comment">//设置数字验证器,只能输入数字形式内容</span><br>    m_editX-&gt;<span class="hljs-built_in">setValidator</span>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">QDoubleValidator</span>(<span class="hljs-keyword">this</span>));<br><br>    <span class="hljs-comment">//右操作数</span><br>    m_editY = <span class="hljs-keyword">new</span> <span class="hljs-built_in">QLineEdit</span>(<span class="hljs-keyword">this</span>);<br>    <span class="hljs-comment">//设置文本对齐:右对齐</span><br>    m_editY-&gt;<span class="hljs-built_in">setAlignment</span>(Qt::AlignRight);<br>    <span class="hljs-comment">//设置数字验证器,只能输入数字形式内容</span><br>    m_editY-&gt;<span class="hljs-built_in">setValidator</span>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">QDoubleValidator</span>(<span class="hljs-keyword">this</span>));<br><br>    <span class="hljs-comment">//显示结果</span><br>    m_editZ = <span class="hljs-keyword">new</span> <span class="hljs-built_in">QLineEdit</span>(<span class="hljs-keyword">this</span>);<br>    m_editZ-&gt;<span class="hljs-built_in">setAlignment</span>(Qt::AlignRight);<br>    m_editZ-&gt;<span class="hljs-built_in">setReadOnly</span>(<span class="hljs-literal">true</span>);<span class="hljs-comment">//设置为只读</span><br><br>    <span class="hljs-comment">//"+"</span><br>    m_label = <span class="hljs-keyword">new</span> <span class="hljs-built_in">QLabel</span>(<span class="hljs-string">"+"</span>,<span class="hljs-keyword">this</span>);<br>    <span class="hljs-comment">//"="</span><br>    m_button = <span class="hljs-keyword">new</span> <span class="hljs-built_in">QPushButton</span>(<span class="hljs-string">"="</span>,<span class="hljs-keyword">this</span>);<br>    m_button-&gt;<span class="hljs-built_in">setEnabled</span>(<span class="hljs-literal">false</span>); <span class="hljs-comment">//设置禁用</span><br><br><br>    <span class="hljs-comment">//创建布局器:自动调整每个控件的大小和位置</span><br>    QHBoxLayout* layout = <span class="hljs-keyword">new</span> <span class="hljs-built_in">QHBoxLayout</span>(<span class="hljs-keyword">this</span>);<br>    <span class="hljs-comment">//按水平方向,依次添加控件到布局器中</span><br>    layout-&gt;<span class="hljs-built_in">addWidget</span>(m_editX);<br>    layout-&gt;<span class="hljs-built_in">addWidget</span>(m_label);<br>    layout-&gt;<span class="hljs-built_in">addWidget</span>(m_editY);<br>    layout-&gt;<span class="hljs-built_in">addWidget</span>(m_button);<br>    layout-&gt;<span class="hljs-built_in">addWidget</span>(m_editZ);<br>    <span class="hljs-comment">//设置布局器</span><br>    <span class="hljs-built_in">setLayout</span>(layout);<br><br>    <span class="hljs-comment">//信号和槽函数连接</span><br>    <span class="hljs-comment">//左右操作数文本改变时,发送信号textChanged()</span><br>    <span class="hljs-built_in">connect</span>(m_editX,<span class="hljs-built_in">SIGNAL</span>(<span class="hljs-built_in">textChanged</span>(QString)),<span class="hljs-keyword">this</span>,<span class="hljs-built_in">SLOT</span>(<span class="hljs-built_in">enableButton</span>(<span class="hljs-keyword">void</span>)));<br>    <span class="hljs-built_in">connect</span>(m_editY,<span class="hljs-built_in">SIGNAL</span>(<span class="hljs-built_in">textChanged</span>(QString)),<span class="hljs-keyword">this</span>,<span class="hljs-built_in">SLOT</span>(<span class="hljs-built_in">enableButton</span>(<span class="hljs-keyword">void</span>)));<br><br>    <span class="hljs-comment">//点击按钮,发送信号clicked</span><br>    <span class="hljs-built_in">connect</span>(m_button,<span class="hljs-built_in">SIGNAL</span>(<span class="hljs-built_in">clicked</span>(<span class="hljs-keyword">void</span>)),<span class="hljs-keyword">this</span>,<span class="hljs-built_in">SLOT</span>(<span class="hljs-built_in">calcClicked</span>(<span class="hljs-keyword">void</span>)));<br><br>}<br><br>Calculator::~<span class="hljs-built_in">Calculator</span>()<br>{<br><br>}<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Calculator::enableButton</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>{<br>    <span class="hljs-keyword">bool</span> bX0k = <span class="hljs-number">0</span>,bY0k = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">//text:获取输入文本(QString)</span><br>    <span class="hljs-comment">//toDouble():QString转换为double,参数保存转换是否成功结果</span><br>    m_editX-&gt;<span class="hljs-built_in">text</span>().<span class="hljs-built_in">toDouble</span>(&amp;bX0k);<br>    m_editY-&gt;<span class="hljs-built_in">text</span>().<span class="hljs-built_in">toDouble</span>(&amp;bY0k);<br><br>    <span class="hljs-comment">//左右操作数都为有效数字,则使能等号按钮,否则设置禁用</span><br>    m_button-&gt;<span class="hljs-built_in">setEnabled</span>(bX0k &amp;&amp; bY0k);<br><br>}<br><span class="hljs-comment">//计算结果和显示的槽函数</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Calculator::calcClicked</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>{<br><br>    <span class="hljs-keyword">double</span> res = m_editX-&gt;<span class="hljs-built_in">text</span>().<span class="hljs-built_in">toDouble</span>()+m_editY-&gt;<span class="hljs-built_in">text</span>().<span class="hljs-built_in">toDouble</span>();<br><br>    <span class="hljs-comment">//number():将double转换为QString</span><br>    QString str = QString::<span class="hljs-built_in">number</span>(res);<br>    <span class="hljs-comment">//显示字符串形式结果</span><br>    m_editZ-&gt;<span class="hljs-built_in">setText</span>(str);<br>}<br><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"calculator.h"</span></span></span><br><span class="line"></span><br><span class="line">Calculator::<span class="built_in">Calculator</span>(<span class="keyword">void</span>)</span><br><span class="line">{</span><br><span class="line"></span><br><span class="line">    <span class="comment">//界面初始化</span></span><br><span class="line">    <span class="built_in">setWindowTitle</span>(<span class="string">"计算器"</span>);</span><br><span class="line">    <span class="comment">//左操作数,this即为当前父窗口指针</span></span><br><span class="line">    m_editX = <span class="keyword">new</span> <span class="built_in">QLineEdit</span>(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//设置文本对齐:右对齐</span></span><br><span class="line">    m_editX-&gt;<span class="built_in">setAlignment</span>(Qt::AlignRight);</span><br><span class="line">    <span class="comment">//设置数字验证器,只能输入数字形式内容</span></span><br><span class="line">    m_editX-&gt;<span class="built_in">setValidator</span>(<span class="keyword">new</span> <span class="built_in">QDoubleValidator</span>(<span class="keyword">this</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">//右操作数</span></span><br><span class="line">    m_editY = <span class="keyword">new</span> <span class="built_in">QLineEdit</span>(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//设置文本对齐:右对齐</span></span><br><span class="line">    m_editY-&gt;<span class="built_in">setAlignment</span>(Qt::AlignRight);</span><br><span class="line">    <span class="comment">//设置数字验证器,只能输入数字形式内容</span></span><br><span class="line">    m_editY-&gt;<span class="built_in">setValidator</span>(<span class="keyword">new</span> <span class="built_in">QDoubleValidator</span>(<span class="keyword">this</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">//显示结果</span></span><br><span class="line">    m_editZ = <span class="keyword">new</span> <span class="built_in">QLineEdit</span>(<span class="keyword">this</span>);</span><br><span class="line">    m_editZ-&gt;<span class="built_in">setAlignment</span>(Qt::AlignRight);</span><br><span class="line">    m_editZ-&gt;<span class="built_in">setReadOnly</span>(<span class="literal">true</span>);<span class="comment">//设置为只读</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//"+"</span></span><br><span class="line">    m_label = <span class="keyword">new</span> <span class="built_in">QLabel</span>(<span class="string">"+"</span>,<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//"="</span></span><br><span class="line">    m_button = <span class="keyword">new</span> <span class="built_in">QPushButton</span>(<span class="string">"="</span>,<span class="keyword">this</span>);</span><br><span class="line">    m_button-&gt;<span class="built_in">setEnabled</span>(<span class="literal">false</span>); <span class="comment">//设置禁用</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建布局器:自动调整每个控件的大小和位置</span></span><br><span class="line">    QHBoxLayout* layout = <span class="keyword">new</span> <span class="built_in">QHBoxLayout</span>(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//按水平方向,依次添加控件到布局器中</span></span><br><span class="line">    layout-&gt;<span class="built_in">addWidget</span>(m_editX);</span><br><span class="line">    layout-&gt;<span class="built_in">addWidget</span>(m_label);</span><br><span class="line">    layout-&gt;<span class="built_in">addWidget</span>(m_editY);</span><br><span class="line">    layout-&gt;<span class="built_in">addWidget</span>(m_button);</span><br><span class="line">    layout-&gt;<span class="built_in">addWidget</span>(m_editZ);</span><br><span class="line">    <span class="comment">//设置布局器</span></span><br><span class="line">    <span class="built_in">setLayout</span>(layout);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//信号和槽函数连接</span></span><br><span class="line">    <span class="comment">//左右操作数文本改变时,发送信号textChanged()</span></span><br><span class="line">    <span class="built_in">connect</span>(m_editX,<span class="built_in">SIGNAL</span>(<span class="built_in">textChanged</span>(QString)),<span class="keyword">this</span>,<span class="built_in">SLOT</span>(<span class="built_in">enableButton</span>(<span class="keyword">void</span>)));</span><br><span class="line">    <span class="built_in">connect</span>(m_editY,<span class="built_in">SIGNAL</span>(<span class="built_in">textChanged</span>(QString)),<span class="keyword">this</span>,<span class="built_in">SLOT</span>(<span class="built_in">enableButton</span>(<span class="keyword">void</span>)));</span><br><span class="line"></span><br><span class="line">    <span class="comment">//点击按钮,发送信号clicked</span></span><br><span class="line">    <span class="built_in">connect</span>(m_button,<span class="built_in">SIGNAL</span>(<span class="built_in">clicked</span>(<span class="keyword">void</span>)),<span class="keyword">this</span>,<span class="built_in">SLOT</span>(<span class="built_in">calcClicked</span>(<span class="keyword">void</span>)));</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">Calculator::~<span class="built_in">Calculator</span>()</span><br><span class="line">{</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Calculator::enableButton</span><span class="params">(<span class="keyword">void</span>)</span></span>{</span><br><span class="line">    <span class="keyword">bool</span> bX0k = <span class="number">0</span>,bY0k = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//text:获取输入文本(QString)</span></span><br><span class="line">    <span class="comment">//toDouble():QString转换为double,参数保存转换是否成功结果</span></span><br><span class="line">    m_editX-&gt;<span class="built_in">text</span>().<span class="built_in">toDouble</span>(&amp;bX0k);</span><br><span class="line">    m_editY-&gt;<span class="built_in">text</span>().<span class="built_in">toDouble</span>(&amp;bY0k);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//左右操作数都为有效数字,则使能等号按钮,否则设置禁用</span></span><br><span class="line">    m_button-&gt;<span class="built_in">setEnabled</span>(bX0k &amp;&amp; bY0k);</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"><span class="comment">//计算结果和显示的槽函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Calculator::calcClicked</span><span class="params">(<span class="keyword">void</span>)</span></span>{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">double</span> res = m_editX-&gt;<span class="built_in">text</span>().<span class="built_in">toDouble</span>()+m_editY-&gt;<span class="built_in">text</span>().<span class="built_in">toDouble</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//number():将double转换为QString</span></span><br><span class="line">    QString str = QString::<span class="built_in">number</span>(res);</span><br><span class="line">    <span class="comment">//显示字符串形式结果</span></span><br><span class="line">    m_editZ-&gt;<span class="built_in">setText</span>(str);</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <p>mian.cpp</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"calculator.h"</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;QApplication&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> *argv[])</span></span><br><span class="hljs-function"></span>{<br>    <span class="hljs-function">QApplication <span class="hljs-title">a</span><span class="hljs-params">(argc, argv)</span></span>;<br>    Calculator w;<br>    w.<span class="hljs-built_in">show</span>();<br><br>    <span class="hljs-keyword">return</span> a.<span class="hljs-built_in">exec</span>();<br>}<br><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"calculator.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line">    Calculator w;</span><br><span class="line">    w.<span class="built_in">show</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> a.<span class="built_in">exec</span>();</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>。。</p>
-
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/Qt/">Qt</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Qt/">Qt</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/02/08/C++_TSP/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">TSP问题</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/02/04/ROS2/">
-                        <span class="hidden-mobile">ROS之命令与编程实践</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"UrMBdkpVtSriHxFtNjQRvPqm-gzGzoHsz","appKey":"rLGXsY7AM0Ym431NbB2fCRpX","path":"window.location.pathname","placeholder":"发一条友善的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
-          </article>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-  <div class="col-lg-7 mx-auto nopadding-x-md">
-    <div class="container custom post-custom mx-auto">
-      <p style="text-align:center;">如果博文对你有帮助，可以给博主充充电噢~ <br> 非常感谢！！</p><img src="/img/qxd.jpg" srcset="/img/loading2.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
-    </div>
-  </div>
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-
-    
-  </main>
-
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
-  </div>
-  
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- LeanCloud 统计PV -->
-        <span id="leancloud-site-pv-container" style="display: none">
-            总访问量 
-            <span id="leancloud-site-pv"></span>
-             次
-          </span>
-      
-      
-        <!-- LeanCloud 统计UV -->
-        <span id="leancloud-site-uv-container" style="display: none">
-            总访客数 
-            <span id="leancloud-site-uv"></span>
-             人
-          </span>
-      
-
-    
-  </div>
-
-
-  
-
-  
-</footer>
-
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
-  
-  
-    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
-  
-
-
-
-
-  <script defer src="/js/leancloud.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-      typing(title)
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-  
-<script src="/js/diy/timeDate.js"></script>
-<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-<script src="//cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js"></script>
-<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"}});</script></body>
-</html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Tony</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://bsheepcoder.github.io/2022/02/08/C++_QT1/">https://bsheepcoder.github.io/2022/02/08/C++_QT1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://bsheepcoder.github.io" target="_blank">Q's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Qt/">Qt</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/08/C++_TSP/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">TSP问题</div></div></a></div><div class="next-post pull-right"><a href="/2022/02/04/ROS2/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">ROS之命令与编程实践</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Tony</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">61</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Bsheepcoder.io" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#QT-for-linux"><span class="toc-number">1.</span> <span class="toc-text">QT_for_linux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AAQT%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">第一个QT应用程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#QT%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">QT中文编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%88%B6%E7%AA%97%E5%8F%A3"><span class="toc-number">4.</span> <span class="toc-text">父窗口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%A7%BD"><span class="toc-number">5.</span> <span class="toc-text">信号和槽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-number">6.</span> <span class="toc-text">案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%A7%BD%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%AF%AD%E6%B3%95%E8%A6%81%E6%B1%82"><span class="toc-number">7.</span> <span class="toc-text">信号和槽连接的语法要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84Qt%E7%BC%96%E7%A8%8B"><span class="toc-number">8.</span> <span class="toc-text">面向对象的Qt编程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">9.</span> <span class="toc-text">参考文献</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/18/Hexo_butterfly/" title="Hexo主题换为butterfly"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo主题换为butterfly"/></a><div class="content"><a class="title" href="/2022/03/18/Hexo_butterfly/" title="Hexo主题换为butterfly">Hexo主题换为butterfly</a><time datetime="2022-03-18T07:15:58.551Z" title="发表于 2022-03-18 15:15:58">2022-03-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/15/C++_letcode1/" title="力扣刷题记录"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="力扣刷题记录"/></a><div class="content"><a class="title" href="/2022/03/15/C++_letcode1/" title="力扣刷题记录">力扣刷题记录</a><time datetime="2022-03-15T12:06:03.845Z" title="发表于 2022-03-15 20:06:03">2022-03-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/14/Road1/" title="每日规划日志"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每日规划日志"/></a><div class="content"><a class="title" href="/2022/03/14/Road1/" title="每日规划日志">每日规划日志</a><time datetime="2022-03-14T10:09:11.147Z" title="发表于 2022-03-14 18:09:11">2022-03-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/14/C++_STL1/" title="C++STL复习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++STL复习"/></a><div class="content"><a class="title" href="/2022/03/14/C++_STL1/" title="C++STL复习">C++STL复习</a><time datetime="2022-03-14T01:41:33.906Z" title="发表于 2022-03-14 09:41:33">2022-03-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/13/Web_Raspberrypi1/" title="【项目】在树莓派上部署个人博客"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【项目】在树莓派上部署个人博客"/></a><div class="content"><a class="title" href="/2022/03/13/Web_Raspberrypi1/" title="【项目】在树莓派上部署个人博客">【项目】在树莓派上部署个人博客</a><time datetime="2022-03-13T10:23:16.750Z" title="发表于 2022-03-13 18:23:16">2022-03-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Tony</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz',
+      appKey: '8y2ItNdFctdKBPMHS31S2jbm',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"}});</script></body></html>

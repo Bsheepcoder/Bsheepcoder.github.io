@@ -1,271 +1,150 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/page1.png">
-  <link rel="icon" href="/img/page1.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#000000">
-  <meta name="description" content="Google开源的SLAM-2d算法论文">
-  <meta name="author" content="Tony">
-  <meta name="keywords" content="">
-  <meta name="description" content="Google开源的SLAM-2d算法论文">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>SLAM-2D实时闭环检测论文笔记（Google） | Q's blog</title><meta name="keywords" content="SLAM"><meta name="author" content="Tony"><meta name="copyright" content="Tony"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Google开源的SLAM-2d算法论文">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SLAM-2D实时闭环检测论文笔记（Google）">
 <meta property="og:url" content="https://bsheepcoder.github.io/2022/02/26/SLAM_Cartographer1/index.html">
 <meta property="og:site_name" content="Q&#39;s blog">
 <meta property="og:description" content="Google开源的SLAM-2d算法论文">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2022/02/26/SebpOWvRKr7ZVni.png">
-<meta property="og:image" content="https://s2.loli.net/2022/02/26/jMKufwAIkdYZmLb.png">
-<meta property="og:image" content="https://s2.loli.net/2022/02/27/ceXYKQj5qwuiTl1.png">
-<meta property="og:image" content="https://s2.loli.net/2022/02/27/5puXlekRjGntQo2.png">
-<meta property="og:image" content="https://s2.loli.net/2022/02/27/xJOeIgdnUyqlXCt.png">
-<meta property="og:image" content="https://s2.loli.net/2022/02/27/wTAkm1U6I5eWs3N.png">
-<meta property="og:image" content="https://s2.loli.net/2022/02/27/DHyje6Xz9NxQq8P.png">
-<meta property="og:image" content="https://s2.loli.net/2022/02/27/SqkeomxcWvJ9BAY.png">
-<meta property="og:image" content="https://s2.loli.net/2022/02/27/ieuBQCEtWMjOgZr.png">
-<meta property="og:image" content="https://s2.loli.net/2022/02/27/iIxe1fA7kZ3QYzs.png">
-<meta property="og:image" content="https://s2.loli.net/2022/02/27/tOUvImcHBAFZSnk.png">
-<meta property="og:image" content="https://s2.loli.net/2022/02/27/DL4qUeaOIz8X6du.png">
-<meta property="og:image" content="https://s2.loli.net/2022/02/27/3MeUoiycxjkmN6J.png">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 <meta property="article:published_time" content="2022-02-26T10:14:09.258Z">
 <meta property="article:modified_time" content="2022-03-05T10:37:48.190Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="SLAM">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2022/02/26/SebpOWvRKr7ZVni.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/page1.png"><link rel="canonical" href="https://bsheepcoder.github.io/2022/02/26/SLAM_Cartographer1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SLAM-2D实时闭环检测论文笔记（Google）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-05 18:37:48'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
   
-  <title>SLAM-2D实时闭环检测论文笔记（Google） - Q&#39;s blog</title>
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
   
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-  
-<link rel="stylesheet" href="/css/diy/shubiao.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"bsheepcoder.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":5,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#efec02","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading2.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz","app_key":"8y2ItNdFctdKBPMHS31S2jbm","server_url":"https://0wpy18ji.lc-cn-n1-shared.com","path":"window.location.pathname"}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0">
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
-
-
-<body>
-  <header style="height: 30vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Q&#39;s blog</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/w/w1.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="SLAM-2D实时闭环检测论文笔记（Google）">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-02-26 18:14" pubdate>
-        2022年2月26日 晚上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      15k 字
-    </span>
-  
-
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      46 分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
-          
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">SLAM-2D实时闭环检测论文笔记（Google）</h1>
-            
-              <p class="note note-info">
-                
-                  更新于：2022年3月5日 晚上
-                
-              </p>
-            
-            <div class="markdown-body">
-              <ul>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">61</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Q's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">SLAM-2D实时闭环检测论文笔记（Google）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-02-26T10:14:09.258Z" title="发表于 2022-02-26 18:14:09">2022-02-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-05T10:37:48.190Z" title="更新于 2022-03-05 18:37:48">2022-03-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/SLAM/">SLAM</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="SLAM-2D实时闭环检测论文笔记（Google）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><ul>
 <li><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/7487258">Real-Time Loop Closure in 2D LIDAR SLAM</a> 原文</li>
 <li>其他翻译参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/luohuiwu/article/details/88890307">Google Cartographer 《Real-Time Loop Closure in 2D LIDAR SLAM》翻译 (中英对照）</a></li>
 <li>自己翻译的可能不准确，以原文为准。</li>
@@ -318,11 +197,11 @@
 <h3 id="B-Submaps"><a href="#B-Submaps" class="headerlink" title="B. Submaps"></a>B. Submaps</h3><ul>
 <li>使用几个连续的扫描来构建一个子图，这些子图采用概率网格M的形式：<script type="math/tex">M:rZ\times rZ\rightarrow [p_{min},p_{max}]</script>（每个格子的边长就是地图分辨率），子图中离散网格的点之间的距离构成了分辨率r，例如5厘米，成为实际值。这些值可以被认为是一个网格点被阻塞的概率，对于每个网格点，我们定义相应的 <em>pixel</em> 像素，以包含最接近该网格点的所有点。</li>
 </ul>
-<p><img src="https://s2.loli.net/2022/02/26/SebpOWvRKr7ZVni.png" srcset="/img/loading2.gif" lazyload alt="Fig. 1. Grid points and associated pixels."></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/02/26/SebpOWvRKr7ZVni.png" alt="Fig. 1. Grid points and associated pixels."></p>
 <ul>
 <li><p>无论何时将扫描插入概率网格中，都会计算出命中的网格点集和未命中的网格点集。对于每一次命中，我们将最近的网格点插入命中集合中。对于每一次未命中，我们插入与扫描原点和每个扫描点之间的一条射线相交的每个像素相关联的网格点，不包括已经在命中集合中的网格点。每一个以前没有观察到的网格点在未命中或命中的集合中，则分配一个概率<script type="math/tex">p_{hit}</script>或<script type="math/tex">p_{miss}</script>。如果网格点x已经被观察到，我们更新命中和未命中的概率为:</p>
 <script type="math/tex; mode=display">\begin{align}  odds(p) = \frac{p}{1-p},     \tag{2}\end{align}</script><script type="math/tex; mode=display">\begin{align} M_{new}(x)=clamp(odds^{-1}(odds(M_{old}(x))\cdot odds(p_{hit}))) && \tag{3}\end{align}</script><p>未观察到也是一样的。(在代码中用log来相加表示相乘)</p>
-<p><img src="https://s2.loli.net/2022/02/26/jMKufwAIkdYZmLb.png" srcset="/img/loading2.gif" lazyload alt="Fig. 2. A scan and pixels associated with hits (shaded and crossed out) and misses (shaded only)."></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/02/26/jMKufwAIkdYZmLb.png" alt="Fig. 2. A scan and pixels associated with hits (shaded and crossed out) and misses (shaded only)."></p>
 </li>
 </ul>
 <h3 id="C-Ceres-scan-matching-目标匹配器"><a href="#C-Ceres-scan-matching-目标匹配器" class="headerlink" title="C. Ceres scan matching 目标匹配器"></a>C. Ceres scan matching 目标匹配器</h3><ul>
@@ -356,7 +235,7 @@
 <li><p>我们计算一个整数步数覆盖给定的有线性和角度大小的搜索窗口。例如：<script type="math/tex">W_x = W_y = 7m ,W_\theta=30^。</script> </p>
 <script type="math/tex; mode=display">\begin{align}w_x = \lceil\frac{W_x}{r}\rceil,w_y = \lceil\frac{W_y}{r}\rceil ,w_x = \lceil\frac{W_\theta}{\delta_\theta}\rceil \tag{8}\end{align}</script><p>这导出了一个有限集W，W组成了一个搜索窗口(search window)，它围绕着位于其中心的估计$ξ_0$。</p>
 <script type="math/tex; mode=display">\begin{align}\overline{W} = \begin{Bmatrix}  -w_x,...,w_x\end{Bmatrix}\times\begin{Bmatrix}  -w_y,...,w_y\end{Bmatrix}\times\begin{Bmatrix} -w_{\theta},...,w_\theta \end{Bmatrix} ,\tag{9}\end{align}</script><script type="math/tex; mode=display">\begin{align} W = \begin{Bmatrix} ξ_0+(rj_x,rj_y,\delta_\theta j_\theta):(j_x,j_y,j_\theta)\in\overline{W} \end{Bmatrix}. \tag{10}\end{align}</script><p>求$ξ^*$值的朴素算法，可以很容易地表述出来，如算法1描述，但是对于我们想的搜索窗口的大小来说，它将会很慢。</p>
-<p><img src="https://s2.loli.net/2022/02/27/ceXYKQj5qwuiTl1.png" srcset="/img/loading2.gif" lazyload alt="Algorithm 1 Naive algorithm for (BBS)"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/02/27/ceXYKQj5qwuiTl1.png" alt="Algorithm 1 Naive algorithm for (BBS)"></p>
 <p>相反，我们采用分支定界法可以在更大的搜索窗口有效地计算ξ值。有关通用方法，请参阅算法2。这种方法首先是在<strong>混合整数线性规划问题</strong>的背景下提出的[17]。关于这一主题的文献非常广泛;有关简短概述，请参阅[18]。</p>
 </li>
 <li><p>其主要思想是将可能的子集表示为树中的节点，其中根节点表示所有可能的解，在我们的例子中是W。每个节点的子节点构成其父节点的一个分区，因此它们一起表示相同的可能性集。叶子节点是单例 （singletons）;每一个代表一个可行的解决方案。注意，该算法是精确的。它提供了与单纯方法相同的解决方案，只要内部节点c的得分(c)是其元素得分的上界。在这种情况下，无论什么时候一个节点是有界的，这个子树中都不存在一个比目前已知的最好的解更好的解。</p>
@@ -368,8 +247,8 @@
 </ul>
 <h4 id="2-Node-selection"><a href="#2-Node-selection" class="headerlink" title="2) Node selection"></a>2) Node selection</h4><ul>
 <li><p>树中的每个节点都由一个整数元组描述<script type="math/tex">c = (c_x, c_y, c_θ, c_h) ∈ Z^4.</script>高度为$C_h$的节点组合最多2个<script type="math/tex">2^{C_h}\times2^{C_h}</script>可能的转换，但表示一个特定的旋转： </p>
-<script type="math/tex; mode=display">\begin{align}\overline{\overline{W_c}} = \begin{pmatrix} \begin{Bmatrix}  (j_x,j_y)\in Z^2: \begin{cases} c_x \le j_x <  c_x + 2^{Ch} \\  c_y \le j_y <  c_y + 2^{Ch}\end{cases} \end{Bmatrix} \times  \begin{Bmatrix}  c_\theta\end{Bmatrix}\end{pmatrix} , \tag{11}\end{align}</script><script type="math/tex; mode=display">\begin{align}  \overline{W_c} = \overline{\overline{W_c}} \cap \overline{W_c}. \tag{12}\end{align}</script><p><img src="https://s2.loli.net/2022/02/27/5puXlekRjGntQo2.png" srcset="/img/loading2.gif" lazyload alt="Algorithm 2 Generic branch and bound" style="zoom: 67%;"></p>
-<p><img src="https://s2.loli.net/2022/02/27/xJOeIgdnUyqlXCt.png" srcset="/img/loading2.gif" lazyload alt="Algorithm 3 DFS branch and bound scan matcher for (BBS)" style="zoom: 67%;"></p>
+<script type="math/tex; mode=display">\begin{align}\overline{\overline{W_c}} = \begin{pmatrix} \begin{Bmatrix}  (j_x,j_y)\in Z^2: \begin{cases} c_x \le j_x <  c_x + 2^{Ch} \\  c_y \le j_y <  c_y + 2^{Ch}\end{cases} \end{Bmatrix} \times  \begin{Bmatrix}  c_\theta\end{Bmatrix}\end{pmatrix} , \tag{11}\end{align}</script><script type="math/tex; mode=display">\begin{align}  \overline{W_c} = \overline{\overline{W_c}} \cap \overline{W_c}. \tag{12}\end{align}</script><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/02/27/5puXlekRjGntQo2.png" alt="Algorithm 2 Generic branch and bound" style="zoom: 67%;"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/02/27/xJOeIgdnUyqlXCt.png" alt="Algorithm 3 DFS branch and bound scan matcher for (BBS)" style="zoom: 67%;"></p>
 <blockquote>
 <p>树是根据不同分辨率的地图来建立的，高分辨率的地图为上界</p>
 </blockquote>
@@ -382,9 +261,9 @@
 <h4 id="3-Computing-upper-bounds"><a href="#3-Computing-upper-bounds" class="headerlink" title="3) Computing upper bounds"></a>3) Computing upper bounds</h4><ul>
 <li><p>分支定界法的其余部分是计算内部节点上界的一种有效方法，无论在计算量上还是在定界质量上都是如此。我们使用</p>
 <script type="math/tex; mode=display">\begin{align} score(c) &= \sum_{k=1}^K max_{j \in \overline{\overline{W}}_c } M_{nearest} (T_{ξj}h_k)\\ \tag{15}&\geq  \sum_{k=1}^K max_{j \in \overline{W}_c } M_{nearest} (T_{ξj}h_k) \\ &\ge max_{j \in\overline{W}_c }\sum_{k=1}^K  M_{nearest} (T_{ξj}h_k)\end{align}</script><p>为了能够有效地计算出最大值，我们使用了预先计算的网格 $M^{Ch}_{precomp}.$ 对于每个可能的高度$c_h$预先计算一个网格，这样我们就可以努力地在扫描点的个数中计算分数。注意，为了能够做到这一点，我们还计算了在搜索空间边界附近大于$\overline{W}_c$的最大值$\overline{\overline{W}}_c $。</p>
-<script type="math/tex; mode=display">\begin{align} score(c) &= \sum_{k=1}^K  M_{precomp}^{c_h} (T_{ξc}h_k) \tag{16}  \\   \end{align}</script><p><img src="https://s2.loli.net/2022/02/27/wTAkm1U6I5eWs3N.png" srcset="/img/loading2.gif" lazyload style="zoom: 67%;"></p>
+<script type="math/tex; mode=display">\begin{align} score(c) &= \sum_{k=1}^K  M_{precomp}^{c_h} (T_{ξc}h_k) \tag{16}  \\   \end{align}</script><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/02/27/wTAkm1U6I5eWs3N.png" style="zoom: 67%;"></p>
 <p>和前面一样，对叶子节点使用$ξ<em>c$。请注意，$$M</em>{precomp}^{h}<script type="math/tex">预压缩与</script>M_{nearest}$$具有相同的像素结构，但在每个像素中，存储的是从<strong>那里</strong>开始的$2^h\times2^h$的像素盒的最大值（使格子变粗）。图3给出了这种预先计算网格的一个例子。</p>
-<p><img src="https://s2.loli.net/2022/02/27/DHyje6Xz9NxQq8P.png" srcset="/img/loading2.gif" lazyload alt="Fig. 3. Precomputed grids of size 1, 4, 16 and 64."></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/02/27/DHyje6Xz9NxQq8P.png" alt="Fig. 3. Precomputed grids of size 1, 4, 16 and 64."></p>
 <blockquote>
 <p>将64个的栅格值都设置为相同，所以会很占内存</p>
 </blockquote>
@@ -403,22 +282,22 @@
 <li>利用从德国博物馆收集的数据1,913 s的传感器数据或2,253 m(根据计算解)，我们计算了如图4所示的地图。在使用Intel Xeon E5-1650 3.2 GHz的工作站上，我们的SLAM算法使用了1018秒的CPU时间，使用最多2.2 GB内存，最多4个后台线程用于循环闭合扫描匹配。它在360秒的挂钟时间后结束，这意味着它达到了5.3倍的实时性能。</li>
 <li>生成的闭环优化图由11,456个节点和35300条边组成。每次向图中添加几个节点时，都会运行优化问题(SPA)。一个典型的解决方案大约需要3个迭代，并在0.3秒内完成。</li>
 </ul>
-<p><img src="https://s2.loli.net/2022/02/27/SqkeomxcWvJ9BAY.png" srcset="/img/loading2.gif" lazyload alt="Fig. 4. Cartographer map of the 2nd floor of the Deutsches Museum."></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/02/27/SqkeomxcWvJ9BAY.png" alt="Fig. 4. Cartographer map of the 2nd floor of the Deutsches Museum."></p>
 <h3 id="B-Real-World-Experiment-Neato’s-Revo-LDS"><a href="#B-Real-World-Experiment-Neato’s-Revo-LDS" class="headerlink" title="B. Real-World Experiment: Neato’s Revo LDS"></a>B. Real-World Experiment: Neato’s Revo LDS</h3><ul>
 <li><p>在他们成本低于30美元的真空吸尘器Neato Robotics中使用了一种激光距离传感器(LDS)叫做Revo LDS[20]。我们通过推着手推车上的吸尘器来获取数据，同时在调试连接上以大约2 Hz的频率进行扫描。图5显示了5厘米分辨率的平面图。为了评估平面图的质量，我们将激光卷尺测量的5条直线与绘图工具计算出的结果地图中的像素距离进行了比较。结果如表一所示，所有数值均以米为单位。</p>
-<p><img src="https://s2.loli.net/2022/02/27/ieuBQCEtWMjOgZr.png" srcset="/img/loading2.gif" lazyload alt="Fig. 5. Cartographer map generated using Revo LDS sensor data."></p>
-<p><img src="https://s2.loli.net/2022/02/27/iIxe1fA7kZ3QYzs.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/02/27/ieuBQCEtWMjOgZr.png" alt="Fig. 5. Cartographer map generated using Revo LDS sensor data."></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/02/27/iIxe1fA7kZ3QYzs.png" alt=""></p>
 </li>
 </ul>
 <h3 id="C-Comparisons-using-the-Radish-data-set"><a href="#C-Comparisons-using-the-Radish-data-set" class="headerlink" title="C. Comparisons using the Radish data set"></a>C. Comparisons using the Radish data set</h3><ul>
 <li><p>我们使用[21]中提出的基准测量方法将我们的方法与其他方法进行比较，该基准测量方法将相对姿态变化的误差与手动管理的地面真实关系进行比较。表二显示了我们的制图师计算的结果SLAM算法。为了比较，我们引用结果图映射(GM)来自[21]。此外，我们在表III中引用了[9]最近发表的结果。所有的误差都以米和度为单位给出，可以是绝对的，也可以是平方的，以及它们的标准差。</p>
 </li>
 <li><p>每个公共数据集都是用独特的传感器配置收集的，与我们的Cartographer背包不同。因此，需要调整各种算法参数以产生合理的结果。根据我们的经验，调优制图仪只需要将算法与传感器配置相匹配，而不是与特定的环境相匹配。</p>
-<p><img src="https://s2.loli.net/2022/02/27/tOUvImcHBAFZSnk.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/02/27/tOUvImcHBAFZSnk.png" alt=""></p>
 </li>
 <li><p>由于每个公共数据集都有一个独特的传感器配置，我们不能确定我们的参数是否也适合特定的位置。唯一的例外是Freiburg医院数据集，其中有两个独立的关系文件。我们使用局部关系来调整参数，但也看到了整体关系的良好结果。所有数据集之间最显著的差异是激光扫描的频率和质量，以及里程计的可用性和质量。</p>
-<p><img src="https://s2.loli.net/2022/02/27/DL4qUeaOIz8X6du.png" srcset="/img/loading2.gif" lazyload alt=""></p>
-<p><img src="https://s2.loli.net/2022/02/27/3MeUoiycxjkmN6J.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/02/27/DL4qUeaOIz8X6du.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/02/27/3MeUoiycxjkmN6J.png" alt=""></p>
 </li>
 <li><p>尽管公共数据集中使用的传感器硬件相对过时，但Cartographer SLAM的性能始终在我们的预期范围内，即使在MIT CSAIL的情况下我们的性能比Graph Mapping差得多。对于英特尔数据集，我们优于Graph Mapping，但不是Graph FLIRT。在麻省理工学院基利安法庭，我们在所有的指标中的表现优于Graph Mapping。在所有其他情况下，Cartographer 在大多数但不是所有指标上都优于Graph Mapping和Graph FLIRT。</p>
 </li>
@@ -468,334 +347,29 @@
 <li><p>[21] R. Kummerle, B. Steder, C. Dornhege, M. Ruhnke, G. Grisetti, ¨ C. Stachniss, and A. Kleiner, “On measuring the accuracy of SLAM algorithms,” Autonomous Robots, vol. 27, no. 4, pp. 387–407, 2009.</p>
 </li>
 </ul>
-
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/SLAM/">SLAM</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/SLAM/">SLAM</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/03/01/English_Words1/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">背单词本</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/02/23/BJ_OS1/">
-                        <span class="hidden-mobile">操作系统(Operating System)</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"UrMBdkpVtSriHxFtNjQRvPqm-gzGzoHsz","appKey":"rLGXsY7AM0Ym431NbB2fCRpX","path":"window.location.pathname","placeholder":"发一条友善的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
-          </article>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-  <div class="col-lg-7 mx-auto nopadding-x-md">
-    <div class="container custom post-custom mx-auto">
-      <p style="text-align:center;">如果博文对你有帮助，可以给博主充充电噢~ <br> 非常感谢！！</p><img src="/img/qxd.jpg" srcset="/img/loading2.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
-    </div>
-  </div>
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-
-    
-  </main>
-
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
-  </div>
-  
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- LeanCloud 统计PV -->
-        <span id="leancloud-site-pv-container" style="display: none">
-            总访问量 
-            <span id="leancloud-site-pv"></span>
-             次
-          </span>
-      
-      
-        <!-- LeanCloud 统计UV -->
-        <span id="leancloud-site-uv-container" style="display: none">
-            总访客数 
-            <span id="leancloud-site-uv"></span>
-             人
-          </span>
-      
-
-    
-  </div>
-
-
-  
-
-  
-</footer>
-
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
-  
-  
-    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
-  
-
-
-
-
-  <script defer src="/js/leancloud.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-      typing(title)
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-  
-
-  
-    <!-- MathJax -->
-    <script>
-      MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']]
-        },
-        loader: {
-          load: ['ui/lazy']
-        },
-        options: {
-          renderActions: {
-            findScript: [10, doc => {
-              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-                const display = !!node.type.match(/; *mode=display/);
-                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-                const text = document.createTextNode('');
-                node.parentNode.replaceChild(text, node);
-                math.start = { node: text, delim: '', n: 0 };
-                math.end = { node: text, delim: '', n: 0 };
-                doc.math.push(math);
-              });
-            }, '', false],
-            insertedScript: [200, () => {
-              document.querySelectorAll('mjx-container').forEach(node => {
-                let target = node.parentNode;
-                if (target.nodeName.toLowerCase() === 'li') {
-                  target.parentNode.classList.add('has-jax');
-                }
-              });
-            }, '', false]
-          }
-        }
-      };
-    </script>
-
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
-
-  
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-  
-<script src="/js/diy/timeDate.js"></script>
-<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-<script src="//cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js"></script>
-<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"}});</script></body>
-</html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Tony</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://bsheepcoder.github.io/2022/02/26/SLAM_Cartographer1/">https://bsheepcoder.github.io/2022/02/26/SLAM_Cartographer1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://bsheepcoder.github.io" target="_blank">Q's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SLAM/">SLAM</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/01/English_Words1/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">背单词本</div></div></a></div><div class="next-post pull-right"><a href="/2022/02/23/BJ_OS1/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">操作系统(Operating System)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/03/09/SLAM_LinearPro_Sample/" title="单纯形法求解线性规划问题"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-09</div><div class="title">单纯形法求解线性规划问题</div></div></a></div><div><a href="/2022/03/09/SLAM_LinearProgramming/" title="认识整数规划问题"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-09</div><div class="title">认识整数规划问题</div></div></a></div><div><a href="/2022/03/09/SLAM_intgerLinearProgramming/" title="分支定界法如何求解整数规划问题"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-09</div><div class="title">分支定界法如何求解整数规划问题</div></div></a></div><div><a href="/2022/03/11/SLAM_share1/" title="浅析分支定界法在SLAM技术中的应用"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-11</div><div class="title">浅析分支定界法在SLAM技术中的应用</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Tony</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">61</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Bsheepcoder.io" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SLAM-2D%E5%AE%9E%E6%97%B6%E9%97%AD%E7%8E%AF%E6%A3%80%E6%B5%8B-Real-Time-Loop-Closure-in-2D-LIDAR-SLAM"><span class="toc-number">1.</span> <span class="toc-text">SLAM-2D实时闭环检测(Real-Time Loop Closure in 2D LIDAR SLAM)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-INTRODUCTION%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">I. INTRODUCTION介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#II-RELATED-WORK%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">II. RELATED WORK相关工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Scan-to-scan"><span class="toc-number">3.1.</span> <span class="toc-text">Scan-to-scan</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scan-to-map"><span class="toc-number">3.2.</span> <span class="toc-text">Scan-to-map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pixel-accurate-scan"><span class="toc-number">3.3.</span> <span class="toc-text">Pixel-accurate scan</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#III-SYSTEM-OVERVIEW"><span class="toc-number">4.</span> <span class="toc-text">III. SYSTEM OVERVIEW</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IV-LOCAL-2D-SLAM"><span class="toc-number">5.</span> <span class="toc-text">IV. LOCAL 2D SLAM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Scans"><span class="toc-number">5.1.</span> <span class="toc-text">A. Scans</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Submaps"><span class="toc-number">5.2.</span> <span class="toc-text">B. Submaps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Ceres-scan-matching-%E7%9B%AE%E6%A0%87%E5%8C%B9%E9%85%8D%E5%99%A8"><span class="toc-number">5.3.</span> <span class="toc-text">C. Ceres scan matching 目标匹配器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#V-CLOSING-LOOPS"><span class="toc-number">6.</span> <span class="toc-text">V. CLOSING LOOPS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Optimization-problem%E6%9C%80%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98"><span class="toc-number">6.1.</span> <span class="toc-text">A. Optimization problem最优化问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Branch-and-bound-scan-matching-%E5%88%86%E6%94%AF%E5%AE%9A%E7%95%8C%E7%AE%97%E6%B3%95"><span class="toc-number">6.2.</span> <span class="toc-text">B.  Branch-and-bound scan matching 分支定界算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Node-selection"><span class="toc-number">6.2.1.</span> <span class="toc-text">1) Node selection</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Node-selection"><span class="toc-number">6.2.2.</span> <span class="toc-text">2) Node selection</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Computing-upper-bounds"><span class="toc-number">6.2.3.</span> <span class="toc-text">3) Computing upper bounds</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VI-EXPERIMENTAL-RESULTS"><span class="toc-number">7.</span> <span class="toc-text">VI. EXPERIMENTAL RESULTS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Real-World-Experiment-Deutsches-Museum"><span class="toc-number">7.1.</span> <span class="toc-text">A. Real-World Experiment: Deutsches Museum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Real-World-Experiment-Neato%E2%80%99s-Revo-LDS"><span class="toc-number">7.2.</span> <span class="toc-text">B. Real-World Experiment: Neato’s Revo LDS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Comparisons-using-the-Radish-data-set"><span class="toc-number">7.3.</span> <span class="toc-text">C. Comparisons using the Radish data set</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VII-CONCLUSIONS"><span class="toc-number">8.</span> <span class="toc-text">VII. CONCLUSIONS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#REFERENCES"><span class="toc-number">9.</span> <span class="toc-text">REFERENCES</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/18/Hexo_butterfly/" title="Hexo主题换为butterfly"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo主题换为butterfly"/></a><div class="content"><a class="title" href="/2022/03/18/Hexo_butterfly/" title="Hexo主题换为butterfly">Hexo主题换为butterfly</a><time datetime="2022-03-18T07:15:58.551Z" title="发表于 2022-03-18 15:15:58">2022-03-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/15/C++_letcode1/" title="力扣刷题记录"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="力扣刷题记录"/></a><div class="content"><a class="title" href="/2022/03/15/C++_letcode1/" title="力扣刷题记录">力扣刷题记录</a><time datetime="2022-03-15T12:06:03.845Z" title="发表于 2022-03-15 20:06:03">2022-03-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/14/Road1/" title="每日规划日志"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每日规划日志"/></a><div class="content"><a class="title" href="/2022/03/14/Road1/" title="每日规划日志">每日规划日志</a><time datetime="2022-03-14T10:09:11.147Z" title="发表于 2022-03-14 18:09:11">2022-03-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/14/C++_STL1/" title="C++STL复习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++STL复习"/></a><div class="content"><a class="title" href="/2022/03/14/C++_STL1/" title="C++STL复习">C++STL复习</a><time datetime="2022-03-14T01:41:33.906Z" title="发表于 2022-03-14 09:41:33">2022-03-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/13/Web_Raspberrypi1/" title="【项目】在树莓派上部署个人博客"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【项目】在树莓派上部署个人博客"/></a><div class="content"><a class="title" href="/2022/03/13/Web_Raspberrypi1/" title="【项目】在树莓派上部署个人博客">【项目】在树莓派上部署个人博客</a><time datetime="2022-03-13T10:23:16.750Z" title="发表于 2022-03-13 18:23:16">2022-03-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Tony</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz',
+      appKey: '8y2ItNdFctdKBPMHS31S2jbm',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"}});</script></body></html>

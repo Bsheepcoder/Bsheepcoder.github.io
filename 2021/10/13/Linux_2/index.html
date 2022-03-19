@@ -1,393 +1,150 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/page1.png">
-  <link rel="icon" href="/img/page1.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#000000">
-  <meta name="description" content="基于CentOS 7,韩顺平老师的教学笔记，仅用于个人学习，详细访问官方文档。">
-  <meta name="author" content="Tony">
-  <meta name="keywords" content="">
-  <meta name="description" content="基于CentOS 7,韩顺平老师的教学笔记，仅用于个人学习，详细访问官方文档。">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Linux笔记(从基础到高级):中篇 | Q's blog</title><meta name="keywords" content="Linux"><meta name="author" content="Tony"><meta name="copyright" content="Tony"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基于CentOS 7,韩顺平老师的教学笔记，仅用于个人学习，详细访问官方文档。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux笔记(从基础到高级):中篇">
 <meta property="og:url" content="https://bsheepcoder.github.io/2021/10/13/Linux_2/index.html">
 <meta property="og:site_name" content="Q&#39;s blog">
 <meta property="og:description" content="基于CentOS 7,韩顺平老师的教学笔记，仅用于个人学习，详细访问官方文档。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/VpbCBfHtrzu1Fwg.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/ASNbYnKjEg512VD.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/lvAuFN1W7BrtzKg.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/T1yKQgVs53xCMrS.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/8SutQMhza4jsfcI.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/dzMD2PjEmCbQpXr.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/XqwzFU9Z6lgT8KQ.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/y18ZYOlKtWf6TeC.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/jMfUKZAeP6qbV2D.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/hDsgEtJSMQAFjnY.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/yvB4JFMAuHYhDj5.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/M6lxFBwvVyPaKOk.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/hNyaidGHx3WQ1IV.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/xHZ4nGjWbKBXAif.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/bIeAkSNazJOrpfR.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/TkzuoI9lFDaR5yB.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/TzMnBaoeFvtiXED.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/Svh9MVBGdXJqRwE.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/TKpZt6LkhOX3WVy.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/TcfAn18zSbDu3NB.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/5xbsn9JFZucevYr.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/rXEcIwMl29zCQgL.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/glb3wyaXSBnKT8Q.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/hRWA68gukXKMdEY.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/NLaC9Qz8WVjxmlp.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/wubYsnmAOdpzegh.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/xBsCb7ihgn8R4wH.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/7zwCA56kebT9UcB.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/EJl4IzZWjbwm5qM.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/26kw7cQ83XPb1ve.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/xze6YZNIywBmiSs.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/TuN1rVnp6eA8qo9.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/UGFNWx7kp4lZjua.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/vM7s4xVFIdecGg9.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/07/z1M3xqAJNwEB5ZD.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/cr1KfCvDdmZV9Xi.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/xKo4T3cvNEInBR9.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/pGdhf7jKeyvRnwW.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/IWzRZeEFdK3P1hu.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/pDAng2FTUlMkdbV.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/PZUEXe5hDBlCGOW.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/vILmuM41RwWDGhA.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/myf3QRLGZNqTKO4.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/XEZO6fbi74rnVTv.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/nLqFEZemhgU7tDW.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/J5xmiN3qu1FG7MK.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/ZU7WhwNRs6SO3I8.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/NaGYeAcnShKukQp.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/Ox9ceyh2oIDC7dB.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/78pdnhEuWGz5FqD.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/Ku3N72Fsk6lhQPV.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/fKLdJ4BkcH9PF3s.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/tWxy1QVuY68lNOz.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/sUtK8aEkPuTiGdV.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/BeMgZSum2oGKOaX.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/345laGCmUZW2d6q.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/PmgMG2jxFawJ7r8.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/x4jRivAD1JBZuFr.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/VC9EqyafXAS8LG4.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/oeIlC6AYcKNfEpR.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/uRoSelEr3TwxODf.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/EBCaS7ifGrz8KmJ.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/8sxQBmuyWKl6Cqj.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/tTmpdJZ7YXaFr6h.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/12/iVAx4l3XNPvjaeH.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/12/VRhdu6CvwWmSMn4.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/12/oyxlX6ZVbWnRMES.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/12/giyXDjsC7G8hcMF.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/12/GK9FMNjoIzk147l.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/12/naHUvz7bhqQNX2i.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/13/bZ1ApKsvEcSiImO.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/13/DSIP3xLBzyFblai.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/ufp6ikA5UzCxL4h.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/13/rsBnjdY4xvpMVDa.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/13/yVIrzDgPauLq6Hf.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/13/WbPLwasMcVHZn83.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/f7CuQO6r1dBcnTL.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/CEjDb1R735spqiB.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/97Wo1JpEnTP5iqf.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/D7Fhl6EsSv8MyZY.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/hmg6Oi3WPdzTjSD.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/lTpW6joDstefPqE.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/8raUBtOqLQy5ReX.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/15FWce67udyXQTE.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/eONsWchMVPr8qkb.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/15/p8QIPNAWaywnbOE.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/15/MjDkhR7UN5Lfysa.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/15/ZqXCzpPvlWb8xnS.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/15/YR6uFMawqep87vg.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/14/2UalIuzv9nSrG7s.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/15/WHsBc83RbPthEzf.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/15/uKRHBceiX2s5kCo.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/15/b4rpkWYMJeuhT9i.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/15/JHUiYuB4d6vqQyb.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/15/62taTWZpFbE3M98.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/gHcY6ZSQJwsxTBP.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/WDFYXQuCqZvBe56.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/KyVQMJf14czIjh7.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/S9dx5vIueQosijJ.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/1Ep9ChkOtgFWMLV.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/49WlXi1VoHpGacz.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/9JgTLcCRFS8E65W.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/IRNqmcvAGOBksXn.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/dgXvMT4s5Y7KFEa.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/V8keUbBYhqGtwNv.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/8rALOGX6uDMdjwP.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/P4OiACnWc2K78G6.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/XzV5QfO4iAoaLmG.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/yEkrNupQKV3h4Wt.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/Ww5nMTrvIthildJ.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/YFJE1pSTKzd7uM5.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/CR5zuE2FSAoMlVU.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/OminP7gQUR59tMc.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/WG4Zqha6m8j3BXy.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/ntux84QErgpDOTN.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/17/4x9VbJFRlgfOmIy.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/18/UepLFTh4IPtHSM5.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/18/A1EQrlOPzgV7Xka.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/18/8WNVJ6UYkzDTqRS.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/19/yDB9fsAC4kwujbI.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/19/CRnYKjqPHXLW3QZ.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/19/OWxyzYAZ3ec8Bil.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/19/xkyhlutSmn6w4Vv.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/19/WHSzMYlgD25nG3O.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/19/1ikZemyEw3RtVC7.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/19/nPX5c4o2VlgvChz.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/19/U3WCKjw6DBNPQXY.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/19/NRkJ5b1ZExzAfCc.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/Vi2rKFNewjASfO1.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/19/bYuwWE7AXiFVBxy.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/19/4m5zp3RHTtEUlS1.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/19/cQirakxzAv7h8H1.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/19/YTcGjhAbKUaBiO9.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/02/g2FcaKElrzW8Yqk.png">
-<meta property="og:image" content="https://i.loli.net/2021/08/19/duqHRhpgjbIlyLY.png">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 <meta property="article:published_time" content="2021-10-12T23:17:31.963Z">
 <meta property="article:modified_time" content="2021-10-11T00:49:05.000Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="Linux">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.loli.net/2021/08/07/VpbCBfHtrzu1Fwg.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/page1.png"><link rel="canonical" href="https://bsheepcoder.github.io/2021/10/13/Linux_2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux笔记(从基础到高级):中篇',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-10-11 08:49:05'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
   
-  <title>Linux笔记(从基础到高级):中篇 - Q&#39;s blog</title>
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
   
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-  
-<link rel="stylesheet" href="/css/diy/shubiao.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"bsheepcoder.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":5,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#efec02","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading2.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz","app_key":"8y2ItNdFctdKBPMHS31S2jbm","server_url":"https://0wpy18ji.lc-cn-n1-shared.com","path":"window.location.pathname"}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0">
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
-
-
-<body>
-  <header style="height: 30vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Q&#39;s blog</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/Linux.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Linux笔记(从基础到高级):中篇">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-10-13 07:17" pubdate>
-        2021年10月13日 早上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      3.2k 字
-    </span>
-  
-
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      10 分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
-          
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">Linux笔记(从基础到高级):中篇</h1>
-            
-              <p class="note note-info">
-                
-                  更新于：2021年10月11日 早上
-                
-              </p>
-            
-            <div class="markdown-body">
-              <p>基于CentOS 7 ，<a target="_blank" rel="noopener" href="https://wiki.centos.org/FrontPage">CentOS官方</a></p>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">61</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Q's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Linux笔记(从基础到高级):中篇</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-10-12T23:17:31.963Z" title="发表于 2021-10-13 07:17:31">2021-10-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-10-11T00:49:05.000Z" title="更新于 2021-10-11 08:49:05">2021-10-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux笔记(从基础到高级):中篇"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><p>基于CentOS 7 ，<a target="_blank" rel="noopener" href="https://wiki.centos.org/FrontPage">CentOS官方</a></p>
 <h2 id="Linux组管理"><a href="#Linux组管理" class="headerlink" title="Linux组管理"></a>Linux组管理</h2><ul>
 <li><p>在linux中所有的用户都需要属于一个组，类似人都有一个国家</p>
 </li>
@@ -399,652 +156,389 @@
 </li>
 <li><p>其他组</p>
 <p>Linux组的管理机制</p>
-<p><img src="https://i.loli.net/2021/08/07/VpbCBfHtrzu1Fwg.png" srcset="/img/loading2.gif" lazyload alt="image-20210807121210180"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/VpbCBfHtrzu1Fwg.png" alt="image-20210807121210180"></p>
 </li>
 </ul>
 <h3 id="文件目录所有者"><a href="#文件目录所有者" class="headerlink" title="文件目录所有者"></a>文件目录所有者</h3><p>谁创建文件谁就是所有者</p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">ls -ahl <span class="hljs-comment">//查看文件的所有者</span><br>chown 用户名 文件名 <span class="hljs-comment">//修改文件所有者</span><br></code></pre></div></td></tr></tbody></table></figure>
-<h3 id="组的创建"><a href="#组的创建" class="headerlink" title="组的创建"></a>组的创建</h3><figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">groupadd 组名 <span class="hljs-comment">//创建组</span><br>useradd -g monster fox <span class="hljs-comment">//在指定组创建用户</span><br>id fox  <span class="hljs-comment">//显示用户信息</span><br>chgrp 组名 文件名  <span class="hljs-comment">//改变文件的所在组</span><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">ls -ahl <span class="comment">//查看文件的所有者</span></span><br><span class="line">chown 用户名 文件名 <span class="comment">//修改文件所有者</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="组的创建"><a href="#组的创建" class="headerlink" title="组的创建"></a>组的创建</h3><figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">groupadd 组名 <span class="comment">//创建组</span></span><br><span class="line">useradd -g monster fox <span class="comment">//在指定组创建用户</span></span><br><span class="line">id fox  <span class="comment">//显示用户信息</span></span><br><span class="line">chgrp 组名 文件名  <span class="comment">//改变文件的所在组</span></span><br></pre></td></tr></tbody></table></figure>
 <h3 id="其他组"><a href="#其他组" class="headerlink" title="其他组"></a>其他组</h3><p>除文件的所有者和所在组的用户外，系统的其他用户都是文件的其他组</p>
-<h3 id="改变用户的所在组"><a href="#改变用户的所在组" class="headerlink" title="改变用户的所在组"></a>改变用户的所在组</h3><figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">usermod -g 组名 用户名<br>usermod -d 目录名 用户名 改变用户登陆的初始目录  <span class="hljs-comment">//这里注意，用户需要有到新目录的权限</span><br></code></pre></div></td></tr></tbody></table></figure>
-<h3 id="权限的基本介绍"><a href="#权限的基本介绍" class="headerlink" title="权限的基本介绍"></a>权限的基本介绍</h3><p><img src="https://i.loli.net/2021/08/07/ASNbYnKjEg512VD.png" srcset="/img/loading2.gif" lazyload alt="image-20210807133047688"></p>
-<h3 id="rwx权限-难点"><a href="#rwx权限-难点" class="headerlink" title="rwx权限==*难点=="></a>rwx权限==*难点==</h3><p><img src="https://i.loli.net/2021/08/07/lvAuFN1W7BrtzKg.png" srcset="/img/loading2.gif" lazyload></p>
-<p><img src="https://i.loli.net/2021/08/07/T1yKQgVs53xCMrS.png" srcset="/img/loading2.gif" lazyload alt="image-20210807133316216"></p>
-<p><img src="https://i.loli.net/2021/08/07/8SutQMhza4jsfcI.png" srcset="/img/loading2.gif" lazyload alt="image-20210807135816519" style="zoom:150%;"></p>
-<h3 id="权限实例"><a href="#权限实例" class="headerlink" title="权限实例"></a>权限实例</h3><p><img src="https://i.loli.net/2021/10/02/dzMD2PjEmCbQpXr.png" srcset="/img/loading2.gif" lazyload alt="image-20210807135730380"></p>
-<p><img src="https://i.loli.net/2021/08/07/XqwzFU9Z6lgT8KQ.png" srcset="/img/loading2.gif" lazyload alt="image-20210807135512446"></p>
+<h3 id="改变用户的所在组"><a href="#改变用户的所在组" class="headerlink" title="改变用户的所在组"></a>改变用户的所在组</h3><figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">usermod -g 组名 用户名</span><br><span class="line">usermod -d 目录名 用户名 改变用户登陆的初始目录  <span class="comment">//这里注意，用户需要有到新目录的权限</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="权限的基本介绍"><a href="#权限的基本介绍" class="headerlink" title="权限的基本介绍"></a>权限的基本介绍</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/ASNbYnKjEg512VD.png" alt="image-20210807133047688"></p>
+<h3 id="rwx权限-难点"><a href="#rwx权限-难点" class="headerlink" title="rwx权限==*难点=="></a>rwx权限==*难点==</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/lvAuFN1W7BrtzKg.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/T1yKQgVs53xCMrS.png" alt="image-20210807133316216"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/8SutQMhza4jsfcI.png" alt="image-20210807135816519" style="zoom:150%;"></p>
+<h3 id="权限实例"><a href="#权限实例" class="headerlink" title="权限实例"></a>权限实例</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/dzMD2PjEmCbQpXr.png" alt="image-20210807135730380"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/XqwzFU9Z6lgT8KQ.png" alt="image-20210807135512446"></p>
 <h3 id="修改权限"><a href="#修改权限" class="headerlink" title="修改权限"></a>修改权限</h3><ul>
 <li>使用+、-、= 变更权限</li>
 </ul>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">u <span class="hljs-comment">//所有者</span><br>g <span class="hljs-comment">//所在组</span><br>o <span class="hljs-comment">//其他组</span><br>a <span class="hljs-comment">//所有</span><br>chmod u=rwx,g=rx,o=x 文件/目录名  <span class="hljs-comment">//给文件/目录设置权限</span><br>chmod u-x,g+w 文件名  <span class="hljs-comment">//给文件增加权限</span><br>chmod a+r 文件名  <br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">u <span class="comment">//所有者</span></span><br><span class="line">g <span class="comment">//所在组</span></span><br><span class="line">o <span class="comment">//其他组</span></span><br><span class="line">a <span class="comment">//所有</span></span><br><span class="line">chmod u=rwx,g=rx,o=x 文件/目录名  <span class="comment">//给文件/目录设置权限</span></span><br><span class="line">chmod u-x,g+w 文件名  <span class="comment">//给文件增加权限</span></span><br><span class="line">chmod a+r 文件名  </span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>通过数字变更权限</li>
 </ul>
-<p><img src="https://i.loli.net/2021/08/07/y18ZYOlKtWf6TeC.png" srcset="/img/loading2.gif" lazyload alt="image-20210807141449589"></p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json"><span class="hljs-number">1</span> <span class="hljs-comment">//x</span><br><span class="hljs-number">2</span> <span class="hljs-comment">//w</span><br><span class="hljs-number">3</span> <span class="hljs-comment">//wx</span><br><span class="hljs-number">4</span> <span class="hljs-comment">//r</span><br><span class="hljs-number">5</span> <span class="hljs-comment">//rx</span><br><span class="hljs-number">6</span> <span class="hljs-comment">//rw</span><br><span class="hljs-number">7</span> <span class="hljs-comment">//rwx</span><br>chmod <span class="hljs-number">751</span> 文件名/目录 <br></code></pre></div></td></tr></tbody></table></figure>
-<h3 id="修改文件-目录所有者"><a href="#修改文件-目录所有者" class="headerlink" title="修改文件/目录所有者"></a>修改文件/目录所有者</h3><figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">chown newowner 文件/目录 改变所有者 <span class="hljs-comment">//命令一定要记得写所有者</span><br>chown newowner:mewgroup 文件/目录 改变所有者和所在组<br>-R   <span class="hljs-comment">//递归生效</span><br>chown -R tom /home/test<br></code></pre></div></td></tr></tbody></table></figure>
-<h3 id="修改文件-目录所在组"><a href="#修改文件-目录所在组" class="headerlink" title="修改文件/目录所在组"></a>修改文件/目录所在组</h3><figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">chgrp newgroup 文件/目录  <span class="hljs-comment">//改变所在组</span><br>chgrp -R newgroup 文件/目录 <span class="hljs-comment">//递归改变</span><br></code></pre></div></td></tr></tbody></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/y18ZYOlKtWf6TeC.png" alt="image-20210807141449589"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line"><span class="number">1</span> <span class="comment">//x</span></span><br><span class="line"><span class="number">2</span> <span class="comment">//w</span></span><br><span class="line"><span class="number">3</span> <span class="comment">//wx</span></span><br><span class="line"><span class="number">4</span> <span class="comment">//r</span></span><br><span class="line"><span class="number">5</span> <span class="comment">//rx</span></span><br><span class="line"><span class="number">6</span> <span class="comment">//rw</span></span><br><span class="line"><span class="number">7</span> <span class="comment">//rwx</span></span><br><span class="line">chmod <span class="number">751</span> 文件名/目录 </span><br></pre></td></tr></tbody></table></figure>
+<h3 id="修改文件-目录所有者"><a href="#修改文件-目录所有者" class="headerlink" title="修改文件/目录所有者"></a>修改文件/目录所有者</h3><figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">chown newowner 文件/目录 改变所有者 <span class="comment">//命令一定要记得写所有者</span></span><br><span class="line">chown newowner:mewgroup 文件/目录 改变所有者和所在组</span><br><span class="line">-R   <span class="comment">//递归生效</span></span><br><span class="line">chown -R tom /home/test</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="修改文件-目录所在组"><a href="#修改文件-目录所在组" class="headerlink" title="修改文件/目录所在组"></a>修改文件/目录所在组</h3><figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">chgrp newgroup 文件/目录  <span class="comment">//改变所在组</span></span><br><span class="line">chgrp -R newgroup 文件/目录 <span class="comment">//递归改变</span></span><br></pre></td></tr></tbody></table></figure>
 <h3 id="组应用实践"><a href="#组应用实践" class="headerlink" title="组应用实践"></a>组应用实践</h3><h4 id="警察和土匪游戏"><a href="#警察和土匪游戏" class="headerlink" title="警察和土匪游戏"></a>警察和土匪游戏</h4><ul>
-<li><img src="https://i.loli.net/2021/08/07/jMfUKZAeP6qbV2D.png" srcset="/img/loading2.gif" lazyload alt="image-20210807153433573"></li>
-<li><img src="https://i.loli.net/2021/08/07/hDsgEtJSMQAFjnY.png" srcset="/img/loading2.gif" lazyload alt="image-20210807153412290"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/jMfUKZAeP6qbV2D.png" alt="image-20210807153433573"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/hDsgEtJSMQAFjnY.png" alt="image-20210807153412290"></li>
 </ul>
-<h4 id="神仙妖怪"><a href="#神仙妖怪" class="headerlink" title="神仙妖怪"></a>神仙妖怪</h4><p><img src="https://i.loli.net/2021/08/07/yvB4JFMAuHYhDj5.png" srcset="/img/loading2.gif" lazyload alt="image-20210807155359173"></p>
+<h4 id="神仙妖怪"><a href="#神仙妖怪" class="headerlink" title="神仙妖怪"></a>神仙妖怪</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/yvB4JFMAuHYhDj5.png" alt="image-20210807155359173"></p>
 <h2 id="定时任务调度"><a href="#定时任务调度" class="headerlink" title="定时任务调度"></a>定时任务调度</h2><h3 id="crond任务调度"><a href="#crond任务调度" class="headerlink" title="crond任务调度"></a>crond任务调度</h3><ul>
 <li><p>概述</p>
-<p><img src="https://i.loli.net/2021/08/07/M6lxFBwvVyPaKOk.png" srcset="/img/loading2.gif" lazyload alt="image-20210807160535123"></p>
-<p><img src="https://i.loli.net/2021/08/07/hNyaidGHx3WQ1IV.png" srcset="/img/loading2.gif" lazyload alt="image-20210807160428559"></p>
-<p><img src="https://i.loli.net/2021/08/07/xHZ4nGjWbKBXAif.png" srcset="/img/loading2.gif" lazyload alt="image-20210807160615510"></p>
-<p><img src="https://i.loli.net/2021/08/07/bIeAkSNazJOrpfR.png" srcset="/img/loading2.gif" lazyload alt="image-20210807165446178"></p>
-  <figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">crond 选项<br></code></pre></div></td></tr></tbody></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/M6lxFBwvVyPaKOk.png" alt="image-20210807160535123"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/hNyaidGHx3WQ1IV.png" alt="image-20210807160428559"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/xHZ4nGjWbKBXAif.png" alt="image-20210807160615510"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/bIeAkSNazJOrpfR.png" alt="image-20210807165446178"></p>
+  <figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">crond 选项</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>实例</p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">/etc/crontab  <span class="hljs-comment">//设置任务调度文件</span><br>crontab -e   <span class="hljs-comment">//设置个人任务调度</span><br>*/<span class="hljs-number">1</span> * * * * ls -l /etc/ &gt; /tmp/to.txt   <span class="hljs-comment">//每小时每分钟执行</span><br></code></pre></div></td></tr></tbody></table></figure>
-<p><img src="https://i.loli.net/2021/08/07/TkzuoI9lFDaR5yB.png" srcset="/img/loading2.gif" lazyload alt="image-20210807161112429"></p>
-<p><img src="https://i.loli.net/2021/08/07/TzMnBaoeFvtiXED.png" srcset="/img/loading2.gif" lazyload alt="image-20210807162006078"></p>
-<p><img src="https://i.loli.net/2021/08/07/Svh9MVBGdXJqRwE.png" srcset="/img/loading2.gif" lazyload alt="image-20210807162142101"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">/etc/crontab  <span class="comment">//设置任务调度文件</span></span><br><span class="line">crontab -e   <span class="comment">//设置个人任务调度</span></span><br><span class="line">*/<span class="number">1</span> * * * * ls -l /etc/ &gt; /tmp/to.txt   <span class="comment">//每小时每分钟执行</span></span><br></pre></td></tr></tbody></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/TkzuoI9lFDaR5yB.png" alt="image-20210807161112429"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/TzMnBaoeFvtiXED.png" alt="image-20210807162006078"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/Svh9MVBGdXJqRwE.png" alt="image-20210807162142101"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/08/07/TKpZt6LkhOX3WVy.png" srcset="/img/loading2.gif" lazyload alt="image-20210807164826984"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/TKpZt6LkhOX3WVy.png" alt="image-20210807164826984"></p>
 </li>
 </ul>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">vim /home/my.sh <span class="hljs-comment">//创建一个shell文件</span><br><span class="hljs-comment">//在文件内输入:</span><br>cal &gt;&gt; /opt/mycal<br>date &gt;&gt; /opt/mycal<br><span class="hljs-comment">//此时没有执行权限，要给root添加执行权限：</span><br>chmod u+x /home/my.sh<br>conrtab -e  <span class="hljs-comment">//打开任务调度中心</span><br><span class="hljs-comment">//将执行控制语句添加到控制文件中</span><br>*/<span class="hljs-number">1</span> * * * * /home/my.sh<br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">vim /home/my.sh <span class="comment">//创建一个shell文件</span></span><br><span class="line"><span class="comment">//在文件内输入:</span></span><br><span class="line">cal &gt;&gt; /opt/mycal</span><br><span class="line">date &gt;&gt; /opt/mycal</span><br><span class="line"><span class="comment">//此时没有执行权限，要给root添加执行权限：</span></span><br><span class="line">chmod u+x /home/my.sh</span><br><span class="line">conrtab -e  <span class="comment">//打开任务调度中心</span></span><br><span class="line"><span class="comment">//将执行控制语句添加到控制文件中</span></span><br><span class="line">*/<span class="number">1</span> * * * * /home/my.sh</span><br></pre></td></tr></tbody></table></figure>
 <ul>
-<li><img src="https://i.loli.net/2021/08/07/TcfAn18zSbDu3NB.png" srcset="/img/loading2.gif" lazyload alt="image-20210807165404840"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/TcfAn18zSbDu3NB.png" alt="image-20210807165404840"></li>
 </ul>
 <h3 id="at定时任务"><a href="#at定时任务" class="headerlink" title="at定时任务"></a>at定时任务</h3><ul>
 <li><p>基本介绍</p>
-<p><img src="https://i.loli.net/2021/08/07/5xbsn9JFZucevYr.png" srcset="/img/loading2.gif" lazyload alt="image-20210807193902347"></p>
-<p><img src="https://i.loli.net/2021/08/07/rXEcIwMl29zCQgL.png" srcset="/img/loading2.gif" lazyload alt="image-20210807195056045"></p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">ps -ef | grep atd  <span class="hljs-comment">//检测当前运行的指令</span><br></code></pre></div></td></tr></tbody></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/5xbsn9JFZucevYr.png" alt="image-20210807193902347"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/rXEcIwMl29zCQgL.png" alt="image-20210807195056045"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">ps -ef | grep atd  <span class="comment">//检测当前运行的指令</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>at命令格式</p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">at 选项 时间   <span class="hljs-comment">//Ctrl + D 2次结束at命令的输入</span><br><span class="hljs-comment">//输入错误 用Ctrl Spaceback</span><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">at 选项 时间   <span class="comment">//Ctrl + D 2次结束at命令的输入</span></span><br><span class="line"><span class="comment">//输入错误 用Ctrl Spaceback</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>at命令的选项</p>
-<p><img src="https://i.loli.net/2021/08/07/glb3wyaXSBnKT8Q.png" srcset="/img/loading2.gif" lazyload alt="image-20210807195142797"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/glb3wyaXSBnKT8Q.png" alt="image-20210807195142797"></p>
 </li>
 <li><p>at时间定义</p>
-<p><img src="https://i.loli.net/2021/08/07/hRWA68gukXKMdEY.png" srcset="/img/loading2.gif" lazyload alt="image-20210807195234822"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/hRWA68gukXKMdEY.png" alt="image-20210807195234822"></p>
 </li>
 <li><p>实例</p>
-<p><img src="https://i.loli.net/2021/10/02/NLaC9Qz8WVjxmlp.png" srcset="/img/loading2.gif" lazyload alt="image-20210807200435924"></p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">at <span class="hljs-number">5</span>pm + <span class="hljs-number">2</span> days<br>at&gt; /bin/ls /home&lt;EOT&gt;  <span class="hljs-comment">//Ctrl + D退出</span><br></code></pre></div></td></tr></tbody></table></figure>
-<p><img src="https://i.loli.net/2021/08/07/wubYsnmAOdpzegh.png" srcset="/img/loading2.gif" lazyload alt="image-20210807204649074"></p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">atq   <span class="hljs-comment">//输出at队列信息</span><br></code></pre></div></td></tr></tbody></table></figure>
-<p><img src="https://i.loli.net/2021/08/07/xBsCb7ihgn8R4wH.png" srcset="/img/loading2.gif" lazyload alt="image-20210807204755663"></p>
-<p><img src="https://i.loli.net/2021/08/07/7zwCA56kebT9UcB.png" srcset="/img/loading2.gif" lazyload alt="image-20210807204815663"></p>
-<p><img src="https://i.loli.net/2021/08/07/EJl4IzZWjbwm5qM.png" srcset="/img/loading2.gif" lazyload alt="image-20210807204833901"></p>
-<p><img src="https://i.loli.net/2021/08/07/26kw7cQ83XPb1ve.png" srcset="/img/loading2.gif" lazyload alt="image-20210807205011471"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/NLaC9Qz8WVjxmlp.png" alt="image-20210807200435924"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">at <span class="number">5</span>pm + <span class="number">2</span> days</span><br><span class="line">at&gt; /bin/ls /home&lt;EOT&gt;  <span class="comment">//Ctrl + D退出</span></span><br></pre></td></tr></tbody></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/wubYsnmAOdpzegh.png" alt="image-20210807204649074"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">atq   <span class="comment">//输出at队列信息</span></span><br></pre></td></tr></tbody></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/xBsCb7ihgn8R4wH.png" alt="image-20210807204755663"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/7zwCA56kebT9UcB.png" alt="image-20210807204815663"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/EJl4IzZWjbwm5qM.png" alt="image-20210807204833901"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/26kw7cQ83XPb1ve.png" alt="image-20210807205011471"></p>
 <p>也可以执行脚本</p>
-<p><img src="https://i.loli.net/2021/08/07/xze6YZNIywBmiSs.png" srcset="/img/loading2.gif" lazyload alt="image-20210807205050842"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/xze6YZNIywBmiSs.png" alt="image-20210807205050842"></p>
 </li>
 </ul>
 <h2 id="磁盘分区、挂载"><a href="#磁盘分区、挂载" class="headerlink" title="磁盘分区、挂载"></a>磁盘分区、挂载</h2><h3 id="Linux分区"><a href="#Linux分区" class="headerlink" title="Linux分区"></a>Linux分区</h3><ul>
 <li><p>原理介绍</p>
-<p><img src="https://i.loli.net/2021/08/07/TuN1rVnp6eA8qo9.png" srcset="/img/loading2.gif" lazyload alt="image-20210807205401376"></p>
-<p><img src="https://i.loli.net/2021/08/07/UGFNWx7kp4lZjua.png" srcset="/img/loading2.gif" lazyload alt="image-20210807210016216" style="zoom:150%;"></p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">lsblk  <span class="hljs-comment">//查看挂载状态</span><br></code></pre></div></td></tr></tbody></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/TuN1rVnp6eA8qo9.png" alt="image-20210807205401376"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/UGFNWx7kp4lZjua.png" alt="image-20210807210016216" style="zoom:150%;"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">lsblk  <span class="comment">//查看挂载状态</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>硬盘说明</p>
-<p><img src="https://i.loli.net/2021/08/07/vM7s4xVFIdecGg9.png" srcset="/img/loading2.gif" lazyload alt="image-20210807210122329"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/vM7s4xVFIdecGg9.png" alt="image-20210807210122329"></p>
 <p>sdx~ 中 x 可以为 a,b,c,d，分别表示第1，2，3，4块硬盘</p>
-<p><img src="https://i.loli.net/2021/08/07/z1M3xqAJNwEB5ZD.png" srcset="/img/loading2.gif" lazyload alt="image-20210807210627411"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/07/z1M3xqAJNwEB5ZD.png" alt="image-20210807210627411"></p>
 </li>
 <li><p>查看挂载情况</p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">lsblk -f <span class="hljs-comment">//详细信息</span><br></code></pre></div></td></tr></tbody></table></figure>
-<p><img src="https://i.loli.net/2021/10/02/cr1KfCvDdmZV9Xi.png" srcset="/img/loading2.gif" lazyload alt="image-20210807211158441"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">lsblk -f <span class="comment">//详细信息</span></span><br></pre></td></tr></tbody></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/cr1KfCvDdmZV9Xi.png" alt="image-20210807211158441"></p>
 </li>
 </ul>
 <h3 id="挂载的经典案例"><a href="#挂载的经典案例" class="headerlink" title="挂载的经典案例"></a>挂载的经典案例</h3><ul>
 <li><p>在虚拟机中添加虚拟磁盘，重启以后就可以看到</p>
 </li>
-<li><p><img src="https://i.loli.net/2021/10/02/xKo4T3cvNEInBR9.png" srcset="/img/loading2.gif" lazyload alt="image-20210807214255205"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/xKo4T3cvNEInBR9.png" alt="image-20210807214255205"></p>
 </li>
 <li><p>分区</p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">fdisk /dev/sdb<br></code></pre></div></td></tr></tbody></table></figure>
-<p><img src="https://i.loli.net/2021/10/02/pGdhf7jKeyvRnwW.png" srcset="/img/loading2.gif" lazyload alt="image-20210807215358831"></p>
-<p><img src="https://i.loli.net/2021/10/02/IWzRZeEFdK3P1hu.png" srcset="/img/loading2.gif" lazyload alt="image-20210807215043425"></p>
-<p><img src="https://i.loli.net/2021/10/02/pDAng2FTUlMkdbV.png" srcset="/img/loading2.gif" lazyload alt="image-20210807215814412"></p>
-<p><img src="https://i.loli.net/2021/10/02/PZUEXe5hDBlCGOW.png" srcset="/img/loading2.gif" lazyload alt="image-20210807215856173"></p>
-<p><img src="https://i.loli.net/2021/10/02/vILmuM41RwWDGhA.png" srcset="/img/loading2.gif" lazyload alt="image-20210807220731459"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">fdisk /dev/sdb</span><br></pre></td></tr></tbody></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/pGdhf7jKeyvRnwW.png" alt="image-20210807215358831"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/IWzRZeEFdK3P1hu.png" alt="image-20210807215043425"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/pDAng2FTUlMkdbV.png" alt="image-20210807215814412"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/PZUEXe5hDBlCGOW.png" alt="image-20210807215856173"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/vILmuM41RwWDGhA.png" alt="image-20210807220731459"></p>
 </li>
 <li><p>关系结构图</p>
-<p><img src="https://i.loli.net/2021/10/02/myf3QRLGZNqTKO4.png" srcset="/img/loading2.gif" lazyload alt="image-20210807220803271"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/myf3QRLGZNqTKO4.png" alt="image-20210807220803271"></p>
 </li>
 <li><p>如何卸载</p>
-<p><img src="https://i.loli.net/2021/10/02/XEZO6fbi74rnVTv.png" srcset="/img/loading2.gif" lazyload alt="image-20210807221416672"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/XEZO6fbi74rnVTv.png" alt="image-20210807221416672"></p>
 </li>
 <li><p>==用命令行挂载，重启后就会失效==</p>
 </li>
 <li><p>永久挂载</p>
-<p><img src="https://i.loli.net/2021/10/02/nLqFEZemhgU7tDW.png" srcset="/img/loading2.gif" lazyload alt="image-20210807222104610"></p>
-<p><img src="https://i.loli.net/2021/10/02/J5xmiN3qu1FG7MK.png" srcset="/img/loading2.gif" lazyload alt="image-20210807222124748"></p>
-<p><img src="https://i.loli.net/2021/10/02/ZU7WhwNRs6SO3I8.png" srcset="/img/loading2.gif" lazyload alt="image-20210807222027035"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/nLqFEZemhgU7tDW.png" alt="image-20210807222104610"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/J5xmiN3qu1FG7MK.png" alt="image-20210807222124748"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/ZU7WhwNRs6SO3I8.png" alt="image-20210807222027035"></p>
 <p>重启后挂载关系一直在</p>
 </li>
 <li><p>管理员保证硬盘分区存储空间足够，保证系统正常运行</p>
 </li>
 </ul>
 <h5 id="挂载深入理解"><a href="#挂载深入理解" class="headerlink" title="挂载深入理解"></a>挂载深入理解</h5><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jiangzhaowei/p/11843026.html">https://www.cnblogs.com/jiangzhaowei/p/11843026.html</a></p>
-<h3 id="磁盘使用情况"><a href="#磁盘使用情况" class="headerlink" title="磁盘使用情况"></a>磁盘使用情况</h3>  <figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">df -h<br></code></pre></div></td></tr></tbody></table></figure>
+<h3 id="磁盘使用情况"><a href="#磁盘使用情况" class="headerlink" title="磁盘使用情况"></a>磁盘使用情况</h3>  <figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></tbody></table></figure>
 <ul>
-<li><p><img src="https://i.loli.net/2021/10/02/NaGYeAcnShKukQp.png" srcset="/img/loading2.gif" lazyload alt="image-20210807222934745"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/NaGYeAcnShKukQp.png" alt="image-20210807222934745"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/10/02/Ox9ceyh2oIDC7dB.png" srcset="/img/loading2.gif" lazyload alt="image-20210807222958796"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/Ox9ceyh2oIDC7dB.png" alt="image-20210807222958796"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/10/02/78pdnhEuWGz5FqD.png" srcset="/img/loading2.gif" lazyload alt="image-20210807223441213"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/78pdnhEuWGz5FqD.png" alt="image-20210807223441213"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/10/02/Ku3N72Fsk6lhQPV.png" srcset="/img/loading2.gif" lazyload alt="image-20210807223604802"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/Ku3N72Fsk6lhQPV.png" alt="image-20210807223604802"></p>
 </li>
 </ul>
 <h3 id="磁盘工作实用指令"><a href="#磁盘工作实用指令" class="headerlink" title="磁盘工作实用指令"></a>磁盘工作实用指令</h3><ul>
 <li><p>统计文件夹下文件的个数</p>
-<p><img src="https://i.loli.net/2021/10/02/fKLdJ4BkcH9PF3s.png" srcset="/img/loading2.gif" lazyload alt="image-20210807230818542"></p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">ls -l /opt | grep <span class="hljs-string">"^-"</span> | wc -l   <span class="hljs-comment">//当前文件夹下</span><br>ls -lR /opt | grep <span class="hljs-string">"^-"</span> | wc -l  <span class="hljs-comment">//目录下所有文件</span><br></code></pre></div></td></tr></tbody></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/fKLdJ4BkcH9PF3s.png" alt="image-20210807230818542"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">ls -l /opt | grep <span class="string">"^-"</span> | wc -l   <span class="comment">//当前文件夹下</span></span><br><span class="line">ls -lR /opt | grep <span class="string">"^-"</span> | wc -l  <span class="comment">//目录下所有文件</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>统计文件夹下目录的个数</p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">ls -l /opt | grep <span class="hljs-string">"^d"</span> | wc -l    <span class="hljs-comment">//当前文件夹下</span><br>ls -lR /opt | grep <span class="hljs-string">"^d"</span> | wc -l   <span class="hljs-comment">//目录下所有文件</span><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">ls -l /opt | grep <span class="string">"^d"</span> | wc -l    <span class="comment">//当前文件夹下</span></span><br><span class="line">ls -lR /opt | grep <span class="string">"^d"</span> | wc -l   <span class="comment">//目录下所有文件</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>树状图显示</p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">yum install tree  <span class="hljs-comment">//默认情况下，tree命令没有安装</span><br>tree 目录<br></code></pre></div></td></tr></tbody></table></figure>
-<p><img src="https://i.loli.net/2021/10/02/tWxy1QVuY68lNOz.png" srcset="/img/loading2.gif" lazyload alt="image-20210807231633355"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">yum install tree  <span class="comment">//默认情况下，tree命令没有安装</span></span><br><span class="line">tree 目录</span><br></pre></td></tr></tbody></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/tWxy1QVuY68lNOz.png" alt="image-20210807231633355"></p>
 </li>
 </ul>
-<h2 id="Linux网络配置"><a href="#Linux网络配置" class="headerlink" title="Linux网络配置"></a>Linux网络配置</h2><h3 id="NAT配置原理"><a href="#NAT配置原理" class="headerlink" title="NAT配置原理"></a>NAT配置原理</h3><p><img src="https://i.loli.net/2021/10/02/sUtK8aEkPuTiGdV.png" srcset="/img/loading2.gif" lazyload alt="image-20210807234031143"></p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">ipconfig  <span class="hljs-comment">//windows下</span><br>ifconfig  <span class="hljs-comment">//Linux下</span><br></code></pre></div></td></tr></tbody></table></figure>
-<p><img src="https://i.loli.net/2021/10/02/BeMgZSum2oGKOaX.png" srcset="/img/loading2.gif" lazyload alt="image-20210808142737158"></p>
-<h3 id="ping-测试网络连通性"><a href="#ping-测试网络连通性" class="headerlink" title="ping 测试网络连通性"></a>ping 测试网络连通性</h3><figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">ping ip地址  <br></code></pre></div></td></tr></tbody></table></figure>
+<h2 id="Linux网络配置"><a href="#Linux网络配置" class="headerlink" title="Linux网络配置"></a>Linux网络配置</h2><h3 id="NAT配置原理"><a href="#NAT配置原理" class="headerlink" title="NAT配置原理"></a>NAT配置原理</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/sUtK8aEkPuTiGdV.png" alt="image-20210807234031143"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">ipconfig  <span class="comment">//windows下</span></span><br><span class="line">ifconfig  <span class="comment">//Linux下</span></span><br></pre></td></tr></tbody></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/BeMgZSum2oGKOaX.png" alt="image-20210808142737158"></p>
+<h3 id="ping-测试网络连通性"><a href="#ping-测试网络连通性" class="headerlink" title="ping 测试网络连通性"></a>ping 测试网络连通性</h3><figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">ping ip地址  </span><br></pre></td></tr></tbody></table></figure>
 <h3 id="Linux网络环境配置"><a href="#Linux网络环境配置" class="headerlink" title="Linux网络环境配置"></a>Linux网络环境配置</h3><h4 id="自动获取"><a href="#自动获取" class="headerlink" title="自动获取"></a>自动获取</h4><ul>
 <li>特点：每次ip都是自动获取的，不是固定的，不利于做服务器</li>
 </ul>
 <h4 id="指定ip"><a href="#指定ip" class="headerlink" title="指定ip"></a>指定ip</h4><ul>
-<li><p><img src="https://i.loli.net/2021/10/02/345laGCmUZW2d6q.png" srcset="/img/loading2.gif" lazyload alt="image-20210808170414034"></p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">vi /etc/sysconfig/network-scripts/ifcfg-ens33<br></code></pre></div></td></tr></tbody></table></figure>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/345laGCmUZW2d6q.png" alt="image-20210808170414034"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><img src="https://i.loli.net/2021/10/02/PmgMG2jxFawJ7r8.png" srcset="/img/loading2.gif" lazyload alt="image-20210808170830311"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/PmgMG2jxFawJ7r8.png" alt="image-20210808170830311"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/10/02/x4jRivAD1JBZuFr.png" srcset="/img/loading2.gif" lazyload alt="image-20210808171319554"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/x4jRivAD1JBZuFr.png" alt="image-20210808171319554"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/10/02/VC9EqyafXAS8LG4.png" srcset="/img/loading2.gif" lazyload alt="image-20210808172446380"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/VC9EqyafXAS8LG4.png" alt="image-20210808172446380"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/10/02/oeIlC6AYcKNfEpR.png" srcset="/img/loading2.gif" lazyload alt="image-20210808173708283"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/oeIlC6AYcKNfEpR.png" alt="image-20210808173708283"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/10/02/uRoSelEr3TwxODf.png" srcset="/img/loading2.gif" lazyload alt="image-20210808173745509"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/uRoSelEr3TwxODf.png" alt="image-20210808173745509"></p>
 </li>
 <li><p>重启reboot  或者 service network restart</p>
 </li>
 </ul>
-<h3 id="设置主机名和hosts映射"><a href="#设置主机名和hosts映射" class="headerlink" title="设置主机名和hosts映射"></a>设置主机名和hosts映射</h3><h4 id="设置主机名"><a href="#设置主机名" class="headerlink" title="设置主机名"></a>设置主机名</h4>  <figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">hostname   <span class="hljs-comment">//查看主机名</span><br>vim /etc/hostname  <span class="hljs-comment">//修改主机名</span><br>reboot   <span class="hljs-comment">//重启生效</span><br></code></pre></div></td></tr></tbody></table></figure>
+<h3 id="设置主机名和hosts映射"><a href="#设置主机名和hosts映射" class="headerlink" title="设置主机名和hosts映射"></a>设置主机名和hosts映射</h3><h4 id="设置主机名"><a href="#设置主机名" class="headerlink" title="设置主机名"></a>设置主机名</h4>  <figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">hostname   <span class="comment">//查看主机名</span></span><br><span class="line">vim /etc/hostname  <span class="comment">//修改主机名</span></span><br><span class="line">reboot   <span class="comment">//重启生效</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
-<li><img src="https://i.loli.net/2021/10/02/EBCaS7ifGrz8KmJ.png" srcset="/img/loading2.gif" lazyload alt="image-20210812160026958"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/EBCaS7ifGrz8KmJ.png" alt="image-20210812160026958"></li>
 </ul>
 <h4 id="设置hosts映射"><a href="#设置hosts映射" class="headerlink" title="设置hosts映射"></a>设置hosts映射</h4><ul>
 <li>hosts文件  记录主机名与ip之间的关系</li>
-<li><p><img src="https://i.loli.net/2021/10/02/8sxQBmuyWKl6Cqj.png" srcset="/img/loading2.gif" lazyload alt="image-20210812162637849"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/8sxQBmuyWKl6Cqj.png" alt="image-20210812162637849"></p>
 </li>
 <li><p>ping 主机名 时 系统会去hosts文件中找相关的ip</p>
 </li>
-<li><p><img src="https://i.loli.net/2021/10/02/tTmpdJZ7YXaFr6h.png" srcset="/img/loading2.gif" lazyload alt="image-20210812164943849" style="zoom:67%;"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/tTmpdJZ7YXaFr6h.png" alt="image-20210812164943849" style="zoom:67%;"></p>
 </li>
 <li><p>windows</p>
-<p><img src="https://i.loli.net/2021/08/12/iVAx4l3XNPvjaeH.png" srcset="/img/loading2.gif" lazyload alt="image-20210812164912389"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/12/iVAx4l3XNPvjaeH.png" alt="image-20210812164912389"></p>
 </li>
 <li><p>Linux</p>
-<p><img src="https://i.loli.net/2021/08/12/VRhdu6CvwWmSMn4.png" srcset="/img/loading2.gif" lazyload alt="image-20210812170009086"></p>
-<p><img src="https://i.loli.net/2021/08/12/oyxlX6ZVbWnRMES.png" srcset="/img/loading2.gif" lazyload alt="image-20210812165652021"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/12/VRhdu6CvwWmSMn4.png" alt="image-20210812170009086"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/12/oyxlX6ZVbWnRMES.png" alt="image-20210812165652021"></p>
 </li>
 </ul>
 <h4 id="主机名解析过程"><a href="#主机名解析过程" class="headerlink" title="主机名解析过程"></a>主机名解析过程</h4><ul>
-<li><img src="https://i.loli.net/2021/08/12/giyXDjsC7G8hcMF.png" srcset="/img/loading2.gif" lazyload alt="image-20210812172523993"></li>
-<li><img src="https://i.loli.net/2021/08/12/GK9FMNjoIzk147l.png" srcset="/img/loading2.gif" lazyload alt="image-20210812172954472"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/12/giyXDjsC7G8hcMF.png" alt="image-20210812172523993"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/12/GK9FMNjoIzk147l.png" alt="image-20210812172954472"></li>
 </ul>
 <h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><ul>
-<li><p><img src="https://i.loli.net/2021/08/12/naHUvz7bhqQNX2i.png" srcset="/img/loading2.gif" lazyload alt="image-20210812173456153"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/12/naHUvz7bhqQNX2i.png" alt="image-20210812173456153"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/08/13/bZ1ApKsvEcSiImO.png" srcset="/img/loading2.gif" lazyload alt="image-20210813144923587"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/13/bZ1ApKsvEcSiImO.png" alt="image-20210813144923587"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/08/13/DSIP3xLBzyFblai.png" srcset="/img/loading2.gif" lazyload alt="image-20210813145314229"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/13/DSIP3xLBzyFblai.png" alt="image-20210813145314229"></p>
 </li>
 <li><p>前台</p>
-<p><img src="https://i.loli.net/2021/10/02/ufp6ikA5UzCxL4h.png" srcset="/img/loading2.gif" lazyload alt="image-20210813145513197"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/ufp6ikA5UzCxL4h.png" alt="image-20210813145513197"></p>
 </li>
 <li><p>后台  Mysql</p>
 </li>
 </ul>
 <h3 id="显示系统执行的进程"><a href="#显示系统执行的进程" class="headerlink" title="显示系统执行的进程"></a>显示系统执行的进程</h3><ul>
-<li><p><img src="https://i.loli.net/2021/08/13/rsBnjdY4xvpMVDa.png" srcset="/img/loading2.gif" lazyload alt="image-20210813145838636"></p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">ps -aux | more <span class="hljs-comment">//用more查看进程</span><br>ps -aux | grep sshd  <span class="hljs-comment">//过滤查看</span><br></code></pre></div></td></tr></tbody></table></figure>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/13/rsBnjdY4xvpMVDa.png" alt="image-20210813145838636"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">ps -aux | more <span class="comment">//用more查看进程</span></span><br><span class="line">ps -aux | grep sshd  <span class="comment">//过滤查看</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><img src="https://i.loli.net/2021/08/13/yVIrzDgPauLq6Hf.png" srcset="/img/loading2.gif" lazyload alt="image-20210813152033299"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/13/yVIrzDgPauLq6Hf.png" alt="image-20210813152033299"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/08/13/WbPLwasMcVHZn83.png" srcset="/img/loading2.gif" lazyload alt="image-20210813152124388"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/13/WbPLwasMcVHZn83.png" alt="image-20210813152124388"></p>
 </li>
 </ul>
 <h3 id="查看父进程"><a href="#查看父进程" class="headerlink" title="查看父进程"></a>查看父进程</h3><ul>
-<li><p><img src="https://i.loli.net/2021/10/02/f7CuQO6r1dBcnTL.png" srcset="/img/loading2.gif" lazyload alt="image-20210813153155143"></p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">ps -ef | more <br>ps -ef | grep sshd<br></code></pre></div></td></tr></tbody></table></figure>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/f7CuQO6r1dBcnTL.png" alt="image-20210813153155143"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">ps -ef | more </span><br><span class="line">ps -ef | grep sshd</span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><img src="https://i.loli.net/2021/10/02/CEjDb1R735spqiB.png" srcset="/img/loading2.gif" lazyload alt="image-20210813153527743"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/CEjDb1R735spqiB.png" alt="image-20210813153527743"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/10/02/97Wo1JpEnTP5iqf.png" srcset="/img/loading2.gif" lazyload alt="image-20210813153830773"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/97Wo1JpEnTP5iqf.png" alt="image-20210813153830773"></p>
 </li>
 </ul>
 <h3 id="终止进程kill"><a href="#终止进程kill" class="headerlink" title="终止进程kill"></a>终止进程kill</h3><ul>
-<li><p><img src="https://i.loli.net/2021/10/02/D7Fhl6EsSv8MyZY.png" srcset="/img/loading2.gif" lazyload alt="image-20210813153912545"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/D7Fhl6EsSv8MyZY.png" alt="image-20210813153912545"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/10/02/hmg6Oi3WPdzTjSD.png" srcset="/img/loading2.gif" lazyload alt="image-20210813154146796" style="zoom: 67%;"></p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">ps -aux | grep sshd   <span class="hljs-comment">//查看远程服务sshd进程</span><br></code></pre></div></td></tr></tbody></table></figure>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/hmg6Oi3WPdzTjSD.png" alt="image-20210813154146796" style="zoom: 67%;"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">ps -aux | grep sshd   <span class="comment">//查看远程服务sshd进程</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><img src="https://i.loli.net/2021/10/02/lTpW6joDstefPqE.png" srcset="/img/loading2.gif" lazyload alt="image-20210813155337788"></p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">kill 进程号  <span class="hljs-comment">//终止某个进程</span><br>/bin/systemctl start sshd.service  <span class="hljs-comment">//重启sshd服务</span><br>killall gedit   <span class="hljs-comment">//终止gedit的多个终端</span><br>kill <span class="hljs-number">-9</span> 进程号  <span class="hljs-comment">//强制删除</span><br></code></pre></div></td></tr></tbody></table></figure>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/lTpW6joDstefPqE.png" alt="image-20210813155337788"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">kill 进程号  <span class="comment">//终止某个进程</span></span><br><span class="line">/bin/systemctl start sshd.service  <span class="comment">//重启sshd服务</span></span><br><span class="line">killall gedit   <span class="comment">//终止gedit的多个终端</span></span><br><span class="line">kill <span class="number">-9</span> 进程号  <span class="comment">//强制删除</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><img src="https://i.loli.net/2021/10/02/8raUBtOqLQy5ReX.png" srcset="/img/loading2.gif" lazyload alt="image-20210813161128768"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/8raUBtOqLQy5ReX.png" alt="image-20210813161128768"></p>
 </li>
 </ul>
 <h3 id="查看进程树pstree"><a href="#查看进程树pstree" class="headerlink" title="查看进程树pstree"></a>查看进程树pstree</h3><ul>
-<li><img src="https://i.loli.net/2021/10/02/15FWce67udyXQTE.png" srcset="/img/loading2.gif" lazyload alt="image-20210813162224598"></li>
-<li><img src="https://i.loli.net/2021/10/02/eONsWchMVPr8qkb.png" srcset="/img/loading2.gif" lazyload alt="image-20210813162243386"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/15FWce67udyXQTE.png" alt="image-20210813162224598"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/eONsWchMVPr8qkb.png" alt="image-20210813162243386"></li>
 </ul>
 <h3 id="服务管理service"><a href="#服务管理service" class="headerlink" title="服务管理service"></a>服务管理service</h3><ul>
-<li><p><img src="https://i.loli.net/2021/08/15/p8QIPNAWaywnbOE.png" srcset="/img/loading2.gif" lazyload alt="image-20210813163455677"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/15/p8QIPNAWaywnbOE.png" alt="image-20210813163455677"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/08/15/MjDkhR7UN5Lfysa.png" srcset="/img/loading2.gif" lazyload alt="image-20210814100817500"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/15/MjDkhR7UN5Lfysa.png" alt="image-20210814100817500"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/08/15/ZqXCzpPvlWb8xnS.png" srcset="/img/loading2.gif" lazyload alt="image-20210814105850452"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/15/ZqXCzpPvlWb8xnS.png" alt="image-20210814105850452"></p>
 </li>
 <li><p>centos7以后service不再使用了</p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">service 服务名 status<br>service 服务名 stop<br>service 服务名 restart<br>step  <span class="hljs-comment">//进入系统服务界面</span><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">service 服务名 status</span><br><span class="line">service 服务名 stop</span><br><span class="line">service 服务名 restart</span><br><span class="line">step  <span class="comment">//进入系统服务界面</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><img src="https://i.loli.net/2021/08/15/YR6uFMawqep87vg.png" srcset="/img/loading2.gif" lazyload alt="image-20210814112143084"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/15/YR6uFMawqep87vg.png" alt="image-20210814112143084"></p>
 </li>
 </ul>
 <h3 id="服务的运行级别"><a href="#服务的运行级别" class="headerlink" title="服务的运行级别"></a>服务的运行级别</h3><ul>
-<li><p><img src="https://i.loli.net/2021/08/14/2UalIuzv9nSrG7s.png" srcset="/img/loading2.gif" lazyload alt="image-20210814112347858"></p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">vim /tec/inittab  <span class="hljs-comment">//查看运行级别文件</span><br>systemctl get-default   <span class="hljs-comment">//查看当前的运行级别</span><br>systemctl set-default multi-user.target  <br></code></pre></div></td></tr></tbody></table></figure>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/14/2UalIuzv9nSrG7s.png" alt="image-20210814112347858"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">vim /tec/inittab  <span class="comment">//查看运行级别文件</span></span><br><span class="line">systemctl get-default   <span class="comment">//查看当前的运行级别</span></span><br><span class="line">systemctl set-default multi-user.target  </span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><img src="https://i.loli.net/2021/08/15/WHsBc83RbPthEzf.png" srcset="/img/loading2.gif" lazyload alt="image-20210815120004426"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/15/WHsBc83RbPthEzf.png" alt="image-20210815120004426"></p>
 </li>
 </ul>
 <h3 id="chkconfig指令"><a href="#chkconfig指令" class="headerlink" title="chkconfig指令"></a>chkconfig指令</h3><ul>
-<li><p><img src="https://i.loli.net/2021/08/15/uKRHBceiX2s5kCo.png" srcset="/img/loading2.gif" lazyload alt="image-20210815121109777"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/15/uKRHBceiX2s5kCo.png" alt="image-20210815121109777"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/08/15/b4rpkWYMJeuhT9i.png" srcset="/img/loading2.gif" lazyload alt="image-20210815171540116"></p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">chkconfig --list  <span class="hljs-comment">//查看服务</span><br>chkconfig --lsit | grep network  <span class="hljs-comment">//查看特定服务</span><br>chkconfig network --list  <span class="hljs-comment">//查看特定服务</span><br>chkconfig --level <span class="hljs-number">3</span> network off<br>chkconfig --level <span class="hljs-number">3</span> network on<br></code></pre></div></td></tr></tbody></table></figure>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/15/b4rpkWYMJeuhT9i.png" alt="image-20210815171540116"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">chkconfig --list  <span class="comment">//查看服务</span></span><br><span class="line">chkconfig --lsit | grep network  <span class="comment">//查看特定服务</span></span><br><span class="line">chkconfig network --list  <span class="comment">//查看特定服务</span></span><br><span class="line">chkconfig --level <span class="number">3</span> network off</span><br><span class="line">chkconfig --level <span class="number">3</span> network on</span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><img src="https://i.loli.net/2021/08/15/JHUiYuB4d6vqQyb.png" srcset="/img/loading2.gif" lazyload alt="image-20210815173052325"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/15/JHUiYuB4d6vqQyb.png" alt="image-20210815173052325"></p>
 </li>
 </ul>
 <h3 id="systemctl管理指令"><a href="#systemctl管理指令" class="headerlink" title="systemctl管理指令"></a>systemctl管理指令</h3><ul>
-<li><p><img src="https://i.loli.net/2021/08/15/62taTWZpFbE3M98.png" srcset="/img/loading2.gif" lazyload alt="image-20210815173653288"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/15/62taTWZpFbE3M98.png" alt="image-20210815173653288"></p>
 </li>
 <li><p>指令</p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">ls -l /usr/lib/systemd/system  <span class="hljs-comment">//查看全部的系统内服务</span><br>systemctl list-unit-files [| grep 服务名]  <span class="hljs-comment">//查看服务的开机启动状态</span><br>systemctl status firewalld  <span class="hljs-comment">//查看防火墙服务的当前状态</span><br><span class="hljs-comment">//strat,stop是临时生效，永久不启动需要disable </span><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">ls -l /usr/lib/systemd/system  <span class="comment">//查看全部的系统内服务</span></span><br><span class="line">systemctl list-unit-files [| grep 服务名]  <span class="comment">//查看服务的开机启动状态</span></span><br><span class="line">systemctl status firewalld  <span class="comment">//查看防火墙服务的当前状态</span></span><br><span class="line"><span class="comment">//strat,stop是临时生效，永久不启动需要disable </span></span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 <ul>
-<li><img src="https://i.loli.net/2021/08/17/gHcY6ZSQJwsxTBP.png" srcset="/img/loading2.gif" lazyload alt="image-20210817152652813"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/gHcY6ZSQJwsxTBP.png" alt="image-20210817152652813"></li>
 </ul>
 <h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><ul>
-<li><img src="https://i.loli.net/2021/08/17/WDFYXQuCqZvBe56.png" srcset="/img/loading2.gif" lazyload alt="image-20210817154039921"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/WDFYXQuCqZvBe56.png" alt="image-20210817154039921"></li>
 </ul>
-<h3 id="firewall指令"><a href="#firewall指令" class="headerlink" title="firewall指令"></a>firewall指令</h3><p><img src="https://i.loli.net/2021/08/17/KyVQMJf14czIjh7.png" srcset="/img/loading2.gif" lazyload alt="image-20210817154717038"></p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">netstat -anp | more  <span class="hljs-comment">//查看端口、协议等</span><br>win下<br>telnet <span class="hljs-number">192.168</span><span class="hljs-number">.200</span><span class="hljs-number">.130</span> <span class="hljs-number">111</span>   <span class="hljs-comment">//win10上先要安装这个服务</span><br></code></pre></div></td></tr></tbody></table></figure>
-<p><img src="https://i.loli.net/2021/08/17/S9dx5vIueQosijJ.png" srcset="/img/loading2.gif" lazyload alt="image-20210817155316775"></p>
-<p><img src="https://i.loli.net/2021/08/17/1Ep9ChkOtgFWMLV.png" srcset="/img/loading2.gif" lazyload alt="image-20210817160411772"><br><img src="https://i.loli.net/2021/08/17/49WlXi1VoHpGacz.png" srcset="/img/loading2.gif" lazyload alt="image-20210817160628088"></p>
+<h3 id="firewall指令"><a href="#firewall指令" class="headerlink" title="firewall指令"></a>firewall指令</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/KyVQMJf14czIjh7.png" alt="image-20210817154717038"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">netstat -anp | more  <span class="comment">//查看端口、协议等</span></span><br><span class="line">win下</span><br><span class="line">telnet <span class="number">192.168</span><span class="number">.200</span><span class="number">.130</span> <span class="number">111</span>   <span class="comment">//win10上先要安装这个服务</span></span><br></pre></td></tr></tbody></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/S9dx5vIueQosijJ.png" alt="image-20210817155316775"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/1Ep9ChkOtgFWMLV.png" alt="image-20210817160411772"><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/49WlXi1VoHpGacz.png" alt="image-20210817160628088"></p>
 <h3 id="动态监控进程"><a href="#动态监控进程" class="headerlink" title="动态监控进程"></a>动态监控进程</h3><ul>
-<li><img src="https://i.loli.net/2021/08/17/9JgTLcCRFS8E65W.png" srcset="/img/loading2.gif" lazyload alt="image-20210817163858541"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/9JgTLcCRFS8E65W.png" alt="image-20210817163858541"></li>
 </ul>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">top  <span class="hljs-comment">//查看动态监控进程</span><br></code></pre></div></td></tr></tbody></table></figure>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">top  <span class="comment">//查看动态监控进程</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
-<li><p><img src="https://i.loli.net/2021/08/17/IRNqmcvAGOBksXn.png" srcset="/img/loading2.gif" lazyload alt="image-20210817163614260"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/IRNqmcvAGOBksXn.png" alt="image-20210817163614260"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/10/02/dgXvMT4s5Y7KFEa.png" srcset="/img/loading2.gif" lazyload alt="image-20210817164136536"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/dgXvMT4s5Y7KFEa.png" alt="image-20210817164136536"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/08/17/V8keUbBYhqGtwNv.png" srcset="/img/loading2.gif" lazyload alt="image-20210817164859961"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/V8keUbBYhqGtwNv.png" alt="image-20210817164859961"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/08/17/8rALOGX6uDMdjwP.png" srcset="/img/loading2.gif" lazyload alt="image-20210817164228136"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/8rALOGX6uDMdjwP.png" alt="image-20210817164228136"></p>
 </li>
 <li><p>监控qxd用户的进程</p>
-<p><img src="https://i.loli.net/2021/08/17/P4OiACnWc2K78G6.png" srcset="/img/loading2.gif" lazyload alt="image-20210817164615639"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/P4OiACnWc2K78G6.png" alt="image-20210817164615639"></p>
 </li>
 </ul>
-<h3 id="监控网络状态"><a href="#监控网络状态" class="headerlink" title="监控网络状态"></a>监控网络状态</h3><figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">netstat -anp | more  <span class="hljs-comment">//查看端口、协议等</span><br>netstat -anp | grep sshd<br></code></pre></div></td></tr></tbody></table></figure>
+<h3 id="监控网络状态"><a href="#监控网络状态" class="headerlink" title="监控网络状态"></a>监控网络状态</h3><figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">netstat -anp | more  <span class="comment">//查看端口、协议等</span></span><br><span class="line">netstat -anp | grep sshd</span><br></pre></td></tr></tbody></table></figure>
 <ul>
-<li><p><img src="https://i.loli.net/2021/08/17/XzV5QfO4iAoaLmG.png" srcset="/img/loading2.gif" lazyload alt="image-20210817165801670"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/XzV5QfO4iAoaLmG.png" alt="image-20210817165801670"></p>
 </li>
 <li><p>端对端的协议连接</p>
-<p><img src="https://i.loli.net/2021/10/02/yEkrNupQKV3h4Wt.png" srcset="/img/loading2.gif" lazyload alt="image-20210817170517819"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/yEkrNupQKV3h4Wt.png" alt="image-20210817170517819"></p>
 <p>断开连接有根据tcp协议，监听端口会进入timewait的状态</p>
 </li>
 </ul>
 <h2 id="包的管理"><a href="#包的管理" class="headerlink" title="包的管理"></a>包的管理</h2><h3 id="rpm"><a href="#rpm" class="headerlink" title="rpm"></a>rpm</h3><ul>
-<li><img src="https://i.loli.net/2021/08/17/Ww5nMTrvIthildJ.png" srcset="/img/loading2.gif" lazyload alt="image-20210817171236432"></li>
-<li><img src="https://i.loli.net/2021/08/17/YFJE1pSTKzd7uM5.png" srcset="/img/loading2.gif" lazyload alt="image-20210817171436981"></li>
-<li><img src="https://i.loli.net/2021/08/17/CR5zuE2FSAoMlVU.png" srcset="/img/loading2.gif" lazyload alt="image-20210817171735400"></li>
-<li><img src="https://i.loli.net/2021/08/17/OminP7gQUR59tMc.png" srcset="/img/loading2.gif" lazyload alt="image-20210817171944157"></li>
-<li><img src="https://i.loli.net/2021/08/17/WG4Zqha6m8j3BXy.png" srcset="/img/loading2.gif" lazyload alt="image-20210817172134735"></li>
-<li><img src="https://i.loli.net/2021/08/17/ntux84QErgpDOTN.png" srcset="/img/loading2.gif" lazyload alt="image-20210817174019866"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/Ww5nMTrvIthildJ.png" alt="image-20210817171236432"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/YFJE1pSTKzd7uM5.png" alt="image-20210817171436981"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/CR5zuE2FSAoMlVU.png" alt="image-20210817171735400"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/OminP7gQUR59tMc.png" alt="image-20210817171944157"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/WG4Zqha6m8j3BXy.png" alt="image-20210817172134735"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/ntux84QErgpDOTN.png" alt="image-20210817174019866"></li>
 </ul>
 <h3 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h3><ul>
-<li><img src="https://i.loli.net/2021/08/17/4x9VbJFRlgfOmIy.png" srcset="/img/loading2.gif" lazyload alt="image-20210817174103472"></li>
-<li><img src="https://i.loli.net/2021/08/18/UepLFTh4IPtHSM5.png" srcset="/img/loading2.gif" lazyload alt="image-20210818205703250"></li>
-<li><img src="https://i.loli.net/2021/08/18/A1EQrlOPzgV7Xka.png" srcset="/img/loading2.gif" lazyload alt="image-20210818205824039"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/17/4x9VbJFRlgfOmIy.png" alt="image-20210817174103472"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/18/UepLFTh4IPtHSM5.png" alt="image-20210818205703250"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/18/A1EQrlOPzgV7Xka.png" alt="image-20210818205824039"></li>
 </ul>
 <h2 id="搭建JavaEE环境"><a href="#搭建JavaEE环境" class="headerlink" title="搭建JavaEE环境"></a>搭建JavaEE环境</h2><ul>
-<li><p><img src="https://i.loli.net/2021/08/18/8WNVJ6UYkzDTqRS.png" srcset="/img/loading2.gif" lazyload alt="image-20210818210412643"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/18/8WNVJ6UYkzDTqRS.png" alt="image-20210818210412643"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/08/19/yDB9fsAC4kwujbI.png" srcset="/img/loading2.gif" lazyload alt="image-20210819104057711"></p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">echo $PATH  <span class="hljs-comment">//查看环境变量</span><br>source /etc/profile  <span class="hljs-comment">//刷新让修改后的文件生效</span><br></code></pre></div></td></tr></tbody></table></figure>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/19/yDB9fsAC4kwujbI.png" alt="image-20210819104057711"></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">echo $PATH  <span class="comment">//查看环境变量</span></span><br><span class="line">source /etc/profile  <span class="comment">//刷新让修改后的文件生效</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><img src="https://i.loli.net/2021/08/19/CRnYKjqPHXLW3QZ.png" srcset="/img/loading2.gif" lazyload alt="image-20210819104922790"></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/19/CRnYKjqPHXLW3QZ.png" alt="image-20210819104922790"></p>
 </li>
-<li><p><img src="https://i.loli.net/2021/08/19/OWxyzYAZ3ec8Bil.png" srcset="/img/loading2.gif" lazyload></p>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/19/OWxyzYAZ3ec8Bil.png"></p>
 </li>
 </ul>
 <h2 id="搭建tomcat"><a href="#搭建tomcat" class="headerlink" title="搭建tomcat"></a>搭建tomcat</h2><ul>
-<li><img src="https://i.loli.net/2021/08/19/xkyhlutSmn6w4Vv.png" srcset="/img/loading2.gif" lazyload alt="image-20210819105331588"></li>
-<li><img src="https://i.loli.net/2021/08/19/WHSzMYlgD25nG3O.png" srcset="/img/loading2.gif" lazyload alt="image-20210819110928534"></li>
-<li><img src="https://i.loli.net/2021/08/19/1ikZemyEw3RtVC7.png" srcset="/img/loading2.gif" lazyload alt="image-20210819110752367"></li>
-<li><img src="https://i.loli.net/2021/08/19/nPX5c4o2VlgvChz.png" srcset="/img/loading2.gif" lazyload alt="image-20210819110947120"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/19/xkyhlutSmn6w4Vv.png" alt="image-20210819105331588"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/19/WHSzMYlgD25nG3O.png" alt="image-20210819110928534"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/19/1ikZemyEw3RtVC7.png" alt="image-20210819110752367"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/19/nPX5c4o2VlgvChz.png" alt="image-20210819110947120"></li>
 </ul>
 <h2 id="idea2020安装"><a href="#idea2020安装" class="headerlink" title="idea2020安装"></a>idea2020安装</h2><ul>
-<li><img src="https://i.loli.net/2021/08/19/U3WCKjw6DBNPQXY.png" srcset="/img/loading2.gif" lazyload alt="image-20210819115158580"></li>
-<li><img src="https://i.loli.net/2021/08/19/NRkJ5b1ZExzAfCc.png" srcset="/img/loading2.gif" lazyload alt="image-20210819115228335"></li>
-<li><img src="https://i.loli.net/2021/10/02/Vi2rKFNewjASfO1.png" srcset="/img/loading2.gif" lazyload alt="image-20210819115401241"></li>
-<li><img src="https://i.loli.net/2021/08/19/bYuwWE7AXiFVBxy.png" srcset="/img/loading2.gif" lazyload alt="image-20210819115141590"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/19/U3WCKjw6DBNPQXY.png" alt="image-20210819115158580"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/19/NRkJ5b1ZExzAfCc.png" alt="image-20210819115228335"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/Vi2rKFNewjASfO1.png" alt="image-20210819115401241"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/19/bYuwWE7AXiFVBxy.png" alt="image-20210819115141590"></li>
 </ul>
 <h2 id="mysql5-7的安装"><a href="#mysql5-7的安装" class="headerlink" title="mysql5.7的安装"></a>mysql5.7的安装</h2><ul>
-<li><img src="https://i.loli.net/2021/08/19/4m5zp3RHTtEUlS1.png" srcset="/img/loading2.gif" lazyload alt="image-20210819120358837"></li>
-<li><img src="https://i.loli.net/2021/08/19/cQirakxzAv7h8H1.png" srcset="/img/loading2.gif" lazyload alt="image-20210819122922344"></li>
-<li><img src="https://i.loli.net/2021/08/19/YTcGjhAbKUaBiO9.png" srcset="/img/loading2.gif" lazyload alt="image-20210819121726773"></li>
-<li><img src="https://i.loli.net/2021/10/02/g2FcaKElrzW8Yqk.png" srcset="/img/loading2.gif" lazyload alt="image-20210819123658222"></li>
-<li><img src="https://i.loli.net/2021/08/19/duqHRhpgjbIlyLY.png" srcset="/img/loading2.gif" lazyload alt="image-20210819122501769"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/19/4m5zp3RHTtEUlS1.png" alt="image-20210819120358837"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/19/cQirakxzAv7h8H1.png" alt="image-20210819122922344"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/19/YTcGjhAbKUaBiO9.png" alt="image-20210819121726773"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/02/g2FcaKElrzW8Yqk.png" alt="image-20210819123658222"></li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/08/19/duqHRhpgjbIlyLY.png" alt="image-20210819122501769"></li>
 </ul>
-
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/Linux/">Linux</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2021/10/13/Python4/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">（四）Python程序控制结构</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2021/10/13/Linux_1/">
-                        <span class="hidden-mobile">Linux笔记(从基础到高级):前篇</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"UrMBdkpVtSriHxFtNjQRvPqm-gzGzoHsz","appKey":"rLGXsY7AM0Ym431NbB2fCRpX","path":"window.location.pathname","placeholder":"发一条友善的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
-          </article>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-  <div class="col-lg-7 mx-auto nopadding-x-md">
-    <div class="container custom post-custom mx-auto">
-      <p style="text-align:center;">如果博文对你有帮助，可以给博主充充电噢~ <br> 非常感谢！！</p><img src="/img/qxd.jpg" srcset="/img/loading2.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
-    </div>
-  </div>
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-
-    
-  </main>
-
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
-  </div>
-  
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- LeanCloud 统计PV -->
-        <span id="leancloud-site-pv-container" style="display: none">
-            总访问量 
-            <span id="leancloud-site-pv"></span>
-             次
-          </span>
-      
-      
-        <!-- LeanCloud 统计UV -->
-        <span id="leancloud-site-uv-container" style="display: none">
-            总访客数 
-            <span id="leancloud-site-uv"></span>
-             人
-          </span>
-      
-
-    
-  </div>
-
-
-  
-
-  
-</footer>
-
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
-  
-  
-    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
-  
-
-
-
-
-  <script defer src="/js/leancloud.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-      typing(title)
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-  
-<script src="/js/diy/timeDate.js"></script>
-<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-<script src="//cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js"></script>
-<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"}});</script></body>
-</html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Tony</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://bsheepcoder.github.io/2021/10/13/Linux_2/">https://bsheepcoder.github.io/2021/10/13/Linux_2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://bsheepcoder.github.io" target="_blank">Q's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/10/13/Python4/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">（四）Python程序控制结构</div></div></a></div><div class="next-post pull-right"><a href="/2021/10/13/Linux_1/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux笔记(从基础到高级):前篇</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/10/13/Linux_1/" title="Linux笔记(从基础到高级):前篇"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-13</div><div class="title">Linux笔记(从基础到高级):前篇</div></div></a></div><div><a href="/2021/10/13/Linux_Shell/" title="Linux笔记(从基础到高级):Shell编程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-13</div><div class="title">Linux笔记(从基础到高级):Shell编程</div></div></a></div><div><a href="/2021/10/13/Linux_3/" title="Linux笔记(从基础到高级):后篇"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-13</div><div class="title">Linux笔记(从基础到高级):后篇</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Tony</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">61</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Bsheepcoder.io" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%BB%84%E7%AE%A1%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">Linux组管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E6%89%80%E6%9C%89%E8%80%85"><span class="toc-number">1.1.</span> <span class="toc-text">文件目录所有者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">1.2.</span> <span class="toc-text">组的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%BB%84"><span class="toc-number">1.3.</span> <span class="toc-text">其他组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E7%94%A8%E6%88%B7%E7%9A%84%E6%89%80%E5%9C%A8%E7%BB%84"><span class="toc-number">1.4.</span> <span class="toc-text">改变用户的所在组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.5.</span> <span class="toc-text">权限的基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rwx%E6%9D%83%E9%99%90-%E9%9A%BE%E7%82%B9"><span class="toc-number">1.6.</span> <span class="toc-text">rwx权限&#x3D;&#x3D;*难点&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.7.</span> <span class="toc-text">权限实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%9D%83%E9%99%90"><span class="toc-number">1.8.</span> <span class="toc-text">修改权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6-%E7%9B%AE%E5%BD%95%E6%89%80%E6%9C%89%E8%80%85"><span class="toc-number">1.9.</span> <span class="toc-text">修改文件&#x2F;目录所有者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6-%E7%9B%AE%E5%BD%95%E6%89%80%E5%9C%A8%E7%BB%84"><span class="toc-number">1.10.</span> <span class="toc-text">修改文件&#x2F;目录所在组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5"><span class="toc-number">1.11.</span> <span class="toc-text">组应用实践</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AD%A6%E5%AF%9F%E5%92%8C%E5%9C%9F%E5%8C%AA%E6%B8%B8%E6%88%8F"><span class="toc-number">1.11.1.</span> <span class="toc-text">警察和土匪游戏</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A5%9E%E4%BB%99%E5%A6%96%E6%80%AA"><span class="toc-number">1.11.2.</span> <span class="toc-text">神仙妖怪</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6"><span class="toc-number">2.</span> <span class="toc-text">定时任务调度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#crond%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6"><span class="toc-number">2.1.</span> <span class="toc-text">crond任务调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#at%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="toc-number">2.2.</span> <span class="toc-text">at定时任务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD"><span class="toc-number">3.</span> <span class="toc-text">磁盘分区、挂载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E5%88%86%E5%8C%BA"><span class="toc-number">3.1.</span> <span class="toc-text">Linux分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E7%9A%84%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B"><span class="toc-number">3.2.</span> <span class="toc-text">挂载的经典案例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3"><span class="toc-number">3.2.0.1.</span> <span class="toc-text">挂载深入理解</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5"><span class="toc-number">3.3.</span> <span class="toc-text">磁盘使用情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E5%B7%A5%E4%BD%9C%E5%AE%9E%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-number">3.4.</span> <span class="toc-text">磁盘工作实用指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">Linux网络配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NAT%E9%85%8D%E7%BD%AE%E5%8E%9F%E7%90%86"><span class="toc-number">4.1.</span> <span class="toc-text">NAT配置原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ping-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E8%BF%9E%E9%80%9A%E6%80%A7"><span class="toc-number">4.2.</span> <span class="toc-text">ping 测试网络连通性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-number">4.3.</span> <span class="toc-text">Linux网络环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E8%8E%B7%E5%8F%96"><span class="toc-number">4.3.1.</span> <span class="toc-text">自动获取</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E5%AE%9Aip"><span class="toc-number">4.3.2.</span> <span class="toc-text">指定ip</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%BB%E6%9C%BA%E5%90%8D%E5%92%8Chosts%E6%98%A0%E5%B0%84"><span class="toc-number">4.4.</span> <span class="toc-text">设置主机名和hosts映射</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="toc-number">4.4.1.</span> <span class="toc-text">设置主机名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEhosts%E6%98%A0%E5%B0%84"><span class="toc-number">4.4.2.</span> <span class="toc-text">设置hosts映射</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E5%90%8D%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B"><span class="toc-number">4.4.3.</span> <span class="toc-text">主机名解析过程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">进程管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E7%B3%BB%E7%BB%9F%E6%89%A7%E8%A1%8C%E7%9A%84%E8%BF%9B%E7%A8%8B"><span class="toc-number">5.1.</span> <span class="toc-text">显示系统执行的进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%88%B6%E8%BF%9B%E7%A8%8B"><span class="toc-number">5.2.</span> <span class="toc-text">查看父进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%88%E6%AD%A2%E8%BF%9B%E7%A8%8Bkill"><span class="toc-number">5.3.</span> <span class="toc-text">终止进程kill</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E6%A0%91pstree"><span class="toc-number">5.4.</span> <span class="toc-text">查看进程树pstree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86service"><span class="toc-number">5.5.</span> <span class="toc-text">服务管理service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%9A%84%E8%BF%90%E8%A1%8C%E7%BA%A7%E5%88%AB"><span class="toc-number">5.6.</span> <span class="toc-text">服务的运行级别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chkconfig%E6%8C%87%E4%BB%A4"><span class="toc-number">5.7.</span> <span class="toc-text">chkconfig指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#systemctl%E7%AE%A1%E7%90%86%E6%8C%87%E4%BB%A4"><span class="toc-number">5.8.</span> <span class="toc-text">systemctl管理指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">5.9.</span> <span class="toc-text">防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#firewall%E6%8C%87%E4%BB%A4"><span class="toc-number">5.10.</span> <span class="toc-text">firewall指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E7%9B%91%E6%8E%A7%E8%BF%9B%E7%A8%8B"><span class="toc-number">5.11.</span> <span class="toc-text">动态监控进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%91%E6%8E%A7%E7%BD%91%E7%BB%9C%E7%8A%B6%E6%80%81"><span class="toc-number">5.12.</span> <span class="toc-text">监控网络状态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85%E7%9A%84%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">包的管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rpm"><span class="toc-number">6.1.</span> <span class="toc-text">rpm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yum"><span class="toc-number">6.2.</span> <span class="toc-text">yum</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BAJavaEE%E7%8E%AF%E5%A2%83"><span class="toc-number">7.</span> <span class="toc-text">搭建JavaEE环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BAtomcat"><span class="toc-number">8.</span> <span class="toc-text">搭建tomcat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#idea2020%E5%AE%89%E8%A3%85"><span class="toc-number">9.</span> <span class="toc-text">idea2020安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql5-7%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">10.</span> <span class="toc-text">mysql5.7的安装</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/18/Hexo_butterfly/" title="Hexo主题换为butterfly"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo主题换为butterfly"/></a><div class="content"><a class="title" href="/2022/03/18/Hexo_butterfly/" title="Hexo主题换为butterfly">Hexo主题换为butterfly</a><time datetime="2022-03-18T07:15:58.551Z" title="发表于 2022-03-18 15:15:58">2022-03-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/15/C++_letcode1/" title="力扣刷题记录"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="力扣刷题记录"/></a><div class="content"><a class="title" href="/2022/03/15/C++_letcode1/" title="力扣刷题记录">力扣刷题记录</a><time datetime="2022-03-15T12:06:03.845Z" title="发表于 2022-03-15 20:06:03">2022-03-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/14/Road1/" title="每日规划日志"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每日规划日志"/></a><div class="content"><a class="title" href="/2022/03/14/Road1/" title="每日规划日志">每日规划日志</a><time datetime="2022-03-14T10:09:11.147Z" title="发表于 2022-03-14 18:09:11">2022-03-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/14/C++_STL1/" title="C++STL复习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++STL复习"/></a><div class="content"><a class="title" href="/2022/03/14/C++_STL1/" title="C++STL复习">C++STL复习</a><time datetime="2022-03-14T01:41:33.906Z" title="发表于 2022-03-14 09:41:33">2022-03-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/13/Web_Raspberrypi1/" title="【项目】在树莓派上部署个人博客"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【项目】在树莓派上部署个人博客"/></a><div class="content"><a class="title" href="/2022/03/13/Web_Raspberrypi1/" title="【项目】在树莓派上部署个人博客">【项目】在树莓派上部署个人博客</a><time datetime="2022-03-13T10:23:16.750Z" title="发表于 2022-03-13 18:23:16">2022-03-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Tony</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz',
+      appKey: '8y2ItNdFctdKBPMHS31S2jbm',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"}});</script></body></html>

@@ -1,295 +1,153 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/page1.png">
-  <link rel="icon" href="/img/page1.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#000000">
-  <meta name="description" content="Geek招新，有幸介绍人工智能，如有不妥之处，请在文末留言，不吝指教。">
-  <meta name="author" content="Tony">
-  <meta name="keywords" content="">
-  <meta name="description" content="Geek招新，有幸介绍人工智能，如有不妥之处，请在文末留言，不吝指教。">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>人工智能与炼金术 | Q's blog</title><meta name="keywords" content="AI"><meta name="author" content="Tony"><meta name="copyright" content="Tony"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Geek招新，有幸介绍人工智能，如有不妥之处，请在文末留言，不吝指教。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="人工智能与炼金术">
 <meta property="og:url" content="https://bsheepcoder.github.io/2021/10/10/AI_History/index.html">
 <meta property="og:site_name" content="Q&#39;s blog">
 <meta property="og:description" content="Geek招新，有幸介绍人工智能，如有不妥之处，请在文末留言，不吝指教。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.loli.net/2021/10/08/TEPWU19gOSdRvNz.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/11/ZCvMK1qInrcAEsy.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/10/AMQl7Ct6BxPVvgD.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/08/ig27bQy9krRCcNM.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/09/Ed9XBO3T8my5Zca.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/09/6P7vJd5XGeVcZzY.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/09/cGj2yn6SAueMVOi.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/09/roCROLp4V7x3dAU.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/10/61DEafFRrnqcWjt.jpg">
-<meta property="og:image" content="https://pic1.zhimg.com/80/v2-96caf9de533551e8b06dc0a839e47254_720w.jpg">
-<meta property="og:image" content="https://i.loli.net/2021/10/09/OmYIgp4EzuNvtZK.png">
-<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/John_McCarthy_Stanford.jpg/220px-John_McCarthy_Stanford.jpg">
-<meta property="og:image" content="https://i.loli.net/2021/10/11/tAFDXCrRBjvdoQn.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/09/75mR6Xe3FgbPEls.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/09/XQWnmNACls2rkd1.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/11/MotKbiZED6YP43W.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/11/CwS9nbjaEUDPzrv.gif">
-<meta property="og:image" content="https://image.jiqizhixin.com/uploads/editor/587a0a77-33c7-4974-a9a9-eb8f742580c5/1525273973251.jpg">
-<meta property="og:image" content="https://i.loli.net/2021/10/11/puLW37oSx5bkgim.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/11/tCmEq9PIYLAdrjZ.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/11/npF416OTZ3bjekv.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/11/XlY5mvDuUBT9PrA.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/11/jwAK3lXGqDRCFWH.png">
-<meta property="og:image" content="https://cdn1.iconfinder.com/data/icons/data-science-flat-1/64/deep-learning-data-robotics-robot-ai-modeling-128.png">
-<meta property="og:image" content="https://cdn0.iconfinder.com/data/icons/merry-christmas-41/512/50-cabin-house-winter-vacation-128.png">
-<meta property="og:image" content="https://cdn2.iconfinder.com/data/icons/christmas-2264/84/winter_tree-128.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/12/5PRdEhWKjQBvYSn.png">
-<meta property="og:image" content="https://cdn1.iconfinder.com/data/icons/data-science-flat-1/64/machine-learning-data-ai-artificial-intelligence-knowledge-128.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/13/3em9coQAzkriGjR.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190715160926140.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDY1MTUxNQ==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://pic2.zhimg.com/50/v2-305788e623ebd00a8498932cd71d9a0d_720w.webp?source=1940ef5c">
-<meta property="og:image" content="http://5b0988e595225.cdn.sohucs.com/images/20180117/44e9078f6b39444081d917432a3ab866.jpeg">
-<meta property="og:image" content="https://i.loli.net/2021/10/10/PndvSuBLsyg9m12.png">
-<meta property="og:image" content="https://i.loli.net/2021/10/10/84IW3w6qjlzuCnU.png">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 <meta property="article:published_time" content="2021-10-10T10:00:15.909Z">
-<meta property="article:modified_time" content="2022-03-04T02:52:32.286Z">
+<meta property="article:modified_time" content="2022-03-18T06:28:42.708Z">
 <meta property="article:author" content="Tony">
 <meta property="article:tag" content="AI">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.loli.net/2021/10/08/TEPWU19gOSdRvNz.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/page1.png"><link rel="canonical" href="https://bsheepcoder.github.io/2021/10/10/AI_History/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '人工智能与炼金术',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-18 14:28:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
   
-  <title>人工智能与炼金术 - Q&#39;s blog</title>
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
   
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-  
-<link rel="stylesheet" href="/css/diy/shubiao.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"bsheepcoder.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":5,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#efec02","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading2.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz","app_key":"8y2ItNdFctdKBPMHS31S2jbm","server_url":"https://0wpy18ji.lc-cn-n1-shared.com","path":"window.location.pathname"}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0">
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
-
-
-<body>
-  <header style="height: 30vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Q&#39;s blog</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/robot.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="人工智能与炼金术">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-10-10 18:00" pubdate>
-        2021年10月10日 晚上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      16k 字
-    </span>
-  
-
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      49 分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
-          
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">人工智能与炼金术</h1>
-            
-              <p class="note note-info">
-                
-                  更新于：2022年3月4日 上午
-                
-              </p>
-            
-            <div class="markdown-body">
-              <h2 id="话说炼金术"><a href="#话说炼金术" class="headerlink" title="话说炼金术"></a>话说炼金术</h2><p><img src="https://i.loli.net/2021/10/08/TEPWU19gOSdRvNz.png" srcset="/img/loading2.gif" lazyload alt="炼金术士"></p>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">61</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Q's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">人工智能与炼金术</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-10-10T10:00:15.909Z" title="发表于 2021-10-10 18:00:15">2021-10-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-18T06:28:42.708Z" title="更新于 2022-03-18 14:28:42">2022-03-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/AI/">AI</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="人工智能与炼金术"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="话说炼金术"><a href="#话说炼金术" class="headerlink" title="话说炼金术"></a>话说炼金术</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/08/TEPWU19gOSdRvNz.png" alt="炼金术士"></p>
 <p>炼金术(中国类似炼丹)，一种魔法般的技艺，不论是古代中国、还是中世纪的西方,都有着一群信仰者不断的去探索。即便是我们再熟悉不过的科学巨人牛顿也曾经进行过大量炼金术的试验，当人们无法触及到真理之时，是人们的想象和坚定的信仰在支撑着他们前行。</p>
 <p><br></p>
-<p><img src="https://i.loli.net/2021/10/11/ZCvMK1qInrcAEsy.png" srcset="/img/loading2.gif" lazyload alt="炼金术法则"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/11/ZCvMK1qInrcAEsy.png" alt="炼金术法则"></p>
 <p><br></p>
 <blockquote>
 <p>16世纪到18世纪，大约有4000本相关于炼金术的书籍出版。从当时留下的诸多手稿、信札、笔记和文学作品中，可以轻松找到炼金术的痕迹。</p>
@@ -304,7 +162,7 @@
 <p>从古至今都有不少人想象一种机器有人一样的智能，也有不少人去实践，当然也有迷信神学的身影。但是要说真正在计算科学史上留名的第一人，那我们就不得不介绍这样一位传奇的计算科学家<strong>艾伦·图灵</strong>。</p>
 <p><br></p>
 <blockquote>
-<p><img src="https://i.loli.net/2021/10/10/AMQl7Ct6BxPVvgD.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/10/AMQl7Ct6BxPVvgD.png" alt=""></p>
 <p><strong>艾伦·麦席森·图灵</strong>（1912年6月23日－1954年6月7日）是英国计算机科学家、数学家、逻辑学家、密码分析学家和理论生物学家，他被誉为计算机科学与人工智能之父。二次世界大战期间，（Hut 8）小组，负责德国海军密码分析。 期间图灵设计了一些加速破译德国密码的技术，包括改进波兰战前研制的机器Bombe，一种可以找到恩尼格玛密码机设置的机电机器。 图灵在破译截获的编码信息方面发挥了关键作用，使盟军能够在包括大西洋战役在内的许多重要交战中击败纳粹，并因此帮助赢得了战争。 </p>
 </blockquote>
 <p><br></p>
@@ -315,7 +173,7 @@
 <li>图灵测试（模仿游戏）</li>
 </ul>
 <p>那什么是图灵机和图灵测试？ 我不详细展开，只做简要的概括帮助理解。</p>
-<h3 id="图灵机"><a href="#图灵机" class="headerlink" title="图灵机"></a>图灵机</h3><p><img src="https://i.loli.net/2021/10/08/ig27bQy9krRCcNM.png" srcset="/img/loading2.gif" lazyload alt="图灵机"></p>
+<h3 id="图灵机"><a href="#图灵机" class="headerlink" title="图灵机"></a>图灵机</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/08/ig27bQy9krRCcNM.png" alt="图灵机"></p>
 <blockquote>
 <p><strong>图灵机</strong>是图灵于1936年提出的一种将人的计算行为抽象化的数学逻辑机，其更抽象的意义为一种计算模型，可以看作等价于任何有限逻辑数学过程的终极强大逻辑机器。</p>
 <p>图灵机就是指一个抽象的机器，它有一条无限长的纸带，纸带分成了一个一个的小方格，每个方格有不同的颜色。有一个机器头在纸带上移来移去。机器头有一组内部状态，还有一些固定的程序。在每个时刻，机器头都要从当前纸带上读入一个方格信息，然后结合自己的内部状态查找程序表，根据程序输出信息到纸带方格上，并转换自己的内部状态，然后进行移动。</p>
@@ -327,7 +185,7 @@
 </blockquote>
 <p>这里有些抽象，本就是因为图灵机就是图灵抽象出来的，不必深究，但是这种让机器用于证明计算的方式一直被后来的科学家沿用，影响深远。我们知道了什么是图灵机，再来看看另一个重要问题的提出，其中就包含了图灵测试。</p>
 <h3 id="机器能思维吗？"><a href="#机器能思维吗？" class="headerlink" title="机器能思维吗？"></a>机器能思维吗？</h3><p><br></p>
-<p><img src="https://i.loli.net/2021/10/09/Ed9XBO3T8my5Zca.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/09/Ed9XBO3T8my5Zca.png" alt=""></p>
 <p><br></p>
 <blockquote>
 <p>如果他们发现一只鹦鹉可以回答一切问题，我会毫不犹豫宣布它存在智能。— 狄德罗</p>
@@ -335,12 +193,12 @@
 <p><br></p>
 <p>其实早在1637年，<strong>笛卡尔</strong>就预言了图灵测试。笛卡尔指出，机器能够与人类交互，但认为这样的机器不能作出适当的反应，但是任何人都可以。因此，笛卡尔借此区分机器与人类。笛卡尔没有考虑到机器语言能力未来能够被克服。其实哲学家们很早就开始探讨这一问题，有唯心和唯物两种观点，但是一直在争论之中。没有人去真正的找到一种证明的方法，直到图灵发表了一篇划时代的论文。</p>
 <p><br></p>
-<p><img src="https://i.loli.net/2021/10/09/6P7vJd5XGeVcZzY.png" srcset="/img/loading2.gif" lazyload alt="计算机器与智能"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/09/6P7vJd5XGeVcZzY.png" alt="计算机器与智能"></p>
 <p><br></p>
 <p>1950年，图灵在 MIND 期刊上发表了一篇题为《计算机器与智能》(Computing machinery and intelligence)的论文。文中他预言了创造出具有真正智能的机器的可能性，并提出了图灵测试用于定义“智能”这一概念，最后对机器能否拥有思维这一问题有异议的不同声音进行了回答。这在当时引起了轰动，关于这篇论文的译文可查看<a href="https://bsheepcoder.github.io/2021/10/07/%E6%9C%BA%E5%99%A8%E8%83%BD%E6%80%9D%E7%BB%B4%E5%90%97%EF%BC%9F/">计算机器与智能</a>。</p>
 <p>通过译文我们就可以知道，图灵希望通过一种游戏的形式来回答“机器能思考吗？”这个元问题。文中介绍的测试场景是这样的：</p>
 <p><br></p>
-<p><img src="https://i.loli.net/2021/10/09/cGj2yn6SAueMVOi.png" srcset="/img/loading2.gif" lazyload alt="图灵测试"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/09/cGj2yn6SAueMVOi.png" alt="图灵测试"></p>
 <blockquote>
 <p>这个游戏需要三个人来玩，一个男人(A)，一个女人(B)和一个男女皆可的提问者(C)。</p>
 <p>提问者呆在一个与另外两人相隔离的屋子里，游戏的目标是提问者要判断出外面哪个是男人，哪个是女人。</p>
@@ -364,7 +222,7 @@
 </blockquote>
 <p><br></p>
 <p>下面是一个关于2208年图灵测试的漫画：</p>
-<p><img src="https://i.loli.net/2021/10/09/roCROLp4V7x3dAU.png" srcset="/img/loading2.gif" lazyload alt="图灵测试漫画"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/09/roCROLp4V7x3dAU.png" alt="图灵测试漫画"></p>
 <p>玩笑的同时，我找到西瓜书的作者南京大学的周志华教授有这样一段话：</p>
 <blockquote>
 <p>“对图灵测试的一个重要反思就是它可能混淆了 cheat human 与 think like human 的能力，做到前者并不需要能做到后者。这催生了替代图灵测试的<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Winograd_schema_challenge">维诺格拉德测试</a> 。”</p>
@@ -374,7 +232,7 @@
 <p>那现在的人工智能发展到什么地步了？什么时候才能有真正的智能出现？</p>
 <p>为了解决这些问题，我们不得不先来看一看人工智能的发展。</p>
 <p>看累了可以先休息一下再继续阅读，来杯卡布奇诺^-^ 。</p>
-<p><img src="https://i.loli.net/2021/10/10/61DEafFRrnqcWjt.jpg" srcset="/img/loading2.gif" lazyload alt="休息一下吧，正篇马上开始"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/10/61DEafFRrnqcWjt.jpg" alt="休息一下吧，正篇马上开始"></p>
 <p><br></p>
 <p><br></p>
 <h2 id="人工智能科学简明史"><a href="#人工智能科学简明史" class="headerlink" title="人工智能科学简明史"></a>人工智能科学简明史</h2><p><br></p>
@@ -384,7 +242,7 @@
 <p><br></p>
 <p>下面我们就进入人工智能科学的起点</p>
 <h3 id="黎明"><a href="#黎明" class="headerlink" title="黎明"></a>黎明</h3><p><br></p>
-<p><img src="https://pic1.zhimg.com/80/v2-96caf9de533551e8b06dc0a839e47254_720w.jpg" srcset="/img/loading2.gif" lazyload alt="IBM 702:第一代AI研究者使用的电脑."></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic1.zhimg.com/80/v2-96caf9de533551e8b06dc0a839e47254_720w.jpg" alt="IBM 702:第一代AI研究者使用的电脑."></p>
 <p>在20世纪40年代初期，许多不同领域的科学家（数学，心理学，工程学，经济学和政治学等）都与图灵一样对“ 机器能否思考？”这一问题很感兴趣，便都想着手去研究、探讨制造人工大脑的可能性。因此最初的人工智能研究是一系列科学进展交汇的产物：</p>
 <ul>
 <li>神经学研究发现大脑是由神经元组成的电子网络，其激励电平只存在“有”和“无”两种状态，不存在中间状态。</li>
@@ -408,14 +266,14 @@
 <h3 id="初秋的会议"><a href="#初秋的会议" class="headerlink" title="初秋的会议"></a>初秋的会议</h3><p><br></p>
 <p>时间来到1956年，当时科学界对人工智能没有统一的名称命名，但是对人工智能这一类问题的科学研究已经是许多人关注的方向，因此在这样一个特殊的结点，众多科学家齐聚达特茅斯学院召开了著名的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%BE%BE%E7%89%B9%E7%9F%9B%E6%96%AF%E4%BC%9A%E8%AE%AE">达特茅斯会议</a>，这次大会标志着“人工智能”这一概念的诞生。</p>
 <p><br></p>
-<p><img src="https://i.loli.net/2021/10/09/OmYIgp4EzuNvtZK.png" srcset="/img/loading2.gif" lazyload alt="达特茅斯学院"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/09/OmYIgp4EzuNvtZK.png" alt="达特茅斯学院"></p>
 <h4 id="熊熊炉火"><a href="#熊熊炉火" class="headerlink" title="熊熊炉火"></a>熊熊炉火</h4><p><br></p>
 <p>在这次会议之前，其实就已经有了小规模的讨论，但是并不敬人意。其中包含了贝尔实验室的香浓所编的文集，但是香浓对智能并不是很感兴趣：</p>
 <blockquote>
 <p>1953年夏天，麦卡锡和明斯基都在贝尔实验室为香农打工。香农那时的兴趣是图灵机以及是否可用图灵机作为智能活动的理论基础，麦卡锡向香农建议编一本文集，请当时做智能研究的各位大佬贡献文章，这本文集直到1956年才以《自动机研究》(Automata Studies)为名出版，这个书名最后是香农起的，他不想花里胡哨，但麦卡锡认为这没有反映他们的初衷。</p>
 </blockquote>
 <p>贝尔实验室是相当有名的，香浓本人可能对推动人工智能发展这一功绩可能毫不在意，但是确实失去了一个很好的机会。麦卡锡看到自己的想法不能被很好的体现，自然想着筹备后续的计划。</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/John_McCarthy_Stanford.jpg/220px-John_McCarthy_Stanford.jpg" srcset="/img/loading2.gif" lazyload alt="John McCarthy Stanford"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/John_McCarthy_Stanford.jpg/220px-John_McCarthy_Stanford.jpg" alt="John McCarthy Stanford"></p>
 <p>那么这场会议的提议者约翰·麦卡锡（J. McCarthy），当时在会议开办前，关于人工智能这个名字的来源还有一个这样的小插曲：</p>
 <blockquote>
 <p>麦卡锡给这个第二年的活动起了个当时看来别出心裁的名字：“人工智能夏季研讨会”(Summer Research Project on Artificial Intelligence)。普遍的误解是“人工智能”这个词是麦卡锡想出来的，其实不是。麦老晚年回忆也承认这个词最早是从别人那里听来的，但记不清是谁。后来英国数学家菲利普.伍德华(Woodward)给《新科学家》杂志写信说他是AI一词的始作俑者，麦卡锡最早是听他说的，因为他1956年曾去MIT交流，见过麦卡锡。但麦卡锡的建议书1955年就开始用“人工智能”了，人老了回忆真不靠谱。当事人除了明斯基之外，都已仙逝，这事恐怕要成悬案了。</p>
@@ -424,13 +282,13 @@
 <h4 id="盛宴开始"><a href="#盛宴开始" class="headerlink" title="盛宴开始"></a>盛宴开始</h4><p>刚刚入秋的新罕布什尔州汉诺威镇，冷气已经席卷，但是科学家们对新事物的诞生的热情不减，会议在众人的支持下顺利召开。达特茅斯研讨会进行了两个月，其中，纽厄尔和西蒙公布的程序“逻辑理论家”（Logic Theorist）引起参会者极大的兴趣。</p>
 <p>前面介绍过这个程序模拟人证明符号逻辑定理的思维活动，并成功证明了《数学原理》第2章52个定理中的38个定理，被认为是用计算机探讨人类智力活动的第一个真正成果，也是图灵关于机器可以具有智能这一论断的第一个实际证明。此外，逻辑理论家开创了机器定理证明这一新的学科领域。</p>
 <p>下面来一张帅哥海报，哈哈~</p>
-<p><img src="https://i.loli.net/2021/10/11/tAFDXCrRBjvdoQn.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/11/tAFDXCrRBjvdoQn.png" alt=""></p>
 <p><br></p>
 <p>图片中的都是参会的各个领域的大佬，份量都是顶级的：</p>
 <blockquote>
 <p>John McCarthy：数学博士，发明Lisp语言、斯坦福大学人工智能实验室的主任、人工智能之父。<br>Marvin  Minsky：数学家，建立了一个神经网络、人工智能框架理论的创立者、人工智能之父。<br>Claude  Shannon：数学家，信息论创始人、引入信息熵。<br>Ray Solomonoff：机器学习的先驱，算法概率论的创始人，通用概率分布之父，通用归纳推理理论的创建者。<br>Alan Newell：计算机科学和认知信息学领域的科学家，信息处理语言发明者，写了该语言最早的两个AI程序。<br>Herbert Simon：计算机领域著名科学家，获得”诺贝尔经济学奖“，计算机领域的“图灵奖”，罕见的通才。<br>Arthur Samuel：是计算机游戏和人工智能领域的先驱，“机器学习”术语的创造者。<br>Oliver Selfridge：模式识别的奠基人，后来领导了MAC项目，后演变为麻省理工学院最大的实验室MIT CSAIL。<br>Nathaniel Rochester：IBM 701总设计师，编写了第一个汇编语言。</p>
 </blockquote>
-<p><img src="https://i.loli.net/2021/10/09/75mR6Xe3FgbPEls.png" srcset="/img/loading2.gif" lazyload alt="2006年达特茅斯会议当事人重聚，左起：摩尔、麦卡锡、明斯基、塞弗里奇、所罗门诺夫。"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/09/75mR6Xe3FgbPEls.png" alt="2006年达特茅斯会议当事人重聚，左起：摩尔、麦卡锡、明斯基、塞弗里奇、所罗门诺夫。"></p>
 <p>会议的内容大致如下：</p>
 <ul>
 <li>自动计算机（自动指可编程）</li>
@@ -442,7 +300,7 @@
 <li>随机性与创造性</li>
 </ul>
 <p>但是会上学者们对“人工智能”这个词并没取得完全共识，很多人认为什么事一加“人工”两字就变味了。纽厄尔和司马贺一直主张用“复杂信息处理”这个词，以至他们发明的语言就叫<strong>IPL</strong>(Information Processing Language)。他们从某种意义上说偏功能学派，也就是说找到智能的功能不一定非得依靠结构相同或相似。图灵机和递归函数等价，但结构完全不同，所以他们强调“信息处理”，他们俩一开始颇不喜“人工智能”几个字。</p>
-<p><img src="https://i.loli.net/2021/10/09/XQWnmNACls2rkd1.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/09/XQWnmNACls2rkd1.png" alt=""></p>
 <p>但是这并没有阻止“人工智能”这一说法在AI的学者中广为流传，直至第一次人工智能的寒冬，才彻底被学界所知。</p>
 <blockquote>
 <p>“人工智能”一词真正被学界接受要到1965年，德雷弗斯（Hubert Dreyfus）发表了著名的《炼金术与人工智能》报告，这一报告对当时人工智能的研究提出质疑，意图说明这些研究是没有基础的无用功。由于报告标题与内容过于大胆，最初兰德公司仅以备忘录的方式发布了油印版，直至1967年，兰德公司才正式发布了这一报告的印刷版。该报告后来成为兰德公司销量最高的报告之一，在AI学者中广为流传。</p>
@@ -450,7 +308,7 @@
 <p>人工智能是如何经历第一次发展低潮的，我们稍后再讲。</p>
 <p>至于”人工智能“是如何广泛流传的我们已经了解了，现在要具体来看它背后的意义。具体的学术名称是根据定义来确定的，这里我们就不得不深入了解一下，人工智能中的智能，在学者们眼中究竟是什么？</p>
 <h3 id="智能元问题"><a href="#智能元问题" class="headerlink" title="智能元问题"></a>智能元问题</h3><p><br></p>
-<p><img src="https://i.loli.net/2021/10/11/MotKbiZED6YP43W.png" srcset="/img/loading2.gif" lazyload alt="智能"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/11/MotKbiZED6YP43W.png" alt="智能"></p>
 <p>我常常在思索人是如何思考的？是因为有灵魂吗？还是大脑内神经元的交互作用？尚未有明确的答案。但是我曾在《生物心理学》中看到过这样一句话：</p>
 <p><br></p>
 <blockquote>
@@ -470,7 +328,7 @@
 </ul>
 <p>事实上，我怎么对于什么是<strong>人类智能</strong>（或者说智力），科学界至今还没有给出令人满意的答案。</p>
 <p>难道一切都到此为止了吗？并没有。</p>
-<p><img src="https://i.loli.net/2021/10/11/CwS9nbjaEUDPzrv.gif" srcset="/img/loading2.gif" lazyload alt="想一想"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/11/CwS9nbjaEUDPzrv.gif" alt="想一想"></p>
 <p>关于这个<strong>人工智能的元问题</strong>，即便没有结果我们当然也可以坐下来，好好研究一晚上、一个星期，甚至一整年。但是人工智能的发展不会因此停下脚步，众多科学家另辟蹊径，让人工智能这颗树苗开枝散叶。</p>
 <p><br></p>
 <p><em>(往后的讲述，我不想通过哲学的派别来介绍人工智能的发展，我觉得这并不利于初学者理解发展的联系，过多的阐述抽象的思想会让初学者有理解上的负担，因此我旨在用具体的技术的发展来讲述人工智能的兴衰。)</em></p>
@@ -478,7 +336,7 @@
 <p>达特茅斯会议之后，许多研究者被强大的号召力所吸引，那种对未知领域的探索精神也同样鼓舞着众多学者孜孜不倦。这一阶段开发出的程序堪称神奇，从50年代后期到60年代涌现了大批成功的AI程序和新的研究方向。下面列举其中最具影响的几个。</p>
 <ul>
 <li><p>专家系统</p>
-<p><img src="https://image.jiqizhixin.com/uploads/editor/587a0a77-33c7-4974-a9a9-eb8f742580c5/1525273973251.jpg" srcset="/img/loading2.gif" lazyload alt="专家系统模型"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://image.jiqizhixin.com/uploads/editor/587a0a77-33c7-4974-a9a9-eb8f742580c5/1525273973251.jpg" alt="专家系统模型"></p>
 <p><strong>专家系统</strong>是早期人工智能的一个重要分支，它可以看作是一类具有专门知识和经验的计算机智能程序系统，一般采用人工智能中的知识表示和知识推理技术来模拟通常由领域专家才能解决的复杂问题。一般来说，专家系统=知识库+推理机，因此专家系统也被称为基于知识的系统，主要用于各个行业的专业领域，距离普通大众是比较远的。</p>
 <p>一个专家系统必须具备三要素：</p>
 <ul>
@@ -496,7 +354,7 @@
 </li>
 <li><p>搜索式推理</p>
 <p>搜索式推理是早期的一种代表性的AI领域的推理理论，是众多学者共同的成果。</p>
-<p><img src="https://i.loli.net/2021/10/11/puLW37oSx5bkgim.png" srcset="/img/loading2.gif" lazyload alt="逻辑网"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/11/puLW37oSx5bkgim.png" alt="逻辑网"></p>
 <blockquote>
 <p>许多AI程序使用相同的基本算法。为实现一个目标（例如赢得游戏或证明定理），它们一步步地前进，就像在迷宫中寻找出路一般；如果遇到了死胡同则进行回溯。这就是“搜索式推理”。</p>
 </blockquote>
@@ -504,7 +362,7 @@
 </li>
 <li><p>机器数学家</p>
 <p>这是一个华裔科学家的例子，早期“逻辑理论家”只是完成了一小部分的证明，留存的一大部分证明对当时来说是极其困难的，时隔多年后才有了新的进展。</p>
-<p><img src="https://i.loli.net/2021/10/11/tCmEq9PIYLAdrjZ.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/11/tCmEq9PIYLAdrjZ.png" alt=""></p>
 <p>在纽厄尔和赫伯特·西蒙之后，美籍华人学者、洛克菲勒大学教授<strong>王浩</strong>在“自动定理证明”上获得了更大的成就。</p>
 <blockquote>
 <p>1959年，王浩用他首创的“王氏算法”，在一台速度不高的IBM704电脑上再次向《数学原理》发起挑战。不到9 分钟，王浩的机器把这本数学史上视为里程碑的著作中全部（350条以上） 的定理，统统证明了一遍。</p>
@@ -513,10 +371,10 @@
 <p>如今这位王浩教授在国内鲜有人知，但却是在当时有着不菲的成绩，足以在人工智能的历史上留下一笔。另外在数学原理证明方面，还有一个有说服力的例子，那就是<strong>四色定理的证明</strong>，这里不再展开。</p>
 </li>
 <li><p>自然语言</p>
-<p><img src="https://i.loli.net/2021/10/11/npF416OTZ3bjekv.png" srcset="/img/loading2.gif" lazyload alt="语义网"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/11/npF416OTZ3bjekv.png" alt="语义网"></p>
 <p>自然语言相对视觉方面是最先有突破的领域，因为语言相对规则有序，很自然的联系到能否用计算机来处理。早期的自然语言处理关注较多的是自动翻译，但是第一代机器翻译系统设计上的粗糙所带来的翻译质量的低劣，最终导致了一些人对机器翻译的研究失去信心。有些人甚至错误地认为机器翻译追求全自动质量目标是不可能实现的。标志着机器翻译的研究就此陷入低谷。</p>
 <p>发展较好的是如下的聊天机器人，但也只能做娱乐之用：</p>
-<p><img src="https://i.loli.net/2021/10/11/XlY5mvDuUBT9PrA.png" srcset="/img/loading2.gif" lazyload alt="ELIZA聊天机器人"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/11/XlY5mvDuUBT9PrA.png" alt="ELIZA聊天机器人"></p>
 <p>Joseph Weizenbaum的ELIZA是第一个聊天机器人，可能也是最有趣的会说英语的程序。与ELIZA“聊天”的用户有时会误以为自己是在和人类，而不是和一个程序，交谈。但是实际上ELIZA根本不知道自己在说什么。点击旁边就可进入到聊天页面<a target="_blank" rel="noopener" href="https://web.njit.edu/~ronkowit/eliza.html">与ELIZA聊天吧</a>。</p>
 </li>
 <li><p>感知机</p>
@@ -524,13 +382,13 @@
 <p><strong>感知器</strong>（英语：Perceptron，有的翻译为感知器）是Frank Rosenblatt在1957年就职于康奈尔航空实验室（Cornell Aeronautical Laboratory）时所发明的一种人工神经网络。它可以被视为一种最简单形式的<strong>前馈神经网络</strong>，是一种二元线性分类器。</p>
 </blockquote>
 <p>这个就非常重要啦，我们先来看一张图：</p>
-<p><img src="https://i.loli.net/2021/10/11/jwAK3lXGqDRCFWH.png" srcset="/img/loading2.gif" lazyload alt="感知机"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/11/jwAK3lXGqDRCFWH.png" alt="感知机"></p>
 <p>第一眼看到这张图肯定会有许多不解，我们可以忽略它的符号表示，简单的看图像的样式，我们就可以很容易的联想到一种组成思维必备的元素那就是神经元。事实上，感知器正是用激活与未激活模拟神经元电信号的，简单来说，激活与未激活就要判断看x与权重w带入到wx+b的值是否大于或小于某一阈值，具体如何分类就不详细说明了。</p>
 <p>可以说<strong>罗森布拉特</strong>就是人工神经网络的开山鼻祖，它是最简单的机器学习模型算法。它不仅是神经网络与支持向量机的基础，而且深度学习神经网络依然有感知机的理论思想。</p>
 </li>
 </ul>
 <p><br></p>
-<p><img src="https://cdn1.iconfinder.com/data/icons/data-science-flat-1/64/deep-learning-data-robotics-robot-ai-modeling-128.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn1.iconfinder.com/data/icons/data-science-flat-1/64/deep-learning-data-robotics-robot-ai-modeling-128.png" alt=""></p>
 <p>这一时期的学者们普遍给予人工智能极其乐观的发展估计，比较出名的便是那<strong>四大预言</strong>：</p>
 <blockquote>
 <p>1958年，艾伦·纽厄尔和赫伯特·西蒙：十年之内，数字计算机将成为西洋棋世界冠军。十年之内，数字计算机将发现并证明一个重要的数学定理。</p>
@@ -540,7 +398,7 @@
 </blockquote>
 <p>此时对人工智能科学发展的资助可以说是<strong>几乎无条件</strong>，正执科学家喜出望外的时候，谁曾想凛冬将至…..</p>
 <h3 id="AI的第一次寒冬（1974-1980）"><a href="#AI的第一次寒冬（1974-1980）" class="headerlink" title="AI的第一次寒冬（1974 - 1980）"></a>AI的第一次寒冬（1974 - 1980）</h3><p><br></p>
-<p><img src="https://cdn0.iconfinder.com/data/icons/merry-christmas-41/512/50-cabin-house-winter-vacation-128.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn0.iconfinder.com/data/icons/merry-christmas-41/512/50-cabin-house-winter-vacation-128.png" alt=""></p>
 <p>由于前期AI研究者们过于乐观的估计，未能对自己选择的研究课题有正确的判断，使之前的承诺不能兑现，导致大量的资金没有产出。这和后来的日本要研制第五代计算机如出一辙，还是没有吸取教训呀。</p>
 <blockquote>
 <p>1965年12月，休伯特·德雷福斯以兰德公司顾问的身份，发表了编号为P-3244的《人工智能与炼金术》的研究报告，对兰德公司本身主导的人工智能（以下简称AI）研究提出了重大理论挑战，1972年德雷福斯以该报告为基础出版了《计算机不能做什么——人工智能的极限》，该书与1966年美国国家科学院ALPAC报告，1973年英国科学研究理事会的LightHill报告一起，标志着AI发展历史上的第一次寒冬。</p>
@@ -606,11 +464,11 @@
 </ul>
 <p><br></p>
 <h3 id="AI的第二次寒冬（1987-1993）"><a href="#AI的第二次寒冬（1987-1993）" class="headerlink" title="AI的第二次寒冬（1987-1993）"></a>AI的第二次寒冬（1987-1993）</h3><p><br></p>
-<p><img src="https://cdn2.iconfinder.com/data/icons/christmas-2264/84/winter_tree-128.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn2.iconfinder.com/data/icons/christmas-2264/84/winter_tree-128.png" alt=""></p>
 <p><br></p>
 <p>80年代后期到90年代初期这段时间，人工智能在经历了一系列金融挫折后进入了第二个冬天。起初由于苹果公司和IBM生产台式电脑，专家系统和很多硬件公司日渐衰落，后来加之宣传方面的问题以及越来越少的投资者等综合因素再次导致人们对人工智能的关注度下降。</p>
 <p><br></p>
-<p><img src="https://i.loli.net/2021/10/12/5PRdEhWKjQBvYSn.png" srcset="/img/loading2.gif" lazyload alt="1981 IBM 第一台PC "></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/12/5PRdEhWKjQBvYSn.png" alt="1981 IBM 第一台PC "></p>
 <p><br></p>
 <p>专家系统在备受关注后，也遇到了瓶颈：</p>
 <ul>
@@ -650,7 +508,7 @@
 </li>
 </ul>
 <p><br></p>
-<p><img src="https://cdn1.iconfinder.com/data/icons/data-science-flat-1/64/machine-learning-data-ai-artificial-intelligence-knowledge-128.png" srcset="/img/loading2.gif" lazyload alt="ai, artificial, data, intelligence, knowledge, learning, machine "></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn1.iconfinder.com/data/icons/data-science-flat-1/64/machine-learning-data-ai-artificial-intelligence-knowledge-128.png" alt="ai, artificial, data, intelligence, knowledge, learning, machine "></p>
 <h3 id="AI-赋能时代（2011-至今）"><a href="#AI-赋能时代（2011-至今）" class="headerlink" title="AI+赋能时代（2011-至今）"></a>AI+赋能时代（2011-至今）</h3><p><br></p>
 <p>这个阶段AI的各个领域都有着快速的发展。</p>
 <ul>
@@ -668,7 +526,7 @@
 <p>首先介绍一下ImageNet：</p>
 <p><br></p>
 <blockquote>
-<p><img src="https://i.loli.net/2021/10/13/3em9coQAzkriGjR.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/13/3em9coQAzkriGjR.png" alt=""></p>
 <p><strong>ImageNet</strong>项目是一个大型可视化<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Database">数据库</a>设计用于使用<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Outline_of_object_recognition">可视对象识别软件</a>的研究。该项目已经对超过 1400 万张图像进行了手工注释，以指示所描绘的对象，并且在至少 100 万张图像中，还提供了边界框。这里不得不提一下华人科学家李飞飞，她是这个项目主要的推动者。</p>
 <p><a target="_blank" rel="noopener" href="https://www.ted.com/talks/fei_fei_li_how_we_re_teaching_computers_to_understand_pictures?language=en">这里有一段李飞飞TED的视频感兴趣可以看一下</a></p>
 </blockquote>
@@ -681,13 +539,13 @@
 <p>这个离我们就很近了，我做简单介绍</p>
 <p><br></p>
 <blockquote>
-<p><img src="https://img-blog.csdnimg.cn/20190715160926140.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDY1MTUxNQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/20190715160926140.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDY1MTUxNQ==,size_16,color_FFFFFF,t_70" alt=""></p>
 <p>阿尔法围棋（AlphaGo）是第一个击败人类职业<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/围棋/111288">围棋</a>选手、第一个战胜<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/围棋世界冠军">围棋世界冠军</a>的人工智能机器人，由<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/谷歌/117920">谷歌</a>（Google）旗下<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/DeepMind">DeepMind</a>公司<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/戴密斯·哈萨比斯/16309602">戴密斯·哈萨比斯</a>领衔的团队开发。其主要工作原理是“<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/深度学习/3729729">深度学习</a>”。</p>
 </blockquote>
 <p><br></p>
 <p>围棋，是我们通常一直轻视的一个事物，在现有的计算尺度来看，围棋的变化复杂程度和宇宙种原子变化的复杂程度在同一个量级。这就是为什么当机器能在围棋上战胜人类的时候，会出现如此大的轰动。如同第二次浪潮的开端一样，这无疑又给人工智能提供了一个发展的良好阶段。</p>
 <p><br></p>
-<p><img src="https://pic2.zhimg.com/50/v2-305788e623ebd00a8498932cd71d9a0d_720w.webp?source=1940ef5c" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic2.zhimg.com/50/v2-305788e623ebd00a8498932cd71d9a0d_720w.webp?source=1940ef5c" alt=""></p>
 <p><br></p>
 </li>
 </ul>
@@ -714,7 +572,7 @@
 <p><br></p>
 <blockquote>
 <p>人工智能技术现在所取得的进展和成功，是缘于“弱人工智能”而不是“强人工智能”的研究。</p>
-<p><img src="http://5b0988e595225.cdn.sohucs.com/images/20180117/44e9078f6b39444081d917432a3ab866.jpeg" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://5b0988e595225.cdn.sohucs.com/images/20180117/44e9078f6b39444081d917432a3ab866.jpeg" alt=""></p>
 <p>正如国际人工智能联合会前主席、牛津大学计算机系主任迈克尔·伍德里奇(Michael Wooldrige)教授在 2016 年 CCF-GAIR 大会¹报告中所说：强人工智能几乎没有进展，甚至「几乎没有严肃的活动」(「little progress, little serious activity」)。</p>
 </blockquote>
 <p><br></p>
@@ -739,8 +597,8 @@
 </li>
 </ul>
 <p><br></p>
-<p><img src="https://i.loli.net/2021/10/10/PndvSuBLsyg9m12.png" srcset="/img/loading2.gif" lazyload alt=""></p>
-<p><img src="https://i.loli.net/2021/10/10/84IW3w6qjlzuCnU.png" srcset="/img/loading2.gif" lazyload alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/10/PndvSuBLsyg9m12.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2021/10/10/84IW3w6qjlzuCnU.png" alt=""></p>
 <p><br></p>
 <h2 id="尾言"><a href="#尾言" class="headerlink" title="尾言"></a>尾言</h2><p>所以到这里就结束了吗？</p>
 <p>回看整个历史，你就会明白，人工智能的路还有很长的路要走，相信随着量子技术等一大批高精尖的研究取得突破，人工智能也会有长足的发展。</p>
@@ -762,292 +620,29 @@
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30155870">什么是感知机？</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.sohu.com/a/217305991_651893">关于强人工智能</a></li>
 </ol>
-
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/AI/">AI</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/AI/">AI</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2021/10/13/C++1/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">C++系列：C++与C的区别（一）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2021/09/30/Hexo_hello-world/">
-                        <span class="hidden-mobile">Hello World</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"UrMBdkpVtSriHxFtNjQRvPqm-gzGzoHsz","appKey":"rLGXsY7AM0Ym431NbB2fCRpX","path":"window.location.pathname","placeholder":"发一条友善的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
-          </article>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-  <div class="col-lg-7 mx-auto nopadding-x-md">
-    <div class="container custom post-custom mx-auto">
-      <p style="text-align:center;">如果博文对你有帮助，可以给博主充充电噢~ <br> 非常感谢！！</p><img src="/img/qxd.jpg" srcset="/img/loading2.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
-    </div>
-  </div>
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-
-    
-  </main>
-
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
-  </div>
-  
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- LeanCloud 统计PV -->
-        <span id="leancloud-site-pv-container" style="display: none">
-            总访问量 
-            <span id="leancloud-site-pv"></span>
-             次
-          </span>
-      
-      
-        <!-- LeanCloud 统计UV -->
-        <span id="leancloud-site-uv-container" style="display: none">
-            总访客数 
-            <span id="leancloud-site-uv"></span>
-             人
-          </span>
-      
-
-    
-  </div>
-
-
-  
-
-  
-</footer>
-
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
-  
-  
-    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
-  
-
-
-
-
-  <script defer src="/js/leancloud.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-      typing(title)
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-  
-<script src="/js/diy/timeDate.js"></script>
-<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-<script src="//cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js"></script>
-<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"}});</script></body>
-</html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Tony</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://bsheepcoder.github.io/2021/10/10/AI_History/">https://bsheepcoder.github.io/2021/10/10/AI_History/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://bsheepcoder.github.io" target="_blank">Q's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/">AI</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/10/13/C++1/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C++系列：C++与C的区别（一）</div></div></a></div><div class="next-post pull-right"><a href="/2021/09/30/Hexo_hello-world/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/10/13/AI_MachineThink/" title="图灵：计算机器与智能（译文）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-13</div><div class="title">图灵：计算机器与智能（译文）</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Tony</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">61</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Bsheepcoder.io" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%9D%E8%AF%B4%E7%82%BC%E9%87%91%E6%9C%AF"><span class="toc-number">1.</span> <span class="toc-text">话说炼金术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E8%A7%89%E9%86%92"><span class="toc-number">2.</span> <span class="toc-text">机器觉醒</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%81%B5%E6%9C%BA"><span class="toc-number">2.1.</span> <span class="toc-text">图灵机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E8%83%BD%E6%80%9D%E7%BB%B4%E5%90%97%EF%BC%9F"><span class="toc-number">2.2.</span> <span class="toc-text">机器能思维吗？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%A7%91%E5%AD%A6%E7%AE%80%E6%98%8E%E5%8F%B2"><span class="toc-number">3.</span> <span class="toc-text">人工智能科学简明史</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%8E%E6%98%8E"><span class="toc-number">3.1.</span> <span class="toc-text">黎明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E7%A7%8B%E7%9A%84%E4%BC%9A%E8%AE%AE"><span class="toc-number">3.2.</span> <span class="toc-text">初秋的会议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%86%8A%E7%86%8A%E7%82%89%E7%81%AB"><span class="toc-number">3.2.1.</span> <span class="toc-text">熊熊炉火</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%9B%E5%AE%B4%E5%BC%80%E5%A7%8B"><span class="toc-number">3.2.2.</span> <span class="toc-text">盛宴开始</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%85%83%E9%97%AE%E9%A2%98"><span class="toc-number">3.3.</span> <span class="toc-text">智能元问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AI%E5%A4%A7%E5%8F%91%E7%8E%B0%E5%B9%B4%E4%BB%A3%EF%BC%881956-1974%EF%BC%89"><span class="toc-number">3.4.</span> <span class="toc-text">AI大发现年代（1956 - 1974）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AI%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AF%92%E5%86%AC%EF%BC%881974-1980%EF%BC%89"><span class="toc-number">3.5.</span> <span class="toc-text">AI的第一次寒冬（1974 - 1980）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AI%E7%9A%84%E5%A4%8D%E5%85%B4%EF%BC%881980-1987%EF%BC%89"><span class="toc-number">3.6.</span> <span class="toc-text">AI的复兴（1980-1987）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AI%E7%9A%84%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%AF%92%E5%86%AC%EF%BC%881987-1993%EF%BC%89"><span class="toc-number">3.7.</span> <span class="toc-text">AI的第二次寒冬（1987-1993）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AI%E7%A8%B3%E5%AE%9A%E6%9C%9F%EF%BC%881993-2011%EF%BC%89"><span class="toc-number">3.8.</span> <span class="toc-text">AI稳定期（1993-2011）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AI-%E8%B5%8B%E8%83%BD%E6%97%B6%E4%BB%A3%EF%BC%882011-%E8%87%B3%E4%BB%8A%EF%BC%89"><span class="toc-number">3.9.</span> <span class="toc-text">AI+赋能时代（2011-至今）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E4%B8%8E%E5%BC%B1%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD"><span class="toc-number">4.</span> <span class="toc-text">强与弱人工智能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%BE%E8%A8%80"><span class="toc-number">5.</span> <span class="toc-text">尾言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">6.</span> <span class="toc-text">参考文献</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/18/Hexo_butterfly/" title="Hexo主题换为butterfly"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo主题换为butterfly"/></a><div class="content"><a class="title" href="/2022/03/18/Hexo_butterfly/" title="Hexo主题换为butterfly">Hexo主题换为butterfly</a><time datetime="2022-03-18T07:15:58.551Z" title="发表于 2022-03-18 15:15:58">2022-03-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/15/C++_letcode1/" title="力扣刷题记录"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="力扣刷题记录"/></a><div class="content"><a class="title" href="/2022/03/15/C++_letcode1/" title="力扣刷题记录">力扣刷题记录</a><time datetime="2022-03-15T12:06:03.845Z" title="发表于 2022-03-15 20:06:03">2022-03-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/14/Road1/" title="每日规划日志"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每日规划日志"/></a><div class="content"><a class="title" href="/2022/03/14/Road1/" title="每日规划日志">每日规划日志</a><time datetime="2022-03-14T10:09:11.147Z" title="发表于 2022-03-14 18:09:11">2022-03-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/14/C++_STL1/" title="C++STL复习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++STL复习"/></a><div class="content"><a class="title" href="/2022/03/14/C++_STL1/" title="C++STL复习">C++STL复习</a><time datetime="2022-03-14T01:41:33.906Z" title="发表于 2022-03-14 09:41:33">2022-03-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/13/Web_Raspberrypi1/" title="【项目】在树莓派上部署个人博客"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【项目】在树莓派上部署个人博客"/></a><div class="content"><a class="title" href="/2022/03/13/Web_Raspberrypi1/" title="【项目】在树莓派上部署个人博客">【项目】在树莓派上部署个人博客</a><time datetime="2022-03-13T10:23:16.750Z" title="发表于 2022-03-13 18:23:16">2022-03-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Tony</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz',
+      appKey: '8y2ItNdFctdKBPMHS31S2jbm',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"}});</script></body></html>
