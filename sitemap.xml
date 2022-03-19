@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bsheepcoder.github.io/2022/03/09/SLAM_intgerLinearProgramming/</loc>
+    
+    <lastmod>2022-03-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bsheepcoder.github.io/categories/index.html</loc>
+    
+    <lastmod>2022-03-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bsheepcoder.github.io/tags/index.html</loc>
+    
+    <lastmod>2022-03-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://bsheepcoder.github.io/2022/03/14/Road1/</loc>
     
     <lastmod>2022-03-19</lastmod>
@@ -122,15 +149,6 @@
     <loc>https://bsheepcoder.github.io/2021/10/13/win10_bug1/</loc>
     
     <lastmod>2022-03-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://bsheepcoder.github.io/2022/03/09/SLAM_intgerLinearProgramming/</loc>
-    
-    <lastmod>2022-03-10</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -611,14 +629,14 @@
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/tags/Git/</loc>
+    <loc>https://bsheepcoder.github.io/tags/Hexo/</loc>
     <lastmod>2022-03-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/tags/Hexo/</loc>
+    <loc>https://bsheepcoder.github.io/tags/Git/</loc>
     <lastmod>2022-03-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -746,14 +764,14 @@
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/categories/Git/</loc>
+    <loc>https://bsheepcoder.github.io/categories/Hexo/</loc>
     <lastmod>2022-03-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/categories/Hexo/</loc>
+    <loc>https://bsheepcoder.github.io/categories/Git/</loc>
     <lastmod>2022-03-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
