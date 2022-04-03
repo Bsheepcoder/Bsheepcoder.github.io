@@ -1,14 +1,15 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Q's blog | Q's blog</title><meta name="author" content="Bsheepcoder"><meta name="copyright" content="Bsheepcoder"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="参考资料 CS50.3 人工智能导论 · 2020 发现自己能够听懂，并做笔记了，大一的时候想看但很吃力,涉及离散数学、数据结构、概率论等知识  Search DFS 路径不一定是最优的   BFS 多走了很多路，但是路径一定是最优的     class Node():    def _init_(self,state,parent,action):        self.state &#x3D; sta">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CS50.3 人工智能导论笔记 | Q's blog</title><meta name="keywords" content="会议笔记"><meta name="author" content="Bsheepcoder"><meta name="copyright" content="Bsheepcoder"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="观看了英伟达的线上发布会">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Q&#39;s blog">
+<meta property="og:title" content="CS50.3 人工智能导论笔记">
 <meta property="og:url" content="https://bsheepcoder.github.io/2022/03/27/BJ_AI_CS50/index.html">
 <meta property="og:site_name" content="Q&#39;s blog">
-<meta property="og:description" content="参考资料 CS50.3 人工智能导论 · 2020 发现自己能够听懂，并做笔记了，大一的时候想看但很吃力,涉及离散数学、数据结构、概率论等知识  Search DFS 路径不一定是最优的   BFS 多走了很多路，但是路径一定是最优的     class Node():    def _init_(self,state,parent,action):        self.state &#x3D; sta">
+<meta property="og:description" content="观看了英伟达的线上发布会">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 <meta property="article:published_time" content="2022-03-27T13:01:44.615Z">
-<meta property="article:modified_time" content="2022-04-03T08:46:50.752Z">
+<meta property="article:modified_time" content="2022-04-03T10:25:54.347Z">
 <meta property="article:author" content="Bsheepcoder">
+<meta property="article:tag" content="会议笔记">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/page1.png"><link rel="canonical" href="https://bsheepcoder.github.io/2022/03/27/BJ_AI_CS50/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
@@ -47,12 +48,12 @@
   islazyload: true,
   isAnchor: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'Q\'s blog',
+  title: 'CS50.3 人工智能导论笔记',
   isPost: true,
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-04-03 16:46:50'
+  postUpdate: '2022-04-03 18:25:54'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -143,16 +144,20 @@
     detectApple()
     })(window)</script><meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Q's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-27T13:01:44.615Z" title="发表于 2022-03-27 21:01:44">2022-03-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-04-03T08:46:50.752Z" title="更新于 2022-04-03 16:46:50">2022-04-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Q's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">CS50.3 人工智能导论笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-27T13:01:44.615Z" title="发表于 2022-03-27 21:01:44">2022-03-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-04-03T10:25:54.347Z" title="更新于 2022-04-03 18:25:54">2022-04-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BC%9A%E8%AE%AE%E7%AC%94%E8%AE%B0/">会议笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CS50.3 人工智能导论笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h2>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1tT4y137LB?p=2&amp;spm_id_from=333.1007.top_right_bar_window_history.content.click">CS50.3 人工智能导论 · 2020</a></li>
 <li>发现自己能够听懂，并做笔记了，大一的时候想看但很吃力,涉及离散数学、数据结构、概率论等知识</li>
 </ul>
-<h2 id="Search"><a href="#Search" class="headerlink" title="Search"></a>Search</h2><ul>
-<li>DFS<ul>
+<h2 id="search"><a class="markdownIt-Anchor" href="#search"></a> Search</h2>
+<ul>
+<li>DFS
+<ul>
 <li>路径不一定是最优的</li>
 </ul>
 </li>
-<li>BFS<ul>
+<li>BFS
+<ul>
 <li>多走了很多路，但是路径一定是最优的</li>
 </ul>
 </li>
@@ -163,238 +168,331 @@
 <p>注意到<code>__init__</code>方法的第一个参数永远是<code>self</code>，表示创建的实例本身，因此，在<code>__init__</code>方法内部，就可以把各种属性绑定到<code>self</code>，因为<code>self</code>就指向创建的实例本身。</p>
 </blockquote>
 <ul>
-<li><p>对于人类会怎么做,需要更聪明的算法</p>
+<li>
+<p>对于人类会怎么做,需要更聪明的算法</p>
 <ul>
-<li>不知情搜素<ul>
+<li>不知情搜素
+<ul>
 <li>DFS、BFS</li>
 </ul>
 </li>
 <li>知情搜素 informed search</li>
 </ul>
 </li>
-<li><p>贪婪最佳优先搜素 greedy best-first search</p>
+<li>
+<p>贪婪最佳优先搜素 greedy best-first search</p>
 <p>通过一个启发式函数估算我们离目标有多近，并且注意启发式函数并不代表实际到达的步数，有墙可能会更远。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/28/AljP3asrSLTifuJ.png" alt=""></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/28/GzxhEr86B5DaHWw.png" alt=""></p>
 <p>启发函数的好坏直接影响了结果好坏</p>
 </li>
-<li><p>A*搜索</p>
+<li>
+<p>A*搜索</p>
 <p>如何改进？判断权值是否再选择一个较小的结果后，又发现回升。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/28/czk1qU24yNaV9MO.png" alt=""></p>
 <p>A*搜索不仅考虑启发式函数，还考虑多长时间达到特定状态。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/28/2N5geuhWLy8oZ4I.png" alt=""></p>
 <p>如果启发式函数不高估实际成本，那么它是可接受的，每个节点的结果或者与实际相同，或者小于实际值，但是不能认为我离目标比实际更远。这里不理解没关系，视频说这背后的数学比较深奥，缺失不好理解。选择启发式函数，是挑战，启发式函数越好越容易解决问题。A*通常需要大量内存。</p>
 </li>
-<li><p>Adversarial Search(对抗性搜索)</p>
+<li>
+<p>Adversarial Search(对抗性搜索)</p>
 <p>Minimax 极大极小算法</p>
 <p>an agent trying to make intelligent decisions,and there is someone else who is fighting against me,so to speak.</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/28/tL6V45UxTlsKbFY.png" alt=""></p>
 <p>MAX(X) aims to maximize score,MIN(O) aims to minimize score.</p>
 <ul>
-<li><p>So:初始状态</p>
+<li>
+<p>So:初始状态</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/28/I1HAbqycRPrspzJ.png" alt=""></p>
 </li>
-<li><p>Player(s): 返回哪一个玩家移动到状态s</p>
+<li>
+<p>Player(s): 返回哪一个玩家移动到状态s</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/28/uO6NlfPseCJzav3.png" alt=""></p>
 </li>
-<li><p>Actions(s): 返回所有状态中合法的移动</p>
+<li>
+<p>Actions(s): 返回所有状态中合法的移动</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/28/aTFMx6Zqd2S7Lz9.png" alt=""></p>
 </li>
-<li><p>Result(s,a): 在动作a达到状态s之后返回状态</p>
+<li>
+<p>Result(s,a): 在动作a达到状态s之后返回状态</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/28/lVnrodSLHsUADcY.png" alt=""></p>
 </li>
-<li><p>Terminal(s):检查是否状态s,是否是终止状态</p>
+<li>
+<p>Terminal(s):检查是否状态s,是否是终止状态</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/28/ZWQcNkDzgfwX2Rq.png" alt=""></p>
 </li>
-<li><p>Utility(s):计算终止状态的分数</p>
+<li>
+<p>Utility(s):计算终止状态的分数</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/28/asMtbjxo2zIYnKP.png" alt=""></p>
 </li>
-<li><p>MIN一直选择值较小的状态，MAX一直选择值较大的状态，下图为两者的博弈树</p>
+<li>
+<p>MIN一直选择值较小的状态，MAX一直选择值较大的状态，下图为两者的博弈树</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/28/IvwT4PaXMKQGm8E.png" alt=""></p>
 </li>
-<li><p>可以进行哪些优化</p>
+<li>
+<p>可以进行哪些优化</p>
 <p>有些状态不需要查看，只需在我能选择最优时，选择的那个结果，即对不许查看的结果进行剪枝(alpha-beta pruning)。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/28/Xd1JNLQpPneH2Bf.png" alt=""></p>
 </li>
-</ul>
+<li>
+<p>由于计算机所能查看到的深度有限，因此我们要做一些限制，即深度限制的极小极大算法(depth-limited Minimax)</p>
 </li>
-</ul>
-<pre><code>![](https://s2.loli.net/2022/03/28/Xd1JNLQpPneH2Bf.png)
-</code></pre><ul>
-<li><p>由于计算机所能查看到的深度有限，因此我们要做一些限制，即深度限制的极小极大算法(depth-limited Minimax)</p>
-</li>
-<li><p>评估函数来判断胜率，<a target="_blank" rel="noopener" href="https://xkcd.com/832/">https://xkcd.com/832/</a> 网站中的对抗性测率游戏的所有可能</p>
+<li>
+<p>评估函数来判断胜率，<a target="_blank" rel="noopener" href="https://xkcd.com/832/">https://xkcd.com/832/</a> 网站中的对抗性测率游戏的所有可能</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/28/EvrlwFe5SaDiIjc.png" alt="https://xkcd.com/832/"></p>
 </li>
 </ul>
-<h2 id="Knowledge"><a href="#Knowledge" class="headerlink" title="Knowledge"></a>Knowledge</h2><ul>
-<li><p>基于知识的代理 knowledge-based agents</p>
+</li>
+</ul>
+<h2 id="knowledge"><a class="markdownIt-Anchor" href="#knowledge"></a> Knowledge</h2>
+<ul>
+<li>
+<p>基于知识的代理 knowledge-based agents</p>
 <ul>
 <li>基于知识得出结论</li>
 <li>用已有的信息，分析得出其他信息，举了一个Hagrid的例子</li>
 <li>逻辑推理</li>
 </ul>
 </li>
-<li><p>sentence</p>
+<li>
+<p>sentence</p>
 <ul>
-<li><p>知识表示语言</p>
+<li>
+<p>知识表示语言</p>
 </li>
-<li><p>命题逻辑、命名符号</p>
+<li>
+<p>命题逻辑、命名符号</p>
 <ul>
 <li>每一个符号表示一个事实(联想到离散数学)，真假命题，逻辑联结词</li>
 <li>非、与、或、推出、互推</li>
 </ul>
 </li>
-<li><p>not</p>
+<li>
+<p>not</p>
 <ul>
-<li>真值表(确实和离散数学对应)</li>
-</ul>
+<li>
+<p>真值表(确实和离散数学对应)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">P</th>
+<th style="text-align:center">-p</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">false</td>
+<td style="text-align:center">true</td>
+</tr>
+<tr>
+<td style="text-align:center">true</td>
+<td style="text-align:center">false</td>
+</tr>
+</tbody>
+</table>
 </li>
 </ul>
 </li>
-</ul>
-<pre><code>  |   P   |  -p   |
-  | :---: | :---: |
-  | false | true  |
-  | true  | false |
-</code></pre><ul>
-<li><p>介绍了与^、或v</p>
+<li>
+<p>介绍了与^、或v</p>
 </li>
-<li><p>implication(-&gt;)只有条件为真时，才能推出结果为真，条件为假，不能推出结果为真或者假。</p>
+<li>
+<p>implication(-&gt;)只有条件为真时，才能推出结果为真，条件为假，不能推出结果为真或者假。</p>
 </li>
-<li><p>biconditional (&lt;-&gt;)同为真，不同为假，（同或）</p>
+<li>
+<p>biconditional (&lt;-&gt;)同为真，不同为假，（同或）</p>
 </li>
 </ul>
+</li>
+<li>
+<p>真实情况</p>
 <ul>
-<li><p>真实情况</p>
-<ul>
-<li><p>建立模型model</p>
+<li>
+<p>建立模型model</p>
 <ul>
 <li>用符号代表事件的真假</li>
 </ul>
 </li>
-<li><p>存储knowledge base 即已知的结论、知识</p>
+<li>
+<p>存储knowledge base 即已知的结论、知识</p>
 </li>
-<li>得出entailment 后果，理解为结论<ul>
+<li>
+<p>得出entailment 后果，理解为结论</p>
+<ul>
 <li>A为真，B也必须为真</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>实列</p>
+<li>
+<p>实列</p>
 <ul>
-<li>P：it is a Tuesday</li>
-<li>Q: it is raining.</li>
-<li>R: Harry will go for a run.</li>
-<li>KB(knowledge base):  (P^非Q)-&gt;R</li>
-<li><p>inference : R为真</p>
+<li>
+<p>P：it is a Tuesday</p>
 </li>
-<li><p>KB能否得出A结论</p>
+<li>
+<p>Q: it is raining.</p>
+</li>
+<li>
+<p>R: Harry will go for a run.</p>
+</li>
+<li>
+<p>KB(knowledge base):  (P^非Q)-&gt;R</p>
+</li>
+<li>
+<p>inference : R为真</p>
+</li>
+<li>
+<p>KB能否得出A结论</p>
 </li>
 </ul>
 </li>
-<li><p>Model Checking 模型跟踪算法</p>
+<li>
+<p>Model Checking 模型跟踪算法</p>
 <ul>
-<li><p>to determine if KB|= a:</p>
+<li>
+<p>to determine if KB|= a:</p>
 </li>
-<li><p>Enumerate all possible models.</p>
+<li>
+<p>Enumerate all possible models.</p>
 </li>
-<li><p>if  in every model where KB is true, a is true ,then KB entails a. </p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/29/Liqx2brVcdJa7Kt.png" style="zoom: 80%;"></p>
+<li>
+<p>if  in every model where KB is true, a is true ,then KB entails a.</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/29/Liqx2brVcdJa7Kt.png" style="zoom: 80%;">
 </li>
 </ul>
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">form logic <span class="keyword">import</span> *</span><br><span class="line">rain = Symbol(<span class="string">"rain"</span>)  <span class="comment">#it is raining.</span></span><br><span class="line">hagrid = Symbol(<span class="string">"hagrid"</span>)  <span class="comment">#Harry visited Hagrid.</span></span><br><span class="line">dumbledore = Symbol(<span class="string">"dumbledore"</span>)  <span class="comment">#Harry visited Dumbledore</span></span><br><span class="line"></span><br><span class="line">knowledge = And(Implication(Not(rain),hagrid),</span><br><span class="line">                Or(hagrid,dumbledore),</span><br><span class="line">                Not(And(hagrid,dumbledore)),</span><br><span class="line">                dumbledore</span><br><span class="line">				)</span><br><span class="line"><span class="built_in">print</span>(knowledge.formula())</span><br></pre></td></tr></tbody></table></figure>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/29/XJp85V4mKlanvur.png" alt=""></p>
 <ul>
-<li>增加model_check<ul>
+<li>增加model_check
+<ul>
 <li>检查model中的知识是否是正确的</li>
-<li>我们不在乎它不为真，我们只在乎为真的那一个<strong>（这里有点疑问？没懂）</strong></li>
+<li>我们不在乎它不为真，我们只在乎为真的那一个**（这里有点疑问？没懂）**</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>Knowledge Engineering 知识工程</p>
+<li>
+<p>Knowledge Engineering 知识工程</p>
 <ul>
-<li>Clue 线索</li>
-<li><p>propositional Symbols 命题符号</p>
-<ul>
-<li><p>使用命题符号创建句子</p>
+<li>
+<p>Clue 线索</p>
 </li>
-<li><p>命题逻辑转化为结论</p>
+<li>
+<p>propositional Symbols 命题符号</p>
+<ul>
+<li>
+<p>使用命题符号创建句子</p>
+</li>
+<li>
+<p>命题逻辑转化为结论</p>
 </li>
 </ul>
 </li>
-<li>Logic puzzles 逻辑谜题<ul>
+<li>
+<p>Logic puzzles 逻辑谜题</p>
+<ul>
 <li>编辑语句代表约束</li>
 </ul>
 </li>
-<li>Mastermind 策略规划<ul>
+<li>
+<p>Mastermind 策略规划</p>
+<ul>
 <li>可能性比较多，需要更好的方法</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>inference Rules 推理规则</p>
+<li>
+<p>inference Rules 推理规则</p>
 <ul>
-<li><p>Modus Ponens 惯性法</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/29/MO5wxKoIWpfSAs8.png" style="zoom:50%;"></p>
+<li>
+<p>Modus Ponens 惯性法</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/29/MO5wxKoIWpfSAs8.png" style="zoom:50%;">
 </li>
-<li><p>double negation elimination  双重否定消除</p>
+<li>
+<p>double negation elimination  双重否定消除</p>
 </li>
-<li><p>implication elimination 隐含消除</p>
+<li>
+<p>implication elimination 隐含消除</p>
 </li>
-<li><p>Biconditional elimination 双条件删除</p>
+<li>
+<p>Biconditional elimination 双条件删除</p>
 </li>
-<li><p>De Morgan’s Law  德摩根律</p>
+<li>
+<p>De Morgan’s Law  德摩根律</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/29/pQ7r9bzqclwhLFH.png" alt=""></p>
 </li>
-<li><p>Distributive Property 分配律</p>
+<li>
+<p>Distributive Property 分配律</p>
 </li>
-<li><p>theorem proving  定理证明方法</p>
+<li>
+<p>theorem proving  定理证明方法</p>
 <ul>
 <li>和搜索的问题联系在一起</li>
 </ul>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/29/vlSG6MVXdP3RzFE.png" alt=""></p>
 </li>
-<li><p>clause</p>
+<li>
+<p>clause</p>
 <ul>
 <li>a disjunction of literals</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>conjunctive normal form  合取范式(CNF)</p>
+<li>
+<p>conjunctive normal form  合取范式(CNF)</p>
 <ul>
-<li><p>conversion to CNF 将推理规则和CNF结合</p>
+<li>
+<p>conversion to CNF 将推理规则和CNF结合</p>
 </li>
-<li><p>p和非p同真，结论为假</p>
+<li>
+<p>p和非p同真，结论为假</p>
 </li>
-<li>inference by resolution</li>
+<li>
+<p>inference by resolution</p>
+</li>
 </ul>
 <blockquote>
 <p>这里有点吃力，我理解为离散数学中用反证法去解命题</p>
 </blockquote>
 </li>
-<li><p>First-Order Logic  一阶谓词逻辑</p>
+<li>
+<p>First-Order Logic  一阶谓词逻辑</p>
 <ul>
-<li>两种类型的符号</li>
-<li>常量符号</li>
+<li>
+<p>两种类型的符号</p>
+</li>
+<li>
+<p>常量符号</p>
+</li>
 <li></li>
-<li><p>universal quantification 普遍量词</p>
+<li>
+<p>universal quantification 普遍量词</p>
 </li>
-<li>existential quantification 存在量词</li>
-</ul>
-</li>
-<li><p>二阶逻辑</p>
-</li>
-<li><p>等等</p>
+<li>
+<p>existential quantification 存在量词</p>
 </li>
 </ul>
-<h2 id="Uncertainty"><a href="#Uncertainty" class="headerlink" title="Uncertainty"></a>Uncertainty</h2><ul>
-<li><p>通常计算机获取信息带有不确定性</p>
 </li>
-<li><p>估计事件发生的可能性</p>
+<li>
+<p>二阶逻辑</p>
 </li>
-<li><p>Probability</p>
+<li>
+<p>等等</p>
+</li>
+</ul>
+<h2 id="uncertainty"><a class="markdownIt-Anchor" href="#uncertainty"></a> Uncertainty</h2>
+<ul>
+<li>
+<p>通常计算机获取信息带有不确定性</p>
+</li>
+<li>
+<p>估计事件发生的可能性</p>
+</li>
+<li>
+<p>Probability</p>
 <ul>
 <li>possible worlds  所有可能性,举了骰子的例子</li>
 <li>0 ≤ P(w) ≤ 1</li>
@@ -402,24 +500,32 @@
 <li>P(sum to 12) = 1/36  两个骰子数字之和的概率</li>
 </ul>
 </li>
-<li><p>unconditional probability 无条件概率</p>
+<li>
+<p>unconditional probability 无条件概率</p>
 </li>
-<li><p>conditional probability 条件概率</p>
+<li>
+<p>conditional probability 条件概率</p>
 <ul>
-<li>P(a|b)  = 条件概率公式</li>
-<li><p>random variable 随机变量，举了一些例子</p>
+<li>
+<p>P(a|b)  = 条件概率公式</p>
 </li>
-<li><p>independence 独立事件</p>
+<li>
+<p>random variable 随机变量，举了一些例子</p>
+</li>
+<li>
+<p>independence 独立事件</p>
 <ul>
 <li>独立公式</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>Bayes’ Rule 贝叶斯公式</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/30/xHq9UrcDLvdptC3.png" style="zoom: 33%;"></p>
+<li>
+<p>Bayes’ Rule 贝叶斯公式</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/30/xHq9UrcDLvdptC3.png" style="zoom: 33%;">
 <ul>
-<li><p>例子，已知如下</p>
+<li>
+<p>例子，已知如下</p>
 <ul>
 <li>早上有云，下午下雨的概率</li>
 <li>上午有云，下午有0.8的概率下雨</li>
@@ -430,23 +536,27 @@
 </li>
 </ul>
 </li>
-<li><p>joint probability  联合分布</p>
+<li>
+<p>joint probability  联合分布</p>
 <ul>
 <li>联合概率表</li>
 </ul>
 </li>
-<li><p>Rules  逻辑关系对应到概率论的规则</p>
+<li>
+<p>Rules  逻辑关系对应到概率论的规则</p>
 <ul>
-<li>Negation </li>
-<li>inclusion- Exclusion </li>
+<li>Negation</li>
+<li>inclusion- Exclusion</li>
 <li>Marginalization 边缘化</li>
-<li>Conditioning </li>
+<li>Conditioning</li>
 </ul>
 </li>
-<li><p>Bayesian network 贝叶斯网络</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/30/a3MUChTmVWifPO4.png" style="zoom:67%;"></p>
+<li>
+<p>Bayesian network 贝叶斯网络</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/30/a3MUChTmVWifPO4.png" style="zoom:67%;">
 </li>
-<li><p>inference</p>
+<li>
+<p>inference</p>
 <ul>
 <li>信息变量</li>
 <li>证据变量</li>
@@ -454,63 +564,81 @@
 </ul>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/30/XLWbIM1zTJxUy2h.png" alt=""></p>
 </li>
-<li><p>pomegranate 石榴库</p>
+<li>
+<p>pomegranate 石榴库</p>
 <blockquote>
-<p>pomegranate 是基于 Python 的图模型和概率模型工具包，它使用 Cython 实现以加快反应速度。它源于 YAHMM，可实现快速、高效和极度灵活的概率模型，如概率分布、贝叶斯网络、混合隐马尔可夫模型等。概率建模最基础的级别是简单的概率分布。以语言建模为例，概率分布就是是一个人所说的每个单词出现频率的分布。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Uwr44UOuQcNsUQb60zk2/article/details/79029870">https://blog.csdn.net/Uwr44UOuQcNsUQb60zk2/article/details/79029870</a></p>
+<p>pomegranate 是基于 Python 的图模型和概率模型工具包，它使用 Cython 实现以加快反应速度。它源于 YAHMM，可实现快速、高效和极度灵活的概率模型，如概率分布、贝叶斯网络、混合隐马尔可夫模型等。概率建模最基础的级别是简单的概率分布。以语言建模为例，概率分布就是是一个人所说的每个单词出现频率的分布。<br>
+原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Uwr44UOuQcNsUQb60zk2/article/details/79029870">https://blog.csdn.net/Uwr44UOuQcNsUQb60zk2/article/details/79029870</a></p>
 </blockquote>
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">form model <span class="keyword">import</span> model</span><br><span class="line"></span><br><span class="line">probability = model.probability([[<span class="string">"none"</span>,<span class="string">"no"</span>,<span class="string">"no time"</span>,<span class="string">"miss"</span>]])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(probability)</span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p>Approximate Inference</p>
+<li>
+<p>Approximate Inference</p>
 <ul>
 <li>Sampling</li>
 </ul>
 </li>
-<li><p>Likelihood weighting 似然加权</p>
+<li>
+<p>Likelihood weighting 似然加权</p>
 </li>
-<li><p>Markov assumption 马尔科夫假设</p>
+<li>
+<p>Markov assumption 马尔科夫假设</p>
 <ul>
-<li>the assumption that the current state depends on only finite fixed number of previous states.假设当前状态只依赖于有限且固定数量的先前状态。  </li>
+<li>the assumption that the current state depends on only finite fixed number of previous states.假设当前状态只依赖于有限且固定数量的先前状态。</li>
 </ul>
 </li>
-<li><p>Markov chain 马尔科夫链</p>
+<li>
+<p>Markov chain 马尔科夫链</p>
 <ul>
-<li><p>a sequence of random variables where the distribution of each variable follows the Markov assumption.一个随机变量序列，其中每个变量的分布遵循马尔可夫假设。</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/30/W4REdAy8F5rVvGh.png" alt=""> </p>
+<li>
+<p>a sequence of random variables where the distribution of each variable follows the Markov assumption.一个随机变量序列，其中每个变量的分布遵循马尔可夫假设。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/30/W4REdAy8F5rVvGh.png" alt=""></p>
 </li>
 </ul>
 </li>
-<li><p>Transition Model 过渡模型</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/30/yjWi7vDnofzRpdZ.png" style="zoom:67%;"></p>
+<li>
+<p>Transition Model 过渡模型</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/30/yjWi7vDnofzRpdZ.png" style="zoom:67%;">
 </li>
-<li><p>隐马尔可夫模型</p>
+<li>
+<p>隐马尔可夫模型</p>
 <ul>
 <li>隐藏状态的信息世界</li>
 </ul>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220330142457952.png" alt=""></p>
 </li>
-<li><p>Sensor Model (or emission probabilities)</p>
+<li>
+<p>Sensor Model (or emission probabilities)</p>
 </li>
-<li><p>Sensor Markov assumption  传感器马尔可夫假设</p>
+<li>
+<p>Sensor Markov assumption  传感器马尔可夫假设</p>
 <ul>
-<li><p>the assumption that the evidence variable depends only the corresponding state.</p>
-<p>证据变量只依赖于相应状态的假设。  </p>
+<li>
+<p>the assumption that the evidence variable depends only the corresponding state.</p>
+<p>证据变量只依赖于相应状态的假设。</p>
 </li>
 </ul>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/30/xHz3YpkTbmSAQCw.png" alt=""></p>
 </li>
 </ul>
 <p><strong>概率论的部分听英语讲有点吃力</strong></p>
-<h2 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h2><ul>
-<li><p>选择最好的选项</p>
-</li>
-<li><p>local search</p>
+<p>##Optimization</p>
 <ul>
-<li><p>search algorithms that maintain a single node and searches by moving to a neighboring node.</p>
+<li>
+<p>选择最好的选项</p>
 </li>
-<li><p>医院放在哪里使得代价尽可能的小</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/30/3OJ1xNvlqcUYaPL.png" style="zoom:80%;"></p>
+<li>
+<p>local search</p>
+<ul>
+<li>
+<p>search algorithms that maintain a single node and searches by moving to a neighboring node.</p>
 </li>
-<li><p>state-space landscape</p>
+<li>
+<p>医院放在哪里使得代价尽可能的小</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/30/3OJ1xNvlqcUYaPL.png" style="zoom:80%;">
+</li>
+<li>
+<p>state-space landscape</p>
 <ul>
 <li>global maximum 全域最大值</li>
 <li>objective function 评估函数，判断我当前的结果的好坏</li>
@@ -521,132 +649,177 @@
 </li>
 </ul>
 </li>
-<li><p>Hill climbing 爬山算法</p>
+<li>
+<p>Hill climbing 爬山算法</p>
 <ul>
-<li><p>找到最高点，找到最低点</p>
+<li>
+<p>找到最高点，找到最低点</p>
 </li>
-<li><p>伪代码</p>
+<li>
+<p>伪代码</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/30/IF5hEaWnDXs7leN.png" alt=""></p>
 </li>
-<li><p>local maxima 局部最大</p>
+<li>
+<p>local maxima 局部最大</p>
 </li>
-<li><p>local minima 局部最小</p>
+<li>
+<p>local minima 局部最小</p>
 </li>
-<li><p>爬山算法通常只能找到局部的最优</p>
+<li>
+<p>爬山算法通常只能找到局部的最优</p>
 </li>
-<li><p>算法容易陷入flat local maximum和shoulder </p>
+<li>
+<p>算法容易陷入flat local maximum和shoulder</p>
 </li>
-<li><p>Hill Climbing variants 爬山算法变形</p>
+<li>
+<p>Hill Climbing variants 爬山算法变形</p>
 <ul>
-<li>steepest-ascent，choose the highest-valued neighbor </li>
+<li>steepest-ascent，choose the highest-valued neighbor</li>
 <li>stochastic, choose randomly from higher-valued</li>
 <li>first-choice, choose the first higher-valued neighbor</li>
 <li>random-restart , conduct hill climbing multiple times</li>
 <li>local beam search chooses the k highest-valued neighbors</li>
 </ul>
 </li>
-<li><p>代码演示了算法</p>
+<li>
+<p>代码演示了算法</p>
 <ul>
-<li><p>个人要加强一下python的编程了，一直没有重视。</p>
+<li>
+<p>个人要加强一下python的编程了，一直没有重视。</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/30/yxPbJAjzCB8uEWX.png" alt=""></p>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>Simulated Annealing 模拟退火算法</p>
+<li>
+<p>Simulated Annealing 模拟退火算法</p>
 <ul>
-<li><p>为什么名字这么奇怪，因为这是一个由金属退火启发的算法。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/266874840">参考</a></p>
+<li>
+<p>为什么名字这么奇怪，因为这是一个由金属退火启发的算法。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/266874840">参考</a></p>
 </li>
-<li><p>加热一个物理系统后剧烈变换到慢慢冷却的过程，最后稳定到一个位置</p>
+<li>
+<p>加热一个物理系统后剧烈变换到慢慢冷却的过程，最后稳定到一个位置</p>
 </li>
-<li><p>Early on , higher “temperature”:more likely to accept neighbors that are worse than current state.</p>
+<li>
+<p>Early on , higher “temperature”:more likely to accept neighbors that are worse than current state.</p>
 </li>
-<li><p>Later on, lower “temperature”:less likely to accept neighbors that are worse than current state.</p>
+<li>
+<p>Later on, lower “temperature”:less likely to accept neighbors that are worse than current state.</p>
 </li>
-<li><p>伪代码</p>
+<li>
+<p>伪代码</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/30/WaUwBxsnocGbImJ.png" alt=""></p>
 </li>
 </ul>
 </li>
-<li><p>Traveling Salesman Problem(TSP) 商旅问题</p>
+<li>
+<p>Traveling Salesman Problem(TSP) 商旅问题</p>
 <ul>
 <li>NP完全问题，找到最优</li>
 </ul>
 </li>
-<li><p>linear Programming (线性规划)</p>
+<li>
+<p>linear Programming (线性规划)</p>
 <ul>
-<li><p>Minimize a cost function c1x1+c2x2+…+ cnxn</p>
+<li>
+<p>Minimize a cost function c1x1+c2x2+…+ cnxn</p>
 </li>
-<li><p>with constraints (约束)of form a1x1+a2x2+ .. + anxn  ≤  b</p>
-<p>or of form a1x1 + a2x2+ .. + anxn = b</p>
+<li>
+<p>with constraints (约束)of form a1x1+a2x2+ … + anxn  ≤  b</p>
+<p>or of form a1x1 + a2x2+ … + anxn = b</p>
 </li>
-<li><p>with bounds for each variable li ≤ xi ≤ ui</p>
+<li>
+<p>with bounds for each variable li ≤ xi ≤ ui</p>
 </li>
-<li><p>Simplex 单纯形</p>
+<li>
+<p>Simplex 单纯形</p>
 </li>
-<li>interior-Point 内点算法<ul>
+<li>
+<p>interior-Point 内点算法</p>
+<ul>
 <li>关键不是知道这些算法的过程，但是要意识到这些算法可以找到有效的解决方案</li>
 <li>编程演示</li>
 </ul>
 </li>
-<li>Constraint Satisfaction</li>
+<li>
+<p>Constraint Satisfaction</p>
+</li>
 </ul>
 </li>
-<li><p>Constraint Satisfaction Problem</p>
+<li>
+<p>Constraint Satisfaction Problem</p>
 <ul>
-<li><p>举了数独的例子</p>
+<li>
+<p>举了数独的例子</p>
 </li>
-<li><p>变量是方格，用坐标代表</p>
+<li>
+<p>变量是方格，用坐标代表</p>
 </li>
-<li><p>变量的域</p>
+<li>
+<p>变量的域</p>
 </li>
-<li><p>约束</p>
+<li>
+<p>约束</p>
 </li>
-<li><p>下图为排课的例子</p>
+<li>
+<p>下图为排课的例子</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/30/eiVQFRTa6HdrzOy.png" alt=""></p>
 </li>
-<li><p>Hard constraints</p>
+<li>
+<p>Hard constraints</p>
 </li>
-<li><p>soft constraints</p>
+<li>
+<p>soft constraints</p>
 </li>
-<li><p>single constraint</p>
+<li>
+<p>single constraint</p>
 </li>
-<li><p>binary constraint</p>
+<li>
+<p>binary constraint</p>
 </li>
-<li><p>node consistency  节点一致性</p>
+<li>
+<p>node consistency  节点一致性</p>
 <p>所有节点满足一元约束</p>
 </li>
 </ul>
 </li>
-<li><p>Arc consistency电弧一致性算法 AC-3</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/31/bKnD4SToyuV8zdZ.png" style="zoom:67%;"></p>
+<li>
+<p>Arc consistency电弧一致性算法 AC-3</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/31/bKnD4SToyuV8zdZ.png" style="zoom:67%;">
 <ul>
 <li>CSP as Search Problems</li>
 </ul>
 </li>
-<li><p>Backtracking Search 回朔搜索</p>
+<li>
+<p>Backtracking Search 回朔搜索</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/31/4jp6vlzy3Gu2hOY.png" alt=""></p>
 </li>
-<li><p>这部分没有太理解</p>
+<li>
+<p>这部分没有太理解</p>
 </li>
-<li><p>miantaining arc-consistency</p>
+<li>
+<p>miantaining arc-consistency</p>
 <ul>
 <li>algorithm for enforcing arc-consistency every time we make a new assignment.</li>
-<li>通过inference和arc consistency 达到不需要回朔就可以得到所有的结果 </li>
+<li>通过inference和arc consistency 达到不需要回朔就可以得到所有的结果</li>
 </ul>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/31/VbDMOBqgIX5do4A.png" style="zoom:67%;"></p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/31/VbDMOBqgIX5do4A.png" style="zoom:67%;">
 </li>
-<li><p>Domain-Values</p>
+<li>
+<p>Domain-Values</p>
 </li>
 </ul>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/03/31/KXL63phPngAoNSW.png" alt=""></p>
-<h2 id="Learning"><a href="#Learning" class="headerlink" title="Learning"></a>Learning</h2><ul>
-<li><p>Supervised Learning </p>
+<h2 id="learning"><a class="markdownIt-Anchor" href="#learning"></a> Learning</h2>
+<ul>
+<li>
+<p>Supervised Learning</p>
 <p>given a data set of input-output pairs,learn a function to map inputs to outputs.</p>
 <p>输入数据，使得计算机映射出一些结果</p>
 <ul>
-<li><p>classification 分类    </p>
+<li>
+<p>classification 分类</p>
 <p>有很多数据，数据通常为一个表，然后预测新的特征是否为某个值</p>
 <p>函数(数据，数据)= right or not</p>
 <ul>
@@ -655,131 +828,167 @@
 <li>计算机能考虑多维</li>
 </ul>
 </li>
-<li><p>nearest-neighbor classification 邻近算法</p>
+<li>
+<p>nearest-neighbor classification 邻近算法</p>
 <p>algorithm that，given an input ,chooses the class of the nearest data point to that input. 输入的数据根据附近的点来判断新输入点所代表的值。</p>
 <ul>
 <li>缺点是在边界邻居增多且值不稳定、不易区分</li>
 </ul>
 </li>
-<li><p>k-nearest-neighbor classification  K邻近算法</p>
+<li>
+<p>k-nearest-neighbor classification  K邻近算法</p>
 <ul>
 <li>k 表示邻居的个数，查看k中最常见的类别作为我新输入的点的类别</li>
 <li>缺点</li>
 </ul>
 </li>
-<li><p>尝试多个不同算法，来找到最好的</p>
+<li>
+<p>尝试多个不同算法，来找到最好的</p>
 </li>
-<li><p>线性回归</p>
+<li>
+<p>线性回归</p>
 <ul>
-<li><p>给数据加权</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/WISGAVwynqrdlmK.png" style="zoom:67%;"></p>
+<li>
+<p>给数据加权</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/WISGAVwynqrdlmK.png" style="zoom:67%;">
 </li>
-<li><p>通常用适量数值表示</p>
+<li>
+<p>通常用适量数值表示</p>
 </li>
-<li><p>weight vector 学的权重向量</p>
+<li>
+<p>weight vector 学的权重向量</p>
 </li>
-<li><p>input vector 特定的输入，需要判断的</p>
+<li>
+<p>input vector 特定的输入，需要判断的</p>
 </li>
-<li><p>两个向量的点积，所以长度必须相同</p>
+<li>
+<p>两个向量的点积，所以长度必须相同</p>
 </li>
 </ul>
 </li>
-<li><p>perceptron learning rule 感知学习</p>
+<li>
+<p>perceptron learning rule 感知学习</p>
 <ul>
-<li><p>我们可以从随机权重开始，然后从数据中学习，去改变权值</p>
+<li>
+<p>我们可以从随机权重开始，然后从数据中学习，去改变权值</p>
 </li>
-<li><p>y是实际输出，x是输入</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/F1bHANTQuqEKayn.png" style="zoom: 67%;"></p>
+<li>
+<p>y是实际输出，x是输入</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/F1bHANTQuqEKayn.png" style="zoom: 67%;">
 </li>
-<li><p>实际值大于估计值，就需要增加权重</p>
+<li>
+<p>实际值大于估计值，就需要增加权重</p>
 </li>
-<li><p>实际值小于估计值，就需要减少权重</p>
+<li>
+<p>实际值小于估计值，就需要减少权重</p>
 </li>
-<li><p>alpha 表示学习率，a越大表示变化越大</p>
+<li>
+<p>alpha 表示学习率，a越大表示变化越大</p>
 </li>
 </ul>
 </li>
-<li><p>阈值函数</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/IeYqnCDyUkgJowr.png" style="zoom:50%;"></p>
+<li>
+<p>阈值函数</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/IeYqnCDyUkgJowr.png" style="zoom:50%;">
 </li>
-<li><p>hard threshold</p>
+<li>
+<p>hard threshold</p>
 </li>
-<li><p>soft threshold</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/76Mno958lQKkJCs.png" style="zoom: 50%;"></p>
+<li>
+<p>soft threshold</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/76Mno958lQKkJCs.png" style="zoom: 50%;">
 </li>
-<li><p>Support Vector Machine 支持向量机</p>
+<li>
+<p>Support Vector Machine 支持向量机</p>
 <p>仅仅画一条线通常并不能很好的处理分类问题，取决于线的位置</p>
 <ul>
 <li>找到Maximum margin separator 最大分隔符</li>
 <li>在更高维度工作</li>
 </ul>
 </li>
-<li><p>处理的信息是离散的</p>
+<li>
+<p>处理的信息是离散的</p>
 </li>
 </ul>
 </li>
-<li><p>regression 回归问题</p>
+<li>
+<p>regression 回归问题</p>
 <p>广告费转化为销售额</p>
 <ul>
-<li><p>需要找到信息之间的关系</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220401110841251.png" style="zoom: 50%;"></p>
+<li>
+<p>需要找到信息之间的关系</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="C:/Users/71041/AppData/Roaming/Typora/typora-user-images/image-20220401110841251.png" style="zoom: 50%;">
 </li>
-<li><p>loss function 损失函数</p>
+<li>
+<p>loss function 损失函数</p>
 <p>function that express how poorly our hypothesis performs</p>
 <p>函数表示我们的假设执行得有多差 ，损失了准确性，因为预测该函数的输出不是实际的输出。</p>
 <ul>
-<li><p>0-1损失函数</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/DClJAQOvNxmMLUz.png" style="zoom:67%;"></p>
+<li>
+<p>0-1损失函数</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/DClJAQOvNxmMLUz.png" style="zoom:67%;">
 </li>
-<li><p>L1 loss function</p>
+<li>
+<p>L1 loss function</p>
 <p>不仅考虑损失，还考虑距离真实的值有多远</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/7kc6JbUzw4fN5EQ.png" style="zoom:67%;"></p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/7kc6JbUzw4fN5EQ.png" style="zoom:67%;">
 </li>
-<li><p>L2 loss function</p>
+<li>
+<p>L2 loss function</p>
 <p>增加了错误预测的惩罚，使用的是平方的差异</p>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>overfitting 过拟合</p>
+<li>
+<p>overfitting 过拟合</p>
 <p>a model that fits too closely to a particular data set and therefore may fail to generalize to future data.</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/RJnVrLYX9lN8uBK.png" style="zoom:67%;"></p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/NF3pJY4kLy9TUlc.png" style="zoom:67%;"></p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/RJnVrLYX9lN8uBK.png" style="zoom:67%;">
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/NF3pJY4kLy9TUlc.png" style="zoom:67%;">
 </li>
-<li><p>regularization 正则化，规格化</p>
+<li>
+<p>regularization 正则化，规格化</p>
 <p>在损失函数和复杂性之间做权衡</p>
 <p>penalizing hypothesis that are more complex to favor simler,more general hypotheses.</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/EOWPRm8Vh4n6as3.png" alt="image-20220401112954091" style="zoom: 67%;"></p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/EOWPRm8Vh4n6as3.png" alt="image-20220401112954091" style="zoom: 67%;">
 <ul>
 <li>避免过拟合</li>
 </ul>
 </li>
-<li><p>holdout cross-validation 交叉验证</p>
+<li>
+<p>holdout cross-validation 交叉验证</p>
 <ul>
-<li><p>training set and test set  分为训练集和测试集</p>
+<li>
+<p>training set and test set  分为训练集和测试集</p>
 </li>
-<li><p>k-fold cross-validation K折交叉验证</p>
+<li>
+<p>k-fold cross-validation K折交叉验证</p>
 <p>splitting data into k sets,and experimenting k times,using each set as a test set once,and using remaining data as training set.</p>
 <p>不仅仅是划分事物，我们将事物分为k个不同的组</p>
 </li>
 </ul>
 </li>
-<li><p>scikit-learn  </p>
+<li>
+<p>scikit-learn</p>
 <p>快速使用机器学习的设置</p>
 <ul>
-<li><p>演示</p>
+<li>
+<p>演示</p>
 </li>
-<li><p>使用支持向量机SVC、K邻近算法对事物进行分类</p>
+<li>
+<p>使用支持向量机SVC、K邻近算法对事物进行分类</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/TmzMsDr8CuAS5xd.png" alt=""></p>
 </li>
 </ul>
 </li>
-<li><p>reinforcement learning 强化学习</p>
-<p>given a set of rewards or punishments,learning what actions to take in the future.给予一套奖励或惩罚，学习将来采取什么行动。  </p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/EHolFadhxwntm27.png" style="zoom:67%;"></p>
+<li>
+<p>reinforcement learning 强化学习</p>
+<p>given a set of rewards or punishments,learning what actions to take in the future.给予一套奖励或惩罚，学习将来采取什么行动。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/EHolFadhxwntm27.png" style="zoom:67%;">
 <ul>
-<li><p>Markov Decision Process 马尔可夫决策过程</p>
+<li>
+<p>Markov Decision Process 马尔可夫决策过程</p>
 <p>model for decision-making,representing states, actions,and their rewards.</p>
 <p>决策模型，代表状态，行动和他们的回报。</p>
 <ul>
@@ -791,91 +1000,116 @@
 </li>
 </ul>
 </li>
-<li><p>Q- learning Q学习</p>
-<p>method for learning a function Q(s,a), estimate of value of performing action a in state s.学习函数Q(s,a)的方法，在状态s中估计执行动作a的值。  </p>
+<li>
+<p>Q- learning Q学习</p>
+<p>method for learning a function Q(s,a), estimate of value of performing action a in state s.学习函数Q(s,a)的方法，在状态s中估计执行动作a的值。</p>
 <ul>
 <li>alpha 是学习率，为1表示只在乎新的信息的影响</li>
 </ul>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/03/urqAsP2VbfnBy8Z.png" alt=""></p>
 <ul>
-<li><p>Greedy Decision-Making </p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/Nka2MFeEc31sGLo.png" style="zoom:67%;"></p>
+<li>
+<p>Greedy Decision-Making</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/Nka2MFeEc31sGLo.png" style="zoom:67%;">
 </li>
-<li><p>缺点是没有尝试过的路径是不会尝试的，从而错过更好的路</p>
+<li>
+<p>缺点是没有尝试过的路径是不会尝试的，从而错过更好的路</p>
 </li>
-<li><p>Explore vs Exploit</p>
+<li>
+<p>Explore vs Exploit</p>
 </li>
-<li><p>如何解决</p>
+<li>
+<p>如何解决</p>
 </li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>ε- greedy</p>
+<li>
+<p>ε- greedy</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/8plZj46Xo7DGmT2.png" alt="image-20220401140030039"></p>
 <ul>
-<li>这里演示了组合游戏Nim，关于组合游戏可以了解<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/52931007">https://zhuanlan.zhihu.com/p/52931007</a></li>
+<li>这里演示了组合游戏Nim，关于组合游戏可以了解https://zhuanlan.zhihu.com/p/52931007</li>
 <li>agent即理解为一个下棋机器，做出各种选择和判断</li>
 <li>Function approximation</li>
 </ul>
 </li>
 </ul>
-<ul>
-<li><p>unsupervised learning  无监督学习</p>
+</li>
+<li>
+<p>unsupervised learning  无监督学习</p>
 <p>given input data without any additional feedback,learn patterns.</p>
 <ul>
-<li><p>Clustering 聚类</p>
+<li>
+<p>Clustering 聚类</p>
 </li>
-<li><p>k-均值聚类</p>
+<li>
+<p>k-均值聚类</p>
 <p>algorithm for clustering data based on repeatedly assigning points to clusters and updating those clusters’s centers;</p>
 <p>它将把我们所有的数据点分为k个不同的簇</p>
 <ul>
-<li><p>根据数据不断的调整数据中心</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/Js2Lt3X14jrAuZY.png" style="zoom:67%;"></p>
+<li>
+<p>根据数据不断的调整数据中心</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/01/Js2Lt3X14jrAuZY.png" style="zoom:67%;">
 </li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h2><ul>
-<li><p>启发于神经元</p>
-</li>
-<li><p>Artificial Neural Networks</p>
-<p>Model mathematical function from inputs to outputs based on the structure and parameters of the network. 根据网络的结构和参数建立从输入到输出的数学函数模型。  </p>
-<p>Allows for learning the network’s parameters based on data.允许学习基于数据的网络参数。  </p>
-</li>
-<li><p>如何建立这个函数</p>
+<h2 id="neural-networks"><a class="markdownIt-Anchor" href="#neural-networks"></a> Neural Networks</h2>
 <ul>
-<li><p>联想到之前将的h函数，其中对于函数中的系数有变量的称为权重，没有变量的成为”偏见“。</p>
-<script type="math/tex; mode=display">\begin{align}h(x_1,x_2)= w_0+w_1x_1+w_2x_2 \end{align}</script></li>
-<li><p>step function</p>
+<li>
+<p>启发于神经元</p>
+</li>
+<li>
+<p>Artificial Neural Networks</p>
+<p>Model mathematical function from inputs to outputs based on the structure and parameters of the network. 根据网络的结构和参数建立从输入到输出的数学函数模型。</p>
+<p>Allows for learning the network’s parameters based on data.允许学习基于数据的网络参数。</p>
+</li>
+<li>
+<p>如何建立这个函数</p>
+<ul>
+<li>
+<p>联想到之前将的h函数，其中对于函数中的系数有变量的称为权重，没有变量的成为”偏见“。</p>
+<p class="katex-block katex-error" title="ParseError: KaTeX parse error: No such environment: align at position 7: \begin{̲a̲l̲i̲g̲n̲}̲h(x_1,x_2)= w_0…">\begin{align}h(x_1,x_2)= w_0+w_1x_1+w_2x_2 \end{align}
+</p>
+</li>
+<li>
+<p>step function</p>
 <ul>
 <li>激活函数</li>
 </ul>
 </li>
-<li><p>logistic sigmoid</p>
-<script type="math/tex; mode=display">\begin{align}g(x)= \frac{e^x}{e^x+1} \end{align}</script></li>
-<li><p>rectified linear unit (RelU)</p>
-<script type="math/tex; mode=display">\begin{align}h(x_1,x_2)= g(w_0+w_1x_1+w_2x_2) \end{align}</script><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/02/5LXoH3rFS9mu47l.png" style="zoom:67%;"></p>
+<li>
+<p>logistic sigmoid</p>
+<p class="katex-block katex-error" title="ParseError: KaTeX parse error: No such environment: align at position 7: \begin{̲a̲l̲i̲g̲n̲}̲g(x)= \frac{e^x…">\begin{align}g(x)= \frac{e^x}{e^x+1} \end{align}
+</p>
 </li>
-<li><p>Or 与And函数</p>
+<li>
+<p>rectified linear unit (RelU)</p>
+<p class="katex-block katex-error" title="ParseError: KaTeX parse error: No such environment: align at position 7: \begin{̲a̲l̲i̲g̲n̲}̲h(x_1,x_2)= g(w…">\begin{align}h(x_1,x_2)= g(w_0+w_1x_1+w_2x_2) \end{align}
+</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/02/5LXoH3rFS9mu47l.png" style="zoom:67%;">
+</li>
+<li>
+<p>Or 与And函数</p>
 <ul>
 <li>都类似这样的模型，可以对应生活中的很多例子</li>
 </ul>
 </li>
-<li><p>可以让神经网络更复杂</p>
+<li>
+<p>可以让神经网络更复杂</p>
 <ul>
-<li><p>多个输入，多个权值，多个和</p>
+<li>
+<p>多个输入，多个权值，多个和</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/02/ge4k9DL67fEqsmW.png" alt=""></p>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>如何训练这些函数</p>
+<li>
+<p>如何训练这些函数</p>
 <ul>
-<li>gradient descent 梯度下降法<ul>
+<li>gradient descent 梯度下降法
+<ul>
 <li>类似损失函数</li>
 <li>从随机权值开始</li>
 <li>输入数据，需要输入all data points</li>
@@ -883,92 +1117,110 @@
 <li>不断重复</li>
 </ul>
 </li>
-<li>stochastic gradient descent  随机梯度下降<ul>
+<li>stochastic gradient descent  随机梯度下降
+<ul>
 <li>每次仅用一个数据点来计算梯度 one data points</li>
 <li>计算移动法方向</li>
 <li>计算的更快</li>
 </ul>
 </li>
-<li>Mini-Batch Gradient Descent  Mini-Batch梯度下降<ul>
+<li>Mini-Batch Gradient Descent  Mini-Batch梯度下降
+<ul>
 <li>上述两者的折中</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>关心多个，多个输出，需要多个权重</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/02/OsDL7rkcWG2Nhlz.png" style="zoom:80%;"></p>
+<li>
+<p>关心多个，多个输出，需要多个权重</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/02/OsDL7rkcWG2Nhlz.png" style="zoom:80%;">
 </li>
-</ul>
-<ul>
-<li><p>Perceptron  感知器</p>
+<li>
+<p>Perceptron  感知器</p>
 <ul>
 <li>局限性，输入是线性的，二进制的感知器无法将复杂的图形分类</li>
 </ul>
 </li>
-<li><p>multilayer neural network 多层神经网络</p>
+<li>
+<p>multilayer neural network 多层神经网络</p>
 <ul>
 <li>每个决策边界都会有不同的属性，通过不同的决策边界来得出想要的结果</li>
 <li>数据不能确定隐藏层的值</li>
 </ul>
 </li>
-<li><p>backpropagation 反向传播算法</p>
+<li>
+<p>backpropagation 反向传播算法</p>
 <ul>
 <li>结果反向调整权重</li>
 <li>关键算法</li>
 </ul>
 </li>
-<li><p>Deep neural network 深度神经网络</p>
+<li>
+<p>Deep neural network 深度神经网络</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/02/ZyG8DAVOJUmaRgN.png" alt=""></p>
 </li>
-<li><p>Overfitting 过拟合</p>
+<li>
+<p>Overfitting 过拟合</p>
 </li>
-<li><p>Dropout </p>
+<li>
+<p>Dropout</p>
 <ul>
 <li>防止过度依赖某些单元，暂时的移除某些单元</li>
 </ul>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/02/sRWyr5EZ6V8CK7k.png" alt=""></p>
 </li>
-<li><p>TensorFlow</p>
+<li>
+<p>TensorFlow</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://playground.tensorflow.org/#activation=tanh&amp;batchSize=10&amp;dataset=circle&amp;regDataset=reg-plane&amp;learningRate=0.03&amp;regularizationRate=0&amp;noise=0&amp;networkShape=4,2&amp;seed=0.23163&amp;showTestData=false&amp;discretize=false&amp;percTrainData=50&amp;x=true&amp;y=true&amp;xTimesY=false&amp;xSquared=false&amp;ySquared=false&amp;cosX=false&amp;sinX=false&amp;cosY=false&amp;sinY=false&amp;collectStats=false&amp;problem=classification&amp;initZero=false&amp;hideText=false">tensorflow playground</a></li>
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904200988540942">这可能是最详尽的 Tensorflow Playground 讲解</a></li>
 </ul>
 </li>
-<li><p>图像识别</p>
+<li>
+<p>图像识别</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/02/aW48f19MXDd6uns.png" alt=""></p>
 </li>
-<li><p>image convolution 图像卷积</p>
+<li>
+<p>image convolution 图像卷积</p>
 <p>applying a filter that adds each pixel value of an image to its neighbors weighted according  to a kernel matrix.</p>
-<p>应用一种过滤器，根据核矩阵加权将图像的每个像素值与相邻的像素值相加。  </p>
+<p>应用一种过滤器，根据核矩阵加权将图像的每个像素值与相邻的像素值相加。</p>
 <ul>
-<li><p>过滤图像</p>
+<li>
+<p>过滤图像</p>
 </li>
-<li><p>从图像中提取</p>
+<li>
+<p>从图像中提取</p>
 </li>
-<li><p>内核矩阵</p>
+<li>
+<p>内核矩阵</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/03/zNIJlVtqR1jmSBX.png" alt=""></p>
 </li>
-<li><p>常用于边界检测的</p>
+<li>
+<p>常用于边界检测的</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/03/wtxTYUfrNAvBD4e.png" alt=""></p>
 </li>
 </ul>
 </li>
-<li><p>pooling 池化</p>
+<li>
+<p>pooling 池化</p>
 <p>reducing the size of an input by sampling from regions in the input .</p>
-<p>通过对输入区域进行采样来减小输入的大小。  </p>
+<p>通过对输入区域进行采样来减小输入的大小。</p>
 <ul>
-<li><p>max-pooling 最大池化</p>
+<li>
+<p>max-pooling 最大池化</p>
 <p>pooling by choosing the maximum value in each region.</p>
-<p>通过在每个区域中选择最大值来实现池化  </p>
+<p>通过在每个区域中选择最大值来实现池化</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/03/j1dqibmpPFS4AVz.png" alt=""></p>
 </li>
 </ul>
 </li>
-<li><p>convolutional neural network (CNN) 卷积神经网络</p>
+<li>
+<p>convolutional neural network (CNN) 卷积神经网络</p>
 <p>neural networks that use convolution usually for analyzing images.</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/03/Jqw2K9ZPY4tfs7p.png" alt=""></p>
 <ul>
-<li><p>卷积和池化的次数通常有很多次</p>
+<li>
+<p>卷积和池化的次数通常有很多次</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/03/fJy7HYXpo1itbLC.png" alt=""></p>
 </li>
 </ul>
@@ -976,24 +1228,28 @@
 </ul>
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line">minst = tf.keras.datasets.mnist</span><br><span class="line"></span><br><span class="line">(x_train,y_train),(x_test,y_test) = mnist.load_data()</span><br><span class="line">x_train,x_test = x_train /<span class="number">255.0</span>,x_test/<span class="number">255.0</span></span><br><span class="line">y_train = tf.keras.utils.to_categorical(y_train)</span><br><span class="line">y_test = tf.keras.ytils.to_categorical(y_test)</span><br><span class="line">x_train = x_train.reshape(</span><br><span class="line">	x_train.shape[<span class="number">0</span>],x_train.shape[<span class="number">1</span>],x_train.shape[<span class="number">2</span>],<span class="number">1</span></span><br><span class="line">)</span><br><span class="line">x_test = x_test.reshape(</span><br><span class="line">	x_test.shape[<span class="number">0</span>],x_test.shape[<span class="number">1</span>],x_test.shape[<span class="number">2</span>],<span class="number">1</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">#这里是创建CNN的地方</span></span><br><span class="line">model = tf.keras.models.Sequential([</span><br><span class="line">    <span class="comment">#第一层是卷积层，模型通过32不同的过滤器，每个过滤器是(3,3)的内核，指定激活函数为activation ="relu"，表示输入的形状input_shape=(28,28,1)，对于手写数据集是表示28x28像素的网格，只有1个通道值，即黑白的</span></span><br><span class="line">    tf.keras.layers.Conv2D(</span><br><span class="line">    <span class="number">32</span>,(<span class="number">3</span>,<span class="number">3</span>),activation =<span class="string">"relu"</span>,input_shape=(<span class="number">28</span>,<span class="number">28</span>,<span class="number">1</span>)</span><br><span class="line">    ),</span><br><span class="line">    <span class="comment">#最大池化层，使用2x2大小的pool，有助于减少输入的大小</span></span><br><span class="line">    tf.keras.layers.MaxPooling2D(pool_size = (<span class="number">2</span>,<span class="number">2</span>)),</span><br><span class="line">    <span class="comment">#平整所有单元，进入所有单元？</span></span><br><span class="line">    tf.keras.layers,Flatten(),</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#用128向我的神经网络添加一个隐藏层</span></span><br><span class="line">    tf.keras.layers.Dense(<span class="number">128</span>,activation=<span class="string">"relu"</span>),</span><br><span class="line">    <span class="comment">#防止过拟合添加，在训练时，随机从隐藏层中删除一半</span></span><br><span class="line">    tf.keras.layers.Dropout(<span class="number">0.5</span>), </span><br><span class="line">    <span class="comment">#输出层，有10个输出单元，激活函数为softmax，将输出变为概率分布</span></span><br><span class="line">    tf.keras.layers.Dense(<span class="number">10</span>,activation=<span class="string">"softmax"</span>)</span><br><span class="line">])</span><br><span class="line"><span class="comment">#编译模型</span></span><br><span class="line">model.<span class="built_in">compile</span>(</span><br><span class="line">	optimizer=<span class="string">"adam"</span>,</span><br><span class="line">    loss =<span class="string">"categorical_carossentroypy"</span>,</span><br><span class="line">    metrics[<span class="string">"accuracy"</span>]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">#适合所有的训练数据</span></span><br><span class="line">model.fit(x_train,y_train,epochs=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#评估神经网络的性能</span></span><br><span class="line">model.evaluate(x_test,y_test,verbose=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#保存到文件,保存模型到一个文件中，以便之后使用</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(sys.argv) ==<span class="number">2</span>:</span><br><span class="line">    filename = sys.argc[<span class="number">1</span>]</span><br><span class="line">    model.save(filename)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f"Model saved to <span class="subst">{filename}</span>."</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <ul>
-<li><p>feed-forward neural network</p>
+<li>
+<p>feed-forward neural network</p>
 <p>neural network that has connections only in one direction.</p>
-<p>只有一个方向连接的神经网络。  </p>
+<p>只有一个方向连接的神经网络。</p>
 <ul>
 <li>输出的形状是固定的</li>
 </ul>
 </li>
-<li><p>CaptionBot 微软开发的应用，理解图片</p>
+<li>
+<p>CaptionBot 微软开发的应用，理解图片</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/03/zUB3DOZP4Rm2QEL.png" alt=""></p>
 </li>
-<li><p>递归神经网络</p>
+<li>
+<p>递归神经网络</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/03/EWVArQnBNqRp7ax.png" alt=""></p>
 </li>
 </ul>
-<h2 id="Language"><a href="#Language" class="headerlink" title="Language"></a>Language</h2><ul>
+<h2 id="language"><a class="markdownIt-Anchor" href="#language"></a> Language</h2>
+<ul>
 <li>Natural Language Processing</li>
 </ul>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Bsheepcoder</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://bsheepcoder.github.io/2022/03/27/BJ_AI_CS50/">https://bsheepcoder.github.io/2022/03/27/BJ_AI_CS50/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://bsheepcoder.github.io" target="_blank">Q's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="wechat,weibo,qq,qzone,douban"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/qxd.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/qxd.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/23/BJ_GTC2022/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">NVIDIA GTC 2022主题演讲</div></div></a></div><div class="next-post pull-right"><a href="/2022/04/01/Alphabeta1/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">希腊字母表</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bsheepcoder</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Bsheepcoder"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Bsheepcoder" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">存在即合理</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">1.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Search"><span class="toc-number">2.</span> <span class="toc-text">Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Knowledge"><span class="toc-number">3.</span> <span class="toc-text">Knowledge</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Uncertainty"><span class="toc-number">4.</span> <span class="toc-text">Uncertainty</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Optimization"><span class="toc-number">5.</span> <span class="toc-text">Optimization</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Learning"><span class="toc-number">6.</span> <span class="toc-text">Learning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Neural-Networks"><span class="toc-number">7.</span> <span class="toc-text">Neural Networks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Language"><span class="toc-number">8.</span> <span class="toc-text">Language</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/01/Alphabeta1/" title="希腊字母表"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="希腊字母表"/></a><div class="content"><a class="title" href="/2022/04/01/Alphabeta1/" title="希腊字母表">希腊字母表</a><time datetime="2022-04-01T05:52:54.936Z" title="发表于 2022-04-01 13:52:54">2022-04-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/27/BJ_AI_CS50/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/03/27/BJ_AI_CS50/" title="无题">无题</a><time datetime="2022-03-27T13:01:44.615Z" title="发表于 2022-03-27 21:01:44">2022-03-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/23/BJ_GTC2022/" title="NVIDIA GTC 2022主题演讲"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NVIDIA GTC 2022主题演讲"/></a><div class="content"><a class="title" href="/2022/03/23/BJ_GTC2022/" title="NVIDIA GTC 2022主题演讲">NVIDIA GTC 2022主题演讲</a><time datetime="2022-03-23T06:39:39.927Z" title="发表于 2022-03-23 14:39:39">2022-03-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/23/XM_HPVJB1/" title="【项目】脚本软件分析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【项目】脚本软件分析"/></a><div class="content"><a class="title" href="/2022/03/23/XM_HPVJB1/" title="【项目】脚本软件分析">【项目】脚本软件分析</a><time datetime="2022-03-23T05:01:06.091Z" title="发表于 2022-03-23 13:01:06">2022-03-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/18/Hexo_butterfly/" title="Hexo主题换为butterfly"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo主题换为butterfly"/></a><div class="content"><a class="title" href="/2022/03/18/Hexo_butterfly/" title="Hexo主题换为butterfly">Hexo主题换为butterfly</a><time datetime="2022-03-18T07:15:58.551Z" title="发表于 2022-03-18 15:15:58">2022-03-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Bsheepcoder</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Bsheepcoder</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://bsheepcoder.github.io/2022/03/27/BJ_AI_CS50/">https://bsheepcoder.github.io/2022/03/27/BJ_AI_CS50/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://bsheepcoder.github.io" target="_blank">Q's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%BC%9A%E8%AE%AE%E7%AC%94%E8%AE%B0/">会议笔记</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="wechat,weibo,qq,qzone,douban"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/qxd.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/qxd.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/23/BJ_GTC2022/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">NVIDIA_GTC_2022主题演讲笔记</div></div></a></div><div class="next-post pull-right"><a href="/2022/04/01/Alphabeta1/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">希腊字母表</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/03/23/BJ_GTC2022/" title="NVIDIA_GTC_2022主题演讲笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-23</div><div class="title">NVIDIA_GTC_2022主题演讲笔记</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bsheepcoder</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Bsheepcoder"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Bsheepcoder" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">存在即合理</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">1.</span> <span class="toc-text"> 参考资料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#search"><span class="toc-number">2.</span> <span class="toc-text"> Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#knowledge"><span class="toc-number">3.</span> <span class="toc-text"> Knowledge</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#uncertainty"><span class="toc-number">4.</span> <span class="toc-text"> Uncertainty</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#learning"><span class="toc-number">5.</span> <span class="toc-text"> Learning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#neural-networks"><span class="toc-number">6.</span> <span class="toc-text"> Neural Networks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#language"><span class="toc-number">7.</span> <span class="toc-text"> Language</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/01/Alphabeta1/" title="希腊字母表"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="希腊字母表"/></a><div class="content"><a class="title" href="/2022/04/01/Alphabeta1/" title="希腊字母表">希腊字母表</a><time datetime="2022-04-01T05:52:54.936Z" title="发表于 2022-04-01 13:52:54">2022-04-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/27/BJ_AI_CS50/" title="CS50.3 人工智能导论笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CS50.3 人工智能导论笔记"/></a><div class="content"><a class="title" href="/2022/03/27/BJ_AI_CS50/" title="CS50.3 人工智能导论笔记">CS50.3 人工智能导论笔记</a><time datetime="2022-03-27T13:01:44.615Z" title="发表于 2022-03-27 21:01:44">2022-03-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/23/BJ_GTC2022/" title="NVIDIA_GTC_2022主题演讲笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NVIDIA_GTC_2022主题演讲笔记"/></a><div class="content"><a class="title" href="/2022/03/23/BJ_GTC2022/" title="NVIDIA_GTC_2022主题演讲笔记">NVIDIA_GTC_2022主题演讲笔记</a><time datetime="2022-03-23T06:39:39.927Z" title="发表于 2022-03-23 14:39:39">2022-03-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/23/XM_HPVJB1/" title="【项目】脚本软件分析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【项目】脚本软件分析"/></a><div class="content"><a class="title" href="/2022/03/23/XM_HPVJB1/" title="【项目】脚本软件分析">【项目】脚本软件分析</a><time datetime="2022-03-23T05:01:06.091Z" title="发表于 2022-03-23 13:01:06">2022-03-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/18/Hexo_butterfly/" title="Hexo主题换为butterfly"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo主题换为butterfly"/></a><div class="content"><a class="title" href="/2022/03/18/Hexo_butterfly/" title="Hexo主题换为butterfly">Hexo主题换为butterfly</a><time datetime="2022-03-18T07:15:58.551Z" title="发表于 2022-03-18 15:15:58">2022-03-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Bsheepcoder</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
   window.MathJax = {
     tex: {
       inlineMath: [ ['$','$'], ["\\(","\\)"]],
