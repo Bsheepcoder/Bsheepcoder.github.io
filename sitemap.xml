@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://bsheepcoder.github.io/2022/03/27/BJ_AI_CS50/</loc>
+    
+    <lastmod>2022-04-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://bsheepcoder.github.io/2022/03/13/UML1/</loc>
     
     <lastmod>2022-04-03</lastmod>
@@ -23,15 +32,6 @@
     <loc>https://bsheepcoder.github.io/2022/03/15/C++_letcode1/</loc>
     
     <lastmod>2022-04-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://bsheepcoder.github.io/2022/03/27/BJ_AI_CS50/</loc>
-    
-    <lastmod>2022-04-02</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -658,14 +658,14 @@
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/tags/Hexo/</loc>
+    <loc>https://bsheepcoder.github.io/tags/%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2022-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/tags/%E5%89%8D%E7%AB%AF/</loc>
+    <loc>https://bsheepcoder.github.io/tags/Hexo/</loc>
     <lastmod>2022-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -742,14 +742,14 @@
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/tags/AI/</loc>
+    <loc>https://bsheepcoder.github.io/tags/Java/</loc>
     <lastmod>2022-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/tags/Java/</loc>
+    <loc>https://bsheepcoder.github.io/tags/AI/</loc>
     <lastmod>2022-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -786,14 +786,14 @@
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/categories/Hexo/</loc>
+    <loc>https://bsheepcoder.github.io/categories/%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2022-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/categories/%E5%89%8D%E7%AB%AF/</loc>
+    <loc>https://bsheepcoder.github.io/categories/Hexo/</loc>
     <lastmod>2022-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -870,14 +870,14 @@
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/categories/AI/</loc>
+    <loc>https://bsheepcoder.github.io/categories/Java/</loc>
     <lastmod>2022-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/categories/Java/</loc>
+    <loc>https://bsheepcoder.github.io/categories/AI/</loc>
     <lastmod>2022-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
