@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bsheepcoder.github.io/2022/04/04/ZZ_XUNLEI1/</loc>
+    
+    <lastmod>2022-04-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://bsheepcoder.github.io/2022/04/05/BJ_AI_CS485685/</loc>
     
     <lastmod>2022-04-05</lastmod>
@@ -632,14 +641,14 @@
 
   
   <url>
-    <loc>https://bsheepcoder.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
+    <loc>https://bsheepcoder.github.io/tags/AI/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/tags/AI/</loc>
+    <loc>https://bsheepcoder.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -758,6 +767,13 @@
   </url>
   
   <url>
+    <loc>https://bsheepcoder.github.io/tags/%E8%BD%AC%E8%BD%BD/</loc>
+    <lastmod>2022-04-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://bsheepcoder.github.io/tags/win10/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -774,14 +790,14 @@
 
   
   <url>
-    <loc>https://bsheepcoder.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
+    <loc>https://bsheepcoder.github.io/categories/AI/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/categories/AI/</loc>
+    <loc>https://bsheepcoder.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -887,6 +903,13 @@
   
   <url>
     <loc>https://bsheepcoder.github.io/categories/VR/</loc>
+    <lastmod>2022-04-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bsheepcoder.github.io/categories/%E8%BD%AC%E8%BD%BD/</loc>
     <lastmod>2022-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
