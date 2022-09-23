@@ -1,0 +1,245 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Python字符动画制作(PIL/FFmpeg) | Q's blog</title><meta name="keywords" content="Python"><meta name="author" content="Bsheepcoder"><meta name="copyright" content="Bsheepcoder"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="主要学习了mooc中蒿天老师的视频的笔记，仅供参考。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python字符动画制作(PIL&#x2F;FFmpeg)">
+<meta property="og:url" content="https://bsheepcoder.github.io/2022/09/19/Python_DHBJ1/index.html">
+<meta property="og:site_name" content="Q&#39;s blog">
+<meta property="og:description" content="主要学习了mooc中蒿天老师的视频的笔记，仅供参考。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-09-19T11:33:46.224Z">
+<meta property="article:modified_time" content="2022-09-20T08:00:39.992Z">
+<meta property="article:author" content="Bsheepcoder">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/page1.png"><link rel="canonical" href="https://bsheepcoder.github.io/2022/09/19/Python_DHBJ1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":30,"languages":{"author":"作者: Bsheepcoder","link":"链接: ","source":"来源: Q's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Python字符动画制作(PIL/FFmpeg)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-20 16:00:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Q's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Python字符动画制作(PIL/FFmpeg)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-19T11:33:46.224Z" title="发表于 2022-09-19 19:33:46">2022-09-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-20T08:00:39.992Z" title="更新于 2022-09-20 16:00:39">2022-09-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python/">Python</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Python字符动画制作(PIL/FFmpeg)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1aT4y1A7EF?spm_id_from=333.1007.top_right_bar_window_history.content.click">奇乐编程学院</a></li>
+<li><a target="_blank" rel="noopener" href="https://ffmpeg.org/">https://ffmpeg.org/</a></li>
+</ul>
+<h2 id="准备"><a class="markdownIt-Anchor" href="#准备"></a> 准备</h2>
+<ul>
+<li>
+<p>安装ffmpeg</p>
+</li>
+<li>
+<p>准备python</p>
+</li>
+<li>
+<p>安装PIL</p>
+</li>
+<li>
+<p>安装numpy</p>
+</li>
+</ul>
+<h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw, ImageFont</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">sample_rate = <span class="number">0.4</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ascii_art</span>(<span class="params">file</span>):</span></span><br><span class="line">    im = Image.<span class="built_in">open</span>(file)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Compute letter aspect ratio</span></span><br><span class="line">    font = ImageFont.load_default()</span><br><span class="line">    <span class="comment"># font = ImageFont.truetype("SourceCodePro-Bold.ttf", size=12)</span></span><br><span class="line">    aspect_ratio = font.getsize(<span class="string">"x"</span>)[<span class="number">0</span>] / font.getsize(<span class="string">"x"</span>)[<span class="number">1</span>]</span><br><span class="line">    new_im_size = np.array(</span><br><span class="line">        [im.size[<span class="number">0</span>] * sample_rate, im.size[<span class="number">1</span>] * sample_rate * aspect_ratio]</span><br><span class="line">    ).astype(<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Downsample the image</span></span><br><span class="line">    im = im.resize(<span class="built_in">tuple</span>(new_im_size))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Keep a copy of image for color sampling</span></span><br><span class="line">    im_color = np.array(im)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Convert to gray scale image</span></span><br><span class="line">    im = im.convert(<span class="string">"L"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Convert to numpy array for image manipulation</span></span><br><span class="line">    im = np.array(im)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Defines all the symbols in ascending order that will form the final ascii</span></span><br><span class="line">    symbols = np.array(<span class="built_in">list</span>(<span class="string">" .-vM"</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Normalize minimum and maximum to [0, max_symbol_index)</span></span><br><span class="line">    im = (im - im.<span class="built_in">min</span>()) / (im.<span class="built_in">max</span>() - im.<span class="built_in">min</span>()) * (symbols.size - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Generate the ascii art</span></span><br><span class="line">    <span class="built_in">ascii</span> = symbols[im.astype(<span class="built_in">int</span>)]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Create an output image for drawing ascii text</span></span><br><span class="line">    letter_size = font.getsize(<span class="string">"x"</span>)</span><br><span class="line">    im_out_size = new_im_size * letter_size</span><br><span class="line">    bg_color = <span class="string">"black"</span></span><br><span class="line">    im_out = Image.new(<span class="string">"RGB"</span>, <span class="built_in">tuple</span>(im_out_size), bg_color)</span><br><span class="line">    draw = ImageDraw.Draw(im_out)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Draw text</span></span><br><span class="line">    y = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i, line <span class="keyword">in</span> <span class="built_in">enumerate</span>(<span class="built_in">ascii</span>):</span><br><span class="line">        <span class="keyword">for</span> j, ch <span class="keyword">in</span> <span class="built_in">enumerate</span>(line):</span><br><span class="line">            color = <span class="built_in">tuple</span>(im_color[i, j])  <span class="comment"># sample color from original image</span></span><br><span class="line">            draw.text((letter_size[<span class="number">0</span>] * j, y), ch[<span class="number">0</span>], fill=color, font=font)</span><br><span class="line">        y += letter_size[<span class="number">1</span>]  <span class="comment"># increase y by letter height</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Save image file</span></span><br><span class="line">    im_out.save(file[<span class="number">0</span>:<span class="number">10</span>] + <span class="string">".jpg"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># parser = argparse.ArgumentParser(description="Convert any image to ascii art.")</span></span><br><span class="line">    <span class="comment"># parser.add_argument(</span></span><br><span class="line">    <span class="comment">#     "file", type=str, help="input image file",</span></span><br><span class="line">    <span class="comment"># )</span></span><br><span class="line">    <span class="comment"># args = parser.parse_args()</span></span><br><span class="line">	<span class="comment"># 上面的内容表示file参数的输入</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 也可以直接在脚本内部定义</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">47</span>, <span class="number">60</span>):</span><br><span class="line">        file = <span class="string">"./img/{:0&gt;4d}.jpg"</span>.<span class="built_in">format</span>(i)  <span class="comment"># 这里是定义了内部的文件路径</span></span><br><span class="line">        ascii_art(file)</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="ffmpeg"><a class="markdownIt-Anchor" href="#ffmpeg"></a> ffmpeg</h1>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 获取图片中的每一帧</span></span><br><span class="line">ffmpeg -i &lt;文件路径&gt; -r 25 -qscale:v 2 out/%04d.jpg</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将图片生成为视频,libx264</span></span><br><span class="line">ffmpeg -i %04d.jpg -c:v libx264 -vf fps=25 -pix_fmt yuv420p out.mp4  </span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Bsheepcoder</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://bsheepcoder.github.io/2022/09/19/Python_DHBJ1/">https://bsheepcoder.github.io/2022/09/19/Python_DHBJ1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://bsheepcoder.github.io" target="_blank">Q's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="wechat,weibo,qq,qzone,douban"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/qxd.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/qxd.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/09/18/JavaWeb/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JavaWeb笔记</div></div></a></div><div class="next-post pull-right"><a href="/2022/09/20/RLChina_ML&amp;DL_BJ/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【RLchina2022强化学习暑期课】理论课一-机器学习和深度学习基础</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/08/29/Manim_BJ/" title="Manim入门"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-29</div><div class="title">Manim入门</div></div></a></div><div><a href="/2021/10/13/Python1/" title="（一）Python简单介绍与安装"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-13</div><div class="title">（一）Python简单介绍与安装</div></div></a></div><div><a href="/2021/10/13/Python2/" title="（二）Python基本语法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-13</div><div class="title">（二）Python基本语法</div></div></a></div><div><a href="/2022/09/23/Python_Multiprocessing/" title="Python多进程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-23</div><div class="title">Python多进程</div></div></a></div><div><a href="/2022/09/17/Python_OpenCV/" title="OpenCV(Pyhton)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-17</div><div class="title">OpenCV(Pyhton)</div></div></a></div><div><a href="/2022/02/16/Python_Numpy1/" title="NumPy笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-16</div><div class="title">NumPy笔记</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bsheepcoder</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Bsheepcoder"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Bsheepcoder" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Can we do better ?</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.</span> <span class="toc-text"> 参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text"> 准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text"> 代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ffmpeg"><span class="toc-number"></span> <span class="toc-text"> ffmpeg</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/09/23/Python_Multiprocessing/" title="Python多进程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python多进程"/></a><div class="content"><a class="title" href="/2022/09/23/Python_Multiprocessing/" title="Python多进程">Python多进程</a><time datetime="2022-09-23T13:02:11.145Z" title="发表于 2022-09-23 21:02:11">2022-09-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/22/Python_Spider/" title="爬虫入门"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="爬虫入门"/></a><div class="content"><a class="title" href="/2022/09/22/Python_Spider/" title="爬虫入门">爬虫入门</a><time datetime="2022-09-22T10:47:05.325Z" title="发表于 2022-09-22 18:47:05">2022-09-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/22/Python_sklearn/" title="sklearn入门"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="sklearn入门"/></a><div class="content"><a class="title" href="/2022/09/22/Python_sklearn/" title="sklearn入门">sklearn入门</a><time datetime="2022-09-22T05:29:42.414Z" title="发表于 2022-09-22 13:29:42">2022-09-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/21/AI_CVJS1/" title="计算机视觉CV算法工程师分享"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机视觉CV算法工程师分享"/></a><div class="content"><a class="title" href="/2022/09/21/AI_CVJS1/" title="计算机视觉CV算法工程师分享">计算机视觉CV算法工程师分享</a><time datetime="2022-09-21T15:03:29.033Z" title="发表于 2022-09-21 23:03:29">2022-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/20/RLChina_ML&amp;DL_BJ/" title="【RLchina2022强化学习暑期课】理论课一-机器学习和深度学习基础"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【RLchina2022强化学习暑期课】理论课一-机器学习和深度学习基础"/></a><div class="content"><a class="title" href="/2022/09/20/RLChina_ML&amp;DL_BJ/" title="【RLchina2022强化学习暑期课】理论课一-机器学习和深度学习基础">【RLchina2022强化学习暑期课】理论课一-机器学习和深度学习基础</a><time datetime="2022-09-20T10:24:12.489Z" title="发表于 2022-09-20 18:24:12">2022-09-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Bsheepcoder</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz',
+      appKey: '8y2ItNdFctdKBPMHS31S2jbm',
+      avatar: 'monsterid',
+      serverURLs: 'https://urmbdkpv.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="128,126,125" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"}});</script></body></html>
