@@ -47,15 +47,6 @@
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/2022/11/09/Untitled/</loc>
-    
-    <lastmod>2022-11-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://bsheepcoder.github.io/2022/11/09/Java_Reflection1/</loc>
     
     <lastmod>2022-11-08</lastmod>
@@ -1174,14 +1165,14 @@
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/tags/Hexo/</loc>
+    <loc>https://bsheepcoder.github.io/tags/%E4%BC%9A%E8%AE%AE%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2022-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/tags/%E4%BC%9A%E8%AE%AE%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://bsheepcoder.github.io/tags/Hexo/</loc>
     <lastmod>2022-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1365,14 +1356,14 @@
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/categories/Hexo/</loc>
+    <loc>https://bsheepcoder.github.io/categories/%E4%BC%9A%E8%AE%AE%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2022-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://bsheepcoder.github.io/categories/%E4%BC%9A%E8%AE%AE%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://bsheepcoder.github.io/categories/Hexo/</loc>
     <lastmod>2022-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
