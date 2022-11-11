@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>图解TCP/IP读书笔记 | Q's blog</title><meta name="keywords" content="TCP/IP"><meta name="author" content="Bsheepcoder"><meta name="copyright" content="Bsheepcoder"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="Reference  &lt;图解TCP&#x2F;IP&gt; 谈谈网络通信中的 ACK、NACK 和 REX ** **https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;104322256 SYN 报文什么时候情况下会被丢弃？https:&#x2F;&#x2F;www.cnblogs.com&#x2F;xiaolincoding&#x2F;p&#x2F;15710376.html   简要的正确认识 ![image.png](https:&#x2F;&#x2F;">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>图解TCP/IP读书笔记 | Q's blog</title><meta name="keywords" content="TCP/IP"><meta name="author" content="Bsheepcoder"><meta name="copyright" content="Bsheepcoder"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="Reference  &lt;图解TCP&#x2F;IP&gt; 谈谈网络通信中的 ACK、NACK 和 REX ** **https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;104322256 SYN 报文什么时候情况下会被丢弃？https:&#x2F;&#x2F;www.cnblogs.com&#x2F;xiaolincoding&#x2F;p&#x2F;15710376.html 目前博客还没有用图床，先在语雀看吧  https:&#x2F;&#x2F;www.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图解TCP&#x2F;IP读书笔记">
 <meta property="og:url" content="https://bsheepcoder.github.io/2022/11/12/TCPIP_book1/index.html">
 <meta property="og:site_name" content="Q&#39;s blog">
-<meta property="og:description" content="Reference  &lt;图解TCP&#x2F;IP&gt; 谈谈网络通信中的 ACK、NACK 和 REX ** **https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;104322256 SYN 报文什么时候情况下会被丢弃？https:&#x2F;&#x2F;www.cnblogs.com&#x2F;xiaolincoding&#x2F;p&#x2F;15710376.html   简要的正确认识 ![image.png](https:&#x2F;&#x2F;">
+<meta property="og:description" content="Reference  &lt;图解TCP&#x2F;IP&gt; 谈谈网络通信中的 ACK、NACK 和 REX ** **https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;104322256 SYN 报文什么时候情况下会被丢弃？https:&#x2F;&#x2F;www.cnblogs.com&#x2F;xiaolincoding&#x2F;p&#x2F;15710376.html 目前博客还没有用图床，先在语雀看吧  https:&#x2F;&#x2F;www.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 <meta property="article:published_time" content="2022-11-11T19:00:13.760Z">
-<meta property="article:modified_time" content="2022-11-11T19:09:46.379Z">
+<meta property="article:modified_time" content="2022-11-11T19:20:16.455Z">
 <meta property="article:author" content="Bsheepcoder">
 <meta property="article:tag" content="TCP&#x2F;IP">
 <meta name="twitter:card" content="summary">
@@ -53,7 +53,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-11-12 03:09:46'
+  postUpdate: '2022-11-12 03:20:16'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -144,14 +144,14 @@
     detectApple()
     })(window)</script><meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">119</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">26</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Q's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">图解TCP/IP读书笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-11T19:00:13.760Z" title="发表于 2022-11-12 03:00:13">2022-11-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-11T19:09:46.379Z" title="更新于 2022-11-12 03:09:46">2022-11-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/TCP-IP/">TCP/IP</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="图解TCP/IP读书笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h2>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">119</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">26</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Q's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">图解TCP/IP读书笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-11T19:00:13.760Z" title="发表于 2022-11-12 03:00:13">2022-11-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-11T19:20:16.455Z" title="更新于 2022-11-12 03:20:16">2022-11-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/TCP-IP/">TCP/IP</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="图解TCP/IP读书笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h2>
 <ul>
 <li>&lt;图解TCP/IP&gt;</li>
 <li>谈谈网络通信中的 ACK、NACK 和 REX ** **<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/104322256">https://zhuanlan.zhihu.com/p/104322256</a></li>
 <li>SYN 报文什么时候情况下会被丢弃？<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaolincoding/p/15710376.html">https://www.cnblogs.com/xiaolincoding/p/15710376.html</a></li>
+<li>目前博客还没有用图床，先在语雀看吧  <a target="_blank" rel="noopener" href="https://www.yuque.com/bcodesheep/cg3moq/iga7nwrsk9zmxd5o?#">https://www.yuque.com/bcodesheep/cg3moq/iga7nwrsk9zmxd5o?#</a> 《图解TCP/IP》</li>
 </ul>
 <h2 id="简要的正确认识"><a class="markdownIt-Anchor" href="#简要的正确认识"></a> 简要的正确认识</h2>
-<p>![image.png](<a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668185375519-abb05ae5-1101-4eda-9ca0-d8d0d6020970.png#averageHue=%23efefef&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=274&amp;id=u405c2bc0&amp;margin=">https://cdn.nlark.com/yuque/0/2022/png/26378366/1668185375519-abb05ae5-1101-4eda-9ca0-d8d0d6020970.png#averageHue=%23efefef&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=274&amp;id=u405c2bc0&amp;margin=</a>[object Object]&amp;name=image.png&amp;originHeight=274&amp;originWidth=683&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=68362&amp;status=done&amp;style=none&amp;taskId=ufe6866bd-68d3-4512-bd80-1a6c82dec10&amp;title=&amp;width=683)</p>
 <ul>
 <li><strong>TCP/IP是一个协议组包含了许多子协议</strong>，比较常见的就是HTTP</li>
 <li>TCP/IP是类似数据结构的通用规范，用于构建我们现在的互联网</li>
@@ -276,7 +276,6 @@
 <p>数据链路有不同的技术，不同的技术可以使用不同的通信媒介。<br>通信媒介可以简单理解为不同材料的网线</p>
 <p><a name="e5QE2"></a></p>
 <h2 id="mac地址"><a class="markdownIt-Anchor" href="#mac地址"></a> MAC地址</h2>
-<p>![image.png](<a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668185863596-37776769-e0b9-41dd-8180-9120dacd8319.png#averageHue=%23ececec&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=215&amp;id=ud0948cc9&amp;margin=">https://cdn.nlark.com/yuque/0/2022/png/26378366/1668185863596-37776769-e0b9-41dd-8180-9120dacd8319.png#averageHue=%23ececec&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=215&amp;id=ud0948cc9&amp;margin=</a>[object Object]&amp;name=image.png&amp;originHeight=215&amp;originWidth=598&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=52532&amp;status=done&amp;style=none&amp;taskId=u9c26d2f6-5a4d-4087-9838-92ed5796e0c&amp;title=&amp;width=598)</p>
 <ul>
 <li>用于识别数据链路中互联的节点</li>
 <li>有线/无线均可</li>
@@ -303,7 +302,6 @@
 <a name="h9mcP"></a></li>
 </ul>
 <h2 id="tcpip分层模型与通信示例"><a class="markdownIt-Anchor" href="#tcpip分层模型与通信示例"></a> TCP/IP分层模型与通信示例</h2>
-<p>![image.png](<a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668185283263-8b6d0c06-ac17-49aa-9f53-f529d0c8b7a2.png#averageHue=%23dadada&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=432&amp;id=uadea080c&amp;margin=">https://cdn.nlark.com/yuque/0/2022/png/26378366/1668185283263-8b6d0c06-ac17-49aa-9f53-f529d0c8b7a2.png#averageHue=%23dadada&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=432&amp;id=uadea080c&amp;margin=</a>[object Object]&amp;name=image.png&amp;originHeight=432&amp;originWidth=677&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=266124&amp;status=done&amp;style=none&amp;taskId=udbd577f8-1c2d-4264-aa7c-d894d7dba52&amp;title=&amp;width=677)</p>
 <ul>
 <li>每个层次的数据都可以称为各自层次的包</li>
 <li>每个包包首部包含了该层次的协议信息<br>
@@ -387,7 +385,6 @@
 <a name="lUDlR"></a></li>
 </ul>
 <h2 id="端口号"><a class="markdownIt-Anchor" href="#端口号"></a> 端口号</h2>
-<p>![image.png](<a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668185914530-fba638f0-5700-4bd2-9c40-f6c783b03486.png#averageHue=%23d4d4d4&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=264&amp;id=u741f1eb8&amp;margin=">https://cdn.nlark.com/yuque/0/2022/png/26378366/1668185914530-fba638f0-5700-4bd2-9c40-f6c783b03486.png#averageHue=%23d4d4d4&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=264&amp;id=u741f1eb8&amp;margin=</a>[object Object]&amp;name=image.png&amp;originHeight=264&amp;originWidth=430&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=104023&amp;status=done&amp;style=none&amp;taskId=ubaeb329e-77fa-4215-ac7e-8a69c4a10ed&amp;title=&amp;width=430)</p>
 <ul>
 <li><strong>用来识别同一台计算机中通信的不同应用程序</strong>，将数据发送给对应端口好的应用程序</li>
 <li>TCP/IP和UDP/IP通常采用5个信息才能准确识别一个通信
@@ -456,36 +453,32 @@
 <h3 id="重发超时"><a class="markdownIt-Anchor" href="#重发超时"></a> 重发超时</h3>
 <ul>
 <li>发送端未收到确认应答，在一个时间间隔之后，重复发送数据</li>
-<li>为了保证速度，每次往返会计算往返时间，修改这个时间间隔</li>
+<li>为了保证速度，每次往返会计算往返时间，修改这个时间间隔<br>
+<a name="uYI4M"></a></li>
 </ul>
-<p>![image.png](<a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668188517311-ab31ae4a-6d13-4981-a956-14220ab5f442.png#averageHue=%23ebebeb&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=688&amp;id=ufcffdf31&amp;margin=">https://cdn.nlark.com/yuque/0/2022/png/26378366/1668188517311-ab31ae4a-6d13-4981-a956-14220ab5f442.png#averageHue=%23ebebeb&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=688&amp;id=ufcffdf31&amp;margin=</a>[object Object]&amp;name=image.png&amp;originHeight=688&amp;originWidth=884&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=192226&amp;status=done&amp;style=none&amp;taskId=u1ff7f78c-9a90-4b2a-9c1b-8f972e26b24&amp;title=&amp;width=884)<br>
-<a name="uYI4M"></a></p>
 <h3 id="连接管理"><a class="markdownIt-Anchor" href="#连接管理"></a> 连接管理</h3>
 <ul>
 <li>开始建立连接，先发送一个SYN包   SYN is a single-bit <strong>flag</strong> in the header of a TCP segment,</li>
 </ul>
 <p>about SYN <a target="_blank" rel="noopener" href="https://www.quora.com/What-is-a-SYN-packet-in-TCP">https://www.quora.com/What-is-a-SYN-packet-in-TCP</a></p>
 <ul>
-<li>建立连接到断开流程：</li>
+<li>建立连接到断开流程：<br>
+<a name="zWQEx"></a></li>
 </ul>
-<p>![image.png](<a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668190307662-e589c1d0-3dc7-4496-8dd8-a079ec2b9798.png#averageHue=%23e3e3e3&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=690&amp;id=u7cb5d0fd&amp;margin=">https://cdn.nlark.com/yuque/0/2022/png/26378366/1668190307662-e589c1d0-3dc7-4496-8dd8-a079ec2b9798.png#averageHue=%23e3e3e3&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=690&amp;id=u7cb5d0fd&amp;margin=</a>[object Object]&amp;name=image.png&amp;originHeight=690&amp;originWidth=482&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=143914&amp;status=done&amp;style=none&amp;taskId=u93105f7f-3e4e-4092-8820-5eaa38bd67c&amp;title=&amp;width=482)<br>
-<a name="zWQEx"></a></p>
 <h3 id="以段发送数据"><a class="markdownIt-Anchor" href="#以段发送数据"></a> 以段发送数据</h3>
 <ul>
 <li>最大消息长度：MSS Maximum Segment Size</li>
 <li>理想情况：IP中不被分片的最小长度</li>
-<li>何时计算：三次握手时动态计算得出，两种在TCP首部写入自己的mss，然后选最小</li>
+<li>何时计算：三次握手时动态计算得出，两种在TCP首部写入自己的mss，然后选最小<br>
+<a name="iK4IV"></a></li>
 </ul>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668190655241-3806b8e6-21a0-4796-b01d-7ecc7f159ce8.png#averageHue=%23e3e3e3&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=833&amp;id=uae57b40e&amp;margin=&amp;name=image.png&amp;originHeight=833&amp;originWidth=836&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=358302&amp;status=done&amp;style=none&amp;taskId=u7507e077-8ccb-461e-997b-f35b0b2a8c2&amp;title=&amp;width=836" alt="image.png"><br>
-<a name="iK4IV"></a></p>
 <h3 id="窗口控制提高速度"><a class="markdownIt-Anchor" href="#窗口控制提高速度"></a> 窗口控制提高速度</h3>
 <ul>
 <li>按最小单位段来确认应答会导致随着往返时间越长，网络吞吐量越差，类似于指数爆炸</li>
 <li>通过窗口，即用<strong>更大的单位来进行一次确认应答</strong></li>
-<li>窗口的大小**：**无需等待确认应该而可以继续发送数据的最大值</li>
+<li>窗口的大小**：**无需等待确认应该而可以继续发送数据的最大值<br>
+<a name="Yhut8"></a></li>
 </ul>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668190928133-cb5f7c57-321f-4672-a3dd-d5a0bd6d2ffd.png#averageHue=%23d5d5d5&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=521&amp;id=u6e41156e&amp;margin=&amp;name=image.png&amp;originHeight=521&amp;originWidth=597&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=211908&amp;status=done&amp;style=none&amp;taskId=ud9007d8a-a7aa-4de8-9730-aab5a3333e1&amp;title=&amp;width=597" alt="image.png"><br>
-<a name="Yhut8"></a></p>
 <h3 id="窗口控制与重发控制"><a class="markdownIt-Anchor" href="#窗口控制与重发控制"></a> 窗口控制与重发控制</h3>
 <p>如果在窗口中出现数据段丢失怎么办？有两种情况</p>
 <ul>
@@ -504,14 +497,12 @@
 <h3 id="流控制"><a class="markdownIt-Anchor" href="#流控制"></a> 流控制</h3>
 <p>让发送端根据接收端的实际接受能力控制发送的数据量<br>通过在TCP首部添加字段，告知发送端<br>当接收端的缓冲区发生溢出时，同样会将窗口大小的值修改为更小的值</p>
 <h3 id="阻塞控制"><a class="markdownIt-Anchor" href="#阻塞控制"></a> 阻塞控制</h3>
-<p>为了防止共享网络发生阻塞，在建立连接的开始，通过算法来控制窗口的大小，随着阻塞概率的减小将窗口增大<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668192144774-8b560910-b794-4ebb-947f-2564a241d204.png#averageHue=%23f2f2f2&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=387&amp;id=ua89c974a&amp;margin=&amp;name=image.png&amp;originHeight=387&amp;originWidth=834&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=61688&amp;status=done&amp;style=none&amp;taskId=u168a0704-f40c-4c0a-a699-886335ba84c&amp;title=&amp;width=834" alt="image.png"></p>
+<p>为了防止共享网络发生阻塞，在建立连接的开始，通过算法来控制窗口的大小，随着阻塞概率的减小将窗口增大</p>
 <h3 id="nagle算法提高网络利用率"><a class="markdownIt-Anchor" href="#nagle算法提高网络利用率"></a> Nagle算法提高网络利用率</h3>
 <p>核心思想是，即使还有应该发送的数据，但如果这部分数据很少的话则进延迟发送</p>
 <p>这个算法一般都会导致数据发生延迟，因此很多场景不会启用</p>
 <h2 id="udp首部格式"><a class="markdownIt-Anchor" href="#udp首部格式"></a> UDP首部格式</h2>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668192449033-3d2073af-8c0d-4242-b180-6c803835855e.png#averageHue=%23c0c0c0&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=317&amp;id=udcb4b4a2&amp;margin=&amp;name=image.png&amp;originHeight=317&amp;originWidth=778&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=312964&amp;status=done&amp;style=none&amp;taskId=udeac85e2-689b-4b6e-8a55-0634cae5ed0&amp;title=&amp;width=778" alt="image.png"></p>
 <h2 id="tcp首部格式"><a class="markdownIt-Anchor" href="#tcp首部格式"></a> TCP首部格式</h2>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668192640604-a3ace61c-37bd-4846-ae1d-01c994d3f543.png#averageHue=%23e1e1e1&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=574&amp;id=u3dade8f1&amp;margin=&amp;name=image.png&amp;originHeight=574&amp;originWidth=778&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=297302&amp;status=done&amp;style=none&amp;taskId=u0331c9fb-95b1-436d-8e02-ee4c0d2d071&amp;title=&amp;width=778" alt="image.png"></p>
 <h2 id="路由协议"><a class="markdownIt-Anchor" href="#路由协议"></a> 路由协议</h2>
 <p>目前不做深入了解</p>
 <h2 id="应用协议"><a class="markdownIt-Anchor" href="#应用协议"></a> 应用协议</h2>
