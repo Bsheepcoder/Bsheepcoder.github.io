@@ -1,0 +1,593 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>图解TCP/IP读书笔记 | Q's blog</title><meta name="keywords" content="TCP/IP"><meta name="author" content="Bsheepcoder"><meta name="copyright" content="Bsheepcoder"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="Reference  &lt;图解TCP&#x2F;IP&gt; 谈谈网络通信中的 ACK、NACK 和 REX ** **https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;104322256 SYN 报文什么时候情况下会被丢弃？https:&#x2F;&#x2F;www.cnblogs.com&#x2F;xiaolincoding&#x2F;p&#x2F;15710376.html   简要的正确认识 ![image.png](https:&#x2F;&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图解TCP&#x2F;IP读书笔记">
+<meta property="og:url" content="https://bsheepcoder.github.io/2022/11/12/TCPIP_book1/index.html">
+<meta property="og:site_name" content="Q&#39;s blog">
+<meta property="og:description" content="Reference  &lt;图解TCP&#x2F;IP&gt; 谈谈网络通信中的 ACK、NACK 和 REX ** **https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;104322256 SYN 报文什么时候情况下会被丢弃？https:&#x2F;&#x2F;www.cnblogs.com&#x2F;xiaolincoding&#x2F;p&#x2F;15710376.html   简要的正确认识 ![image.png](https:&#x2F;&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-11-11T19:00:13.760Z">
+<meta property="article:modified_time" content="2022-11-11T19:02:04.598Z">
+<meta property="article:author" content="Bsheepcoder">
+<meta property="article:tag" content="TCP&#x2F;IP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/page1.png"><link rel="canonical" href="https://bsheepcoder.github.io/2022/11/12/TCPIP_book1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":30,"languages":{"author":"作者: Bsheepcoder","link":"链接: ","source":"来源: Q's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '图解TCP/IP读书笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-12 03:02:04'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">120</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">26</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Q's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">图解TCP/IP读书笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-11T19:00:13.760Z" title="发表于 2022-11-12 03:00:13">2022-11-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-11T19:02:04.598Z" title="更新于 2022-11-12 03:02:04">2022-11-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/TCP-IP/">TCP/IP</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="图解TCP/IP读书笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h2>
+<ul>
+<li>&lt;图解TCP/IP&gt;</li>
+<li>谈谈网络通信中的 ACK、NACK 和 REX ** **<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/104322256">https://zhuanlan.zhihu.com/p/104322256</a></li>
+<li>SYN 报文什么时候情况下会被丢弃？<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaolincoding/p/15710376.html">https://www.cnblogs.com/xiaolincoding/p/15710376.html</a></li>
+</ul>
+<h2 id="简要的正确认识"><a class="markdownIt-Anchor" href="#简要的正确认识"></a> 简要的正确认识</h2>
+<p>![image.png](<a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668185375519-abb05ae5-1101-4eda-9ca0-d8d0d6020970.png#averageHue=%23efefef&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=274&amp;id=u405c2bc0&amp;margin=">https://cdn.nlark.com/yuque/0/2022/png/26378366/1668185375519-abb05ae5-1101-4eda-9ca0-d8d0d6020970.png#averageHue=%23efefef&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=274&amp;id=u405c2bc0&amp;margin=</a>[object Object]&amp;name=image.png&amp;originHeight=274&amp;originWidth=683&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=68362&amp;status=done&amp;style=none&amp;taskId=ufe6866bd-68d3-4512-bd80-1a6c82dec10&amp;title=&amp;width=683)</p>
+<ul>
+<li><strong>TCP/IP是一个协议组包含了许多子协议</strong>，比较常见的就是HTTP</li>
+<li>TCP/IP是类似数据结构的通用规范，用于构建我们现在的互联网</li>
+<li>TCP/IP协议组分别作用在数据传输的七层模型之上</li>
+<li>七层模型：应用层、表示层、会话层、传输层、网络层、数据链路层、物理层<br>
+<a name="KgDj9"></a></li>
+</ul>
+<h2 id="计算机网络的脉络"><a class="markdownIt-Anchor" href="#计算机网络的脉络"></a> 计算机网络的脉络</h2>
+<ul>
+<li>网络规模
+<ul>
+<li>广域网 WAN</li>
+<li>局域网 LAN</li>
+</ul>
+</li>
+<li>计算机网络虽计算机的发展而发展，在不同时期的作用不同</li>
+<li>分组交换技术的计算机网络</li>
+<li>电话网络逐渐被IP取代</li>
+<li>到最后逐渐演变为如今的TCP/IP互联网<br>
+<a name="JLZlI"></a></li>
+</ul>
+<h2 id="协议"><a class="markdownIt-Anchor" href="#协议"></a> 协议</h2>
+<ul>
+<li>协议是一个抽象概念，是一些网络技术结构的统称</li>
+<li>在不同的公司当中有自己的不同的协议</li>
+<li>协议与硬件息息相关，改变协议需要对应硬件上的修改，因此统一的协议是使得各种各样的设备得以互联的基础</li>
+<li>协议比作人与人对话的语言
+<ul>
+<li>将汉语和英语比作 “协议”</li>
+<li>将聊天的内容比作 “通信”</li>
+<li>将说话的内容比作 “数据”</li>
+</ul>
+</li>
+<li>分组交换协议
+<ul>
+<li>将一整块数据分成小包，在包的首部添加描述信息，使得接收包的一方可以顺利将小包拼成一整块数据<br>
+<a name="Vxy7t"></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="协议由谁制定"><a class="markdownIt-Anchor" href="#协议由谁制定"></a> 协议由谁制定</h2>
+<ul>
+<li>开始是OSI协议(由国际标准委员会制定)，但是没普及，但是OSI提出的协议分层是被后来者更广泛借鉴的，也就是互联网的七层模型</li>
+<li>后来<strong>IETF</strong>推出的标准得以普及<br>
+<a name="afDne"></a></li>
+</ul>
+<h2 id="数据传输的分类"><a class="markdownIt-Anchor" href="#数据传输的分类"></a> 数据传输的分类</h2>
+<ul>
+<li>面向有连接型，即在收发数据之前已经有了连接</li>
+<li>面向无连接型，即在收发数据之前没有建立连接<br>
+<a name="ZwCa3"></a></li>
+</ul>
+<h2 id="网络通信的分类"><a class="markdownIt-Anchor" href="#网络通信的分类"></a> 网络通信的分类</h2>
+<p>我认为通信表示建立连接的方式，数据传输则说的是我们传输的时候面临的两种情况</p>
+<ul>
+<li>电路交换，历史悠久逐渐被分组交换取代</li>
+<li>分组交换（积蓄交换），处理过程：
+<ul>
+<li>发送端计算机将数据分组发送给路由器</li>
+<li>路由器将收到的一部分分组数据以后，缓存到自己的缓冲区</li>
+<li>然后路由器再将缓存的分组转发给目标计算机</li>
+</ul>
+</li>
+<li>分组交换的弊端：
+<ul>
+<li>只有一条线路</li>
+<li>路由器可能发生缓存饱和或溢出<br>
+<a name="OJ1Jj"></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="接收端数量分类"><a class="markdownIt-Anchor" href="#接收端数量分类"></a> 接收端数量分类</h2>
+<ul>
+<li>单播</li>
+<li>多播</li>
+<li>任播<br>
+<a name="osjnv"></a></li>
+</ul>
+<h2 id="地址"><a class="markdownIt-Anchor" href="#地址"></a> 地址</h2>
+<p>地址很多表示方式，可以简单理解为IP地址</p>
+<ul>
+<li>地址具有唯一性</li>
+<li>地址可以表示多层次</li>
+</ul>
+<p>MAC地址是在手机中通常使用的，根据场商可以一定程度上判断，但是对寻找地址的帮助很少<br>IP地址则更多的使用在互联网中，并且IP地址的形式对寻找地址很有帮助<br>
+<a name="cINBu"></a></p>
+<h2 id="网络的构成要素"><a class="markdownIt-Anchor" href="#网络的构成要素"></a> 网络的构成要素</h2>
+<ul>
+<li>网卡
+<ul>
+<li>使计算机联网的设备，现在的电脑通常自带网卡，但是也可以外接，可以抽象的理解为一个接口</li>
+</ul>
+</li>
+<li>中继器
+<ul>
+<li>从物理层延长网络的设备</li>
+</ul>
+</li>
+<li>网桥/2层交换机
+<ul>
+<li>从数据链路层上延长网路的设备</li>
+</ul>
+</li>
+<li>路由器/3层交换机
+<ul>
+<li>通过网络层转发分组数据的设备</li>
+</ul>
+</li>
+<li>4-7层交换机
+<ul>
+<li>处理传输层以上各层网络传输的设备</li>
+</ul>
+</li>
+<li>网关
+<ul>
+<li>转换协议的设备<br>
+<a name="wBOLT"></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="不同的数据链路"><a class="markdownIt-Anchor" href="#不同的数据链路"></a> 不同的数据链路</h2>
+<p>数据链路有不同的技术，不同的技术可以使用不同的通信媒介。<br>通信媒介可以简单理解为不同材料的网线</p>
+<p><a name="e5QE2"></a></p>
+<h2 id="mac地址"><a class="markdownIt-Anchor" href="#mac地址"></a> MAC地址</h2>
+<p>![image.png](<a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668185863596-37776769-e0b9-41dd-8180-9120dacd8319.png#averageHue=%23ececec&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=215&amp;id=ud0948cc9&amp;margin=">https://cdn.nlark.com/yuque/0/2022/png/26378366/1668185863596-37776769-e0b9-41dd-8180-9120dacd8319.png#averageHue=%23ececec&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=215&amp;id=ud0948cc9&amp;margin=</a>[object Object]&amp;name=image.png&amp;originHeight=215&amp;originWidth=598&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=52532&amp;status=done&amp;style=none&amp;taskId=u9c26d2f6-5a4d-4087-9838-92ed5796e0c&amp;title=&amp;width=598)</p>
+<ul>
+<li>用于识别数据链路中互联的节点</li>
+<li>有线/无线均可</li>
+<li>通常不会有重复，有重复在不通的网络就没事<br>
+<a name="MrDxy"></a></li>
+</ul>
+<h2 id="tcpip规范rfc"><a class="markdownIt-Anchor" href="#tcpip规范rfc"></a> TCP/IP规范RFC</h2>
+<p>是IETF讨论制定的文档，是开放的，目的是像社会公开各种协议的规范</p>
+<ul>
+<li>获取途径
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.rec-editor.org/rfc/">http://www.rec-editor.org/rfc/</a><br>
+<a name="vs3z2"></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="互联网的基础知识"><a class="markdownIt-Anchor" href="#互联网的基础知识"></a> 互联网的基础知识</h2>
+<ul>
+<li><strong>互联网协议就是TCP/IP，TCP/IP就是互联网的协议</strong></li>
+<li>ISP表示互联网运营商，提供网络服务</li>
+<li>OSI 注重 通信协议必要的功能</li>
+<li>TCP/IP强调 计算机上实现协议应该开发哪种程序</li>
+<li>TCP/IP远程登录 TELNET和SSH两种协议<br>
+<a name="h9mcP"></a></li>
+</ul>
+<h2 id="tcpip分层模型与通信示例"><a class="markdownIt-Anchor" href="#tcpip分层模型与通信示例"></a> TCP/IP分层模型与通信示例</h2>
+<p>![image.png](<a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668185283263-8b6d0c06-ac17-49aa-9f53-f529d0c8b7a2.png#averageHue=%23dadada&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=432&amp;id=uadea080c&amp;margin=">https://cdn.nlark.com/yuque/0/2022/png/26378366/1668185283263-8b6d0c06-ac17-49aa-9f53-f529d0c8b7a2.png#averageHue=%23dadada&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=432&amp;id=uadea080c&amp;margin=</a>[object Object]&amp;name=image.png&amp;originHeight=432&amp;originWidth=677&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=266124&amp;status=done&amp;style=none&amp;taskId=udbd577f8-1c2d-4264-aa7c-d894d7dba52&amp;title=&amp;width=677)</p>
+<ul>
+<li>每个层次的数据都可以称为各自层次的包</li>
+<li>每个包包首部包含了该层次的协议信息<br>
+<a name="JDdq7"></a></li>
+</ul>
+<h2 id="ip协议"><a class="markdownIt-Anchor" href="#ip协议"></a> IP协议</h2>
+<ul>
+<li>IP协议是面向无连接型</li>
+<li>数据链路的抽象化，对于下层是LAN还是PPP，对于IP来说的都是相同的</li>
+<li>IP包分片为小的IP包<br>
+<a name="m4v49"></a></li>
+</ul>
+<h2 id="ip地址"><a class="markdownIt-Anchor" href="#ip地址"></a> IP地址</h2>
+<ul>
+<li>IP地址现存的是IPv4，是用32位正整数来表示的</li>
+<li>最多可允许43亿台计算机连接到网络</li>
+<li>IP地址分类
+<ul>
+<li>A类地址 二进制以0开头的地址</li>
+<li>B类地址 是前两位为10的地址</li>
+<li>C类地址 110</li>
+<li>D类地址 1110</li>
+<li>这个地址分类知道就行，现在已经没有太大意义<br>
+<a name="sDVoR"></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="ipv4首部"><a class="markdownIt-Anchor" href="#ipv4首部"></a> IPv4首部</h2>
+<ul>
+<li>版本
+<ul>
+<li>查看地址 <a target="_blank" rel="noopener" href="http://www.iana.org/assignments/version-numbers">http://www.iana.org/assignments/version-numbers</a></li>
+</ul>
+</li>
+<li>首部长度 IHL</li>
+<li>区分服务 TOS</li>
+<li>DSCP / ECN</li>
+<li>总长度 TL</li>
+<li>片偏移 FO</li>
+<li>生存时间 TTL</li>
+<li>协议 P</li>
+<li>首部校验</li>
+<li>源地址</li>
+<li>目标地址</li>
+<li>可选项</li>
+<li>填充</li>
+<li>数据<br>
+<a name="EzoH0"></a></li>
+</ul>
+<h2 id="ipv6-首部"><a class="markdownIt-Anchor" href="#ipv6-首部"></a> IPv6 首部</h2>
+<ul>
+<li>版本</li>
+<li>通信量类</li>
+<li>流标号</li>
+<li>有效荷载长度</li>
+<li>下一个首部</li>
+<li>跳数限制</li>
+<li>源地址</li>
+<li>目标地址<br>
+<a name="W2Yn3"></a></li>
+</ul>
+<h2 id="ip的技术支持"><a class="markdownIt-Anchor" href="#ip的技术支持"></a> IP的技术支持</h2>
+<p>到目前为止，<strong>仅仅靠IP协议是无法完成通信的</strong>，还需要许多IP协议的技术</p>
+<ul>
+<li>DNS 域名解析</li>
+<li>ARP 地址互通</li>
+<li>RARP</li>
+<li>代理ARP</li>
+<li>辅助IP的ICMP</li>
+<li>DHCP 实现自动设置IP、统一管理IP地址分配</li>
+<li>NAT技术 本地网络地址和全局地址的转换，IPv4续命的技术</li>
+<li>NAT-PT 实现IPv4和IPv6兼容</li>
+<li>IP隧道<br>
+<a name="PoaKS"></a></li>
+</ul>
+<h2 id="tcp和udp"><a class="markdownIt-Anchor" href="#tcp和udp"></a> TCP和UDP</h2>
+<ul>
+<li>TCP是面向连接的可靠的流协议，流表示不间断的数据结构</li>
+<li>UDP是不可靠协议，但是并不代表UDP协议不好，IP电话的场景表现出UDP在这种高速传输和实时性有较高要求的场景有很好的体验</li>
+<li>操作系统提供了TCP和UDP的API用于实现 Socket<br>
+<a name="lUDlR"></a></li>
+</ul>
+<h2 id="端口号"><a class="markdownIt-Anchor" href="#端口号"></a> 端口号</h2>
+<p>![image.png](<a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668185914530-fba638f0-5700-4bd2-9c40-f6c783b03486.png#averageHue=%23d4d4d4&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=264&amp;id=u741f1eb8&amp;margin=">https://cdn.nlark.com/yuque/0/2022/png/26378366/1668185914530-fba638f0-5700-4bd2-9c40-f6c783b03486.png#averageHue=%23d4d4d4&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=264&amp;id=u741f1eb8&amp;margin=</a>[object Object]&amp;name=image.png&amp;originHeight=264&amp;originWidth=430&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=104023&amp;status=done&amp;style=none&amp;taskId=ubaeb329e-77fa-4215-ac7e-8a69c4a10ed&amp;title=&amp;width=430)</p>
+<ul>
+<li><strong>用来识别同一台计算机中通信的不同应用程序</strong>，将数据发送给对应端口好的应用程序</li>
+<li>TCP/IP和UDP/IP通常采用5个信息才能准确识别一个通信
+<ul>
+<li><strong>源IP地址</strong></li>
+<li><strong>目标IP地址</strong></li>
+<li><strong>协议号</strong></li>
+<li><strong>源端口号</strong></li>
+<li><strong>目标端口号</strong></li>
+</ul>
+</li>
+<li>端口号是如何确定的
+<ul>
+<li>标准既定的端口号</li>
+<li>时序分配</li>
+</ul>
+</li>
+<li>知名端口号，通常是一些协议所通用，查询地址：
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.iana.org/">https://www.iana.org/</a></li>
+</ul>
+</li>
+<li>端口号由其使用的传输层协议决定，<strong>不同的传输协议可以使用相同的端口号</strong>，各个协议会传到各自的模块处理传来的数据，然后对应到具体的端口号<br>
+<a name="nyw8W"></a>
+<h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
+<a name="b7cf1"></a></li>
+</ul>
+<h2 id="什么是连接"><a class="markdownIt-Anchor" href="#什么是连接"></a> 什么是连接？</h2>
+<ul>
+<li>一种虚拟的通信线路<br>
+<a name="jBVUo"></a></li>
+</ul>
+<h2 id="udp协议"><a class="markdownIt-Anchor" href="#udp协议"></a> UDP协议</h2>
+<ul>
+<li>不是重点，无连接的通信服务</li>
+<li>应用：
+<ul>
+<li>广播</li>
+<li>视频、音频</li>
+<li>包总量较少的通信<br>
+<a name="Q4lMT"></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="tcp协议"><a class="markdownIt-Anchor" href="#tcp协议"></a> TCP协议</h2>
+<ul>
+<li>需要解决的问题：
+<ul>
+<li>数据的破坏、丢包、重复、顺序混乱</li>
+</ul>
+</li>
+<li>TCP的解决发方案
+<ul>
+<li>检验和、序列号、确认应答、重发控制、连接管理、窗口控制<br>
+<a name="vFW0f"></a></li>
+</ul>
+</li>
+</ul>
+<h3 id="序列号与确认应答"><a class="markdownIt-Anchor" href="#序列号与确认应答"></a> 序列号与确认应答</h3>
+<ul>
+<li>当发送端的数据到达接收主机时，接收端主机会返回一个已接受到的消息通知 （这个消息叫<strong>ACK</strong>，也就是<strong>确认应答</strong>，这本书的翻译是这样）,确切的说是一个 SYN+ACK 包，SYN包是建立连接时发送端发送给接收端的</li>
+<li>当接受主机没有收到，或者发现缺失则会返回**NACK **，<strong>否定应答</strong></li>
+<li>通过数据包的序列号来判断是否出现丢包、跳变、缺失 ，详细实现：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/104322256">https://zhuanlan.zhihu.com/p/104322256</a><br>
+<a name="Z1li0"></a></li>
+</ul>
+<h3 id="重发超时"><a class="markdownIt-Anchor" href="#重发超时"></a> 重发超时</h3>
+<ul>
+<li>发送端未收到确认应答，在一个时间间隔之后，重复发送数据</li>
+<li>为了保证速度，每次往返会计算往返时间，修改这个时间间隔</li>
+</ul>
+<p>![image.png](<a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668188517311-ab31ae4a-6d13-4981-a956-14220ab5f442.png#averageHue=%23ebebeb&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=688&amp;id=ufcffdf31&amp;margin=">https://cdn.nlark.com/yuque/0/2022/png/26378366/1668188517311-ab31ae4a-6d13-4981-a956-14220ab5f442.png#averageHue=%23ebebeb&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=688&amp;id=ufcffdf31&amp;margin=</a>[object Object]&amp;name=image.png&amp;originHeight=688&amp;originWidth=884&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=192226&amp;status=done&amp;style=none&amp;taskId=u1ff7f78c-9a90-4b2a-9c1b-8f972e26b24&amp;title=&amp;width=884)<br>
+<a name="uYI4M"></a></p>
+<h3 id="连接管理"><a class="markdownIt-Anchor" href="#连接管理"></a> 连接管理</h3>
+<ul>
+<li>开始建立连接，先发送一个SYN包   SYN is a single-bit <strong>flag</strong> in the header of a TCP segment,</li>
+</ul>
+<p>about SYN <a target="_blank" rel="noopener" href="https://www.quora.com/What-is-a-SYN-packet-in-TCP">https://www.quora.com/What-is-a-SYN-packet-in-TCP</a></p>
+<ul>
+<li>建立连接到断开流程：</li>
+</ul>
+<p>![image.png](<a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668190307662-e589c1d0-3dc7-4496-8dd8-a079ec2b9798.png#averageHue=%23e3e3e3&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=690&amp;id=u7cb5d0fd&amp;margin=">https://cdn.nlark.com/yuque/0/2022/png/26378366/1668190307662-e589c1d0-3dc7-4496-8dd8-a079ec2b9798.png#averageHue=%23e3e3e3&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=690&amp;id=u7cb5d0fd&amp;margin=</a>[object Object]&amp;name=image.png&amp;originHeight=690&amp;originWidth=482&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=143914&amp;status=done&amp;style=none&amp;taskId=u93105f7f-3e4e-4092-8820-5eaa38bd67c&amp;title=&amp;width=482)<br>
+<a name="zWQEx"></a></p>
+<h3 id="以段发送数据"><a class="markdownIt-Anchor" href="#以段发送数据"></a> 以段发送数据</h3>
+<ul>
+<li>最大消息长度：MSS Maximum Segment Size</li>
+<li>理想情况：IP中不被分片的最小长度</li>
+<li>何时计算：三次握手时动态计算得出，两种在TCP首部写入自己的mss，然后选最小</li>
+</ul>
+<p>![image.png](<a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668190655241-3806b8e6-21a0-4796-b01d-7ecc7f159ce8.png#averageHue=%23e3e3e3&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=833&amp;id=uae57b40e&amp;margin=">https://cdn.nlark.com/yuque/0/2022/png/26378366/1668190655241-3806b8e6-21a0-4796-b01d-7ecc7f159ce8.png#averageHue=%23e3e3e3&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=833&amp;id=uae57b40e&amp;margin=</a>[object Object]&amp;name=image.png&amp;originHeight=833&amp;originWidth=836&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=358302&amp;status=done&amp;style=none&amp;taskId=u7507e077-8ccb-461e-997b-f35b0b2a8c2&amp;title=&amp;width=836)<br>
+<a name="iK4IV"></a></p>
+<h3 id="窗口控制提高速度"><a class="markdownIt-Anchor" href="#窗口控制提高速度"></a> 窗口控制提高速度</h3>
+<ul>
+<li>按最小单位段来确认应答会导致随着往返时间越长，网络吞吐量越差，类似于指数爆炸</li>
+<li>通过窗口，即用<strong>更大的单位来进行一次确认应答</strong></li>
+<li>窗口的大小**：**无需等待确认应该而可以继续发送数据的最大值</li>
+</ul>
+<p>![image.png](<a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668190928133-cb5f7c57-321f-4672-a3dd-d5a0bd6d2ffd.png#averageHue=%23d5d5d5&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=521&amp;id=u6e41156e&amp;margin=">https://cdn.nlark.com/yuque/0/2022/png/26378366/1668190928133-cb5f7c57-321f-4672-a3dd-d5a0bd6d2ffd.png#averageHue=%23d5d5d5&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=521&amp;id=u6e41156e&amp;margin=</a>[object Object]&amp;name=image.png&amp;originHeight=521&amp;originWidth=597&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=211908&amp;status=done&amp;style=none&amp;taskId=ud9007d8a-a7aa-4de8-9730-aab5a3333e1&amp;title=&amp;width=597)<br>
+<a name="Yhut8"></a></p>
+<h3 id="窗口控制与重发控制"><a class="markdownIt-Anchor" href="#窗口控制与重发控制"></a> 窗口控制与重发控制</h3>
+<p>如果在窗口中出现数据段丢失怎么办？有两种情况</p>
+<ul>
+<li>确认应答未能返回的情况
+<ul>
+<li>如果只有一些没有应答，无需重复发，只需要在下一个窗口中确认即可</li>
+</ul>
+</li>
+<li>报文段丢失的情况
+<ul>
+<li>高速重发机制，接受端在短时间内大量返回需要的序列号，通常一定次数后发送端就会将对应的数据重发<br>
+<a name="RpGlf"></a></li>
+</ul>
+</li>
+</ul>
+<h3 id="流控制"><a class="markdownIt-Anchor" href="#流控制"></a> 流控制</h3>
+<p>让发送端根据接收端的实际接受能力控制发送的数据量<br>通过在TCP首部添加字段，告知发送端<br>当接收端的缓冲区发生溢出时，同样会将窗口大小的值修改为更小的值</p>
+<h3 id="阻塞控制"><a class="markdownIt-Anchor" href="#阻塞控制"></a> 阻塞控制</h3>
+<p>为了防止共享网络发生阻塞，在建立连接的开始，通过算法来控制窗口的大小，随着阻塞概率的减小将窗口增大![image.png](<a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668192144774-8b560910-b794-4ebb-947f-2564a241d204.png#averageHue=%23f2f2f2&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=387&amp;id=ua89c974a&amp;margin=">https://cdn.nlark.com/yuque/0/2022/png/26378366/1668192144774-8b560910-b794-4ebb-947f-2564a241d204.png#averageHue=%23f2f2f2&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=387&amp;id=ua89c974a&amp;margin=</a>[object Object]&amp;name=image.png&amp;originHeight=387&amp;originWidth=834&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=61688&amp;status=done&amp;style=none&amp;taskId=u168a0704-f40c-4c0a-a699-886335ba84c&amp;title=&amp;width=834)</p>
+<h3 id="nagle算法提高网络利用率"><a class="markdownIt-Anchor" href="#nagle算法提高网络利用率"></a> Nagle算法提高网络利用率</h3>
+<p>核心思想是，即使还有应该发送的数据，但如果这部分数据很少的话则进延迟发送</p>
+<p>这个算法一般都会导致数据发生延迟，因此很多场景不会启用</p>
+<h2 id="udp首部格式"><a class="markdownIt-Anchor" href="#udp首部格式"></a> UDP首部格式</h2>
+<p>![image.png](<a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668192449033-3d2073af-8c0d-4242-b180-6c803835855e.png#averageHue=%23c0c0c0&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=317&amp;id=udcb4b4a2&amp;margin=">https://cdn.nlark.com/yuque/0/2022/png/26378366/1668192449033-3d2073af-8c0d-4242-b180-6c803835855e.png#averageHue=%23c0c0c0&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=317&amp;id=udcb4b4a2&amp;margin=</a>[object Object]&amp;name=image.png&amp;originHeight=317&amp;originWidth=778&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=312964&amp;status=done&amp;style=none&amp;taskId=udeac85e2-689b-4b6e-8a55-0634cae5ed0&amp;title=&amp;width=778)</p>
+<h2 id="tcp首部格式"><a class="markdownIt-Anchor" href="#tcp首部格式"></a> TCP首部格式</h2>
+<p>![image.png](<a target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2022/png/26378366/1668192640604-a3ace61c-37bd-4846-ae1d-01c994d3f543.png#averageHue=%23e1e1e1&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=574&amp;id=u3dade8f1&amp;margin=">https://cdn.nlark.com/yuque/0/2022/png/26378366/1668192640604-a3ace61c-37bd-4846-ae1d-01c994d3f543.png#averageHue=%23e1e1e1&amp;clientId=ubaffb16a-d2f4-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;height=574&amp;id=u3dade8f1&amp;margin=</a>[object Object]&amp;name=image.png&amp;originHeight=574&amp;originWidth=778&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=297302&amp;status=done&amp;style=none&amp;taskId=u0331c9fb-95b1-436d-8e02-ee4c0d2d071&amp;title=&amp;width=778)</p>
+<h2 id="路由协议"><a class="markdownIt-Anchor" href="#路由协议"></a> 路由协议</h2>
+<p>目前不做深入了解</p>
+<h2 id="应用协议"><a class="markdownIt-Anchor" href="#应用协议"></a> 应用协议</h2>
+<p>SSH、FTP、等等很多本书没有做详细介绍，都是一些介绍和特性</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Bsheepcoder</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://bsheepcoder.github.io/2022/11/12/TCPIP_book1/">https://bsheepcoder.github.io/2022/11/12/TCPIP_book1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://bsheepcoder.github.io" target="_blank">Q's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/TCP-IP/">TCP/IP</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="wechat,weibo,qq,qzone,douban"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/qxd.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/qxd.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2022/11/11/TCPIP_IP&amp;DNS1/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">为什么有的时候需要手动配置IP和DNS(DHCP协议)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/11/11/TCPIP_IP&DNS1/" title="为什么有的时候需要手动配置IP和DNS(DHCP协议)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-11</div><div class="title">为什么有的时候需要手动配置IP和DNS(DHCP协议)</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bsheepcoder</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">120</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">26</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Bsheepcoder"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Bsheepcoder" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Can we do better ?</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-number">1.</span> <span class="toc-text"> Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E8%A6%81%E7%9A%84%E6%AD%A3%E7%A1%AE%E8%AE%A4%E8%AF%86"><span class="toc-number">2.</span> <span class="toc-text"> 简要的正确认识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E8%84%89%E7%BB%9C"><span class="toc-number">3.</span> <span class="toc-text"> 计算机网络的脉络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E8%AE%AE"><span class="toc-number">4.</span> <span class="toc-text"> 协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E8%AE%AE%E7%94%B1%E8%B0%81%E5%88%B6%E5%AE%9A"><span class="toc-number">5.</span> <span class="toc-text"> 协议由谁制定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">6.</span> <span class="toc-text"> 数据传输的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">7.</span> <span class="toc-text"> 网络通信的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E6%94%B6%E7%AB%AF%E6%95%B0%E9%87%8F%E5%88%86%E7%B1%BB"><span class="toc-number">8.</span> <span class="toc-text"> 接收端数量分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80"><span class="toc-number">9.</span> <span class="toc-text"> 地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%9A%84%E6%9E%84%E6%88%90%E8%A6%81%E7%B4%A0"><span class="toc-number">10.</span> <span class="toc-text"> 网络的构成要素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF"><span class="toc-number">11.</span> <span class="toc-text"> 不同的数据链路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mac%E5%9C%B0%E5%9D%80"><span class="toc-number">12.</span> <span class="toc-text"> MAC地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcpip%E8%A7%84%E8%8C%83rfc"><span class="toc-number">13.</span> <span class="toc-text"> TCP&#x2F;IP规范RFC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E8%81%94%E7%BD%91%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">14.</span> <span class="toc-text"> 互联网的基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcpip%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%A4%BA%E4%BE%8B"><span class="toc-number">15.</span> <span class="toc-text"> TCP&#x2F;IP分层模型与通信示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip%E5%8D%8F%E8%AE%AE"><span class="toc-number">16.</span> <span class="toc-text"> IP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip%E5%9C%B0%E5%9D%80"><span class="toc-number">17.</span> <span class="toc-text"> IP地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ipv4%E9%A6%96%E9%83%A8"><span class="toc-number">18.</span> <span class="toc-text"> IPv4首部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ipv6-%E9%A6%96%E9%83%A8"><span class="toc-number">19.</span> <span class="toc-text"> IPv6 首部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip%E7%9A%84%E6%8A%80%E6%9C%AF%E6%94%AF%E6%8C%81"><span class="toc-number">20.</span> <span class="toc-text"> IP的技术支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcp%E5%92%8Cudp"><span class="toc-number">21.</span> <span class="toc-text"> TCP和UDP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="toc-number">22.</span> <span class="toc-text"> 端口号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">23.</span> <span class="toc-text"> </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%BF%9E%E6%8E%A5"><span class="toc-number">24.</span> <span class="toc-text"> 什么是连接？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#udp%E5%8D%8F%E8%AE%AE"><span class="toc-number">25.</span> <span class="toc-text"> UDP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcp%E5%8D%8F%E8%AE%AE"><span class="toc-number">26.</span> <span class="toc-text"> TCP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8F%B7%E4%B8%8E%E7%A1%AE%E8%AE%A4%E5%BA%94%E7%AD%94"><span class="toc-number">26.1.</span> <span class="toc-text"> 序列号与确认应答</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%8F%91%E8%B6%85%E6%97%B6"><span class="toc-number">26.2.</span> <span class="toc-text"> 重发超时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86"><span class="toc-number">26.3.</span> <span class="toc-text"> 连接管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A5%E6%AE%B5%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE"><span class="toc-number">26.4.</span> <span class="toc-text"> 以段发送数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E6%8E%A7%E5%88%B6%E6%8F%90%E9%AB%98%E9%80%9F%E5%BA%A6"><span class="toc-number">26.5.</span> <span class="toc-text"> 窗口控制提高速度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E6%8E%A7%E5%88%B6%E4%B8%8E%E9%87%8D%E5%8F%91%E6%8E%A7%E5%88%B6"><span class="toc-number">26.6.</span> <span class="toc-text"> 窗口控制与重发控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E6%8E%A7%E5%88%B6"><span class="toc-number">26.7.</span> <span class="toc-text"> 流控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%BB%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="toc-number">26.8.</span> <span class="toc-text"> 阻塞控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nagle%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E7%BD%91%E7%BB%9C%E5%88%A9%E7%94%A8%E7%8E%87"><span class="toc-number">26.9.</span> <span class="toc-text"> Nagle算法提高网络利用率</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#udp%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F"><span class="toc-number">27.</span> <span class="toc-text"> UDP首部格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcp%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F"><span class="toc-number">28.</span> <span class="toc-text"> TCP首部格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE"><span class="toc-number">29.</span> <span class="toc-text"> 路由协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%8D%8F%E8%AE%AE"><span class="toc-number">30.</span> <span class="toc-text"> 应用协议</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/12/TCPIP_book1/" title="图解TCP/IP读书笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="图解TCP/IP读书笔记"/></a><div class="content"><a class="title" href="/2022/11/12/TCPIP_book1/" title="图解TCP/IP读书笔记">图解TCP/IP读书笔记</a><time datetime="2022-11-11T19:00:13.760Z" title="发表于 2022-11-12 03:00:13">2022-11-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/11/TCPIP_IP&amp;DNS1/" title="为什么有的时候需要手动配置IP和DNS(DHCP协议)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="为什么有的时候需要手动配置IP和DNS(DHCP协议)"/></a><div class="content"><a class="title" href="/2022/11/11/TCPIP_IP&amp;DNS1/" title="为什么有的时候需要手动配置IP和DNS(DHCP协议)">为什么有的时候需要手动配置IP和DNS(DHCP协议)</a><time datetime="2022-11-11T11:22:53.999Z" title="发表于 2022-11-11 19:22:53">2022-11-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/10/Python_flask1/" title="Flask框架"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Flask框架"/></a><div class="content"><a class="title" href="/2022/11/10/Python_flask1/" title="Flask框架">Flask框架</a><time datetime="2022-11-09T16:03:35.826Z" title="发表于 2022-11-10 00:03:35">2022-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/09/Untitled/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/11/09/Untitled/" title="无题">无题</a><time datetime="2022-11-09T13:42:13.251Z" title="发表于 2022-11-09 21:42:13">2022-11-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/09/Java_Reflection1/" title="Java中反射的理解"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java中反射的理解"/></a><div class="content"><a class="title" href="/2022/11/09/Java_Reflection1/" title="Java中反射的理解">Java中反射的理解</a><time datetime="2022-11-08T19:40:02.708Z" title="发表于 2022-11-09 03:40:02">2022-11-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Bsheepcoder</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz',
+      appKey: '8y2ItNdFctdKBPMHS31S2jbm',
+      avatar: 'monsterid',
+      serverURLs: 'https://urmbdkpv.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="128,126,125" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"}});</script></body></html>
