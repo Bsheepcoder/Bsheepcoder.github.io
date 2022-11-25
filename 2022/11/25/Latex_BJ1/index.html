@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Texstudio基本操作 | Q's blog</title><meta name="keywords" content="Latex"><meta name="author" content="Bsheepcoder"><meta name="copyright" content="Bsheepcoder"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="Reference  MiKTeX 官方网站 https:&#x2F;&#x2F;miktex.org&#x2F; TeXstudio官方网站 www.texstudio.org&#x2F; 知乎安装教程参考 https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;42844087 Latex语法及资源入门 https:&#x2F;&#x2F;www.latexstudio.net&#x2F;archives&#x2F;9377.html 参考文献格式参考 https:&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Texstudio基本操作">
+<meta property="og:url" content="https://bsheepcoder.github.io/2022/11/25/Latex_BJ1/index.html">
+<meta property="og:site_name" content="Q&#39;s blog">
+<meta property="og:description" content="Reference  MiKTeX 官方网站 https:&#x2F;&#x2F;miktex.org&#x2F; TeXstudio官方网站 www.texstudio.org&#x2F; 知乎安装教程参考 https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;42844087 Latex语法及资源入门 https:&#x2F;&#x2F;www.latexstudio.net&#x2F;archives&#x2F;9377.html 参考文献格式参考 https:&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-11-25T11:45:09.521Z">
+<meta property="article:modified_time" content="2022-11-25T13:35:20.363Z">
+<meta property="article:author" content="Bsheepcoder">
+<meta property="article:tag" content="Latex">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/page1.png"><link rel="canonical" href="https://bsheepcoder.github.io/2022/11/25/Latex_BJ1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":30,"languages":{"author":"作者: Bsheepcoder","link":"链接: ","source":"来源: Q's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Texstudio基本操作',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-25 21:35:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">124</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">27</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Q's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Texstudio基本操作</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-25T11:45:09.521Z" title="发表于 2022-11-25 19:45:09">2022-11-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-25T13:35:20.363Z" title="更新于 2022-11-25 21:35:20">2022-11-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Latex/">Latex</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Texstudio基本操作"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h2>
+<ul>
+<li>MiKTeX 官方网站 <a target="_blank" rel="noopener" href="https://miktex.org/">https://miktex.org/</a></li>
+<li>TeXstudio官方网站 <a target="_blank" rel="noopener" href="http://www.texstudio.org/">www.texstudio.org/</a></li>
+<li>知乎安装教程参考 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/42844087">https://zhuanlan.zhihu.com/p/42844087</a></li>
+<li>Latex语法及资源入门 <a target="_blank" rel="noopener" href="https://www.latexstudio.net/archives/9377.html">https://www.latexstudio.net/archives/9377.html</a></li>
+<li>参考文献格式参考 <a target="_blank" rel="noopener" href="https://sites.google.com/site/westchinatmer/can-kao-wen-xian-xie-fa">https://sites.google.com/site/westchinatmer/can-kao-wen-xian-xie-fa</a></li>
+</ul>
+<h2 id="简单的辨析"><a class="markdownIt-Anchor" href="#简单的辨析"></a> 简单的辨析</h2>
+<p>来源：维基百科、官网</p>
+<h3 id="什么是-tex"><a class="markdownIt-Anchor" href="#什么是-tex"></a> 什么是 TeX ？</h3>
+<p><strong>TeX</strong>，在系统内程式化为T E X，是一个<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Typesetting_system">排版系统</a>，由计算机科学家和斯坦福大学教授<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth </a>[<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/TeX#cite_note-2">1]</a>设计和编写，并于 1978 年首次发布。TeX 是一种排版复杂<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Mathematical_formulae">数学公式</a>的流行方法；它被认为是最复杂的数字印刷系统之一。</p>
+<p>TeX 的设计有两个主要目标：允许任何人以最小的努力制作高质量的书籍，并提供一个系统，可以在任何时间点在所有计算机上给出完全相同的结果（连同<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Metafont">Metafont</a>语言用于<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Font">字体</a>描述和<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Computer_Modern">计算机现代</a><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Typeface">字体</a>系列）。[<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/TeX#cite_note-5">3]</a> TeX 是<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Free_software">自由软件</a>，这使得它可供广泛的用户使用。</p>
+<h3 id="什么是miktex"><a class="markdownIt-Anchor" href="#什么是miktex"></a> 什么是MiKTeX？</h3>
+<p><strong>MiKTeX</strong>是一种<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Microsoft_Windows">Microsoft Windows</a>系统上运行的文字处理系统，由Christian Schenk开发。</p>
+<p>MiKTeX 是适用于 Windows、Linux 和 macOS 的现代 TeX 发行版。</p>
+<p>可以类比为MySQL是一种关系型数据库发行版</p>
+<h3 id="什么是tex-live"><a class="markdownIt-Anchor" href="#什么是tex-live"></a> 什么是TeX live？</h3>
+<p>另一个发行版也被广泛使用，可以理解为数据库引擎</p>
+<h3 id="什么是-texstudio"><a class="markdownIt-Anchor" href="#什么是-texstudio"></a> 什么是 TeXstudio ?</h3>
+<p>TeXstudio 是一个用于创建 LaTeX 文档的集成编写环境。我们的目标是让编写 LaTeX 尽可能简单和舒适。因此 TeXstudio 具有许多功能，如语法高亮、集成查看器、引用检查和各种助手。</p>
+<p>类似数据库的可视化软件</p>
+<h2 id="通用模板"><a class="markdownIt-Anchor" href="#通用模板"></a> 通用模板</h2>
+<p>支持中文，在文档开头添加:</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">%!TEX program = xelatex</span><br><span class="line">\documentclass{ctexart}</span><br></pre></td></tr></tbody></table></figure>
+<p>模板：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">%!TEX program = xelatex</span><br><span class="line">\documentclass{ctexart}</span><br><span class="line"></span><br><span class="line">\title{ElegantPaper: An Elegant \LaTeX{11} Template for Working Paper}</span><br><span class="line">\author{\href{https://ddswhu.me/}{Dongsheng Deng} %</span><br><span class="line">	\thanks{Thank Peiyi Yao for good suggestions.} \\[0.5ex] %</span><br><span class="line">	Elegant\LaTeX{} Group}</span><br><span class="line">\date{\small\itshape Version: 0.01 \\ Last update: \today}</span><br><span class="line"></span><br><span class="line">\begin{document}</span><br><span class="line">	</span><br><span class="line">	\maketitle</span><br><span class="line">	</span><br><span class="line">	\begin{abstract}</span><br><span class="line">		This paper illustrates the usage of the ElegantPaper template, which is designed for writing working paper. This template is based on the standard \LaTeX{} article class. The goal of this template is to make the writing process easier and more comfortable. You can get rid of all the worries about format. Just enjoy it, if you have any questions or suggestions, please contact me at: \email{ddswhu@outlook.com}.</span><br><span class="line">	\end{abstract}</span><br><span class="line">	</span><br><span class="line">	\section{Introduction}</span><br><span class="line">	</span><br><span class="line">	This template is based on the standard \LaTeX{} article class, which means you can pass the arguments of article class to it (\verb|a4paper|, \verb|12pt| and etc.).</span><br><span class="line">	</span><br><span class="line">	\subsection{Font Settings}</span><br><span class="line">	I change the default article font computer modern to \verb|newtx| series, and the default font size is set to \verb|11pt|.</span><br><span class="line">	</span><br><span class="line">	\begin{itemize}[noitemsep]</span><br><span class="line">		\item \verb|newtxtext| package for text font, similar to times new roman font.</span><br><span class="line">		\item \verb|newtxmath| package for math font, close to \verb|times| and \verb|mtpro2| packages.</span><br><span class="line">		\item \verb|newtxtt| package for typewriter font, with option \verb|scale = 0.8|.</span><br><span class="line">	\end{itemize}</span><br><span class="line">	</span><br><span class="line">	These packages operate perfectly but are inappropriate for big operators, for example \verb|\sum| and \verb|\prod|, thus, I change these operators back to computer modern font. Equation~\eqref{eq:binom} shows the effects of these fonts:</span><br><span class="line">	\begin{equation}</span><br><span class="line">		(a+b)^{n} = \sum_{k=0}^{n} C_{n}^{k} a^{n-k} b^k \label{eq:binom}</span><br><span class="line">	\end{equation}</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	The \verb|\linespread| (controls line spacing) is set to 1.3, and I use \verb|microtype| to improve the font justification. \verb|type1cm| package is used to remove the font shape and font size warning messages.</span><br><span class="line">	</span><br><span class="line">	\subsection{Custom Commands}</span><br><span class="line">	</span><br><span class="line">	I don't change any default command or environment, which means you can use all the basic \LaTeX{} commands and environments as before.  Besides, I define 3 commands</span><br><span class="line">	\begin{enumerate}[noitemsep]</span><br><span class="line">		\item \verb|\email{#1}|: create the hyperlink to email address.</span><br><span class="line">		\item \verb|\figref{#1}|: same usage as \verb|\ref{#1}|, but start with label text &lt;\textbf{Figure n}&gt;.</span><br><span class="line">		\item \verb|\tabref{#1}|: same usage as \verb|\ref{#1}|, but start with label text &lt;\textbf{Table n}&gt;.</span><br><span class="line">	\end{enumerate}{}</span><br><span class="line">	</span><br><span class="line">	\subsection{List Environments}</span><br><span class="line">	When you are using \verb|itemize|, \verb|enumerate|, or \verb|description| environment, please add the \verb|noitemsep| option to these environments. For example, \\</span><br><span class="line">	</span><br><span class="line">	\begin{minipage}[c]{0.45\linewidth}</span><br><span class="line">		\begin{Verbatim}[tabsize=4,frame=single,baselinestretch=1]</span><br><span class="line">			\begin{itemize}[noitemsep]</span><br><span class="line">				\item Routing and resource discovery;</span><br><span class="line">				\item Resilient and scalable networks;</span><br><span class="line">				\item Distributed storage and search.</span><br><span class="line">			\end{itemize}</span><br><span class="line">		\end{Verbatim}</span><br><span class="line">	\end{minipage}</span><br><span class="line">	\begin{minipage}[c]{0.45\linewidth}</span><br><span class="line">		\begin{itemize}[noitemsep]</span><br><span class="line">			\item Routing and resource discovery;</span><br><span class="line">			\item Resilient and scalable computer networks;</span><br><span class="line">			\item Distributed storage and search.</span><br><span class="line">		\end{itemize}</span><br><span class="line">	\end{minipage}</span><br><span class="line">	</span><br><span class="line">	\subsection{Table}</span><br><span class="line">	I strongly recommend you to use the \verb|booktabs| package in your paper. It adds three commands to make the table prettier, ie. \verb|\toprule|, \verb|\midrule| and \verb|\bottomrule|. Here is an example.</span><br><span class="line">	</span><br><span class="line">	\begin{table}[!htbp]</span><br><span class="line">		\small</span><br><span class="line">		\centering</span><br><span class="line">		\caption{Regression Result Example}</span><br><span class="line">		\begin{tabular}{lll}</span><br><span class="line">			\toprule</span><br><span class="line">			&amp; \multicolumn{1}{c}{(1)} &amp; \multicolumn{1}{c}{(2)} \\</span><br><span class="line">			&amp; \multicolumn{1}{c}{price} &amp; \multicolumn{1}{c}{price} \\</span><br><span class="line">			\midrule</span><br><span class="line">			mpg   &amp; \multicolumn{1}{c}{-238.9***} &amp; \multicolumn{1}{c}{-49.51} \\</span><br><span class="line">			&amp; \multicolumn{1}{c}{(53.08)} &amp; \multicolumn{1}{c}{(86.16)} \\</span><br><span class="line">			weight &amp; \multicolumn{1}{c}{} &amp; \multicolumn{1}{c}{1.747***} \\</span><br><span class="line">			&amp; \multicolumn{1}{c}{} &amp; \multicolumn{1}{c}{(0.641)} \\</span><br><span class="line">			constant &amp; \multicolumn{1}{c}{11,253***} &amp; \multicolumn{1}{c}{1,946} \\</span><br><span class="line">			&amp; \multicolumn{1}{c}{(1,171)} &amp; \multicolumn{1}{c}{(3,597)} \\</span><br><span class="line">			observations &amp; \multicolumn{1}{c}{74} &amp; \multicolumn{1}{c}{74} \\</span><br><span class="line">			R-squared &amp; \multicolumn{1}{c}{0.220} &amp; \multicolumn{1}{c}{0.293} \\</span><br><span class="line">			\midrule</span><br><span class="line">			\multicolumn{3}{l}{\scriptsize Standard errors in parentheses} \\</span><br><span class="line">			\multicolumn{3}{l}{\scriptsize *** p&lt;0.01, ** p&lt;0.05, * p&lt;0.1} \\</span><br><span class="line">		\end{tabular}%</span><br><span class="line">		\label{tab:reg}%</span><br><span class="line">	\end{table}%</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	\subsection{Graphics}</span><br><span class="line">	To include a graphic, you can use figure environment as usual. \figref{fig:mpg} shows the effect. You can put all your images in the sub directories (\verb|./image/|, \verb|./img/|, \verb|./figure/|, \verb|./fig/|) of your current working directory.</span><br><span class="line">	</span><br><span class="line">	\begin{Verbatim}[tabsize=4,frame=single,baselinestretch=1]</span><br><span class="line">		\begin{figure}[!ht]</span><br><span class="line">			\centering</span><br><span class="line">			\includegraphics[width=0.6\textwidth]{mpg.png}</span><br><span class="line">			\caption{The Relationship between MPG and Weight\label{fig:mpg}}</span><br><span class="line">		\end{figure}</span><br><span class="line">	\end{Verbatim}</span><br><span class="line">	\begin{figure}[!ht]</span><br><span class="line">		\centering</span><br><span class="line">		\includegraphics[width=0.6\textwidth]{mpg.png}</span><br><span class="line">		\caption{The Relationship between MPG and Weight\label{fig:mpg}}</span><br><span class="line">	\end{figure}</span><br><span class="line">	</span><br><span class="line">	\subsection{Bibliography}</span><br><span class="line">	This template uses Bib\TeX{} to generate the bibliography, the default bibliography style is \verb|aer|. ~\cite{Chen2018} use data from a major peer-to-peer lending marketplace in China to study whether female and male investors evaluate loan performance differently. You can add bib items (from Google Scholar, Mendeley, EndNote, and etc.) to \verb|wp_ref.bib| file, and cite the bibkey in the \verb|tex| file.</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	\nocite{EINAV2010,Havrylchyk2018} </span><br><span class="line">	</span><br><span class="line">	\bibliographystyle{aer}</span><br><span class="line">	\bibliography{wp_ref}</span><br><span class="line">\end{document}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="基本语法"><a class="markdownIt-Anchor" href="#基本语法"></a> 基本语法</h2>
+<p>暂时不补充可以参考最上面的链接搜索</p>
+<p>参考 ： <a target="_blank" rel="noopener" href="https://www.latexstudio.net/category/tex-layout.html">https://www.latexstudio.net/category/tex-layout.html</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Bsheepcoder</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://bsheepcoder.github.io/2022/11/25/Latex_BJ1/">https://bsheepcoder.github.io/2022/11/25/Latex_BJ1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://bsheepcoder.github.io" target="_blank">Q's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Latex/">Latex</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="wechat,weibo,qq,qzone,douban"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/qxd.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/qxd.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2022/11/22/Fe_Bootstrap1/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Bootstrap框架认识到实战</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/page1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bsheepcoder</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">124</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">27</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Bsheepcoder"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Bsheepcoder" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Can we do better ?</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-number">1.</span> <span class="toc-text"> Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E8%BE%A8%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text"> 简单的辨析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-tex"><span class="toc-number">2.1.</span> <span class="toc-text"> 什么是 TeX ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFmiktex"><span class="toc-number">2.2.</span> <span class="toc-text"> 什么是MiKTeX？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFtex-live"><span class="toc-number">2.3.</span> <span class="toc-text"> 什么是TeX live？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-texstudio"><span class="toc-number">2.4.</span> <span class="toc-text"> 什么是 TeXstudio ?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E6%A8%A1%E6%9D%BF"><span class="toc-number">3.</span> <span class="toc-text"> 通用模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text"> 基本语法</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/25/Latex_BJ1/" title="Texstudio基本操作"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Texstudio基本操作"/></a><div class="content"><a class="title" href="/2022/11/25/Latex_BJ1/" title="Texstudio基本操作">Texstudio基本操作</a><time datetime="2022-11-25T11:45:09.521Z" title="发表于 2022-11-25 19:45:09">2022-11-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/22/Fe_Bootstrap1/" title="Bootstrap框架认识到实战"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Bootstrap框架认识到实战"/></a><div class="content"><a class="title" href="/2022/11/22/Fe_Bootstrap1/" title="Bootstrap框架认识到实战">Bootstrap框架认识到实战</a><time datetime="2022-11-22T08:18:27.432Z" title="发表于 2022-11-22 16:18:27">2022-11-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/19/Python_HighLevel1/" title="Python高级特性总结"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python高级特性总结"/></a><div class="content"><a class="title" href="/2022/11/19/Python_HighLevel1/" title="Python高级特性总结">Python高级特性总结</a><time datetime="2022-11-19T12:19:33.881Z" title="发表于 2022-11-19 20:19:33">2022-11-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/17/CUDA_1/" title="对CUDA的认识"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="对CUDA的认识"/></a><div class="content"><a class="title" href="/2022/11/17/CUDA_1/" title="对CUDA的认识">对CUDA的认识</a><time datetime="2022-11-17T12:51:11.383Z" title="发表于 2022-11-17 20:51:11">2022-11-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/16/Algorithms_Dynamic1/" title="背包问题(Python)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="背包问题(Python)"/></a><div class="content"><a class="title" href="/2022/11/16/Algorithms_Dynamic1/" title="背包问题(Python)">背包问题(Python)</a><time datetime="2022-11-15T18:32:03.233Z" title="发表于 2022-11-16 02:32:03">2022-11-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Bsheepcoder</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '0wpY18jIxyDKS5O89Sd6fFGh-gzGzoHsz',
+      appKey: '8y2ItNdFctdKBPMHS31S2jbm',
+      avatar: 'monsterid',
+      serverURLs: 'https://urmbdkpv.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="128,126,125" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"}});</script></body></html>
