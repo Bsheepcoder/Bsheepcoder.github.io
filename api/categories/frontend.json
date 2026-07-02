@@ -1,0 +1,49 @@
+{
+  "category": "前端",
+  "slug": "frontend",
+  "post_count": 2,
+  "posts": [
+    {
+      "title": "微信登录统一接入：扫码登录 + 小程序登录的安全架构实战",
+      "slug": "frontend-wechat-unified-login",
+      "date": "2026-07-03",
+      "categories": [
+        "技术",
+        "前端"
+      ],
+      "tags": [
+        "安全",
+        "前端",
+        "微信登录",
+        "OAuth2",
+        "Vue3",
+        "Spring Boot"
+      ],
+      "description": "从微信账号体系的设计哲学出发，用 Spring Boot + Vue 3 实现网页扫码登录与小程序登录的统一架构。不讲 API 文档能查到的东西，讲文档不会告诉你的安全陷阱、Token 管理策略和大厂实战经验。",
+      "url": "https://bsheepcoder.github.io/2026/07/03/frontend-wechat-unified-login/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/frontend-wechat-unified-login.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/frontend-wechat-unified-login.md",
+      "encrypted": false
+    },
+    {
+      "title": "小游戏设计之道：从零理解游戏设计的灵魂",
+      "slug": "frontend-minigame-design",
+      "date": "2026-06-23",
+      "categories": [
+        "技术",
+        "前端"
+      ],
+      "tags": [
+        "前端",
+        "小游戏",
+        "游戏设计",
+        "微信小游戏"
+      ],
+      "description": "结合微信官方设计指南、Voodoo 超休闲理念与 Cocos 引擎实践，系统拆解小游戏从玩法体验到传播留存的完整设计框架，帮你从零建立游戏设计的核心思维。",
+      "url": "https://bsheepcoder.github.io/2026/06/23/frontend-minigame-design/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/frontend-minigame-design.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/frontend-minigame-design.md",
+      "encrypted": false
+    }
+  ]
+}

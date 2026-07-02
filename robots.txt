@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /search.json
+Disallow: /db.json
+
+Sitemap: https://bsheepcoder.github.io/sitemap.xml

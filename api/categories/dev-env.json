@@ -1,0 +1,27 @@
+{
+  "category": "开发环境",
+  "slug": "dev-env",
+  "post_count": 1,
+  "posts": [
+    {
+      "title": "Windows Terminal 实用指南：把一个窗口变成统一开发工作台",
+      "slug": "dev-windows-terminal",
+      "date": "2026-06-30",
+      "categories": [
+        "技术",
+        "开发环境"
+      ],
+      "tags": [
+        "开发环境",
+        "Windows Terminal",
+        "WSL",
+        "PowerShell"
+      ],
+      "description": "针对 Windows + WSL + Jetson + Docker 多环境开发，系统整理 Windows Terminal 的实用配置路径：PowerShell 7、Profile、SSH、Pane 分屏、Oh My Posh 提示符、启动自动化，末尾从原理层批判它的真实边界。",
+      "url": "https://bsheepcoder.github.io/2026/06/30/dev-windows-terminal/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/dev-windows-terminal.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/dev-windows-terminal.md",
+      "encrypted": false
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+## 适用场景
+
+- 用户要求生成 RSS 日报、每日资讯、今日新闻
+- 用户要求从 RSS 源抓取并筛选重要新闻
+- 用户要求生成信息简报
+
+## RSS 源清单
+
+完整源清单参见文章：[RSS 源大全](https://bsheepcoder.github.io/2026/06/17/rss-source-collection/)
+
+### 实际使用的源（已验证可访问）
+
+| 领域 | 源名称 | RSS 地址 |
+|------|--------|---------|
+| AI 官方 | OpenAI Blog | `https://openai.com/blog/rss.xml` |
+| AI 官方 | Google DeepMind | `https://deepmind.google/blog/rss.xml` |
+| AI 官方 | Google AI Blog | `https://blog.google/technology/ai/rss/` |
+| 学术 | arXiv AI | `https://rss.arxiv.org/rss/cs.AI` |
+| 学术 | arXiv ML | `https://rss.arxiv.org/rss/cs.LG` |
+| 学术 | arXiv NLP | `https://rss.arxiv.org/rss/cs.CL` |
+| 学术 | arXiv CV | `https://rss.arxiv.org/rss/cs.CV` |
+| 顶刊 | Nature | `https://www.nature.com/nature/articles.rss` |
+| 科普 | ScienceDaily | `https://www.sciencedaily.com/rss/all.xml` |
+| 科普 | New Scientist | `https://www.newscientist.com/section/news/feed/` |
+| 技术 | Hacker News | `https://hnrss.org/frontpage` |
+| 技术 | Hacker News AI | `https://hnrss.org/newest?q=AI` |
+| 技术 | GitHub Blog | `https://github.blog/feed/` |
+| 技术 | Ars Technica | `https://feeds.arstechnica.com/arstechnica/index` |
+| 科技商业 | TechCrunch | `https://techcrunch.com/feed/` |
+| 开发者 | Stack Overflow Blog | `https://stackoverflow.blog/feed/` |
+| 开发者 | Dev.to | `https://dev.to/feed/` |
+| 编程语言 | Rust Blog | `https://blog.rust-lang.org/feed.xml` |
+| 编程语言 | Go Blog | `https://go.dev/blog/feed.atom` |
+| 编程语言 | Python Blog | `https://blog.python.org/feeds/posts/default` |
+| 编程语言 | TypeScript Blog | `https://devblogs.microsoft.com/typescript/feed/` |
+| 编程语言 | Kotlin Blog | `https://blog.jetbrains.com/kotlin/feed/` |
+| 中文博客 | 阮一峰 | `https://www.ruanyifeng.com/blog/atom.xml` |
+| 中文博客 | OneV's Den | `https://onevcat.com/atom.xml` |
+| 新闻 | NPR News | `https://feeds.npr.org/1001/rss.xml` |
+| 新闻 | NHK World | `https://www3.nhk.or.jp/rss/news/cat0.xml` |
+| 安全 | BleepingComputer | `https://www.bleepingcomputer.com/feed/` |
+
+## 抓取策略
+
+### 批量抓取
+
+1. 将所有源分为 5-6 批，每批 5-6 个源
+2. 使用 webfetch 工具并行抓取每批
+3. 超时设置 15 秒
+4. 失败的源跳过，不阻塞其他源
+
+### 抓取流程
+
+```
+第1批：学术源（arXiv x4 + Nature + ScienceDaily）
+第2批：AI 官方 + 科普（OpenAI + DeepMind + Google AI + New Scientist）
+第3批：技术媒体（HN + GitHub + Ars Technica + TechCrunch + Stack Overflow）
+第4批：编程语言（Rust + Go + Python + TypeScript + Kotlin）
+第5批：中文 + 新闻 + 安全（阮一峰 + OneV's Den + NPR + NHK + BleepingComputer）
+```
+
+## 筛选标准
+
+### 筛选维度（按权重排序）
+
+1. **重要程度**（50%）：是否为突破性进展、重大事件、影响广泛
+2. **领域多样性**（30%）：确保覆盖 AI、科学、安全、商业、新闻等多个领域
+3. **时效性**（20%）：优先选择 24-48 小时内的新闻
+
+### 筛选数量
+
+- 固定选 **20 条**
+- 按领域分组，不按死板的编号列表
+
+### 排序规则
+
+按重要程度分组排列，组内按时间排序。
+
+## 文章格式
+
+### 文件命名
+
+```
+rss-daily-YYYY-MM-DD.md
+```
+
+### Front-Matter
+
+```yaml
+---
+title: "RSS 日报 · YYYY-MM-DD"
+date: YYYY-MM-DD 08:00:00
+categories:
+  - [技术, 信息获取]
+tags:
+  - RSS
+  - 日报
+  - 信息获取
+description: "YYYY年M月D日 RSS 日报，从 N 个可信源中精选 20 条重要资讯，涵盖 AI、科学、安全、商业、国际新闻等领域，按重要程度排列。"
+---
+```
+
+### 正文结构（关键：美观 + 分析师解读）
+
+**核心原则**：不是干巴巴的新闻列表，而是有温度、有洞察的信息简报。每条新闻都要有分析师视角的解读，帮助读者理解"为什么这很重要"。
+
+```markdown
+> **今日导语**：一段 2-3 句的开篇语，概括今日信息主旋律，像专业分析师的晨会开场。
+>
+> 📡 数据源：N 个 | 📊 筛选：20 条 | 🕐 截止时间
+>
+> 完整源清单：[RSS 源大全](/2026/06/17/rss-source-collection/)
+
+---
+
+## 🤖 AI 前沿
+
+### 标题（用 emoji 或自然标题，不用编号）
+
+> **来源**：xxx · **时间**：xxx
+
+新闻摘要（2-3 句概括事实，客观陈述）。
+
+**分析师解读**：这段是关键。用 1-2 句话解释为什么这条新闻重要、对行业意味着什么、读者应该关注什么。要有观点，不是复述新闻。可以用比喻、对比、历史参照等方式增强可读性。
+
+🔗 [阅读原文](url)
+
+---
+
+### 下一条标题
+...（同上格式）
+
+---
+
+## 🔬 科学突破
+
+### 标题
+...（同上格式）
+
+---
+
+## 🔒 安全警报
+
+### 标题
+...
+
+---
+
+## 💼 商业与资本
+
+### 标题
+...
+
+---
+
+## 🌍 国际视野
+
+### 标题
+...
+
+---
+
+## 📱 产品与生态
+
+### 标题
+...
+
+---
+
+## 📊 今日全景
+
+| 领域 | 条数 | 亮点 |
+|------|------|------|
+| AI 前沿 | N | 一句话亮点 |
+| 科学突破 | N | ... |
+| 安全警报 | N | ... |
+| ... | ... | ... |
+
+> **明日关注**：1-2 句提示明天值得跟踪的事件或趋势。
+```
+
+### 排版要点
+
+1. **分组而非编号**：用 `## 🤖 AI 前沿`、`## 🔬 科学突破` 等 emoji 标题分组，不用 `## 1.`、`## 2.` 死板编号
+2. **每条新闻三段式**：摘要（事实）→ 分析师解读（洞察）→ 链接
+3. **分析师解读必须有观点**：不是"这很重要"，而是"这意味着 X 格局可能改变，因为 Y"
+4. **开篇有导语**：像晨报一样概括今日主旋律
+5. **结尾有全景表 + 明日关注**：帮助读者快速回顾和前瞻
+6. **适当使用加粗、引用块**：增强视觉层次
+7. **emoji 适度**：分组标题用 emoji，正文不用
+
+### 分析师解读写作指南
+
+好的解读示例：
+> **分析师解读**：SpaceX 短暂超越亚马逊不是噱头——它标志着"太空基建"正在被资本市场重新定价为"科技平台"而非"航天承包商"。当一家公司的估值逻辑从"发射次数"转向"星际基础设施"，估值天花板就消失了。
+
+差的解读示例（禁止）：
+> **分析师解读**：这条新闻非常重要，值得大家关注。
+
+解读的角度可以是：
+- 行业格局变化（谁赢谁输）
+- 技术趋势信号（风向标意义）
+- 资本市场逻辑（估值/投资含义）
+- 社会影响（伦理/政策含义）
+- 历史对比（类似事件参照）
+
+## 部署
+
+生成文章后执行标准部署流程：
+
+```powershell
+npx hexo clean; if ($?) { npx hexo g }; if ($?) { ... deploy }
+```
+
+## 注意事项
+
+- 抓取量很大（arXiv 单源可返回 500KB+），webfetch 会被截断，需关注截断内容
+- 部分源可能临时不可访问（网络/代理），跳过即可
+- 日报日期为生成日期的第二天（如 6 月 17 日晚上抓取，生成 6 月 18 日日报）
+- 不要包含重复新闻（多个源报道同一事件时只保留一条，选择可信度最高的源）
+- 加密文章不参与日报
+- **每条新闻必须有分析师解读，不能只列事实**
+- **分组标题用 emoji，正文不用编号**

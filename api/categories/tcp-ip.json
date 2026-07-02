@@ -1,0 +1,27 @@
+{
+  "category": "TCP-IP",
+  "slug": "tcp-ip",
+  "post_count": 1,
+  "posts": [
+    {
+      "title": "Mesh VPN 全景：13 个方案的原理、性能与选型",
+      "slug": "tcp-ip-mesh-vpn-landscape",
+      "date": "2026-06-30",
+      "categories": [
+        "技术",
+        "TCP-IP"
+      ],
+      "tags": [
+        "TCP-IP",
+        "Mesh VPN",
+        "WireGuard",
+        "组网"
+      ],
+      "description": "从 WireGuard 的 Noise 协议到 Yggdrasil 的完全 P2P，13 个 Mesh VPN 方案横跨协议、层级、拓扑、稳定性、性能五个维度。本文从原理讲透为什么 Tailscale 最稳定、WireGuard 最快、ZeroTier 不可替代，并按个人/团队/极客/特殊场景给出选型决策。",
+      "url": "https://bsheepcoder.github.io/2026/06/30/tcp-ip-mesh-vpn-landscape/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/tcp-ip-mesh-vpn-landscape.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/tcp-ip-mesh-vpn-landscape.md",
+      "encrypted": false
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "category": "提示词",
+  "slug": "prompt",
+  "post_count": 3,
+  "posts": [
+    {
+      "title": "元提示词：用提示词生成提示词的工程方法",
+      "slug": "prompt-meta-prompt",
+      "date": "2026-06-23",
+      "categories": [
+        "技术",
+        "提示词"
+      ],
+      "tags": [
+        "提示词工程",
+        "Prompt",
+        "元提示词",
+        "GPT-5.5",
+        "PE2"
+      ],
+      "description": "整合 PE2 论文的两步推理法、10 条生成原则和 11 项自验证清单，构建一个可直接使用的元提示词——用提示词生成提示词。支持从零生成和迭代优化两种模式，含 3 个场景示例和跨模型适配指南。",
+      "url": "https://bsheepcoder.github.io/2026/06/23/prompt-meta-prompt/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/prompt-meta-prompt.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/prompt-meta-prompt.md",
+      "encrypted": false
+    },
+    {
+      "title": "提示词：工作周报助手",
+      "slug": "prompt-weekly-report",
+      "date": "2026-06-21",
+      "categories": [
+        "技术",
+        "提示词"
+      ],
+      "tags": [
+        "Prompt",
+        "XML结构",
+        "周报",
+        "通用"
+      ],
+      "description": "将零散工作记录整理为简明日报的提示词，用最少的字描述清楚任务进度，仅用 1. 和 - 分点分级。固定两大板块：本周工作、下周计划，下周计划从本周未完成任务发散。AI 可通过 API 直接提取使用。",
+      "url": "https://bsheepcoder.github.io/2026/06/21/prompt-weekly-report/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/prompt-weekly-report.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/prompt-weekly-report.md",
+      "encrypted": false
+    },
+    {
+      "title": "提示词：代码审查助手",
+      "slug": "prompt-code-review",
+      "date": "2026-06-21",
+      "categories": [
+        "技术",
+        "提示词"
+      ],
+      "tags": [
+        "Prompt",
+        "GPT-5.5",
+        "代码审查",
+        "XML结构"
+      ],
+      "description": "PR 提交后自动化代码审查的提示词模板，基于 OpenAI GPT-5.5 和 Anthropic 公开指南优化，采用 outcome-first 结构（goal + success_criteria + stop_rules），覆盖安全/性能/可维护性三维检查，按严重程度分组输出。AI 可通过 API 直接提取使用。",
+      "url": "https://bsheepcoder.github.io/2026/06/21/prompt-code-review/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/prompt-code-review.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/prompt-code-review.md",
+      "encrypted": false
+    }
+  ]
+}

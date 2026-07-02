@@ -1,0 +1,29 @@
+{
+  "category": "游戏设计",
+  "slug": "game-design",
+  "post_count": 1,
+  "posts": [
+    {
+      "title": "儿童认知康复能力评估的游戏设计指南：从 ICF-CY 到数字疗法",
+      "slug": "儿童康复评估游戏设计指南",
+      "date": "2026-06-23",
+      "categories": [
+        "技术",
+        "游戏设计"
+      ],
+      "tags": [
+        "游戏设计",
+        "数字疗法",
+        "ICF-CY",
+        "认知康复",
+        "MDA",
+        "儿童康复"
+      ],
+      "description": "将医学康复量表转化为儿童认知评估游戏，需要跨越认知心理学、临床评估标准和数字疗法三个领域。本文以 WHO 的 ICF-CY 分类为锚点，整合 Baddeley 工作记忆模型、CPT 持续注意力范式、EndeavorRx 多任务干扰设计，建立从 ICF-CY 编码到心理学范式到游戏机制到数据指标的完整映射体系，附关卡设计实例和工程化落地三步法。",
+      "url": "https://bsheepcoder.github.io/2026/06/23/儿童康复评估游戏设计指南/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/儿童康复评估游戏设计指南.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/儿童康复评估游戏设计指南.md",
+      "encrypted": false
+    }
+  ]
+}

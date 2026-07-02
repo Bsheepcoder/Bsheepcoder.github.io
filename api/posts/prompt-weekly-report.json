@@ -1,0 +1,22 @@
+{
+  "title": "提示词：工作周报助手",
+  "slug": "prompt-weekly-report",
+  "date": "2026-06-21",
+  "updated": "2026-06-22",
+  "categories": [
+    "技术",
+    "提示词"
+  ],
+  "tags": [
+    "Prompt",
+    "XML结构",
+    "周报",
+    "通用"
+  ],
+  "description": "将零散工作记录整理为简明日报的提示词，用最少的字描述清楚任务进度，仅用 1. 和 - 分点分级。固定两大板块：本周工作、下周计划，下周计划从本周未完成任务发散。AI 可通过 API 直接提取使用。",
+  "url": "https://bsheepcoder.github.io/2026/06/21/prompt-weekly-report/",
+  "api_json_url": "https://bsheepcoder.github.io/api/posts/prompt-weekly-report.json",
+  "api_md_url": "https://bsheepcoder.github.io/api/posts/prompt-weekly-report.md",
+  "encrypted": false,
+  "content": "## 使用场景\n\n把零散的工作记录（commit、聊天、待办）丢给 AI，让它用最少的字整理成有条理的进度报告，固定两大板块：本周工作、下周计划。\n\n## 提示词\n\n```xml\n<prompt>\n<role>\n工作记录整理助手。\n</role>\n\n<instructions>\n从工作记录中提炼进度，先按任务/项目分组，再区分状态：\n\n1. 本周工作\n   - 按任务/项目分类（如\"能力中心开发\"、\"值班告警\"、\"数据库维护\"等）\n   - 每个任务下区分：\n     - 已完成：闭环事项，写明结果\n     - 进行中：写明当前进度，并阐明原因（为何未闭环、卡在哪里、等什么）\n2. 下周计划\n   - 从本周进行中事项自然延续（写明下一步目标）\n   - 从输入记录中提取已提及的下周安排\n   - 无明确依据时不编造\n\n多条相关记录合并为一条。模糊表述转为可量化结果，无数据时保留原样。\n</instructions>\n\n<context>\n<records>\n{{RECORDS}}\n</records>\n</context>\n\n<output_format>\n1. 本周工作\n   - 任务A\n     - 已完成\n       - 事项 → 结果\n     - 进行中\n       - 事项（进度）→ 原因\n   - 任务B\n     - 已完成\n       - 事项 → 结果\n     - 进行中\n       - 事项 → 原因\n2. 下周计划\n   - 事项\n   - 事项\n</output_format>\n\n<stop_rules>\n- 记录 < 3 条：直接整理，提示「记录较少，建议补充」\n- 记录 > 50 条：按项目合并，不逐条罗列\n- 无法判断分类：归入\"进行中\"，标注「需确认」\n- 两大板块均已覆盖即完成\n</stop_rules>\n</prompt>\n```\n\n## 变量\n\n| 变量 | 位置 | 说明 | 示例 |\n|------|------|------|------|\n| `{{RECORDS}}` | `<records>` | 工作记录（零散文本） | commit 记录、聊天记录、待办清单 |\n\n## 使用示例\n\n**输入**：\n\n```\n周一：改了登录页 bug，密码输不进去\n周二：联调接口，post /login 返回 500，数据库连接池配置问题\n周三：修了连接池，部署上线，登录正常了\n周四：开始做权限模块，画了 ER 图，还没写代码\n周五：和产品对了需求，权限分 admin/editor/viewer 三种角色\n```\n\n**输出**：\n\n```\n1. 本周工作\n   - 登录模块\n     - 已完成\n       - 密码输入 bug → 已上线修复\n       - 接口 500 错误 → 定位连接池配置并修复\n   - 权限模块\n     - 已完成\n       - 模块脚手架 → ER 图设计完成\n     - 进行中\n       - 权限模块开发（10%）→ 代码未开始，等 ER 图评审\n2. 下周计划\n   - 实现权限模块 RBAC 角色模型（admin/editor/viewer）\n   - 权限接口开发联调\n```\n"
+}

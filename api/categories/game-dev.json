@@ -1,0 +1,27 @@
+{
+  "category": "游戏开发",
+  "slug": "game-dev",
+  "post_count": 1,
+  "posts": [
+    {
+      "title": "Cocos Creator 小游戏开发入门：从节点组件到微信发布",
+      "slug": "game-dev-cocos-creator-guide",
+      "date": "2026-06-24",
+      "categories": [
+        "技术",
+        "游戏开发"
+      ],
+      "tags": [
+        "小游戏",
+        "微信小游戏",
+        "游戏开发",
+        "Cocos Creator"
+      ],
+      "description": "结合 Cocos Creator 3.8 官方文档与实战经验，系统讲解小游戏开发全流程：节点组件架构、TypeScript 脚本系统、UI 多分辨率适配、事件系统、资源管理，并通过一个完整的躲避小游戏案例串联全部知识点，最后覆盖微信小游戏构建发布与性能优化避坑经验。",
+      "url": "https://bsheepcoder.github.io/2026/06/24/game-dev-cocos-creator-guide/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/game-dev-cocos-creator-guide.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/game-dev-cocos-creator-guide.md",
+      "encrypted": false
+    }
+  ]
+}

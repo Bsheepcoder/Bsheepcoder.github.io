@@ -1,0 +1,67 @@
+{
+  "category": "计算机基础",
+  "slug": "cs",
+  "post_count": 3,
+  "posts": [
+    {
+      "title": "Argon2id 密码哈希：memory-hard 的工程实践与前沿",
+      "slug": "cs-argon2id-explained",
+      "date": "2026-07-01",
+      "categories": [
+        "技术",
+        "计算机基础"
+      ],
+      "tags": [
+        "计算机基础",
+        "密码学",
+        "Argon2",
+        "安全"
+      ],
+      "description": "Argon2id 是 OWASP 首选密码哈希算法，2015 年密码哈希竞赛冠军。本文从 memory-hard 的第一性原理出发，讲清 Argon2 三个变体的区别、m/t/p 三参数调优、多语言实战集成，以及 2024 年 cache-hard vs memory-hard 的前沿争论与选型决策。",
+      "url": "https://bsheepcoder.github.io/2026/07/01/cs-argon2id-explained/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/cs-argon2id-explained.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/cs-argon2id-explained.md",
+      "encrypted": false
+    },
+    {
+      "title": "BCrypt 密码哈希：从 Blowfish 到 cache-hard 的技术演化",
+      "slug": "cs-bcrypt-explained",
+      "date": "2026-07-01",
+      "categories": [
+        "技术",
+        "计算机基础"
+      ],
+      "tags": [
+        "计算机基础",
+        "密码学",
+        "安全",
+        "BCrypt"
+      ],
+      "description": "BCrypt 是什么？从 Blowfish 的 Eksblowfish 变体到 cost factor 自适应机制，从 $2a$ 到 $2b$ 的两个 bug 修复史，到 scrypt/Argon2 的 memory-hard 演化，再到 2024 年 cache-hard vs memory-hard 的前沿争论。一篇搞懂密码哈希的过去、现在和选型。",
+      "url": "https://bsheepcoder.github.io/2026/07/01/cs-bcrypt-explained/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/cs-bcrypt-explained.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/cs-bcrypt-explained.md",
+      "encrypted": false
+    },
+    {
+      "title": "深入浅出 TEE：为什么你的手机里有一块内核都进不去的保险箱",
+      "slug": "cs-tee-principles",
+      "date": "2026-06-29",
+      "categories": [
+        "技术",
+        "计算机基础"
+      ],
+      "tags": [
+        "计算机基础",
+        "TEE",
+        "可信执行环境",
+        "硬件安全"
+      ],
+      "description": "从冯·诺依曼架构的特权层窥探悖论出发，推导 TEE 的六块原理积木——硬件墙、信任链、远程证明、数据流模型。以数字记忆硬件落地为案例串联原理，批判 TEE 的边界：侧信道、协议层、供应链。不是科普，是原理级的工程认知。",
+      "url": "https://bsheepcoder.github.io/2026/06/29/cs-tee-principles/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/cs-tee-principles.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/cs-tee-principles.md",
+      "encrypted": false
+    }
+  ]
+}
