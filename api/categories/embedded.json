@@ -1,0 +1,27 @@
+{
+  "category": "嵌入式",
+  "slug": "embedded",
+  "post_count": 1,
+  "posts": [
+    {
+      "title": "Jetson Nano 与边缘 AI：一台 2019 年的老硬件，为什么在 2026 年仍然值得学",
+      "slug": "embedded-jetson-nano-edge-ai",
+      "date": "2026-06-30",
+      "categories": [
+        "技术",
+        "嵌入式"
+      ],
+      "tags": [
+        "嵌入式",
+        "Jetson",
+        "边缘AI",
+        "NVIDIA"
+      ],
+      "description": "2019 年的原版 Jetson Nano 跑不动 LLM，却被 NVIDIA 生态抛弃在 JetPack 4。但正是这台最弱的现代 AI 设备，逼你理解边缘 AI 的本质——不是跑得多快，而是在哪里跑。从硬件墙、生态断层到内存带宽瓶颈，讲透边缘 AI 的意义。",
+      "url": "https://bsheepcoder.github.io/2026/06/30/embedded-jetson-nano-edge-ai/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/embedded-jetson-nano-edge-ai.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/embedded-jetson-nano-edge-ai.md",
+      "encrypted": false
+    }
+  ]
+}

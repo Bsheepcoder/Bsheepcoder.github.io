@@ -1,0 +1,330 @@
+## 一、接入：5 分钟从安装到能跑
+
+云效 MCP Server 有三种部署形态——npx 直跑、Docker、官方托管远程端点。**个人开发者首选官方托管**：零安装、版本最新、客户端只需配一个 URL 和 token。
+
+### 1.1 获取 token
+
+登录云效 → 个人头像 → 个人设置 → 个人访问令牌 → 新建一个 token。给最小必要权限即可（个人开发推荐：组织读取 + 项目协作 + 代码管理 + 流水线读取）。token 只显示一次，**保存好**——它出现的地方越多风险越大，用过就 revoke 重发。
+
+### 1.2 客户端配置
+
+官方托管端点：`https://openapi-rdc.aliyuncs.com/ai/mcp`，传输协议 Streamable HTTP（MCP 规范推荐的远程形态）。
+
+**Cursor 配置**（`~/.cursor/mcp.json` 或 Settings → MCP）：
+
+```json
+{
+  "mcpServers": {
+    "yunxiao": {
+      "url": "https://openapi-rdc.aliyuncs.com/ai/mcp",
+      "headers": { "Authorization": "Bearer <YOUR_TOKEN>" }
+    }
+  }
+}
+```
+
+**Claude Desktop 配置**（macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`；Windows: `%APPDATA%\Claude\claude_desktop_config.json`）——Claude Desktop 不直接支持远程 URL，走本地 npx 桥接：
+
+```json
+{
+  "mcpServers": {
+    "yunxiao": {
+      "command": "npx",
+      "args": ["-y", "alibabacloud-devops-mcp-server"],
+      "env": { "YUNXIAO_ACCESS_TOKEN": "<YOUR_TOKEN>" }
+    }
+  }
+}
+```
+
+**opencode / iFlow / Qoder** 等其他 MCP 客户端类似——只要支持 `Streamable HTTP` 用第一种配置，只支持 stdio 用第二种。
+
+### 1.3 必踩坑点（实测所得，README 没写全）
+
+| 坑 | 现象 | 解法 |
+|---|---|---|
+| Accept 头不全 | hosted 端点返回 `406 Not Acceptable`，错误码 `-32000` | fetch 自测时显式带 `Accept: application/json, text/event-stream`；用主流 MCP 客户端不用管 |
+| 工具爆炸填满 context | 默认 194 个工具 schema 占 ~30-50k token，LLM 推理质量下降 | 用 toolsets 裁剪：`?toolsets=code-management,project-management` |
+| npx 版本滞后 | 默认拉到 0.3.47，hosted 跑 0.3.51，4 个 patch 差 | 锁版本 `@0.3.51` 或走托管 |
+| toolsets 参数双形式 | 文档写 `X-Devops-Toolsets` 头，URL 也支持 | 二选一：`?toolsets=a,b` 或 header `X-Devops-Toolsets: a,b` |
+
+### 1.4 验证接入
+
+打开客户端，让 AI 调一次 `get_current_organization_info`：
+
+```
+你: 调一下 get_current_organization_info，告诉我我所在的云效组织
+AI: 调用工具... 返回 { "lastOrganization": "xxx", "userName": "xxx" }
+```
+
+返回你的组织名和用户名就说明通了——AI 现在能看见你的云效世界。
+
+### 1.5 toolsets 裁剪推荐
+
+个人开发不用 194 个工具全开。按工作角色裁：
+
+- **全栈个人开发**：`code-management,project-management`（代码 + 工单）
+- **加流水线关注**：再加 `pipeline-management`，三 toolset 一共约 60 个工具
+- **CI/CD 重度**：再加 `application-delivery`，覆盖部署单/变更请求
+
+实测对照：默认 194 → `code-management` 单 toolset 26 → 三 toolset 约 60。**Context 省 70%+，LLM 推理质量明显改善**。
+
+---
+
+## 二、9 个核心工具，按工作流阶段组织
+
+194 个工具里个人开发经常用的就 9 个。按你工作的阶段分组记：
+
+| 阶段 | 工具 | 用途 | 必填参数 |
+|---|---|---|---|
+| **需求** | `search_workitems` | 看 sprint 里的待办 | `organizationId, category, spaceId` |
+| **需求** | `get_work_item` | 读工单详情、描述、附件 | `organizationId, workItemId` |
+| **需求** | `list_workitem_activities` | 看工单历史活动流（状态变更/评论） | `organizationId, workitemId` |
+| **开发** | `list_repositories` / `get_repository` | 让 AI 知道仓库在哪 | `organizationId` |
+| **开发** | `create_branch` | AI 自动建 feature 分支 | `organizationId, repositoryId, branch` |
+| **提交** | `create_change_request` | AI 自提 MR | `organizationId, repositoryId, ...` |
+| **提交** | `list_change_request_comments` | AI 读评审反馈 | `organizationId, ...` |
+| **交付** | `list_pipeline_runs` / `get_pipeline_run` | AI 跟流水线状态 | `organizationId, pipelineId` |
+| **交付** | `get_pipeline_job_run_log` | AI 读失败日志找根因 | `organizationId, ...` |
+
+工具调用的真实数据样本（实测从仞牧科技组织读到）：
+
+**`list_repositories` 调用后**：
+
+```json
+[
+  { "id": 6319387, "name": "abr-console",
+    "webUrl": "https://codeup.aliyun.com/698d.../abr-console",
+    "description": "爱贝儿管理后台", "path": "abr-console" },
+  { "id": 6319880, "name": "abr-ui-admin",
+    "description": "后台管理页面", "path": "abr-ui-admin" }
+]
+```
+
+AI 收到这个就有仓库地图，知道往哪个仓库建分支。`spaceId` = 项目 id、`organizationId` = 组织 id，这是两个最关键的 ID 作为入参。
+
+**`list_pipelines` 调用后**：
+
+```json
+{
+  "items": [
+    { "pipelineName": "abr-ui-admin-product", "pipelineId": 4731023 },
+    { "pipelineName": "abr-console-product", "pipelineId": 4725220 }
+  ],
+  "pagination": { "total": 0, "nextPage": null }
+}
+```
+
+注意 `pagination.total` 实测有时显示 0 但 `items` 有内容——别被它误导成"没有流水线"，看 `items` 长度才准。这是 README 没说清的口径差。
+
+---
+
+## 三、阶段论：从需求到完成的 4 段跟进
+
+这一节是核心——把 9 个工具拼成一条完整流程：AI 接到一个任务，怎么从理解需求一路跟到部署完成。
+
+### 3.1 需求澄清阶段：AI 主动复述防偏
+
+**触发**：你早会回来，跟 AI 说"我开始 sprint 第 3 个 task"。
+
+**AI 该做的**：
+
+1. `search_workitems` 拉当前 sprint 待办，找跟你的描述最匹配的工单
+2. `get_work_item` 读详情、读描述、读 acceptance criteria
+3. `list_workitem_activities` 读历史状态变更——看是不是被改过需求、有没有评审遗留意见
+4. **输出复述**："我的理解是 prop X 因为 Y 原因需要改成 Z，验收点 1/2/3，影响模块 A 和 B，对吗？"
+
+**工具调用组合**：
+
+```
+search_workitems(organizationId=xxx, category=Req, spaceId=projectId, status=Pending Processing)
+  → 拿到候选工单列表
+get_work_item(workItemId=候选.id)
+  → 读工单详情
+list_workitem_activities(workItemId=工单.id)
+  → 读活动流看历史变更
+```
+
+**工作流优化点**：AI 复述确认后再开工。这一步如果不做，开发完才发现理解偏了返工成本翻倍——AI 拿到工单后**强制让它先复述一遍**你确认，再进开发阶段。
+
+### 3.2 开发执行阶段：分支命名带工单 id 是反查桥梁
+
+**触发**：你确认复述正确，说"开工"。
+
+**AI 该做的**：
+
+1. `list_repositories` 拿仓库 id（之前可能已经 cached，不必每次拉）
+2. `list_branches` 看现有分支布局和命名规范，识别默认分支
+3. `create_branch` 建 feature 分支，分支名按 `feature/<workitemId>-<short-slug>` 规范
+4. 然后才开始改代码——用 IDE 改、用 AI 改、用 `create_file`/`update_file` 工具直接改远端均可
+
+**工具调用示例**：
+
+```
+list_branches(organizationId=xxx, repositoryId=repo.id, page=1, pageSize=20)
+  → 看现有分支布局
+create_branch(
+  organizationId=xxx,
+  repositoryId=repo.id,
+  branch="feature/05fe29f5-avatar-upload",
+  ref="master"
+)
+```
+
+**工作流优化点**：分支名嵌入工单 id（`feature/05fe29f5-avatar-upload`）。这个习惯带来的复利：
+
+- MR 自动从分支名提取工单 id 回链到工单
+- 流水线失败时日志搜索分支名能反查是哪个工单
+- 半年后回看哪个分支对应哪个需求，分支名就是检索键
+
+**为什么不让 AI 直接 `create_file` 远端写**：实测 `create_file` 走的是云效 OpenAPI 直写，**不经本地 git**，写完不进 git 历史、不能 diff、不能回滚。个人开发建议**AI 用 IDE 写，本地 commit 完再 push**——`create_branch` 用 MCP 工具建分支、`create_file/update_file` 留给批量改动或脚本化场景。
+
+### 3.3 交付验收阶段：MR 描述回链工单
+
+**触发**：你说"提 MR"。
+
+**AI 该做的**：
+
+1. `create_change_request` 提 MR，**描述里自动塞工单回链**
+2. `update_work_item` 把工单状态推到"待验证"（如果你们流程用状态机）
+3. 评审意见回来后 `list_change_request_comments` 读
+4. 有修改意见 AI 改完代码再 push 同 MR（commit 自动续进 MR）
+5. 必要时 `create_work_item_comment` 在工单里同步说明"MR 已合"
+
+**MR 描述模板 AI 自动填**：
+
+```
+## 关联工单
+[xxx-需求名](工单 URL)
+
+## 改动概述
+<从工单 description / 你的对话复述提取>
+
+## 变更清单
+- 修改 `service/user.js`：新增 avatar upload 接口
+- 新增 `controller/avatar.js`：处理 multipart 上传
+- 修改 `ui/profile.vue`：头像上传按钮 + 预览
+
+## 验收自测
+- [ ] 头像上传 < 2MB 成功
+- [ ] 非 jpg/png 拒绝
+- [ ] 上传失败错误提示正确
+```
+
+**工作流优化点**：MR 描述塞工单回链 + 自动填验收点。评审人开 MR 就能一键跳工单看原始需求、看验收清单点自测——评审效率翻倍。
+
+### 3.4 运维反馈阶段：失败日志 AI 主动诊断 + 经验沉淀回工单
+
+**触发**：流水线跑完了，你不在电脑前，AI 自己跟进状态。
+
+**AI 该做的**：
+
+1. `list_pipeline_runs` 看最近的运行状态
+2. 失败了 `get_pipeline_job_run_log` 读失败 job 的日志
+3. AI 分析根因（编译错误 / 测试失败 / 部署配置错 / 还是需求理解偏了）
+4. **如果是技术问题**：直接修代码、续推
+5. **如果是需求理解偏差**：`create_work_item_comment` 在工单里写复盘"我原以为 Y 应这样实现，实测发现需要这样才…，根因是…"
+6. 沉淀的经验被未来同类工单保留
+
+**`get_pipeline_job_run_log` 调用**：
+
+```
+list_pipeline_runs(organizationId=xxx, pipelineId=4731023, page=1, pageSize=1)
+  → 拿到最近一次 run id 和状态
+失败时:
+get_pipeline_job_run_log(organizationId=xxx, ... jobId=failed job id)
+  → 读日志，定位失败的 step 和行号
+```
+
+**工作流优化点**：AI 主动诊断 + 沉淀回工单。这是 MCP 接入带来的最大长尾收益——把 AI 读过的失败日志、判断过的根因、思考过的修复方案，统统**结构化沉淀回工单评论**。下次同类型 issue 出现，AI 拉 `list_workitem_activities` 就能找到上次的处理思路，不必从零再想。**它变成你团队的可检索经验库**，每个工单都是一个 wiki 页。
+
+---
+
+## 四、5 个工作流优化灵感
+
+把上面 4 阶段流程跑顺之后，下面 5 个改造可以给工作流再加杠杆。按收益从高到低排：
+
+### 灵感 1：早会前 AI 生成 sprint 报告（最高收益）
+
+早会前 10 分钟让 AI 跑：
+
+```
+搜索昨日（updatedAfter=yesterday）所有状态变更的工作项
+  → 分类：完成、进行中、阻塞（看 statusStage）
+  → 输出三段式：昨日完成 / 今日计划 / 阻塞点
+```
+
+涉及工具：`search_workitems`（带 `updatedAfter` 过滤）
+
+这个习惯省的是**制图时间**——以前你自己写早会报告要翻 5 个工单、看 3 条流水线、问 1 个队友。AI 跑完 30 秒给你一份摘要，你只需复核+补充"因为我等 XXX"。**长期跑下来工时和认知带宽省 70%+**。
+
+### 灵感 2：MR 描述 AI 自动回链工单（评审效率翻倍）
+
+见 3.3 节。AI 提 MR 时描述里自动塞 `[关联工单 #xxx](url)`。评审人开 MR 一眼看到原始需求和验收点——比"顺手把头像上传改了"这种没头没尾的 MR 描述友好 10 倍。
+
+涉及工具：`create_change_request` + `get_work_item`（拿工单 URL）
+
+### 灵感 3：流水线失败 AI 主动诊断 + 经验沉淀（长尾收益）
+
+见 3.4 节。这是 MCP 接入最高长尾价值的改造：AI 读完失败日志后把根因和修复方案**结构化沉淀回工单评论**。半年后你的工单库变成"经验库"——AI 拉某个 issue 的活动流就能看到上次同类问题的处理思路。
+
+涉及工具：`get_pipeline_job_run_log` + `create_work_item_comment`
+
+### 灵感 4：工时自动登记（避免月底补登）
+
+每完成一段功能（比如"头像上传服务写完了"），AI 估算用了 0.5h 就调 `create_effort_record` 登记。
+
+涉及工具：`create_effort_record`
+
+**注意实测踩的坑**：参数名是 `actualTime`（number 类型，单位小时），不是 README 早版写的 `actualHour`（string）。还有 `gmtStart` / `gmtEnd` / `id` 必填。AI 一次配错就能登记错工时——这个工具让 AI 调用时**强制它先 show 你它要传什么参数你确认**。
+
+### 灵感 5：分支命名带工单 id（零成本，长期复合收益）
+
+见 3.2 节。AI 用 `create_branch` 时自动拼 `feature/<workitemId>-<short-slug>`。零成本改造，长期下来：
+
+- 每条分支对应一个工单
+- 每个流水线日志对应一个工单
+- 半年后检索"那个 XX 功能的分支"一搜即中
+
+涉及工具：`create_branch`
+
+---
+
+## 五、落地建议与边界
+
+### 推荐的渐进路径
+
+```
+第 1 周：接入 + 1 个工具
+  → 只接 get_current_organization_info + list_repositories，
+     让 AI 知道你的云效世界长什么样。验证通了再加。
+
+第 2-3 周：上 4 阶段流程
+  → 让 AI 在 4 阶段都参与但只读不写。
+     每次它要写工具你 review 一遍它要传的参数再确认。
+
+第 4 周：开放写工具 + 启用早会报告
+  → 信任建立了再让它自动建分支、自动提 MR、自动登记工时。
+     早会报告从此时起每天跑。
+
+满月后：跑灵感 3 的经验沉淀
+  → AI 主动诊断流水线失败 + 评论工单沉淀根因。
+     此时工单库开始变经验库。
+```
+
+### 安全边界
+
+- **Token 最小权限**：不要给全部读写，按你必用的工具给最小 scope
+- **写工具二次确认**：AI 调 `delete_*`、`update_*` 类工具前**强制让你确认它要传什么参数**——AI 一次理解错 prompt 就可能删错对象
+- **Token 定期 rotate**：触发过怀疑就 revoke 重发。对 AI 助手来说 token 是一次性凭据不是永久凭据
+- **不动 master 分支**：AI `create_branch` 必须从 master 拉 feature 分支，**AI 不直接写 master**——所有改动经 MR
+
+### 工作流本身不变，是 AI 介入的位置变
+
+云效 MCP Server 的价值不是给你新流程，是把现有 DevOps 流程里**人需要切换上下文、复制粘贴、跨工具跳转**的环节让 AI 替你做。sprint 还是那个 sprint，MR 还是那个 MR，流水线还是那条流水线——只是上下文切换成本被 AI 吃掉了。
+
+> 延伸阅读：[MCP 协议：AI 应用的 USB-C 接口](/2026/06/22/ai-mcp-protocol/)（MCP 协议本身的设计哲学）、[PDC 协议搭载 MCP 动态端点：两种部署模式实战](/2026/06/22/hexo-pdc-mcp-adapter/)（自建 MCP server 的另一种轻量实践）
+
+---
+
+接入的真正门槛不是 194 个工具，是**让 AI 在你工作流的哪个位置接班**的有效设计。本手册的 4 阶段 + 5 灵感就是一个起步框架——先把 1 个工具跑通，然后按阶段扩，最后跑灵感 3 的长尾收益。两周下来你会回头发现：AI 不是帮你"写代码"那么单薄，是帮你**把研发协作系统里的信息流动成本降下来**，让你专注在判断和创造上。

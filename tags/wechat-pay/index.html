@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>标签: 微信支付 | Q's blog</title><meta name="author" content="Bsheepcoder"><meta name="copyright" content="Bsheepcoder"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Bsheepcoder 的技术博客，记录 AI、编程、计算机科学的学习笔记"><meta property="og:type" content="website"><meta property="og:title" content="Q&#39;s blog"><meta property="og:url" content="https://bsheepcoder.github.io/tags/wechat-pay/"><meta property="og:site_name" content="Q&#39;s blog"><meta property="og:description" content="Bsheepcoder 的技术博客，记录 AI、编程、计算机科学的学习笔记"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://bsheepcoder.github.io/img/avatar.jpg"><meta property="article:author" content="Bsheepcoder"><meta property="article:tag" content="AI,Python,C++,Java,Hexo,博客"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bsheepcoder.github.io/img/avatar.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="https://bsheepcoder.github.io/tags/wechat-pay/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload='this.media="all"'><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload='this.media="all"'><script>(() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":3,"unescape":true,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":30,"languages":{"author":"作者: Bsheepcoder","link":"链接: ","source":"来源: Q's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={title:"标签: 微信支付",isHighlightShrink:!1,isToc:!1,pageType:"tag"}</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="Q's blog" type="application/atom+xml"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">159</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/flink/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Q's blog</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/flink/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><h1 class="title-seo">微信支付</h1></header><main class="layout" id="content-inner"><div id="tag"><div class="article-sort-title">标签 - 微信支付</div><div class="article-sort"><div class="article-sort-item year">2026</div><div class="article-sort-item no-article-cover"><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2026-07-06T06:00:00.000Z" title="发表于 2026-07-06 14:00:00">2026-07-06</time></div><a class="article-sort-item-title" href="/2026/07/06/wechat-miniprogram-payment/" title="微信小程序支付实战：全链路坑点与工程经验">微信小程序支付实战：全链路坑点与工程经验</a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="author-info-name">Bsheepcoder</div><div class="author-info-description">认知管理系统 · AI 索引友好 · 记录与检索并重</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">159</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Bsheepcoder"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color:#ff7c5c"></i></a><a class="social-icon" href="https://github.com/Bsheepcoder" target="_blank" title="Github"><i class="fab fa-github" style="color:#24292e"></i></a><a class="social-icon" href="https://linux.do/" target="_blank" title="LinuxDo"><i class="custom-icon-linuxdo"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">本站基于 <a target="_blank" rel="noopener" href="https://llmstxt.org">llms.txt</a> 标准，通过 <a href="/pdc-protocol.md">PDC</a> 扩展 AI 数据端点，<a href="/llms.txt">/llms.txt</a> 零噪音读取全部内容。欢迎加入 <a href="/flink/">llms.txt 采用者网络</a>，<a target="_blank" rel="noopener" href="https://github.com/Bsheepcoder/Bsheepcoder.github.io/issues">提交申请</a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%BD%AF%E8%91%97%E7%94%B3%E8%AF%B7%E6%8C%87%E5%8D%97/" title="软件著作权申请完全指南：从材料撰写到 AI 时代的合规策略">软件著作权申请完全指南：从材料撰写到 AI 时代的合规策略</a><time datetime="2026-07-23T14:00:00.000Z" title="发表于 2026-07-23 22:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/cs-container-universe/" title="容器宇宙：一部关于隔离与共享的宇宙史">容器宇宙：一部关于隔离与共享的宇宙史</a><time datetime="2026-07-23T12:00:00.000Z" title="发表于 2026-07-23 20:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/ai-9router-guide/" title="9Router：一个 AI 路由器的自组织涌现">9Router：一个 AI 路由器的自组织涌现</a><time datetime="2026-07-23T08:00:00.000Z" title="发表于 2026-07-23 16:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/21/ai-java-framework-landscape/" title="Java AI 框架全景图 2026：选型决策指南">Java AI 框架全景图 2026：选型决策指南</a><time datetime="2026-07-21T12:00:00.000Z" title="发表于 2026-07-21 20:00:00">2026-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/21/ai-langchain4j-practice/" title="Java LLM 集成的工程模式之辩：LangChain4j 与 Spring AI 双轨实践">Java LLM 集成的工程模式之辩：LangChain4j 与 Spring AI 双轨实践</a><time datetime="2026-07-21T05:00:00.000Z" title="发表于 2026-07-21 13:00:00">2026-07-21</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline"><i class="fas fa-folder-open"></i> <span>分类</span></div><ul class="card-category-list" id="aside-cat-list"><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/"><span class="card-category-list-name">技术</span><span class="card-category-list-count">71</span></a><ul class="card-category-list child"><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/ai/"><span class="card-category-list-name">AI</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/mcp/"><span class="card-category-list-name">MCP</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/skill/"><span class="card-category-list-name">Skill</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/TCP-IP/"><span class="card-category-list-name">TCP-IP</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/ai/"><span class="card-category-list-name">人工智能</span><span class="card-category-list-count">26</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/info/"><span class="card-category-list-name">信息获取</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/frontend/"><span class="card-category-list-name">前端</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/embedded/"><span class="card-category-list-name">嵌入式</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/hexo/"><span class="card-category-list-name">建站</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/dev-env/"><span class="card-category-list-name">开发环境</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/wechat-dev/"><span class="card-category-list-name">微信开发</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/prompt/"><span class="card-category-list-name">提示词</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/game-dev/"><span class="card-category-list-name">游戏开发</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/game-design/"><span class="card-category-list-name">游戏设计</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/cs/"><span class="card-category-list-name">计算机基础</span><span class="card-category-list-count">7</span></a></li></ul></li></ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/9Router/" style="font-size:1.15em;color:#5d9f32">9Router</a><a href="/tags/AGI/" style="font-size:1.15em;color:#954832">AGI</a><a href="/tags/ai/" style="font-size:1.45em;color:#793232">AI</a><a href="/tags/AI-Native/" style="font-size:1.18em;color:#329b51">AI Native</a><a href="/tags/AIO/" style="font-size:1.15em;color:#b98332">AIO</a><a href="/tags/AI%E5%90%88%E8%A7%84/" style="font-size:1.15em;color:#75488b">AI合规</a><a href="/tags/API/" style="font-size:1.18em;color:#329032">API</a><a href="/tags/Agent/" style="font-size:1.42em;color:#3232b1">Agent</a><a href="/tags/AgentScope/" style="font-size:1.18em;color:#32ae73">AgentScope</a><a href="/tags/Anthropic/" style="font-size:1.15em;color:#939d32">Anthropic</a><a href="/tags/Argon2/" style="font-size:1.15em;color:#763aa3">Argon2</a><a href="/tags/BCrypt/" style="font-size:1.15em;color:#92634e">BCrypt</a><a href="/tags/Chromium/" style="font-size:1.15em;color:#32b33f">Chromium</a><a href="/tags/Cloudflare/" style="font-size:1.15em;color:#b49b51">Cloudflare</a><a href="/tags/Cocos-Creator/" style="font-size:1.15em;color:#647365">Cocos Creator</a><a href="/tags/DSL/" style="font-size:1.15em;color:#834a32">DSL</a><a href="/tags/DevOps/" style="font-size:1.15em;color:#3249a7">DevOps</a><a href="/tags/Dify/" style="font-size:1.18em;color:#7162a0">Dify</a><a href="/tags/Docker/" style="font-size:1.15em;color:#32328d">Docker</a><a href="/tags/Electron/" style="font-size:1.15em;color:#8f32c0">Electron</a><a href="/tags/EverOS/" style="font-size:1.15em;color:#4a4197">EverOS</a><a href="/tags/Flyway/" style="font-size:1.15em;color:#325932">Flyway</a><a href="/tags/GPT-5-5/" style="font-size:1.22em;color:#4f3251">GPT-5.5</a><a href="/tags/GitHub/" style="font-size:1.15em;color:#9aaa9b">GitHub</a><a href="/tags/GitHub-Pages/" style="font-size:1.15em;color:#a83cab">GitHub Pages</a><a href="/tags/GraphRAG/" style="font-size:1.15em;color:#625532">GraphRAG</a><a href="/tags/HITL/" style="font-size:1.15em;color:#323f32">HITL</a><a href="/tags/Hermes/" style="font-size:1.15em;color:#9c328b">Hermes</a><a href="/tags/hexo/" style="font-size:1.35em;color:#7ac389">Hexo</a><a href="/tags/ICF-CY/" style="font-size:1.15em;color:#513267">ICF-CY</a><a href="/tags/IPFS/" style="font-size:1.15em;color:#5d3299">IPFS</a><a href="/tags/JEPA/" style="font-size:1.15em;color:#6b6532">JEPA</a><a href="/tags/java/" style="font-size:1.22em;color:#a4c050">Java</a><a href="/tags/Jetson/" style="font-size:1.15em;color:#323cc0">Jetson</a><a href="/tags/LLM/" style="font-size:1.22em;color:#b4a24c">LLM</a><a href="/tags/LXC/" style="font-size:1.15em;color:#459799">LXC</a><a href="/tags/LXD/" style="font-size:1.15em;color:#728142">LXD</a><a href="/tags/LangChain4j/" style="font-size:1.18em;color:#32325f">LangChain4j</a><a href="/tags/linux/" style="font-size:1.15em;color:#ba3271">Linux</a><a href="/tags/MCP/" style="font-size:1.38em;color:#af5797">MCP</a><a href="/tags/MDA/" style="font-size:1.18em;color:#b5a27f">MDA</a><a href="/tags/MDD/" style="font-size:1.18em;color:#9b32c1">MDD</a><a href="/tags/Mem0/" style="font-size:1.15em;color:#328832">Mem0</a><a href="/tags/Memex/" style="font-size:1.15em;color:#a3323f">Memex</a><a href="/tags/Mesh-VPN/" style="font-size:1.15em;color:#3232a8">Mesh VPN</a><a href="/tags/NFT/" style="font-size:1.15em;color:#32bf84">NFT</a><a href="/tags/NVIDIA/" style="font-size:1.15em;color:#329c37">NVIDIA</a><a href="/tags/OAuth2/" style="font-size:1.15em;color:#32a349">OAuth2</a><a href="/tags/OpenAI/" style="font-size:1.15em;color:#4d71a5">OpenAI</a><a href="/tags/OpenClaw/" style="font-size:1.15em;color:#347383">OpenClaw</a><a href="/tags/PDC/" style="font-size:1.25em;color:#884742">PDC</a><a href="/tags/PE2/" style="font-size:1.15em;color:#bc32a2">PE2</a><a href="/tags/PowerShell/" style="font-size:1.15em;color:#7f70a8">PowerShell</a><a href="/tags/prompt/" style="font-size:1.25em;color:#7b32b2">Prompt</a><a href="/tags/Prompt%E5%B7%A5%E7%A8%8B/" style="font-size:1.15em;color:#327db4">Prompt工程</a><a href="/tags/Qoder/" style="font-size:1.15em;color:#3c59a9">Qoder</a><a href="/tags/RAG/" style="font-size:1.25em;color:#32c19a">RAG</a><a href="/tags/RSS/" style="font-size:1.22em;color:#a86167">RSS</a><a href="/tags/Rclone/" style="font-size:1.15em;color:#5f3872">Rclone</a><a href="/tags/SEO/" style="font-size:1.15em;color:#a764c1">SEO</a><a href="/tags/SQLite/" style="font-size:1.15em;color:#666e32">SQLite</a><a href="/tags/SRE/" style="font-size:1.15em;color:#8b3241">SRE</a><a href="/tags/Skill/" style="font-size:1.32em;color:#9b8f4f">Skill</a><a href="/tags/Spring-AI/" style="font-size:1.18em;color:#6c8d7f">Spring AI</a><a href="/tags/Spring-Boot/" style="font-size:1.15em;color:#327c65">Spring Boot</a><a href="/tags/Syncthing/" style="font-size:1.15em;color:#4e7845">Syncthing</a><a href="/tags/SynthAI/" style="font-size:1.15em;color:#32326a">SynthAI</a><a href="/tags/tcp-ip/" style="font-size:1.15em;color:#3283af">TCP-IP</a><a href="/tags/TEE/" style="font-size:1.15em;color:#91a97f">TEE</a><a href="/tags/TTS/" style="font-size:1.15em;color:#ac3232">TTS</a><a href="/tags/Token/" style="font-size:1.15em;color:#325d64">Token</a><a href="/tags/Token%E4%BC%98%E5%8C%96/" style="font-size:1.15em;color:#3b664d">Token优化</a><a href="/tags/Vue3/" style="font-size:1.15em;color:#613232">Vue3</a><a href="/tags/WSL/" style="font-size:1.15em;color:#323232">WSL</a><a href="/tags/Windows/" style="font-size:1.15em;color:#323332">Windows</a><a href="/tags/Windows-Terminal/" style="font-size:1.15em;color:#3299ba">Windows Terminal</a><a href="/tags/WireGuard/" style="font-size:1.15em;color:#c6349b">WireGuard</a><a href="/tags/XML%E7%BB%93%E6%9E%84/" style="font-size:1.22em;color:#3246a1">XML结构</a><a href="/tags/llms-txt/" style="font-size:1.28em;color:#323232">llms.txt</a><a href="/tags/opencode/" style="font-size:1.22em;color:#a96e42">opencode</a><a href="/tags/tree-sitter/" style="font-size:1.15em;color:#32b3ad">tree-sitter</a><a href="/tags/%E4%B8%96%E7%95%8C%E6%A8%A1%E5%9E%8B/" style="font-size:1.15em;color:#325632">世界模型</a><a href="/tags/%E4%BA%91%E6%95%88/" style="font-size:1.15em;color:#7d9732">云效</a><a href="/tags/%E4%BA%A7%E4%B8%9A%E5%88%86%E6%9E%90/" style="font-size:1.15em;color:#364a32">产业分析</a><a href="/tags/%E4%BA%A7%E5%93%81%E6%80%9D%E7%BB%B4/" style="font-size:1.15em;color:#703233">产品思维</a><a href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" style="font-size:1.15em;color:#ba9432">产品设计</a><a href="/tags/%E4%BA%BA%E6%96%87%E5%85%B3%E6%80%80/" style="font-size:1.15em;color:#503288">人文关怀</a><a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5/" style="font-size:1.15em;color:#883272">代码审查</a><a href="/tags/%E4%BB%A3%E7%A0%81%E6%99%BA%E8%83%BD/" style="font-size:1.15em;color:#325632">代码智能</a><a href="/tags/%E4%BC%AA%E9%9C%80%E6%B1%82/" style="font-size:1.15em;color:#aa329d">伪需求</a><a href="/tags/%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/" style="font-size:1.35em;color:#32abc6">信息获取</a><a href="/tags/%E5%84%BF%E7%AB%A5%E5%BA%B7%E5%A4%8D/" style="font-size:1.18em;color:#5b4171">儿童康复</a><a href="/tags/%E5%85%83%E6%8F%90%E7%A4%BA%E8%AF%8D/" style="font-size:1.15em;color:#94a432">元提示词</a><a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8/" style="font-size:1.15em;color:#409437">分布式存储</a><a href="/tags/%E5%88%86%E6%9E%90%E6%A1%86%E6%9E%B6/" style="font-size:1.15em;color:#613b32">分析框架</a><a href="/tags/%E5%89%8D%E6%B2%BF%E6%80%9D%E6%BD%AE/" style="font-size:1.22em;color:#328940">前沿思潮</a><a href="/tags/frontend/" style="font-size:1.25em;color:#323271">前端</a><a href="/tags/%E5%8A%A0%E5%AF%86/" style="font-size:1.15em;color:#b1364b">加密</a><a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size:1.18em;color:#3632ad">协议</a><a href="/tags/%E5%8F%AF%E4%BF%A1%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83/" style="font-size:1.15em;color:#32325e">可信执行环境</a><a href="/tags/%E5%91%A8%E6%8A%A5/" style="font-size:1.15em;color:#b7c632">周报</a><a href="/tags/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" style="font-size:1.15em;color:#4e4c32">学习资源</a><a href="/tags/security/" style="font-size:1.28em;color:#5f3293">安全</a><a href="/tags/%E5%AE%B9%E5%99%A8/" style="font-size:1.15em;color:#953232">容器</a><a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size:1.18em;color:#42663e">密码学</a><a href="/tags/%E5%B0%8F%E6%B8%B8%E6%88%8F/" style="font-size:1.18em;color:#754cb7">小游戏</a><a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size:1.15em;color:#32c794">嵌入式</a><a href="/tags/%E5%B7%A1%E6%A3%80/" style="font-size:1.15em;color:#3232ba">巡检</a><a href="/tags/%E5%BB%BA%E7%AB%99/" style="font-size:1.15em;color:#32be45">建站</a><a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" style="font-size:1.15em;color:#c1a032">开发工具</a><a href="/tags/dev-env/" style="font-size:1.15em;color:#963232">开发环境</a><a href="/tags/%E5%BC%80%E5%8F%91%E8%8C%83%E5%BC%8F/" style="font-size:1.15em;color:#c86cc5">开发范式</a><a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size:1.18em;color:#b17332">开源</a><a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size:1.15em;color:#3234bb">开源工具</a><a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F/" style="font-size:1.18em;color:#7da333">微信小游戏</a><a href="/tags/wechat-miniprogram/" style="font-size:1.15em;color:#4bb576">微信小程序</a><a href="/tags/wechat-dev/" style="font-size:1.15em;color:#c83981">微信开发</a><a href="/tags/wechat-pay/" style="font-size:1.15em;color:#c05e32">微信支付</a><a href="/tags/%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95/" style="font-size:1.15em;color:#4d3288">微信登录</a><a href="/tags/%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/" style="font-size:1.15em;color:#403232">快捷方式</a><a href="/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/" style="font-size:1.18em;color:#913248">提示词工程</a><a href="/tags/payment/" style="font-size:1.15em;color:#9f5132">支付</a><a href="/tags/%E6%95%88%E7%8E%87/" style="font-size:1.15em;color:#5e5e3a">效率</a><a href="/tags/%E6%95%B0%E5%AD%97%E7%96%97%E6%B3%95/" style="font-size:1.15em;color:#3cab32">数字疗法</a><a href="/tags/%E6%95%B0%E5%AD%97%E8%97%8F%E5%93%81/" style="font-size:1.15em;color:#753b32">数字藏品</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB/" style="font-size:1.15em;color:#5f97c4">数据库迁移</a><a href="/tags/%E6%95%B0%E6%8D%AE%E6%BA%90/" style="font-size:1.18em;color:#5b32a9">数据源</a><a href="/tags/%E6%97%A5%E6%8A%A5/" style="font-size:1.15em;color:#4b327c">日报</a><a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size:1.22em;color:#325a46">架构</a><a href="/tags/%E6%A1%86%E6%9E%B6%E5%AF%B9%E6%AF%94/" style="font-size:1.15em;color:#3279bd">框架对比</a><a href="/tags/%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8/" style="font-size:1.15em;color:#8b9032">桌面应用</a><a href="/tags/%E6%B3%A1%E6%B2%AB/" style="font-size:1.15em;color:#328332">泡沫</a><a href="/tags/%E6%B4%9E%E5%AF%9F/" style="font-size:1.15em;color:#b13232">洞察</a><a href="/tags/game-dev/" style="font-size:1.18em;color:#4784bb">游戏开发</a><a href="/tags/%E6%B8%B8%E6%88%8F%E7%90%86%E8%AE%BA/" style="font-size:1.15em;color:#916473">游戏理论</a><a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" style="font-size:1.22em;color:#a77a83">游戏设计</a><a href="/tags/%E7%89%A9%E7%90%86%E6%8E%A8%E7%90%86/" style="font-size:1.15em;color:#3e32a3">物理推理</a><a href="/tags/%E7%94%9F%E4%BA%A7%E5%AE%9E%E8%B7%B5/" style="font-size:1.15em;color:#9a345c">生产实践</a><a href="/tags/%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83/" style="font-size:1.15em;color:#5c3252">知识产权</a><a href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" style="font-size:1.22em;color:#6a8b9d">知识图谱</a><a href="/tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size:1.18em;color:#b57732">知识库</a><a href="/tags/%E7%A1%AC%E4%BB%B6%E5%AE%89%E5%85%A8/" style="font-size:1.15em;color:#c3b062">硬件安全</a><a href="/tags/%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86/" style="font-size:1.18em;color:#c376a7">第一性原理</a><a href="/tags/%E7%BB%84%E7%BD%91/" style="font-size:1.15em;color:#8c4fa8">组网</a><a href="/tags/%E8%87%AA%E6%B2%BB/" style="font-size:1.15em;color:#4262a7">自治</a><a href="/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/" style="font-size:1.15em;color:#3259c5">虚拟化</a><a href="/tags/cs/" style="font-size:1.32em;color:#be4d6f">计算机基础</a><a href="/tags/%E8%AE%A4%E7%9F%A5%E5%BA%B7%E5%A4%8D/" style="font-size:1.15em;color:#b9433b">认知康复</a><a href="/tags/%E8%AE%A4%E7%9F%A5%E7%AE%A1%E7%90%86/" style="font-size:1.15em;color:#54327a">认知管理</a><a href="/tags/%E8%AE%B0%E5%BF%86/" style="font-size:1.25em;color:#32afb4">记忆</a><a href="/tags/%E8%AF%AD%E9%9F%B3%E8%BE%93%E5%85%A5/" style="font-size:1.15em;color:#32c2ad">语音输入</a><a href="/tags/%E8%B6%8B%E5%8A%BF%E8%A7%82%E5%AF%9F/" style="font-size:1.15em;color:#53b5a2">趋势观察</a><a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size:1.15em;color:#89c4b8">软件工程</a><a href="/tags/%E8%BD%AF%E8%91%97/" style="font-size:1.15em;color:#b5b4aa">软著</a><a href="/tags/%E8%BE%B9%E7%BC%98AI/" style="font-size:1.15em;color:#9b4287">边缘AI</a><a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size:1.15em;color:#464e32">运维</a><a href="/tags/%E9%80%9A%E7%94%A8/" style="font-size:1.15em;color:#32b5a5">通用</a><a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size:1.15em;color:#6b3245">阿里云</a><a href="/tags/%E9%9B%86%E6%88%90/" style="font-size:1.15em;color:#9432a0">集成</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i> <span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/"><span class="card-archive-list-date">2026年 </span><span class="card-archive-list-count">71</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">71</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">277.4k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2021 - 2026 By Bsheepcoder</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"></div><script>fetch("https://cdn.busuanzi.cc/api.php",{method:"POST",body:JSON.stringify({url:location.href,referrer:document.referrer})}).then(function(e){return e.json()}).then(function(e){function n(e,n){var u=document.getElementById(e);u&&(u.textContent=n)}n("busuanzi_value_site_uv",e.busuanzi_site_uv),n("busuanzi_value_site_pv",e.busuanzi_site_pv),n("busuanzi_value_page_pv",e.busuanzi_page_pv)}).catch(function(){})</script><script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script><script>window.mermaid&&mermaid.initialize({startOnLoad:!0,theme:"dark"===document.documentElement.getAttribute("data-theme")?"dark":"default"})</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      true
+        ? pjax.loadUrl('/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span> 数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"></div><hr><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.5"></script></div></div></body></html>

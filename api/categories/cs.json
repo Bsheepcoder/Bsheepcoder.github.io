@@ -1,0 +1,149 @@
+{
+  "category": "计算机基础",
+  "slug": "cs",
+  "post_count": 7,
+  "posts": [
+    {
+      "title": "软件著作权申请完全指南：从材料撰写到 AI 时代的合规策略",
+      "slug": "计算机基础-软著申请指南",
+      "date": "2026-07-23",
+      "categories": [
+        "技术",
+        "计算机基础"
+      ],
+      "tags": [
+        "计算机基础",
+        "软著",
+        "知识产权",
+        "AI合规"
+      ],
+      "description": "软件著作权（软著）是开发者保护代码、申请高企、APP 上架的核心资质。2026 年 3 月审查规则重大改革：手抄'未用 AI'承诺、功能描述扩至 1300 字、失信挂钩征信。本文从零拆解申请全流程，剖析 AI 时代'无人不用 AI'的合规悖论，给出当前申请的风险评估与策略建议。",
+      "url": "https://bsheepcoder.github.io/2026/07/23/计算机基础-软著申请指南/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/计算机基础-软著申请指南.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/计算机基础-软著申请指南.md",
+      "encrypted": false
+    },
+    {
+      "title": "容器宇宙：一部关于隔离与共享的宇宙史",
+      "slug": "cs-container-universe",
+      "date": "2026-07-23",
+      "categories": [
+        "技术",
+        "计算机基础"
+      ],
+      "tags": [
+        "Linux",
+        "容器",
+        "虚拟化",
+        "LXC",
+        "LXD",
+        "Docker"
+      ],
+      "description": "从 chroot 到 LXC，从 Docker 到 LXD，从 KVM 到系统容器——在计算机科学的宇宙中，隔离与共享是一枚硬币的两面。这篇文章以操作系统内核的视角，探索进程隔离的完整光谱。",
+      "url": "https://bsheepcoder.github.io/2026/07/23/cs-container-universe/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/cs-container-universe.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/cs-container-universe.md",
+      "encrypted": false
+    },
+    {
+      "title": "操作底牌：生产环境中那些心照不宣的工程真相",
+      "slug": "cs-production-truths",
+      "date": "2026-07-08",
+      "categories": [
+        "技术",
+        "计算机基础"
+      ],
+      "tags": [
+        "架构",
+        "计算机基础",
+        "软件工程",
+        "生产实践"
+      ],
+      "description": "教科书教你的是'正确做法'，生产环境要的是'生存做法'。50 条工程操作底牌覆盖数据库、后端架构、安全、部署、B2B 商业、支付和前端——每条遵循'表面做法→真实底牌→可执行方案'结构。这不是最佳实践清单，是关于'默认答案在为谁优化'的系统性反思。",
+      "url": "https://bsheepcoder.github.io/2026/07/08/cs-production-truths/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/cs-production-truths.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/cs-production-truths.md",
+      "encrypted": false
+    },
+    {
+      "title": "线上巡检报告不是写流水账：一份能救命的巡检长什么样",
+      "slug": "cs-service-patrol-report",
+      "date": "2026-07-06",
+      "categories": [
+        "技术",
+        "计算机基础"
+      ],
+      "tags": [
+        "计算机基础",
+        "SRE",
+        "运维",
+        "巡检"
+      ],
+      "description": "从大厂巡检实践出发，拆解一份规范线上巡检报告应包含的5+1维度与元信息结构，指出常见流水账式巡检的根本缺陷，给出可迁移的巡检认知框架而非操作手册。",
+      "url": "https://bsheepcoder.github.io/2026/07/06/cs-service-patrol-report/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/cs-service-patrol-report.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/cs-service-patrol-report.md",
+      "encrypted": false
+    },
+    {
+      "title": "Argon2id 密码哈希：memory-hard 的工程实践与前沿",
+      "slug": "cs-argon2id-explained",
+      "date": "2026-07-01",
+      "categories": [
+        "技术",
+        "计算机基础"
+      ],
+      "tags": [
+        "计算机基础",
+        "密码学",
+        "Argon2",
+        "安全"
+      ],
+      "description": "Argon2id 是 OWASP 首选密码哈希算法，2015 年密码哈希竞赛冠军。本文从 memory-hard 的第一性原理出发，讲清 Argon2 三个变体的区别、m/t/p 三参数调优、多语言实战集成，以及 2024 年 cache-hard vs memory-hard 的前沿争论与选型决策。",
+      "url": "https://bsheepcoder.github.io/2026/07/01/cs-argon2id-explained/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/cs-argon2id-explained.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/cs-argon2id-explained.md",
+      "encrypted": false
+    },
+    {
+      "title": "BCrypt 密码哈希：从 Blowfish 到 cache-hard 的技术演化",
+      "slug": "cs-bcrypt-explained",
+      "date": "2026-07-01",
+      "categories": [
+        "技术",
+        "计算机基础"
+      ],
+      "tags": [
+        "计算机基础",
+        "密码学",
+        "安全",
+        "BCrypt"
+      ],
+      "description": "BCrypt 是什么？从 Blowfish 的 Eksblowfish 变体到 cost factor 自适应机制，从 $2a$ 到 $2b$ 的两个 bug 修复史，到 scrypt/Argon2 的 memory-hard 演化，再到 2024 年 cache-hard vs memory-hard 的前沿争论。一篇搞懂密码哈希的过去、现在和选型。",
+      "url": "https://bsheepcoder.github.io/2026/07/01/cs-bcrypt-explained/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/cs-bcrypt-explained.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/cs-bcrypt-explained.md",
+      "encrypted": false
+    },
+    {
+      "title": "深入浅出 TEE：为什么你的手机里有一块内核都进不去的保险箱",
+      "slug": "cs-tee-principles",
+      "date": "2026-06-29",
+      "categories": [
+        "技术",
+        "计算机基础"
+      ],
+      "tags": [
+        "计算机基础",
+        "TEE",
+        "可信执行环境",
+        "硬件安全"
+      ],
+      "description": "从冯·诺依曼架构的特权层窥探悖论出发，推导 TEE 的六块原理积木——硬件墙、信任链、远程证明、数据流模型。以数字记忆硬件落地为案例串联原理，批判 TEE 的边界：侧信道、协议层、供应链。不是科普，是原理级的工程认知。",
+      "url": "https://bsheepcoder.github.io/2026/06/29/cs-tee-principles/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/cs-tee-principles.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/cs-tee-principles.md",
+      "encrypted": false
+    }
+  ]
+}

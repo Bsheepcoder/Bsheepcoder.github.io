@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>提示词：工作周报助手 | Q's blog</title><meta name="author" content="Bsheepcoder"><meta name="copyright" content="Bsheepcoder"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="将零散工作记录整理为简明日报的提示词，用最少的字描述清楚任务进度，仅用 1. 和 - 分点分级。固定两大板块：本周工作、下周计划，下周计划从本周未完成任务发散。AI 可通过 API 直接提取使用。"><meta property="og:type" content="article"><meta property="og:title" content="提示词：工作周报助手"><meta property="og:url" content="https://bsheepcoder.github.io/2026/06/21/prompt-weekly-report/"><meta property="og:site_name" content="Q&#39;s blog"><meta property="og:description" content="将零散工作记录整理为简明日报的提示词，用最少的字描述清楚任务进度，仅用 1. 和 - 分点分级。固定两大板块：本周工作、下周计划，下周计划从本周未完成任务发散。AI 可通过 API 直接提取使用。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://bsheepcoder.github.io/img/avatar.jpg"><meta property="article:published_time" content="2026-06-21T08:00:00.000Z"><meta property="article:modified_time" content="2026-06-22T09:09:56.947Z"><meta property="article:author" content="Bsheepcoder"><meta property="article:tag" content="Prompt"><meta property="article:tag" content="XML结构"><meta property="article:tag" content="周报"><meta property="article:tag" content="通用"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bsheepcoder.github.io/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "提示词：工作周报助手",
+  "url": "https://bsheepcoder.github.io/2026/06/21/prompt-weekly-report/",
+  "image": "https://bsheepcoder.github.io/img/avatar.jpg",
+  "datePublished": "2026-06-21T08:00:00.000Z",
+  "dateModified": "2026-06-22T09:09:56.947Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Bsheepcoder",
+      "url": "https://bsheepcoder.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="https://bsheepcoder.github.io/2026/06/21/prompt-weekly-report/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload='this.media="all"'><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload='this.media="all"'><script>(() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":3,"unescape":true,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":30,"languages":{"author":"作者: Bsheepcoder","link":"链接: ","source":"来源: Q's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={title:"提示词：工作周报助手",isHighlightShrink:!1,isToc:!0,pageType:"post"}</script><link rel="stylesheet" href="/css/custom.css"><style>#reading-progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#49b1f5,#ff7c5c);z-index:9999;transition:width .1s}</style><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="Q's blog" type="application/atom+xml"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">159</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/flink/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Q's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">提示词：工作周报助手</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span> 返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/flink/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">提示词：工作周报助手</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2026-06-21T08:00:00.000Z" title="发表于 2026-06-21 16:00:00">2026-06-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/prompt/">提示词</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">632</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><html><head></head><body><div class="post-header-meta"><span class="ai-data-links"><i class="fas fa-robot"></i>AI 数据通道：<a href="https://bsheepcoder.github.io/api/posts/prompt-weekly-report.json">JSON</a><span class="sep">·</span><a href="https://bsheepcoder.github.io/api/posts/prompt-weekly-report.md">Markdown</a></span></div><h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景 <a class="header-anchor" href="#使用场景" title="永久链接">#</a></h2><p>把零散的工作记录（commit、聊天、待办）丢给 AI，让它用最少的字整理成有条理的进度报告，固定两大板块：本周工作、下周计划。</p><h2 id="提示词"><a href="#提示词" class="headerlink" title="提示词"></a>提示词 <a class="header-anchor" href="#提示词" title="永久链接">#</a></h2><figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">prompt</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">role</span>&gt;</span><br>工作记录整理助手。<br><span class="hljs-tag">&lt;/<span class="hljs-name">role</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">instructions</span>&gt;</span><br>从工作记录中提炼进度，先按任务/项目分组，再区分状态：<br><br>1. 本周工作<br>   - 按任务/项目分类（如"能力中心开发"、"值班告警"、"数据库维护"等）<br>   - 每个任务下区分：<br>     - 已完成：闭环事项，写明结果<br>     - 进行中：写明当前进度，并阐明原因（为何未闭环、卡在哪里、等什么）<br>2. 下周计划<br>   - 从本周进行中事项自然延续（写明下一步目标）<br>   - 从输入记录中提取已提及的下周安排<br>   - 无明确依据时不编造<br><br>多条相关记录合并为一条。模糊表述转为可量化结果，无数据时保留原样。<br><span class="hljs-tag">&lt;/<span class="hljs-name">instructions</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">context</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">records</span>&gt;</span><br>{{RECORDS}}<br><span class="hljs-tag">&lt;/<span class="hljs-name">records</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">context</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">output_format</span>&gt;</span><br>1. 本周工作<br>   - 任务A<br>     - 已完成<br>       - 事项 → 结果<br>     - 进行中<br>       - 事项（进度）→ 原因<br>   - 任务B<br>     - 已完成<br>       - 事项 → 结果<br>     - 进行中<br>       - 事项 → 原因<br>2. 下周计划<br>   - 事项<br>   - 事项<br><span class="hljs-tag">&lt;/<span class="hljs-name">output_format</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">stop_rules</span>&gt;</span><br>- 记录 &lt; 3 条：直接整理，提示「记录较少，建议补充」<br>- 记录 &gt; 50 条：按项目合并，不逐条罗列<br>- 无法判断分类：归入"进行中"，标注「需确认」<br>- 两大板块均已覆盖即完成<br><span class="hljs-tag">&lt;/<span class="hljs-name">stop_rules</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">prompt</span>&gt;</span><br></code></pre></td></tr></tbody></table></figure><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量 <a class="header-anchor" href="#变量" title="永久链接">#</a></h2><table><thead><tr><th>变量</th><th>位置</th><th>说明</th><th>示例</th></tr></thead><tbody><tr><td><code>{{RECORDS}}</code></td><td><code>&lt;records&gt;</code></td><td>工作记录（零散文本）</td><td>commit 记录、聊天记录、待办清单</td></tr></tbody></table><h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例 <a class="header-anchor" href="#使用示例" title="永久链接">#</a></h2><p><strong>输入</strong>：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">周一：改了登录页 bug，密码输不进去<br>周二：联调接口，post /login 返回 500，数据库连接池配置问题<br>周三：修了连接池，部署上线，登录正常了<br>周四：开始做权限模块，画了 ER 图，还没写代码<br>周五：和产品对了需求，权限分 admin/editor/viewer 三种角色<br></code></pre></td></tr></tbody></table></figure><p><strong>输出</strong>：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">1. 本周工作<br>   - 登录模块<br>     - 已完成<br>       - 密码输入 bug → 已上线修复<br>       - 接口 500 错误 → 定位连接池配置并修复<br>   - 权限模块<br>     - 已完成<br>       - 模块脚手架 → ER 图设计完成<br>     - 进行中<br>       - 权限模块开发（10%）→ 代码未开始，等 ER 图评审<br>2. 下周计划<br>   - 实现权限模块 RBAC 角色模型（admin/editor/viewer）<br>   - 权限接口开发联调<br></code></pre></td></tr></tbody></table></figure><script>!function(){var t=document.createElement("div");t.id="reading-progress",document.body.appendChild(t),window.addEventListener("scroll",function(){var e=document.documentElement,n=e.scrollTop/(e.scrollHeight-e.clientHeight)*100;t.style.width=n+"%"})}()</script></body></html></article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/prompt/">Prompt</a><a class="post-meta__tags" href="/tags/XML%E7%BB%93%E6%9E%84/">XML结构</a><a class="post-meta__tags" href="/tags/%E5%91%A8%E6%8A%A5/">周报</a><a class="post-meta__tags" href="/tags/%E9%80%9A%E7%94%A8/">通用</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload='this.media="all"'><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/06/22/pdc-protocol/" title="PDC 协议：让博客同时服务人类与 AI 的平行数据通道"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">PDC 协议：让博客同时服务人类与 AI 的平行数据通道</div></div><div class="info-2"><div class="info-item-1">PDC（Parallel Data Channel）是 llms.txt 标准的 Hexo 增强实现，让静态博客同时服务人类读者和 AI Agent。通过构建时生成平行数据通道（JSON/MD/TXT），实现人类看 HTML、AI 读零噪音 Markdown，四层架构覆盖数据通道、文章格式、内容注入和静态托管兼容性，零运行时开销，完美适配 GitHub Pages。</div></div></div></a><a class="pagination-related" href="/2026/06/21/skill-prompt-writing/" title="提示词写作技巧：用 XML 结构构建可复用提示词"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">提示词写作技巧：用 XML 结构构建可复用提示词</div></div><div class="info-2"><div class="info-item-1">基于 OpenAI GPT-5.5 和 Anthropic 公开指南的提示词写作方法，用 XML 标签组织结构（role/goal/instructions/output_format/stop_rules），6 步写出可复用、可检索、AI 可直接提取的提示词。</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/06/21/prompt-code-review/" title="提示词：代码审查助手"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-21</div><div class="info-item-2">提示词：代码审查助手</div></div><div class="info-2"><div class="info-item-1">PR 提交后自动化代码审查的提示词模板，基于 OpenAI GPT-5.5 和 Anthropic 公开指南优化，采用 outcome-first 结构（goal + success_criteria + stop_rules），覆盖安全/性能/可维护性三维检查，按严重程度分组输出。AI 可通过 API 直接提取使用。</div></div></div></a><a class="pagination-related" href="/2026/06/21/skill-prompt-writing/" title="提示词写作技巧：用 XML 结构构建可复用提示词"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-21</div><div class="info-item-2">提示词写作技巧：用 XML 结构构建可复用提示词</div></div><div class="info-2"><div class="info-item-1">基于 OpenAI GPT-5.5 和 Anthropic 公开指南的提示词写作方法，用 XML 标签组织结构（role/goal/instructions/output_format/stop_rules），6 步写出可复用、可检索、AI 可直接提取的提示词。</div></div></div></a><a class="pagination-related" href="/2026/06/23/prompt-meta-prompt/" title="元提示词：用提示词生成提示词的工程方法"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-23</div><div class="info-item-2">元提示词：用提示词生成提示词的工程方法</div></div><div class="info-2"><div class="info-item-1">整合 PE2 论文的两步推理法、10 条生成原则和 11 项自验证清单，构建一个可直接使用的元提示词——用提示词生成提示词。支持从零生成和迭代优化两种模式，含 3 个场景示例和跨模型适配指南。</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="author-info-name">Bsheepcoder</div><div class="author-info-description">认知管理系统 · AI 索引友好 · 记录与检索并重</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">159</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Bsheepcoder"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color:#ff7c5c"></i></a><a class="social-icon" href="https://github.com/Bsheepcoder" target="_blank" title="Github"><i class="fab fa-github" style="color:#24292e"></i></a><a class="social-icon" href="https://linux.do/" target="_blank" title="LinuxDo"><i class="custom-icon-linuxdo"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">本站基于 <a target="_blank" rel="noopener" href="https://llmstxt.org">llms.txt</a> 标准，通过 <a href="/pdc-protocol.md">PDC</a> 扩展 AI 数据端点，<a href="/llms.txt">/llms.txt</a> 零噪音读取全部内容。欢迎加入 <a href="/flink/">llms.txt 采用者网络</a>，<a target="_blank" rel="noopener" href="https://github.com/Bsheepcoder/Bsheepcoder.github.io/issues">提交申请</a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="toc-number">2.</span> <span class="toc-text">提示词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-number">4.</span> <span class="toc-text">使用示例</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%BD%AF%E8%91%97%E7%94%B3%E8%AF%B7%E6%8C%87%E5%8D%97/" title="软件著作权申请完全指南：从材料撰写到 AI 时代的合规策略">软件著作权申请完全指南：从材料撰写到 AI 时代的合规策略</a><time datetime="2026-07-23T14:00:00.000Z" title="发表于 2026-07-23 22:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/cs-container-universe/" title="容器宇宙：一部关于隔离与共享的宇宙史">容器宇宙：一部关于隔离与共享的宇宙史</a><time datetime="2026-07-23T12:00:00.000Z" title="发表于 2026-07-23 20:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/ai-9router-guide/" title="9Router：一个 AI 路由器的自组织涌现">9Router：一个 AI 路由器的自组织涌现</a><time datetime="2026-07-23T08:00:00.000Z" title="发表于 2026-07-23 16:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/21/ai-java-framework-landscape/" title="Java AI 框架全景图 2026：选型决策指南">Java AI 框架全景图 2026：选型决策指南</a><time datetime="2026-07-21T12:00:00.000Z" title="发表于 2026-07-21 20:00:00">2026-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/21/ai-langchain4j-practice/" title="Java LLM 集成的工程模式之辩：LangChain4j 与 Spring AI 双轨实践">Java LLM 集成的工程模式之辩：LangChain4j 与 Spring AI 双轨实践</a><time datetime="2026-07-21T05:00:00.000Z" title="发表于 2026-07-21 13:00:00">2026-07-21</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2021 - 2026 By Bsheepcoder</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"></div><script>fetch("https://cdn.busuanzi.cc/api.php",{method:"POST",body:JSON.stringify({url:location.href,referrer:document.referrer})}).then(function(e){return e.json()}).then(function(e){function n(e,n){var u=document.getElementById(e);u&&(u.textContent=n)}n("busuanzi_value_site_uv",e.busuanzi_site_uv),n("busuanzi_value_site_pv",e.busuanzi_site_pv),n("busuanzi_value_page_pv",e.busuanzi_page_pv)}).catch(function(){})</script><script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script><script>window.mermaid&&mermaid.initialize({startOnLoad:!0,theme:"dark"===document.documentElement.getAttribute("data-theme")?"dark":"default"})</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      true
+        ? pjax.loadUrl('/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span> 数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"></div><hr><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.5"></script></div></div></body></html>

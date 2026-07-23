@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Human-in-the-Loop：AI Agent 的自治光谱与前沿实践 | Q's blog</title><meta name="author" content="Bsheepcoder"><meta name="copyright" content="Bsheepcoder"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="深度解析AI Agent的人类参与模式：从Human-in-the-Loop到Human-out-of-the-Loop，分析Anthropic和OpenAI的最新实践，探讨渐进式自治与自适应自治度的前沿方向。"><meta property="og:type" content="article"><meta property="og:title" content="Human-in-the-Loop：AI Agent 的自治光谱与前沿实践"><meta property="og:url" content="https://bsheepcoder.github.io/2026/07/02/ai-hitl-autonomous-spectrum/"><meta property="og:site_name" content="Q&#39;s blog"><meta property="og:description" content="深度解析AI Agent的人类参与模式：从Human-in-the-Loop到Human-out-of-the-Loop，分析Anthropic和OpenAI的最新实践，探讨渐进式自治与自适应自治度的前沿方向。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://bsheepcoder.github.io/img/avatar.jpg"><meta property="article:published_time" content="2026-07-02T13:00:00.000Z"><meta property="article:modified_time" content="2026-07-02T12:54:18.573Z"><meta property="article:author" content="Bsheepcoder"><meta property="article:tag" content="AI"><meta property="article:tag" content="Agent"><meta property="article:tag" content="Anthropic"><meta property="article:tag" content="HITL"><meta property="article:tag" content="OpenAI"><meta property="article:tag" content="自治"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bsheepcoder.github.io/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Human-in-the-Loop：AI Agent 的自治光谱与前沿实践",
+  "url": "https://bsheepcoder.github.io/2026/07/02/ai-hitl-autonomous-spectrum/",
+  "image": "https://bsheepcoder.github.io/img/avatar.jpg",
+  "datePublished": "2026-07-02T13:00:00.000Z",
+  "dateModified": "2026-07-02T12:54:18.573Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Bsheepcoder",
+      "url": "https://bsheepcoder.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="https://bsheepcoder.github.io/2026/07/02/ai-hitl-autonomous-spectrum/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload='this.media="all"'><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload='this.media="all"'><script>(() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":3,"unescape":true,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":30,"languages":{"author":"作者: Bsheepcoder","link":"链接: ","source":"来源: Q's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={title:"Human-in-the-Loop：AI Agent 的自治光谱与前沿实践",isHighlightShrink:!1,isToc:!0,pageType:"post"}</script><link rel="stylesheet" href="/css/custom.css"><style>#reading-progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#49b1f5,#ff7c5c);z-index:9999;transition:width .1s}</style><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="Q's blog" type="application/atom+xml"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">159</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/flink/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Q's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">Human-in-the-Loop：AI Agent 的自治光谱与前沿实践</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span> 返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/flink/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Human-in-the-Loop：AI Agent 的自治光谱与前沿实践</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2026-07-02T13:00:00.000Z" title="发表于 2026-07-02 21:00:00">2026-07-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/ai/">人工智能</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><html><head></head><body><div class="post-header-meta"><span class="ai-data-links"><i class="fas fa-robot"></i>AI 数据通道：<a href="https://bsheepcoder.github.io/api/posts/ai-hitl-autonomous-spectrum.json">JSON</a><span class="sep">·</span><a href="https://bsheepcoder.github.io/api/posts/ai-hitl-autonomous-spectrum.md">Markdown</a></span></div><h2 id="元认知：人类参与不是”要不要”，而是”在哪里”"><a href="#元认知：人类参与不是”要不要”，而是”在哪里”" class="headerlink" title="元认知：人类参与不是”要不要”，而是”在哪里”"></a>元认知：人类参与不是”要不要”，而是”在哪里” <a class="header-anchor" href="#元认知：人类参与不是”要不要”，而是”在哪里”" title="永久链接">#</a></h2><p>当我们讨论 AI Agent 是否应该”自主运行”时，问题的本质不是”要不要人类参与”，而是”在什么环节、以什么程度参与”。</p><p>这个问题的答案，决定了 AI 产品的架构设计、用户体验和安全边界。</p><h3 id="三种模式的定义"><a href="#三种模式的定义" class="headerlink" title="三种模式的定义"></a>三种模式的定义 <a class="header-anchor" href="#三种模式的定义" title="永久链接">#</a></h3><table><thead><tr><th>模式</th><th>英文</th><th>定义</th><th>人类角色</th></tr></thead><tbody><tr><td><strong>人在环中</strong></td><td>Human-in-the-Loop (HITL)</td><td>每一步都需要人类审批才能继续</td><td>审批者</td></tr><tr><td><strong>人在环上</strong></td><td>Human-on-the-Loop (HOTL)</td><td>AI 自主运行，人类监控并可随时干预</td><td>监控者</td></tr><tr><td><strong>人在环外</strong></td><td>Human-out-of-the-Loop (HOFL)</td><td>完全自主，人类只看最终结果</td><td>验收者</td></tr></tbody></table><p>这三种模式不是”好”与”坏”的区分，而是<strong>不同场景下的最优选择</strong>。</p><hr><h2 id="搭积木：从-Anthropic-的架构说起"><a href="#搭积木：从-Anthropic-的架构说起" class="headerlink" title="搭积木：从 Anthropic 的架构说起"></a>搭积木：从 Anthropic 的架构说起 <a class="header-anchor" href="#搭积木：从-Anthropic-的架构说起" title="永久链接">#</a></h2><p>Anthropic 在《Building Effective Agents》中提出了一个清晰的架构框架：</p><h3 id="Workflow-vs-Agent"><a href="#Workflow-vs-Agent" class="headerlink" title="Workflow vs Agent"></a>Workflow vs Agent <a class="header-anchor" href="#Workflow-vs-Agent" title="永久链接">#</a></h3><blockquote><p><strong>Workflow</strong>：LLM 和工具通过预定义代码路径编排<br><strong>Agent</strong>：LLM 动态指导自己的流程和工具使用</p></blockquote><p>这个区分至关重要：</p><ul><li><strong>Workflow</strong> 适合确定性任务（如数据处理流水线）</li><li><strong>Agent</strong> 适合开放性任务（如代码修复、问题解答）</li></ul><h3 id="Anthropic-的五种工作流模式"><a href="#Anthropic-的五种工作流模式" class="headerlink" title="Anthropic 的五种工作流模式"></a>Anthropic 的五种工作流模式 <a class="header-anchor" href="#Anthropic-的五种工作流模式" title="永久链接">#</a></h3><p>Anthropic 总结了五种常见的工作流模式，每种模式对人类参与的要求不同：</p><table><thead><tr><th>模式</th><th>人类参与度</th><th>适用场景</th></tr></thead><tbody><tr><td><strong>Prompt Chaining</strong></td><td>高（每步检查）</td><td>任务可分解为固定子任务</td></tr><tr><td><strong>Routing</strong></td><td>中（分类后自动）</td><td>输入有明确分类</td></tr><tr><td><strong>Parallelization</strong></td><td>中（聚合时审查）</td><td>子任务可并行</td></tr><tr><td><strong>Orchestrator-Workers</strong></td><td>低（仅验证结果）</td><td>子任务动态确定</td></tr><tr><td><strong>Evaluator-Optimizer</strong></td><td>低（迭代自优化）</td><td>有明确评估标准</td></tr></tbody></table><h3 id="Agent-的人类参与设计"><a href="#Agent-的人类参与设计" class="headerlink" title="Agent 的人类参与设计"></a>Agent 的人类参与设计 <a class="header-anchor" href="#Agent-的人类参与设计" title="永久链接">#</a></h3><p>对于真正的 Agent（自主运行），Anthropic 的设计是：</p><blockquote><p>“Agents can then pause for human feedback at checkpoints or when encountering blockers.”</p></blockquote><p>关键设计：</p><ol><li><strong>检查点暂停</strong>：在关键节点等待人类反馈</li><li><strong>阻塞求助</strong>：遇到无法解决的问题时主动求助</li><li><strong>停止条件</strong>：设置最大迭代次数等安全边界</li></ol><hr><h2 id="案例即原理：OpenAI-Codex-的实践"><a href="#案例即原理：OpenAI-Codex-的实践" class="headerlink" title="案例即原理：OpenAI Codex 的实践"></a>案例即原理：OpenAI Codex 的实践 <a class="header-anchor" href="#案例即原理：OpenAI-Codex-的实践" title="永久链接">#</a></h2><p>OpenAI 在 2025 年 5 月发布的 Codex，是 HOTL 模式的典型实践。</p><h3 id="Codex-的架构"><a href="#Codex-的架构" class="headerlink" title="Codex 的架构"></a>Codex 的架构 <a class="header-anchor" href="#Codex-的架构" title="永久链接">#</a></h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">用户提出任务<br>    ↓<br>Codex 在云端沙箱自主运行<br>    ↓<br>用户可实时监控进度<br>    ↓<br>Codex 完成后提交变更<br>    ↓<br>用户审查并验证结果<br>    ↓<br>用户决定是否集成<br></code></pre></td></tr></tbody></table></figure><h3 id="人类参与的三个层面"><a href="#人类参与的三个层面" class="headerlink" title="人类参与的三个层面"></a>人类参与的三个层面 <a class="header-anchor" href="#人类参与的三个层面" title="永久链接">#</a></h3><p><strong>1. 任务定义层</strong></p><blockquote><p>“Users can assign tasks by typing a prompt and clicking ‘Code’.”</p></blockquote><p>人类定义任务目标，AI 规划执行路径。</p><p><strong>2. 执行监控层</strong></p><blockquote><p>“You can monitor Codex’s progress in real time.”</p></blockquote><p>人类可以实时查看 AI 的执行状态，但不干预。</p><p><strong>3. 结果验证层</strong></p><blockquote><p>“It still remains essential for users to manually review and validate all agent-generated code before integration and execution.”</p></blockquote><p>人类必须验证最终结果，这是<strong>不可省略</strong>的环节。</p><h3 id="可验证性设计"><a href="#可验证性设计" class="headerlink" title="可验证性设计"></a>可验证性设计 <a class="header-anchor" href="#可验证性设计" title="永久链接">#</a></h3><p>OpenAI 的核心洞察是：<strong>HOFL 需要可验证性</strong>。</p><p>Codex 提供了三种验证机制：</p><ol><li><strong>Citations</strong>：引用文件路径和行号</li><li><strong>Terminal Logs</strong>：展示命令执行过程</li><li><strong>Test Results</strong>：展示测试通过情况</li></ol><blockquote><p>“When uncertain or faced with test failures, the Codex agent explicitly communicates these issues, enabling users to make informed decisions about how to proceed.”</p></blockquote><hr><h2 id="缺陷与批判：三种模式的陷阱"><a href="#缺陷与批判：三种模式的陷阱" class="headerlink" title="缺陷与批判：三种模式的陷阱"></a>缺陷与批判：三种模式的陷阱 <a class="header-anchor" href="#缺陷与批判：三种模式的陷阱" title="永久链接">#</a></h2><h3 id="HITL-的陷阱：效率瓶颈"><a href="#HITL-的陷阱：效率瓶颈" class="headerlink" title="HITL 的陷阱：效率瓶颈"></a>HITL 的陷阱：效率瓶颈 <a class="header-anchor" href="#HITL-的陷阱：效率瓶颈" title="永久链接">#</a></h3><p>HITL 的问题是<strong>人类成为瓶颈</strong>：</p><ul><li>每一步都需要人类审批</li><li>人类的工作时间成为限制</li><li>人类的认知负荷成为上限</li></ul><p><strong>案例</strong>：早期的 AI 辅助诊断系统，每张 X 光片都需要医生确认，导致系统无法规模化。</p><h3 id="HOTL-的陷阱：监控疲劳"><a href="#HOTL-的陷阱：监控疲劳" class="headerlink" title="HOTL 的陷阱：监控疲劳"></a>HOTL 的陷阱：监控疲劳 <a class="header-anchor" href="#HOTL-的陷阱：监控疲劳" title="永久链接">#</a></h3><p>HOTL 的问题是<strong>人类监控疲劳</strong>：</p><ul><li>长时间监控导致注意力下降</li><li>异常事件被忽略</li><li>“狼来了”效应</li></ul><p><strong>案例</strong>：自动驾驶系统要求人类随时接管，但人类在长时间无干预后反应速度下降。</p><h3 id="HOFL-的陷阱：错误累积"><a href="#HOFL-的陷阱：错误累积" class="headerlink" title="HOFL 的陷阱：错误累积"></a>HOFL 的陷阱：错误累积 <a class="header-anchor" href="#HOFL-的陷阱：错误累积" title="永久链接">#</a></h3><p>HOFL 的问题是<strong>错误累积</strong>：</p><ul><li>没有人类干预，错误会传播</li><li>小错误累积成大问题</li><li>发现时已经造成不可逆影响</li></ul><p><strong>案例</strong>：高频交易算法在没有人类监控的情况下，因小错误累积导致巨额亏损。</p><hr><h2 id="前沿方向：渐进式自治"><a href="#前沿方向：渐进式自治" class="headerlink" title="前沿方向：渐进式自治"></a>前沿方向：渐进式自治 <a class="header-anchor" href="#前沿方向：渐进式自治" title="永久链接">#</a></h2><h3 id="Anthropic-的”角色训练”思路"><a href="#Anthropic-的”角色训练”思路" class="headerlink" title="Anthropic 的”角色训练”思路"></a>Anthropic 的”角色训练”思路 <a class="header-anchor" href="#Anthropic-的”角色训练”思路" title="永久链接">#</a></h3><p>Anthropic 在《Claude’s Character》中提出了一个深刻的洞察：</p><blockquote><p>“We want people to know that they’re interacting with an imperfect entity with its own biases and with a disposition towards some opinions more than others.”</p></blockquote><p>这意味着：</p><ul><li>AI 应该知道自己的局限性</li><li>AI 应该在不确定时主动求助</li><li>AI 应该透明地展示自己的推理过程</li></ul><p><strong>品格训练</strong>的三个核心特质：</p><ol><li><strong>诚实</strong>：不隐瞒自己的局限性</li><li><strong>谦逊</strong>：不假装自己是客观真理</li><li><strong>好奇</strong>：对不同观点保持开放</li></ol><h3 id="OpenAI-的”渐进式部署”策略"><a href="#OpenAI-的”渐进式部署”策略" class="headerlink" title="OpenAI 的”渐进式部署”策略"></a>OpenAI 的”渐进式部署”策略 <a class="header-anchor" href="#OpenAI-的”渐进式部署”策略" title="永久链接">#</a></h3><p>OpenAI 在《Practices for Governing Agentic AI Systems》中提出了渐进式策略：</p><blockquote><p>“Agentic AI systems—AI systems that can pursue complex goals with limited direct supervision—are likely to be broadly useful if we can integrate them responsibly into our society.”</p></blockquote><p><strong>三个阶段</strong>：</p><ol><li><strong>第一阶段</strong>：HITL（每步审批）→ 建立信任</li><li><strong>第二阶段</strong>：HOTL（监控+可干预）→ 扩大规模</li><li><strong>第三阶段</strong>：HOFL（自主运行+人类验证）→ 最大效率</li></ol><h3 id="自适应自治度"><a href="#自适应自治度" class="headerlink" title="自适应自治度"></a>自适应自治度 <a class="header-anchor" href="#自适应自治度" title="永久链接">#</a></h3><p>最前沿的观点是：<strong>AI 应该根据场景自动选择合适的自治度</strong>。</p><table><thead><tr><th>场景</th><th>自治度</th><th>理由</th></tr></thead><tbody><tr><td>低风险、明确任务</td><td>HOFL</td><td>效率优先</td></tr><tr><td>中等风险、复杂任务</td><td>HOTL</td><td>平衡效率与安全</td></tr><tr><td>高风险、关键任务</td><td>HITL</td><td>安全优先</td></tr></tbody></table><p><strong>实现路径</strong>：</p><ol><li><strong>风险评估</strong>：AI 评估任务的风险等级</li><li><strong>动态调整</strong>：根据风险等级调整自治度</li><li><strong>人类确认</strong>：高风险任务自动切换到 HITL</li></ol><hr><h2 id="总结：选择合适的模式"><a href="#总结：选择合适的模式" class="headerlink" title="总结：选择合适的模式"></a>总结：选择合适的模式 <a class="header-anchor" href="#总结：选择合适的模式" title="永久链接">#</a></h2><table><thead><tr><th>问题</th><th>答案</th></tr></thead><tbody><tr><td>HITL 的反面是什么？</td><td>Human-out-of-the-Loop (HOFL)</td></tr><tr><td>目前主流是什么？</td><td>Human-on-the-Loop (HOTL)</td></tr><tr><td>OpenAI 的立场？</td><td>HOTL + 人类必须验证</td></tr><tr><td>Anthropic 的立场？</td><td>检查点式 HITL + 沙箱测试</td></tr><tr><td>前沿方向是什么？</td><td>渐进式自治 + 自适应自治度</td></tr></tbody></table><p><strong>核心结论</strong>：</p><p>HITL、HOTL、HOFL 不是”好”与”坏”的区分，而是<strong>不同场景下的最优选择</strong>。当前的共识是 <strong>HOTL</strong>——Agent 自主执行，人类监控并验证。未来的方向是<strong>自适应自治度</strong>——AI 根据场景自动选择合适的自治级别。</p><p>正如 OpenAI 所说：</p><blockquote><p>“We imagine a future where developers drive the work they want to own and delegate the rest to agents—moving faster and being more productive with AI.”</p></blockquote><p>这不是”AI 替代人类”，而是”AI 与人类协作”的新范式。</p><hr><p><em>参考资料：</em></p><ul><li><em>Anthropic, “Building Effective Agents”, 2024</em></li><li><em>Anthropic, “Claude’s Character”, 2024</em></li><li><em>OpenAI, “Introducing Codex”, 2025</em></li><li><em>OpenAI, “Practices for Governing Agentic AI Systems”, 2023</em></li></ul><script>!function(){var t=document.createElement("div");t.id="reading-progress",document.body.appendChild(t),window.addEventListener("scroll",function(){var e=document.documentElement,n=e.scrollTop/(e.scrollHeight-e.clientHeight)*100;t.style.width=n+"%"})}()</script></body></html></article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ai/">AI</a><a class="post-meta__tags" href="/tags/Agent/">Agent</a><a class="post-meta__tags" href="/tags/HITL/">HITL</a><a class="post-meta__tags" href="/tags/%E8%87%AA%E6%B2%BB/">自治</a><a class="post-meta__tags" href="/tags/Anthropic/">Anthropic</a><a class="post-meta__tags" href="/tags/OpenAI/">OpenAI</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload='this.media="all"'><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/03/info-local-distributed-storage/" title="本地分布式存储：从坚果云到 IPFS 的三代范式"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">本地分布式存储：从坚果云到 IPFS 的三代范式</div></div><div class="info-2"><div class="info-item-1">深度解析本地分布式存储方案：从坚果云到Syncthing、Rclone、IPFS，探索P2P同步、云存储统一、去中心化存储三代范式，以及AI时代数据主权的意义。</div></div></div></a><a class="pagination-related" href="/2026/07/02/ai-world-models/" title="世界模型：大语言模型的终结者，还是资本叙事的下一幕？"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">世界模型：大语言模型的终结者，还是资本叙事的下一幕？</div></div><div class="info-2"><div class="info-item-1">从Schmidhuber到LeCun JEPA，从Genie 3到Cosmos 3，世界模型正从论文走向产品。本文从认知科学、工程实践、资本博弈、LLM对比四视角深度剖析：世界模型是真正的范式转移，还是资本叙事的下一幕？</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/06/18/skill-how-to-generate/" title="如何生成好的 Agent Skill：从原理到实践"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-18</div><div class="info-item-2">如何生成好的 Agent Skill：从原理到实践</div></div><div class="info-2"><div class="info-item-1">基于 Qoder skill-generator 的跨平台实践经验，结合 OpenAI GPT-5.5 提示词指南和 Anthropic Claude Code Skills 规范，从 Token 经济学、注意力分配、上下文窗口管理等底层原理出发，系统分析什么样的 Agent Skill 是好的 Skill。</div></div></div></a><a class="pagination-related" href="/2026/07/10/ai-product-thinking/" title="AI 时代的产品思维：超越 AI Native 的 10 条金规律"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-10</div><div class="info-item-2">AI 时代的产品思维：超越 AI Native 的 10 条金规律</div></div><div class="info-2"><div class="info-item-1">从 Sequoia、a16z、Stratechery、Satya Nadella 等前沿投资人和企业家的公开论述中，提炼出超越 AI Native 的 10 条产品思维金规律。每条都是能指导实践的判别标准，不是假大空的理论。</div></div></div></a><a class="pagination-related" href="/2026/06/26/ai-digital-memory-personal-ai-os-root/" title="数字记忆：Personal AI OS 缺失的根"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-26</div><div class="info-item-2">数字记忆：Personal AI OS 缺失的根</div></div><div class="info-2"><div class="info-item-1">从 1945 年 Memex 到 2026 年 AI Agent 记忆层，追溯数字记忆的完整思想谱系：Memex 的愿景、MyLifeBits 的教训、Lifelog 的被动采集、TEE 的硬件安全、知识图谱的经验网络——以及为什么'记忆'是 Personal AI OS 缺失的根。不是 AI 产品分析，是关于未来数字文明基础设施的思考。</div></div></div></a><a class="pagination-related" href="/2026/06/22/ai-mcp-protocol/" title="MCP 协议详解：AI 应用的 USB-C 接口"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-22</div><div class="info-item-2">MCP 协议详解：AI 应用的 USB-C 接口</div></div><div class="info-2"><div class="info-item-1">从 M×N 集成难题到 M+N 线性解法，深入解析 Model Context Protocol 的三大原语（Resources/Tools/Prompts）、两层架构（数据层 + 传输层）、JSON-RPC 生命周期和六大安全原则。结合企业知识库、研发工具链、数据库助手等真实业务场景，说明 MCP 如何成为 AI 应用的标准化上下文接口。</div></div></div></a><a class="pagination-related" href="/2026/06/26/ai-agent-2026-landscape/" title="开源 Agent 架构深度拆解：核心认知与工程决策"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-26</div><div class="info-item-2">开源 Agent 架构深度拆解：核心认知与工程决策</div></div><div class="info-2"><div class="info-item-1">从六条核心认知出发，拆解六个最成熟的开源 Agent 产品——OpenClaw、Hermes、ZeroClaw、GBrain、Mem0、smolagents——的架构决策与工程经验。不是概览，是引擎盖下的原理。</div></div></div></a><a class="pagination-related" href="/2026/06/26/ai-agentscope-deep-dive/" title="AgentScope 2.0 深度拆解：不约束模型的架构哲学"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-26</div><div class="info-item-2">AgentScope 2.0 深度拆解：不约束模型的架构哲学</div></div><div class="info-2"><div class="info-item-1">从 Agent 编排的根本矛盾出发，拆解 AgentScope 2.0 的架构决策——为什么不约束模型、事件总线如何替代状态图、多租户和权限系统为什么是企业级的真正门槛。不是项目文档，是引擎盖下的原理。</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="author-info-name">Bsheepcoder</div><div class="author-info-description">认知管理系统 · AI 索引友好 · 记录与检索并重</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">159</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Bsheepcoder"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color:#ff7c5c"></i></a><a class="social-icon" href="https://github.com/Bsheepcoder" target="_blank" title="Github"><i class="fab fa-github" style="color:#24292e"></i></a><a class="social-icon" href="https://linux.do/" target="_blank" title="LinuxDo"><i class="custom-icon-linuxdo"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">本站基于 <a target="_blank" rel="noopener" href="https://llmstxt.org">llms.txt</a> 标准，通过 <a href="/pdc-protocol.md">PDC</a> 扩展 AI 数据端点，<a href="/llms.txt">/llms.txt</a> 零噪音读取全部内容。欢迎加入 <a href="/flink/">llms.txt 采用者网络</a>，<a target="_blank" rel="noopener" href="https://github.com/Bsheepcoder/Bsheepcoder.github.io/issues">提交申请</a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E8%AE%A4%E7%9F%A5%EF%BC%9A%E4%BA%BA%E7%B1%BB%E5%8F%82%E4%B8%8E%E4%B8%8D%E6%98%AF%E2%80%9D%E8%A6%81%E4%B8%8D%E8%A6%81%E2%80%9D%EF%BC%8C%E8%80%8C%E6%98%AF%E2%80%9D%E5%9C%A8%E5%93%AA%E9%87%8C%E2%80%9D"><span class="toc-number">1.</span> <span class="toc-text">元认知：人类参与不是”要不要”，而是”在哪里”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text">三种模式的定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E7%A7%AF%E6%9C%A8%EF%BC%9A%E4%BB%8E-Anthropic-%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AF%B4%E8%B5%B7"><span class="toc-number">2.</span> <span class="toc-text">搭积木：从 Anthropic 的架构说起</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Workflow-vs-Agent"><span class="toc-number">2.1.</span> <span class="toc-text">Workflow vs Agent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Anthropic-%E7%9A%84%E4%BA%94%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">Anthropic 的五种工作流模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Agent-%E7%9A%84%E4%BA%BA%E7%B1%BB%E5%8F%82%E4%B8%8E%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.</span> <span class="toc-text">Agent 的人类参与设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E5%8D%B3%E5%8E%9F%E7%90%86%EF%BC%9AOpenAI-Codex-%E7%9A%84%E5%AE%9E%E8%B7%B5"><span class="toc-number">3.</span> <span class="toc-text">案例即原理：OpenAI Codex 的实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Codex-%E7%9A%84%E6%9E%B6%E6%9E%84"><span class="toc-number">3.1.</span> <span class="toc-text">Codex 的架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%BA%E7%B1%BB%E5%8F%82%E4%B8%8E%E7%9A%84%E4%B8%89%E4%B8%AA%E5%B1%82%E9%9D%A2"><span class="toc-number">3.2.</span> <span class="toc-text">人类参与的三个层面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%AA%8C%E8%AF%81%E6%80%A7%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.3.</span> <span class="toc-text">可验证性设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%BA%E9%99%B7%E4%B8%8E%E6%89%B9%E5%88%A4%EF%BC%9A%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F%E7%9A%84%E9%99%B7%E9%98%B1"><span class="toc-number">4.</span> <span class="toc-text">缺陷与批判：三种模式的陷阱</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HITL-%E7%9A%84%E9%99%B7%E9%98%B1%EF%BC%9A%E6%95%88%E7%8E%87%E7%93%B6%E9%A2%88"><span class="toc-number">4.1.</span> <span class="toc-text">HITL 的陷阱：效率瓶颈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HOTL-%E7%9A%84%E9%99%B7%E9%98%B1%EF%BC%9A%E7%9B%91%E6%8E%A7%E7%96%B2%E5%8A%B3"><span class="toc-number">4.2.</span> <span class="toc-text">HOTL 的陷阱：监控疲劳</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HOFL-%E7%9A%84%E9%99%B7%E9%98%B1%EF%BC%9A%E9%94%99%E8%AF%AF%E7%B4%AF%E7%A7%AF"><span class="toc-number">4.3.</span> <span class="toc-text">HOFL 的陷阱：错误累积</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E6%B2%BF%E6%96%B9%E5%90%91%EF%BC%9A%E6%B8%90%E8%BF%9B%E5%BC%8F%E8%87%AA%E6%B2%BB"><span class="toc-number">5.</span> <span class="toc-text">前沿方向：渐进式自治</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Anthropic-%E7%9A%84%E2%80%9D%E8%A7%92%E8%89%B2%E8%AE%AD%E7%BB%83%E2%80%9D%E6%80%9D%E8%B7%AF"><span class="toc-number">5.1.</span> <span class="toc-text">Anthropic 的”角色训练”思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OpenAI-%E7%9A%84%E2%80%9D%E6%B8%90%E8%BF%9B%E5%BC%8F%E9%83%A8%E7%BD%B2%E2%80%9D%E7%AD%96%E7%95%A5"><span class="toc-number">5.2.</span> <span class="toc-text">OpenAI 的”渐进式部署”策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E9%80%82%E5%BA%94%E8%87%AA%E6%B2%BB%E5%BA%A6"><span class="toc-number">5.3.</span> <span class="toc-text">自适应自治度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E6%A8%A1%E5%BC%8F"><span class="toc-number">6.</span> <span class="toc-text">总结：选择合适的模式</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%BD%AF%E8%91%97%E7%94%B3%E8%AF%B7%E6%8C%87%E5%8D%97/" title="软件著作权申请完全指南：从材料撰写到 AI 时代的合规策略">软件著作权申请完全指南：从材料撰写到 AI 时代的合规策略</a><time datetime="2026-07-23T14:00:00.000Z" title="发表于 2026-07-23 22:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/cs-container-universe/" title="容器宇宙：一部关于隔离与共享的宇宙史">容器宇宙：一部关于隔离与共享的宇宙史</a><time datetime="2026-07-23T12:00:00.000Z" title="发表于 2026-07-23 20:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/ai-9router-guide/" title="9Router：一个 AI 路由器的自组织涌现">9Router：一个 AI 路由器的自组织涌现</a><time datetime="2026-07-23T08:00:00.000Z" title="发表于 2026-07-23 16:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/21/ai-java-framework-landscape/" title="Java AI 框架全景图 2026：选型决策指南">Java AI 框架全景图 2026：选型决策指南</a><time datetime="2026-07-21T12:00:00.000Z" title="发表于 2026-07-21 20:00:00">2026-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/21/ai-langchain4j-practice/" title="Java LLM 集成的工程模式之辩：LangChain4j 与 Spring AI 双轨实践">Java LLM 集成的工程模式之辩：LangChain4j 与 Spring AI 双轨实践</a><time datetime="2026-07-21T05:00:00.000Z" title="发表于 2026-07-21 13:00:00">2026-07-21</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2021 - 2026 By Bsheepcoder</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"></div><script>fetch("https://cdn.busuanzi.cc/api.php",{method:"POST",body:JSON.stringify({url:location.href,referrer:document.referrer})}).then(function(e){return e.json()}).then(function(e){function n(e,n){var u=document.getElementById(e);u&&(u.textContent=n)}n("busuanzi_value_site_uv",e.busuanzi_site_uv),n("busuanzi_value_site_pv",e.busuanzi_site_pv),n("busuanzi_value_page_pv",e.busuanzi_page_pv)}).catch(function(){})</script><script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script><script>window.mermaid&&mermaid.initialize({startOnLoad:!0,theme:"dark"===document.documentElement.getAttribute("data-theme")?"dark":"default"})</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      true
+        ? pjax.loadUrl('/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span> 数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"></div><hr><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.5"></script></div></div></body></html>

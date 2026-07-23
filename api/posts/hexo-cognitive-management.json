@@ -1,0 +1,21 @@
+{
+  "title": "用 Hexo 搭建认知管理系统",
+  "slug": "hexo-cognitive-management",
+  "date": "2026-06-17",
+  "updated": "2026-06-29",
+  "categories": [
+    "技术",
+    "建站"
+  ],
+  "tags": [
+    "AI",
+    "Hexo",
+    "认知管理"
+  ],
+  "description": "介绍如何用 Hexo + Butterfly 主题搭建一个 AI 索引友好的认知管理系统，涵盖项目架构、文章命名规范、Front-Matter 设计、内容索引策略和自动化部署流程。",
+  "url": "https://bsheepcoder.github.io/2026/06/17/hexo-cognitive-management/",
+  "api_json_url": "https://bsheepcoder.github.io/api/posts/hexo-cognitive-management.json",
+  "api_md_url": "https://bsheepcoder.github.io/api/posts/hexo-cognitive-management.md",
+  "encrypted": false,
+  "content": "## 为什么用 Hexo 做认知管理\n\n知识管理的核心痛点不是\"存\"，而是\"找\"。传统的笔记软件（Notion、Obsidian、语雀）各自封闭，数据无法被搜索引擎和 AI 直接检索。而 Hexo 作为一个静态博客生成器，天然具备三个优势：\n\n1. **数据即文件** — 所有内容是本地 Markdown，无平台锁定\n2. **结构化索引** — `search.json` 提供机器可读的全文索引\n3. **公开可检索** — 部署到 GitHub Pages 后，内容可被 Google 和 AI 搜索引擎索引\n\n这个项目不是\"写博客\"，而是构建一个**个人知识的外化系统**：把学过的知识用结构化的方式记录下来，既便于自己检索，也能被 AI 工具消费。\n\n## 技术栈\n\n| 组件 | 选型 | 说明 |\n|------|------|------|\n| 框架 | Hexo 8.x | 静态站点生成器 |\n| 主题 | Butterfly 5.5.5 | 暗色模式，通过 npm 安装 |\n| 搜索 | hexo-generator-searchdb | 生成本地搜索索引 `search.json` |\n| 字数统计 | hexo-wordcount | 文章阅读时长估算 |\n| 部署 | hexo-deployer-git | 一键推送 GitHub Pages |\n| CDN | jsDelivr | 第三方资源加速 |\n| 数学公式 | MathJax | 按文章按需加载 |\n\n## 项目结构\n\n```\nblog/\n├── _config.yml                # Hexo 主配置（站点信息、URL、部署）\n├── _config.butterfly.yml      # 主题配置（导航、侧边栏、评论）\n├── scaffolds/post.md          # 文章模板（含 front-matter 骨架）\n├── source/\n│   ├── _posts/                # 文章 Markdown 源文件\n│   ├── about/                 # 关于页\n│   ├── categories/            # 分类页\n│   ├── tags/                  # 标签页\n│   └── img/                   # 图片资源\n├── public/                    # 构建产物（hexo g 生成）\n└── .deploy_git/               # 部署临时目录（自动生成）\n```\n\n配置原则：**主题配置改 `_config.butterfly.yml`，不改 `node_modules/` 里的默认文件**。\n\n## 文章命名规范\n\n文件名是 URL slug 的来源，直接决定可检索性。采用 `{领域前缀}-{子主题}.md` 格式：\n\n| 前缀 | 对应分类 | 前缀 | 对应分类 |\n|------|---------|------|---------|\n| `ai-` | 人工智能 | `cpp-` | C/C++ |\n| `python-` | Python | `java-` | Java |\n| `linux-` | Linux | `hexo-` | 建站 |\n| `algo-` | 算法 | `db-` | 数据库 |\n| `frontend-` | 前端 | `ros-` | 机器人 |\n\n规则：\n- 全小写**英文**，连字符分隔\n- **文件名必须全英文**，禁止中文（`计算机基础-tee.md` ✗ → `cs-tee.md` ✓）\n- 禁止纯数字后缀（`Python1.md` ✗ → `python-intro.md` ✓）\n- 禁止下划线（`AI_History.md` ✗ → `ai-history.md` ✓）\n- 子主题描述性强，能从文件名推断内容\n\n## Front-Matter 设计\n\n每篇文章的 YAML 头部是 AI 和搜索引擎消费的元数据，所有字段必填：\n\n```yaml\n---\ntitle: \"文章标题\"\ndate: 2026-06-17 12:00:00\ncategories:\n  - [技术, 人工智能]\ntags:\n  - AI\n  - 强化学习\ndescription: \"50-150字摘要，会被 search.json 索引，供本地搜索和 AI 检索使用。\"\n---\n```\n\n设计要点：\n\n- **categories** 用二级分类 `[大类, 子类]`，与文件名前缀对齐，分类页据此自动组织\n- **tags** 2-5 个，第一个必须与文件名领域前缀对齐\n- **description** 是最重要的字段 — 被 `search.json` 全文索引，AI 检索时优先读取。必须 50-150 字，单行不换行，引号成对闭合\n- **mathjax: true** 按需添加（因 `per_page: false`，需逐文章开启）\n\n## 内容索引策略\n\n系统提供三种检索方式，覆盖不同场景：\n\n### 策略一：读取源文件（最可靠）\n\n直接读取 `source/_posts/` 下的 Markdown 源文件，数据最新、含完整 front-matter 和原始内容。适合修改单篇已知文章。\n\n### 策略二：解析 search.json（最轻量）\n\n```json\n{\n  \"title\": \"文章标题\",\n  \"url\": \"/2026/06/17/hexo-cognitive-management/\",\n  \"content\": \"纯文本内容（去除HTML标签）\",\n  \"tags\": [\"Hexo\", \"认知管理\"]\n}\n```\n\n构建后生成在 `public/search.json`，含 title、url、content（纯文本）、tags。适合全文搜索和按标签筛选。\n\n### 策略三：解析 db.json（最完整）\n\n`db.json` 是 Hexo 的数据库快照，含 Post（完整元数据 + 原始 Markdown + 渲染 HTML）、Tag、PostTag 三张表，适合需要精确查询或获取渲染后 HTML 的场景。\n\n## 自动化部署流程\n\n修改文章或配置后，执行标准部署流程：\n\n```bash\nhexo clean          # 清理 public/ 和 db.json\nhexo generate       # 重新构建\nhexo deploy         # 推送到 GitHub Pages\n```\n\n部署是幂等的 — `hexo-deployer-git` 会自动清空 `.deploy_git/` 目录，复制 `public/` 内容，生成提交信息 `Site updated: YYYY-MM-DD HH:mm:ss`，然后 force push 到远程 master 分支。\n\nGitHub Pages 收到推送后自动构建，1-2 分钟后线上生效。\n\n## 认知管理的闭环\n\n这个系统的价值在于形成闭环：\n\n```\n学习 → 记录（Markdown + 规范化 front-matter）\n     → 索引（search.json + db.json）\n     → 检索（本地搜索 / AI 工具 / 搜索引擎）\n     → 复用（找到旧知识，应用到新问题）\n```\n\n传统笔记的问题在于\"写了就忘\"。这个系统通过结构化命名、强制 description、机器可读索引三个机制，确保写下的知识**可被找到、可被 AI 消费、可被搜索引擎收录**。\n\n## 总结\n\n这个 Hexo 项目不是传统博客，而是一个**面向 AI 时代的个人知识库**：\n\n- 文件即数据，无平台锁定\n- 命名规范保证 URL 可读性和分类一致性\n- description 字段是 AI 检索的关键入口\n- search.json 提供机器可读的全文索引\n- 一条命令完成构建和部署\n\n核心原则：**如果知识不能被找到，就等于没有记录。**\n"
+}

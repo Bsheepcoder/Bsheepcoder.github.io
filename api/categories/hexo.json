@@ -1,0 +1,184 @@
+{
+  "category": "建站",
+  "slug": "hexo",
+  "post_count": 9,
+  "posts": [
+    {
+      "title": "llmstxt.site 收录站速览与有趣网站精选",
+      "slug": "hexo-llmstxt-sites",
+      "date": "2026-06-26",
+      "categories": [
+        "技术",
+        "建站"
+      ],
+      "tags": [
+        "AI",
+        "llms.txt",
+        "信息获取"
+      ],
+      "description": "介绍 llms.txt 收录目录站 llmstxt.site 的定位与特点，并从其收录的 1600+ 站点中精选 AI 平台、开发者工具、开源框架、金融加密、MCP 生态等领域的有趣网站。",
+      "url": "https://bsheepcoder.github.io/2026/06/26/hexo-llmstxt-sites/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/hexo-llmstxt-sites.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/hexo-llmstxt-sites.md",
+      "encrypted": false
+    },
+    {
+      "title": "llms.txt 收录目录里有哪些有趣的网站",
+      "slug": "hexo-llmstxt-guide",
+      "date": "2026-06-26",
+      "categories": [
+        "技术",
+        "建站"
+      ],
+      "tags": [
+        "AI",
+        "Hexo",
+        "llms.txt",
+        "PDC"
+      ],
+      "description": "llms.txt 是让 LLM 零噪音读取网站内容的约定，目前两个收录目录已收录 1600+ 站点。本文从中筛选出 AI 平台、开发者工具、开源框架、金融加密、MCP 生态等类别的有趣站点，观察 llms.txt 标准的真实采用图景。",
+      "url": "https://bsheepcoder.github.io/2026/06/26/hexo-llmstxt-guide/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/hexo-llmstxt-guide.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/hexo-llmstxt-guide.md",
+      "encrypted": false
+    },
+    {
+      "title": "邀请你加入 PDC 采用者网络：让 AI 零噪音读取你的博客",
+      "slug": "hexo-pdc-adopters-network",
+      "date": "2026-06-26",
+      "categories": [
+        "技术",
+        "建站"
+      ],
+      "tags": [
+        "AI",
+        "Hexo",
+        "llms.txt",
+        "PDC"
+      ],
+      "description": "PDC 让静态博客在构建时自动生成 AI 可读的零噪音内容端点。本文介绍 llms.txt 采用者网络的愿景、加入流程、验证脚本使用方法，以及采用者如何通过互链形成 AI 可发现的内容网络。",
+      "url": "https://bsheepcoder.github.io/2026/06/26/hexo-pdc-adopters-network/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/hexo-pdc-adopters-network.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/hexo-pdc-adopters-network.md",
+      "encrypted": false
+    },
+    {
+      "title": "PDC 协议接入 MCP 生态：两种部署模式实战",
+      "slug": "hexo-pdc-mcp-adapter",
+      "date": "2026-06-22",
+      "categories": [
+        "技术",
+        "建站"
+      ],
+      "tags": [
+        "MCP",
+        "Hexo",
+        "PDC",
+        "Cloudflare",
+        "Qoder"
+      ],
+      "description": "PDC 通过薄适配器接入 MCP 生态，让 Qoder、Claude Desktop、Cursor 等 MCP 客户端直接访问静态博客内容。本文详细讲解本地 stdio 和远程 HTTP（Cloudflare Worker）两种部署模式的实现细节、配置方法和适用场景，附完整代码和手动测试流程。",
+      "url": "https://bsheepcoder.github.io/2026/06/22/hexo-pdc-mcp-adapter/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/hexo-pdc-mcp-adapter.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/hexo-pdc-mcp-adapter.md",
+      "encrypted": false
+    },
+    {
+      "title": "PDC 协议：让博客同时服务人类与 AI 的平行数据通道",
+      "slug": "pdc-protocol",
+      "date": "2026-06-22",
+      "categories": [
+        "技术",
+        "建站"
+      ],
+      "tags": [
+        "AI",
+        "协议",
+        "Hexo",
+        "PDC"
+      ],
+      "description": "PDC（Parallel Data Channel）是 llms.txt 标准的 Hexo 增强实现，让静态博客同时服务人类读者和 AI Agent。通过构建时生成平行数据通道（JSON/MD/TXT），实现人类看 HTML、AI 读零噪音 Markdown，四层架构覆盖数据通道、文章格式、内容注入和静态托管兼容性，零运行时开销，完美适配 GitHub Pages。",
+      "url": "https://bsheepcoder.github.io/2026/06/22/pdc-protocol/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/pdc-protocol.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/pdc-protocol.md",
+      "encrypted": false
+    },
+    {
+      "title": "Hexo AI 数据通道：让 AI 零噪音读取博客内容",
+      "slug": "hexo-ai-data-channel",
+      "date": "2026-06-17",
+      "categories": [
+        "技术",
+        "建站"
+      ],
+      "tags": [
+        "AI",
+        "Hexo",
+        "API",
+        "llms.txt"
+      ],
+      "description": "完整的 Hexo AI 数据通道解决方案：通过构建时生成静态 JSON/MD/TXT 文件，让 AI Agent 获取零噪音的博客文章内容，完美兼容 GitHub Pages，支持加密文章保护。",
+      "url": "https://bsheepcoder.github.io/2026/06/17/hexo-ai-data-channel/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/hexo-ai-data-channel.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/hexo-ai-data-channel.md",
+      "encrypted": false
+    },
+    {
+      "title": "GitHub Pages 完全指南：原理、配置与使用限制",
+      "slug": "hexo-github-pages-guide",
+      "date": "2026-06-17",
+      "categories": [
+        "技术",
+        "建站"
+      ],
+      "tags": [
+        "GitHub",
+        "GitHub Pages",
+        "建站"
+      ],
+      "description": "详细介绍 GitHub Pages 的工作原理、配置方法、使用限制和常见问题，包括免费账户与付费账户的区别、私有仓库的 Pages 支持、自定义域名配置和流量限制等。",
+      "url": "https://bsheepcoder.github.io/2026/06/17/hexo-github-pages-guide/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/hexo-github-pages-guide.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/hexo-github-pages-guide.md",
+      "encrypted": false
+    },
+    {
+      "title": "Hexo 博客文章加密实现",
+      "slug": "hexo-blog-encryption",
+      "date": "2026-06-17",
+      "categories": [
+        "技术",
+        "建站"
+      ],
+      "tags": [
+        "Hexo",
+        "安全",
+        "加密"
+      ],
+      "description": "介绍 hexo-blog-encrypt 插件如何为 Hexo 静态博客实现客户端文章加密，涵盖 AES-256-GCM 加密原理、PBKDF2 密钥派生流程和配置方法。",
+      "url": "https://bsheepcoder.github.io/2026/06/17/hexo-blog-encryption/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/hexo-blog-encryption.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/hexo-blog-encryption.md",
+      "encrypted": true
+    },
+    {
+      "title": "用 Hexo 搭建认知管理系统",
+      "slug": "hexo-cognitive-management",
+      "date": "2026-06-17",
+      "categories": [
+        "技术",
+        "建站"
+      ],
+      "tags": [
+        "AI",
+        "Hexo",
+        "认知管理"
+      ],
+      "description": "介绍如何用 Hexo + Butterfly 主题搭建一个 AI 索引友好的认知管理系统，涵盖项目架构、文章命名规范、Front-Matter 设计、内容索引策略和自动化部署流程。",
+      "url": "https://bsheepcoder.github.io/2026/06/17/hexo-cognitive-management/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/hexo-cognitive-management.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/hexo-cognitive-management.md",
+      "encrypted": false
+    }
+  ]
+}

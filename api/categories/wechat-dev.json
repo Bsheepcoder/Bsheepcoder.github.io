@@ -1,0 +1,28 @@
+{
+  "category": "微信开发",
+  "slug": "wechat-dev",
+  "post_count": 1,
+  "posts": [
+    {
+      "title": "微信小程序支付实战：全链路坑点与工程经验",
+      "slug": "wechat-miniprogram-payment",
+      "date": "2026-07-06",
+      "categories": [
+        "技术",
+        "微信开发"
+      ],
+      "tags": [
+        "安全",
+        "微信开发",
+        "微信小程序",
+        "微信支付",
+        "支付"
+      ],
+      "description": "基于 2026 年最新微信支付 V3 文档，梳理小程序支付从下单、调起、回调、查单到退款的全链路。不讲 API 文档能查到的参数，讲文档不会告诉你的幂等陷阱、签名探测流量、prepay_id 过期、商户休眠关停等真实工程坑点，以及可迁移到任何支付系统的分布式状态一致性直觉。",
+      "url": "https://bsheepcoder.github.io/2026/07/06/wechat-miniprogram-payment/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/wechat-miniprogram-payment.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/wechat-miniprogram-payment.md",
+      "encrypted": false
+    }
+  ]
+}

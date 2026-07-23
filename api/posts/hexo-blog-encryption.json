@@ -1,0 +1,21 @@
+{
+  "title": "Hexo 博客文章加密实现",
+  "slug": "hexo-blog-encryption",
+  "date": "2026-06-17",
+  "updated": "2026-06-17",
+  "categories": [
+    "技术",
+    "建站"
+  ],
+  "tags": [
+    "Hexo",
+    "安全",
+    "加密"
+  ],
+  "description": "介绍 hexo-blog-encrypt 插件如何为 Hexo 静态博客实现客户端文章加密，涵盖 AES-256-GCM 加密原理、PBKDF2 密钥派生流程和配置方法。",
+  "url": "https://bsheepcoder.github.io/2026/06/17/hexo-blog-encryption/",
+  "api_json_url": "https://bsheepcoder.github.io/api/posts/hexo-blog-encryption.json",
+  "api_md_url": "https://bsheepcoder.github.io/api/posts/hexo-blog-encryption.md",
+  "encrypted": true,
+  "content": ""
+}

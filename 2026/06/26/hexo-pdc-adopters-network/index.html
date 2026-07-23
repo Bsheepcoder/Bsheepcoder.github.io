@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>邀请你加入 PDC 采用者网络：让 AI 零噪音读取你的博客 | Q's blog</title><meta name="author" content="Bsheepcoder"><meta name="copyright" content="Bsheepcoder"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="PDC 让静态博客在构建时自动生成 AI 可读的零噪音内容端点。本文介绍 llms.txt 采用者网络的愿景、加入流程、验证脚本使用方法，以及采用者如何通过互链形成 AI 可发现的内容网络。"><meta property="og:type" content="article"><meta property="og:title" content="邀请你加入 PDC 采用者网络：让 AI 零噪音读取你的博客"><meta property="og:url" content="https://bsheepcoder.github.io/2026/06/26/hexo-pdc-adopters-network/"><meta property="og:site_name" content="Q&#39;s blog"><meta property="og:description" content="PDC 让静态博客在构建时自动生成 AI 可读的零噪音内容端点。本文介绍 llms.txt 采用者网络的愿景、加入流程、验证脚本使用方法，以及采用者如何通过互链形成 AI 可发现的内容网络。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://bsheepcoder.github.io/img/avatar.jpg"><meta property="article:published_time" content="2026-06-26T06:00:00.000Z"><meta property="article:modified_time" content="2026-06-25T16:17:02.000Z"><meta property="article:author" content="Bsheepcoder"><meta property="article:tag" content="AI"><meta property="article:tag" content="Hexo"><meta property="article:tag" content="PDC"><meta property="article:tag" content="llms.txt"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bsheepcoder.github.io/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "邀请你加入 PDC 采用者网络：让 AI 零噪音读取你的博客",
+  "url": "https://bsheepcoder.github.io/2026/06/26/hexo-pdc-adopters-network/",
+  "image": "https://bsheepcoder.github.io/img/avatar.jpg",
+  "datePublished": "2026-06-26T06:00:00.000Z",
+  "dateModified": "2026-06-25T16:17:02.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Bsheepcoder",
+      "url": "https://bsheepcoder.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="https://bsheepcoder.github.io/2026/06/26/hexo-pdc-adopters-network/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload='this.media="all"'><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload='this.media="all"'><script>(() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":3,"unescape":true,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":30,"languages":{"author":"作者: Bsheepcoder","link":"链接: ","source":"来源: Q's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={title:"邀请你加入 PDC 采用者网络：让 AI 零噪音读取你的博客",isHighlightShrink:!1,isToc:!0,pageType:"post"}</script><link rel="stylesheet" href="/css/custom.css"><style>#reading-progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#49b1f5,#ff7c5c);z-index:9999;transition:width .1s}</style><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="Q's blog" type="application/atom+xml"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">159</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/flink/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Q's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">邀请你加入 PDC 采用者网络：让 AI 零噪音读取你的博客</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span> 返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/flink/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">邀请你加入 PDC 采用者网络：让 AI 零噪音读取你的博客</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2026-06-26T06:00:00.000Z" title="发表于 2026-06-26 14:00:00">2026-06-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/hexo/">建站</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><html><head></head><body><div class="post-header-meta"><span class="ai-data-links"><i class="fas fa-robot"></i>AI 数据通道：<a href="https://bsheepcoder.github.io/api/posts/hexo-pdc-adopters-network.json">JSON</a><span class="sep">·</span><a href="https://bsheepcoder.github.io/api/posts/hexo-pdc-adopters-network.md">Markdown</a></span></div><h2 id="为什么需要-PDC"><a href="#为什么需要-PDC" class="headerlink" title="为什么需要 PDC"></a>为什么需要 PDC <a class="header-anchor" href="#为什么需要-PDC" title="永久链接">#</a></h2><p>AI 时代，你的博客文章不仅是写给人类看的。越来越多的读者通过 AI 助手获取信息——它们帮你总结、检索、引用。但 AI 读取博客时面临一个尴尬的现实：它必须解析 HTML，剥离导航栏、侧边栏、广告、字数统计等 UI 噪音，才能拿到文章正文。这个过程不可靠、低效，且经常丢失格式。</p><p><strong>PDC</strong>（Parallel Data Channel，平行数据通道（PDC））解决了这个问题：在构建时自动生成一套与 HTML 平行的机器通道（JSON/MD/TXT），AI 直接读取这些端点，零噪音、零解析损耗。</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">传统方式：AI → 解析 HTML → 剥离噪音 → 可能丢失格式 → 得到正文<br>PDC 方式：AI → GET /api/posts/&lt;slug&gt;.md → 直接拿到纯 Markdown 正文<br></code></pre></td></tr></tbody></table></figure><h2 id="llms-txt-采用者网络是什么"><a href="#llms-txt-采用者网络是什么" class="headerlink" title="llms.txt 采用者网络是什么"></a>llms.txt 采用者网络是什么 <a class="header-anchor" href="#llms-txt-采用者网络是什么" title="永久链接">#</a></h2><p>PDC 不仅是技术实现，也是一个<strong>开放互链网络</strong>。</p><p>当你的博客实现了 PDC 后，你可以加入采用者网络：</p><ul><li>你的站点出现在<a href="/flink/">友链页</a>，获得反向链接</li><li>你的站点列入 <a href="/api/adopters.json"><code>/api/adopters.json</code></a>，其他 AI/Agent 可自动发现你</li><li>网络成员之间形成内容互链，提升整体搜索可见性</li></ul><p>这意味着：<strong>一个 AI 读者访问任何一个 PDC 采用者站点，就能发现整个网络的所有成员</strong>。</p><pre class="mermaid">graph LR
+    A["AI Agent"] --&gt;|"GET /api/adopters.json"| B["站点 A"]
+    B --&gt; C["站点 B（PDC 采用者）"]
+    B --&gt; D["站点 C（PDC 采用者）"]
+    B --&gt; E["站点 D（PDC 采用者）"]
+    C --&gt;|"GET /llms.txt"| F["读取 B 的全部内容"]
+    D --&gt;|"GET /api/posts/*.md"| G["读取 C 的全部内容"]</pre><h2 id="如何加入（4-步）"><a href="#如何加入（4-步）" class="headerlink" title="如何加入（4 步）"></a>如何加入（4 步） <a class="header-anchor" href="#如何加入（4-步）" title="永久链接">#</a></h2><h3 id="第-1-步：实现-llms-txt-PDC-扩展端点"><a href="#第-1-步：实现-llms-txt-PDC-扩展端点" class="headerlink" title="第 1 步：实现 llms.txt + PDC 扩展端点"></a>第 1 步：实现 llms.txt + PDC 扩展端点 <a class="header-anchor" href="#第-1-步：实现-llms-txt-PDC-扩展端点" title="永久链接">#</a></h3><p>PDC 的核心是 3 个必需端点：</p><table><thead><tr><th>端点</th><th>格式</th><th>用途</th><th>最简实现</th></tr></thead><tbody><tr><td><code>/llms.txt</code></td><td>TXT</td><td>AI 入口：站点概览 + 文章列表</td><td>手写或脚本生成</td></tr><tr><td><code>/api/index.json</code></td><td>JSON</td><td>结构化文章列表（title/url/tags/categories）</td><td>脚本生成</td></tr><tr><td><code>/api/posts/&lt;slug&gt;.md</code></td><td>MD</td><td>单篇纯 Markdown 正文（零噪音）</td><td>脚本生成</td></tr></tbody></table><p>如果你用的是 Hexo，可以直接复用本站的脚本（开源在 <a target="_blank" rel="noopener" href="https://github.com/Bsheepcoder/pdc-protocol-verify">pdc-protocol-verify</a> 仓库有完整规范）。其他静态站点生成器（Hugo/Jekyll）也可以参照规范实现。</p><p>完整协议规范见 <a href="/pdc-protocol.md"><code>/pdc-protocol.md</code></a>。</p><h3 id="第-2-步：提交申请"><a href="#第-2-步：提交申请" class="headerlink" title="第 2 步：提交申请"></a>第 2 步：提交申请 <a class="header-anchor" href="#第-2-步：提交申请" title="永久链接">#</a></h3><p>在 <a target="_blank" rel="noopener" href="https://github.com/Bsheepcoder/Bsheepcoder.github.io/issues">GitHub Issues</a> 创建 Issue，填写以下信息：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">站点名称：你的博客名<br>站点 URL：https://your-blog.com/<br>头像 URL：https://your-blog.com/avatar.png<br>一句话描述：50 字以内的站点描述<br></code></pre></td></tr></tbody></table></figure><h3 id="第-3-步：自动验证"><a href="#第-3-步：自动验证" class="headerlink" title="第 3 步：自动验证"></a>第 3 步：自动验证 <a class="header-anchor" href="#第-3-步：自动验证" title="永久链接">#</a></h3><p>维护者会运行验证脚本检查你的端点是否可访问：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/Bsheepcoder/pdc-protocol-verify.git<br><span class="hljs-built_in">cd</span> pdc-protocol-verify<br>node verify.js https://your-blog.com/<br></code></pre></td></tr></tbody></table></figure><p>脚本检查两个核心端点：</p><ul><li><code>GET &lt;url&gt;/llms.txt</code> — 返回 200 且内容包含文章列表</li><li><code>GET &lt;url&gt;/api/index.json</code> — 返回 200 且 JSON 结构正确</li></ul><p>输出示例：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">✓ Q's blog (https://bsheepcoder.github.io/)<br>  /llms.txt → 200 OK<br>  /api/index.json → 200 OK (24 posts)<br><br>✗ Example Blog (https://example.com/)<br>  /llms.txt → 404 Not Found<br>  /api/index.json → 404 Not Found<br></code></pre></td></tr></tbody></table></figure><p>不传参数时，脚本会从 <code>https://bsheepcoder.github.io/api/adopters.json</code> 拉取全部采用者列表并逐一验证：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">node verify.js<br></code></pre></td></tr></tbody></table></figure><h3 id="第-4-步：互链"><a href="#第-4-步：互链" class="headerlink" title="第 4 步：互链"></a>第 4 步：互链 <a class="header-anchor" href="#第-4-步：互链" title="永久链接">#</a></h3><p>验证通过后，你的站点会被添加到友链数据中。下次 <code>hexo g</code> 构建时：</p><ul><li>你的站点出现在 <a href="/flink/">友链页</a> 的”llms.txt 采用者”分类下</li><li>你的站点列入 <a href="/api/adopters.json"><code>/api/adopters.json</code></a></li><li>你的 <code>llms_txt</code> 和 <code>api_index</code> 端点自动追加到采用者 JSON 中</li></ul><h2 id="验证脚本详解"><a href="#验证脚本详解" class="headerlink" title="验证脚本详解"></a>验证脚本详解 <a class="header-anchor" href="#验证脚本详解" title="永久链接">#</a></h2><p>验证脚本（<a target="_blank" rel="noopener" href="https://github.com/Bsheepcoder/pdc-protocol-verify">pdc-protocol-verify</a>）是零依赖的 Node.js 脚本，无需 <code>npm install</code>，直接 <code>node verify.js</code> 运行。</p><h3 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件 <a class="header-anchor" href="#前提条件" title="永久链接">#</a></h3><ul><li>Node.js 18+</li><li>网络可访问待验证站点</li></ul><h3 id="验证单个站点"><a href="#验证单个站点" class="headerlink" title="验证单个站点"></a>验证单个站点 <a class="header-anchor" href="#验证单个站点" title="永久链接">#</a></h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">node verify.js https://your-blog.com/<br></code></pre></td></tr></tbody></table></figure><p>退出码：<code>0</code> = 全部通过，<code>1</code> = 有失败项。可用于 CI/CD 流水线。</p><h3 id="验证全部采用者"><a href="#验证全部采用者" class="headerlink" title="验证全部采用者"></a>验证全部采用者 <a class="header-anchor" href="#验证全部采用者" title="永久链接">#</a></h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">node verify.js<br></code></pre></td></tr></tbody></table></figure><p>不传参数时，脚本自动从 <code>https://bsheepcoder.github.io/api/adopters.json</code> 拉取采用者列表，逐一检查并输出汇总报告：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Found 3 adopter(s). Verifying...<br><br>✓ Q's blog (https://bsheepcoder.github.io/)<br>  /llms.txt → 200 OK<br>  /api/index.json → 200 OK (24 posts)<br><br>✓ Another Blog (https://another.com/)<br>  /llms.txt → 200 OK<br>  /api/index.json → 200 OK (12 posts)<br><br>✗ Broken Site (https://broken.com/)<br>  /llms.txt → 0 ERR timeout<br>  /api/index.json → 0 ERR timeout<br><br>==================================================<br>Total: 3 | Passed: 2 | Failed: 1<br></code></pre></td></tr></tbody></table></figure><h3 id="检查项"><a href="#检查项" class="headerlink" title="检查项"></a>检查项 <a class="header-anchor" href="#检查项" title="永久链接">#</a></h3><table><thead><tr><th>检查项</th><th>通过条件</th><th>失败原因</th></tr></thead><tbody><tr><td><code>/llms.txt</code> 可访问</td><td>HTTP 200</td><td>404/超时/DNS 解析失败</td></tr><tr><td><code>/api/index.json</code> 可访问</td><td>HTTP 200</td><td>404/超时/DNS 解析失败</td></tr><tr><td><code>/api/index.json</code> 格式正确</td><td>可解析为 JSON</td><td>非 JSON/结构错误</td></tr></tbody></table><h2 id="采用者的权利与义务"><a href="#采用者的权利与义务" class="headerlink" title="采用者的权利与义务"></a>采用者的权利与义务 <a class="header-anchor" href="#采用者的权利与义务" title="永久链接">#</a></h2><h3 id="权利"><a href="#权利" class="headerlink" title="权利"></a>权利 <a class="header-anchor" href="#权利" title="永久链接">#</a></h3><ul><li><strong>反向链接</strong>：出现在友链页面，SEO 友好的 dofollow 链接</li><li><strong>AI 可发现</strong>：列入 <code>/api/adopters.json</code>，其他 AI/Agent 自动发现你的站点</li><li><strong>网络效应</strong>：成员越多，每个成员被 AI 发现的概率越高</li><li><strong>MCP 生态接入</strong>：PDC 可通过适配器接入 MCP 生态（Claude Desktop、Cursor 等）</li></ul><h3 id="义务"><a href="#义务" class="headerlink" title="义务"></a>义务 <a class="header-anchor" href="#义务" title="永久链接">#</a></h3><ul><li><strong>维持端点可访问</strong>：<code>/llms.txt</code> 和 <code>/api/index.json</code> 必须长期可用</li><li><strong>标注 PDC 采用</strong>：在站点可见位置（关于页/页脚/公告）标注 llms.txt 采用</li></ul><h2 id="为什么不用-RSS-就够了"><a href="#为什么不用-RSS-就够了" class="headerlink" title="为什么不用 RSS 就够了"></a>为什么不用 RSS 就够了 <a class="header-anchor" href="#为什么不用-RSS-就够了" title="永久链接">#</a></h2><p>RSS 解决的是<strong>人类订阅</strong>问题，PDC 解决的是<strong>AI 检索</strong>问题：</p><table><thead><tr><th></th><th>RSS</th><th>PDC</th></tr></thead><tbody><tr><td>目标读者</td><td>人类（RSS 阅读器）</td><td>AI/Agent</td></tr><tr><td>内容格式</td><td>HTML 或截断文本</td><td>纯 Markdown（零噪音）</td></tr><tr><td>结构化程度</td><td>低（title + content）</td><td>高（title/tags/categories/description/加密状态）</td></tr><tr><td>分类聚合</td><td>不支持</td><td><code>/api/categories/&lt;slug&gt;.json</code></td></tr><tr><td>提示词提取</td><td>不支持</td><td><code>&lt;prompt&gt;</code> 标签自动提取</td></tr><tr><td>MCP 适配</td><td>不支持</td><td><code>/api/mcp.json</code> 清单</td></tr></tbody></table><p>两者互补，不是替代关系。你的博客应该同时提供 RSS（给人类）和 PDC（给 AI）。</p><h2 id="一个真实的-AI-检索场景"><a href="#一个真实的-AI-检索场景" class="headerlink" title="一个真实的 AI 检索场景"></a>一个真实的 AI 检索场景 <a class="header-anchor" href="#一个真实的-AI-检索场景" title="永久链接">#</a></h2><p>假设一个用户问 AI：”Hexo 博客如何让 AI 读取文章内容？”</p><p>没有 PDC 网络时，AI 只能搜索网页、解析 HTML、从噪音中提取信息。</p><p>有了 PDC 网络后，AI 的流程是：</p><ol><li><code>GET https://bsheepcoder.github.io/llms.txt</code> → 发现站点概览和文章索引</li><li><code>GET /api/index.json</code> → 筛选 tags 含 “AI” 的文章 → 找到 <code>hexo-ai-data-channel</code></li><li><code>GET /api/posts/hexo-ai-data-channel.md</code> → 直接拿到纯 Markdown 正文</li><li><code>GET /api/adopters.json</code> → 发现其他 PDC 采用者 → 可继续检索他们的内容</li></ol><p>整个流程<strong>零 HTML 解析、零噪音、零格式丢失</strong>。这就是 PDC 网络的价值。</p><h2 id="现在就开始"><a href="#现在就开始" class="headerlink" title="现在就开始"></a>现在就开始 <a class="header-anchor" href="#现在就开始" title="永久链接">#</a></h2><ol><li>阅读 <a href="/pdc-protocol.md">PDC 规范</a></li><li>在你的 Hexo/静态站点上实现 3 个必需端点</li><li>运行 <code>node verify.js https://your-blog.com/</code> 自检</li><li>在 <a target="_blank" rel="noopener" href="https://github.com/Bsheepcoder/Bsheepcoder.github.io/issues">GitHub Issues</a> 提交申请</li></ol><p>期待你的加入。</p><blockquote><p><strong>核心原则</strong>：PDC 网络的力量在于互链。每一个新成员不仅自己变得 AI 可发现，还让整个网络的所有成员都更容易被发现。这是正和游戏，不是零和博弈。</p></blockquote><script>!function(){var t=document.createElement("div");t.id="reading-progress",document.body.appendChild(t),window.addEventListener("scroll",function(){var e=document.documentElement,n=e.scrollTop/(e.scrollHeight-e.clientHeight)*100;t.style.width=n+"%"})}()</script></body></html></article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ai/">AI</a><a class="post-meta__tags" href="/tags/hexo/">Hexo</a><a class="post-meta__tags" href="/tags/llms-txt/">llms.txt</a><a class="post-meta__tags" href="/tags/PDC/">PDC</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload='this.media="all"'><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/06/26/hexo-llmstxt-sites/" title="llmstxt.site 收录站速览与有趣网站精选"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">llmstxt.site 收录站速览与有趣网站精选</div></div><div class="info-2"><div class="info-item-1">介绍 llms.txt 收录目录站 llmstxt.site 的定位与特点，并从其收录的 1600+ 站点中精选 AI 平台、开发者工具、开源框架、金融加密、MCP 生态等领域的有趣网站。</div></div></div></a><a class="pagination-related" href="/2026/06/26/%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96-nft-2026-status/" title="NFT 与数字藏品：从疯狂到清醒的五年"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">NFT 与数字藏品：从疯狂到清醒的五年</div></div><div class="info-2"><div class="info-item-1">以真实数据复盘 NFT 五年完整周期：2021 年爆发、2023 年崩塌、2026 年重建。覆盖国内数字藏品平台生存现状（鲸探 1.38 亿用户、幻核关停、iBox 市值蒸发 97%）、八部委 42 号文监管定调、海外 OpenSea 交易量暴跌 96%、以及个人在合规框架下的可行路径。</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/06/26/hexo-llmstxt-guide/" title="llms.txt 收录目录里有哪些有趣的网站"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-26</div><div class="info-item-2">llms.txt 收录目录里有哪些有趣的网站</div></div><div class="info-2"><div class="info-item-1">llms.txt 是让 LLM 零噪音读取网站内容的约定，目前两个收录目录已收录 1600+ 站点。本文从中筛选出 AI 平台、开发者工具、开源框架、金融加密、MCP 生态等类别的有趣站点，观察 llms.txt 标准的真实采用图景。</div></div></div></a><a class="pagination-related" href="/2026/06/17/hexo-ai-data-channel/" title="Hexo AI 数据通道：让 AI 零噪音读取博客内容"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-17</div><div class="info-item-2">Hexo AI 数据通道：让 AI 零噪音读取博客内容</div></div><div class="info-2"><div class="info-item-1">完整的 Hexo AI 数据通道解决方案：通过构建时生成静态 JSON/MD/TXT 文件，让 AI Agent 获取零噪音的博客文章内容，完美兼容 GitHub Pages，支持加密文章保护。</div></div></div></a><a class="pagination-related" href="/2026/06/22/pdc-protocol/" title="PDC 协议：让博客同时服务人类与 AI 的平行数据通道"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-22</div><div class="info-item-2">PDC 协议：让博客同时服务人类与 AI 的平行数据通道</div></div><div class="info-2"><div class="info-item-1">PDC（Parallel Data Channel）是 llms.txt 标准的 Hexo 增强实现，让静态博客同时服务人类读者和 AI Agent。通过构建时生成平行数据通道（JSON/MD/TXT），实现人类看 HTML、AI 读零噪音 Markdown，四层架构覆盖数据通道、文章格式、内容注入和静态托管兼容性，零运行时开销，完美适配 GitHub Pages。</div></div></div></a><a class="pagination-related" href="/2026/06/17/hexo-cognitive-management/" title="用 Hexo 搭建认知管理系统"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-17</div><div class="info-item-2">用 Hexo 搭建认知管理系统</div></div><div class="info-2"><div class="info-item-1">介绍如何用 Hexo + Butterfly 主题搭建一个 AI 索引友好的认知管理系统，涵盖项目架构、文章命名规范、Front-Matter 设计、内容索引策略和自动化部署流程。</div></div></div></a><a class="pagination-related" href="/2026/06/22/hexo-pdc-mcp-adapter/" title="PDC 协议接入 MCP 生态：两种部署模式实战"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-22</div><div class="info-item-2">PDC 协议接入 MCP 生态：两种部署模式实战</div></div><div class="info-2"><div class="info-item-1">PDC 通过薄适配器接入 MCP 生态，让 Qoder、Claude Desktop、Cursor 等 MCP 客户端直接访问静态博客内容。本文详细讲解本地 stdio 和远程 HTTP（Cloudflare Worker）两种部署模式的实现细节、配置方法和适用场景，附完整代码和手动测试流程。</div></div></div></a><a class="pagination-related" href="/2026/07/07/ai-memory-integration-comparison/" title="Hexo 认知系统 + 记忆库集成：三种方案的深度对比与选择"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-07</div><div class="info-item-2">Hexo 认知系统 + 记忆库集成：三种方案的深度对比与选择</div></div><div class="info-2"><div class="info-item-1">Hexo 是出版系统，不是记忆系统。本文深度对比三种记忆库（Mem0、EverOS、sqlite-vec）与 Hexo PDC 的集成方案，从架构设计、检索精度、写入摩擦、可审计性四个维度剖析，给出决策树和行动指南。不是选一个，是把三个拼起来。</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="author-info-name">Bsheepcoder</div><div class="author-info-description">认知管理系统 · AI 索引友好 · 记录与检索并重</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">159</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Bsheepcoder"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color:#ff7c5c"></i></a><a class="social-icon" href="https://github.com/Bsheepcoder" target="_blank" title="Github"><i class="fab fa-github" style="color:#24292e"></i></a><a class="social-icon" href="https://linux.do/" target="_blank" title="LinuxDo"><i class="custom-icon-linuxdo"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">本站基于 <a target="_blank" rel="noopener" href="https://llmstxt.org">llms.txt</a> 标准，通过 <a href="/pdc-protocol.md">PDC</a> 扩展 AI 数据端点，<a href="/llms.txt">/llms.txt</a> 零噪音读取全部内容。欢迎加入 <a href="/flink/">llms.txt 采用者网络</a>，<a target="_blank" rel="noopener" href="https://github.com/Bsheepcoder/Bsheepcoder.github.io/issues">提交申请</a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-PDC"><span class="toc-number">1.</span> <span class="toc-text">为什么需要 PDC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#llms-txt-%E9%87%87%E7%94%A8%E8%80%85%E7%BD%91%E7%BB%9C%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">2.</span> <span class="toc-text">llms.txt 采用者网络是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%8A%A0%E5%85%A5%EF%BC%884-%E6%AD%A5%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">如何加入（4 步）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-1-%E6%AD%A5%EF%BC%9A%E5%AE%9E%E7%8E%B0-llms-txt-PDC-%E6%89%A9%E5%B1%95%E7%AB%AF%E7%82%B9"><span class="toc-number">3.1.</span> <span class="toc-text">第 1 步：实现 llms.txt + PDC 扩展端点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-2-%E6%AD%A5%EF%BC%9A%E6%8F%90%E4%BA%A4%E7%94%B3%E8%AF%B7"><span class="toc-number">3.2.</span> <span class="toc-text">第 2 步：提交申请</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-3-%E6%AD%A5%EF%BC%9A%E8%87%AA%E5%8A%A8%E9%AA%8C%E8%AF%81"><span class="toc-number">3.3.</span> <span class="toc-text">第 3 步：自动验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-4-%E6%AD%A5%EF%BC%9A%E4%BA%92%E9%93%BE"><span class="toc-number">3.4.</span> <span class="toc-text">第 4 步：互链</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E8%84%9A%E6%9C%AC%E8%AF%A6%E8%A7%A3"><span class="toc-number">4.</span> <span class="toc-text">验证脚本详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6"><span class="toc-number">4.1.</span> <span class="toc-text">前提条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E5%8D%95%E4%B8%AA%E7%AB%99%E7%82%B9"><span class="toc-number">4.2.</span> <span class="toc-text">验证单个站点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E5%85%A8%E9%83%A8%E9%87%87%E7%94%A8%E8%80%85"><span class="toc-number">4.3.</span> <span class="toc-text">验证全部采用者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E9%A1%B9"><span class="toc-number">4.4.</span> <span class="toc-text">检查项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%87%E7%94%A8%E8%80%85%E7%9A%84%E6%9D%83%E5%88%A9%E4%B8%8E%E4%B9%89%E5%8A%A1"><span class="toc-number">5.</span> <span class="toc-text">采用者的权利与义务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%83%E5%88%A9"><span class="toc-number">5.1.</span> <span class="toc-text">权利</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%89%E5%8A%A1"><span class="toc-number">5.2.</span> <span class="toc-text">义务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%94%A8-RSS-%E5%B0%B1%E5%A4%9F%E4%BA%86"><span class="toc-number">6.</span> <span class="toc-text">为什么不用 RSS 就够了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E7%9C%9F%E5%AE%9E%E7%9A%84-AI-%E6%A3%80%E7%B4%A2%E5%9C%BA%E6%99%AF"><span class="toc-number">7.</span> <span class="toc-text">一个真实的 AI 检索场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E5%9C%A8%E5%B0%B1%E5%BC%80%E5%A7%8B"><span class="toc-number">8.</span> <span class="toc-text">现在就开始</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%BD%AF%E8%91%97%E7%94%B3%E8%AF%B7%E6%8C%87%E5%8D%97/" title="软件著作权申请完全指南：从材料撰写到 AI 时代的合规策略">软件著作权申请完全指南：从材料撰写到 AI 时代的合规策略</a><time datetime="2026-07-23T14:00:00.000Z" title="发表于 2026-07-23 22:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/cs-container-universe/" title="容器宇宙：一部关于隔离与共享的宇宙史">容器宇宙：一部关于隔离与共享的宇宙史</a><time datetime="2026-07-23T12:00:00.000Z" title="发表于 2026-07-23 20:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/ai-9router-guide/" title="9Router：一个 AI 路由器的自组织涌现">9Router：一个 AI 路由器的自组织涌现</a><time datetime="2026-07-23T08:00:00.000Z" title="发表于 2026-07-23 16:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/21/ai-java-framework-landscape/" title="Java AI 框架全景图 2026：选型决策指南">Java AI 框架全景图 2026：选型决策指南</a><time datetime="2026-07-21T12:00:00.000Z" title="发表于 2026-07-21 20:00:00">2026-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/21/ai-langchain4j-practice/" title="Java LLM 集成的工程模式之辩：LangChain4j 与 Spring AI 双轨实践">Java LLM 集成的工程模式之辩：LangChain4j 与 Spring AI 双轨实践</a><time datetime="2026-07-21T05:00:00.000Z" title="发表于 2026-07-21 13:00:00">2026-07-21</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2021 - 2026 By Bsheepcoder</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"></div><script>fetch("https://cdn.busuanzi.cc/api.php",{method:"POST",body:JSON.stringify({url:location.href,referrer:document.referrer})}).then(function(e){return e.json()}).then(function(e){function n(e,n){var u=document.getElementById(e);u&&(u.textContent=n)}n("busuanzi_value_site_uv",e.busuanzi_site_uv),n("busuanzi_value_site_pv",e.busuanzi_site_pv),n("busuanzi_value_page_pv",e.busuanzi_page_pv)}).catch(function(){})</script><script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script><script>window.mermaid&&mermaid.initialize({startOnLoad:!0,theme:"dark"===document.documentElement.getAttribute("data-theme")?"dark":"default"})</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      true
+        ? pjax.loadUrl('/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span> 数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"></div><hr><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.5"></script></div></div></body></html>

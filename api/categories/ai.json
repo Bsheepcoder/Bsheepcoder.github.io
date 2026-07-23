@@ -1,0 +1,26 @@
+{
+  "category": "AI",
+  "slug": "ai",
+  "post_count": 1,
+  "posts": [
+    {
+      "title": "省 Token 实战：10 个开源工具实测评测",
+      "slug": "ai-token-saving",
+      "date": "2026-07-10",
+      "categories": [
+        "技术",
+        "AI"
+      ],
+      "tags": [
+        "AI",
+        "Token优化",
+        "开源工具"
+      ],
+      "description": "从个人开发者调用 API 的角度，实测 10 个省 token 的开源项目，覆盖 AST 压缩、语义压缩、记忆层、语义缓存、约束生成等 10 条路线，每条路线选最强一个，附真实测试数据和安装踩坑记录。",
+      "url": "https://bsheepcoder.github.io/2026/07/10/ai-token-saving/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/ai-token-saving.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/ai-token-saving.md",
+      "encrypted": false
+    }
+  ]
+}

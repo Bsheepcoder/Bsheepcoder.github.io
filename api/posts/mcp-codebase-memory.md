@@ -1,0 +1,192 @@
+## 代码库记忆这回事
+
+LLM 写代码的最大障碍不是不会写，而是**不知道你现有的代码长什么样**。
+
+把一个函数塞进 context，AI 能写好它；把整个仓库塞进去，token 预算瞬间爆炸，注意力被稀释，反而什么都写不好。这不是模型能力问题，是**信息获取效率问题**：AI 需要"读"代码库，但 context window 装不下，grep 又太粗。
+
+传统软件工程早就遇到过同样的问题。IDE 怎么知道一个方法的 callers？靠 LSP 维护的符号表。Sourcegraph 怎么做跨仓库搜索？靠 LSIF/SCIP 索引。ctags 为什么存在了几十年？因为开发者需要快速跳转到符号定义。
+
+这些方案共同指向一个抽象：**把代码库从"文件集合"转化为"可查询的结构化记忆"**。文件集合是给人读的，结构化记忆是给工具查询的。
+
+MCP（Model Context Protocol）的出现，让这套思路有了新的载体。LLM 不再需要把整个仓库塞进 context，而是通过一个标准协议，按需查询代码库的结构化记忆--查一个函数的调用链、查一个类的定义、查两个模块之间的依赖路径。查询返回的是几 KB 的精炼结果，而不是几 MB 的源文件。
+
+这就是"代码库记忆 MCP"赛道在 2026 年爆发的根本原因：**需求一直在，MCP 给了标准化的接入方式**。
+
+## 把代码变成记忆的四种方式
+
+要让 AI"读懂"代码库，核心问题是：用什么数据结构表示代码？
+
+目前业界给出了四种答案，每种都有其原理性的优势和代价。
+
+### 方式一：prompt 打包（无记忆）
+
+最朴素的方式--不建任何索引，直接把代码文件拼成一个长文本塞进 prompt。Repomix、code2prompt 是这一派的代表。
+
+原理上它甚至不算"记忆"，只是"打包"。但它的价值在于简单可靠：没有解析错误，没有索引滞后，所见即所得。Aider 的 repo map 也属于这一脉的轻量变种--用 tree-sitter 提取符号树，但最终仍是塞进 prompt 内联输出，不持久化。
+
+代价同样源于此：**每次对话都要重新打包，token 消耗是 O(仓库大小)**。一个 10 万行的仓库打包后轻松超过 50K tokens，查询 5 次就是 250K tokens，而且每次都是全量重复。这在 toy 项目上无感，在真实工程中不可持续。
+
+### 方式二：AST 符号图谱
+
+tree-sitter 解析出 AST，提取函数/类/方法/调用关系，构建成一张有向图存进数据库。查询时用图查询语言（Cypher）或结构化 API 取子图。
+
+这是当前主流方案，codebase-memory-mcp、Graphify、code-review-graph 都属此派。优势是**确定性**：tree-sitter 的解析结果不依赖 LLM，同一段代码每次解析结果一致，没有幻觉。查询"谁调用了 `UserService.create()`"返回的是精确的调用链，不是"语义相似"的猜测。
+
+代价是**语言覆盖受限于 grammar**。tree-sitter 虽然支持上百种语言，但不同 grammar 的符号提取质量参差不齐。且 AST 只能捕获语法层的"调用/继承/引用"，无法理解语义层的"这个函数在业务上做什么"--这需要类型解析（LSP）或 LLM 补充。
+
+### 方式三：向量 RAG
+
+把代码切片、做 embedding、存向量库，查询时用语义相似度召回相关片段。claude-context、code-graph-rag 属于这一派。
+
+原理上是把代码当作"文本文档"做检索。优势是**语义模糊查询强**："处理用户认证的代码在哪"这种自然语言问题，向量检索能命中，符号图谱做不到。
+
+代价是**精度低、依赖云服务**。向量检索返回的是"相似片段"而非"精确答案"，"谁调用了 X"这种确定性问题，向量检索的准确率远不如图查询。且 embedding 需要调用 API（OpenAI/本地模型），大型仓库的 embedding 成本不低，增量更新也更复杂。
+
+### 方式四：混合（AST + 向量 + 图）
+
+意识到单一方案的局限后，不少项目走混合路线：AST 提取结构关系，向量补充语义搜索，图数据库统一存储。SocratiCode、contextplus 是这一派。
+
+原理上最完整，工程上最复杂。维护三套子系统（解析器、embedding pipeline、图数据库）的协同，部署成本和故障面都更大。适合企业级大规模部署，对个人开发者偏重。
+
+### 四派对比
+
+| 方式 | token 效率 | 精确查询 | 语义查询 | 增量成本 | 依赖 |
+|------|-----------|---------|---------|---------|------|
+| prompt 打包 | 最低（O(repo)） | 强（全量可见） | 弱 | 无 | 无 |
+| AST 图谱 | 高（O(查询结果)） | **强** | 弱 | 低 | tree-sitter |
+| 向量 RAG | 中 | 弱 | **强** | 高（重嵌入） | embedding API |
+| 混合 | 高 | 强 | 强 | 高 | 全套 |
+
+> 四种方式不是互斥的"对错"，是不同查询模式的权衡。真正的问题不是"哪种最好"，而是"你的查询模式是什么"。
+
+## 两个范式的代表
+
+在 AST 图谱派内部，又分化出两种截然不同的工程范式。以两个头部项目为例。
+
+### codebase-memory-mcp：查询型数据库
+
+**核心隐喻**：代码库是一个数据库，LLM 是查询客户端。
+
+用 C 实现，单静态二进制零依赖。tree-sitter 解析 158 种语言，对其中 9 种（Python/TS/JS/Go/C/C++/Java 等）额外做 Hybrid LSP 类型解析增强。解析结果存入 SQLite（LZ4 压缩 + Aho-Corasick 加速），通过 Cypher 查询。
+
+它的设计目标很纯粹：**性能与精度**。Linux kernel 28M 行代码 3 分钟索引完，结构查询 < 1ms。官方 benchmark 显示 5 次结构查询约消耗 3,400 tokens，对比文件遍历的 412,000 tokens，约 120 倍的缩减。
+
+这个范式的关键特征是**拉模型**：LLM 主动调用 MCP tool 查询，按需获取子图。代码库的数据常驻 SQLite，不进 context，不进 git，是一个无头查询服务。
+
+它不碰文档、PDF、图片--因为那些需要 LLM 解析，会引入不确定性。纯代码、纯 AST、纯确定性，是它的安全边界。
+
+### Graphify：理解型地图
+
+**核心隐喻**：代码库是一张可探索的概念地图，AI 和人都能看。
+
+用 Python 实现，`uv tool install` 安装。tree-sitter 解析 36 种语言，但**不止于代码**--文档、PDF、图片、视频都能映射进同一张图。代码部分本地解析零 LLM 调用，文档/图片部分调用 LLM 做语义抽取。
+
+它的设计目标不同：**理解广度与可探索性**。构建后产出三件套：`graph.html`（交互式力导向图，Leiden 社区检测着色，浏览器可点可搜）、`GRAPH_REPORT.md`（关键概念、意外连接、建议问题）、`graph.json`（完整图数据）。
+
+关键特征是**推模型 + 团队协作**：构建时生成静态产物，`graph.json` 提交进 git，团队成员共享。配合 git hook 自动重建，还有 merge driver 让两人并行提交时 graph.json 自动 union 合并。每条边标注 `EXTRACTED`/`INFERRED`/`AMBIGUOUS` 置信度，让你区分"源码直接读到的"和"LLM 推断的"。
+
+### 范式差异的本质
+
+| 维度 | codebase-memory-mcp（查询型） | Graphify（理解型） |
+|------|------|------|
+| 数据访问 | 拉模型：LLM 主动查 SQLite | 推模型：LLM 读静态产物 |
+| 计算边界 | 纯代码，零 LLM | 代码 + 文档/图片/视频（LLM） |
+| 产物形态 | 常驻 MCP Server | 三件套静态文件（提交 git） |
+| 查询精度 | Cypher < 1ms | CLI 遍历 JSON |
+| 增量机制 | SQLite 差异更新 | `--update` + git merge driver |
+| 可信度标注 | 无（纯确定） | 每条边 EXTRACTED/INFERRED |
+| 可视化 | 无 | 交互式 graph.html |
+
+这不是"谁更好"的问题，是两种查询模式的分工。**精确结构查询**（"谁调用了 X"、"这个函数的所有 callers"）是 codebase-memory-mcp 的主场；**全局架构理解**（"这个项目的 auth 和 db 怎么连起来的"、"哪些是核心概念"）是 Graphify 的主场。
+
+## 核心赛道全量对比
+
+2026 年这一赛道已成红海。以下是"把代码库索引成结构化记忆供 LLM 读取"的核心赛道项目全量对比，按 stars 排序。
+
+| 项目 | stars | 语言 | 原理 | 持久化 | 增量 | 语言覆盖 | 查询方式 | MCP | 单二进制 |
+|------|-------|------|------|--------|------|---------|---------|-----|---------|
+| **Graphify-Labs/graphify** | 80.5k | Python | AST+社区检测+多模态 | graph.json | git hook+merge | 36 语言 | CLI+MCP(可选) | 可选 | 否 |
+| **colbymchenry/codegraph** | 58.6k | TS | AST+图谱+自动同步 | 是 | 自动同步 | 主打 JS/TS/iOS | MCP tools | 是 | Node bundle |
+| **DeusData/codebase-memory-mcp** | 28.6k | C | AST+Hybrid LSP+图谱 | SQLite | 是 | **158 语言+9 LSP** | Cypher 图查询 | 是 | **是** |
+| **tirth8205/code-review-graph** | 19.3k | Python | AST+图+增量 | 是 | **增量** | tree-sitter 通用 | MCP+CLI | 是 | 否 |
+| **zilliztech/claude-context** | 12.1k | TS | 向量 RAG | 向量库 | 增量嵌入 | 任意 | 语义搜索 | 是 | 否 |
+| **CodeGraphContext** | 3.9k | Python | 图数据库 | 是 | 否 | 未明示 | 图查询 | 是 | 否 |
+| **SocratiCode** | 3.1k | TS | AST+向量+图混合 | Qdrant | 是 | 多语言 | 混合搜索 | 是 | 否 |
+| **code-graph-rag** | 2.3k | Python | RAG+Memgraph | Memgraph | 是 | 多语言 | 图+语义 | 是 | 否 |
+| **jcodemunch-mcp** | 2.0k | Python | AST 符号检索 | 是 | 否 | tree-sitter | 符号查询 | 是 | 否 |
+| **contextplus** | 1.9k | TS | AST+RAG+聚类 | 是 | 否 | TS/Py/Rust/Go | 语义+结构 | 是 | 否 |
+| **axon** | 0.7k | Python | 图驱动 | 是 | 否 | 有限 | MCP tools | 是 | 否 |
+| **roam-code** | 0.5k | Python | SQLite 图 | SQLite | 是 | 28 语言 | 243 tools | 是 | 否 |
+| **tokensave** | 0.4k | Rust | libSQL 图 | libSQL | 是 | 30+ 语言 | 40+ tools | 是 | 否 |
+| **code-context-engine** | 0.3k | Python | 索引搜索 | 是 | 是 | 通用 | 搜索 | 是 | 否 |
+| **mcp-server-tree-sitter** | 0.3k | Python | 纯 AST 符号 | 否 | 否 | tree-sitter | 符号 | 是 | 否 |
+
+> 另有通用记忆层（mem0、Graphiti）、代码打包（Repomix、code2prompt）、静态分析（ast-grep、CodeQL、ctags）、Agent 内置（Aider repo map、Goose）等相邻赛道项目，因原理或场景差异未纳入此表。
+
+### 关键差异维度
+
+**语言覆盖**：codebase-memory-mcp 的 158 语言 + 9 语言 Hybrid LSP 是绝对领先。Graphify 36 语言、code-review-graph 通用 tree-sitter、codegraph 主打 JS/TS 生态。如果你的仓库是多语言混合（如 C++ + Python + Go），覆盖广度直接决定可用性。
+
+**性能**：codebase-memory-mcp 是唯一给出硬性 benchmark 的项目（Linux kernel 28M LOC / 3 分钟、< 1ms 查询）。C 实现确保延迟下限。Python/TS 实现在大型仓库上的性能上限更低，但多数项目未公开 benchmark，无法直接比较。
+
+**增量索引**：code-review-graph 把增量作为头号卖点（38x-528x token 缩减，跨 6 仓库 benchmark）。Graphify 的 `--update` + git hook + merge driver 组合在团队协作场景下更成熟。codebase-memory-mcp 内置 SQLite 增量但 README 未突出。
+
+**Agent 集成**：Graphify 覆盖 20+ 个 AI 助手（skill 文件 + PreToolUse hook），codebase-memory-mcp 覆盖 11 个（MCP tool 注册）。前者是"指令注入让 AI 主动用图"，后者是"暴露工具让 AI 按需查"。
+
+**可信度**：Graphify 的 `EXTRACTED`/`INFERRED`/`AMBIGUOUS` 边标注是独有设计。纯 AST 项目无此问题（全确定），但一旦引入 LLM 语义抽取（多模态场景），这个标注就是必需的信任边界。
+
+**安全**：codebase-memory-mcp 的 SLSA L3 签名 + 70+ 杀软扫描是企业级供应链安全。其余项目均无。如果代码库敏感、供应链审计严格，这是硬门槛。
+
+## 没有银弹
+
+以上分析基于原理和官方数据，但每个项目都有必须说清的局限。
+
+**codebase-memory-mcp 的短板**：社区规模（28.6k）落后于 Graphify（80.5k）和 codegraph（58.6k），生态效应可能滞后。C 实现虽然性能强，但社区贡献门槛高--修改一个 grammar 的解析逻辑需要懂 C 和 tree-sitter API，远不如 Python/TS 改起来快。增量索引能力在 README 中未充分展示，而这是竞品的主打卖点。商业化路径不明确，纯开源项目的长期维护有不确定性。
+
+**Graphify 的短板**：Python 实现在大型仓库上的性能是未知数，未公开 benchmark。36 语言覆盖虽不少，但与 codebase-memory-mcp 的 158 语言差距明显。多模态引入的 LLM 调用带来两个风险：一是 API 成本（文档/PDF/图片的语义抽取都消耗 token），二是 `INFERRED` 边的可信度--即便标注了，AI 是否会过度信任推断结果仍是开放问题。商业产品 Penpax 的存在意味着核心功能可能逐步向商业版倾斜。
+
+**code-review-graph 的短板**：聚焦 code review 场景，通用性不如前两者。Python 实现，性能受限。
+
+**向量 RAG 派的共性问题**：依赖 embedding API（云或本地模型），部署链路多一环。语义检索的"相似"不等于"正确"，精确调用链查询的准确率不如图查询。增量更新需要重新 embedding 变更文件，成本高于 AST 重新解析。
+
+**混合派的共性问题**：三套子系统的协同复杂度高，一个环节出问题（如 embedding 服务挂了）整个系统降级。适合有运维能力的团队，不适合个人开发者。
+
+**整个赛道的共同风险**：这是一个 2026 年初才爆发的赛道，多数项目创建于 2026-01 至 2026-04，距今不到半年。技术路线尚未收敛，API 不稳定，breaking change 频繁。现在选定任何一个项目，都要做好半年后迁移的准备。
+
+## 如何选型
+
+回到最初的问题：哪个最强、最符合工程实践？
+
+**没有绝对的最强，只有场景的匹配**。工程实践不是单一维度的"性能最高"或"stars 最多"，而是"在你的约束下，哪个方案的代价最小"。
+
+#### 场景一：大型纯代码仓库 + 精确结构查询
+
+**选 codebase-memory-mcp**。
+
+典型问题："谁调用了 `UserService.create()`"、"这个函数的所有 callers"、"这个类的继承链"。仓库规模在百万行级，多语言混合。你需要的是精确的调用链分析，不是"语义相似"的猜测。C 实现的性能和 SQLite 的查询延迟在这个场景下不可替代。158 语言覆盖确保你的多语言仓库不会"漏文件"。
+
+#### 场景二：代码 + 文档混合体 + 团队共享 + 架构理解
+
+**选 Graphify**。
+
+典型问题："这个项目的 auth 和 db 怎么连起来的"、"哪些是核心概念 god nodes"、"给我一张能点的架构图"。仓库规模中小型，代码和文档并重，团队多人协作。你需要的是全局理解而非精确查询，是可探索的地图而非查询终端。多模态支持和团队协作工作流（git 提交 + merge driver）在这个场景下价值最大。
+
+#### 场景三：增量 code review 场景
+
+**选 code-review-graph**。
+
+典型问题："这次改动影响了哪些调用链"、"PR 的 blast radius 多大"。你的核心需求是每次代码变更后快速增量更新图谱，评估影响范围。增量索引是它的头号卖点，且有跨 6 仓库的 benchmark 佐证。
+
+#### 场景四：语义模糊查询 + 已有向量基础设施
+
+**选 claude-context 或 SocratiCode**。
+
+典型问题："处理用户认证的代码在哪"这种自然语言问题。你已有向量库（Qdrant/Zilliz）或愿意部署，对精确性要求不高，对语义召回要求高。
+
+#### 不建议的场景
+
+- **超小仓库（< 1 万行）**：直接 Repomix 打包进 prompt 即可，任何索引方案都是过度工程。
+- **敏感代码库 + 严格供应链审计**：目前只有 codebase-memory-mcp 有 SLSA L3，其余项目的供应链安全均为空白。
+- **需要长期稳定的生产环境**：整个赛道不满半年，技术路线未收敛，建议观望或准备迁移方案。
+
+> 代码库记忆 MCP 解决的是"AI 读代码"的效率问题，不是"AI 写代码"的能力问题。选型时先想清楚你的 AI 最常做的是"精确查询结构"还是"理解全局架构"，答案自然浮现。

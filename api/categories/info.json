@@ -1,0 +1,127 @@
+{
+  "category": "信息获取",
+  "slug": "info",
+  "post_count": 6,
+  "posts": [
+    {
+      "title": "本地分布式存储：从坚果云到 IPFS 的三代范式",
+      "slug": "info-local-distributed-storage",
+      "date": "2026-07-03",
+      "categories": [
+        "技术",
+        "信息获取"
+      ],
+      "tags": [
+        "开源",
+        "信息获取",
+        "分布式存储",
+        "Syncthing",
+        "IPFS",
+        "Rclone"
+      ],
+      "description": "深度解析本地分布式存储方案：从坚果云到Syncthing、Rclone、IPFS，探索P2P同步、云存储统一、去中心化存储三代范式，以及AI时代数据主权的意义。",
+      "url": "https://bsheepcoder.github.io/2026/07/03/info-local-distributed-storage/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/info-local-distributed-storage.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/info-local-distributed-storage.md",
+      "encrypted": false
+    },
+    {
+      "title": "AIO：AI 时代的 SEO，从搜索排名到 AI 引用",
+      "slug": "信息获取-aio-ai-seo",
+      "date": "2026-06-26",
+      "categories": [
+        "技术",
+        "信息获取"
+      ],
+      "tags": [
+        "llms.txt",
+        "信息获取",
+        "AIO",
+        "SEO"
+      ],
+      "description": "当用户不再搜索而是直接问 AI，传统 SEO 正在被 AIO（AI Optimization）取代。本文从搜索行为的根本变化出发，分析 SEO 到 AIO 的范式转移，介绍 llms.txt 标准如何成为 AIO 的基础设施，并以本站的 PDC 实现为案例，展示从内容优化到 AI 引用的完整路径。",
+      "url": "https://bsheepcoder.github.io/2026/06/26/信息获取-aio-ai-seo/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/信息获取-aio-ai-seo.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/信息获取-aio-ai-seo.md",
+      "encrypted": false
+    },
+    {
+      "title": "NFT 与数字藏品：从疯狂到清醒的五年",
+      "slug": "信息获取-nft-2026-status",
+      "date": "2026-06-26",
+      "categories": [
+        "技术",
+        "信息获取"
+      ],
+      "tags": [
+        "信息获取",
+        "NFT",
+        "数字藏品"
+      ],
+      "description": "以真实数据复盘 NFT 五年完整周期：2021 年爆发、2023 年崩塌、2026 年重建。覆盖国内数字藏品平台生存现状（鲸探 1.38 亿用户、幻核关停、iBox 市值蒸发 97%）、八部委 42 号文监管定调、海外 OpenSea 交易量暴跌 96%、以及个人在合规框架下的可行路径。",
+      "url": "https://bsheepcoder.github.io/2026/06/26/信息获取-nft-2026-status/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/信息获取-nft-2026-status.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/信息获取-nft-2026-status.md",
+      "encrypted": false
+    },
+    {
+      "title": "免费公开 API 收集：国内可直连的数据源索引",
+      "slug": "信息获取-public-api-collection",
+      "date": "2026-06-25",
+      "categories": [
+        "技术",
+        "信息获取"
+      ],
+      "tags": [
+        "Agent",
+        "RAG",
+        "API",
+        "信息获取",
+        "数据源"
+      ],
+      "description": "从 GitHub 仓库和实测中直接提取的国内可直连免费 API：金融行情、天气、地理定位、学术医疗、航天、新闻、开放数据、测试数据、机器学习、免费 LLM API（OpenRouter/GitHub Models/Cloudflare/Groq/LLM7.io 等）、AI Agent 技能生态，50+ 接口附可用性验证脚本。",
+      "url": "https://bsheepcoder.github.io/2026/06/25/信息获取-public-api-collection/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/信息获取-public-api-collection.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/信息获取-public-api-collection.md",
+      "encrypted": false
+    },
+    {
+      "title": "RSS 日报 · 2026-06-18",
+      "slug": "rss-daily-2026-06-18",
+      "date": "2026-06-18",
+      "categories": [
+        "技术",
+        "信息获取"
+      ],
+      "tags": [
+        "信息获取",
+        "RSS",
+        "日报"
+      ],
+      "description": "2026年6月18日 RSS 日报，从 16 个可信源中精选 20 条重要资讯，涵盖 AI、科学、安全、商业、国际新闻等领域，附分析师解读。",
+      "url": "https://bsheepcoder.github.io/2026/06/18/rss-daily-2026-06-18/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/rss-daily-2026-06-18.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/rss-daily-2026-06-18.md",
+      "encrypted": false
+    },
+    {
+      "title": "RSS 源大全：可信信息获取的数据源清单",
+      "slug": "rss-source-collection",
+      "date": "2026-06-17",
+      "categories": [
+        "技术",
+        "信息获取"
+      ],
+      "tags": [
+        "信息获取",
+        "RSS",
+        "数据源"
+      ],
+      "description": "经过实际验证的 RSS 源大全，按学术、AI、技术、新闻、独立博客分类，标注可访问性和可信度，附简单介绍和推荐订阅组合。",
+      "url": "https://bsheepcoder.github.io/2026/06/17/rss-source-collection/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/rss-source-collection.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/rss-source-collection.md",
+      "encrypted": false
+    }
+  ]
+}

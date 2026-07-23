@@ -1,0 +1,85 @@
+{
+  "category": "MCP",
+  "slug": "mcp",
+  "post_count": 4,
+  "posts": [
+    {
+      "title": "拆解 codebase-memory-mcp：用 C 把代码库压进知识图谱的工程艺术",
+      "slug": "mcp-codebase-memory-deep-dive",
+      "date": "2026-07-09",
+      "categories": [
+        "技术",
+        "MCP"
+      ],
+      "tags": [
+        "MCP",
+        "知识图谱",
+        "tree-sitter"
+      ],
+      "description": "从源码层面深度拆解 codebase-memory-mcp 的灵魂内核：RAM-first 管道、Hybrid LSP 类型解析、11 信号语义相似度、RaBitQ 量化、MinHash+LSH 近克隆检测、自研 Cypher 引擎，解析每个工程取舍背后的原理。",
+      "url": "https://bsheepcoder.github.io/2026/07/09/mcp-codebase-memory-deep-dive/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/mcp-codebase-memory-deep-dive.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/mcp-codebase-memory-deep-dive.md",
+      "encrypted": false
+    },
+    {
+      "title": "代码库记忆 MCP 横评：让 AI 真正读懂你的代码库",
+      "slug": "mcp-codebase-memory",
+      "date": "2026-07-09",
+      "categories": [
+        "技术",
+        "MCP"
+      ],
+      "tags": [
+        "MCP",
+        "知识图谱",
+        "代码智能"
+      ],
+      "description": "深度对比 codebase-memory-mcp、Graphify 等 15+ 个代码库记忆类 MCP 项目，从 tree-sitter AST 到知识图谱，从向量 RAG 到社区检测，解析各派原理与工程实践差异，给出按场景的选型建议。",
+      "url": "https://bsheepcoder.github.io/2026/07/09/mcp-codebase-memory/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/mcp-codebase-memory.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/mcp-codebase-memory.md",
+      "encrypted": false
+    },
+    {
+      "title": "MCP 是伪需求吗？从 AI Native 本质砍掉 80% 无效场景",
+      "slug": "mcp-pseudo-demand",
+      "date": "2026-07-06",
+      "categories": [
+        "技术",
+        "MCP"
+      ],
+      "tags": [
+        "MCP",
+        "AI Native",
+        "洞察",
+        "伪需求"
+      ],
+      "description": "MCP 协议本身不是伪需求，但当前 80% 的 MCP 使用场景是伪需求——用 token 换一次网页点击。本文给出 AI 增量价值判别框架，区分信息搬运、信息加工、信息创造三类场景，帮你砍掉伪需求，把时间花在没有 AI 就办不到的真需求上。",
+      "url": "https://bsheepcoder.github.io/2026/07/06/mcp-pseudo-demand/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/mcp-pseudo-demand.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/mcp-pseudo-demand.md",
+      "encrypted": false
+    },
+    {
+      "title": "云效 MCP Server 接入手册：把 AI 编程助手接到你的 DevOps 流水线",
+      "slug": "mcp-yunxiao-devops-deep-dive",
+      "date": "2026-07-06",
+      "categories": [
+        "技术",
+        "MCP"
+      ],
+      "tags": [
+        "MCP",
+        "云效",
+        "DevOps",
+        "阿里云"
+      ],
+      "description": "个人开发者怎么把云效 MCP Server 接到 Cursor / Claude Desktop / AI 编程助手，让 AI 从需求录入一直跟进到部署完成。基于真实组织实测，给出 5 分钟接入配置、9 个核心工具的工作流速查、4 阶段需求跟进完整流程、5 个落地工作流优化灵感。开支是 token、收益是 AI 真的能看见你的研发系统在做什么。",
+      "url": "https://bsheepcoder.github.io/2026/07/06/mcp-yunxiao-devops-deep-dive/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/mcp-yunxiao-devops-deep-dive.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/mcp-yunxiao-devops-deep-dive.md",
+      "encrypted": false
+    }
+  ]
+}

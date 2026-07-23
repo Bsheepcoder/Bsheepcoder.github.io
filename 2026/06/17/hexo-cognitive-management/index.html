@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>用 Hexo 搭建认知管理系统 | Q's blog</title><meta name="author" content="Bsheepcoder"><meta name="copyright" content="Bsheepcoder"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="介绍如何用 Hexo + Butterfly 主题搭建一个 AI 索引友好的认知管理系统，涵盖项目架构、文章命名规范、Front-Matter 设计、内容索引策略和自动化部署流程。"><meta property="og:type" content="article"><meta property="og:title" content="用 Hexo 搭建认知管理系统"><meta property="og:url" content="https://bsheepcoder.github.io/2026/06/17/hexo-cognitive-management/"><meta property="og:site_name" content="Q&#39;s blog"><meta property="og:description" content="介绍如何用 Hexo + Butterfly 主题搭建一个 AI 索引友好的认知管理系统，涵盖项目架构、文章命名规范、Front-Matter 设计、内容索引策略和自动化部署流程。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://bsheepcoder.github.io/img/avatar.jpg"><meta property="article:published_time" content="2026-06-17T12:10:00.000Z"><meta property="article:modified_time" content="2026-06-28T18:54:47.000Z"><meta property="article:author" content="Bsheepcoder"><meta property="article:tag" content="AI"><meta property="article:tag" content="Hexo"><meta property="article:tag" content="认知管理"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bsheepcoder.github.io/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "用 Hexo 搭建认知管理系统",
+  "url": "https://bsheepcoder.github.io/2026/06/17/hexo-cognitive-management/",
+  "image": "https://bsheepcoder.github.io/img/avatar.jpg",
+  "datePublished": "2026-06-17T12:10:00.000Z",
+  "dateModified": "2026-06-28T18:54:47.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Bsheepcoder",
+      "url": "https://bsheepcoder.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="https://bsheepcoder.github.io/2026/06/17/hexo-cognitive-management/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload='this.media="all"'><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload='this.media="all"'><script>(() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":3,"unescape":true,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":30,"languages":{"author":"作者: Bsheepcoder","link":"链接: ","source":"来源: Q's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={title:"用 Hexo 搭建认知管理系统",isHighlightShrink:!1,isToc:!0,pageType:"post"}</script><link rel="stylesheet" href="/css/custom.css"><style>#reading-progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#49b1f5,#ff7c5c);z-index:9999;transition:width .1s}</style><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="Q's blog" type="application/atom+xml"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">159</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/flink/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Q's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">用 Hexo 搭建认知管理系统</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span> 返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/flink/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">用 Hexo 搭建认知管理系统</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2026-06-17T12:10:00.000Z" title="发表于 2026-06-17 20:10:00">2026-06-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/hexo/">建站</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><html><head></head><body><div class="post-header-meta"><span class="ai-data-links"><i class="fas fa-robot"></i>AI 数据通道：<a href="https://bsheepcoder.github.io/api/posts/hexo-cognitive-management.json">JSON</a><span class="sep">·</span><a href="https://bsheepcoder.github.io/api/posts/hexo-cognitive-management.md">Markdown</a></span></div><h2 id="为什么用-Hexo-做认知管理"><a href="#为什么用-Hexo-做认知管理" class="headerlink" title="为什么用 Hexo 做认知管理"></a>为什么用 Hexo 做认知管理 <a class="header-anchor" href="#为什么用-Hexo-做认知管理" title="永久链接">#</a></h2><p>知识管理的核心痛点不是”存”，而是”找”。传统的笔记软件（Notion、Obsidian、语雀）各自封闭，数据无法被搜索引擎和 AI 直接检索。而 Hexo 作为一个静态博客生成器，天然具备三个优势：</p><ol><li><strong>数据即文件</strong> — 所有内容是本地 Markdown，无平台锁定</li><li><strong>结构化索引</strong> — <code>search.json</code> 提供机器可读的全文索引</li><li><strong>公开可检索</strong> — 部署到 GitHub Pages 后，内容可被 Google 和 AI 搜索引擎索引</li></ol><p>这个项目不是”写博客”，而是构建一个<strong>个人知识的外化系统</strong>：把学过的知识用结构化的方式记录下来，既便于自己检索，也能被 AI 工具消费。</p><h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈 <a class="header-anchor" href="#技术栈" title="永久链接">#</a></h2><table><thead><tr><th>组件</th><th>选型</th><th>说明</th></tr></thead><tbody><tr><td>框架</td><td>Hexo 8.x</td><td>静态站点生成器</td></tr><tr><td>主题</td><td>Butterfly 5.5.5</td><td>暗色模式，通过 npm 安装</td></tr><tr><td>搜索</td><td>hexo-generator-searchdb</td><td>生成本地搜索索引 <code>search.json</code></td></tr><tr><td>字数统计</td><td>hexo-wordcount</td><td>文章阅读时长估算</td></tr><tr><td>部署</td><td>hexo-deployer-git</td><td>一键推送 GitHub Pages</td></tr><tr><td>CDN</td><td>jsDelivr</td><td>第三方资源加速</td></tr><tr><td>数学公式</td><td>MathJax</td><td>按文章按需加载</td></tr></tbody></table><h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构 <a class="header-anchor" href="#项目结构" title="永久链接">#</a></h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">blog/<br>├── _config.yml                # Hexo 主配置（站点信息、URL、部署）<br>├── _config.butterfly.yml      # 主题配置（导航、侧边栏、评论）<br>├── scaffolds/post.md          # 文章模板（含 front-matter 骨架）<br>├── source/<br>│   ├── _posts/                # 文章 Markdown 源文件<br>│   ├── about/                 # 关于页<br>│   ├── categories/            # 分类页<br>│   ├── tags/                  # 标签页<br>│   └── img/                   # 图片资源<br>├── public/                    # 构建产物（hexo g 生成）<br>└── .deploy_git/               # 部署临时目录（自动生成）<br></code></pre></td></tr></tbody></table></figure><p>配置原则：<strong>主题配置改 <code>_config.butterfly.yml</code>，不改 <code>node_modules/</code> 里的默认文件</strong>。</p><h2 id="文章命名规范"><a href="#文章命名规范" class="headerlink" title="文章命名规范"></a>文章命名规范 <a class="header-anchor" href="#文章命名规范" title="永久链接">#</a></h2><p>文件名是 URL slug 的来源，直接决定可检索性。采用 <code>{领域前缀}-{子主题}.md</code> 格式：</p><table><thead><tr><th>前缀</th><th>对应分类</th><th>前缀</th><th>对应分类</th></tr></thead><tbody><tr><td><code>ai-</code></td><td>人工智能</td><td><code>cpp-</code></td><td>C/C++</td></tr><tr><td><code>python-</code></td><td>Python</td><td><code>java-</code></td><td>Java</td></tr><tr><td><code>linux-</code></td><td>Linux</td><td><code>hexo-</code></td><td>建站</td></tr><tr><td><code>algo-</code></td><td>算法</td><td><code>db-</code></td><td>数据库</td></tr><tr><td><code>frontend-</code></td><td>前端</td><td><code>ros-</code></td><td>机器人</td></tr></tbody></table><p>规则：</p><ul><li>全小写<strong>英文</strong>，连字符分隔</li><li><strong>文件名必须全英文</strong>，禁止中文（<code>计算机基础-tee.md</code> ✗ → <code>cs-tee.md</code> ✓）</li><li>禁止纯数字后缀（<code>Python1.md</code> ✗ → <code>python-intro.md</code> ✓）</li><li>禁止下划线（<code>AI_History.md</code> ✗ → <code>ai-history.md</code> ✓）</li><li>子主题描述性强，能从文件名推断内容</li></ul><h2 id="Front-Matter-设计"><a href="#Front-Matter-设计" class="headerlink" title="Front-Matter 设计"></a>Front-Matter 设计 <a class="header-anchor" href="#Front-Matter-设计" title="永久链接">#</a></h2><p>每篇文章的 YAML 头部是 AI 和搜索引擎消费的元数据，所有字段必填：</p><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">"文章标题"</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2026-06-17 12:00:00</span><br><span class="hljs-attr">categories:</span><br>  <span class="hljs-bullet">-</span> [<span class="hljs-string">技术</span>, <span class="hljs-string">人工智能</span>]<br><span class="hljs-attr">tags:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">AI</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">强化学习</span><br><span class="hljs-attr">description:</span> <span class="hljs-string">"50-150字摘要，会被 search.json 索引，供本地搜索和 AI 检索使用。"</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></tbody></table></figure><p>设计要点：</p><ul><li><strong>categories</strong> 用二级分类 <code>[大类, 子类]</code>，与文件名前缀对齐，分类页据此自动组织</li><li><strong>tags</strong> 2-5 个，第一个必须与文件名领域前缀对齐</li><li><strong>description</strong> 是最重要的字段 — 被 <code>search.json</code> 全文索引，AI 检索时优先读取。必须 50-150 字，单行不换行，引号成对闭合</li><li><strong>mathjax: true</strong> 按需添加（因 <code>per_page: false</code>，需逐文章开启）</li></ul><h2 id="内容索引策略"><a href="#内容索引策略" class="headerlink" title="内容索引策略"></a>内容索引策略 <a class="header-anchor" href="#内容索引策略" title="永久链接">#</a></h2><p>系统提供三种检索方式，覆盖不同场景：</p><h3 id="策略一：读取源文件（最可靠）"><a href="#策略一：读取源文件（最可靠）" class="headerlink" title="策略一：读取源文件（最可靠）"></a>策略一：读取源文件（最可靠） <a class="header-anchor" href="#策略一：读取源文件（最可靠）" title="永久链接">#</a></h3><p>直接读取 <code>source/_posts/</code> 下的 Markdown 源文件，数据最新、含完整 front-matter 和原始内容。适合修改单篇已知文章。</p><h3 id="策略二：解析-search-json（最轻量）"><a href="#策略二：解析-search-json（最轻量）" class="headerlink" title="策略二：解析 search.json（最轻量）"></a>策略二：解析 search.json（最轻量） <a class="header-anchor" href="#策略二：解析-search-json（最轻量）" title="永久链接">#</a></h3><figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">{</span><br>  <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"文章标题"</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/2026/06/17/hexo-cognitive-management/"</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">"content"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"纯文本内容（去除HTML标签）"</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"Hexo"</span><span class="hljs-punctuation">,</span> <span class="hljs-string">"认知管理"</span><span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">}</span><br></code></pre></td></tr></tbody></table></figure><p>构建后生成在 <code>public/search.json</code>，含 title、url、content（纯文本）、tags。适合全文搜索和按标签筛选。</p><h3 id="策略三：解析-db-json（最完整）"><a href="#策略三：解析-db-json（最完整）" class="headerlink" title="策略三：解析 db.json（最完整）"></a>策略三：解析 db.json（最完整） <a class="header-anchor" href="#策略三：解析-db-json（最完整）" title="永久链接">#</a></h3><p><code>db.json</code> 是 Hexo 的数据库快照，含 Post（完整元数据 + 原始 Markdown + 渲染 HTML）、Tag、PostTag 三张表，适合需要精确查询或获取渲染后 HTML 的场景。</p><h2 id="自动化部署流程"><a href="#自动化部署流程" class="headerlink" title="自动化部署流程"></a>自动化部署流程 <a class="header-anchor" href="#自动化部署流程" title="永久链接">#</a></h2><p>修改文章或配置后，执行标准部署流程：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean          <span class="hljs-comment"># 清理 public/ 和 db.json</span><br>hexo generate       <span class="hljs-comment"># 重新构建</span><br>hexo deploy         <span class="hljs-comment"># 推送到 GitHub Pages</span><br></code></pre></td></tr></tbody></table></figure><p>部署是幂等的 — <code>hexo-deployer-git</code> 会自动清空 <code>.deploy_git/</code> 目录，复制 <code>public/</code> 内容，生成提交信息 <code>Site updated: YYYY-MM-DD HH:mm:ss</code>，然后 force push 到远程 master 分支。</p><p>GitHub Pages 收到推送后自动构建，1-2 分钟后线上生效。</p><h2 id="认知管理的闭环"><a href="#认知管理的闭环" class="headerlink" title="认知管理的闭环"></a>认知管理的闭环 <a class="header-anchor" href="#认知管理的闭环" title="永久链接">#</a></h2><p>这个系统的价值在于形成闭环：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">学习 → 记录（Markdown + 规范化 front-matter）<br>     → 索引（search.json + db.json）<br>     → 检索（本地搜索 / AI 工具 / 搜索引擎）<br>     → 复用（找到旧知识，应用到新问题）<br></code></pre></td></tr></tbody></table></figure><p>传统笔记的问题在于”写了就忘”。这个系统通过结构化命名、强制 description、机器可读索引三个机制，确保写下的知识<strong>可被找到、可被 AI 消费、可被搜索引擎收录</strong>。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结 <a class="header-anchor" href="#总结" title="永久链接">#</a></h2><p>这个 Hexo 项目不是传统博客，而是一个<strong>面向 AI 时代的个人知识库</strong>：</p><ul><li>文件即数据，无平台锁定</li><li>命名规范保证 URL 可读性和分类一致性</li><li>description 字段是 AI 检索的关键入口</li><li>search.json 提供机器可读的全文索引</li><li>一条命令完成构建和部署</li></ul><p>核心原则：<strong>如果知识不能被找到，就等于没有记录。</strong></p><script>!function(){var t=document.createElement("div");t.id="reading-progress",document.body.appendChild(t),window.addEventListener("scroll",function(){var e=document.documentElement,n=e.scrollTop/(e.scrollHeight-e.clientHeight)*100;t.style.width=n+"%"})}()</script></body></html></article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ai/">AI</a><a class="post-meta__tags" href="/tags/hexo/">Hexo</a><a class="post-meta__tags" href="/tags/%E8%AE%A4%E7%9F%A5%E7%AE%A1%E7%90%86/">认知管理</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload='this.media="all"'><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/06/17/hexo-blog-encryption/" title="Hexo 博客文章加密实现"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Hexo 博客文章加密实现</div></div><div class="info-2"><div class="info-item-1">介绍 hexo-blog-encrypt 插件如何为 Hexo 静态博客实现客户端文章加密，涵盖 AES-256-GCM 加密原理、PBKDF2 密钥派生流程和配置方法。</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/06/26/hexo-pdc-adopters-network/" title="邀请你加入 PDC 采用者网络：让 AI 零噪音读取你的博客"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-26</div><div class="info-item-2">邀请你加入 PDC 采用者网络：让 AI 零噪音读取你的博客</div></div><div class="info-2"><div class="info-item-1">PDC 让静态博客在构建时自动生成 AI 可读的零噪音内容端点。本文介绍 llms.txt 采用者网络的愿景、加入流程、验证脚本使用方法，以及采用者如何通过互链形成 AI 可发现的内容网络。</div></div></div></a><a class="pagination-related" href="/2026/06/26/hexo-llmstxt-guide/" title="llms.txt 收录目录里有哪些有趣的网站"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-26</div><div class="info-item-2">llms.txt 收录目录里有哪些有趣的网站</div></div><div class="info-2"><div class="info-item-1">llms.txt 是让 LLM 零噪音读取网站内容的约定，目前两个收录目录已收录 1600+ 站点。本文从中筛选出 AI 平台、开发者工具、开源框架、金融加密、MCP 生态等类别的有趣站点，观察 llms.txt 标准的真实采用图景。</div></div></div></a><a class="pagination-related" href="/2026/06/17/hexo-ai-data-channel/" title="Hexo AI 数据通道：让 AI 零噪音读取博客内容"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-17</div><div class="info-item-2">Hexo AI 数据通道：让 AI 零噪音读取博客内容</div></div><div class="info-2"><div class="info-item-1">完整的 Hexo AI 数据通道解决方案：通过构建时生成静态 JSON/MD/TXT 文件，让 AI Agent 获取零噪音的博客文章内容，完美兼容 GitHub Pages，支持加密文章保护。</div></div></div></a><a class="pagination-related" href="/2026/06/22/pdc-protocol/" title="PDC 协议：让博客同时服务人类与 AI 的平行数据通道"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-22</div><div class="info-item-2">PDC 协议：让博客同时服务人类与 AI 的平行数据通道</div></div><div class="info-2"><div class="info-item-1">PDC（Parallel Data Channel）是 llms.txt 标准的 Hexo 增强实现，让静态博客同时服务人类读者和 AI Agent。通过构建时生成平行数据通道（JSON/MD/TXT），实现人类看 HTML、AI 读零噪音 Markdown，四层架构覆盖数据通道、文章格式、内容注入和静态托管兼容性，零运行时开销，完美适配 GitHub Pages。</div></div></div></a><a class="pagination-related" href="/2026/07/07/ai-memory-integration-comparison/" title="Hexo 认知系统 + 记忆库集成：三种方案的深度对比与选择"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-07</div><div class="info-item-2">Hexo 认知系统 + 记忆库集成：三种方案的深度对比与选择</div></div><div class="info-2"><div class="info-item-1">Hexo 是出版系统，不是记忆系统。本文深度对比三种记忆库（Mem0、EverOS、sqlite-vec）与 Hexo PDC 的集成方案，从架构设计、检索精度、写入摩擦、可审计性四个维度剖析，给出决策树和行动指南。不是选一个，是把三个拼起来。</div></div></div></a><a class="pagination-related" href="/2026/07/06/ai-design-philosophy/" title="AI 系统设计的四个可迁移哲学：从 7 个开源项目中提炼"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-06</div><div class="info-item-2">AI 系统设计的四个可迁移哲学：从 7 个开源项目中提炼</div></div><div class="info-2"><div class="info-item-1">从 AI Week Report 三期 18 个项目中筛出 7 个真优化项目，提炼出四个可迁移到方方面面的 AI 系统设计哲学：返回结构而非内容、约束优于自由、优化在处理之前、确定性做确定性的事。每个哲学附原理剖析、迁移场景和边界条件，不谈工具 feature，只谈底层思想。</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="author-info-name">Bsheepcoder</div><div class="author-info-description">认知管理系统 · AI 索引友好 · 记录与检索并重</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">159</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Bsheepcoder"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color:#ff7c5c"></i></a><a class="social-icon" href="https://github.com/Bsheepcoder" target="_blank" title="Github"><i class="fab fa-github" style="color:#24292e"></i></a><a class="social-icon" href="https://linux.do/" target="_blank" title="LinuxDo"><i class="custom-icon-linuxdo"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">本站基于 <a target="_blank" rel="noopener" href="https://llmstxt.org">llms.txt</a> 标准，通过 <a href="/pdc-protocol.md">PDC</a> 扩展 AI 数据端点，<a href="/llms.txt">/llms.txt</a> 零噪音读取全部内容。欢迎加入 <a href="/flink/">llms.txt 采用者网络</a>，<a target="_blank" rel="noopener" href="https://github.com/Bsheepcoder/Bsheepcoder.github.io/issues">提交申请</a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8-Hexo-%E5%81%9A%E8%AE%A4%E7%9F%A5%E7%AE%A1%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">为什么用 Hexo 做认知管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="toc-number">2.</span> <span class="toc-text">技术栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">项目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-number">4.</span> <span class="toc-text">文章命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Front-Matter-%E8%AE%BE%E8%AE%A1"><span class="toc-number">5.</span> <span class="toc-text">Front-Matter 设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AE%B9%E7%B4%A2%E5%BC%95%E7%AD%96%E7%95%A5"><span class="toc-number">6.</span> <span class="toc-text">内容索引策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E4%B8%80%EF%BC%9A%E8%AF%BB%E5%8F%96%E6%BA%90%E6%96%87%E4%BB%B6%EF%BC%88%E6%9C%80%E5%8F%AF%E9%9D%A0%EF%BC%89"><span class="toc-number">6.1.</span> <span class="toc-text">策略一：读取源文件（最可靠）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E4%BA%8C%EF%BC%9A%E8%A7%A3%E6%9E%90-search-json%EF%BC%88%E6%9C%80%E8%BD%BB%E9%87%8F%EF%BC%89"><span class="toc-number">6.2.</span> <span class="toc-text">策略二：解析 search.json（最轻量）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E4%B8%89%EF%BC%9A%E8%A7%A3%E6%9E%90-db-json%EF%BC%88%E6%9C%80%E5%AE%8C%E6%95%B4%EF%BC%89"><span class="toc-number">6.3.</span> <span class="toc-text">策略三：解析 db.json（最完整）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B"><span class="toc-number">7.</span> <span class="toc-text">自动化部署流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A4%E7%9F%A5%E7%AE%A1%E7%90%86%E7%9A%84%E9%97%AD%E7%8E%AF"><span class="toc-number">8.</span> <span class="toc-text">认知管理的闭环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">9.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%BD%AF%E8%91%97%E7%94%B3%E8%AF%B7%E6%8C%87%E5%8D%97/" title="软件著作权申请完全指南：从材料撰写到 AI 时代的合规策略">软件著作权申请完全指南：从材料撰写到 AI 时代的合规策略</a><time datetime="2026-07-23T14:00:00.000Z" title="发表于 2026-07-23 22:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/cs-container-universe/" title="容器宇宙：一部关于隔离与共享的宇宙史">容器宇宙：一部关于隔离与共享的宇宙史</a><time datetime="2026-07-23T12:00:00.000Z" title="发表于 2026-07-23 20:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/ai-9router-guide/" title="9Router：一个 AI 路由器的自组织涌现">9Router：一个 AI 路由器的自组织涌现</a><time datetime="2026-07-23T08:00:00.000Z" title="发表于 2026-07-23 16:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/21/ai-java-framework-landscape/" title="Java AI 框架全景图 2026：选型决策指南">Java AI 框架全景图 2026：选型决策指南</a><time datetime="2026-07-21T12:00:00.000Z" title="发表于 2026-07-21 20:00:00">2026-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/21/ai-langchain4j-practice/" title="Java LLM 集成的工程模式之辩：LangChain4j 与 Spring AI 双轨实践">Java LLM 集成的工程模式之辩：LangChain4j 与 Spring AI 双轨实践</a><time datetime="2026-07-21T05:00:00.000Z" title="发表于 2026-07-21 13:00:00">2026-07-21</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2021 - 2026 By Bsheepcoder</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"></div><script>fetch("https://cdn.busuanzi.cc/api.php",{method:"POST",body:JSON.stringify({url:location.href,referrer:document.referrer})}).then(function(e){return e.json()}).then(function(e){function n(e,n){var u=document.getElementById(e);u&&(u.textContent=n)}n("busuanzi_value_site_uv",e.busuanzi_site_uv),n("busuanzi_value_site_pv",e.busuanzi_site_pv),n("busuanzi_value_page_pv",e.busuanzi_page_pv)}).catch(function(){})</script><script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script><script>window.mermaid&&mermaid.initialize({startOnLoad:!0,theme:"dark"===document.documentElement.getAttribute("data-theme")?"dark":"default"})</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      true
+        ? pjax.loadUrl('/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span> 数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"></div><hr><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.5"></script></div></div></body></html>

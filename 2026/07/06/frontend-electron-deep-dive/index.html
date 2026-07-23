@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Electron 深度剖析：Chromium + Node 的桌面应用范式 | Q's blog</title><meta name="author" content="Bsheepcoder"><meta name="copyright" content="Bsheepcoder"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="从架构原理层透视 Electron：三进程模型如何把浏览器与 Node 拼成一个桌面运行时，IPC 与 contextBridge 为何如此设计，asar 打包与代码签名背后的机理，以及它的体积、内存、安全张力为什么不是工程缺陷而是经济性妥协。最终回答 Electron 2026 年仍未被 Tauri 替代的真正原因。"><meta property="og:type" content="article"><meta property="og:title" content="Electron 深度剖析：Chromium + Node 的桌面应用范式"><meta property="og:url" content="https://bsheepcoder.github.io/2026/07/06/frontend-electron-deep-dive/"><meta property="og:site_name" content="Q&#39;s blog"><meta property="og:description" content="从架构原理层透视 Electron：三进程模型如何把浏览器与 Node 拼成一个桌面运行时，IPC 与 contextBridge 为何如此设计，asar 打包与代码签名背后的机理，以及它的体积、内存、安全张力为什么不是工程缺陷而是经济性妥协。最终回答 Electron 2026 年仍未被 Tauri 替代的真正原因。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://bsheepcoder.github.io/img/avatar.jpg"><meta property="article:published_time" content="2026-07-06T07:00:00.000Z"><meta property="article:modified_time" content="2026-07-05T16:25:07.000Z"><meta property="article:author" content="Bsheepcoder"><meta property="article:tag" content="Chromium"><meta property="article:tag" content="Electron"><meta property="article:tag" content="前端"><meta property="article:tag" content="桌面应用"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bsheepcoder.github.io/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Electron 深度剖析：Chromium + Node 的桌面应用范式",
+  "url": "https://bsheepcoder.github.io/2026/07/06/frontend-electron-deep-dive/",
+  "image": "https://bsheepcoder.github.io/img/avatar.jpg",
+  "datePublished": "2026-07-06T07:00:00.000Z",
+  "dateModified": "2026-07-05T16:25:07.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Bsheepcoder",
+      "url": "https://bsheepcoder.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="https://bsheepcoder.github.io/2026/07/06/frontend-electron-deep-dive/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload='this.media="all"'><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload='this.media="all"'><script>(() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":3,"unescape":true,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":30,"languages":{"author":"作者: Bsheepcoder","link":"链接: ","source":"来源: Q's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={title:"Electron 深度剖析：Chromium + Node 的桌面应用范式",isHighlightShrink:!1,isToc:!0,pageType:"post"}</script><link rel="stylesheet" href="/css/custom.css"><style>#reading-progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#49b1f5,#ff7c5c);z-index:9999;transition:width .1s}</style><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="Q's blog" type="application/atom+xml"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">159</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/flink/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Q's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">Electron 深度剖析：Chromium + Node 的桌面应用范式</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span> 返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/flink/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Electron 深度剖析：Chromium + Node 的桌面应用范式</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2026-07-06T07:00:00.000Z" title="发表于 2026-07-06 15:00:00">2026-07-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/frontend/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">4.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><html><head></head><body><div class="post-header-meta"><span class="ai-data-links"><i class="fas fa-robot"></i>AI 数据通道：<a href="https://bsheepcoder.github.io/api/posts/frontend-electron-deep-dive.json">JSON</a><span class="sep">·</span><a href="https://bsheepcoder.github.io/api/posts/frontend-electron-deep-dive.md">Markdown</a></span></div><h2 id="一、在谈-Electron-之前：用-Web-做桌面这件事的根本张力"><a href="#一、在谈-Electron-之前：用-Web-做桌面这件事的根本张力" class="headerlink" title="一、在谈 Electron 之前：用 Web 做桌面这件事的根本张力"></a>一、在谈 Electron 之前：用 Web 做桌面这件事的根本张力 <a class="header-anchor" href="#一、在谈-Electron-之前：用-Web-做桌面这件事的根本张力" title="永久链接">#</a></h2><p>Web 技术栈和桌面应用，从设计哲学上就是两种东西。</p><p>Web 诞生于文档分发：无状态、跨平台、廉价分发、沙箱安全、A/B 实验常态。桌面应用诞生于个人计算：有状态、本地权限、原生体验、长生命周期、安装即承诺。两者对”进程生命周期””文件系统访问””系统 API 暴露面”的根本假设是相反的。</p><p>把 Web 技术栈搬到桌面，本质是在调和这种张力。历史上出现过多次尝试：NW.js（node-webkit）走”浏览器里嵌 Node”的路线，CEF（Chromium Embedded Framework）走”宿主应用嵌入浏览器组件”的路线，Electron 走”Node 进程作为主、Chromium 作为渲染”的路线。三者思路相近，差别在谁主导谁。</p><p>Electron 最终活下来且吞掉了绝大部分市场份额，原因不是技术上比另两家先进，而是它赌对了一个经济现实：<strong>Web 前端工程师的供给远大于原生桌面工程师</strong>。一个会用 React 写页面的开发者，半天就能上手 Electron 写出可分发的桌面应用；同样的人去学 Qt/WPF/SwiftUI，是月级别投入。Electron 的胜利是开发者经济学胜利，不是技术胜利。</p><p>理解这一点是阅读本文后续所有机制的钥匙：Electron 里很多看似”重””丑””妥协”的设计，原型上能优化但经济上不值得优化——因为它的首要目标是让 Web 开发者零摩擦写桌面应用，次要目标才是软件体积、内存、启动速度。把这个价值排序颠倒过来评 Electron，会得出所有错误结论。</p><hr><h2 id="二、搭积木：Electron-的运行时是怎么拼起来的"><a href="#二、搭积木：Electron-的运行时是怎么拼起来的" class="headerlink" title="二、搭积木：Electron 的运行时是怎么拼起来的"></a>二、搭积木：Electron 的运行时是怎么拼起来的 <a class="header-anchor" href="#二、搭积木：Electron-的运行时是怎么拼起来的" title="永久链接">#</a></h2><h3 id="2-1-三进程模型"><a href="#2-1-三进程模型" class="headerlink" title="2.1 三进程模型"></a>2.1 三进程模型 <a class="header-anchor" href="#2-1-三进程模型" title="永久链接">#</a></h3><p>Electron 应用跑起来时，操作系统里至少有这几类进程：</p><pre class="mermaid">graph TB
+    subgraph Main[Main 进程]
+        M[Node.js 运行时<br>生命周期 / 窗口管理 / 原生 API]
+    end
+    subgraph R1[Renderer 进程 A]
+        RA[Chromium 渲染<br>一个 BrowserWindow]
+    end
+    subgraph R2[Renderer 进程 B]
+        RB[Chromium 渲染<br>另一个 BrowserWindow]
+    end
+    subgraph GPU[GPU 进程]
+        G[合成 /光栅化]
+    end
+    subgraph Util[Utility 进程]
+        U[音频 / 存储 / 网络服务工作者]
+    end
+    M -- IPC &lt;---&gt; RA
+    M -- IPC &lt;---&gt; RB
+    M -. 启动 .-&gt; G
+    M -. 启动 .-&gt; U
+    RA -. Mojo .-&gt; G
+    RB -. Mojo .-&gt; G</pre><p><strong>Main 进程</strong>是整个应用的根。它由 Node.js 起来，生命周期跟应用绑定。窗口创建、菜单、对话框、系统通知、文件对话框、剪贴板、自动更新等原生能力，全部在 Main 进程里调。它就是 Electron 应用的”后端”。</p><p><strong>Renderer 进程</strong>对应每一个 <code>BrowserWindow</code>/<code>&lt;webview&gt;</code>。它是 Chromium 多进程架构直接复用——每个 Web 页面一个独立进程、独立 V8 堆、独立 Blink 实例。Renderer 之间不共享内存，一个崩了不连累其他。这是 Chromium 从浏览器时代继承下来的容错域设计，Electron 直接吃到了这份红利。</p><p><strong>GPU 进程</strong>只有一个，负责所有 Renderer 的合成与光栅化。<strong>Utility 进程</strong>承担音频解码、存储服务、网络服务等辅助职能。这两个是 Chromium 的固有设计，Electron 没法裁掉，裁了渲染就崩。</p><p>这套模型最大的认知点是：<strong>Main 进程的 Node 和 Renderer 进程的 Chromium 是两套 V8 实例</strong>。它们之间不能直接 <code>require</code> 对方的对象，只能通过 IPC 传消息。Electron 文档反复强调”Main 不要写 UI 逻辑、Renderer 不要直接调原生 API”，不只是风格建议，是物理隔离的。</p><h3 id="2-2-IPC：进程间通信的语义分层"><a href="#2-2-IPC：进程间通信的语义分层" class="headerlink" title="2.2 IPC：进程间通信的语义分层"></a>2.2 IPC：进程间通信的语义分层 <a class="header-anchor" href="#2-2-IPC：进程间通信的语义分层" title="永久链接">#</a></h3><p>Electron 的 IPC 有三组 API：</p><table><thead><tr><th>API</th><th>方向</th><th>语义</th></tr></thead><tbody><tr><td><code>ipcMain.on</code> / <code>ipcRenderer.send</code></td><td>Renderer → Main</td><td>单向消息，无返回值</td></tr><tr><td><code>ipcMain.handle</code> / <code>ipcRenderer.invoke</code></td><td>Renderer → Main</td><td>请求-响应，基于 Promise</td></tr><tr><td><code>webContents.send</code></td><td>Main → Renderer</td><td>主动推送</td></tr></tbody></table><pre class="mermaid">sequenceDiagram
+    participant R as Renderer
+    participant M as Main
+    participant OS as 原生 API
+    R-&gt;&gt;M: ipcRenderer.invoke('read-file', path)
+    M-&gt;&gt;M: ipcMain.handle('read-file', fn)
+    M-&gt;&gt;OS: fs.readFile(path)
+    OS--&gt;&gt;M: buffer
+    M--&gt;&gt;R: Promise resolve(buffer)</pre><p><code>invoke</code>/<code>handle</code> 是后来加的语义糖，比 <code>send</code>/<code>on</code> 多了一个 Promise 通道。早期 Electron 教程满天飞的 <code>send</code> + <code>event.returnValue = ...</code> 同步回传模式，已被官方标为反模式——它阻塞 Renderer 主线程。</p><h3 id="2-3-contextBridge：安全模型的最后一道闸"><a href="#2-3-contextBridge：安全模型的最后一道闸" class="headerlink" title="2.3 contextBridge：安全模型的最后一道闸"></a>2.3 contextBridge：安全模型的最后一道闸 <a class="header-anchor" href="#2-3-contextBridge：安全模型的最后一道闸" title="永久链接">#</a></h3><p>到这里才是 Electron 真正值得讲清楚的地方。Renderer 进程里的 JavaScript 表面上看是个普通 Web 页面，但它历史上<strong>可以直接 <code>require('fs')</code> 读写硬盘</strong>——这正是 Electron 早年最方便也最危险的特性。</p><p>危险在哪？你的 Renderer 加载了任何 third-party 脚本（一个 npm 包装的统计 SDK、一个广告脚本、一个被劫持的 CDN），那个脚本就能 <code>require('child_process')</code> 直接 RCE。XSS = RCE，没有任何缓冲。</p><p>Electron 经历了几次关键的安全默认值反转（<code>nodeIntegration</code> 早已默认 false，<code>contextIsolation</code> 在 v12 起 default true）：</p><table><thead><tr><th>选项</th><th>旧默认</th><th>新默认</th><th>含义</th></tr></thead><tbody><tr><td><code>nodeIntegration</code></td><td>true</td><td><strong>false</strong></td><td>Renderer 不能直接 <code>require</code> Node 模块</td></tr><tr><td><code>contextIsolation</code></td><td>false</td><td><strong>true</strong></td><td>Renderer 的 JS 上下文与 preload 隔离</td></tr><tr><td><code>sandbox</code></td><td>false</td><td>部分场景 true</td><td>Renderer 进程沙箱化，限制 Node 调用面</td></tr></tbody></table><p><code>contextBridge</code> 就是配合 <code>contextIsolation: true</code> 用的。它的作用是：preload 脚本仍能访问 Node（它在 Renderer 进程里但有特权），但 preload 把”想暴露给网页的 API”通过 <code>contextBridge.exposeInMainWorld</code> 显式 export 到网页上下文，且 export 的对象会被结构化克隆，函数被代理——网页脚本拿不到原型链，碰不到 Node 的真实对象。</p><p>这套设计本质上是在 Renderer 进程内造了两个互不信用的 JS 上下文：preload 上下文有 Node 权限但不可被网页脚本触达，网页上下文无 Node 权限但能调 preload 显式 export 出来的少量 API。<strong>Electron 的安全模型全部建立在这个上下文隔离之上</strong>——任何一个 Electron 项目偏离这个默认配置，都要在威胁建模里给出理由。</p><h3 id="2-4-打包：asar-不是压缩"><a href="#2-4-打包：asar-不是压缩" class="headerlink" title="2.4 打包：asar 不是压缩"></a>2.4 打包：asar 不是压缩 <a class="header-anchor" href="#2-4-打包：asar-不是压缩" title="永久链接">#</a></h3><p>写完代码要分发。Electron 的打包工具链主流是 electron-builder 和 electron-forge。它们做的事情差不多，差别在配置灵活度和输出格式覆盖度。打包后的应用目录结构看起来是这样：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">MyApp.app/<br>├── Contents/<br>│   ├── MacOS/<br>│   │   └── MyApp          ← 可执行入口<br>│   ├── Resources/<br>│   │   ├── app.asar       ← 你的源代码 + node_modules 打成单档<br>│   │   └── electron.asar  ← Electron 内置资源<br>│   └── Frameworks/        ← Electron Framework（Chromium + Node）<br>└── ...<br></code></pre></td></tr></tbody></table></figure><p><strong>asar 是 Electron 特有的归档格式</strong>。它不是 zip，不是 tar.gz，是一个<strong>只读虚拟文件系统</strong>：文件数据拼接在尾部，头部一个 JSON 索引描述每个文件的偏移和长度。运行时 Electron 用一个定制的 <code>fs</code> 包装层透明读取，应用代码感知不到自己被打包了。</p><p>为什么不用 zip？两个原因：</p><ol><li>zip 解压要把文件落到磁盘临时目录，落盘阶段有可执行文件被替换的安全风险（攻击者在你解压完到启动之间窗口期替换 .exe）</li><li>asar 永远不解压，整档留在原地，运行时由 Electron 包装的 <code>fs</code> 按需读取，文件体积友好、启动速度友好</li></ol><p>代价是 asar 不能写、不能增量修改。要更新整个应用就整体替换 asar，这正是 electron-updater 的策略——全量替换不是设计粗糙，是 asar 的物理特性决定的。</p><p><strong>原生模块（.node 后缀的 C++ 编译产物）不能进 asar</strong>，因为它们是共享库，操作系统要从磁盘加载文件而非从内存读字节。打包工具会自动把它们抠出来放 asar 同级目录。这是 asar 的硬限制，也是新手踩的第一个坑：用了 <code>better-sqlite3</code> / <code>sharp</code> 这类原生模块，打包后会因架构没匹配（x64/arm64）翻车。</p><h3 id="2-5-更新：electron-updater-为何如此挑剔"><a href="#2-5-更新：electron-updater-为何如此挑剔" class="headerlink" title="2.5 更新：electron-updater 为何如此挑剔"></a>2.5 更新：electron-updater 为何如此挑剔 <a class="header-anchor" href="#2-5-更新：electron-updater-为何如此挑剔" title="永久链接">#</a></h3><p><code>electron-updater</code> 是 Electron 官方推荐的自更新库。它的工作流是：应用启动 → 拉取远程的 <code>latest.yml</code>（含版本号和文件 hash）→ 比对版本 → 下载整个新 asar → 校验签名 → 落到 staging 目录 → 下次启动 swap 替换。</p><p>这套流程里有几个关键决策：</p><ul><li><strong>全量下载</strong>：asar 不可增量更新，每次更新都是 80MB 量级下载。这就是 Electron 应用更新体验差的根因。</li><li><strong>必须代码签名</strong>：electron-updater 默认要求 Windows/macOS 都验证发布者签名。不签名的安装包会被拒绝更新——这不是 Electron 选的，是 OS 选的，但 Electron 把它升格成强制项。</li><li><strong>自建发布源</strong>：electron-updater 不提供服务器，开发者要自己搭一个 HTTPS 静态服务托管 <code>latest.yml</code> 和 <code>.exe</code>/<code>.dmg</code>。常见选择是 GitHub Releases（免费但国内连不上）、S3/对象存储（要花钱）、自建 CDN。</li></ul><p>签名是这里最贵也最容易绕不开的坑：</p><table><thead><tr><th>平台</th><th>证书</th><th>成本</th><th>后果</th></tr></thead><tbody><tr><td>Windows</td><td>OV 代码签名</td><td>~$200/年</td><td>不签：每次启动 SmartScreen 红框</td></tr><tr><td>Windows</td><td>EV 代码签名</td><td>~$300/年</td><td>不签：含 SmartScreen 信誉积累慢</td></tr><tr><td>macOS</td><td>Apple Developer ID</td><td>$99/年 + notarization</td><td>不签：默认 Gatekeeper 直接阻止运行</td></tr></tbody></table><p>分发给非技术用户，这两笔钱省不了——用户看到红色警告框就跑了。这是 Electron 分发成本的真实底数，跟 Tauri 一视同仁，Tauri 也得这么签，但 Electron 包大放大了这个体感痛点（下载 80MB 后看到红框格外不快）。</p><hr><h2 id="三、案例即原理：从产品决策看架构选择"><a href="#三、案例即原理：从产品决策看架构选择" class="headerlink" title="三、案例即原理：从产品决策看架构选择"></a>三、案例即原理：从产品决策看架构选择 <a class="header-anchor" href="#三、案例即原理：从产品决策看架构选择" title="永久链接">#</a></h2><h3 id="3-1-VSCode-的-Extension-Host：容错域才是多进程的真正价值"><a href="#3-1-VSCode-的-Extension-Host：容错域才是多进程的真正价值" class="headerlink" title="3.1 VSCode 的 Extension Host：容错域才是多进程的真正价值"></a>3.1 VSCode 的 Extension Host：容错域才是多进程的真正价值 <a class="header-anchor" href="#3-1-VSCode-的-Extension-Host：容错域才是多进程的真正价值" title="永久链接">#</a></h3><p>VSCode 是 Electron 应用里最常被引用的案例。它做了件看起来反常的事：把所有插件跑在一个<strong>独立的 Extension Host 进程</strong>里，不是 Main 进程，也不是 Renderer 进程。</p><p>为什么？</p><p>如果插件跑在 Main 进程：一个插件 OOM 崩了，整个编辑器死。如果跑在 Renderer 进程：一个插件死循环，编辑器界面卡死。VSCode 把插件进程隔离，崩了只影响那个插件，编辑器界面无感——用户能继续写代码，坏插件禁用即可重启。</p><p><strong>这是多进程架构的真正价值：不是性能，是容错域隔离</strong>。Chromium 原本用多进程隔离不同网页（一个网页崩不连累其他网页），VSCode 把这个原理从”网页间”推广到”插件间”。Electron 把这套机制免费给你了，关键看你会不会用——大量 Electron 应用把什么都塞 Main 进程，崩一个就整机崩，等于白瞎了多进程架构。</p><h3 id="3-2-Slack-为什么把部分层下沉到原生"><a href="#3-2-Slack-为什么把部分层下沉到原生" class="headerlink" title="3.2 Slack 为什么把部分层下沉到原生"></a>3.2 Slack 为什么把部分层下沉到原生 <a class="header-anchor" href="#3-2-Slack-为什么把部分层下沉到原生" title="永久链接">#</a></h3><p>Slack 早期是纯 Electron，一套 JS 代码三平台跑。但用了一段时间后，他们开始把消息列表、emoji picker 这种高频渲染组件用原生（C++/Swift/Objective-C）重写。原因不是 Electron 性能不够，是<strong>Chromium 在处理超大列表 + 频繁 DOM 重绘</strong>时延迟扛不住。</p><p>这揭示了 Chromium 渲染桌面的固有边界：长列表（数千行）、超高频更新（60fps 内插值动画）、超大单页状态树——这些场景 Web 渲染模型本身就是低效的，跟 Electron 无关。 Renderer 还是那个 Renderer，CSSOM/StyleRecalc/Layout/Paint/Composite 流水线一字不差。</p><p>正确的设计策略是：<strong>别让 Electron 干它天生不擅长的事</strong>。聊天列表用虚拟滚动、复杂动画用 GPU 加速 transform、超大文档用 canvas/WebGL 自绘。这些是 Web 平台问题，不是 Electron 问题。把这些场景推给原生是工程妥协，不是 Electron 缺陷。</p><h3 id="3-3-Discord-与-Notion：两种设计范式"><a href="#3-3-Discord-与-Notion：两种设计范式" class="headerlink" title="3.3 Discord 与 Notion：两种设计范式"></a>3.3 Discord 与 Notion：两种设计范式 <a class="header-anchor" href="#3-3-Discord-与-Notion：两种设计范式" title="永久链接">#</a></h3><p>Discord 走 preload 主导路线：所有 IPC 调用都包成 preload 暴露的语义化 API（<code>discordNative.openExternal</code> 之类），Renderer 几乎不感知进程边界，写得像普通 Web。好处是 Renderer 极简、安全面收得很死，坏处是每加一个原生能力都要在 preload 加一层包装。</p><p>Notion 走 React 全栈路线：Renderer 进程跑 React 渲染整个 UI，Main 进程退化为薄壳，只管窗口和文件系统落地。这套范式把”Electron 是 Web + 一点原生”往 Web 那侧推到极致，代价是任何原生深度集成都要回头改造架构。</p><p>两种范式没有对错，反映的是同一个架构在不同产品约束下的取舍：高频原生调用，preload 重；以 Web 为主，Main 轻。Electron 不强迫你选哪个，提供同等支持，这是它的灵活性来源，也是它的”无主见”——开发者要自己想清楚架构，否则容易写成 Main 跟 Renderer 互相耦合的烂泥。</p><hr><h2 id="四、缺陷与批判：从机理讲为什么不行"><a href="#四、缺陷与批判：从机理讲为什么不行" class="headerlink" title="四、缺陷与批判：从机理讲为什么不行"></a>四、缺陷与批判：从机理讲为什么不行 <a class="header-anchor" href="#四、缺陷与批判：从机理讲为什么不行" title="永久链接">#</a></h2><p>缺陷部分不讲”重”这种形容词，每个缺陷要讲清机理，否则读者只知道 Electron 有问题，不知道为什么有问题，迁移到 Tauri 也一样踩坑。</p><h3 id="4-1-体积大：Chromium-的物理下限"><a href="#4-1-体积大：Chromium-的物理下限" class="headerlink" title="4.1 体积大：Chromium 的物理下限"></a>4.1 体积大：Chromium 的物理下限 <a class="header-anchor" href="#4-1-体积大：Chromium-的物理下限" title="永久链接">#</a></h3><p>Electron 安装包 80-150MB。其中绝大部分是 Chromium 内核：V8 JIT 编译器、Blink 排版引擎、Skia 2D 图形、WebRTC 音视频栈、媒体编解码器、网络栈、文件系统抽象——整个一浏览器。</p><p>这不是 Electron 团队没优化。Chromium 是开源但不可拆解的多模块巨型工程，要支持完整 Web 标准就要带完整内核。Electron 试过加 <code>electron-slim</code> 之类的裁剪版方案，效果有限——每个 Web API 你都以为自己不用，但某个第三方库用了，打包后白裁。</p><p>Tauri 用系统 WebView（Windows 的 WebView2、macOS 的 WKWebView、Linux 的 WebKitGTK）省下这 ~150MB。代价是各平台 WebView 实现不一致：WebView2 跟 WKWebView 行为差异、WebKitGTK 在不同发行版版本差异、Linux 上 WebKitGTK 老版本与新版本 CSS/JS 兼容性差异。Tauri 把这种”省体积换平台兼容性”风险推给了开发者。</p><h3 id="4-2-内存高：多进程的代价是内存不共享-V8-堆"><a href="#4-2-内存高：多进程的代价是内存不共享-V8-堆" class="headerlink" title="4.2 内存高：多进程的代价是内存不共享 V8 堆"></a>4.2 内存高：多进程的代价是内存不共享 V8 堆 <a class="header-anchor" href="#4-2-内存高：多进程的代价是内存不共享-V8-堆" title="永久链接">#</a></h3><p>每个 BrowserWindow 一个 Renderer 进程，进程间不共享 V8 堆。开 3 个窗口就 3 份 React + 3 份业务代码 + 3 份 DOM。一个空 Electron 应用挂机内存约 250-400MB，开了聊天流+预览+编辑三窗口能上 600MB+。</p><p>这是 Chromium 多进程架构的固有代价。换来的是 Renderer 崩了不连累其他 Renderer，也不连累 Main。这是真正的工程权衡：<strong>用 3 倍内存换崩溃隔离</strong>。Web 浏览器做这个权衡是因为一个网页崩了不能让其他网页跟着崩，桌面应用是不是值得厂家自己想——但开了多窗口同时编辑多篇文档的场景下，这个保险确实有用。</p><h3 id="4-3-冷启动慢：要起-V8-和-Blink"><a href="#4-3-冷启动慢：要起-V8-和-Blink" class="headerlink" title="4.3 冷启动慢：要起 V8 和 Blink"></a>4.3 冷启动慢：要起 V8 和 Blink <a class="header-anchor" href="#4-3-冷启动慢：要起-V8-和-Blink" title="永久链接">#</a></h3><p>V8 初始化、Blink 加载、首个渲染管线下行——整套冷启动 3-5 秒，HDD 老机器更慢。原生应用 &lt;1 秒。</p><p>这是 Web 引擎的物理特性。优化手段有限：预加载隐藏窗口（启动时先起一个 hidden BrowserWindow 当缓存）、把首屏 HTML 内联到 main 进程走过 IPC 注入，都是 workaround 而非根治。Electron 12 后官方做了些 V8 启动优化，量级仍是秒级。</p><h3 id="4-4-安全模型的固有张力"><a href="#4-4-安全模型的固有张力" class="headerlink" title="4.4 安全模型的固有张力"></a>4.4 安全模型的固有张力 <a class="header-anchor" href="#4-4-安全模型的固有张力" title="永久链接">#</a></h3><p>Renderer 有 Web 暴露面（XSS、prototype pollution、CDN 劫持），又是桌面应用的一部分（通过 IPC 能调到原生能力）。任何 IPC handler 不做输入校验等于把原生能力暴露给 XSS 攻击者。</p><p><code>nodeIntegration: true</code> 的时代，XSS = RCE，无缓冲。今天 <code>contextIsolation: true</code> + <code>nodeIntegration: false</code> 是默认，但<strong>开发者仍能放开这些选项</strong>——大量历史项目和”方便”项目这么干。Electron 官方多次发公告但仍有人写不安全应用，因为这套安全模型需要开发者理解进程隔离、上下文隔离、IPC 输入校验三层防御，门槛不低。</p><p>这不是 Electron 的设计失误，是 Web + 原生混合应用的固有张力：Web 的开放性（任意加载远程脚本）与桌面的封闭性（强权限）本身冲突。Tauri 也一样要处理这个张力——它的能力受限模型（白名单 capability）是另一种解法，但同样要开发者理解才能用对。</p><h3 id="4-5-版本耦合：跟-Chromium-的-8-周节奏"><a href="#4-5-版本耦合：跟-Chromium-的-8-周节奏" class="headerlink" title="4.5 版本耦合：跟 Chromium 的 8 周节奏"></a>4.5 版本耦合：跟 Chromium 的 8 周节奏 <a class="header-anchor" href="#4-5-版本耦合：跟-Chromium-的-8-周节奏" title="永久链接">#</a></h3><p>Electron 跟着 Chromium 升级，节奏约 8 周一版。Node 主版本被钉死在 Electron 选定的版本上。前端库要等新 V8 特性得等 Electron 大版本，Hexo 这种生态想跟 Electron 集成要确认 Node ABI 兼容。</p><p>这种耦合意味着 Electron 应用开发者不能随意挑 Node 版本，不能随意挑前端框架的某些新特性。这是个隐性约束，开发期不痛，长期看会变成版本升级的债。</p><h3 id="4-6-分发成本：OS-的政策问题被-Electron-放大"><a href="#4-6-分发成本：OS-的政策问题被-Electron-放大" class="headerlink" title="4.6 分发成本：OS 的政策问题被 Electron 放大"></a>4.6 分发成本：OS 的政策问题被 Electron 放大 <a class="header-anchor" href="#4-6-分发成本：OS-的政策问题被-Electron-放大" title="永久链接">#</a></h3><p>代码签名成本（Windows ~$200-300/年 + macOS $99/年）、Mac notarization 必须 Mac 上跑、自动更新要自建 HTTPS 发布源——这些严格说不是 Electron 的问题，是 Windows/macOS 的政策。但 Electron 因为包大、因为要更新基础设施，这些痛点被放大了：下载 80MB 后看到 SmartScreen 红框、自动更新服务器要花钱托管、跨平台构建要买 Mac 或配 CI。</p><p>Tauri 包小，全量更新下载无感，但签名一样签、Mac 一样要 Mac 构建、更新服务器一样要搭。<strong>这部分两个框架共享</strong>。</p><hr><h2 id="五、总结：Electron-是什么"><a href="#五、总结：Electron-是什么" class="headerlink" title="五、总结：Electron 是什么"></a>五、总结：Electron 是什么 <a class="header-anchor" href="#五、总结：Electron-是什么" title="永久链接">#</a></h2><p>回到开头那个问题，Electron 是什么？</p><p>它不是技术胜利。它的进程模型继承自 Chromium、运行时继承自 Node、打包格式自造、安全模型是默认参数反转来的——没有一项是从零发明的。</p><p>它是经济性胜利。它赌对了”Web 前端开发者供给远超原生桌面开发者”这个趋势，用 Web 技术栈统一了桌面应用开发门槛。VSCode 选择它不是因为不知道原生更快，是因为开发者生态跟得上；Discord 选择它不是因为不在乎体积，是因为 Web 团队最便宜扩。</p><p>所谓”用经济性换工程纯度”，具体换的是什么：</p><ul><li>多 80MB 体积 → 换 Web 开发者零摩擦上手</li><li>多 300MB 内存 → 换 Renderer 崩溃隔离（容错域分离）</li><li>多 3 秒冷启动 → 换完整 Chromium 渲染管线下放</li><li>安全模型学习曲线 → 换 Web + 原生混合能力的灵活性</li><li>8 周一版的耦合 → 换跟 Web 标准前进的节奏对齐</li></ul><p>到 2026 年它没被 Tauri 替代，原因不是技术没迭代（Tauri 越来越成熟），是<strong>Tauri 押的是 Rust 系统编程生态，Electron 押的是 Node + Web 生态</strong>——后者规模大一个数量级。开发者经济学方向不反转，Electron 的护城河不变。</p><p>所以<strong>判断你该不该用 Electron 的标准很简单</strong>：愿不愿意交那笔过路费——80MB 体积和 300MB 内存，换你的 Web 团队零摩擦写出可分发桌面应用。愿意就用，不愿意就回去写原生，或者赌 Tauri 的 Rust 生态哪天追上 Node 生态的规模。</p><p>至少在 2026 年，这场赌注的胜算还在 Electron 这边。</p><script>!function(){var t=document.createElement("div");t.id="reading-progress",document.body.appendChild(t),window.addEventListener("scroll",function(){var e=document.documentElement,n=e.scrollTop/(e.scrollHeight-e.clientHeight)*100;t.style.width=n+"%"})}()</script></body></html></article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/frontend/">前端</a><a class="post-meta__tags" href="/tags/Electron/">Electron</a><a class="post-meta__tags" href="/tags/%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8/">桌面应用</a><a class="post-meta__tags" href="/tags/Chromium/">Chromium</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload='this.media="all"'><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/06/mcp-yunxiao-devops-deep-dive/" title="云效 MCP Server 接入手册：把 AI 编程助手接到你的 DevOps 流水线"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">云效 MCP Server 接入手册：把 AI 编程助手接到你的 DevOps 流水线</div></div><div class="info-2"><div class="info-item-1">个人开发者怎么把云效 MCP Server 接到 Cursor / Claude Desktop / AI 编程助手，让 AI 从需求录入一直跟进到部署完成。基于真实组织实测，给出 5 分钟接入配置、9 个核心工具的工作流速查、4 阶段需求跟进完整流程、5 个落地工作流优化灵感。开支是 token、收益是 AI 真的能看见你的研发系统在做什么。</div></div></div></a><a class="pagination-related" href="/2026/07/06/ai-constrained-output-dsl/" title="为什么 AI 编码工具用 DSL 而不是 HTML：约束输出的原理"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">为什么 AI 编码工具用 DSL 而不是 HTML：约束输出的原理</div></div><div class="info-2"><div class="info-item-1">从 LLM 概率性输出与确定性产物的根本矛盾出发，拆解 AI 编码工具用 DSL 替代 HTML 的两层原理（约束语法层 + 上移视觉层），以 Qoder canvas 为案例剖析，并批判其适用边界与代价。</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/06/23/frontend-minigame-design/" title="小游戏设计之道：从零理解游戏设计的灵魂"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-23</div><div class="info-item-2">小游戏设计之道：从零理解游戏设计的灵魂</div></div><div class="info-2"><div class="info-item-1">结合微信官方设计指南、Voodoo 超休闲理念与 Cocos 引擎实践，系统拆解小游戏从玩法体验到传播留存的完整设计框架，帮你从零建立游戏设计的核心思维。</div></div></div></a><a class="pagination-related" href="/2026/07/03/frontend-wechat-unified-login/" title="微信登录统一接入：扫码登录 + 小程序登录的安全架构实战"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-03</div><div class="info-item-2">微信登录统一接入：扫码登录 + 小程序登录的安全架构实战</div></div><div class="info-2"><div class="info-item-1">从微信账号体系的设计哲学出发，用 Spring Boot + Vue 3 实现网页扫码登录与小程序登录的统一架构。不讲 API 文档能查到的东西，讲文档不会告诉你的安全陷阱、Token 管理策略和大厂实战经验。</div></div></div></a><a class="pagination-related" href="/2026/07/06/ai-constrained-output-dsl/" title="为什么 AI 编码工具用 DSL 而不是 HTML：约束输出的原理"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-06</div><div class="info-item-2">为什么 AI 编码工具用 DSL 而不是 HTML：约束输出的原理</div></div><div class="info-2"><div class="info-item-1">从 LLM 概率性输出与确定性产物的根本矛盾出发，拆解 AI 编码工具用 DSL 替代 HTML 的两层原理（约束语法层 + 上移视觉层），以 Qoder canvas 为案例剖析，并批判其适用边界与代价。</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="author-info-name">Bsheepcoder</div><div class="author-info-description">认知管理系统 · AI 索引友好 · 记录与检索并重</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">159</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Bsheepcoder"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color:#ff7c5c"></i></a><a class="social-icon" href="https://github.com/Bsheepcoder" target="_blank" title="Github"><i class="fab fa-github" style="color:#24292e"></i></a><a class="social-icon" href="https://linux.do/" target="_blank" title="LinuxDo"><i class="custom-icon-linuxdo"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">本站基于 <a target="_blank" rel="noopener" href="https://llmstxt.org">llms.txt</a> 标准，通过 <a href="/pdc-protocol.md">PDC</a> 扩展 AI 数据端点，<a href="/llms.txt">/llms.txt</a> 零噪音读取全部内容。欢迎加入 <a href="/flink/">llms.txt 采用者网络</a>，<a target="_blank" rel="noopener" href="https://github.com/Bsheepcoder/Bsheepcoder.github.io/issues">提交申请</a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9C%A8%E8%B0%88-Electron-%E4%B9%8B%E5%89%8D%EF%BC%9A%E7%94%A8-Web-%E5%81%9A%E6%A1%8C%E9%9D%A2%E8%BF%99%E4%BB%B6%E4%BA%8B%E7%9A%84%E6%A0%B9%E6%9C%AC%E5%BC%A0%E5%8A%9B"><span class="toc-number">1.</span> <span class="toc-text">一、在谈 Electron 之前：用 Web 做桌面这件事的根本张力</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%90%AD%E7%A7%AF%E6%9C%A8%EF%BC%9AElectron-%E7%9A%84%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%80%8E%E4%B9%88%E6%8B%BC%E8%B5%B7%E6%9D%A5%E7%9A%84"><span class="toc-number">2.</span> <span class="toc-text">二、搭积木：Electron 的运行时是怎么拼起来的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E4%B8%89%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 三进程模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-IPC%EF%BC%9A%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E7%9A%84%E8%AF%AD%E4%B9%89%E5%88%86%E5%B1%82"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 IPC：进程间通信的语义分层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-contextBridge%EF%BC%9A%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E9%81%93%E9%97%B8"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 contextBridge：安全模型的最后一道闸</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E6%89%93%E5%8C%85%EF%BC%9Aasar-%E4%B8%8D%E6%98%AF%E5%8E%8B%E7%BC%A9"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 打包：asar 不是压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E6%9B%B4%E6%96%B0%EF%BC%9Aelectron-updater-%E4%B8%BA%E4%BD%95%E5%A6%82%E6%AD%A4%E6%8C%91%E5%89%94"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 更新：electron-updater 为何如此挑剔</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%A1%88%E4%BE%8B%E5%8D%B3%E5%8E%9F%E7%90%86%EF%BC%9A%E4%BB%8E%E4%BA%A7%E5%93%81%E5%86%B3%E7%AD%96%E7%9C%8B%E6%9E%B6%E6%9E%84%E9%80%89%E6%8B%A9"><span class="toc-number">3.</span> <span class="toc-text">三、案例即原理：从产品决策看架构选择</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-VSCode-%E7%9A%84-Extension-Host%EF%BC%9A%E5%AE%B9%E9%94%99%E5%9F%9F%E6%89%8D%E6%98%AF%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%9C%9F%E6%AD%A3%E4%BB%B7%E5%80%BC"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 VSCode 的 Extension Host：容错域才是多进程的真正价值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Slack-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8A%8A%E9%83%A8%E5%88%86%E5%B1%82%E4%B8%8B%E6%B2%89%E5%88%B0%E5%8E%9F%E7%94%9F"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 Slack 为什么把部分层下沉到原生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Discord-%E4%B8%8E-Notion%EF%BC%9A%E4%B8%A4%E7%A7%8D%E8%AE%BE%E8%AE%A1%E8%8C%83%E5%BC%8F"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 Discord 与 Notion：两种设计范式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%BC%BA%E9%99%B7%E4%B8%8E%E6%89%B9%E5%88%A4%EF%BC%9A%E4%BB%8E%E6%9C%BA%E7%90%86%E8%AE%B2%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%A1%8C"><span class="toc-number">4.</span> <span class="toc-text">四、缺陷与批判：从机理讲为什么不行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E4%BD%93%E7%A7%AF%E5%A4%A7%EF%BC%9AChromium-%E7%9A%84%E7%89%A9%E7%90%86%E4%B8%8B%E9%99%90"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 体积大：Chromium 的物理下限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%86%85%E5%AD%98%E9%AB%98%EF%BC%9A%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%BB%A3%E4%BB%B7%E6%98%AF%E5%86%85%E5%AD%98%E4%B8%8D%E5%85%B1%E4%BA%AB-V8-%E5%A0%86"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 内存高：多进程的代价是内存不共享 V8 堆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%86%B7%E5%90%AF%E5%8A%A8%E6%85%A2%EF%BC%9A%E8%A6%81%E8%B5%B7-V8-%E5%92%8C-Blink"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 冷启动慢：要起 V8 和 Blink</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%9B%BA%E6%9C%89%E5%BC%A0%E5%8A%9B"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 安全模型的固有张力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E7%89%88%E6%9C%AC%E8%80%A6%E5%90%88%EF%BC%9A%E8%B7%9F-Chromium-%E7%9A%84-8-%E5%91%A8%E8%8A%82%E5%A5%8F"><span class="toc-number">4.5.</span> <span class="toc-text">4.5 版本耦合：跟 Chromium 的 8 周节奏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-%E5%88%86%E5%8F%91%E6%88%90%E6%9C%AC%EF%BC%9AOS-%E7%9A%84%E6%94%BF%E7%AD%96%E9%97%AE%E9%A2%98%E8%A2%AB-Electron-%E6%94%BE%E5%A4%A7"><span class="toc-number">4.6.</span> <span class="toc-text">4.6 分发成本：OS 的政策问题被 Electron 放大</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%80%BB%E7%BB%93%EF%BC%9AElectron-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">5.</span> <span class="toc-text">五、总结：Electron 是什么</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%BD%AF%E8%91%97%E7%94%B3%E8%AF%B7%E6%8C%87%E5%8D%97/" title="软件著作权申请完全指南：从材料撰写到 AI 时代的合规策略">软件著作权申请完全指南：从材料撰写到 AI 时代的合规策略</a><time datetime="2026-07-23T14:00:00.000Z" title="发表于 2026-07-23 22:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/cs-container-universe/" title="容器宇宙：一部关于隔离与共享的宇宙史">容器宇宙：一部关于隔离与共享的宇宙史</a><time datetime="2026-07-23T12:00:00.000Z" title="发表于 2026-07-23 20:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/23/ai-9router-guide/" title="9Router：一个 AI 路由器的自组织涌现">9Router：一个 AI 路由器的自组织涌现</a><time datetime="2026-07-23T08:00:00.000Z" title="发表于 2026-07-23 16:00:00">2026-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/21/ai-java-framework-landscape/" title="Java AI 框架全景图 2026：选型决策指南">Java AI 框架全景图 2026：选型决策指南</a><time datetime="2026-07-21T12:00:00.000Z" title="发表于 2026-07-21 20:00:00">2026-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/21/ai-langchain4j-practice/" title="Java LLM 集成的工程模式之辩：LangChain4j 与 Spring AI 双轨实践">Java LLM 集成的工程模式之辩：LangChain4j 与 Spring AI 双轨实践</a><time datetime="2026-07-21T05:00:00.000Z" title="发表于 2026-07-21 13:00:00">2026-07-21</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2021 - 2026 By Bsheepcoder</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"></div><script>fetch("https://cdn.busuanzi.cc/api.php",{method:"POST",body:JSON.stringify({url:location.href,referrer:document.referrer})}).then(function(e){return e.json()}).then(function(e){function n(e,n){var u=document.getElementById(e);u&&(u.textContent=n)}n("busuanzi_value_site_uv",e.busuanzi_site_uv),n("busuanzi_value_site_pv",e.busuanzi_site_pv),n("busuanzi_value_page_pv",e.busuanzi_page_pv)}).catch(function(){})</script><script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script><script>window.mermaid&&mermaid.initialize({startOnLoad:!0,theme:"dark"===document.documentElement.getAttribute("data-theme")?"dark":"default"})</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      true
+        ? pjax.loadUrl('/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span> 数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"></div><hr><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.5"></script></div></div></body></html>

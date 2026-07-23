@@ -1,0 +1,86 @@
+# Q's blog
+
+> Bsheepcoder 的技术博客，记录 AI、编程、计算机科学的学习笔记
+
+
+## AI Resources
+
+- [PDC](/pdc-protocol.md): llms.txt 的 Hexo 增强实现规范
+- [AI Context](/ai-context.md): 站点写作规范与分类体系
+- [Search Index](/api/index.json): 结构化文章列表（含元数据和 API 地址）
+- [By Category](/api/categories/skill.json): 按分类聚合（skill/prompt/info/hexo/ai）
+- [Full Content](/llms-full.txt): 全部文章全文合并（可直接一次读取）
+
+## Articles
+
+- [软件著作权申请完全指南：从材料撰写到 AI 时代的合规策略](/api/posts/计算机基础-软著申请指南.md): 软件著作权（软著）是开发者保护代码、申请高企、APP 上架的核心资质。2026 年 3 月审查规则重大改革：手抄'未用 AI'承诺、功能描述扩至 1300 字、失信挂钩征信。本文从零拆解申请全流程，剖析 AI 时代'无人不用 AI'的合规悖论，给出当前申请的风险评估与策略建议。
+- [容器宇宙：一部关于隔离与共享的宇宙史](/api/posts/cs-container-universe.md): 从 chroot 到 LXC，从 Docker 到 LXD，从 KVM 到系统容器——在计算机科学的宇宙中，隔离与共享是一枚硬币的两面。这篇文章以操作系统内核的视角，探索进程隔离的完整光谱。
+- [9Router：一个 AI 路由器的自组织涌现](/api/posts/ai-9router-guide.md): 22K GitHub Stars 的项目不写一行 AI 代码。一个本地代理，用三层回退把 AI 编码工具的碎片化变成了冗余，用 RTK 把 Token 浪费压缩到极致。它不是工具，是现象——当 AI 编码的提供商太多太快，管理它们本身成了一个新问题。
+- [Java AI 框架全景图 2026：选型决策指南](/api/posts/ai-java-framework-landscape.md): 2026 年 Java AI 框架生态迎来爆发：LangChain4j、Spring AI、AgentScope、Spring AI Alibaba、Embabel、Google ADK Java、Agents-Flex 等框架进入生产可用阶段。本文给出多维度打分排名、分层模型解读与组合推荐，帮助 Java 开发者做出选型决策。
+- [Java LLM 集成的工程模式之辩：LangChain4j 与 Spring AI 双轨实践](/api/posts/ai-langchain4j-practice.md): 从工程模式维度深度对比 LangChain4j 与 Spring AI——不是功能罗列，而是揭示两个框架各自代表的工程哲学：前者是'工具箱'式的模块化组装，后者是'平台'式的管线化集成。通过同一客服 Agent 场景的双框架实现，论证选择框架的关键不在于功能清单，而在于团队工程文化。
+- [Flyway：数据库 Schema 的版本控制与不可变历史哲学](/api/posts/java-flyway-migration.md): Flyway 是什么？从 flyway_schema_history 账本机制到 V__/R__ 命名契约，从 checksum 不可变约束到 forward-only 不回滚的根本取舍，再到 Spring Boot 集成与 Liquibase 对比，一篇讲透数据库迁移的核心思想与实战陷阱。
+- [AI Agent 学习资源全景：六大项目各取所长](/api/posts/ai-agent-learning-resources.md): 从微软的体系化课程到 Datawhale 的中文实战教程，从 Hugging Face 的认证体系到 NirDiamant 的生产级 Notebook，六大 AI Agent 学习项目各擅胜场，本文拆解它们的设计哲学、知识结构和适用场景，帮你找到最适合自己的学习路径。
+- [AI 时代的产品思维：超越 AI Native 的 10 条金规律](/api/posts/ai-product-thinking.md): 从 Sequoia、a16z、Stratechery、Satya Nadella 等前沿投资人和企业家的公开论述中，提炼出超越 AI Native 的 10 条产品思维金规律。每条都是能指导实践的判别标准，不是假大空的理论。
+- [省 Token 实战：10 个开源工具实测评测](/api/posts/ai-token-saving.md): 从个人开发者调用 API 的角度，实测 10 个省 token 的开源项目，覆盖 AST 压缩、语义压缩、记忆层、语义缓存、约束生成等 10 条路线，每条路线选最强一个，附真实测试数据和安装踩坑记录。
+- [拆解 codebase-memory-mcp：用 C 把代码库压进知识图谱的工程艺术](/api/posts/mcp-codebase-memory-deep-dive.md): 从源码层面深度拆解 codebase-memory-mcp 的灵魂内核：RAM-first 管道、Hybrid LSP 类型解析、11 信号语义相似度、RaBitQ 量化、MinHash+LSH 近克隆检测、自研 Cypher 引擎，解析每个工程取舍背后的原理。
+- [代码库记忆 MCP 横评：让 AI 真正读懂你的代码库](/api/posts/mcp-codebase-memory.md): 深度对比 codebase-memory-mcp、Graphify 等 15+ 个代码库记忆类 MCP 项目，从 tree-sitter AST 到知识图谱，从向量 RAG 到社区检测，解析各派原理与工程实践差异，给出按场景的选型建议。
+- [操作底牌：生产环境中那些心照不宣的工程真相](/api/posts/cs-production-truths.md): 教科书教你的是'正确做法'，生产环境要的是'生存做法'。50 条工程操作底牌覆盖数据库、后端架构、安全、部署、B2B 商业、支付和前端——每条遵循'表面做法→真实底牌→可执行方案'结构。这不是最佳实践清单，是关于'默认答案在为谁优化'的系统性反思。
+- [Hexo 认知系统 + 记忆库集成：三种方案的深度对比与选择](/api/posts/ai-memory-integration-comparison.md): Hexo 是出版系统，不是记忆系统。本文深度对比三种记忆库（Mem0、EverOS、sqlite-vec）与 Hexo PDC 的集成方案，从架构设计、检索精度、写入摩擦、可审计性四个维度剖析，给出决策树和行动指南。不是选一个，是把三个拼起来。
+- [AI 系统设计的四个可迁移哲学：从 7 个开源项目中提炼](/api/posts/ai-design-philosophy.md): 从 AI Week Report 三期 18 个项目中筛出 7 个真优化项目，提炼出四个可迁移到方方面面的 AI 系统设计哲学：返回结构而非内容、约束优于自由、优化在处理之前、确定性做确定性的事。每个哲学附原理剖析、迁移场景和边界条件，不谈工具 feature，只谈底层思想。
+- [AI 周报里的真优化：从三期 18 个项目中剖析 7 个的底层原理](/api/posts/ai-weekly-true-optimization.md): 从 AI Week Report 三期共 18 个项目中筛出 7 个真优化项目，不做项目推荐员，只剖析底层原理：OmniRoute 的 Token 堆叠压缩、codebase-memory-mcp 的知识图谱索引范式、ponytail 的约束生成原理、superpowers 的子代理协作机制、headroom 的前置压缩层、open-code-review 的混合架构、EverOS 的 Markdown-native 记忆层。每个项目讲清楚'怎么做到的'而非'能做什么'。
+- [MCP 是伪需求吗？从 AI Native 本质砍掉 80% 无效场景](/api/posts/mcp-pseudo-demand.md): MCP 协议本身不是伪需求，但当前 80% 的 MCP 使用场景是伪需求——用 token 换一次网页点击。本文给出 AI 增量价值判别框架，区分信息搬运、信息加工、信息创造三类场景，帮你砍掉伪需求，把时间花在没有 AI 就办不到的真需求上。
+- [云效 MCP Server 接入手册：把 AI 编程助手接到你的 DevOps 流水线](/api/posts/mcp-yunxiao-devops-deep-dive.md): 个人开发者怎么把云效 MCP Server 接到 Cursor / Claude Desktop / AI 编程助手，让 AI 从需求录入一直跟进到部署完成。基于真实组织实测，给出 5 分钟接入配置、9 个核心工具的工作流速查、4 阶段需求跟进完整流程、5 个落地工作流优化灵感。开支是 token、收益是 AI 真的能看见你的研发系统在做什么。
+- [Electron 深度剖析：Chromium + Node 的桌面应用范式](/api/posts/frontend-electron-deep-dive.md): 从架构原理层透视 Electron：三进程模型如何把浏览器与 Node 拼成一个桌面运行时，IPC 与 contextBridge 为何如此设计，asar 打包与代码签名背后的机理，以及它的体积、内存、安全张力为什么不是工程缺陷而是经济性妥协。最终回答 Electron 2026 年仍未被 Tauri 替代的真正原因。
+- [为什么 AI 编码工具用 DSL 而不是 HTML：约束输出的原理](/api/posts/ai-constrained-output-dsl.md): 从 LLM 概率性输出与确定性产物的根本矛盾出发，拆解 AI 编码工具用 DSL 替代 HTML 的两层原理（约束语法层 + 上移视觉层），以 Qoder canvas 为案例剖析，并批判其适用边界与代价。
+- [微信小程序支付实战：全链路坑点与工程经验](/api/posts/wechat-miniprogram-payment.md): 基于 2026 年最新微信支付 V3 文档，梳理小程序支付从下单、调起、回调、查单到退款的全链路。不讲 API 文档能查到的参数，讲文档不会告诉你的幂等陷阱、签名探测流量、prepay_id 过期、商户休眠关停等真实工程坑点，以及可迁移到任何支付系统的分布式状态一致性直觉。
+- [线上巡检报告不是写流水账：一份能救命的巡检长什么样](/api/posts/cs-service-patrol-report.md): 从大厂巡检实践出发，拆解一份规范线上巡检报告应包含的5+1维度与元信息结构，指出常见流水账式巡检的根本缺陷，给出可迁移的巡检认知框架而非操作手册。
+- [AI时代儿童康复产业的出路：生育率下降下的人文关怀重构](/api/posts/ai-rehabilitation-future.md): 中国生育率断崖式下跌，儿童康复产业面临总量承压。但AI赋能与人文关怀的交汇正在重构产业逻辑——从'治病'到'成人'，从'机构中心'到'家庭中心'，这场变革远比想象中深刻。
+- [微信登录统一接入：扫码登录 + 小程序登录的安全架构实战](/api/posts/frontend-wechat-unified-login.md): 从微信账号体系的设计哲学出发，用 Spring Boot + Vue 3 实现网页扫码登录与小程序登录的统一架构。不讲 API 文档能查到的东西，讲文档不会告诉你的安全陷阱、Token 管理策略和大厂实战经验。
+- [本地分布式存储：从坚果云到 IPFS 的三代范式](/api/posts/info-local-distributed-storage.md): 深度解析本地分布式存储方案：从坚果云到Syncthing、Rclone、IPFS，探索P2P同步、云存储统一、去中心化存储三代范式，以及AI时代数据主权的意义。
+- [Human-in-the-Loop：AI Agent 的自治光谱与前沿实践](/api/posts/ai-hitl-autonomous-spectrum.md): 深度解析AI Agent的人类参与模式：从Human-in-the-Loop到Human-out-of-the-Loop，分析Anthropic和OpenAI的最新实践，探讨渐进式自治与自适应自治度的前沿方向。
+- [AI Native：应用的真需求必须是原生的](/api/posts/ai-native-true-requirements.md): 深度解析AI Native应用的核心逻辑：为什么真正的AI需求必须从底层重构，而非在传统应用上叠加AI功能。从a16z、Sequoia等顶级VC的视角，结合Cursor、Midjourney等案例，探讨AI原生应用的五大特征、三大陷阱，以及Agent化、世界模型、具身智能等前沿方向。
+- [世界模型：大语言模型的终结者，还是资本叙事的下一幕？](/api/posts/ai-world-models.md): 从Schmidhuber到LeCun JEPA，从Genie 3到Cosmos 3，世界模型正从论文走向产品。本文从认知科学、工程实践、资本博弈、LLM对比四视角深度剖析：世界模型是真正的范式转移，还是资本叙事的下一幕？
+- [Argon2id 密码哈希：memory-hard 的工程实践与前沿](/api/posts/cs-argon2id-explained.md): Argon2id 是 OWASP 首选密码哈希算法，2015 年密码哈希竞赛冠军。本文从 memory-hard 的第一性原理出发，讲清 Argon2 三个变体的区别、m/t/p 三参数调优、多语言实战集成，以及 2024 年 cache-hard vs memory-hard 的前沿争论与选型决策。
+- [BCrypt 密码哈希：从 Blowfish 到 cache-hard 的技术演化](/api/posts/cs-bcrypt-explained.md): BCrypt 是什么？从 Blowfish 的 Eksblowfish 变体到 cost factor 自适应机制，从 $2a$ 到 $2b$ 的两个 bug 修复史，到 scrypt/Argon2 的 memory-hard 演化，再到 2024 年 cache-hard vs memory-hard 的前沿争论。一篇搞懂密码哈希的过去、现在和选型。
+- [SQLite 做 AI 开发记忆库：工程检验下的最佳实践](/api/posts/ai-sqlite-memory-store.md): SQLite 做记忆库有价值吗？调研 LangGraph、Continue.dev、ChromaDB 等公开实践，对比 Markdown 文件式记忆的优劣，结合 opencode 的 MCP/自定义工具/Plugin hooks 接入点，提出分层记忆架构最佳实践——Markdown 管约束，SQLite 管经验检索，skills 管程序性记忆。
+- [AI 时代开发范式演化：从 Waterfall 到 Memory-Driven 的终局](/api/posts/ai-memory-driven-development.md): 从 Waterfall 到 Autonomous SE，十种开发范式演化的本质是核心资产的迁移。本文综合 Agent 记忆、RAG、MCP 等已有实践，提出记忆驱动开发（MDD）——以可积累可检索可验证的数字记忆为核心资产，是 AI 时代个人开发者最可用的范式。
+- [语音还是键盘？Prompt 输入模态的真实分界线](/api/posts/ai-voice-prompt-input.md): 以 OpenAI Whisper、Superwhisper、VibeWhisper 等开源方案与 HackerNews 社区实践为据，从速度、精度、结构、编辑、环境、隐私六个维度拆解语音与键盘在 Prompt 工程中的真实优劣，给出开发与生活场景的判定框架与混合工作流。
+- [Windows 桌面快捷方式：双击启动任意 CLI 工具](/api/posts/skill-opencode-shortcut.md): 用 WScript.Shell COM 创建 .lnk 快捷方式，通过 Windows Terminal 的 wt.exe -d 参数指定启动目录，PowerShell -NoExit 保持窗口。以 opencode 为例，方案可迁移到 hexo、python 等任意 CLI 工具。
+- [Mesh VPN 全景：13 个方案的原理、性能与选型](/api/posts/tcp-ip-mesh-vpn-landscape.md): 从 WireGuard 的 Noise 协议到 Yggdrasil 的完全 P2P，13 个 Mesh VPN 方案横跨协议、层级、拓扑、稳定性、性能五个维度。本文从原理讲透为什么 Tailscale 最稳定、WireGuard 最快、ZeroTier 不可替代，并按个人/团队/极客/特殊场景给出选型决策。
+- [Jetson Nano 与边缘 AI：一台 2019 年的老硬件，为什么在 2026 年仍然值得学](/api/posts/embedded-jetson-nano-edge-ai.md): 2019 年的原版 Jetson Nano 跑不动 LLM，却被 NVIDIA 生态抛弃在 JetPack 4。但正是这台最弱的现代 AI 设备，逼你理解边缘 AI 的本质——不是跑得多快，而是在哪里跑。从硬件墙、生态断层到内存带宽瓶颈，讲透边缘 AI 的意义。
+- [Windows Terminal 实用指南：把一个窗口变成统一开发工作台](/api/posts/dev-windows-terminal.md): 针对 Windows + WSL + Jetson + Docker 多环境开发，系统整理 Windows Terminal 的实用配置路径：PowerShell 7、Profile、SSH、Pane 分屏、Oh My Posh 提示符、启动自动化，末尾从原理层批判它的真实边界。
+- [深入浅出 TEE：为什么你的手机里有一块内核都进不去的保险箱](/api/posts/cs-tee-principles.md): 从冯·诺依曼架构的特权层窥探悖论出发，推导 TEE 的六块原理积木——硬件墙、信任链、远程证明、数据流模型。以数字记忆硬件落地为案例串联原理，批判 TEE 的边界：侧信道、协议层、供应链。不是科普，是原理级的工程认知。
+- [数字记忆：Personal AI OS 缺失的根](/api/posts/ai-digital-memory-personal-ai-os-root.md): 从 1945 年 Memex 到 2026 年 AI Agent 记忆层，追溯数字记忆的完整思想谱系：Memex 的愿景、MyLifeBits 的教训、Lifelog 的被动采集、TEE 的硬件安全、知识图谱的经验网络——以及为什么'记忆'是 Personal AI OS 缺失的根。不是 AI 产品分析，是关于未来数字文明基础设施的思考。
+- [AgentScope 2.0 深度拆解：不约束模型的架构哲学](/api/posts/ai-agentscope-deep-dive.md): 从 Agent 编排的根本矛盾出发，拆解 AgentScope 2.0 的架构决策——为什么不约束模型、事件总线如何替代状态图、多租户和权限系统为什么是企业级的真正门槛。不是项目文档，是引擎盖下的原理。
+- [开源 Agent 架构深度拆解：核心认知与工程决策](/api/posts/ai-agent-2026-landscape.md): 从六条核心认知出发，拆解六个最成熟的开源 Agent 产品——OpenClaw、Hermes、ZeroClaw、GBrain、Mem0、smolagents——的架构决策与工程经验。不是概览，是引擎盖下的原理。
+- [AIO：AI 时代的 SEO，从搜索排名到 AI 引用](/api/posts/信息获取-aio-ai-seo.md): 当用户不再搜索而是直接问 AI，传统 SEO 正在被 AIO（AI Optimization）取代。本文从搜索行为的根本变化出发，分析 SEO 到 AIO 的范式转移，介绍 llms.txt 标准如何成为 AIO 的基础设施，并以本站的 PDC 实现为案例，展示从内容优化到 AI 引用的完整路径。
+- [llmstxt.site 收录站速览与有趣网站精选](/api/posts/hexo-llmstxt-sites.md): 介绍 llms.txt 收录目录站 llmstxt.site 的定位与特点，并从其收录的 1600+ 站点中精选 AI 平台、开发者工具、开源框架、金融加密、MCP 生态等领域的有趣网站。
+- [llms.txt 收录目录里有哪些有趣的网站](/api/posts/hexo-llmstxt-guide.md): llms.txt 是让 LLM 零噪音读取网站内容的约定，目前两个收录目录已收录 1600+ 站点。本文从中筛选出 AI 平台、开发者工具、开源框架、金融加密、MCP 生态等类别的有趣站点，观察 llms.txt 标准的真实采用图景。
+- [邀请你加入 PDC 采用者网络：让 AI 零噪音读取你的博客](/api/posts/hexo-pdc-adopters-network.md): PDC 让静态博客在构建时自动生成 AI 可读的零噪音内容端点。本文介绍 llms.txt 采用者网络的愿景、加入流程、验证脚本使用方法，以及采用者如何通过互链形成 AI 可发现的内容网络。
+- [NFT 与数字藏品：从疯狂到清醒的五年](/api/posts/信息获取-nft-2026-status.md): 以真实数据复盘 NFT 五年完整周期：2021 年爆发、2023 年崩塌、2026 年重建。覆盖国内数字藏品平台生存现状（鲸探 1.38 亿用户、幻核关停、iBox 市值蒸发 97%）、八部委 42 号文监管定调、海外 OpenSea 交易量暴跌 96%、以及个人在合规框架下的可行路径。
+- [趋势观察准则：三维度判断框架](/api/posts/skill-trend-observation.md): 用立法空白度、执法可行性、商业变现能力三维度评估新兴领域的窗口期价值。附窗口期评估矩阵和中国市场窗口期缩短规律，适用于创业机会评估、投资判断和技术趋势分析。
+- [免费公开 API 收集：国内可直连的数据源索引](/api/posts/信息获取-public-api-collection.md): 从 GitHub 仓库和实测中直接提取的国内可直连免费 API：金融行情、天气、地理定位、学术医疗、航天、新闻、开放数据、测试数据、机器学习、免费 LLM API（OpenRouter/GitHub Models/Cloudflare/Groq/LLM7.io 等）、AI Agent 技能生态，50+ 接口附可用性验证脚本。
+- [AI 浪潮的第一性原理：从意识涌现到泡沫诊断](/api/posts/ai-tide-first-principles.md): 在 AI 浪潮的喧嚣中，从第一性原理出发系统审视四个核心问题：AI 是否会涌现意识、当前浪潮是否具有庞氏结构、互联网泡沫的历史镜鉴、以及泡沫破灭后什么会留下来。最终落脚于个人决策锚点——在不确定性中寻找不可改变的东西作为判断地基。
+- [Dify 深度实践：知识库、MCP 与 AI 应用的编排之道](/api/posts/ai-dify-knowledge-mcp.md): 诚实拆解开源 AI 编排平台 Dify 的背景与现状，给出 Cloud 与自托管的决策矩阵和五个必踩的坑，基于官方 API 文档演示知识库四步操作（创建、上传、索引、检索），详解 MCP 双向支持，结合本站 PDC 协议给出将静态博客接入 Dify 知识生态的创新架构与适配器代码。
+- [深入浅出 RAG：从检索增强到知识库与 Agent 的工程实践](/api/posts/ai-rag-engineering.md): 从 LLM 闭卷考试的困境出发，推导 RAG 的本质矛盾——参数化记忆无法应对动态、精确、可溯源的知识需求。沿着矛盾演进追踪三阶段架构、GraphRAG 的全局视野、RAG 与 Agent 的主动研究能力，最终抽象出三个可迁移设计模式和工程选型决策矩阵。
+- [Cocos Creator 小游戏开发入门：从节点组件到微信发布](/api/posts/game-dev-cocos-creator-guide.md): 结合 Cocos Creator 3.8 官方文档与实战经验，系统讲解小游戏开发全流程：节点组件架构、TypeScript 脚本系统、UI 多分辨率适配、事件系统、资源管理，并通过一个完整的躲避小游戏案例串联全部知识点，最后覆盖微信小游戏构建发布与性能优化避坑经验。
+- [小游戏设计之道：从零理解游戏设计的灵魂](/api/posts/frontend-minigame-design.md): 结合微信官方设计指南、Voodoo 超休闲理念与 Cocos 引擎实践，系统拆解小游戏从玩法体验到传播留存的完整设计框架，帮你从零建立游戏设计的核心思维。
+- [元提示词：用提示词生成提示词的工程方法](/api/posts/prompt-meta-prompt.md): 整合 PE2 论文的两步推理法、10 条生成原则和 11 项自验证清单，构建一个可直接使用的元提示词——用提示词生成提示词。支持从零生成和迭代优化两种模式，含 3 个场景示例和跨模型适配指南。
+- [儿童认知康复能力评估的游戏设计指南：从 ICF-CY 到数字疗法](/api/posts/儿童康复评估游戏设计指南.md): 将医学康复量表转化为儿童认知评估游戏，需要跨越认知心理学、临床评估标准和数字疗法三个领域。本文以 WHO 的 ICF-CY 分类为锚点，整合 Baddeley 工作记忆模型、CPT 持续注意力范式、EndeavorRx 多任务干扰设计，建立从 ICF-CY 编码到心理学范式到游戏机制到数据指标的完整映射体系，附关卡设计实例和工程化落地三步法。
+- [游戏设计框架实践：从 CCGS 看专业游戏开发的四层理论体系](/api/posts/游戏设计框架-ccgs.md): 通过 Claude Code Game Studios 项目中的 49 个专业角色定义，拆解专业游戏开发背后的四层设计理论体系：MDA 框架（机制-动态-美学）、自我决定理论（自主-胜任-关联）、心流理论（挑战-技能平衡）、Bartle 玩家类型。结合创意总监、系统设计师、关卡设计师、经济设计师等角色的具体职责，说明这些理论如何落地为可操作的设计决策。
+- [PDC 协议接入 MCP 生态：两种部署模式实战](/api/posts/hexo-pdc-mcp-adapter.md): PDC 通过薄适配器接入 MCP 生态，让 Qoder、Claude Desktop、Cursor 等 MCP 客户端直接访问静态博客内容。本文详细讲解本地 stdio 和远程 HTTP（Cloudflare Worker）两种部署模式的实现细节、配置方法和适用场景，附完整代码和手动测试流程。
+- [MCP 协议详解：AI 应用的 USB-C 接口](/api/posts/ai-mcp-protocol.md): 从 M×N 集成难题到 M+N 线性解法，深入解析 Model Context Protocol 的三大原语（Resources/Tools/Prompts）、两层架构（数据层 + 传输层）、JSON-RPC 生命周期和六大安全原则。结合企业知识库、研发工具链、数据库助手等真实业务场景，说明 MCP 如何成为 AI 应用的标准化上下文接口。
+- [PDC 协议：让博客同时服务人类与 AI 的平行数据通道](/api/posts/pdc-protocol.md): PDC（Parallel Data Channel）是 llms.txt 标准的 Hexo 增强实现，让静态博客同时服务人类读者和 AI Agent。通过构建时生成平行数据通道（JSON/MD/TXT），实现人类看 HTML、AI 读零噪音 Markdown，四层架构覆盖数据通道、文章格式、内容注入和静态托管兼容性，零运行时开销，完美适配 GitHub Pages。
+- [提示词：工作周报助手](/api/posts/prompt-weekly-report.md): 将零散工作记录整理为简明日报的提示词，用最少的字描述清楚任务进度，仅用 1. 和 - 分点分级。固定两大板块：本周工作、下周计划，下周计划从本周未完成任务发散。AI 可通过 API 直接提取使用。
+- [提示词写作技巧：用 XML 结构构建可复用提示词](/api/posts/skill-prompt-writing.md): 基于 OpenAI GPT-5.5 和 Anthropic 公开指南的提示词写作方法，用 XML 标签组织结构（role/goal/instructions/output_format/stop_rules），6 步写出可复用、可检索、AI 可直接提取的提示词。
+- [提示词：代码审查助手](/api/posts/prompt-code-review.md): PR 提交后自动化代码审查的提示词模板，基于 OpenAI GPT-5.5 和 Anthropic 公开指南优化，采用 outcome-first 结构（goal + success_criteria + stop_rules），覆盖安全/性能/可维护性三维检查，按严重程度分组输出。AI 可通过 API 直接提取使用。
+- [如何生成好的 Agent Skill：从原理到实践](/api/posts/skill-how-to-generate.md): 基于 Qoder skill-generator 的跨平台实践经验，结合 OpenAI GPT-5.5 提示词指南和 Anthropic Claude Code Skills 规范，从 Token 经济学、注意力分配、上下文窗口管理等底层原理出发，系统分析什么样的 Agent Skill 是好的 Skill。
+- [什么是好的提示词：从 Token 原理到开源实践](/api/posts/ai-prompt-engineering.md): 从 Token 分词、注意力机制、上下文窗口等底层原理出发，结合 OpenAI GPT-5.5、Anthropic、Google 等开源提示词实践，系统分析什么样的提示词是好的提示词，以及为什么好。涵盖 outcome-first、检索预算、停止条件等最新实践。
+- [Kokoro TTS 本地语音合成引擎集成指南](/api/posts/skill-kokoro-tts.md): 介绍 Kokoro TTS 本地语音合成引擎的部署配置、OpenAI 兼容 API 调用、Node.js 脚本集成方法及完整音色列表，适用于 derder-bot 等聊天机器人发送语音消息。
+- [RSS 日报 · 2026-06-18](/api/posts/rss-daily-2026-06-18.md): 2026年6月18日 RSS 日报，从 16 个可信源中精选 20 条重要资讯，涵盖 AI、科学、安全、商业、国际新闻等领域，附分析师解读。
+- [RSS 日报生成工作流](/api/posts/skill-rss-daily.md): 介绍如何从 RSS 源大全中抓取全部可信源、按重要程度筛选 20 条新闻、生成每日 RSS 日报文章并部署到博客的完整工作流。
+- [Hexo AI 数据通道：让 AI 零噪音读取博客内容](/api/posts/hexo-ai-data-channel.md): 完整的 Hexo AI 数据通道解决方案：通过构建时生成静态 JSON/MD/TXT 文件，让 AI Agent 获取零噪音的博客文章内容，完美兼容 GitHub Pages，支持加密文章保护。
+- [RSS 源大全：可信信息获取的数据源清单](/api/posts/rss-source-collection.md): 经过实际验证的 RSS 源大全，按学术、AI、技术、新闻、独立博客分类，标注可访问性和可信度，附简单介绍和推荐订阅组合。
+- [GitHub Pages 完全指南：原理、配置与使用限制](/api/posts/hexo-github-pages-guide.md): 详细介绍 GitHub Pages 的工作原理、配置方法、使用限制和常见问题，包括免费账户与付费账户的区别、私有仓库的 Pages 支持、自定义域名配置和流量限制等。
+- [Hexo 博客文章加密实现](/api/posts/hexo-blog-encryption.md): 介绍 hexo-blog-encrypt 插件如何为 Hexo 静态博客实现客户端文章加密，涵盖 AES-256-GCM 加密原理、PBKDF2 密钥派生流程和配置方法。
+- [用 Hexo 搭建认知管理系统](/api/posts/hexo-cognitive-management.md): 介绍如何用 Hexo + Butterfly 主题搭建一个 AI 索引友好的认知管理系统，涵盖项目架构、文章命名规范、Front-Matter 设计、内容索引策略和自动化部署流程。

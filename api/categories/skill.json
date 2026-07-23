@@ -1,0 +1,104 @@
+{
+  "category": "Skill",
+  "slug": "skill",
+  "post_count": 5,
+  "posts": [
+    {
+      "title": "Windows 桌面快捷方式：双击启动任意 CLI 工具",
+      "slug": "skill-opencode-shortcut",
+      "date": "2026-07-01",
+      "categories": [
+        "技术",
+        "Skill"
+      ],
+      "tags": [
+        "opencode",
+        "Skill",
+        "Windows",
+        "快捷方式"
+      ],
+      "description": "用 WScript.Shell COM 创建 .lnk 快捷方式，通过 Windows Terminal 的 wt.exe -d 参数指定启动目录，PowerShell -NoExit 保持窗口。以 opencode 为例，方案可迁移到 hexo、python 等任意 CLI 工具。",
+      "url": "https://bsheepcoder.github.io/2026/07/01/skill-opencode-shortcut/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/skill-opencode-shortcut.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/skill-opencode-shortcut.md",
+      "encrypted": false
+    },
+    {
+      "title": "趋势观察准则：三维度判断框架",
+      "slug": "skill-trend-observation",
+      "date": "2026-06-26",
+      "categories": [
+        "技术",
+        "Skill"
+      ],
+      "tags": [
+        "Skill",
+        "趋势观察",
+        "分析框架"
+      ],
+      "description": "用立法空白度、执法可行性、商业变现能力三维度评估新兴领域的窗口期价值。附窗口期评估矩阵和中国市场窗口期缩短规律，适用于创业机会评估、投资判断和技术趋势分析。",
+      "url": "https://bsheepcoder.github.io/2026/06/26/skill-trend-observation/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/skill-trend-observation.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/skill-trend-observation.md",
+      "encrypted": false
+    },
+    {
+      "title": "提示词写作技巧：用 XML 结构构建可复用提示词",
+      "slug": "skill-prompt-writing",
+      "date": "2026-06-21",
+      "categories": [
+        "技术",
+        "Skill"
+      ],
+      "tags": [
+        "Prompt",
+        "GPT-5.5",
+        "XML结构",
+        "Skill"
+      ],
+      "description": "基于 OpenAI GPT-5.5 和 Anthropic 公开指南的提示词写作方法，用 XML 标签组织结构（role/goal/instructions/output_format/stop_rules），6 步写出可复用、可检索、AI 可直接提取的提示词。",
+      "url": "https://bsheepcoder.github.io/2026/06/21/skill-prompt-writing/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/skill-prompt-writing.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/skill-prompt-writing.md",
+      "encrypted": false
+    },
+    {
+      "title": "Kokoro TTS 本地语音合成引擎集成指南",
+      "slug": "skill-kokoro-tts",
+      "date": "2026-06-18",
+      "categories": [
+        "技术",
+        "Skill"
+      ],
+      "tags": [
+        "AI",
+        "Skill",
+        "TTS"
+      ],
+      "description": "介绍 Kokoro TTS 本地语音合成引擎的部署配置、OpenAI 兼容 API 调用、Node.js 脚本集成方法及完整音色列表，适用于 derder-bot 等聊天机器人发送语音消息。",
+      "url": "https://bsheepcoder.github.io/2026/06/18/skill-kokoro-tts/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/skill-kokoro-tts.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/skill-kokoro-tts.md",
+      "encrypted": false
+    },
+    {
+      "title": "RSS 日报生成工作流",
+      "slug": "skill-rss-daily",
+      "date": "2026-06-18",
+      "categories": [
+        "技术",
+        "Skill"
+      ],
+      "tags": [
+        "信息获取",
+        "RSS",
+        "Skill"
+      ],
+      "description": "介绍如何从 RSS 源大全中抓取全部可信源、按重要程度筛选 20 条新闻、生成每日 RSS 日报文章并部署到博客的完整工作流。",
+      "url": "https://bsheepcoder.github.io/2026/06/18/skill-rss-daily/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/skill-rss-daily.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/skill-rss-daily.md",
+      "encrypted": false
+    }
+  ]
+}

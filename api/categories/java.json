@@ -1,0 +1,26 @@
+{
+  "category": "Java",
+  "slug": "java",
+  "post_count": 1,
+  "posts": [
+    {
+      "title": "Flyway：数据库 Schema 的版本控制与不可变历史哲学",
+      "slug": "java-flyway-migration",
+      "date": "2026-07-14",
+      "categories": [
+        "技术",
+        "Java"
+      ],
+      "tags": [
+        "Java",
+        "Flyway",
+        "数据库迁移"
+      ],
+      "description": "Flyway 是什么？从 flyway_schema_history 账本机制到 V__/R__ 命名契约，从 checksum 不可变约束到 forward-only 不回滚的根本取舍，再到 Spring Boot 集成与 Liquibase 对比，一篇讲透数据库迁移的核心思想与实战陷阱。",
+      "url": "https://bsheepcoder.github.io/2026/07/14/java-flyway-migration/",
+      "api_json_url": "https://bsheepcoder.github.io/api/posts/java-flyway-migration.json",
+      "api_md_url": "https://bsheepcoder.github.io/api/posts/java-flyway-migration.md",
+      "encrypted": false
+    }
+  ]
+}
